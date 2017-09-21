@@ -6,7 +6,7 @@ Download the [minified script file](https://github.com/FlorisSteenkamp/FloPoly/b
 ```html
 <script src='[path-to-file]/flo-poly.min.js'></script>
 ```
-There is also a [map file](https://github.com/FlorisSteenkamp/FloPoly/blob/master/dist/flo-poly.min.js.map) available and a [non-minified version](https://github.com/FlorisSteenkamp/FloPoly/blob/master/dist/flo-poly.js) available.
+There is also a [map file](https://github.com/FlorisSteenkamp/FloPoly/blob/master/dist/flo-poly.min.js.map) and a [non-minified version](https://github.com/FlorisSteenkamp/FloPoly/blob/master/dist/flo-poly.js) available.
 
 ## Bower
 
