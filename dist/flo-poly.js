@@ -1,23 +1,24 @@
-(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.FloPoly = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-'use strict'
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+'use strict';
 
-let coreOperators = require('./core-operators.js');
-let rootOperators = require('./root-operators.js');
-let rootBounds    = require('./root-bounds.js');
+var coreOperators = require('./core-operators.js');
+var rootOperators = require('./root-operators.js');
+var rootBounds = require('./root-bounds.js');
 
-let { brent, quadraticRoots, /*cubicRoots,*/ } = rootOperators;
-let { clip0, evaluate, differentiate, toCasStr, } = coreOperators;
-let { 
-	rootMagnitudeUpperBound_fujiwara,
-	positiveRootUpperBound_LMQ,
-	positiveRootLowerBound_LMQ,
-	negativeRootUpperBound_LMQ,
-	negativeRootLowerBound_LMQ,
-} = rootBounds;
+var brent = rootOperators.brent,
+    quadraticRoots = rootOperators.quadraticRoots;
+var clip0 = coreOperators.clip0,
+    evaluate = coreOperators.evaluate,
+    differentiate = coreOperators.differentiate,
+    toCasStr = coreOperators.toCasStr;
+var rootMagnitudeUpperBound_fujiwara = rootBounds.rootMagnitudeUpperBound_fujiwara,
+    positiveRootUpperBound_LMQ = rootBounds.positiveRootUpperBound_LMQ,
+    positiveRootLowerBound_LMQ = rootBounds.positiveRootLowerBound_LMQ,
+    negativeRootUpperBound_LMQ = rootBounds.negativeRootUpperBound_LMQ,
+    negativeRootLowerBound_LMQ = rootBounds.negativeRootLowerBound_LMQ;
 
-	  
-const INF = Number.POSITIVE_INFINITY;
 
+var INF = Number.POSITIVE_INFINITY;
 
 /**
  * <p>Finds a near optimal approximation to the real roots (or those 
@@ -46,65 +47,58 @@ function allRootsRecursive(p, a, b) {
 	p = clip0(p);
 	a = a === undefined ? -INF : a;
 	b = b === undefined ? +INF : b;
-	
-	let d = p.length-1;
-	let rangeFilter = inRange(a,b);
-	
+
+	var d = p.length - 1;
+	var rangeFilter = inRange(a, b);
+
 	if (d === 2) {
-		return quadraticRoots(p)
-		.filter(rangeFilter);
-	// Investigate if any numerically stable algorithm could be as fast
-	// as this algorithm (i.e by finding cubic roots within quadratic
-	// root demarcated intervals via Brent's method. The cubicRoots 
-	// algoritm below has been removed since it was numerically 
-	// unstable.
-	/*} else if (d === 3) {
-		return cubicRoots(p)
-			.filter(rangeFilter)
-			.sort((a,b) => a-b)
-	} else if (d > 3) {*/
+		return quadraticRoots(p).filter(rangeFilter);
+		// Investigate if any numerically stable algorithm could be as fast
+		// as this algorithm (i.e by finding cubic roots within quadratic
+		// root demarcated intervals via Brent's method. The cubicRoots 
+		// algoritm below has been removed since it was numerically 
+		// unstable.
+		/*} else if (d === 3) {
+  	return cubicRoots(p)
+  		.filter(rangeFilter)
+  		.sort((a,b) => a-b)
+  } else if (d > 3) {*/
 	} else if (d > 2) {
 		// TODO The root bounding function below might have an impact on 
 		// performance - it would probably be better to use 
 		// positiveRootUpperBound_LMQ or (possibly) even better, the 
 		// linear version of it (see paper of Viglas, Akritas and 
 		// Strzebonski) and re-calculate bounds on every iteration.
-		let lowerBound;
-		let upperBound;
+		var lowerBound = void 0;
+		var upperBound = void 0;
 		if (a === -INF || b === +INF) {
 			//let magnitudeBound = rootMagnitudeUpperBound_fujiwara(p);
 			//lowerBound = a === -INF ? -magnitudeBound : a;
 			//upperBound = b === +INF ? +magnitudeBound : b;
-			
-			lowerBound = a === -INF 
-				? negativeRootLowerBound_LMQ(p) 
-				: a;
-			upperBound = b === +INF 
-				? positiveRootUpperBound_LMQ(p) 
-				: b;
+
+			lowerBound = a === -INF ? negativeRootLowerBound_LMQ(p) : a;
+			upperBound = b === +INF ? positiveRootUpperBound_LMQ(p) : b;
 		} else {
 			lowerBound = a;
 			upperBound = b;
 		}
-		
+
 		// If the roots of differentiated polynomial is out of range 
 		// then the roots of the polynomial itself will also be out of 
 		// range.
-		let dp = differentiate(p);
-		let roots = allRootsRecursive(dp, lowerBound, upperBound)
-			.filter(rangeFilter);
-		
+		var dp = differentiate(p);
+		var roots = allRootsRecursive(dp, lowerBound, upperBound).filter(rangeFilter);
+
 		if (roots[0] !== lowerBound) {
 			roots.unshift(lowerBound); // Not really a root.
 		}
-		if (roots[roots.length-1] !== upperBound) {
-			roots.push(upperBound);    // Not really a root.
+		if (roots[roots.length - 1] !== upperBound) {
+			roots.push(upperBound); // Not really a root.
 		}
-		return rootsWithin(p, roots);	
+		return rootsWithin(p, roots);
 	} else if (d === 1) {
 		// Less likely so put near bottom (micro optimization)
-		return [-p[1]/p[0]]
-		.filter(rangeFilter);
+		return [-p[1] / p[0]].filter(rangeFilter);
 	} else if (d === 0) {
 		return []; // y = c -> no roots	
 	}
@@ -112,9 +106,8 @@ function allRootsRecursive(p, a, b) {
 	// Least likely so put at bottom (micro optimization)
 	// d === -1
 	// y = 0 -> infinite number of roots
-	return [];  
+	return [];
 }
-
 
 /**
  * Returns a function that returns true if x is in the range [a,b].
@@ -125,11 +118,10 @@ function allRootsRecursive(p, a, b) {
  * @returns {function}
  */
 function inRange(a, b) {
-	return function(x) {
-		return x >= a && x <= b;	
-	}
+	return function (x) {
+		return x >= a && x <= b;
+	};
 }
-
 
 /**
  * Finds all roots of the given polynomial within the given intervals.
@@ -141,65 +133,62 @@ function inRange(a, b) {
  */
 function rootsWithin(p, intervals) {
 
-	let roots = [];
-	let peval = evaluate(p);
-	
-	let prevRoot;
-	let a = intervals[0];
-	for (let i=1; i<intervals.length; i++) {
-		let root; 
-		let b = intervals[i];
-		
-		let evA = peval(a);
-		let evB = peval(b);
-		
-		let k = evA*evB;
-		
+	var roots = [];
+	var peval = evaluate(p);
+
+	var prevRoot = void 0;
+	var a = intervals[0];
+	for (var i = 1; i < intervals.length; i++) {
+		var root = void 0;
+		var b = intervals[i];
+
+		var evA = peval(a);
+		var evB = peval(b);
+
+		var k = evA * evB;
+
 		if (k === 0) {
 			if (evA === 0) {
 				root = a;
-			} else if (evB === 0 && i === intervals.length-1) {
+			} else if (evB === 0 && i === intervals.length - 1) {
 				root = b;
 			}
-		} else if (evA*evB < 0) {
+		} else if (evA * evB < 0) {
 			root = brent(peval, a, b);
 		}
-		
+
 		// Add root if it exists and suppress exact duplicates
-		if (root !== undefined && root !== prevRoot) {  
+		if (root !== undefined && root !== prevRoot) {
 			roots.push(root);
 			prevRoot = root;
 		}
-		
+
 		a = b;
 	}
-	
-	return roots;	
-}
 
+	return roots;
+}
 
 module.exports = allRootsRecursive;
 
 },{"./core-operators.js":3,"./root-bounds.js":8,"./root-operators.js":9}],2:[function(require,module,exports){
-'use strict'
+'use strict';
 
-let coreOperators = require('./core-operators.js');
-let rootOperators = require('./root-operators.js');
-let Mobius        = require('./mobius.js');
-let rootBounds    = require('./root-bounds.js');
-		
-		
-let { brent } = rootOperators;
-let { evaluate, 
-	  evaluateAt0,
-	  negate, 
-	  invert, 
-	  signChanges,
-	  changeVariables, } = coreOperators;
-let { positiveRootUpperBound_LMQ,	
-	  positiveRootLowerBound_LMQ, } = rootBounds;
+var coreOperators = require('./core-operators.js');
+var rootOperators = require('./root-operators.js');
+var Mobius = require('./mobius.js');
+var rootBounds = require('./root-bounds.js');
 
-	  
+var brent = rootOperators.brent;
+var evaluate = coreOperators.evaluate,
+    evaluateAt0 = coreOperators.evaluateAt0,
+    negate = coreOperators.negate,
+    invert = coreOperators.invert,
+    signChanges = coreOperators.signChanges,
+    changeVariables = coreOperators.changeVariables;
+var positiveRootUpperBound_LMQ = rootBounds.positiveRootUpperBound_LMQ,
+    positiveRootLowerBound_LMQ = rootBounds.positiveRootLowerBound_LMQ;
+
 /** 
  * DO NOT USE. EXPERIMENTAL.
  * Find all the roots using the VAS algorithm followed by Brent's 
@@ -209,32 +198,26 @@ let { positiveRootUpperBound_LMQ,
  * @param {number[]} p - A square-free polynomial.
  * @returns {number[]} The roots.
  **/
+
 function allRootsVAS(p_) {
 	// TODO - First remove all zero roots  - The VAS method can't handle 
 	// them.
-	let p = removeZeroRoots(p_);
-	let numZeros = p_.length - p.length;
+	var p = removeZeroRoots(p_);
+	var numZeros = p_.length - p.length;
 
 	// TODO - Next, remove all multiple roots (i.e. do a square-free
 	// factorization... - VAS doesn't like them either
-	
-	let vasRoots = vasRootIntervals(p)
-	.map(function(interval) {
-		return brent(
-				evaluate(p), 
-				interval[0], 
-				interval[1]
-		); 
+
+	var vasRoots = vasRootIntervals(p).map(function (interval) {
+		return brent(evaluate(p), interval[0], interval[1]);
 	});
-	
-	for (let i=0; i<numZeros; i++) {
-		vasRoots.push(0);	
+
+	for (var i = 0; i < numZeros; i++) {
+		vasRoots.push(0);
 	}
-	
 
 	return vasRoots;
 }
-
 
 /**
  * Removes the zero roots from the polynomial.
@@ -245,17 +228,16 @@ function allRootsVAS(p_) {
  */
 // TODO - improve this function: readability + floating point tolerance
 function removeZeroRoots(p_) {
-	let p = p_.slice();
-	let i = 0;
+	var p = p_.slice();
+	var i = 0;
 	while (evaluateAt0(p) === 0) {
-		let len = p.length;
+		var len = p.length;
 		p.pop();
 		i++;
 	}
-	
-	return p;	
-}
 
+	return p;
+}
 
 /** 
  * Finds root intervals of a polynomial such that each interval contains
@@ -269,30 +251,25 @@ function removeZeroRoots(p_) {
 // smaller than a certain threshold.
 function vasRootIntervals(p) {
 
-	let positiveIntervals = vasRootIntervalsHelper(
-		p,
-		[[1,0],[0,1]]
-	);
-	
+	var positiveIntervals = vasRootIntervalsHelper(p, [[1, 0], [0, 1]]);
+
 	// ONLY COMMENTED BECAUSE IN *OUR* CASE WE DONT CARE ABOUT NEGATIVE ROOTS!!
 	/*
-	let negativeIntervals = vasRootIntervalsHelper(
-		changeVariables(p.slice(), -1, 0), 
-		[[1,0],[0,1]]
-	)
-	.map(function(interval) {
-		return negate(invert(interval));
-	});
-	*/
-	
-	let intervals = [].concat(
-			//negativeIntervals, 
-			positiveIntervals
-	);
-	
+ let negativeIntervals = vasRootIntervalsHelper(
+ 	changeVariables(p.slice(), -1, 0), 
+ 	[[1,0],[0,1]]
+ )
+ .map(function(interval) {
+ 	return negate(invert(interval));
+ });
+ */
+
+	var intervals = [].concat(
+	//negativeIntervals, 
+	positiveIntervals);
+
 	return intervals;
 }
-
 
 /** 
  * Helper function
@@ -301,109 +278,103 @@ function vasRootIntervals(p) {
  * @ignore
  */
 function vasRootIntervalsHelper(p, mobius) {
-	
+
 	// In the Vigklas, Akritas, Strzebonski paper, the steps are marked 
 	// as below:
-	
+
 	// STEP 1
-	let intervals = [];
-	let signVariations = signChanges(p);
-	
+	var intervals = [];
+	var signVariations = signChanges(p);
+
 	// STEP 2
-	if (signVariations === 0) { // Descartes' rule of signs
-		return []; 
+	if (signVariations === 0) {
+		// Descartes' rule of signs
+		return [];
 	}
-	
+
 	// STEP 3
 	if (signVariations === 1) {
-		let M0 = Mobius.evaluateAt0(mobius);  
-		let MI = Mobius.evaluateAtInf(mobius); 
-		let MM0 = Math.min(M0, MI);
-		let MMI = Math.max(M0, MI);
+		var M0 = Mobius.evaluateAt0(mobius);
+		var MI = Mobius.evaluateAtInf(mobius);
+		var MM0 = Math.min(M0, MI);
+		var MMI = Math.max(M0, MI);
 		if (MMI === Number.POSITIVE_INFINITY) {
-			MMI = Mobius.evaluate(
-					mobius, positiveRootUpperBound_LMQ(p)
-			);
+			MMI = Mobius.evaluate(mobius, positiveRootUpperBound_LMQ(p));
 		}
 
-		return [[MM0,MMI]];
+		return [[MM0, MMI]];
 	}
 
-
 	// STEP 4
-	let lb = positiveRootLowerBound_LMQ(p);
-	
+	var lb = positiveRootLowerBound_LMQ(p);
+
 	// STEP 5
-	if (lb > 1)  {	
+	if (lb > 1) {
 		// p ← p(x + lb)
 		p = changeVariables(p, 1, lb);
-		
+
 		// M ← M(x + lb)
 		mobius = Mobius.changeVariables(mobius, 1, lb);
 	}
 
-
 	// TODO - Include factor of 16 improvement by Strzebonski
-	
+
 	// STEP 6 - Look for real roots in (0, 1)
-	
+
 	// p01 ← (x + 1)^(deg(p)) *  p(1/(x+1))
-	let p01 = changeVariables(invert(p), 1, 1); 
-	
+	var p01 = changeVariables(invert(p), 1, 1);
+
 	// M01 ← M(1/(x+1))
-	let M01 = Mobius.changeVariables(Mobius.invert(mobius), 1, 1);
+	var M01 = Mobius.changeVariables(Mobius.invert(mobius), 1, 1);
 
 	// STEP 7 - Is 1 a root?
-	let m = Mobius.evaluate(mobius, 1);
-	
-	// STEP 8 - Look for real roots in (1, ∞)
-	
-	// p1∞ ← p(x + 1)
-	let p1inf = changeVariables(p, 1, 1);
-	
-	// M1∞ ← M(x + 1)
-	let M1inf = Mobius.changeVariables(mobius, 1, 1); 
-	
-	// STEPS 9 -> 13
-	let intervals1 = vasRootIntervalsHelper(p01, M01);	
-	let intervals3 = vasRootIntervalsHelper(p1inf, M1inf);	
-	
-	
-	if (evaluate(p)(1) === 0) {
-		intervals1.push([m,m]);
-	}
-	
-	return [].concat(intervals1, intervals3); 
-}
+	var m = Mobius.evaluate(mobius, 1);
 
+	// STEP 8 - Look for real roots in (1, ∞)
+
+	// p1∞ ← p(x + 1)
+	var p1inf = changeVariables(p, 1, 1);
+
+	// M1∞ ← M(x + 1)
+	var M1inf = Mobius.changeVariables(mobius, 1, 1);
+
+	// STEPS 9 -> 13
+	var intervals1 = vasRootIntervalsHelper(p01, M01);
+	var intervals3 = vasRootIntervalsHelper(p1inf, M1inf);
+
+	if (evaluate(p)(1) === 0) {
+		intervals1.push([m, m]);
+	}
+
+	return [].concat(intervals1, intervals3);
+}
 
 module.exports = allRootsVAS;
 
 },{"./core-operators.js":3,"./mobius.js":6,"./root-bounds.js":8,"./root-operators.js":9}],3:[function(require,module,exports){
-'use strict'
+'use strict';
 
-let coreOperators = {
-		add,
-		subtract,
-		multiplyByConst,
-		negate,
-		differentiate,
-		multiply,
-		degree,
-		evaluate,
-		evaluateAt0,
-		signChanges,
-		invert,
-		changeVariables,
-		reflectAboutYAxis,
-		sturmChain,
-		clip,
-		clip0,
-		deflate,
-		maxCoefficient,
-		toCasStr,
-}
-
+var coreOperators = {
+	add: add,
+	subtract: subtract,
+	multiplyByConst: multiplyByConst,
+	negate: negate,
+	differentiate: differentiate,
+	multiply: multiply,
+	degree: degree,
+	evaluate: evaluate,
+	evaluateAt0: evaluateAt0,
+	signChanges: signChanges,
+	invert: invert,
+	changeVariables: changeVariables,
+	reflectAboutYAxis: reflectAboutYAxis,
+	sturmChain: sturmChain,
+	clip: clip,
+	clip0: clip0,
+	deflate: deflate,
+	maxCoefficient: maxCoefficient,
+	toCasStr: toCasStr
+};
 
 /**
  * Adds two polynomials.
@@ -416,31 +387,30 @@ let coreOperators = {
  */
 function add(p1, p2) {
 	// Initialize result array  
-	let d1 = p1.length-1;
-	let d2 = p2.length-1;
-	let Δd = d1-d2;
-	
-	let Δd1 = 0;
-	let Δd2 = 0;
+	var d1 = p1.length - 1;
+	var d2 = p2.length - 1;
+	var Δd = d1 - d2;
+
+	var Δd1 = 0;
+	var Δd2 = 0;
 	if (Δd > 0) {
 		Δd2 = -Δd;
 	} else if (Δd < 0) {
 		Δd1 = +Δd;
 	}
-	
-	let d = Math.max(d1, d2);
-	
+
+	var d = Math.max(d1, d2);
+
 	// Add coefficients
-	let result = [];
-	for (let i=0; i<d+1; i++) {
-		let c1 = p1[i+Δd1];
-		let c2 = p2[i+Δd2];
-		result.push((c1 || 0) + (c2 || 0));  
+	var result = [];
+	for (var i = 0; i < d + 1; i++) {
+		var c1 = p1[i + Δd1];
+		var c2 = p2[i + Δd2];
+		result.push((c1 || 0) + (c2 || 0));
 	}
-	
+
 	return clip0(result);
 }
-
 
 /** 
  * Subtracts the second polynomial from first.
@@ -453,31 +423,30 @@ function add(p1, p2) {
  */
 function subtract(p1, p2) {
 	// Initialize result array  
-	let d1 = p1.length-1;
-	let d2 = p2.length-1;
-	let Δd = d1-d2;
-	
-	let Δd1 = 0;
-	let Δd2 = 0;
+	var d1 = p1.length - 1;
+	var d2 = p2.length - 1;
+	var Δd = d1 - d2;
+
+	var Δd1 = 0;
+	var Δd2 = 0;
 	if (Δd > 0) {
 		Δd2 = -Δd;
 	} else if (Δd < 0) {
 		Δd1 = +Δd;
 	}
-	
-	let d = Math.max(d1, d2);
-	
+
+	var d = Math.max(d1, d2);
+
 	// Add coefficients
-	let result = [];
-	for (let i=0; i<d+1; i++) {
-		let c1 = p1[i+Δd1];
-		let c2 = p2[i+Δd2];
-		result.push((c1 || 0) - (c2 || 0));  
+	var result = [];
+	for (var i = 0; i < d + 1; i++) {
+		var c1 = p1[i + Δd1];
+		var c2 = p2[i + Δd2];
+		result.push((c1 || 0) - (c2 || 0));
 	}
-	
+
 	return clip0(result);
 }
-
 
 /**
  * Negate the given polynomial (p -> -p).  
@@ -491,7 +460,6 @@ function negate(p) {
 	return multiplyByConst(-1, p);
 }
 
-
 /**  
  * Differentiates the given polynomial.
  * 
@@ -501,17 +469,16 @@ function negate(p) {
  * FloPoly.differentiate([5, 4, 3, 2, 1]); //=> [20, 12, 6, 2]
  */
 function differentiate(p) {
-	
-	let result = [];
-	
-	let d = p.length - 1;
-	for (let i=0; i<d; i++) {
-		result.push((d-i) * p[i]);
+
+	var result = [];
+
+	var d = p.length - 1;
+	for (var i = 0; i < d; i++) {
+		result.push((d - i) * p[i]);
 	}
-	
+
 	return result;
 }
-
 
 /** 
  * Multiplies the two given polynomials and returns the result. 
@@ -531,20 +498,19 @@ function differentiate(p) {
 // FFT algorithm for high degree polynomials? No, we are interested in
 // polynomials of degree 20 or lower.
 function multiply(p1, p2) {
-	let d1 = p1.length-1;
-	let d2 = p2.length-1;
-	let d = d1+d2;
-	
-	let result = new Array(d+1).fill(0);
-	for (let i=0; i<d1+1; i++) {
-		for (let j=0; j<d2+1; j++) {
-			result[d-(i+j)] += (p1[d1-i] * p2[d2-j]); 				
+	var d1 = p1.length - 1;
+	var d2 = p2.length - 1;
+	var d = d1 + d2;
+
+	var result = new Array(d + 1).fill(0);
+	for (var i = 0; i < d1 + 1; i++) {
+		for (var j = 0; j < d2 + 1; j++) {
+			result[d - (i + j)] += p1[d1 - i] * p2[d2 - j];
 		}
 	}
 
 	return clip0(result);
 }
-
 
 /** 
  * Multiplies 2 polynomials by a constant.
@@ -556,17 +522,18 @@ function multiply(p1, p2) {
  * FloPoly.multiplyByConst(0.25, [3,2,1]); //=> [0.75, 0.5, 0.25]  
  */
 function multiplyByConst(c, p) {
-	if (c === 0) { return []; }
-	
-	let d = p.length-1;
-	let result = [];
-	for (let i=0; i<d+1; i++) {
-		result.push(c*p[i]);
+	if (c === 0) {
+		return [];
 	}
-	
+
+	var d = p.length - 1;
+	var result = [];
+	for (var i = 0; i < d + 1; i++) {
+		result.push(c * p[i]);
+	}
+
 	return result;
 }
-
 
 /** 
  * Returns the degree of the polynomial.
@@ -577,9 +544,8 @@ function multiplyByConst(c, p) {
  * FloPoly.degree([9,8,7,6,5,4,3,2,1]); //=> 9
  */
 function degree(p) {
-	return p.length-1;
+	return p.length - 1;
 }
-
 
 /** 
  * Evaluates a univariate polynomial using Horner's method. This 
@@ -604,18 +570,17 @@ function degree(p) {
 function evaluate(p, a) {
 	function evaluate(a) {
 		//if p.length === 0 { return 0; }
-		let result = p[0]; 
-		for (let i=1; i<p.length; i++) {
-			result = p[i] + result*a;
+		var result = p[0];
+		for (var i = 1; i < p.length; i++) {
+			result = p[i] + result * a;
 		}
-		
+
 		return result;
 	}
 
 	// Curry the function
-	return a === undefined ? evaluate : evaluate(a); 
+	return a === undefined ? evaluate : evaluate(a);
 }
-
 
 /** 
  * Evaluates the given polynomial at 0 - it is much faster than at an 
@@ -627,9 +592,8 @@ function evaluate(p, a) {
  * FloPoly.evaluateAt0([3,2,99]); //=> 99
  */
 function evaluateAt0(p) {
-	return p[p.length-1];
+	return p[p.length - 1];
 };
-
 
 /** 
  * <p>
@@ -652,22 +616,21 @@ function evaluateAt0(p) {
  * FloPoly.signChanges([1,2,-3,0,0,3,-1]); //=> 3
  */
 function signChanges(p) {
-	let d = p.length-1;
+	var d = p.length - 1;
 
-	let result = 0;
-	let prevSign = Math.sign(p[0]);
-	for (let i=1; i<d+1; i++) {
-		let sign = Math.sign(p[i]);
-		
+	var result = 0;
+	var prevSign = Math.sign(p[0]);
+	for (var i = 1; i < d + 1; i++) {
+		var sign = Math.sign(p[i]);
+
 		if (sign !== prevSign && sign !== 0) {
 			result++;
 			prevSign = sign;
 		}
 	}
-	
+
 	return result;
 }
-
 
 /**
  * Deflates the given polynomial by removing a factor (x - r), where
@@ -683,17 +646,14 @@ function signChanges(p) {
  * FloPoly.deflate([1, -1], 1);        //=> [1]
  */
 function deflate(p, root) {
-	let d = p.length-1;
-	let bs = [p[0]];
-	for (let i=1; i<p.length-1; i++) {
-		bs.push(
-			p[i] + root*bs[i-1]
-		);
+	var d = p.length - 1;
+	var bs = [p[0]];
+	for (var i = 1; i < p.length - 1; i++) {
+		bs.push(p[i] + root * bs[i - 1]);
 	}
 
 	return bs;
 }
-
 
 /**
  * Inverts the given polynomial by reversing the order of the 
@@ -708,7 +668,6 @@ function deflate(p, root) {
 function invert(p) {
 	return p.slice().reverse();
 }
-
 
 /** 
  * Performs a change of variables of the form: p(x) <- p(ax + b).
@@ -726,37 +685,36 @@ function changeVariables(p, a, b) {
 	// code below. 
 	// d_i is calculated as d = T*c, where c are the original 
 	// coefficients.
-	 
-	let d = p.length-1;
-	
+
+	var d = p.length - 1;
+
 	// Initialize a zero matrix
-	let t = [];
-	for (let i=0; i<d+1; i++) {
-		t.push(new Array(d+1).fill(0));
+	var t = [];
+	for (var i = 0; i < d + 1; i++) {
+		t.push(new Array(d + 1).fill(0));
 	}
 
 	// Calculate the triangular matrix T
 	t[0][0] = 1;
-	for (let j=1; j<=d; j++) {
-		t[0][j] = b*t[0][j-1];
-		for (let i=1; i<=j; i++) {
-			t[i][j] = b*t[i][j-1] + a*t[i-1][j-1];
+	for (var j = 1; j <= d; j++) {
+		t[0][j] = b * t[0][j - 1];
+		for (var _i = 1; _i <= j; _i++) {
+			t[_i][j] = b * t[_i][j - 1] + a * t[_i - 1][j - 1];
 		}
 	}
-	
+
 	// Multiply
-	let res = new Array(d+1).fill(0);
-	for (let i=0; i<=d; i++) {
-		res[d-i] = 0;
-		for (let j=i; j<=d; j++) {
-			let acc = t[i][j] * p[d-j];
-			res[d-i] += acc;
+	var res = new Array(d + 1).fill(0);
+	for (var _i2 = 0; _i2 <= d; _i2++) {
+		res[d - _i2] = 0;
+		for (var _j = _i2; _j <= d; _j++) {
+			var acc = t[_i2][_j] * p[d - _j];
+			res[d - _i2] += acc;
 		}
 	}
-	
+
 	return res;
 }
-
 
 /**
  * Reflects the given polynomial about the Y-axis, i.e. perform the 
@@ -768,18 +726,17 @@ function changeVariables(p, a, b) {
  * FloPoly.reflectAboutYAxis([5,4,3,2,1]); //=> [5, -4, 3, -2, 1]
  */
 function reflectAboutYAxis(p) {
-	let d = p.length-1;
+	var d = p.length - 1;
 
-	let result = p.slice();
-	for (let i=0; i<d+1; i++) {
+	var result = p.slice();
+	for (var i = 0; i < d + 1; i++) {
 		if (i % 2) {
-			result[i] = -result[i]; 
+			result[i] = -result[i];
 		}
 	}
-	
+
 	return result;
 }
-
 
 /** 
  * Generates a sturm chain for the given polynomial.
@@ -791,61 +748,56 @@ function reflectAboutYAxis(p) {
  * FloPoly.sturmChain([-3,4,2,-2]); //=> [[-3, 4, 2, -2], [-9, 8, 2], [-2.5185185185185186, 1.7037037037037037], [-3.2932525951557086]]
  */
 function sturmChain(p) {
-	
+
 	/** 
-	 * Returns the negative of the remainder when dividing the first 
-	 * polynomial (the dividend) by the second (the divisor) provided 
-	 * that deg(p1) - deg(p2) === 1.
-	 * 
-	 * @ignore
-	 * @param {number[]} p1 - The first polynomial (dividend)
-	 * @param {number[]} p2 - The second polynomial (divisor)
-	 * @see https://en.wikipedia.org/wiki/Sturm%27s_theorem
-	 */
+  * Returns the negative of the remainder when dividing the first 
+  * polynomial (the dividend) by the second (the divisor) provided 
+  * that deg(p1) - deg(p2) === 1.
+  * 
+  * @ignore
+  * @param {number[]} p1 - The first polynomial (dividend)
+  * @param {number[]} p2 - The second polynomial (divisor)
+  * @see https://en.wikipedia.org/wiki/Sturm%27s_theorem
+  */
 	function negRemainder(p1, p2) {
-		let d1 = p1.length-1;
-		let d2 = p2.length-1;
-		let d = d1-d2;
-		
-		let a = p1[1]/p1[0] - p2[1]/p2[0];
-		let b = p1[0]/p2[0];
-		
-		let p3 = multiply(
-				multiplyByConst(b, p2), 
-				[1, a]
-		);
-		
+		var d1 = p1.length - 1;
+		var d2 = p2.length - 1;
+		var d = d1 - d2;
+
+		var a = p1[1] / p1[0] - p2[1] / p2[0];
+		var b = p1[0] / p2[0];
+
+		var p3 = multiply(multiplyByConst(b, p2), [1, a]);
+
 		return subtract(p3, p1);
 	}
-	
-	
-	let m = []; // Sturm chain
+
+	var m = []; // Sturm chain
 	m.push(p);
 	m.push(differentiate(p));
 
 	//const δ = 10 * Number.EPSILON;
-	let i = 1;
-	while (m[i].length-1 > 0) {
-		let pnext = negRemainder(m[i-1], m[i]);
+	var i = 1;
+	while (m[i].length - 1 > 0) {
+		var pnext = negRemainder(m[i - 1], m[i]);
 		//pnext = clip(pnext, δ);
 		// If the polynomial degree was not reduced due to roundoff
 		// such that the first 1 or more terms are very small.
 		while (m[i].length - pnext.length < 1) {
-			pnext.shift(); 
+			pnext.shift();
 		}
 		/*
-		if (pnext.length === 0) {
-			break;
-		}
-		*/
+  if (pnext.length === 0) {
+  	break;
+  }
+  */
 		m.push(pnext);
-		
+
 		i++;
 	}
-	
+
 	return m;
 }
-
 
 /**
  * If the highest power coefficient is small in the sense that the 
@@ -864,21 +816,22 @@ function sturmChain(p) {
  * FloPoly.clip([1e-18, 1e-10, 1e-1]); //=> [1e-10, 1e-1]
  */
 function clip(p, δ_) {
-	
-	let δ = δ_ === undefined ? Number.EPSILON : δ_;  
-	
-	let d = p.length-1;
-	
-	let c = maxCoefficient(p);
-	if (c === 0) { return []; }
-	
-	if (Math.abs(p[0]) > δ*c) {
+
+	var δ = δ_ === undefined ? Number.EPSILON : δ_;
+
+	var d = p.length - 1;
+
+	var c = maxCoefficient(p);
+	if (c === 0) {
+		return [];
+	}
+
+	if (Math.abs(p[0]) > δ * c) {
 		return p;
 	}
-	
+
 	return clip(p.slice(1));
 }
-
 
 /**
  * If the highest power coefficient is 0 then clip() can be called to 
@@ -892,9 +845,8 @@ function clip(p, δ_) {
  * FloPoly.clip0([0, 1e-10, 1e-1]); //=> [1e-10, 1e-1]
  */
 function clip0(p) {
-	return p[0] !== 0 ? p : clip0(p.slice(1)); 
+	return p[0] !== 0 ? p : clip0(p.slice(1));
 }
-
 
 /**
  * Returns the absolute value of the highest coefficient of the 
@@ -906,17 +858,16 @@ function clip0(p) {
  * FloPoly.maxCoefficient([-2, 0.1, 0.2]); //=> 2
  */
 function maxCoefficient(p) {
-	let max = 0;
-	for (let i=0; i<p.length; i++) {
-		let c = Math.abs(p[i]);
+	var max = 0;
+	for (var i = 0; i < p.length; i++) {
+		var c = Math.abs(p[i]);
 		if (c > max) {
 			max = c;
 		}
-	} 
-	
+	}
+
 	return max;
 }
-
 
 /**
  * Returns a string representing the given polynomial that is readable 
@@ -928,37 +879,35 @@ function maxCoefficient(p) {
  * FloPoly.toCasStr([5,4,3,2,1]); //=> "x^4*5 + x^3*4 + x^2*3 + x*2 + 1"
  */
 function toCasStr(p) {
-	let d = p.length-1;
-	
-	let str = '';
-	for (let i=0; i<d+1; i++) {
-		let cStr = p[i].toString();
+	var d = p.length - 1;
+
+	var str = '';
+	for (var i = 0; i < d + 1; i++) {
+		var cStr = p[i].toString();
 		if (i === d) {
 			str += cStr;
-		} else if (i === d-1) {
+		} else if (i === d - 1) {
 			str += 'x*' + cStr + ' + ';
 		} else {
-			str += 'x^' + (d-i).toString() + '*' + cStr + ' + ';
+			str += 'x^' + (d - i).toString() + '*' + cStr + ' + ';
 		}
 	}
-	
+
 	return str;
 }
-
 
 module.exports = coreOperators;
 
 },{}],4:[function(require,module,exports){
-'use strict'
+'use strict';
 
-let coreOperators = require('./core-operators.js');
+var coreOperators = require('./core-operators.js');
 
-let errorAnalysis = {
-	hornerErrorBound		
-}
+var errorAnalysis = {
+  hornerErrorBound: hornerErrorBound
+};
 
-let { evaluate } = coreOperators;
-
+var evaluate = coreOperators.evaluate;
 
 /**
  * <p>
@@ -975,15 +924,16 @@ let { evaluate } = coreOperators;
  * @returns {number} The condition number multiplied exact polynomial 
  * value at x
  */
+
 function conditionNumber(p, x) {
-	let d = p.length-1;
-	let res = 0;
-	
-	for (let i=0; i<d; i++) {
-		res += Math.abs(p[i] * Math.pow(x,d-i));
-	}
-	
-	return res;
+  var d = p.length - 1;
+  var res = 0;
+
+  for (var i = 0; i < d; i++) {
+    res += Math.abs(p[i] * Math.pow(x, d - i));
+  }
+
+  return res;
 }
 
 /**
@@ -999,43 +949,32 @@ function conditionNumber(p, x) {
  * @returns {number} The error bound
  */
 function hornerErrorBound(p, x) {
-	const δ = Number.EPSILON;
-	
-	//let pres = evaluate(p,x);
-	//console.log(pres);
-	
-	let d = p.length-1;
-	let res = 2*d*δ * conditionNumber(p, x)
-	//console.log(res);
+  var δ = Number.EPSILON;
 
-	return res;
+  //let pres = evaluate(p,x);
+  //console.log(pres);
+
+  var d = p.length - 1;
+  var res = 2 * d * δ * conditionNumber(p, x);
+  //console.log(res);
+
+  return res;
 }
 
 module.exports = errorAnalysis;
 
-
-
-
-
-
-
-
-
-
-
 },{"./core-operators.js":3}],5:[function(require,module,exports){
-'use strict'
+'use strict';
 
-let coreOperators     = require('./core-operators.js');
-let rootOperators     = require('./root-operators.js');
-let rootBounds        = require('./root-bounds.js');
-let allRootsVAS       = require('./all-roots-vas.js');
-let allRootsRecursive = require('./all-roots-recursive.js');
-let random    		  = require('./random.js');
-let errorAnalysis     = require('./error-analysis.js');
+var coreOperators = require('./core-operators.js');
+var rootOperators = require('./root-operators.js');
+var rootBounds = require('./root-bounds.js');
+var allRootsVAS = require('./all-roots-vas.js');
+var allRootsRecursive = require('./all-roots-recursive.js');
+var random = require('./random.js');
+var errorAnalysis = require('./error-analysis.js');
 
-let multiply = coreOperators.multiply;
-
+var multiply = coreOperators.multiply;
 
 /**
 * <p>
@@ -1050,19 +989,11 @@ let multiply = coreOperators.multiply;
 * </p>
 * @ignore
 */
-let FloPoly = Object.assign({},
-		coreOperators,
-		rootOperators,
-		rootBounds,
-		{ random },
-		{
-			allRoots: allRootsRecursive,
-			//allRootsVAS,
-			fromRoots,
-		},
-		errorAnalysis
-);
-
+var FloPoly = Object.assign({}, coreOperators, rootOperators, rootBounds, { random: random }, {
+  allRoots: allRootsRecursive,
+  //allRootsVAS,
+  fromRoots: fromRoots
+}, errorAnalysis);
 
 /**
  * <p>
@@ -1087,26 +1018,24 @@ let FloPoly = Object.assign({},
  * FloPoly.allRoots([1, -9, 29, -39, 17.9999999999999]); //=> [0.999999999999975, 2.0000000000000986, 2.9999997898930832, 3.0000002095475775]
  */
 function fromRoots(roots) {
-	let p = [1]; 
-	for (let i=0; i<roots.length; i++) {
-		p = multiply(p, [1,-roots[i]]);
-	}
-	
-	return p;
-}
+  var p = [1];
+  for (var i = 0; i < roots.length; i++) {
+    p = multiply(p, [1, -roots[i]]);
+  }
 
+  return p;
+}
 
 if (module !== undefined && module.exports !== undefined) {
-	// Node
-	module.exports = FloPoly;
+  // Node
+  module.exports = FloPoly;
 } else {
-	// Browser
-	window.FloPoly = FloPoly;
+  // Browser
+  window.FloPoly = FloPoly;
 }
 
-
 },{"./all-roots-recursive.js":1,"./all-roots-vas.js":2,"./core-operators.js":3,"./error-analysis.js":4,"./random.js":7,"./root-bounds.js":8,"./root-operators.js":9}],6:[function(require,module,exports){
-'use strict'
+'use strict';
 
 /** 
  * Mobius namespaced functions, i.e. M(x) = (ax + b) / (cx + d) where 
@@ -1116,8 +1045,10 @@ if (module !== undefined && module.exports !== undefined) {
  * @ignore
  * @namespace
  */
-let Mobius = {};
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var Mobius = {};
 
 /**
  * Performs a change of variables x → ax + b on p(x) where
@@ -1130,12 +1061,8 @@ let Mobius = {};
  * @returns {number[]} The modified polynomial p(ax + b). 
  */
 function changeVariables1(p, a, b) {
-	return [
-		a*p[0],
-		p[1] + b*p[0]
-	];
+  return [a * p[0], p[1] + b * p[0]];
 }
-
 
 /**
  * Performs a change of variables x → px + q on the given Mobius 
@@ -1149,13 +1076,9 @@ function changeVariables1(p, a, b) {
  * @returns {number[][]} The modified mobius function 
  * M(x) = (a(px + q) + b) / (c(px + q) + d). 
  */
-Mobius.changeVariables = function(mobius, a, b) {
-	return [
-		changeVariables1(mobius[0], a, b), 
-		changeVariables1(mobius[1], a, b)
-	];
-}
-
+Mobius.changeVariables = function (mobius, a, b) {
+  return [changeVariables1(mobius[0], a, b), changeVariables1(mobius[1], a, b)];
+};
 
 /**
  * Inverts the given mobius, i.e.
@@ -1166,12 +1089,17 @@ Mobius.changeVariables = function(mobius, a, b) {
  * M(x) = (ax + b) / (cx + d) represented as [[a,b],[c,d]]
  * @returns {number[][]} The modified mobius function. 
  */
-Mobius.invert = function(mobius) {
-	let [[a, b],[c, d]] = mobius;
-	
-	return [[b, a],	[d, c]];
-}
+Mobius.invert = function (mobius) {
+  var _mobius = _slicedToArray(mobius, 2),
+      _mobius$ = _slicedToArray(_mobius[0], 2),
+      a = _mobius$[0],
+      b = _mobius$[1],
+      _mobius$2 = _slicedToArray(_mobius[1], 2),
+      c = _mobius$2[0],
+      d = _mobius$2[1];
 
+  return [[b, a], [d, c]];
+};
 
 /**
  * Evaluates the given mobius function at x = 0.
@@ -1181,10 +1109,9 @@ Mobius.invert = function(mobius) {
  * M(x) = (ax + b) / (cx + d) represented as [[a,b],[c,d]]
  * @returns {number} The result of the evaluation.
  */
-Mobius.evaluateAt0 = function(mobius) {
-	return mobius[0][1] / mobius[1][1];
-}
-
+Mobius.evaluateAt0 = function (mobius) {
+  return mobius[0][1] / mobius[1][1];
+};
 
 /**
  * Evaluates the given mobius function in the limit as x → ∞.
@@ -1194,10 +1121,9 @@ Mobius.evaluateAt0 = function(mobius) {
  * M(x) = (ax + b) / (cx + d) represented as [[a,b],[c,d]]
  * @returns {number} The result of the evaluation.
  */
-Mobius.evaluateAtInf = function(mobius) {
-	return mobius[0][0] / mobius[1][0];
-}
-
+Mobius.evaluateAtInf = function (mobius) {
+  return mobius[0][0] / mobius[1][0];
+};
 
 /**
  * Evaluates the given mobius function at a specific x.
@@ -1208,30 +1134,36 @@ Mobius.evaluateAtInf = function(mobius) {
  * M(x) = (ax + b) / (cx + d) represented as [[a,b],[c,d]]
  * @returns {number} The result of the evaluation.
  */
-Mobius.evaluate = function(mobius, x) {
-	let [[a, b],[c, d]] = mobius;
-	
-	return (a*x + b) / (c*x + d);   
-}
+Mobius.evaluate = function (mobius, x) {
+  var _mobius2 = _slicedToArray(mobius, 2),
+      _mobius2$ = _slicedToArray(_mobius2[0], 2),
+      a = _mobius2$[0],
+      b = _mobius2$[1],
+      _mobius2$2 = _slicedToArray(_mobius2[1], 2),
+      c = _mobius2$2[0],
+      d = _mobius2$2[1];
 
+  return (a * x + b) / (c * x + d);
+};
 
 module.exports = Mobius;
 
 },{}],7:[function(require,module,exports){
-'use strict'
+'use strict';
 
 /**
  * Some seed value for the simple random number generator.
  * @ignore
  */
-const SEED = 123456789;
+
+var SEED = 123456789;
 
 /**
  * The range for the simple random number generator, i.e. the generated
  * numbers will be in [0,RANGE].
  * @ignore
  */
-const RANGE = 4294967296;
+var RANGE = 4294967296;
 
 /**
  * Generates an array of random polynomials with parameters as specified 
@@ -1255,7 +1187,7 @@ const RANGE = 4294967296;
  * FloPoly.random.flatRootsArr(2,3,0,10); //=> [[1, -17.27247918024659, 97.33487287168995, -179.34094494147305], [1, -14.934967160224915, 57.624514485645406, -14.513933300587215]]
  * FloPoly.random.flatRootsArr(2,3,0,10); //=> [[1, -17.27247918024659, 97.33487287168995, -179.34094494147305], [1, -14.934967160224915, 57.624514485645406, -14.513933300587215]]
  */
-let flatRootsArr = createArrFunction(flatRoots);
+var flatRootsArr = createArrFunction(flatRoots);
 
 /**
  * Generates an array of random polynomials as specified by 
@@ -1277,16 +1209,14 @@ let flatRootsArr = createArrFunction(flatRoots);
  * FloPoly.random.flatCoefficientsArr(2,3,-2,2); //=> [[0.1749166026711464, -0.20349335670471191, 0.9375684261322021], [1.0617692470550537, -1.8918039798736572, 0.8040215969085693]]
  * FloPoly.random.flatCoefficientsArr(2,3,-2,2); //=> [[0.1749166026711464, -0.20349335670471191, 0.9375684261322021], [1.0617692470550537, -1.8918039798736572, 0.8040215969085693]]
  */
-let flatCoefficientsArr = createArrFunction(flatCoefficients);
+var flatCoefficientsArr = createArrFunction(flatCoefficients);
 
-
-let random = {
-		flatRoots,
-		flatRootsArr,
-		flatCoefficients,
-		flatCoefficientsArr,
-}
-
+var random = {
+  flatRoots: flatRoots,
+  flatRootsArr: flatRootsArr,
+  flatCoefficients: flatCoefficients,
+  flatCoefficientsArr: flatCoefficientsArr
+};
 
 /**
  * https://stackoverflow.com/questions/3062746/special-simple-random-number-generator
@@ -1297,11 +1227,10 @@ let random = {
  * to this function.
  */
 function predictiveRandom(seed) {
-	const a = 134775813;
-	
-	return (a * seed + 1) % RANGE;
-}
+  var a = 134775813;
 
+  return (a * seed + 1) % RANGE;
+}
 
 /**
  * Generates a random array of numbers picked from a bounded flat 
@@ -1321,20 +1250,19 @@ function predictiveRandom(seed) {
  * @returns {number[]} - The random array.
  */
 function randomArray(n, a, b, seed, odds) {
-	seed = seed || SEED;
-	odds = odds || 0;
-	
-	let vs = [];
-	for (let i=0; i<n; i++) {
-		seed = predictiveRandom(seed);
-		let v = ((seed/RANGE) * (b-a)) + a;
-		seed = push(seed, vs, v, odds);
-	}
-	vs = vs.slice(0,n);
+  seed = seed || SEED;
+  odds = odds || 0;
 
-	return { vs, seed, };
+  var vs = [];
+  for (var i = 0; i < n; i++) {
+    seed = predictiveRandom(seed);
+    var v = seed / RANGE * (b - a) + a;
+    seed = push(seed, vs, v, odds);
+  }
+  vs = vs.slice(0, n);
+
+  return { vs: vs, seed: seed };
 }
-
 
 /**
  * Helper function that will add more numbers to the passed array - 
@@ -1347,18 +1275,17 @@ function randomArray(n, a, b, seed, odds) {
  * multiple times)
  * @param {number} odds - The odds that the number will be added
  * again (recursively). 
- */ 
+ */
 function push(seed, values, x, odds) {
-	seed = predictiveRandom(seed); 
-		
-	values.push(x);
-	if ((seed/RANGE) < odds) {
-		seed = push(seed, values, x, odds);
-	}
-	
-	return seed;
-}
+  seed = predictiveRandom(seed);
 
+  values.push(x);
+  if (seed / RANGE < odds) {
+    seed = push(seed, values, x, odds);
+  }
+
+  return seed;
+}
 
 /**
  * Generates a random polynomial with roots picked from a bounded flat 
@@ -1382,19 +1309,18 @@ function push(seed, values, x, odds) {
  * FloPoly.random.flatRoots(3,0,10); //=> { p: [1, -17.27247918024659, 97.33487287168995, -179.34094494147305], seed: 939629312 }
  */
 function flatRoots(d, a, b, seed, odds) {
-	a = a || 0;
-	b = b || 1;
-	seed = seed || SEED;
-	odds = odds || 0;
-	
-	let randArr = randomArray(d, a, b, seed, odds);
-	seed = randArr.seed;
-	
-	let p = FloPoly.fromRoots(randArr.vs);
+  a = a || 0;
+  b = b || 1;
+  seed = seed || SEED;
+  odds = odds || 0;
 
-	return { p, seed, };
+  var randArr = randomArray(d, a, b, seed, odds);
+  seed = randArr.seed;
+
+  var p = FloPoly.fromRoots(randArr.vs);
+
+  return { p: p, seed: seed };
 }
-
 
 /**
  * Generates a random polynomial with coefficients picked from a bounded 
@@ -1414,18 +1340,17 @@ function flatRoots(d, a, b, seed, odds) {
  * FloPoly.random.flatCoefficients(3,-5,5); //=> { p: [0.437291506677866, -0.5087333917617798, 2.3439210653305054], seed: 939629312 }
  */
 function flatCoefficients(d, a, b, seed) {
-	a = a || -1;
-	b = b || 1;
-	seed = seed || SEED;
-	
-	let randArr = randomArray(d, a, b, seed);
-	seed = randArr.seed;
-	
-	let p = randArr.vs;
-	
-	return { p, seed, };
-}
+  a = a || -1;
+  b = b || 1;
+  seed = seed || SEED;
 
+  var randArr = randomArray(d, a, b, seed);
+  seed = randArr.seed;
+
+  var p = randArr.vs;
+
+  return { p: p, seed: seed };
+}
 
 /**
  * Creates a function from the given function with parameters similar
@@ -1437,41 +1362,41 @@ function flatCoefficients(d, a, b, seed) {
  * @returns {function}
  */
 function createArrFunction(f) {
-	return function(n, d, a, b, seed, odds) {
-		seed = seed || SEED;
-		let res = [];
-		
-		for (let i=0; i<n; i++) {
-			let v = f(d, a, b, seed, odds);
-			let p = v.p;
-			seed = v.seed;
-			
-			res.push(p);
-		}
-		
-		return res;
-	}
-}
+  return function (n, d, a, b, seed, odds) {
+    seed = seed || SEED;
+    var res = [];
 
+    for (var i = 0; i < n; i++) {
+      var v = f(d, a, b, seed, odds);
+      var p = v.p;
+      seed = v.seed;
+
+      res.push(p);
+    }
+
+    return res;
+  };
+}
 
 module.exports = random;
 
 },{}],8:[function(require,module,exports){
-'use strict'
+'use strict';
 
-let coreOperators = require('./core-operators.js');
+var coreOperators = require('./core-operators.js');
 
-let { invert, negate, reflectAboutYAxis } = coreOperators;
+var invert = coreOperators.invert,
+    negate = coreOperators.negate,
+    reflectAboutYAxis = coreOperators.reflectAboutYAxis;
 
 
-let rootBounds = {
-		rootMagnitudeUpperBound_fujiwara,
-		positiveRootUpperBound_LMQ,
-		positiveRootLowerBound_LMQ,
-		negativeRootUpperBound_LMQ,
-		negativeRootLowerBound_LMQ
-}
-
+var rootBounds = {
+	rootMagnitudeUpperBound_fujiwara: rootMagnitudeUpperBound_fujiwara,
+	positiveRootUpperBound_LMQ: positiveRootUpperBound_LMQ,
+	positiveRootLowerBound_LMQ: positiveRootLowerBound_LMQ,
+	negativeRootUpperBound_LMQ: negativeRootUpperBound_LMQ,
+	negativeRootLowerBound_LMQ: negativeRootLowerBound_LMQ
+};
 
 /**
  * Finds an upper bound on the magnitude (absolute value) of the roots
@@ -1488,29 +1413,20 @@ let rootBounds = {
  * FloPoly.allRoots([2,-3,6,5,-130]); //=> [-2.397918624065303, 2.8793785310848383]
  */
 function rootMagnitudeUpperBound_fujiwara(p) {
-	let d = p.length-1;
-	
-	let an = p[0];
-	let bs = [];
-	
-	for (let i=1; i<d; i++) {
-		let b = Math.pow(
-				Math.abs(p[i] / an), 
-				1/i
-		);
+	var d = p.length - 1;
+
+	var an = p[0];
+	var bs = [];
+
+	for (var i = 1; i < d; i++) {
+		var b = Math.pow(Math.abs(p[i] / an), 1 / i);
 		bs.push(b);
 	}
-	
-	bs.push( 
-		Math.pow(
-			Math.abs(p[d] / 2*an), 
-			1/d
-		) 
-	);
-	
-	return 2*Math.max.apply(undefined, bs);
-}
 
+	bs.push(Math.pow(Math.abs(p[d] / 2 * an), 1 / d));
+
+	return 2 * Math.max.apply(undefined, bs);
+}
 
 /**
  * <p> 
@@ -1530,50 +1446,53 @@ function rootMagnitudeUpperBound_fujiwara(p) {
  * FloPoly.positiveRootUpperBound_LMQ([-2,-3,-4]);      //=> 0
  */
 function positiveRootUpperBound_LMQ(p) {
-	let deg = p.length-1;
-	if (deg < 1) { return 0; }
-	
-	if (p[0] < 0) { p = negate(p); }
-	
-	let timesUsed = [];
-	for (let i=0; i<deg; i++) {
+	var deg = p.length - 1;
+	if (deg < 1) {
+		return 0;
+	}
+
+	if (p[0] < 0) {
+		p = negate(p);
+	}
+
+	var timesUsed = [];
+	for (var i = 0; i < deg; i++) {
 		timesUsed.push(1);
 	}
-	
-	let ub = 0;
-	
-	for (let m=0; m<=deg; m++) {
+
+	var ub = 0;
+
+	for (var m = 0; m <= deg; m++) {
 		if (p[m] >= 0) continue;
-		
-		let tempub = Number.POSITIVE_INFINITY;
-		let any = false;
-		
-		for (let k=0; k<m; k++) {
-			if (p[k] <= 0) { continue; }
-		
+
+		var tempub = Number.POSITIVE_INFINITY;
+		var any = false;
+
+		for (var k = 0; k < m; k++) {
+			if (p[k] <= 0) {
+				continue;
+			}
+
 			// TODO - Both these pows can easily be replaced with a 
 			// lookup that may speed things up a lot since (for low 
 			// order polys) it will most of the time be a square, 
 			// cube... root or multiplication by 1,2,4,8,...
-			let temp = Math.pow(
-					-p[m] / (p[k] / Math.pow(2, timesUsed[k])), 
-					1/(m-k)
-			);
-			
+			var temp = Math.pow(-p[m] / (p[k] / Math.pow(2, timesUsed[k])), 1 / (m - k));
+
 			timesUsed[k]++;
-			
-			if (tempub > temp) { tempub = temp; }
-			
+
+			if (tempub > temp) {
+				tempub = temp;
+			}
+
 			any = true;
 		}
-		
-		if (any && ub < tempub)  
-			ub = tempub;
+
+		if (any && ub < tempub) ub = tempub;
 	}
-	
+
 	return ub;
 }
-
 
 /**
  * <p> 
@@ -1593,11 +1512,12 @@ function positiveRootUpperBound_LMQ(p) {
  * FloPoly.positiveRootLowerBound_LMQ([-2,-3,-4]);      //=> 0
  */
 function positiveRootLowerBound_LMQ(p) {
-	let ub = positiveRootUpperBound_LMQ(invert(p));
-	if (ub === 0) { return 0; }
+	var ub = positiveRootUpperBound_LMQ(invert(p));
+	if (ub === 0) {
+		return 0;
+	}
 	return 1 / ub;
 }
-
 
 /**
  * See positiveRootUpperBound_LMQ
@@ -1609,7 +1529,6 @@ function negativeRootUpperBound_LMQ(p) {
 	return -positiveRootLowerBound_LMQ(reflectAboutYAxis(p));
 }
 
-
 /**
  * See positiveRootLowerBound_LMQ
  * 
@@ -1620,13 +1539,14 @@ function negativeRootLowerBound_LMQ(p) {
 	return -positiveRootUpperBound_LMQ(reflectAboutYAxis(p));
 }
 
-
 module.exports = rootBounds;
 
 },{"./core-operators.js":3}],9:[function(require,module,exports){
-'use strict'
+'use strict';
 
-let coreOperators = require('./core-operators.js');
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var coreOperators = require('./core-operators.js');
 
 /**
  * Operators (i.e. functions) directly related to roots and root 
@@ -1634,17 +1554,17 @@ let coreOperators = require('./core-operators.js');
  * 
  * @ignore
  */
-let rootOperators = {
-		quadraticRoots,
-		//cubicRoots,
-		numRootsWithin,
-		brent,
-		coreOperators,
+var rootOperators = {
+  quadraticRoots: quadraticRoots,
+  //cubicRoots,
+  numRootsWithin: numRootsWithin,
+  brent: brent,
+  coreOperators: coreOperators
 };
 
-
-let { sturmChain, evaluate, signChanges } = coreOperators;
-
+var sturmChain = coreOperators.sturmChain,
+    evaluate = coreOperators.evaluate,
+    signChanges = coreOperators.signChanges;
 
 /**
  * Floating-point-stably calculates and returns the ordered quadratic 
@@ -1655,38 +1575,41 @@ let { sturmChain, evaluate, signChanges } = coreOperators;
  * @example 
  * FloPoly.quadraticRoots([1, -3, 2]); //=> [1,2]
  */
-function quadraticRoots(p) {
-	let [a,b,c] = p;
-	
-	let delta = b*b - 4*a*c;
-	
-	if (delta < 0) {
-		// No real roots;
-		return []; 
-	}
-	
-	if (delta === 0) {
-		return [-b / (2*a)];
-	}
-	
-	delta = Math.sqrt(delta);
-	
-	let root1;
-	let root2;
-	if (b >= 0) {
-		root1 = (-b - delta) / (2*a);
-		root2 = (2*c) / (-b - delta);
-	} else {
-		root1 = (2*c) / (-b + delta);
-		root2 = (-b + delta) / (2*a);
-	}
-	
-	if (root1 < root2) { 
-		return [root1, root2];	
-	}
-	return [root2, root1];
-}
 
+function quadraticRoots(p) {
+  var _p = _slicedToArray(p, 3),
+      a = _p[0],
+      b = _p[1],
+      c = _p[2];
+
+  var delta = b * b - 4 * a * c;
+
+  if (delta < 0) {
+    // No real roots;
+    return [];
+  }
+
+  if (delta === 0) {
+    return [-b / (2 * a)];
+  }
+
+  delta = Math.sqrt(delta);
+
+  var root1 = void 0;
+  var root2 = void 0;
+  if (b >= 0) {
+    root1 = (-b - delta) / (2 * a);
+    root2 = 2 * c / (-b - delta);
+  } else {
+    root1 = 2 * c / (-b + delta);
+    root2 = (-b + delta) / (2 * a);
+  }
+
+  if (root1 < root2) {
+    return [root1, root2];
+  }
+  return [root2, root1];
+}
 
 /**
  * Calculates the roots of the given cubic polynomial.
@@ -1782,7 +1705,6 @@ function cubicRoots(p) {
 }
 */
 
-
 /** 
  * Returns the number of real roots in the interval (a,b) of the given 
  * polynomial.
@@ -1797,16 +1719,19 @@ function cubicRoots(p) {
  * FloPoly.numRootsWithin(p,-11,-9);  //=> 1  
  * FloPoly.numRootsWithin(p,-11,3.5); //=> 3
  * FloPoly.numRootsWithin(p,-11,5);   //=> 4
- */ 
+ */
 function numRootsWithin(p, a, b) {
-	let ps = sturmChain(p);
-	let ev = evaluate(p);
-	let as = ps.map(p => evaluate(p)(a));
-	let bs = ps.map(p => evaluate(p)(b));
-	
-	return signChanges(as) - signChanges(bs);
-}
+  var ps = sturmChain(p);
+  var ev = evaluate(p);
+  var as = ps.map(function (p) {
+    return evaluate(p)(a);
+  });
+  var bs = ps.map(function (p) {
+    return evaluate(p)(b);
+  });
 
+  return signChanges(as) - signChanges(bs);
+}
 
 /**
  * <p>
@@ -1860,116 +1785,114 @@ function numRootsWithin(p, a, b) {
  * FloPoly.brent(f,2.2,3.1); //=> 3.000000000000001
  */
 function brent(f, a, b) {
-	const EPS = Number.EPSILON; 
-	
-	if (a === b) {
-		// Presumably the root is already found.
-		return a; 
-	} 
-	
-	// We assume on the first iteration f(a) !== 0 && f(b) !== 0. 
-	let fa = f(a);
-	let fb = f(b);
-    
-	if (fa*fb > 0) {
-    	// Root is not bracketed - this is a precondition.
-    	throw 'Root not bracketed'; 
-    } 
-    
-    let c; // Value of previous guess - set to a initially 
-    if (Math.abs(fa) < Math.abs(fb)) { 
-    	// Swap a,b
-    	c = a;  a = b;	b = c;
-    	
-    	// Swap fa,fb
-    	let temp = fa;
-    	fa = fb;
-    	fb = temp;
-    }
-    
-    c = a;
-    
-    let mflag = true;
-    let d; // Value of guess before previous guess
-    while (true) {
-    	let δ = 2*EPS*Math.abs(b) + EPS;
-    	
-    	let fc = f(c);
-    	
-    	// Calculate provisional interpolation value
-    	let s;
-    	if (fa !== fc && fb !== fc) { 
-    		// 3 points available - inverse quadratic interpolation
-    		let fac = fa - fc;
-    		let fab = fa - fb;
-    		let fbc = fb - fc;
-    		
-    		// The below has been multiplied out to speed up the algorithm.
-    		/*s = ((a * fb * fc) / ( fab * fac)) +
-    			  ((b * fa * fc) / (-fab * fbc)) +
-    			  ((c * fa * fb) / ( fac * fbc));*/
-    		s = ((a*fb*fbc - b*fa*fac)*fc + c*fa*fab*fb) / (fab*fac*fbc);
-    	} else {
-    		// only 2 points available - secant method
-    		s = b - (fb * ((b-a)/(fb-fa)));
-    	}
-    	
-    	let t1 = (3*a + b) / 4;
-    	let b_c = Math.abs(b-c);
-    	let s_b = Math.abs(s-b);
-    	let c_d = Math.abs(c-d);
-    	
-    	if (
-    		(!( // condition 1
-    			(s > t1 && s < b) ||
-    			(s < t1 && s > b)
-    		)) || 
-    		(mflag && ( 
-   				// condition 2
-    			(s_b >= b_c/2) ||
-    			// condition 4
-    			(b_c < δ) 
-    		)) || 
-    		(!mflag && (
-   				// condition 3
-    			(s_b >= c_d/2) ||
-    			// condition 5
-    			(c_d < δ) 
-    		))
-    	) {
-    		// Bisection
-    		s = (a + b) / 2;
-    		mflag = true;
-    	} else {
-    		mflag = false;
-    	}
-    	
-    	let fs = f(s);
-    	
-    	d = c;
-    	c = b;
-    	
-    	if (fa*fs < 0) { b = s; } else { a = s; }
-    	
-    	if (Math.abs(fa) < Math.abs(fb)) { 
-    		// Swap a,b
-    		let temp = a;  a = b;  b = temp;
-    	}
-	    
-	    if (fb === 0) { return b; } 
-	    if (fs === 0) { return s; }
+  var EPS = Number.EPSILON;
 
-	    if (Math.abs(a - b) <= δ) {
-	    	return b; 
-	    }
-	    
-	    fa = f(a);
-    	fb = f(b);
+  if (a === b) {
+    // Presumably the root is already found.
+    return a;
+  }
+
+  // We assume on the first iteration f(a) !== 0 && f(b) !== 0. 
+  var fa = f(a);
+  var fb = f(b);
+
+  if (fa * fb > 0) {
+    // Root is not bracketed - this is a precondition.
+    throw 'Root not bracketed';
+  }
+
+  var c = void 0; // Value of previous guess - set to a initially 
+  if (Math.abs(fa) < Math.abs(fb)) {
+    // Swap a,b
+    c = a;a = b;b = c;
+
+    // Swap fa,fb
+    var temp = fa;
+    fa = fb;
+    fb = temp;
+  }
+
+  c = a;
+
+  var mflag = true;
+  var d = void 0; // Value of guess before previous guess
+  while (true) {
+    var δ = 2 * EPS * Math.abs(b) + EPS;
+
+    var fc = f(c);
+
+    // Calculate provisional interpolation value
+    var s = void 0;
+    if (fa !== fc && fb !== fc) {
+      // 3 points available - inverse quadratic interpolation
+      var fac = fa - fc;
+      var fab = fa - fb;
+      var fbc = fb - fc;
+
+      // The below has been multiplied out to speed up the algorithm.
+      /*s = ((a * fb * fc) / ( fab * fac)) +
+      	  ((b * fa * fc) / (-fab * fbc)) +
+      	  ((c * fa * fb) / ( fac * fbc));*/
+      s = ((a * fb * fbc - b * fa * fac) * fc + c * fa * fab * fb) / (fab * fac * fbc);
+    } else {
+      // only 2 points available - secant method
+      s = b - fb * ((b - a) / (fb - fa));
     }
+
+    var t1 = (3 * a + b) / 4;
+    var b_c = Math.abs(b - c);
+    var s_b = Math.abs(s - b);
+    var c_d = Math.abs(c - d);
+
+    if (!( // condition 1
+    s > t1 && s < b || s < t1 && s > b) || mflag && (
+    // condition 2
+    s_b >= b_c / 2 ||
+    // condition 4
+    b_c < δ) || !mflag && (
+    // condition 3
+    s_b >= c_d / 2 ||
+    // condition 5
+    c_d < δ)) {
+      // Bisection
+      s = (a + b) / 2;
+      mflag = true;
+    } else {
+      mflag = false;
+    }
+
+    var fs = f(s);
+
+    d = c;
+    c = b;
+
+    if (fa * fs < 0) {
+      b = s;
+    } else {
+      a = s;
+    }
+
+    if (Math.abs(fa) < Math.abs(fb)) {
+      // Swap a,b
+      var _temp = a;a = b;b = _temp;
+    }
+
+    if (fb === 0) {
+      return b;
+    }
+    if (fs === 0) {
+      return s;
+    }
+
+    if (Math.abs(a - b) <= δ) {
+      return b;
+    }
+
+    fa = f(a);
+    fb = f(b);
+  }
 }
-
 
 module.exports = rootOperators;
 
-},{"./core-operators.js":3}]},{},[5])(5)
-});
+},{"./core-operators.js":3}]},{},[5]);
