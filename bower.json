@@ -3,9 +3,9 @@
   "description": "A practical, root-focused JavaScript polynomial utility library.",
   "main": "./dist/flo-poly.js",
   "keywords": [
-  	"Polynomial",
-    "Roots",
-    "Root"
+  	"polynomial",
+    "roots",
+    "root"
   ],
   "authors": [
     "Floris Steenkamp"

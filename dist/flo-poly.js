@@ -1028,7 +1028,7 @@ function fromRoots(roots) {
 
 if (module !== undefined && module.exports !== undefined) {
   // Node
-  module.exports = FloPoly;
+  module.exports = exports = FloPoly;
 } else {
   // Browser
   window.FloPoly = FloPoly;

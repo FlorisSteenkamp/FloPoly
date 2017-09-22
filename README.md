@@ -8,6 +8,11 @@ Download the [minified script file](https://github.com/FlorisSteenkamp/FloPoly/b
 ```
 There is also a [map file](https://github.com/FlorisSteenkamp/FloPoly/blob/master/dist/flo-poly.min.js.map) and a [non-minified version](https://github.com/FlorisSteenkamp/FloPoly/blob/master/dist/flo-poly.js) available.
 
+## Node
+
+```cli
+npm install flo-poly
+
 ## Bower
 
 From the command line, navigate to your project root and type:
