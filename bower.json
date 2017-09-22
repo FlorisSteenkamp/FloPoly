@@ -1,7 +1,7 @@
 {
   "name": "flo-poly",
   "description": "A practical, root-focused JavaScript polynomial utility library.",
-  "main": "./dist/flo-poly.min.js",
+  "main": "./dist/flo-poly.js",
   "keywords": [
   	"Polynomial",
     "Roots",
@@ -21,7 +21,8 @@
     "node_modules",
     "bower_components",
     "test",
-    "npm-debug.log"
+    "npm-debug.log",
+    "README.md"
   ],
   "dependencies": {
 
