@@ -12,6 +12,7 @@ There is also a [map file](https://github.com/FlorisSteenkamp/FloPoly/blob/maste
 
 ```cli
 npm install flo-poly
+```
 
 ## Bower
 
