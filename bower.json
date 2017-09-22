@@ -1,0 +1,29 @@
+{
+  "name": "flo-poly",
+  "description": "A practical, root-focused JavaScript polynomial utility library.",
+  "main": "./dist/flo-poly.min.js",
+  "keywords": [
+  	"Polynomial",
+    "Roots",
+    "Root"
+  ],
+  "authors": [
+    "Floris Steenkamp"
+  ],
+  "license": "MIT",
+  "homepage": "http://mat-demo.appspot.com/#!/test-polynomials",
+  "ignore": [
+    "**/.*",
+    "build",
+    "docs",
+    "js",
+    "referenced papers",
+    "node_modules",
+    "bower_components",
+    "test",
+    "npm-debug.log"
+  ],
+  "dependencies": {
+
+  }
+}
