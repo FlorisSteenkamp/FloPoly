@@ -1,15 +1,15 @@
 'use strict';
 
-var gulp       = require('gulp');
-var browserify = require('browserify');
-var source     = require('vinyl-source-stream');
-var buffer     = require('vinyl-buffer');
-var uglify     = require('gulp-uglify');
-var sourcemaps = require('gulp-sourcemaps');
-var concat     = require('gulp-concat');
-var es2015     = require('babel-preset-es2015');
+var gulp        = require('gulp');
+var browserify  = require('browserify');
+var source      = require('vinyl-source-stream');
+var buffer      = require('vinyl-buffer');
+var uglify      = require('gulp-uglify');
+var sourcemaps  = require('gulp-sourcemaps');
+var concat      = require('gulp-concat');
+var es2015      = require('babel-preset-es2015');
 //var es2016     = require('babel-preset-es2016');
-var rename     = require('gulp-rename');
+var rename      = require('gulp-rename');
 
 
 gulp.task('default', browserifyDistTask);
@@ -28,7 +28,8 @@ function browserifyDistTask() {
 	
     return browserify({
     		entries: '../js/flo-poly.js',
-    		plugins: ["transform-es2015-arrow-functions"]
+    		plugins: ["transform-es2015-arrow-functions"],
+    		standalone: 'FloPoly',
     	})
 		.transform("babelify", { presets: [es2015] })
     	.bundle(showOnError)

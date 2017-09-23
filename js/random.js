@@ -170,6 +170,7 @@ function flatRoots(d, a, b, seed, odds) {
 	let randArr = randomArray(d, a, b, seed, odds);
 	seed = randArr.seed;
 	
+	// TODO - fix line below by first requiring fromRoots and then remove FloPoly.
 	let p = FloPoly.fromRoots(randArr.vs);
 
 	return { p, seed, };
