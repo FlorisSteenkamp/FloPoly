@@ -1,6 +1,6 @@
 {
   "name": "flo-poly",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A practical, root-focused JavaScript polynomial utility library.",
   "main": "dist/flo-poly.js",
   "directories": {
