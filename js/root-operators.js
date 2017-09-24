@@ -13,7 +13,7 @@ let rootOperators = {
 		//cubicRoots,
 		numRootsWithin,
 		brent,
-		coreOperators,
+		//coreOperators,
 };
 
 

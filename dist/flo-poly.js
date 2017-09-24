@@ -1559,8 +1559,7 @@ var rootOperators = {
   quadraticRoots: quadraticRoots,
   //cubicRoots,
   numRootsWithin: numRootsWithin,
-  brent: brent,
-  coreOperators: coreOperators
+  brent: brent
 };
 
 var sturmChain = coreOperators.sturmChain,
