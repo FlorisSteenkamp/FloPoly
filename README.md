@@ -9,7 +9,7 @@ Please visit [the official site](http://mat-demo.appspot.com/#!/test-polynomials
 
 # Installation
 
-## Node (or the browser if you use [Browserify](http://browserify.org) 
+## Node (or the browser if you use [Browserify](http://browserify.org)) 
 
 ```cli
 npm install flo-poly
