@@ -1,0 +1,6 @@
+.project
+.nyc_output
+referenced papers
+node_modules
+coverage
+
