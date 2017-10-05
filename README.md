@@ -5,7 +5,7 @@ FloPoly.allRoots([1, -21, 175, -735, 1624, -1764, 720]); //=> [0.999999999999999
 ```
 
 # Documentation, Benchmarks and more
-Please visit [the official site](http://mat-demo.appspot.com/#!/test-polynomials).
+Please visit [the site](http://mat-demo.appspot.com/#!/test-polynomials).
 
 # Installation
 
