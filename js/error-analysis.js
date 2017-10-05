@@ -37,27 +37,23 @@ function conditionNumber(p, x) {
 
 /**
  * <p>
- * Classic rule of thumb approximate error bound using Horner's method 
- * to evaluate polynomials. 
+ * Classic rule of thumb approximate error bound when using Horner's 
+ * method to evaluate polynomials. 
  * </p>
  * <p>
- * http://www-pequan.lip6.fr/~jmc/polycopies/Compensation-horner.pdf
+ * See for instance <a href="http://www-pequan.lip6.fr/~jmc/polycopies/Compensation-horner.pdf">compensated horner evaluation</a>
  * </p>
  * @param p {number[]} - The polynomial
  * @param x {number} - Value at which polynomial is evaluated. 
  * @returns {number} The error bound
+ * @example
+ * hornerErrorBound([1.1,2.2,-3.3], 1.5); //=> 5.1292303737682235e-15 
  */
 function hornerErrorBound(p, x) {
 	const δ = Number.EPSILON;
 	
-	//let pres = evaluate(p,x);
-	//console.log(pres);
-	
 	let d = p.length-1;
-	let res = 2*d*δ * conditionNumber(p, x)
-	//console.log(res);
-
-	return res;
+	return 2*d*δ * conditionNumber(p, x)
 }
 
 module.exports = errorAnalysis;

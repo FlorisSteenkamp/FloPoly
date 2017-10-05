@@ -10,20 +10,46 @@ let rootBounds = {
 		positiveRootUpperBound_LMQ,
 		positiveRootLowerBound_LMQ,
 		negativeRootUpperBound_LMQ,
-		negativeRootLowerBound_LMQ
+		negativeRootLowerBound_LMQ,
+		rootMagnitudeUpperBound_rouche
+}
+
+
+/**
+ * Returns the maximum magnitude value within the supplied array of 
+ * numbers.
+ * @ignore 
+ */
+function maxAbs(ns) {
+	return Math.max.apply(null, ns.map(n => Math.abs(n)));
 }
 
 
 /**
  * Finds an upper bound on the magnitude (absolute value) of the roots
- * of the given polynomial using the near-optimal Fujiwara bound.
+ * (including complex roots) of the given polynomial using Rouche's 
+ * Theorem with k = n. This function is fast but the bound is not tight.
+ * 
+ * @param p {number[]} p - The polynomial.
+ * @returns {number} The bound.
+ */
+function rootMagnitudeUpperBound_rouche(p) {
+	let d = p.length-1;
+	let R = 1 + (1/p[0])*maxAbs(p.slice(1));
+	return R;
+}
+
+
+/**
+ * Finds an upper bound on the magnitude (absolute value) of the roots
+ * of the given polynomial using the near-optimal Fujiwara bound. Note
+ * that the bound includes complex roots. The bound is tight but slow 
+ * due to usage of Math.pow().
  * 
  * @see https://en.wikipedia.org/wiki/Properties_of_polynomial_roots#cite_note-Fujiwara1916-4
  * 
  * @param {number[]} p - The polynomial.
- * @returns {number} The bounds.
- * @note Not yet adjusted for floating-point error. Tight bounds but
- * slow due to usage of Math.pow.
+ * @returns {number} The bound.
  * @example
  * FloPoly.rootMagnitudeUpperBound_fujiwara([2,-3,6,5,-130]); //=> 6.753296750770361
  * FloPoly.allRoots([2,-3,6,5,-130]); //=> [-2.397918624065303, 2.8793785310848383]
@@ -53,9 +79,13 @@ function rootMagnitudeUpperBound_fujiwara(p) {
 }
 
 
+const POWERS = [
+	1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768, 
+	65536,131072,262144,524288,1048576,2097152
+];
 /**
  * <p> 
- * Returns an upper bound for the positive roots of the given 
+ * Returns an upper bound for the positive real roots of the given 
  * polynomial.
  * </p>
  * <p>
@@ -91,13 +121,19 @@ function positiveRootUpperBound_LMQ(p) {
 		
 		for (let k=0; k<m; k++) {
 			if (p[k] <= 0) { continue; }
-		
-			// TODO - Both these pows can easily be replaced with a 
-			// lookup that may speed things up a lot since (for low 
-			// order polys) it will most of the time be a square, 
-			// cube... root or multiplication by 1,2,4,8,...
+
+			// Table lookup is about 70% faster but both are
+			// extemely fast anyway. 
+			// Result is at https://www.measurethat.net/Benchmarks/ShowResult/6610
+			let pow = timesUsed[k];
+			let powres;
+			if (pow > 20) {
+				powres = Math.pow(2, pow);
+			} else {
+				powres = POWERS[pow];
+			}
 			let temp = Math.pow(
-					-p[m] / (p[k] / Math.pow(2, timesUsed[k])), 
+					-p[m] / (p[k] / powres),
 					1/(m-k)
 			);
 			

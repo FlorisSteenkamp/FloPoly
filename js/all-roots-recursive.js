@@ -75,18 +75,22 @@ function allRootsRecursive(p, a, b) {
 			//lowerBound = a === -INF ? -magnitudeBound : a;
 			//upperBound = b === +INF ? +magnitudeBound : b;
 			
-			lowerBound = a === -INF 
-				? negativeRootLowerBound_LMQ(p) 
-				: a;
-			upperBound = b === +INF 
-				? positiveRootUpperBound_LMQ(p) 
-				: b;
+			if (a === -INF) {
+				lowerBound = negativeRootLowerBound_LMQ(p);
+			} else {
+				lowerBound = a;
+			}
+			if (b === +INF) {
+				upperBound = positiveRootUpperBound_LMQ(p);
+			} else {
+				upperBound = b; 
+			}
 		} else {
 			lowerBound = a;
 			upperBound = b;
 		}
 		
-		// If the roots of differentiated polynomial is out of range 
+		// If the roots of the differentiated polynomial is out of range 
 		// then the roots of the polynomial itself will also be out of 
 		// range.
 		let dp = differentiate(p);
@@ -94,10 +98,17 @@ function allRootsRecursive(p, a, b) {
 			.filter(rangeFilter);
 		
 		if (roots[0] !== lowerBound) {
-			roots.unshift(lowerBound); // Not really a root.
+			// For code coverage to cover the 'else' case we would need
+			// to find a case where the lower bound actually matches the
+			// root which would be very rare - needs further 
+			// investigation.
+			
+			// Not an actual root.
+			roots.unshift(lowerBound); 
 		}
 		if (roots[roots.length-1] !== upperBound) {
-			roots.push(upperBound);    // Not really a root.
+			// Not an actual root.
+			roots.push(upperBound);    
 		}
 		return rootsWithin(p, roots);	
 	} else if (d === 1) {

@@ -1,6 +1,7 @@
 'use strict'
 
 let coreOperators = {
+		equal,
 		add,
 		subtract,
 		multiplyByConst,
@@ -20,6 +21,26 @@ let coreOperators = {
 		deflate,
 		maxCoefficient,
 		toCasStr,
+}
+
+
+/**
+ * Returns true if two polynomials are exactly equal by comparing 
+ * coefficients.
+ * 
+ * @param {number[]} p1 - A polynomial
+ * @param {number[]} p2 - Another polynomial 
+ * @returns {boolean} True if exactly equal, false otherwise.
+ * @example
+ * FloPoly.equal([1,2,3,4], [1,2,3,4]);   //=> true
+ * FloPoly.equal([1,2,3,4], [1,2,3,4,5]); //=> false
+ */
+function equal(p1,p2) {
+	if (p1.length !== p2.length) { return false; }
+	for (let i=0; i<p1.length; i++) {
+		if (p1[i] !== p2[i]) { return false; }
+	}
+	return true;
 }
 
 
@@ -56,6 +77,7 @@ function add(p1, p2) {
 		result.push((c1 || 0) + (c2 || 0));  
 	}
 	
+	// Ensure the result is a valid polynomial representation
 	return clip0(result);
 }
 
@@ -93,6 +115,7 @@ function subtract(p1, p2) {
 		result.push((c1 || 0) - (c2 || 0));  
 	}
 	
+	// Ensure the result is a valid polynomial representation
 	return clip0(result);
 }
 
@@ -131,17 +154,22 @@ function differentiate(p) {
 }
 
 
-/** 
+/**
+ * <p> 
  * Multiplies the two given polynomials and returns the result. 
- * 
+ * </p>
+ * <p>
+ * See <a href="https://en.wikipedia.org/wiki/Polynomial_arithmetic">polynomial arithmetic</a>
+ * </p>
+ * <p>
+ * See <a href="https://en.wikipedia.org/wiki/Discrete_Fourier_transform#Polynomial_multiplication">polynomial multiplication</a>
+ * </p>
+ * <p>
+ * See <a herf="http://web.cs.iastate.edu/~cs577/handouts/polymultiply.pdf">polynomial multiplication (pdf)</a>
+ * </p>
  * @param {number[]} p1 - The one polynomial.
  * @param {number[]} p2 - The other polynomial.
  * @returns {number[]} p1 * p2
- * 
- * @see https://en.wikipedia.org/wiki/Polynomial_arithmetic 
- * @see https://en.wikipedia.org/wiki/Discrete_Fourier_transform#Polynomial_multiplication
- * @see http://web.cs.iastate.edu/~cs577/handouts/polymultiply.pdf
- * 
  * @example
  * FloPoly.multiply([1,2,3], [2,5,3,5]); //=> [2, 9, 19, 26, 19, 15]
  */
@@ -182,7 +210,8 @@ function multiplyByConst(c, p) {
 		result.push(c*p[i]);
 	}
 	
-	return result;
+	// We have to clip due to possible floating point underflow
+	return clip0(result);
 }
 
 
@@ -303,7 +332,7 @@ function signChanges(p) {
 function deflate(p, root) {
 	let d = p.length-1;
 	let bs = [p[0]];
-	for (let i=1; i<p.length-1; i++) {
+	for (let i=1; i<d; i++) {
 		bs.push(
 			p[i] + root*bs[i-1]
 		);
@@ -328,10 +357,13 @@ function invert(p) {
 }
 
 
-/** 
+/**
+ * <p> 
  * Performs a change of variables of the form: p(x) <- p(ax + b).
- * @see http://stackoverflow.com/questions/141422/how-can-a-transform-a-polynomial-to-another-coordinate-system
- * 
+ * </p>
+ * <p>
+ * See <a href="http://stackoverflow.com/questions/141422/how-can-a-transform-a-polynomial-to-another-coordinate-system">this stackoverflow question</a>
+ * </p>
  * @param {number[]} p - The polynomial
  * @param {number} a
  * @param {number} b
@@ -474,19 +506,16 @@ function sturmChain(p) {
  * 
  * 
  * @param {number[]} p - The polynomial to be clipped.
- * @param {number} δ_ - The optional contribution tolerence else 
+ * @param {number} δ - The optional contribution tolerence else 
  *        Number.EPSILON will be used by default.   
  * @returns {number[]} The clipped polynomial.
  * @example
  * FloPoly.clip([1e-18, 1e-10, 1e-5]); //=> [1e-18, 1e-10, 1e-5] 
  * FloPoly.clip([1e-18, 1e-10, 1e-1]); //=> [1e-10, 1e-1]
  */
-function clip(p, δ_) {
-	
-	let δ = δ_ === undefined ? Number.EPSILON : δ_;  
-	
-	let d = p.length-1;
-	
+function clip(p, δ) {
+	δ = (δ === undefined) ? Number.EPSILON : δ;  
+
 	let c = maxCoefficient(p);
 	if (c === 0) { return []; }
 	
@@ -494,7 +523,12 @@ function clip(p, δ_) {
 		return p;
 	}
 	
-	return clip(p.slice(1));
+	let p_ = p.slice(1);
+	while (Math.abs(p_[0]) < δ*c) {
+		p_ = p_.slice(1);	
+	}
+	
+	return clip(p_, δ);
 }
 
 

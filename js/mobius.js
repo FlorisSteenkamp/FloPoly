@@ -8,7 +8,13 @@
  * @ignore
  * @namespace
  */
-let Mobius = {};
+let Mobius = {
+	changeVariables,
+	invert,
+	evaluateAt0,
+	evaluateAtInf,
+	evaluate,	
+};
 
 
 /**
@@ -41,7 +47,7 @@ function changeVariables1(p, a, b) {
  * @returns {number[][]} The modified mobius function 
  * M(x) = (a(px + q) + b) / (c(px + q) + d). 
  */
-Mobius.changeVariables = function(mobius, a, b) {
+function changeVariables(mobius, a, b) {
 	return [
 		changeVariables1(mobius[0], a, b), 
 		changeVariables1(mobius[1], a, b)
@@ -58,7 +64,7 @@ Mobius.changeVariables = function(mobius, a, b) {
  * M(x) = (ax + b) / (cx + d) represented as [[a,b],[c,d]]
  * @returns {number[][]} The modified mobius function. 
  */
-Mobius.invert = function(mobius) {
+function invert(mobius) {
 	let [[a, b],[c, d]] = mobius;
 	
 	return [[b, a],	[d, c]];
@@ -73,7 +79,7 @@ Mobius.invert = function(mobius) {
  * M(x) = (ax + b) / (cx + d) represented as [[a,b],[c,d]]
  * @returns {number} The result of the evaluation.
  */
-Mobius.evaluateAt0 = function(mobius) {
+function evaluateAt0(mobius) {
 	return mobius[0][1] / mobius[1][1];
 }
 
@@ -86,7 +92,7 @@ Mobius.evaluateAt0 = function(mobius) {
  * M(x) = (ax + b) / (cx + d) represented as [[a,b],[c,d]]
  * @returns {number} The result of the evaluation.
  */
-Mobius.evaluateAtInf = function(mobius) {
+function evaluateAtInf(mobius) {
 	return mobius[0][0] / mobius[1][0];
 }
 
@@ -100,7 +106,7 @@ Mobius.evaluateAtInf = function(mobius) {
  * M(x) = (ax + b) / (cx + d) represented as [[a,b],[c,d]]
  * @returns {number} The result of the evaluation.
  */
-Mobius.evaluate = function(mobius, x) {
+function evaluate(mobius, x) {
 	let [[a, b],[c, d]] = mobius;
 	
 	return (a*x + b) / (c*x + d);   

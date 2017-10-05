@@ -76,24 +76,39 @@ function allRootsRecursive(p, a, b) {
 			//lowerBound = a === -INF ? -magnitudeBound : a;
 			//upperBound = b === +INF ? +magnitudeBound : b;
 
-			lowerBound = a === -INF ? negativeRootLowerBound_LMQ(p) : a;
-			upperBound = b === +INF ? positiveRootUpperBound_LMQ(p) : b;
+			if (a === -INF) {
+				lowerBound = negativeRootLowerBound_LMQ(p);
+			} else {
+				lowerBound = a;
+			}
+			if (b === +INF) {
+				upperBound = positiveRootUpperBound_LMQ(p);
+			} else {
+				upperBound = b;
+			}
 		} else {
 			lowerBound = a;
 			upperBound = b;
 		}
 
-		// If the roots of differentiated polynomial is out of range 
+		// If the roots of the differentiated polynomial is out of range 
 		// then the roots of the polynomial itself will also be out of 
 		// range.
 		var dp = differentiate(p);
 		var roots = allRootsRecursive(dp, lowerBound, upperBound).filter(rangeFilter);
 
 		if (roots[0] !== lowerBound) {
-			roots.unshift(lowerBound); // Not really a root.
+			// For code coverage to cover the 'else' case we would need
+			// to find a case where the lower bound actually matches the
+			// root which would be very rare - needs further 
+			// investigation.
+
+			// Not an actual root.
+			roots.unshift(lowerBound);
 		}
 		if (roots[roots.length - 1] !== upperBound) {
-			roots.push(upperBound); // Not really a root.
+			// Not an actual root.
+			roots.push(upperBound);
 		}
 		return rootsWithin(p, roots);
 	} else if (d === 1) {
@@ -171,190 +186,11 @@ function rootsWithin(p, intervals) {
 
 module.exports = allRootsRecursive;
 
-},{"./core-operators.js":3,"./root-bounds.js":8,"./root-operators.js":9}],2:[function(require,module,exports){
-'use strict';
-
-var coreOperators = require('./core-operators.js');
-var rootOperators = require('./root-operators.js');
-var Mobius = require('./mobius.js');
-var rootBounds = require('./root-bounds.js');
-
-var brent = rootOperators.brent;
-var evaluate = coreOperators.evaluate,
-    evaluateAt0 = coreOperators.evaluateAt0,
-    negate = coreOperators.negate,
-    invert = coreOperators.invert,
-    signChanges = coreOperators.signChanges,
-    changeVariables = coreOperators.changeVariables;
-var positiveRootUpperBound_LMQ = rootBounds.positiveRootUpperBound_LMQ,
-    positiveRootLowerBound_LMQ = rootBounds.positiveRootLowerBound_LMQ;
-
-/** 
- * DO NOT USE. EXPERIMENTAL.
- * Find all the roots using the VAS algorithm followed by Brent's 
- * method.
- *  
- * @ignore
- * @param {number[]} p - A square-free polynomial.
- * @returns {number[]} The roots.
- **/
-
-function allRootsVAS(p_) {
-	// TODO - First remove all zero roots  - The VAS method can't handle 
-	// them.
-	var p = removeZeroRoots(p_);
-	var numZeros = p_.length - p.length;
-
-	// TODO - Next, remove all multiple roots (i.e. do a square-free
-	// factorization... - VAS doesn't like them either
-
-	var vasRoots = vasRootIntervals(p).map(function (interval) {
-		return brent(evaluate(p), interval[0], interval[1]);
-	});
-
-	for (var i = 0; i < numZeros; i++) {
-		vasRoots.push(0);
-	}
-
-	return vasRoots;
-}
-
-/**
- * Removes the zero roots from the polynomial.
- * 
- * @ignore
- * @returns {number[]} The deflated polynomial.
- *       
- */
-// TODO - improve this function: readability + floating point tolerance
-function removeZeroRoots(p_) {
-	var p = p_.slice();
-	var i = 0;
-	while (evaluateAt0(p) === 0) {
-		var len = p.length;
-		p.pop();
-		i++;
-	}
-
-	return p;
-}
-
-/** 
- * Finds root intervals of a polynomial such that each interval contains
- * exactly one root using the VAS (Vincent–Akritas–Strzeboński) method.
- * 
- * @ignore
- * @see http://www.e-ce.uth.gr/wp-content/uploads/formidable/phd_thesis_vigklas.pdf
- */
-// TODO - Square-free factorization ignored for now - duplicate roots 
-// could cause an infinite loop - fix by checking if interval becomes
-// smaller than a certain threshold.
-function vasRootIntervals(p) {
-
-	var positiveIntervals = vasRootIntervalsHelper(p, [[1, 0], [0, 1]]);
-
-	// ONLY COMMENTED BECAUSE IN *OUR* CASE WE DONT CARE ABOUT NEGATIVE ROOTS!!
-	/*
- let negativeIntervals = vasRootIntervalsHelper(
- 	changeVariables(p.slice(), -1, 0), 
- 	[[1,0],[0,1]]
- )
- .map(function(interval) {
- 	return negate(invert(interval));
- });
- */
-
-	var intervals = [].concat(
-	//negativeIntervals, 
-	positiveIntervals);
-
-	return intervals;
-}
-
-/** 
- * Helper function
- * The initial mobius transformation must be [[1,0],[0,1]] = M(x) = x.
- * 
- * @ignore
- */
-function vasRootIntervalsHelper(p, mobius) {
-
-	// In the Vigklas, Akritas, Strzebonski paper, the steps are marked 
-	// as below:
-
-	// STEP 1
-	var intervals = [];
-	var signVariations = signChanges(p);
-
-	// STEP 2
-	if (signVariations === 0) {
-		// Descartes' rule of signs
-		return [];
-	}
-
-	// STEP 3
-	if (signVariations === 1) {
-		var M0 = Mobius.evaluateAt0(mobius);
-		var MI = Mobius.evaluateAtInf(mobius);
-		var MM0 = Math.min(M0, MI);
-		var MMI = Math.max(M0, MI);
-		if (MMI === Number.POSITIVE_INFINITY) {
-			MMI = Mobius.evaluate(mobius, positiveRootUpperBound_LMQ(p));
-		}
-
-		return [[MM0, MMI]];
-	}
-
-	// STEP 4
-	var lb = positiveRootLowerBound_LMQ(p);
-
-	// STEP 5
-	if (lb > 1) {
-		// p ← p(x + lb)
-		p = changeVariables(p, 1, lb);
-
-		// M ← M(x + lb)
-		mobius = Mobius.changeVariables(mobius, 1, lb);
-	}
-
-	// TODO - Include factor of 16 improvement by Strzebonski
-
-	// STEP 6 - Look for real roots in (0, 1)
-
-	// p01 ← (x + 1)^(deg(p)) *  p(1/(x+1))
-	var p01 = changeVariables(invert(p), 1, 1);
-
-	// M01 ← M(1/(x+1))
-	var M01 = Mobius.changeVariables(Mobius.invert(mobius), 1, 1);
-
-	// STEP 7 - Is 1 a root?
-	var m = Mobius.evaluate(mobius, 1);
-
-	// STEP 8 - Look for real roots in (1, ∞)
-
-	// p1∞ ← p(x + 1)
-	var p1inf = changeVariables(p, 1, 1);
-
-	// M1∞ ← M(x + 1)
-	var M1inf = Mobius.changeVariables(mobius, 1, 1);
-
-	// STEPS 9 -> 13
-	var intervals1 = vasRootIntervalsHelper(p01, M01);
-	var intervals3 = vasRootIntervalsHelper(p1inf, M1inf);
-
-	if (evaluate(p)(1) === 0) {
-		intervals1.push([m, m]);
-	}
-
-	return [].concat(intervals1, intervals3);
-}
-
-module.exports = allRootsVAS;
-
-},{"./core-operators.js":3,"./mobius.js":6,"./root-bounds.js":8,"./root-operators.js":9}],3:[function(require,module,exports){
+},{"./core-operators.js":2,"./root-bounds.js":7,"./root-operators.js":8}],2:[function(require,module,exports){
 'use strict';
 
 var coreOperators = {
+	equal: equal,
 	add: add,
 	subtract: subtract,
 	multiplyByConst: multiplyByConst,
@@ -375,6 +211,29 @@ var coreOperators = {
 	maxCoefficient: maxCoefficient,
 	toCasStr: toCasStr
 };
+
+/**
+ * Returns true if two polynomials are exactly equal by comparing 
+ * coefficients.
+ * 
+ * @param {number[]} p1 - A polynomial
+ * @param {number[]} p2 - Another polynomial 
+ * @returns {boolean} True if exactly equal, false otherwise.
+ * @example
+ * FloPoly.equal([1,2,3,4], [1,2,3,4]);   //=> true
+ * FloPoly.equal([1,2,3,4], [1,2,3,4,5]); //=> false
+ */
+function equal(p1, p2) {
+	if (p1.length !== p2.length) {
+		return false;
+	}
+	for (var i = 0; i < p1.length; i++) {
+		if (p1[i] !== p2[i]) {
+			return false;
+		}
+	}
+	return true;
+}
 
 /**
  * Adds two polynomials.
@@ -409,6 +268,7 @@ function add(p1, p2) {
 		result.push((c1 || 0) + (c2 || 0));
 	}
 
+	// Ensure the result is a valid polynomial representation
 	return clip0(result);
 }
 
@@ -445,6 +305,7 @@ function subtract(p1, p2) {
 		result.push((c1 || 0) - (c2 || 0));
 	}
 
+	// Ensure the result is a valid polynomial representation
 	return clip0(result);
 }
 
@@ -480,17 +341,22 @@ function differentiate(p) {
 	return result;
 }
 
-/** 
+/**
+ * <p> 
  * Multiplies the two given polynomials and returns the result. 
- * 
+ * </p>
+ * <p>
+ * See <a href="https://en.wikipedia.org/wiki/Polynomial_arithmetic">polynomial arithmetic</a>
+ * </p>
+ * <p>
+ * See <a href="https://en.wikipedia.org/wiki/Discrete_Fourier_transform#Polynomial_multiplication">polynomial multiplication</a>
+ * </p>
+ * <p>
+ * See <a herf="http://web.cs.iastate.edu/~cs577/handouts/polymultiply.pdf">polynomial multiplication (pdf)</a>
+ * </p>
  * @param {number[]} p1 - The one polynomial.
  * @param {number[]} p2 - The other polynomial.
  * @returns {number[]} p1 * p2
- * 
- * @see https://en.wikipedia.org/wiki/Polynomial_arithmetic 
- * @see https://en.wikipedia.org/wiki/Discrete_Fourier_transform#Polynomial_multiplication
- * @see http://web.cs.iastate.edu/~cs577/handouts/polymultiply.pdf
- * 
  * @example
  * FloPoly.multiply([1,2,3], [2,5,3,5]); //=> [2, 9, 19, 26, 19, 15]
  */
@@ -532,7 +398,8 @@ function multiplyByConst(c, p) {
 		result.push(c * p[i]);
 	}
 
-	return result;
+	// We have to clip due to possible floating point underflow
+	return clip0(result);
 }
 
 /** 
@@ -648,7 +515,7 @@ function signChanges(p) {
 function deflate(p, root) {
 	var d = p.length - 1;
 	var bs = [p[0]];
-	for (var i = 1; i < p.length - 1; i++) {
+	for (var i = 1; i < d; i++) {
 		bs.push(p[i] + root * bs[i - 1]);
 	}
 
@@ -669,10 +536,13 @@ function invert(p) {
 	return p.slice().reverse();
 }
 
-/** 
+/**
+ * <p> 
  * Performs a change of variables of the form: p(x) <- p(ax + b).
- * @see http://stackoverflow.com/questions/141422/how-can-a-transform-a-polynomial-to-another-coordinate-system
- * 
+ * </p>
+ * <p>
+ * See <a href="http://stackoverflow.com/questions/141422/how-can-a-transform-a-polynomial-to-another-coordinate-system">this stackoverflow question</a>
+ * </p>
  * @param {number[]} p - The polynomial
  * @param {number} a
  * @param {number} b
@@ -808,18 +678,15 @@ function sturmChain(p) {
  * 
  * 
  * @param {number[]} p - The polynomial to be clipped.
- * @param {number} δ_ - The optional contribution tolerence else 
+ * @param {number} δ - The optional contribution tolerence else 
  *        Number.EPSILON will be used by default.   
  * @returns {number[]} The clipped polynomial.
  * @example
  * FloPoly.clip([1e-18, 1e-10, 1e-5]); //=> [1e-18, 1e-10, 1e-5] 
  * FloPoly.clip([1e-18, 1e-10, 1e-1]); //=> [1e-10, 1e-1]
  */
-function clip(p, δ_) {
-
-	var δ = δ_ === undefined ? Number.EPSILON : δ_;
-
-	var d = p.length - 1;
+function clip(p, δ) {
+	δ = δ === undefined ? Number.EPSILON : δ;
 
 	var c = maxCoefficient(p);
 	if (c === 0) {
@@ -830,7 +697,12 @@ function clip(p, δ_) {
 		return p;
 	}
 
-	return clip(p.slice(1));
+	var p_ = p.slice(1);
+	while (Math.abs(p_[0]) < δ * c) {
+		p_ = p_.slice(1);
+	}
+
+	return clip(p_, δ);
 }
 
 /**
@@ -898,7 +770,7 @@ function toCasStr(p) {
 
 module.exports = coreOperators;
 
-},{}],4:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 'use strict';
 
 var coreOperators = require('./core-operators.js');
@@ -938,41 +810,38 @@ function conditionNumber(p, x) {
 
 /**
  * <p>
- * Classic rule of thumb approximate error bound using Horner's method 
- * to evaluate polynomials. 
+ * Classic rule of thumb approximate error bound when using Horner's 
+ * method to evaluate polynomials. 
  * </p>
  * <p>
- * http://www-pequan.lip6.fr/~jmc/polycopies/Compensation-horner.pdf
+ * See for instance <a href="http://www-pequan.lip6.fr/~jmc/polycopies/Compensation-horner.pdf">compensated horner evaluation</a>
  * </p>
  * @param p {number[]} - The polynomial
  * @param x {number} - Value at which polynomial is evaluated. 
  * @returns {number} The error bound
+ * @example
+ * hornerErrorBound([1.1,2.2,-3.3], 1.5); //=> 5.1292303737682235e-15 
  */
 function hornerErrorBound(p, x) {
   var δ = Number.EPSILON;
 
-  //let pres = evaluate(p,x);
-  //console.log(pres);
-
   var d = p.length - 1;
-  var res = 2 * d * δ * conditionNumber(p, x);
-  //console.log(res);
-
-  return res;
+  return 2 * d * δ * conditionNumber(p, x);
 }
 
 module.exports = errorAnalysis;
 
-},{"./core-operators.js":3}],5:[function(require,module,exports){
+},{"./core-operators.js":2}],4:[function(require,module,exports){
 'use strict';
 
 var coreOperators = require('./core-operators.js');
 var rootOperators = require('./root-operators.js');
 var rootBounds = require('./root-bounds.js');
-var allRootsVAS = require('./all-roots-vas.js');
+//let allRootsVAS       = require('./all-roots-vas.js');
 var allRootsRecursive = require('./all-roots-recursive.js');
 var random = require('./random.js');
 var errorAnalysis = require('./error-analysis.js');
+var fromRoots = require('./from-roots.js');
 
 var multiply = coreOperators.multiply;
 
@@ -989,11 +858,17 @@ var multiply = coreOperators.multiply;
 * </p>
 * @ignore
 */
-var FloPoly = Object.assign({}, coreOperators, rootOperators, rootBounds, { random: random }, {
-  allRoots: allRootsRecursive,
-  //allRootsVAS,
-  fromRoots: fromRoots
+var FloPoly = Object.assign({}, coreOperators, rootOperators, rootBounds, { random: random }, { fromRoots: fromRoots }, {
+		allRoots: allRootsRecursive
 }, errorAnalysis);
+
+module.exports = exports = FloPoly;
+
+},{"./all-roots-recursive.js":1,"./core-operators.js":2,"./error-analysis.js":3,"./from-roots.js":5,"./random.js":6,"./root-bounds.js":7,"./root-operators.js":8}],5:[function(require,module,exports){
+'use strict';
+
+var _require = require('./core-operators.js'),
+    multiply = _require.multiply;
 
 /**
  * <p>
@@ -1017,6 +892,8 @@ var FloPoly = Object.assign({}, coreOperators, rootOperators, rootBounds, { rand
  * FloPoly.allRoots([1, -9, 29, -39, 17.99999999999999]); //=> [0.9999999999999973, 2.00000000000002, 2.9999999999999982]
  * FloPoly.allRoots([1, -9, 29, -39, 17.9999999999999]); //=> [0.999999999999975, 2.0000000000000986, 2.9999997898930832, 3.0000002095475775]
  */
+
+
 function fromRoots(roots) {
   var p = [1];
   for (var i = 0; i < roots.length; i++) {
@@ -1026,136 +903,17 @@ function fromRoots(roots) {
   return p;
 }
 
-if (module !== undefined && module.exports !== undefined) {
-  // Node
-  module.exports = exports = FloPoly;
-} else {
-  // Browser
-  window.FloPoly = FloPoly;
-}
+module.exports = fromRoots;
 
-},{"./all-roots-recursive.js":1,"./all-roots-vas.js":2,"./core-operators.js":3,"./error-analysis.js":4,"./random.js":7,"./root-bounds.js":8,"./root-operators.js":9}],6:[function(require,module,exports){
+},{"./core-operators.js":2}],6:[function(require,module,exports){
 'use strict';
 
-/** 
- * Mobius namespaced functions, i.e. M(x) = (ax + b) / (cx + d) where 
- * a,b,c and d are constants. Represented as a 2-diminsional array 
- * [[a,b],[c,d]].
- * 
- * @ignore
- * @namespace
- */
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-var Mobius = {};
-
-/**
- * Performs a change of variables x → ax + b on p(x) where
- * it is a precondition on the polynomial p that deg(p) = 1.
- *
- * @ignore
- * @param {number[]} p - The degree 1 polynomial p(x)
- * @param {number} a
- * @param {number} b
- * @returns {number[]} The modified polynomial p(ax + b). 
- */
-function changeVariables1(p, a, b) {
-  return [a * p[0], p[1] + b * p[0]];
-}
-
-/**
- * Performs a change of variables x → px + q on the given Mobius 
- * function. 
- *
- * @ignore
- * @param {number[][]} mobius - The mobius function 
- * M(x) = (ax + b) / (cx + d) represented as [[a,b],[c,d]]
- * @param {number} a
- * @param {number} b
- * @returns {number[][]} The modified mobius function 
- * M(x) = (a(px + q) + b) / (c(px + q) + d). 
- */
-Mobius.changeVariables = function (mobius, a, b) {
-  return [changeVariables1(mobius[0], a, b), changeVariables1(mobius[1], a, b)];
-};
-
-/**
- * Inverts the given mobius, i.e.
- * M(x) = (ax + b) / (cx + d) → (bx + a) / (dx + c)
- * 
- * @ignore
- * @param {number[][]} mobius - The mobius function 
- * M(x) = (ax + b) / (cx + d) represented as [[a,b],[c,d]]
- * @returns {number[][]} The modified mobius function. 
- */
-Mobius.invert = function (mobius) {
-  var _mobius = _slicedToArray(mobius, 2),
-      _mobius$ = _slicedToArray(_mobius[0], 2),
-      a = _mobius$[0],
-      b = _mobius$[1],
-      _mobius$2 = _slicedToArray(_mobius[1], 2),
-      c = _mobius$2[0],
-      d = _mobius$2[1];
-
-  return [[b, a], [d, c]];
-};
-
-/**
- * Evaluates the given mobius function at x = 0.
- * 
- * @ignore
- * @param {number[][]} mobius - The mobius function 
- * M(x) = (ax + b) / (cx + d) represented as [[a,b],[c,d]]
- * @returns {number} The result of the evaluation.
- */
-Mobius.evaluateAt0 = function (mobius) {
-  return mobius[0][1] / mobius[1][1];
-};
-
-/**
- * Evaluates the given mobius function in the limit as x → ∞.
- * 
- * @ignore
- * @param {number[][]} mobius - The mobius function 
- * M(x) = (ax + b) / (cx + d) represented as [[a,b],[c,d]]
- * @returns {number} The result of the evaluation.
- */
-Mobius.evaluateAtInf = function (mobius) {
-  return mobius[0][0] / mobius[1][0];
-};
-
-/**
- * Evaluates the given mobius function at a specific x.
- * 
- * @ignore
- * @param {number[][]} mobius - The mobius function
- * @param {number} x - The x value at which to evaluate
- * M(x) = (ax + b) / (cx + d) represented as [[a,b],[c,d]]
- * @returns {number} The result of the evaluation.
- */
-Mobius.evaluate = function (mobius, x) {
-  var _mobius2 = _slicedToArray(mobius, 2),
-      _mobius2$ = _slicedToArray(_mobius2[0], 2),
-      a = _mobius2$[0],
-      b = _mobius2$[1],
-      _mobius2$2 = _slicedToArray(_mobius2[1], 2),
-      c = _mobius2$2[0],
-      d = _mobius2$2[1];
-
-  return (a * x + b) / (c * x + d);
-};
-
-module.exports = Mobius;
-
-},{}],7:[function(require,module,exports){
-'use strict';
+var fromRoots = require('./from-roots.js');
 
 /**
  * Some seed value for the simple random number generator.
  * @ignore
  */
-
 var SEED = 123456789;
 
 /**
@@ -1250,8 +1008,8 @@ function predictiveRandom(seed) {
  * @returns {number[]} - The random array.
  */
 function randomArray(n, a, b, seed, odds) {
-  seed = seed || SEED;
-  odds = odds || 0;
+  seed = seed === undefined ? SEED : seed;
+  odds = odds === undefined ? 0 : odds;
 
   var vs = [];
   for (var i = 0; i < n; i++) {
@@ -1309,16 +1067,15 @@ function push(seed, values, x, odds) {
  * FloPoly.random.flatRoots(3,0,10); //=> { p: [1, -17.27247918024659, 97.33487287168995, -179.34094494147305], seed: 939629312 }
  */
 function flatRoots(d, a, b, seed, odds) {
-  a = a || 0;
-  b = b || 1;
-  seed = seed || SEED;
-  odds = odds || 0;
+  a = a === undefined ? 0 : a;
+  b = b === undefined ? 1 : b;
+  seed = seed === undefined ? SEED : seed;
+  odds = odds === undefined ? 0 : odds;
 
   var randArr = randomArray(d, a, b, seed, odds);
   seed = randArr.seed;
 
-  // TODO - fix line below by first requiring fromRoots and then remove FloPoly.
-  var p = FloPoly.fromRoots(randArr.vs);
+  var p = fromRoots(randArr.vs);
 
   return { p: p, seed: seed };
 }
@@ -1341,9 +1098,9 @@ function flatRoots(d, a, b, seed, odds) {
  * FloPoly.random.flatCoefficients(3,-5,5); //=> { p: [0.437291506677866, -0.5087333917617798, 2.3439210653305054], seed: 939629312 }
  */
 function flatCoefficients(d, a, b, seed) {
-  a = a || -1;
-  b = b || 1;
-  seed = seed || SEED;
+  a = a === undefined ? -1 : a;
+  b = b === undefined ? +1 : b;
+  seed = seed === undefined ? SEED : seed;
 
   var randArr = randomArray(d, a, b, seed);
   seed = randArr.seed;
@@ -1364,7 +1121,7 @@ function flatCoefficients(d, a, b, seed) {
  */
 function createArrFunction(f) {
   return function (n, d, a, b, seed, odds) {
-    seed = seed || SEED;
+    seed = seed === undefined ? SEED : seed;
     var res = [];
 
     for (var i = 0; i < n; i++) {
@@ -1381,7 +1138,7 @@ function createArrFunction(f) {
 
 module.exports = random;
 
-},{}],8:[function(require,module,exports){
+},{"./from-roots.js":5}],7:[function(require,module,exports){
 'use strict';
 
 var coreOperators = require('./core-operators.js');
@@ -1396,19 +1153,45 @@ var rootBounds = {
 	positiveRootUpperBound_LMQ: positiveRootUpperBound_LMQ,
 	positiveRootLowerBound_LMQ: positiveRootLowerBound_LMQ,
 	negativeRootUpperBound_LMQ: negativeRootUpperBound_LMQ,
-	negativeRootLowerBound_LMQ: negativeRootLowerBound_LMQ
+	negativeRootLowerBound_LMQ: negativeRootLowerBound_LMQ,
+	rootMagnitudeUpperBound_rouche: rootMagnitudeUpperBound_rouche
 };
 
 /**
+ * Returns the maximum magnitude value within the supplied array of 
+ * numbers.
+ * @ignore 
+ */
+function maxAbs(ns) {
+	return Math.max.apply(null, ns.map(function (n) {
+		return Math.abs(n);
+	}));
+}
+
+/**
  * Finds an upper bound on the magnitude (absolute value) of the roots
- * of the given polynomial using the near-optimal Fujiwara bound.
+ * (including complex roots) of the given polynomial using Rouche's 
+ * Theorem with k = n. This function is fast but the bound is not tight.
+ * 
+ * @param p {number[]} p - The polynomial.
+ * @returns {number} The bound.
+ */
+function rootMagnitudeUpperBound_rouche(p) {
+	var d = p.length - 1;
+	var R = 1 + 1 / p[0] * maxAbs(p.slice(1));
+	return R;
+}
+
+/**
+ * Finds an upper bound on the magnitude (absolute value) of the roots
+ * of the given polynomial using the near-optimal Fujiwara bound. Note
+ * that the bound includes complex roots. The bound is tight but slow 
+ * due to usage of Math.pow().
  * 
  * @see https://en.wikipedia.org/wiki/Properties_of_polynomial_roots#cite_note-Fujiwara1916-4
  * 
  * @param {number[]} p - The polynomial.
- * @returns {number} The bounds.
- * @note Not yet adjusted for floating-point error. Tight bounds but
- * slow due to usage of Math.pow.
+ * @returns {number} The bound.
  * @example
  * FloPoly.rootMagnitudeUpperBound_fujiwara([2,-3,6,5,-130]); //=> 6.753296750770361
  * FloPoly.allRoots([2,-3,6,5,-130]); //=> [-2.397918624065303, 2.8793785310848383]
@@ -1429,9 +1212,10 @@ function rootMagnitudeUpperBound_fujiwara(p) {
 	return 2 * Math.max.apply(undefined, bs);
 }
 
+var POWERS = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072, 262144, 524288, 1048576, 2097152];
 /**
  * <p> 
- * Returns an upper bound for the positive roots of the given 
+ * Returns an upper bound for the positive real roots of the given 
  * polynomial.
  * </p>
  * <p>
@@ -1474,11 +1258,17 @@ function positiveRootUpperBound_LMQ(p) {
 				continue;
 			}
 
-			// TODO - Both these pows can easily be replaced with a 
-			// lookup that may speed things up a lot since (for low 
-			// order polys) it will most of the time be a square, 
-			// cube... root or multiplication by 1,2,4,8,...
-			var temp = Math.pow(-p[m] / (p[k] / Math.pow(2, timesUsed[k])), 1 / (m - k));
+			// Table lookup is about 70% faster but both are
+			// extemely fast anyway. 
+			// Result is at https://www.measurethat.net/Benchmarks/ShowResult/6610
+			var pow = timesUsed[k];
+			var powres = void 0;
+			if (pow > 20) {
+				powres = Math.pow(2, pow);
+			} else {
+				powres = POWERS[pow];
+			}
+			var temp = Math.pow(-p[m] / (p[k] / powres), 1 / (m - k));
 
 			timesUsed[k]++;
 
@@ -1542,7 +1332,7 @@ function negativeRootLowerBound_LMQ(p) {
 
 module.exports = rootBounds;
 
-},{"./core-operators.js":3}],9:[function(require,module,exports){
+},{"./core-operators.js":2}],8:[function(require,module,exports){
 'use strict';
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
@@ -1559,7 +1349,8 @@ var rootOperators = {
   quadraticRoots: quadraticRoots,
   //cubicRoots,
   numRootsWithin: numRootsWithin,
-  brent: brent
+  brent: brent,
+  bisection: bisection
 };
 
 var sturmChain = coreOperators.sturmChain,
@@ -1567,9 +1358,16 @@ var sturmChain = coreOperators.sturmChain,
     signChanges = coreOperators.signChanges;
 
 /**
+ * <p>
  * Floating-point-stably calculates and returns the ordered quadratic 
  * roots of the given quadratic polynomial.
- * 
+ * </p>
+ * <p>
+ * This function is included only because it might be slightly faster
+ * than calling allRoots due to allRoots first checking if the 
+ * polynomial is quadratic and checking if the roots are within the
+ * given range.
+ * </p>
  * @param {number[]} p - The 2nd order polynomial
  * @returns {number[]} The found quadratic roots.
  * @example 
@@ -1736,6 +1534,78 @@ function numRootsWithin(p, a, b) {
 /**
  * <p>
  * Searches an interval (a,b) for a root (i.e. zero) of the 
+ * given function with respect to its first argument using the Bisection 
+ * Method root-finding algorithm. Any function can be supplied (it does
+ * not even have to be continuous) as long as the root is bracketed. 
+ * </p>
+ * <p>
+ * Note: This function has no advantages above the Brent method except
+ * for its simpler implementation and can be much slower. Use brent 
+ * instead.
+ * </p>
+ * @param {function} f - The function for which the root is sought.
+ * @param {number} a - The lower limit of the search interval.
+ * @param {number} b - The upper limit of the search interval.
+ * @returns {number} An estimate of the root to within δ (typically 
+ * about 1e-15 multiplied by the root magnitued).
+ * @example
+ * let p = FloPoly.fromRoots([-10,2,3,4]);  //=> [1, 1, -64, 236, -240]
+ * let f = FloPoly.evaluate(p);
+ * FloPoly.bisection(f,2.2,3.8); //=> 3
+ * FloPoly.bisection(f,2.2,3.1); //=> 3.0000000000000044
+ */
+function bisection(f, a, b) {
+  if (a === b) {
+    // Presumably the root is already found.
+    return a;
+  } else if (b < a) {
+    // Swap a and b 
+    var _ref = [b, a];
+    a = _ref[0];
+    b = _ref[1];
+  }
+
+  var fa = f(a);
+  var fb = f(b);
+
+  if (fa === 0) {
+    return a;
+  }
+  if (fb === 0) {
+    return b;
+  }
+
+  if (fa * fb > 0) {
+    // Root is not bracketed - this is a precondition.
+    throw new Error('Root not bracketed');
+  }
+
+  while (true) {
+    var c = a + (b - a) / 2; // Take midpoint
+    var fc = f(c);
+
+    if (fc === 0) {
+      return c;
+    }
+
+    if (fa * fc < 0) {
+      b = c;
+    } else {
+      a = c;
+    }
+
+    // We don't add Number.EPSILON in the line below because we want
+    // accuracy to improve even below 1.
+    var δ = 2 * Number.EPSILON * Math.abs(b) /*+ Number.EPSILON*/;
+    if (Math.abs(a - b) <= δ) {
+      return b;
+    }
+  }
+}
+
+/**
+ * <p>
+ * Searches an interval (a,b) for a root (i.e. zero) of the 
  * given function with respect to its first argument using the Brent's 
  * Method root-finding algorithm. Any function can be supplied (it does
  * not even have to be continuous) as long as the root is bracketed. 
@@ -1777,7 +1647,7 @@ function numRootsWithin(p, a, b) {
  * @param {number} a - The lower limit of the search interval.
  * @param {number} b - The upper limit of the search interval.
  * @returns {number} An estimate of the root to within δ (typically 
- * about 1e-15).
+ * about 1e-15 multiplied by the root magnitued).
  * @example
  * let p = FloPoly.fromRoots([-10,2,3,4]);  //=> [1, 1, -64, 236, -240]
  * let f = FloPoly.evaluate(p);
@@ -1785,8 +1655,6 @@ function numRootsWithin(p, a, b) {
  * FloPoly.brent(f,2.2,3.1); //=> 3.000000000000001
  */
 function brent(f, a, b) {
-  var EPS = Number.EPSILON;
-
   if (a === b) {
     // Presumably the root is already found.
     return a;
@@ -1798,7 +1666,7 @@ function brent(f, a, b) {
 
   if (fa * fb > 0) {
     // Root is not bracketed - this is a precondition.
-    throw 'Root not bracketed';
+    throw new Error('Root not bracketed');
   }
 
   var c = void 0; // Value of previous guess - set to a initially 
@@ -1817,7 +1685,7 @@ function brent(f, a, b) {
   var mflag = true;
   var d = void 0; // Value of guess before previous guess
   while (true) {
-    var δ = 2 * EPS * Math.abs(b) + EPS;
+    var δ = 2 * Number.EPSILON * Math.abs(b) + Number.EPSILON;
 
     var fc = f(c);
 
@@ -1895,5 +1763,5 @@ function brent(f, a, b) {
 
 module.exports = rootOperators;
 
-},{"./core-operators.js":3}]},{},[5])(5)
+},{"./core-operators.js":2}]},{},[4])(4)
 });

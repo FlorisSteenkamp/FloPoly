@@ -6,21 +6,18 @@ var source      = require('vinyl-source-stream');
 var buffer      = require('vinyl-buffer');
 var uglify      = require('gulp-uglify');
 var sourcemaps  = require('gulp-sourcemaps');
-var concat      = require('gulp-concat');
 var es2015      = require('babel-preset-es2015');
-//var es2016     = require('babel-preset-es2016');
 var rename      = require('gulp-rename');
 
 
 gulp.task('default', browserifyDistTask);
 
 gulp.task('dist',    browserifyDistTask);
-gulp.task('dev',     browserifyDevTask );
+//gulp.task('dev',     browserifyDevTask );
 
 
 /**
  * Build for distribution - slower 
- * @returns
  */
 function browserifyDistTask() {
 	
@@ -46,8 +43,8 @@ function browserifyDistTask() {
 
 /**
  * Build for development - faster 
- * @returns
  */
+/*
  function browserifyDevTask() {
 	
 	function showOnError(err) {	if (err) { console.error(err.stack); } } 
@@ -61,3 +58,4 @@ function browserifyDistTask() {
     	.pipe(source('flo-poly.js'))
     	.pipe(gulp.dest('../dist/'));
 }
+*/

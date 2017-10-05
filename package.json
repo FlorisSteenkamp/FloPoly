@@ -2,12 +2,10 @@
   "name": "flo-poly",
   "version": "0.1.6",
   "description": "A practical, root-focused JavaScript polynomial utility library.",
+  "private": false,
   "main": "dist/flo-poly.js",
   "directories": {
     "test": "test"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -24,5 +22,42 @@
   "bugs": {
     "url": "https://github.com/FlorisSteenkamp/FloPoly/issues"
   },
-  "homepage": "http://mat-demo.appspot.com/#!/test-polynomials"
+  "homepage": "http://mat-demo.appspot.com/#!/test-polynomials",
+  "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.22.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-es2016": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.0",
+    "chai": "^4.1.2",
+    "coveralls": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^2.0.0",
+    "istanbul": "^0.4.5",
+    "jsdoc": "3.4.x",
+    "mocha": "^3.5.3",
+    "nyc": "^11.2.1",
+    "transform": "^1.1.2",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "vinyl-transform": "^1.0.0"
+  },
+  "scripts": {
+    "build": "cd build && gulp",
+    "test-only": "mocha --compilers js:babel-core/register ./test/js",
+    "test": "npm run build && npm run test-only",
+    "coverage": "./node_modules/.bin/nyc --reporter=html --reporter=text mocha --compilers js:babel-core/register ./test/js",
+    "jsdoc": "cd docs && jsdoc --template jsdoc-json --destination doc.json -c conf.json",
+    "jsdoc-copy": "call copy .\\docs\\doc.json ..\\mat_demo\\war\\html\\polynomial\\jsdoc.json",
+    "jsdoc-all": "npm run jsdoc && npm run jsdoc-copy",
+    "build-copy-main": "call copy .\\dist\\flo-poly.js  ..\\mat_demo\\war\\bower_components\\flo-poly\\dist",
+    "build-copy-min": "call copy .\\dist\\flo-poly.min.js ..\\mat_demo\\war\\bower_components\\flo-poly\\dist",
+    "build-copy-map": "call copy .\\dist\\flo-poly.min.js.map ..\\mat_demo\\war\\bower_components\\flo-poly\\dist",
+    "build-copy": "npm run build-copy-main && npm run build-copy-min && npm run build-copy-map",
+    "build-all": "npm run build && npm run build-copy"
+  }
 }

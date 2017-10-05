@@ -5,7 +5,8 @@
   "keywords": [
   	"polynomial",
     "roots",
-    "root"
+    "root",
+    "finding"
   ],
   "authors": [
     "Floris Steenkamp"
@@ -15,10 +16,12 @@
   "ignore": [
     "**/.*",
     "build",
+    "coverage",
     "docs",
     "js",
-    "referenced papers",
     "node_modules",
+    "playground",
+	"referenced papers",    
     "bower_components",
     "test",
     "npm-debug.log",

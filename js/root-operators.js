@@ -13,7 +13,7 @@ let rootOperators = {
 		//cubicRoots,
 		numRootsWithin,
 		brent,
-		//coreOperators,
+		bisection,
 };
 
 
@@ -21,9 +21,16 @@ let { sturmChain, evaluate, signChanges } = coreOperators;
 
 
 /**
+ * <p>
  * Floating-point-stably calculates and returns the ordered quadratic 
  * roots of the given quadratic polynomial.
- * 
+ * </p>
+ * <p>
+ * This function is included only because it might be slightly faster
+ * than calling allRoots due to allRoots first checking if the 
+ * polynomial is quadratic and checking if the roots are within the
+ * given range.
+ * </p>
  * @param {number[]} p - The 2nd order polynomial
  * @returns {number[]} The found quadratic roots.
  * @example 
@@ -185,6 +192,70 @@ function numRootsWithin(p, a, b) {
 /**
  * <p>
  * Searches an interval (a,b) for a root (i.e. zero) of the 
+ * given function with respect to its first argument using the Bisection 
+ * Method root-finding algorithm. Any function can be supplied (it does
+ * not even have to be continuous) as long as the root is bracketed. 
+ * </p>
+ * <p>
+ * Note: This function has no advantages above the Brent method except
+ * for its simpler implementation and can be much slower. Use brent 
+ * instead.
+ * </p>
+ * @param {function} f - The function for which the root is sought.
+ * @param {number} a - The lower limit of the search interval.
+ * @param {number} b - The upper limit of the search interval.
+ * @returns {number} An estimate of the root to within δ (typically 
+ * about 1e-15 multiplied by the root magnitued).
+ * @example
+ * let p = FloPoly.fromRoots([-10,2,3,4]);  //=> [1, 1, -64, 236, -240]
+ * let f = FloPoly.evaluate(p);
+ * FloPoly.bisection(f,2.2,3.8); //=> 3
+ * FloPoly.bisection(f,2.2,3.1); //=> 3.0000000000000044
+ */
+function bisection(f,a,b) {
+	if (a === b) {
+		// Presumably the root is already found.
+		return a; 
+	} else if (b < a) {
+		[a,b] = [b,a]; // Swap a and b 
+	} 
+	
+	let fa = f(a);
+	let fb = f(b);
+
+	if (fa === 0) { return a; } 
+    if (fb === 0) { return b; }
+    
+	if (fa*fb > 0) {
+    	// Root is not bracketed - this is a precondition.
+		throw new Error('Root not bracketed'); 
+    }
+	
+	while (true) {
+		let c = a + (b-a)/2; // Take midpoint
+		let fc = f(c);
+		
+		if (fc === 0) { return c; }
+		
+		if (fa*fc < 0) {
+			b = c;
+		} else {
+			a = c;
+		}
+		
+		// We don't add Number.EPSILON in the line below because we want
+		// accuracy to improve even below 1.
+	    let δ = 2*Number.EPSILON*Math.abs(b) /*+ Number.EPSILON*/;
+		if (Math.abs(a - b) <= δ) {
+	    	return b; 
+	    }
+	}
+}
+
+
+/**
+ * <p>
+ * Searches an interval (a,b) for a root (i.e. zero) of the 
  * given function with respect to its first argument using the Brent's 
  * Method root-finding algorithm. Any function can be supplied (it does
  * not even have to be continuous) as long as the root is bracketed. 
@@ -226,7 +297,7 @@ function numRootsWithin(p, a, b) {
  * @param {number} a - The lower limit of the search interval.
  * @param {number} b - The upper limit of the search interval.
  * @returns {number} An estimate of the root to within δ (typically 
- * about 1e-15).
+ * about 1e-15 multiplied by the root magnitued).
  * @example
  * let p = FloPoly.fromRoots([-10,2,3,4]);  //=> [1, 1, -64, 236, -240]
  * let f = FloPoly.evaluate(p);
@@ -234,8 +305,6 @@ function numRootsWithin(p, a, b) {
  * FloPoly.brent(f,2.2,3.1); //=> 3.000000000000001
  */
 function brent(f, a, b) {
-	const EPS = Number.EPSILON; 
-	
 	if (a === b) {
 		// Presumably the root is already found.
 		return a; 
@@ -247,7 +316,7 @@ function brent(f, a, b) {
     
 	if (fa*fb > 0) {
     	// Root is not bracketed - this is a precondition.
-    	throw 'Root not bracketed'; 
+    	throw new Error('Root not bracketed'); 
     } 
     
     let c; // Value of previous guess - set to a initially 
@@ -266,7 +335,7 @@ function brent(f, a, b) {
     let mflag = true;
     let d; // Value of guess before previous guess
     while (true) {
-    	let δ = 2*EPS*Math.abs(b) + EPS;
+    	let δ = 2*Number.EPSILON*Math.abs(b) + Number.EPSILON;
     	
     	let fc = f(c);
     	

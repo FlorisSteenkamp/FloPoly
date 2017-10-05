@@ -1,5 +1,8 @@
 'use strict'
 
+
+let fromRoots = require('./from-roots.js');
+
 /**
  * Some seed value for the simple random number generator.
  * @ignore
@@ -101,8 +104,8 @@ function predictiveRandom(seed) {
  * @returns {number[]} - The random array.
  */
 function randomArray(n, a, b, seed, odds) {
-	seed = seed || SEED;
-	odds = odds || 0;
+	seed = (seed === undefined) ? SEED : seed;
+	odds = (odds === undefined) ? 0    : odds;
 	
 	let vs = [];
 	for (let i=0; i<n; i++) {
@@ -112,7 +115,7 @@ function randomArray(n, a, b, seed, odds) {
 	}
 	vs = vs.slice(0,n);
 
-	return { vs, seed, };
+	return { vs, seed };
 }
 
 
@@ -162,18 +165,17 @@ function push(seed, values, x, odds) {
  * FloPoly.random.flatRoots(3,0,10); //=> { p: [1, -17.27247918024659, 97.33487287168995, -179.34094494147305], seed: 939629312 }
  */
 function flatRoots(d, a, b, seed, odds) {
-	a = a || 0;
-	b = b || 1;
-	seed = seed || SEED;
-	odds = odds || 0;
+	a = (a === undefined) ? 0 : a;
+	b = (b === undefined) ? 1 : b;
+	seed = (seed === undefined) ? SEED : seed;
+	odds = (odds === undefined) ? 0    : odds;
 	
 	let randArr = randomArray(d, a, b, seed, odds);
 	seed = randArr.seed;
-	
-	// TODO - fix line below by first requiring fromRoots and then remove FloPoly.
-	let p = FloPoly.fromRoots(randArr.vs);
 
-	return { p, seed, };
+	let p = fromRoots(randArr.vs);
+
+	return { p, seed };
 }
 
 
@@ -195,16 +197,16 @@ function flatRoots(d, a, b, seed, odds) {
  * FloPoly.random.flatCoefficients(3,-5,5); //=> { p: [0.437291506677866, -0.5087333917617798, 2.3439210653305054], seed: 939629312 }
  */
 function flatCoefficients(d, a, b, seed) {
-	a = a || -1;
-	b = b || 1;
-	seed = seed || SEED;
+	a = (a === undefined) ? -1 : a;
+	b = (b === undefined) ? +1 : b;
+	seed = (seed === undefined) ? SEED : seed;
 	
 	let randArr = randomArray(d, a, b, seed);
 	seed = randArr.seed;
 	
 	let p = randArr.vs;
 	
-	return { p, seed, };
+	return { p, seed };
 }
 
 
@@ -219,7 +221,7 @@ function flatCoefficients(d, a, b, seed) {
  */
 function createArrFunction(f) {
 	return function(n, d, a, b, seed, odds) {
-		seed = seed || SEED;
+		seed = (seed === undefined) ? SEED : seed;
 		let res = [];
 		
 		for (let i=0; i<n; i++) {
