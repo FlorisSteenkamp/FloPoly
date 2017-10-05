@@ -210,20 +210,19 @@ var coreOperators = {
 	deflate: deflate,
 	maxCoefficient: maxCoefficient,
 	toCasStr: toCasStr
-};
 
-/**
- * Returns true if two polynomials are exactly equal by comparing 
- * coefficients.
- * 
- * @param {number[]} p1 - A polynomial
- * @param {number[]} p2 - Another polynomial 
- * @returns {boolean} True if exactly equal, false otherwise.
- * @example
- * FloPoly.equal([1,2,3,4], [1,2,3,4]);   //=> true
- * FloPoly.equal([1,2,3,4], [1,2,3,4,5]); //=> false
- */
-function equal(p1, p2) {
+	/**
+  * Returns true if two polynomials are exactly equal by comparing 
+  * coefficients.
+  * 
+  * @param {number[]} p1 - A polynomial
+  * @param {number[]} p2 - Another polynomial 
+  * @returns {boolean} True if exactly equal, false otherwise.
+  * @example
+  * FloPoly.equal([1,2,3,4], [1,2,3,4]);   //=> true
+  * FloPoly.equal([1,2,3,4], [1,2,3,4,5]); //=> false
+  */
+};function equal(p1, p2) {
 	if (p1.length !== p2.length) {
 		return false;
 	}
@@ -860,6 +859,7 @@ var multiply = coreOperators.multiply;
 */
 var FloPoly = Object.assign({}, coreOperators, rootOperators, rootBounds, { random: random }, { fromRoots: fromRoots }, {
 		allRoots: allRootsRecursive
+		//allRootsVAS,
 }, errorAnalysis);
 
 module.exports = exports = FloPoly;
@@ -974,17 +974,16 @@ var random = {
   flatRootsArr: flatRootsArr,
   flatCoefficients: flatCoefficients,
   flatCoefficientsArr: flatCoefficientsArr
-};
 
-/**
- * https://stackoverflow.com/questions/3062746/special-simple-random-number-generator
- * 
- * @ignore
- * @param {number} seed
- * @returns {number} A quasi-random number to be used as the next input 
- * to this function.
- */
-function predictiveRandom(seed) {
+  /**
+   * https://stackoverflow.com/questions/3062746/special-simple-random-number-generator
+   * 
+   * @ignore
+   * @param {number} seed
+   * @returns {number} A quasi-random number to be used as the next input 
+   * to this function.
+   */
+};function predictiveRandom(seed) {
   var a = 134775813;
 
   return (a * seed + 1) % RANGE;
@@ -1155,14 +1154,13 @@ var rootBounds = {
 	negativeRootUpperBound_LMQ: negativeRootUpperBound_LMQ,
 	negativeRootLowerBound_LMQ: negativeRootLowerBound_LMQ,
 	rootMagnitudeUpperBound_rouche: rootMagnitudeUpperBound_rouche
-};
 
-/**
- * Returns the maximum magnitude value within the supplied array of 
- * numbers.
- * @ignore 
- */
-function maxAbs(ns) {
+	/**
+  * Returns the maximum magnitude value within the supplied array of 
+  * numbers.
+  * @ignore 
+  */
+};function maxAbs(ns) {
 	return Math.max.apply(null, ns.map(function (n) {
 		return Math.abs(n);
 	}));

@@ -6,7 +6,7 @@ var source      = require('vinyl-source-stream');
 var buffer      = require('vinyl-buffer');
 var uglify      = require('gulp-uglify');
 var sourcemaps  = require('gulp-sourcemaps');
-var es2015      = require('babel-preset-es2015');
+var env         = require('babel-preset-env');
 var rename      = require('gulp-rename');
 
 
@@ -25,10 +25,10 @@ function browserifyDistTask() {
 	
     return browserify({
     		entries: '../js/flo-poly.js',
-    		plugins: ["transform-es2015-arrow-functions"],
+    		//plugins: ["transform-es2015-arrow-functions"],
     		standalone: 'FloPoly',
     	})
-		.transform("babelify", { presets: [es2015] })
+		.transform("babelify", { presets: [env] })
     	.bundle(showOnError)
     	.pipe(source('flo-poly.js'))
     	.pipe(gulp.dest('../dist/'))

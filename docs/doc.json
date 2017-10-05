@@ -5,7 +5,7 @@
       "meta": {
         "range": [
           1445,
-          3724
+          4019
         ],
         "filename": "all-roots-recursive.js",
         "lineno": 44,
@@ -94,14 +94,14 @@
       "comment": "/**\r\n * Returns a function that returns true if x is in the range [a,b].\r\n *  \r\n * @ignore\r\n * @param {number} a\r\n * @param {number} b\r\n * @returns {function}\r\n */",
       "meta": {
         "range": [
-          3895,
-          3978
+          4190,
+          4273
         ],
         "filename": "all-roots-recursive.js",
-        "lineno": 126,
+        "lineno": 137,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100000257",
+          "id": "astnode100000267",
           "name": "inRange",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -146,21 +146,21 @@
       "longname": "inRange",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000031",
+      "___id": "T000002R000033",
       "___s": true
     },
     {
       "comment": "/**\r\n * Finds all roots of the given polynomial within the given intervals.\r\n *  \r\n * @ignore\r\n * @param {number[]} p\r\n * @param {number[]} intervals\r\n * @returns {number[]} The found roots.\r\n */",
       "meta": {
         "range": [
-          4181,
-          4866
+          4476,
+          5161
         ],
         "filename": "all-roots-recursive.js",
-        "lineno": 141,
+        "lineno": 152,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100000274",
+          "id": "astnode100000284",
           "name": "rootsWithin",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -215,7 +215,7 @@
       "longname": "rootsWithin",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000032",
+      "___id": "T000002R000034",
       "___s": true
     },
     {
@@ -229,7 +229,7 @@
         "lineno": 29,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100000472",
+          "id": "astnode100000482",
           "name": "allRootsVAS",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -271,7 +271,7 @@
       "longname": "allRootsVAS",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000062",
+      "___id": "T000002R000064",
       "___s": true
     },
     {
@@ -285,7 +285,7 @@
         "lineno": 64,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100000535",
+          "id": "astnode100000545",
           "name": "removeZeroRoots",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -315,7 +315,7 @@
       "kind": "function",
       "scope": "global",
       "params": [],
-      "___id": "T000002R000067",
+      "___id": "T000002R000069",
       "___s": true
     },
     {
@@ -329,7 +329,7 @@
         "lineno": 87,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100000573",
+          "id": "astnode100000583",
           "name": "vasRootIntervals",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -351,7 +351,7 @@
       "kind": "function",
       "scope": "global",
       "params": [],
-      "___id": "T000002R000071",
+      "___id": "T000002R000073",
       "___s": true
     },
     {
@@ -365,7 +365,7 @@
         "lineno": 120,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100000600",
+          "id": "astnode100000610",
           "name": "vasRootIntervalsHelper",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -399,21 +399,85 @@
       "kind": "function",
       "scope": "global",
       "params": [],
-      "___id": "T000002R000074",
+      "___id": "T000002R000076",
+      "___s": true
+    },
+    {
+      "comment": "/**\r\n * Returns true if two polynomials are exactly equal by comparing \r\n * coefficients.\r\n * \r\n * @param {number[]} p1 - A polynomial\r\n * @param {number[]} p2 - Another polynomial \r\n * @returns {boolean} True if exactly equal, false otherwise.\r\n * @example\r\n * FloPoly.equal([1,2,3,4], [1,2,3,4]);   //=> true\r\n * FloPoly.equal([1,2,3,4], [1,2,3,4,5]); //=> false\r\n */",
+      "meta": {
+        "range": [
+          697,
+          869
+        ],
+        "filename": "core-operators.js",
+        "lineno": 38,
+        "path": "C:\\Projects\\Polynomial\\js",
+        "code": {
+          "id": "astnode100000865",
+          "name": "equal",
+          "type": "FunctionDeclaration",
+          "paramnames": [
+            "p1",
+            "p2"
+          ]
+        },
+        "vars": {
+          "i": "equal~i"
+        }
+      },
+      "description": "Returns true if two polynomials are exactly equal by comparing \rcoefficients.",
+      "params": [
+        {
+          "type": {
+            "names": [
+              "Array.<number>"
+            ]
+          },
+          "description": "A polynomial",
+          "name": "p1"
+        },
+        {
+          "type": {
+            "names": [
+              "Array.<number>"
+            ]
+          },
+          "description": "Another polynomial",
+          "name": "p2"
+        }
+      ],
+      "returns": [
+        {
+          "type": {
+            "names": [
+              "boolean"
+            ]
+          },
+          "description": "True if exactly equal, false otherwise."
+        }
+      ],
+      "examples": [
+        "FloPoly.equal([1,2,3,4], [1,2,3,4]);   //=> true\rFloPoly.equal([1,2,3,4], [1,2,3,4,5]); //=> false"
+      ],
+      "name": "equal",
+      "longname": "equal",
+      "kind": "function",
+      "scope": "global",
+      "___id": "T000002R000116",
       "___s": true
     },
     {
       "comment": "/**\r\n * Adds two polynomials.\r\n * \r\n * @param {number[]} p1 - The first polynomial\r\n * @param {number[]} p2 - The second polynomial\r\n * @returns {number[]} p1 + p2.\r\n * @example\r\n * FloPoly.add([1,2,3],[3,4]); //=> [1,5,7]\r\n */",
       "meta": {
         "range": [
-          545,
-          1054
+          1104,
+          1613
         ],
         "filename": "core-operators.js",
-        "lineno": 35,
+        "lineno": 56,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100000853",
+          "id": "astnode100000907",
           "name": "add",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -472,21 +536,21 @@
       "longname": "add",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000113",
+      "___id": "T000002R000118",
       "___s": true
     },
     {
       "comment": "/** \r\n * Subtracts the second polynomial from first.\r\n * \r\n * @param {number[]} p1 - The polynomial from which will be subtracted\r\n * @param {number[]} p2 - The polynomial that will be subtracted\r\n * @returns {number[]} p1 - p2\r\n * @example\r\n * FloPoly.subtract([2,3],[4,4]); //=> [-2, -1]\r\n */",
       "meta": {
         "range": [
-          1356,
-          1870
+          1915,
+          2429
         ],
         "filename": "core-operators.js",
-        "lineno": 73,
+        "lineno": 94,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100000966",
+          "id": "astnode100001020",
           "name": "subtract",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -545,21 +609,21 @@
       "longname": "subtract",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000126",
+      "___id": "T000002R000131",
       "___s": true
     },
     {
       "comment": "/**\r\n * Negate the given polynomial (p -> -p).  \r\n * \r\n * @param {number[]} p - The polynomial\r\n * @returns {number[]} -p\r\n * @example\r\n * FloPoly.negate([0.1, -0.2]); //=> [-0.1, 0.2]\r\n */",
       "meta": {
         "range": [
-          2067,
-          2123
+          2626,
+          2682
         ],
         "filename": "core-operators.js",
-        "lineno": 110,
+        "lineno": 131,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100001079",
+          "id": "astnode100001133",
           "name": "negate",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -596,21 +660,21 @@
       "longname": "negate",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000139",
+      "___id": "T000002R000144",
       "___s": true
     },
     {
       "comment": "/**  \r\n * Differentiates the given polynomial.\r\n * \r\n * @param {number[]} p - The polynomial\r\n * @returns {number[]} D(p)\r\n * @example\r\n * FloPoly.differentiate([5, 4, 3, 2, 1]); //=> [20, 12, 6, 2]\r\n */",
       "meta": {
         "range": [
-          2334,
-          2495
+          2893,
+          3054
         ],
         "filename": "core-operators.js",
-        "lineno": 123,
+        "lineno": 144,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100001089",
+          "id": "astnode100001143",
           "name": "differentiate",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -652,21 +716,21 @@
       "longname": "differentiate",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000140",
+      "___id": "T000002R000145",
       "___s": true
     },
     {
-      "comment": "/** \r\n * Multiplies the two given polynomials and returns the result. \r\n * \r\n * @param {number[]} p1 - The one polynomial.\r\n * @param {number[]} p2 - The other polynomial.\r\n * @returns {number[]} p1 * p2\r\n * \r\n * @see https://en.wikipedia.org/wiki/Polynomial_arithmetic \r\n * @see https://en.wikipedia.org/wiki/Discrete_Fourier_transform#Polynomial_multiplication\r\n * @see http://web.cs.iastate.edu/~cs577/handouts/polymultiply.pdf\r\n * \r\n * @example\r\n * FloPoly.multiply([1,2,3], [2,5,3,5]); //=> [2, 9, 19, 26, 19, 15]\r\n */",
+      "comment": "/**\r\n * <p> \r\n * Multiplies the two given polynomials and returns the result. \r\n * </p>\r\n * <p>\r\n * See <a href=\"https://en.wikipedia.org/wiki/Polynomial_arithmetic\">polynomial arithmetic</a>\r\n * </p>\r\n * <p>\r\n * See <a href=\"https://en.wikipedia.org/wiki/Discrete_Fourier_transform#Polynomial_multiplication\">polynomial multiplication</a>\r\n * </p>\r\n * <p>\r\n * See <a herf=\"http://web.cs.iastate.edu/~cs577/handouts/polymultiply.pdf\">polynomial multiplication (pdf)</a>\r\n * </p>\r\n * @param {number[]} p1 - The one polynomial.\r\n * @param {number[]} p2 - The other polynomial.\r\n * @returns {number[]} p1 * p2\r\n * @example\r\n * FloPoly.multiply([1,2,3], [2,5,3,5]); //=> [2, 9, 19, 26, 19, 15]\r\n */",
       "meta": {
         "range": [
-          3211,
-          3497
+          3941,
+          4227
         ],
         "filename": "core-operators.js",
-        "lineno": 153,
+        "lineno": 179,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100001130",
+          "id": "astnode100001184",
           "name": "multiply",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -684,7 +748,7 @@
           "result[undefined]": "multiply~result.undefined]"
         }
       },
-      "description": "Multiplies the two given polynomials and returns the result.",
+      "description": "<p> \rMultiplies the two given polynomials and returns the result. \r</p>\r<p>\rSee <a href=\"https://en.wikipedia.org/wiki/Polynomial_arithmetic\">polynomial arithmetic</a>\r</p>\r<p>\rSee <a href=\"https://en.wikipedia.org/wiki/Discrete_Fourier_transform#Polynomial_multiplication\">polynomial multiplication</a>\r</p>\r<p>\rSee <a herf=\"http://web.cs.iastate.edu/~cs577/handouts/polymultiply.pdf\">polynomial multiplication (pdf)</a>\r</p>",
       "params": [
         {
           "type": {
@@ -715,11 +779,6 @@
           "description": "p1 * p2"
         }
       ],
-      "see": [
-        "https://en.wikipedia.org/wiki/Polynomial_arithmetic",
-        "https://en.wikipedia.org/wiki/Discrete_Fourier_transform#Polynomial_multiplication",
-        "http://web.cs.iastate.edu/~cs577/handouts/polymultiply.pdf"
-      ],
       "examples": [
         "FloPoly.multiply([1,2,3], [2,5,3,5]); //=> [2, 9, 19, 26, 19, 15]"
       ],
@@ -727,21 +786,21 @@
       "longname": "multiply",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000144",
+      "___id": "T000002R000149",
       "___s": true
     },
     {
       "comment": "/** \r\n * Multiplies 2 polynomials by a constant.\r\n * \r\n * @param {number} c - The constant\r\n * @param {number[]} p - The polynomial\r\n * @returns {number[]} c*p\r\n * @example \r\n * FloPoly.multiplyByConst(0.25, [3,2,1]); //=> [0.75, 0.5, 0.25]  \r\n */",
       "meta": {
         "range": [
-          3752,
-          3939
+          4482,
+          4738
         ],
         "filename": "core-operators.js",
-        "lineno": 178,
+        "lineno": 204,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100001219",
+          "id": "astnode100001273",
           "name": "multiplyByConst",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -793,21 +852,21 @@
       "longname": "multiplyByConst",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000152",
+      "___id": "T000002R000157",
       "___s": true
     },
     {
       "comment": "/** \r\n * Returns the degree of the polynomial.\r\n * \r\n * @param {number[]} p - The polynomial\r\n * @returns {number} \r\n * @example \r\n * FloPoly.degree([9,8,7,6,5,4,3,2,1]); //=> 9\r\n */",
       "meta": {
         "range": [
-          4129,
-          4173
+          4928,
+          4972
         ],
         "filename": "core-operators.js",
-        "lineno": 199,
+        "lineno": 226,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100001268",
+          "id": "astnode100001324",
           "name": "degree",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -843,21 +902,21 @@
       "longname": "degree",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000156",
+      "___id": "T000002R000161",
       "___s": true
     },
     {
       "comment": "/** \r\n * Evaluates a univariate polynomial using Horner's method. This \r\n * function is curried (see examples below).  \r\n * \r\n * @see https://en.wikipedia.org/wiki/Horner%27s_method\r\n * @param {number[]} p - The polynomial\r\n * @param {number} a - The value at which to evaluate the polynomial.\r\n * @returns {number|function} The result if both parameters are supplied\r\n * or a function with arity one if only the first parameter is supplied.\r\n * @example\r\n * let ev = FloPoly.evaluate([3,2,1]);\r\n * ev(1); // => 6\r\n * ev(2); // => 17\r\n * \t\t \r\n * FloPoly.evaluate([3,2,1], 1); // => 6\r\n * FloPoly.evaluate([3,2,1], 2); // => 17\r\n * \r\n * FloPoly.evaluate([3,2,1])(1); // => 6\r\n * FloPoly.evaluate([3,2,1])(2); // => 17\r\n */",
       "meta": {
         "range": [
-          4902,
-          5190
+          5701,
+          5989
         ],
         "filename": "core-operators.js",
-        "lineno": 224,
+        "lineno": 251,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100001278",
+          "id": "astnode100001334",
           "name": "evaluate",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -911,21 +970,21 @@
       "longname": "evaluate",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000157",
+      "___id": "T000002R000162",
       "___s": true
     },
     {
       "comment": "/** \r\n * Evaluates the given polynomial at 0 - it is much faster than at an \r\n * arbitrary point. \r\n *  \r\n * @param {number[]} p - The polynomial\r\n * @returns {number}\r\n * @example\r\n * FloPoly.evaluateAt0([3,2,99]); //=> 99\r\n */",
       "meta": {
         "range": [
-          5426,
-          5478
+          6225,
+          6277
         ],
         "filename": "core-operators.js",
-        "lineno": 249,
+        "lineno": 276,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100001327",
+          "id": "astnode100001383",
           "name": "evaluateAt0",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -961,21 +1020,21 @@
       "longname": "evaluateAt0",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000162",
+      "___id": "T000002R000167",
       "___s": true
     },
     {
       "comment": "/** \r\n * <p>\r\n * Returns the number of sign changes in the polynomial coefficents \r\n * when ordered in descending order; zeros are ignored.\r\n * </p>\r\n * <p>\r\n * Descartes' rule of signs states (quoted from Wikipedia):\r\n * \"if the terms of a polynomial are ordered by descending variable \r\n * exponent, then the number of positive roots of the polynomial is \r\n * either equal to the number of sign differences between consecutive \r\n * nonzero coefficients, or is less than it by an even number. Multiple \r\n * roots of the same value are counted separately.\"\r\n * </p>\r\n * @see https://en.wikipedia.org/wiki/Descartes%27_rule_of_signs\r\n * \r\n * @param {number[]} p - The polynomial\r\n * @returns {number} The number of sign changes.\r\n * @example\r\n * FloPoly.signChanges([1,2,-3,0,0,3,-1]); //=> 3\r\n */",
       "meta": {
         "range": [
-          6283,
-          6558
+          7082,
+          7357
         ],
         "filename": "core-operators.js",
-        "lineno": 274,
+        "lineno": 301,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100001340",
+          "id": "astnode100001396",
           "name": "signChanges",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -1022,21 +1081,21 @@
       "longname": "signChanges",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000163",
+      "___id": "T000002R000168",
       "___s": true
     },
     {
       "comment": "/**\r\n * Deflates the given polynomial by removing a factor (x - r), where\r\n * r is a root of the polynomial.\r\n * \r\n * @param {number[]} p - The polynomial\r\n * @param {number} root - A pre-calculated root of the polynomial.\r\n * @returns {number[]} The deflated polynomial.\r\n * @example\r\n * // The polynomial x^3 - 5x^2 + 8x - 4 has a root at 1 and a double root at 2 \r\n * FloPoly.deflate([1, -5, 8, -4], 2); //=> [1, -3, 2] \r\n * FloPoly.deflate([1, -3, 2], 2);     //=> [1,-1] \r\n * FloPoly.deflate([1, -1], 1);        //=> [1]\r\n */",
       "meta": {
         "range": [
-          7096,
-          7265
+          7895,
+          8055
         ],
         "filename": "core-operators.js",
-        "lineno": 305,
+        "lineno": 332,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100001407",
+          "id": "astnode100001463",
           "name": "deflate",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -1088,21 +1147,21 @@
       "longname": "deflate",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000170",
+      "___id": "T000002R000175",
       "___s": true
     },
     {
       "comment": "/**\r\n * Inverts the given polynomial by reversing the order of the \r\n * coefficients.\r\n * \r\n * @param {number[]} p - The polynomial\r\n * @returns {number} p(x) -> x^deg(p) * p(1/x)\r\n * @example\r\n * FloPoly.invert([1,2,3,4]); // => [4,3,2,1]\r\n * FloPoly.invert([3,2,-5]);  // => [-5,2,3]\r\n */",
       "meta": {
         "range": [
-          7563,
-          7616
+          8353,
+          8406
         ],
         "filename": "core-operators.js",
-        "lineno": 328,
+        "lineno": 355,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100001460",
+          "id": "astnode100001512",
           "name": "invert",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -1139,21 +1198,21 @@
       "longname": "invert",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000174",
+      "___id": "T000002R000179",
       "___s": true
     },
     {
-      "comment": "/** \r\n * Performs a change of variables of the form: p(x) <- p(ax + b).\r\n * @see http://stackoverflow.com/questions/141422/how-can-a-transform-a-polynomial-to-another-coordinate-system\r\n * \r\n * @param {number[]} p - The polynomial\r\n * @param {number} a\r\n * @param {number} b\r\n * @returns {number[]} The transformed polynomial.\r\n * @example\r\n * FloPoly.changeVariables([1,2,7], 3, 4); //=> [9, 30, 31]\r\n */",
+      "comment": "/**\r\n * <p> \r\n * Performs a change of variables of the form: p(x) <- p(ax + b).\r\n * </p>\r\n * <p>\r\n * See <a href=\"http://stackoverflow.com/questions/141422/how-can-a-transform-a-polynomial-to-another-coordinate-system\">this stackoverflow question</a>\r\n * </p>\r\n * @param {number[]} p - The polynomial\r\n * @param {number} a\r\n * @param {number} b\r\n * @returns {number[]} The transformed polynomial.\r\n * @example\r\n * FloPoly.changeVariables([1,2,7], 3, 4); //=> [9, 30, 31]\r\n */",
       "meta": {
         "range": [
-          8029,
-          8776
+          8889,
+          9636
         ],
         "filename": "core-operators.js",
-        "lineno": 344,
+        "lineno": 374,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100001472",
+          "id": "astnode100001524",
           "name": "changeVariables",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -1175,10 +1234,7 @@
           "acc": "changeVariables~acc"
         }
       },
-      "description": "Performs a change of variables of the form: p(x) <- p(ax + b).",
-      "see": [
-        "http://stackoverflow.com/questions/141422/how-can-a-transform-a-polynomial-to-another-coordinate-system"
-      ],
+      "description": "<p> \rPerforms a change of variables of the form: p(x) <- p(ax + b).\r</p>\r<p>\rSee <a href=\"http://stackoverflow.com/questions/141422/how-can-a-transform-a-polynomial-to-another-coordinate-system\">this stackoverflow question</a>\r</p>",
       "params": [
         {
           "type": {
@@ -1223,21 +1279,21 @@
       "longname": "changeVariables",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000175",
+      "___id": "T000002R000180",
       "___s": true
     },
     {
       "comment": "/**\r\n * Reflects the given polynomial about the Y-axis, i.e. perform the \r\n * change of variables: p(x) <- p(-x).\r\n * \r\n * @param {number[]} p - The polynomial to reflect\r\n * @returns {number[]} The reflected polynomial.\r\n * @example\r\n * FloPoly.reflectAboutYAxis([5,4,3,2,1]); //=> [5, -4, 3, -2, 1]\r\n */",
       "meta": {
         "range": [
-          9089,
-          9277
+          9949,
+          10137
         ],
         "filename": "core-operators.js",
-        "lineno": 390,
+        "lineno": 420,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100001657",
+          "id": "astnode100001709",
           "name": "reflectAboutYAxis",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -1280,21 +1336,21 @@
       "longname": "reflectAboutYAxis",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000190",
+      "___id": "T000002R000195",
       "___s": true
     },
     {
       "comment": "/** \r\n * Generates a sturm chain for the given polynomial.\r\n * \r\n * @see https://en.wikipedia.org/wiki/Sturm%27s_theorem\r\n * @param {number[]} p - The polynomial\r\n * @returns {number[][]} The sturm chain of polynomials\r\n * @example\r\n * FloPoly.sturmChain([-3,4,2,-2]); //=> [[-3, 4, 2, -2], [-9, 8, 2], [-2.5185185185185186, 1.7037037037037037], [-3.2932525951557086]]\r\n */",
       "meta": {
         "range": [
-          9658,
-          10872
+          10518,
+          11732
         ],
         "filename": "core-operators.js",
-        "lineno": 413,
+        "lineno": 443,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100001705",
+          "id": "astnode100001757",
           "name": "sturmChain",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -1340,21 +1396,21 @@
       "longname": "sturmChain",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000195",
+      "___id": "T000002R000200",
       "___s": true
     },
     {
       "comment": "/** \r\n\t * Returns the negative of the remainder when dividing the first \r\n\t * polynomial (the dividend) by the second (the divisor) provided \r\n\t * that deg(p1) - deg(p2) === 1.\r\n\t * \r\n\t * @ignore\r\n\t * @param {number[]} p1 - The first polynomial (dividend)\r\n\t * @param {number[]} p2 - The second polynomial (divisor)\r\n\t * @see https://en.wikipedia.org/wiki/Sturm%27s_theorem\r\n\t */",
       "meta": {
         "range": [
-          10070,
-          10345
+          10930,
+          11205
         ],
         "filename": "core-operators.js",
-        "lineno": 425,
+        "lineno": 455,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100001709",
+          "id": "astnode100001761",
           "name": "negRemainder",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -1401,32 +1457,32 @@
       "kind": "function",
       "memberof": "sturmChain",
       "scope": "inner",
-      "___id": "T000002R000196",
+      "___id": "T000002R000201",
       "___s": true
     },
     {
-      "comment": "/**\r\n * If the highest power coefficient is small in the sense that the \r\n * highest power term has a negligible contribution (compared to the\r\n * other terms) at x = 1 then clip() can be called to remove all such \r\n * highest terms. A contribution of less than Number.EPSILON of the \r\n * highest coefficient will be considered negligible by default.\r\n * \r\n * \r\n * @param {number[]} p - The polynomial to be clipped.\r\n * @param {number} δ_ - The optional contribution tolerence else \r\n *        Number.EPSILON will be used by default.   \r\n * @returns {number[]} The clipped polynomial.\r\n * @example\r\n * FloPoly.clip([1e-18, 1e-10, 1e-5]); //=> [1e-18, 1e-10, 1e-5] \r\n * FloPoly.clip([1e-18, 1e-10, 1e-1]); //=> [1e-10, 1e-1]\r\n */",
+      "comment": "/**\r\n * If the highest power coefficient is small in the sense that the \r\n * highest power term has a negligible contribution (compared to the\r\n * other terms) at x = 1 then clip() can be called to remove all such \r\n * highest terms. A contribution of less than Number.EPSILON of the \r\n * highest coefficient will be considered negligible by default.\r\n * \r\n * \r\n * @param {number[]} p - The polynomial to be clipped.\r\n * @param {number} δ - The optional contribution tolerence else \r\n *        Number.EPSILON will be used by default.   \r\n * @returns {number[]} The clipped polynomial.\r\n * @example\r\n * FloPoly.clip([1e-18, 1e-10, 1e-5]); //=> [1e-18, 1e-10, 1e-5] \r\n * FloPoly.clip([1e-18, 1e-10, 1e-1]); //=> [1e-10, 1e-1]\r\n */",
       "meta": {
         "range": [
-          11609,
-          11856
+          12468,
+          12762
         ],
         "filename": "core-operators.js",
-        "lineno": 486,
+        "lineno": 516,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100001856",
+          "id": "astnode100001908",
           "name": "clip",
           "type": "FunctionDeclaration",
           "paramnames": [
             "p",
-            "δ_"
+            "δ"
           ]
         },
         "vars": {
           "δ": "clip~δ",
-          "d": "clip~d",
-          "c": "clip~c"
+          "c": "clip~c",
+          "p_": "clip~p_"
         }
       },
       "description": "If the highest power coefficient is small in the sense that the \rhighest power term has a negligible contribution (compared to the\rother terms) at x = 1 then clip() can be called to remove all such \rhighest terms. A contribution of less than Number.EPSILON of the \rhighest coefficient will be considered negligible by default.",
@@ -1447,7 +1503,7 @@
             ]
           },
           "description": "The optional contribution tolerence else \r       Number.EPSILON will be used by default.",
-          "name": "δ_"
+          "name": "δ"
         }
       ],
       "returns": [
@@ -1467,21 +1523,21 @@
       "longname": "clip",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000206",
+      "___id": "T000002R000211",
       "___s": true
     },
     {
       "comment": "/**\r\n * If the highest power coefficient is 0 then clip() can be called to \r\n * remove all such highest terms so that the array is a valid \r\n * presentation of a polynomial.\r\n * \r\n * @param {number[]} p - The polynomial to be clipped.\r\n * @returns {number[]} The clipped polynomial.\r\n * @example\r\n * FloPoly.clip0([1e-18, 1e-10, 1e-1]); //=> [1e-18, 1e-10, 1e-1]\r\n * FloPoly.clip0([0, 1e-10, 1e-1]); //=> [1e-10, 1e-1]\r\n */",
       "meta": {
         "range": [
-          12287,
-          12355
+          13193,
+          13261
         ],
         "filename": "core-operators.js",
-        "lineno": 514,
+        "lineno": 546,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100001916",
+          "id": "astnode100001986",
           "name": "clip0",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -1518,21 +1574,21 @@
       "longname": "clip0",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000210",
+      "___id": "T000002R000216",
       "___s": true
     },
     {
       "comment": "/**\r\n * Returns the absolute value of the highest coefficient of the \r\n * polynomial.\r\n * \r\n * @param p {number[]} p - The polynomial.\r\n * @returns {number}\r\n * @example\r\n * FloPoly.maxCoefficient([-2, 0.1, 0.2]); //=> 2\r\n */",
       "meta": {
         "range": [
-          12588,
-          12754
+          13494,
+          13660
         ],
         "filename": "core-operators.js",
-        "lineno": 528,
+        "lineno": 560,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100001935",
+          "id": "astnode100002005",
           "name": "maxCoefficient",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -1573,21 +1629,21 @@
       "longname": "maxCoefficient",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000211",
+      "___id": "T000002R000217",
       "___s": true
     },
     {
       "comment": "/**\r\n * Returns a string representing the given polynomial that is readable \r\n * by a human or a CAS (Computer Algebra System).\r\n * \r\n * @param {number[]} p - The polynomial\r\n * @returns {string}\r\n * @example\r\n * FloPoly.toCasStr([5,4,3,2,1]); //=> \"x^4*5 + x^3*4 + x^2*3 + x*2 + 1\"\r\n */",
       "meta": {
         "range": [
-          13049,
-          13365
+          13955,
+          14271
         ],
         "filename": "core-operators.js",
-        "lineno": 550,
+        "lineno": 582,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100001977",
+          "id": "astnode100002047",
           "name": "toCasStr",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -1629,21 +1685,21 @@
       "longname": "toCasStr",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000216",
+      "___id": "T000002R000222",
       "___s": true
     },
     {
       "comment": "/**\r\n* <p>\r\n* Simple & fast practical library functions for functional univariate \r\n* polynomials over the reals (actually ECMAScript numbers, i.e. double \r\n* floats).\r\n* </p>\r\n* <p>\r\n* All polinomials are represented as a simple array starting with the \r\n* highest non-zero power, e.g. \r\n*   3x^3 + 5x^2 + 7x + 2 -> [3,5,7,2]\r\n* </p>\r\n* @ignore\r\n*/",
       "meta": {
         "range": [
-          805,
-          996
+          857,
+          1051
         ],
         "filename": "flo-poly.js",
-        "lineno": 27,
+        "lineno": 28,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100002117",
+          "id": "astnode100002187",
           "name": "FloPoly",
           "type": "CallExpression",
           "value": ""
@@ -1655,62 +1711,7 @@
       "longname": "FloPoly",
       "kind": "member",
       "scope": "global",
-      "___id": "T000002R000233",
-      "___s": true
-    },
-    {
-      "comment": "/**\r\n * <p>\r\n * Constructs a polynomial from the given roots by multiplying out the \r\n * factors (x - root1)(x - root2)... Note that the resulting polynomial \r\n * will not have any complex roots.\r\n * </p>\r\n * <p>\r\n * Mostly provided for testing purposes. Note that the real roots of the \r\n * constructed polynomial may not be exactly the same as the roots that\r\n * the polynomial has been constructed from due to floating-point \r\n * round-off.\r\n * </p>\r\n * \r\n * @param {number[]} roots - The roots\r\n * @returns {number[]} The constructed polynomial.\r\n * @example\r\n * FloPoly.fromRoots([1,2,3,3]); //=> [1, -9, 29, -39, 18]\r\n * FloPoly.allRoots([1, -9, 29, -39, 18]); //=> [1.0000000000000007, 2.000000000000004]\r\n * // In the above note the rounding error. Also note the multiple root of 3 that has been missed but as stated previously this does not generally pose a problem for even multiple roots. See the examples below.\r\n * FloPoly.allRoots([1, -9, 29, -39, 17.99999999999999]); //=> [0.9999999999999973, 2.00000000000002, 2.9999999999999982]\r\n * FloPoly.allRoots([1, -9, 29, -39, 17.9999999999999]); //=> [0.999999999999975, 2.0000000000000986, 2.9999997898930832, 3.0000002095475775]\r\n */",
-      "meta": {
-        "range": [
-          2199,
-          2338
-        ],
-        "filename": "flo-poly.js",
-        "lineno": 63,
-        "path": "C:\\Projects\\Polynomial\\js",
-        "code": {
-          "id": "astnode100002136",
-          "name": "fromRoots",
-          "type": "FunctionDeclaration",
-          "paramnames": [
-            "roots"
-          ]
-        },
-        "vars": {
-          "p": "fromRoots~p",
-          "i": "fromRoots~i"
-        }
-      },
-      "description": "<p>\rConstructs a polynomial from the given roots by multiplying out the \rfactors (x - root1)(x - root2)... Note that the resulting polynomial \rwill not have any complex roots.\r</p>\r<p>\rMostly provided for testing purposes. Note that the real roots of the \rconstructed polynomial may not be exactly the same as the roots that\rthe polynomial has been constructed from due to floating-point \rround-off.\r</p>",
-      "params": [
-        {
-          "type": {
-            "names": [
-              "Array.<number>"
-            ]
-          },
-          "description": "The roots",
-          "name": "roots"
-        }
-      ],
-      "returns": [
-        {
-          "type": {
-            "names": [
-              "Array.<number>"
-            ]
-          },
-          "description": "The constructed polynomial."
-        }
-      ],
-      "examples": [
-        "FloPoly.fromRoots([1,2,3,3]); //=> [1, -9, 29, -39, 18]\rFloPoly.allRoots([1, -9, 29, -39, 18]); //=> [1.0000000000000007, 2.000000000000004]\r// In the above note the rounding error. Also note the multiple root of 3 that has been missed but as stated previously this does not generally pose a problem for even multiple roots. See the examples below.\rFloPoly.allRoots([1, -9, 29, -39, 17.99999999999999]); //=> [0.9999999999999973, 2.00000000000002, 2.9999999999999982]\rFloPoly.allRoots([1, -9, 29, -39, 17.9999999999999]); //=> [0.999999999999975, 2.0000000000000986, 2.9999997898930832, 3.0000002095475775]"
-      ],
-      "name": "fromRoots",
-      "longname": "fromRoots",
-      "kind": "function",
-      "scope": "global",
-      "___id": "T000002R000237",
+      "___id": "T000002R000239",
       "___s": true
     },
     {
@@ -1718,16 +1719,16 @@
       "meta": {
         "range": [
           183,
-          288
+          282
         ],
         "filename": "root-operators.js",
         "lineno": 11,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100002208",
+          "id": "astnode100002225",
           "name": "rootOperators",
           "type": "ObjectExpression",
-          "value": "{\"quadraticRoots\":\"\",\"numRootsWithin\":\"\",\"brent\":\"\"}"
+          "value": "{\"quadraticRoots\":\"\",\"numRootsWithin\":\"\",\"brent\":\"\",\"bisection\":\"\"}"
         }
       },
       "description": "Operators (i.e. functions) directly related to roots and root \rfinding.",
@@ -1736,21 +1737,21 @@
       "longname": "rootOperators",
       "kind": "member",
       "scope": "global",
-      "___id": "T000002R000245",
+      "___id": "T000002R000246",
       "___s": true
     },
     {
       "comment": "/**\r\n * <p>\r\n * Floating-point-stably calculates and returns the ordered quadratic \r\n * roots of the given quadratic polynomial.\r\n * </p>\r\n * <p>\r\n * This function is included only because it might be slightly faster\r\n * than calling allRoots due to allRoots first checking if the \r\n * polynomial is quadratic and checking if the roots are within the\r\n * given range.\r\n * </p>\r\n * @param {number[]} p - The 2nd order polynomial\r\n * @returns {number[]} The found quadratic roots.\r\n * @example \r\n * FloPoly.quadraticRoots([1, -3, 2]); //=> [1,2]\r\n */",
       "meta": {
         "range": [
-          909,
-          1409
+          903,
+          1403
         ],
         "filename": "root-operators.js",
         "lineno": 39,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100002227",
+          "id": "astnode100002246",
           "name": "quadraticRoots",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -1793,21 +1794,21 @@
       "longname": "quadraticRoots",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000252",
+      "___id": "T000002R000254",
       "___s": true
     },
     {
       "comment": "/** \r\n * Returns the number of real roots in the interval (a,b) of the given \r\n * polynomial.\r\n * \r\n * @param {number[]} p - The polynomial\r\n * @param {number} a - The lower bound\r\n * @param {number} b - The upper bound\r\n * @returns {number} The number of roots in the given interval\r\n * @example \r\n * let p = [1, 1, -64, 236, -240];\r\n * FloPoly.numRootsWithin(p,-20,-11); //=> 0\r\n * FloPoly.numRootsWithin(p,-11,-9);  //=> 1  \r\n * FloPoly.numRootsWithin(p,-11,3.5); //=> 3\r\n * FloPoly.numRootsWithin(p,-11,5);   //=> 4\r\n */",
       "meta": {
         "range": [
-          4424,
-          4638
+          4418,
+          4632
         ],
         "filename": "root-operators.js",
         "lineno": 182,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100002344",
+          "id": "astnode100002363",
           "name": "numRootsWithin",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -1871,21 +1872,102 @@
       "longname": "numRootsWithin",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000261",
+      "___id": "T000002R000263",
       "___s": true
     },
     {
-      "comment": "/**\r\n * <p>\r\n * Searches an interval (a,b) for a root (i.e. zero) of the \r\n * given function with respect to its first argument using the Brent's \r\n * Method root-finding algorithm. Any function can be supplied (it does\r\n * not even have to be continuous) as long as the root is bracketed. \r\n * </p>\r\n * <p>\r\n * Brent's Method is an excellent root-finding choice since it is\r\n * (1) guaranteed to converge (unlike the Newton and other so-called \r\n * single-point methods), (2) converges in a reasonable number of \r\n * iterations even for highly contrived functions (unlike Dekker's \r\n * Method) and (3) nearly always converges extremely fast, i.e. super-\r\n * linearly (unlike the Secant and Regula-Falsi methods).\r\n * </p>\r\n * <p>\r\n * The max error, δ, is set equal to 2*Number.EPSILON*Math.abs(b) \r\n * + Number.EPSILON after each iteration where b is the current best \r\n * guess. A much larger δ of say 1e-10 does not really make sense\r\n * for polynomials since nearly always by that stage convergence \r\n * proceeds superlinearly and by the next iteration a δ of\r\n * around Number.EPSILON is achieved. On the other hand, a δ of \r\n * much less than Number.EPSILON is sometimes useful, say for finding  \r\n * the root of the polynomial x**2 - 3*x*1e-13 + 2*1e-26 to within less\r\n * than 1e-15, but this is rare enough not to be considered in this \r\n * implementation. (For JavaScript doubles Number.EPSILON === \r\n * 2.220446049250313e-16 and since b is typically around 1 the max δ \r\n * will be about 3*2.220446049250313e-16 or about 1e-15. As another \r\n * example, a root near -1000 will have a max error, i.e. δ, of \r\n * about 1e-12. In conclusion, for roots near zero the error can be up\r\n * to Number.EPSILON or about 1e-15 - we don't bother to calculate the\r\n * root more accurately than this since it may require up to 4 or 5 \r\n * additional iterations.\r\n * </p>\r\n * <p> \r\n * See <a href=\"https://en.wikipedia.org/wiki/Brent%27s_method\">Wikipedia</a>\r\n * </p>\r\n * <p>\r\n * See <a href=\"https://maths-people.anu.edu.au/~brent/pd/rpb011i.pdf\">Brent (page 47)</a>\r\n * </p>\r\n * @param {function} f - The function for which the root is sought.\r\n * @param {number} a - The lower limit of the search interval.\r\n * @param {number} b - The upper limit of the search interval.\r\n * @returns {number} An estimate of the root to within δ (typically \r\n * about 1e-15).\r\n * @example\r\n * let p = FloPoly.fromRoots([-10,2,3,4]);  //=> [1, 1, -64, 236, -240]\r\n * let f = FloPoly.evaluate(p);\r\n * FloPoly.brent(f,2.2,3.8); //=> 3.000000000000003\r\n * FloPoly.brent(f,2.2,3.1); //=> 3.000000000000001\r\n */",
+      "comment": "/**\r\n * <p>\r\n * Searches an interval (a,b) for a root (i.e. zero) of the \r\n * given function with respect to its first argument using the Bisection \r\n * Method root-finding algorithm. Any function can be supplied (it does\r\n * not even have to be continuous) as long as the root is bracketed. \r\n * </p>\r\n * <p>\r\n * Note: This function has no advantages above the Brent method except\r\n * for its simpler implementation and can be much slower. Use brent \r\n * instead.\r\n * </p>\r\n * @param {function} f - The function for which the root is sought.\r\n * @param {number} a - The lower limit of the search interval.\r\n * @param {number} b - The upper limit of the search interval.\r\n * @returns {number} An estimate of the root to within δ (typically \r\n * about 1e-15 multiplied by the root magnitued).\r\n * @example\r\n * let p = FloPoly.fromRoots([-10,2,3,4]);  //=> [1, 1, -64, 236, -240]\r\n * let f = FloPoly.evaluate(p);\r\n * FloPoly.bisection(f,2.2,3.8); //=> 3\r\n * FloPoly.bisection(f,2.2,3.1); //=> 3.0000000000000044\r\n */",
       "meta": {
         "range": [
-          7233,
-          9698
+          5654,
+          6471
         ],
         "filename": "root-operators.js",
-        "lineno": 243,
+        "lineno": 215,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100002398",
+          "id": "astnode100002417",
+          "name": "bisection",
+          "type": "FunctionDeclaration",
+          "paramnames": [
+            "f",
+            "a",
+            "b"
+          ]
+        },
+        "vars": {
+          "": null,
+          "fa": "bisection~fa",
+          "fb": "bisection~fb",
+          "c": "bisection~c",
+          "fc": "bisection~fc",
+          "b": "bisection~b",
+          "a": "bisection~a",
+          "δ": "bisection~δ"
+        }
+      },
+      "description": "<p>\rSearches an interval (a,b) for a root (i.e. zero) of the \rgiven function with respect to its first argument using the Bisection \rMethod root-finding algorithm. Any function can be supplied (it does\rnot even have to be continuous) as long as the root is bracketed. \r</p>\r<p>\rNote: This function has no advantages above the Brent method except\rfor its simpler implementation and can be much slower. Use brent \rinstead.\r</p>",
+      "params": [
+        {
+          "type": {
+            "names": [
+              "function"
+            ]
+          },
+          "description": "The function for which the root is sought.",
+          "name": "f"
+        },
+        {
+          "type": {
+            "names": [
+              "number"
+            ]
+          },
+          "description": "The lower limit of the search interval.",
+          "name": "a"
+        },
+        {
+          "type": {
+            "names": [
+              "number"
+            ]
+          },
+          "description": "The upper limit of the search interval.",
+          "name": "b"
+        }
+      ],
+      "returns": [
+        {
+          "type": {
+            "names": [
+              "number"
+            ]
+          },
+          "description": "An estimate of the root to within δ (typically \rabout 1e-15 multiplied by the root magnitued)."
+        }
+      ],
+      "examples": [
+        "let p = FloPoly.fromRoots([-10,2,3,4]);  //=> [1, 1, -64, 236, -240]\rlet f = FloPoly.evaluate(p);\rFloPoly.bisection(f,2.2,3.8); //=> 3\rFloPoly.bisection(f,2.2,3.1); //=> 3.0000000000000044"
+      ],
+      "name": "bisection",
+      "longname": "bisection",
+      "kind": "function",
+      "scope": "global",
+      "___id": "T000002R000268",
+      "___s": true
+    },
+    {
+      "comment": "/**\r\n * <p>\r\n * Searches an interval (a,b) for a root (i.e. zero) of the \r\n * given function with respect to its first argument using the Brent's \r\n * Method root-finding algorithm. Any function can be supplied (it does\r\n * not even have to be continuous) as long as the root is bracketed. \r\n * </p>\r\n * <p>\r\n * Brent's Method is an excellent root-finding choice since it is\r\n * (1) guaranteed to converge (unlike the Newton and other so-called \r\n * single-point methods), (2) converges in a reasonable number of \r\n * iterations even for highly contrived functions (unlike Dekker's \r\n * Method) and (3) nearly always converges extremely fast, i.e. super-\r\n * linearly (unlike the Secant and Regula-Falsi methods).\r\n * </p>\r\n * <p>\r\n * The max error, δ, is set equal to 2*Number.EPSILON*Math.abs(b) \r\n * + Number.EPSILON after each iteration where b is the current best \r\n * guess. A much larger δ of say 1e-10 does not really make sense\r\n * for polynomials since nearly always by that stage convergence \r\n * proceeds superlinearly and by the next iteration a δ of\r\n * around Number.EPSILON is achieved. On the other hand, a δ of \r\n * much less than Number.EPSILON is sometimes useful, say for finding  \r\n * the root of the polynomial x**2 - 3*x*1e-13 + 2*1e-26 to within less\r\n * than 1e-15, but this is rare enough not to be considered in this \r\n * implementation. (For JavaScript doubles Number.EPSILON === \r\n * 2.220446049250313e-16 and since b is typically around 1 the max δ \r\n * will be about 3*2.220446049250313e-16 or about 1e-15. As another \r\n * example, a root near -1000 will have a max error, i.e. δ, of \r\n * about 1e-12. In conclusion, for roots near zero the error can be up\r\n * to Number.EPSILON or about 1e-15 - we don't bother to calculate the\r\n * root more accurately than this since it may require up to 4 or 5 \r\n * additional iterations.\r\n * </p>\r\n * <p> \r\n * See <a href=\"https://en.wikipedia.org/wiki/Brent%27s_method\">Wikipedia</a>\r\n * </p>\r\n * <p>\r\n * See <a href=\"https://maths-people.anu.edu.au/~brent/pd/rpb011i.pdf\">Brent (page 47)</a>\r\n * </p>\r\n * @param {function} f - The function for which the root is sought.\r\n * @param {number} a - The lower limit of the search interval.\r\n * @param {number} b - The upper limit of the search interval.\r\n * @returns {number} An estimate of the root to within δ (typically \r\n * about 1e-15 multiplied by the root magnitued).\r\n * @example\r\n * let p = FloPoly.fromRoots([-10,2,3,4]);  //=> [1, 1, -64, 236, -240]\r\n * let f = FloPoly.evaluate(p);\r\n * FloPoly.brent(f,2.2,3.8); //=> 3.000000000000003\r\n * FloPoly.brent(f,2.2,3.1); //=> 3.000000000000001\r\n */",
+      "meta": {
+        "range": [
+          9099,
+          11563
+        ],
+        "filename": "root-operators.js",
+        "lineno": 307,
+        "path": "C:\\Projects\\Polynomial\\js",
+        "code": {
+          "id": "astnode100002547",
           "name": "brent",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -1895,7 +1977,6 @@
           ]
         },
         "vars": {
-          "EPS": "brent~EPS",
           "fa": "brent~fa",
           "fb": "brent~fb",
           "c": "brent~c",
@@ -1954,7 +2035,7 @@
               "number"
             ]
           },
-          "description": "An estimate of the root to within δ (typically \rabout 1e-15)."
+          "description": "An estimate of the root to within δ (typically \rabout 1e-15 multiplied by the root magnitued)."
         }
       ],
       "examples": [
@@ -1964,21 +2045,21 @@
       "longname": "brent",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000266",
+      "___id": "T000002R000276",
       "___s": true
     },
     {
       "comment": "/**\r\n * Some seed value for the simple random number generator.\r\n * @ignore\r\n */",
       "meta": {
         "range": [
-          104,
-          120
+          153,
+          169
         ],
         "filename": "random.js",
-        "lineno": 7,
+        "lineno": 10,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100002791",
+          "id": "astnode100002946",
           "name": "SEED",
           "type": "Literal",
           "value": 123456789
@@ -1990,21 +2071,21 @@
       "longname": "SEED",
       "kind": "constant",
       "scope": "global",
-      "___id": "T000002R000306",
+      "___id": "T000002R000316",
       "___s": true
     },
     {
       "comment": "/**\r\n * The range for the simple random number generator, i.e. the generated\r\n * numbers will be in [0,RANGE].\r\n * @ignore\r\n */",
       "meta": {
         "range": [
-          260,
-          278
+          309,
+          327
         ],
         "filename": "random.js",
-        "lineno": 14,
+        "lineno": 17,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100002795",
+          "id": "astnode100002950",
           "name": "RANGE",
           "type": "Literal",
           "value": 4294967296
@@ -2016,21 +2097,21 @@
       "longname": "RANGE",
       "kind": "constant",
       "scope": "global",
-      "___id": "T000002R000307",
+      "___id": "T000002R000317",
       "___s": true
     },
     {
       "comment": "/**\r\n * Generates an array of random polynomials with parameters as specified \r\n * by flatRoots. The exact same polynomials will be created on each\r\n * call to this function if the same seed is used - this is by design to \r\n * improve testability.\r\n *   \r\n * @memberof random\r\n * @param {number} n - The number of polynomials to generate.\r\n * @param {number} d - The degree of the polynomials \r\n * @param {number} a - The lower bound of the distribution - defaults \r\n * to 0\r\n * @param {number} b - The upper bound of the distribution - defaults \r\n * to 1\r\n * @param {number} seed - A seed value for generating random values (so\r\n * that the results are reproducable)\r\n * @param {number} odds - The odds that a root will be doubled (applied\r\n * recursively so that some roots will be tripled, etc. - defaults to 0\r\n * @returns {number[][]} The array of random polynomials.\r\n * @example\r\n * FloPoly.random.flatRootsArr(2,3,0,10); //=> [[1, -17.27247918024659, 97.33487287168995, -179.34094494147305], [1, -14.934967160224915, 57.624514485645406, -14.513933300587215]]\r\n * FloPoly.random.flatRootsArr(2,3,0,10); //=> [[1, -17.27247918024659, 97.33487287168995, -179.34094494147305], [1, -14.934967160224915, 57.624514485645406, -14.513933300587215]]\r\n */",
       "meta": {
         "range": [
-          1541,
-          1584
+          1590,
+          1633
         ],
         "filename": "random.js",
-        "lineno": 38,
+        "lineno": 41,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100002799",
+          "id": "astnode100002954",
           "name": "flatRootsArr",
           "type": "CallExpression",
           "value": ""
@@ -2111,21 +2192,21 @@
       "longname": "random.flatRootsArr",
       "kind": "member",
       "scope": "static",
-      "___id": "T000002R000308",
+      "___id": "T000002R000318",
       "___s": true
     },
     {
       "comment": "/**\r\n * Generates an array of random polynomials as specified by \r\n * flatCoefficients. The exact same polynomials will be created on each\r\n * call to this function if the same seed is used - this is by design to \r\n * improve testability.\r\n *   \r\n * @memberof random\r\n * @param {number} n - The number of polynomials to generate.\r\n * @param {number} d - The degree of the polynomials \r\n * @param {number} a - The lower bound of the distribution - defaults \r\n * to 0\r\n * @param {number} b - The upper bound of the distribution - defaults \r\n * to 1\r\n * @param {number} seed - A seed value for generating random values (so\r\n * that the results are reproducable)\r\n * @returns {number[][]} The array of random polynomials.\r\n * @example\r\n * FloPoly.random.flatCoefficientsArr(2,3,-2,2); //=> [[0.1749166026711464, -0.20349335670471191, 0.9375684261322021], [1.0617692470550537, -1.8918039798736572, 0.8040215969085693]]\r\n * FloPoly.random.flatCoefficientsArr(2,3,-2,2); //=> [[0.1749166026711464, -0.20349335670471191, 0.9375684261322021], [1.0617692470550537, -1.8918039798736572, 0.8040215969085693]]\r\n */",
       "meta": {
         "range": [
-          2696,
-          2753
+          2745,
+          2802
         ],
         "filename": "random.js",
-        "lineno": 60,
+        "lineno": 63,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100002805",
+          "id": "astnode100002960",
           "name": "flatCoefficientsArr",
           "type": "CallExpression",
           "value": ""
@@ -2197,21 +2278,21 @@
       "longname": "random.flatCoefficientsArr",
       "kind": "member",
       "scope": "static",
-      "___id": "T000002R000309",
+      "___id": "T000002R000319",
       "___s": true
     },
     {
       "comment": "/**\r\n * https://stackoverflow.com/questions/3062746/special-simple-random-number-generator\r\n * \r\n * @ignore\r\n * @param {number} seed\r\n * @returns {number} A quasi-random number to be used as the next input \r\n * to this function.\r\n */",
       "meta": {
         "range": [
-          3095,
-          3190
+          3144,
+          3239
         ],
         "filename": "random.js",
-        "lineno": 79,
+        "lineno": 82,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100002822",
+          "id": "astnode100002977",
           "name": "predictiveRandom",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -2248,21 +2329,21 @@
       "longname": "predictiveRandom",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000315",
+      "___id": "T000002R000325",
       "___s": true
     },
     {
       "comment": "/**\r\n * Generates a random array of numbers picked from a bounded flat \r\n * distribution (i.e. a rectangular distribution) with specified odds of \r\n * duplication of consecutive values.\r\n *   \r\n * @ignore\r\n * @param {number} n - The number of values to generate.\r\n * @param {number} a - The lower bound of the distribution - defaults \r\n * to 0\r\n * @param {number} b - The upper bound of the distribution - defaults \r\n * to 1\r\n * @param {number} seed - A seed value for generating random values (so\r\n * that the results are reproducable)\r\n * @param {number} odds - The odds that a root will be doubled (applied\r\n * recursively so that some roots will be tripled, etc. - defaults to 0\r\n * @returns {number[]} - The random array.\r\n */",
       "meta": {
         "range": [
-          3929,
-          4224
+          3978,
+          4319
         ],
         "filename": "random.js",
-        "lineno": 103,
+        "lineno": 106,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100002838",
+          "id": "astnode100002993",
           "name": "randomArray",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -2344,21 +2425,21 @@
       "longname": "randomArray",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000317",
+      "___id": "T000002R000327",
       "___s": true
     },
     {
       "comment": "/**\r\n * Helper function that will add more numbers to the passed array - \r\n * modifies the values parameter.\r\n *\r\n * @ignore\r\n * @param {number[]} values - An existing array of values - will be \r\n * modified!\r\n * @param {number} x - The number that will be added (possibly\r\n * multiple times)\r\n * @param {number} odds - The odds that the number will be added\r\n * again (recursively). \r\n */",
       "meta": {
         "range": [
-          4622,
-          4809
+          4717,
+          4904
         ],
         "filename": "random.js",
-        "lineno": 131,
+        "lineno": 134,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100002915",
+          "id": "astnode100003076",
           "name": "push",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -2407,21 +2488,21 @@
       "longname": "push",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000328",
+      "___id": "T000002R000338",
       "___s": true
     },
     {
       "comment": "/**\r\n * Generates a random polynomial with roots picked from a bounded flat \r\n * distribution (i.e. a rectangular distribution) with specified odds of \r\n * duplication of consecutive values. Note that the resulting polynomial\r\n * won't have any complex roots.\r\n * \r\n * @memberof random\r\n * @param {number} d - The degree of the polynomials \r\n * @param {number} a - The lower bound of the distribution - defaults \r\n * to 0\r\n * @param {number} b - The upper bound of the distribution - defaults \r\n * to 1\r\n * @param {number} seed - A seed value for generating random values (so\r\n * that the results are reproducable)\r\n * @param {number} odds - The odds that a root will be doubled (applied\r\n * recursively so that some roots will be tripled, etc. - defaults to 0\r\n * @returns {{p: number[], seed: number}} a random polynomial and the\r\n * last seed value to reuse.\r\n * @example\r\n * FloPoly.random.flatRoots(3,0,10); //=> { p: [1, -17.27247918024659, 97.33487287168995, -179.34094494147305], seed: 939629312 }\r\n */",
       "meta": {
         "range": [
-          5827,
-          6168
+          5922,
+          6257
         ],
         "filename": "random.js",
-        "lineno": 164,
+        "lineno": 167,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100002952",
+          "id": "astnode100003113",
           "name": "flatRoots",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -2507,21 +2588,21 @@
       "longname": "random.flatRoots",
       "kind": "function",
       "scope": "static",
-      "___id": "T000002R000331",
+      "___id": "T000002R000341",
       "___s": true
     },
     {
       "comment": "/**\r\n * Generates a random polynomial with coefficients picked from a bounded \r\n * flat distribution (i.e. a rectangular distribution). \r\n * \r\n * @memberof random\r\n * @param {number} d - The degree of the polynomials \r\n * @param {number} a - The lower bound of the distribution - defaults \r\n * to -1\r\n * @param {number} b - The upper bound of the distribution - defaults \r\n * to 1\r\n * @param {number} seed - A seed value for generating random values (so\r\n * that the results are reproducable)\r\n * @returns {{p: number[], seed: number}} a random polynomial and the\r\n * last seed value to reuse.\r\n * @example\r\n * FloPoly.random.flatCoefficients(3,-5,5); //=> { p: [0.437291506677866, -0.5087333917617798, 2.3439210653305054], seed: 939629312 }\r\n */",
       "meta": {
         "range": [
-          6922,
-          7140
+          7011,
+          7289
         ],
         "filename": "random.js",
-        "lineno": 197,
+        "lineno": 199,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100003016",
+          "id": "astnode100003187",
           "name": "flatCoefficients",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -2596,21 +2677,21 @@
       "longname": "random.flatCoefficients",
       "kind": "function",
       "scope": "static",
-      "___id": "T000002R000341",
+      "___id": "T000002R000351",
       "___s": true
     },
     {
       "comment": "/**\r\n * Creates a function from the given function with parameters similar\r\n * to flatRoots but with an extra parameter in the beginning indicating\r\n * the length of the array generated by the original function.\r\n * \r\n * @ignore\r\n * @param {function} f\r\n * @returns {function}\r\n */",
       "meta": {
         "range": [
-          7429,
-          7703
+          7578,
+          7874
         ],
         "filename": "random.js",
-        "lineno": 220,
+        "lineno": 222,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100003069",
+          "id": "astnode100003250",
           "name": "createArrFunction",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -2646,7 +2727,7 @@
       "longname": "createArrFunction",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000350",
+      "___id": "T000002R000360",
       "___s": true
     },
     {
@@ -2654,16 +2735,16 @@
       "meta": {
         "range": [
           223,
-          234
+          310
         ],
         "filename": "mobius.js",
         "lineno": 11,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100003143",
+          "id": "astnode100003327",
           "name": "Mobius",
           "type": "ObjectExpression",
-          "value": "{}"
+          "value": "{\"changeVariables\":\"\",\"invert\":\"\",\"evaluateAt0\":\"\",\"evaluateAtInf\":\"\",\"evaluate\":\"\"}"
         }
       },
       "description": "Mobius namespaced functions, i.e. M(x) = (ax + b) / (cx + d) where \ra,b,c and d are constants. Represented as a 2-diminsional array \r[[a,b],[c,d]].",
@@ -2672,21 +2753,21 @@
       "name": "Mobius",
       "longname": "Mobius",
       "scope": "global",
-      "___id": "T000002R000358",
+      "___id": "T000002R000368",
       "___s": true
     },
     {
       "comment": "/**\r\n * Performs a change of variables x → ax + b on p(x) where\r\n * it is a precondition on the polynomial p that deg(p) = 1.\r\n *\r\n * @ignore\r\n * @param {number[]} p - The degree 1 polynomial p(x)\r\n * @param {number} a\r\n * @param {number} b\r\n * @returns {number[]} The modified polynomial p(ax + b). \r\n */",
       "meta": {
         "range": [
-          548,
-          631
+          624,
+          707
         ],
         "filename": "mobius.js",
-        "lineno": 24,
+        "lineno": 30,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100003146",
+          "id": "astnode100003340",
           "name": "changeVariables1",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -2739,23 +2820,23 @@
       "longname": "changeVariables1",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000359",
+      "___id": "T000002R000374",
       "___s": true
     },
     {
       "comment": "/**\r\n * Performs a change of variables x → px + q on the given Mobius \r\n * function. \r\n *\r\n * @ignore\r\n * @param {number[][]} mobius - The mobius function \r\n * M(x) = (ax + b) / (cx + d) represented as [[a,b],[c,d]]\r\n * @param {number} a\r\n * @param {number} b\r\n * @returns {number[][]} The modified mobius function \r\n * M(x) = (a(px + q) + b) / (c(px + q) + d). \r\n */",
       "meta": {
         "range": [
-          1006,
-          1150
+          1082,
+          1217
         ],
         "filename": "mobius.js",
-        "lineno": 44,
+        "lineno": 50,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100003169",
-          "name": "Mobius.changeVariables",
-          "type": "FunctionExpression",
+          "id": "astnode100003362",
+          "name": "changeVariables",
+          "type": "FunctionDeclaration",
           "paramnames": [
             "mobius",
             "a",
@@ -2803,27 +2884,26 @@
         }
       ],
       "name": "changeVariables",
-      "longname": "Mobius.changeVariables",
+      "longname": "changeVariables",
       "kind": "function",
-      "memberof": "Mobius",
-      "scope": "static",
-      "___id": "T000002R000360",
+      "scope": "global",
+      "___id": "T000002R000375",
       "___s": true
     },
     {
       "comment": "/**\r\n * Inverts the given mobius, i.e.\r\n * M(x) = (ax + b) / (cx + d) → (bx + a) / (dx + c)\r\n * \r\n * @ignore\r\n * @param {number[][]} mobius - The mobius function \r\n * M(x) = (ax + b) / (cx + d) represented as [[a,b],[c,d]]\r\n * @returns {number[][]} The modified mobius function. \r\n */",
       "meta": {
         "range": [
-          1442,
-          1541
+          1509,
+          1599
         ],
         "filename": "mobius.js",
-        "lineno": 61,
+        "lineno": 67,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100003195",
-          "name": "Mobius.invert",
-          "type": "FunctionExpression",
+          "id": "astnode100003384",
+          "name": "invert",
+          "type": "FunctionDeclaration",
           "paramnames": [
             "mobius"
           ]
@@ -2856,27 +2936,26 @@
         }
       ],
       "name": "invert",
-      "longname": "Mobius.invert",
+      "longname": "invert",
       "kind": "function",
-      "memberof": "Mobius",
-      "scope": "static",
-      "___id": "T000002R000361",
+      "scope": "global",
+      "___id": "T000002R000376",
       "___s": true
     },
     {
       "comment": "/**\r\n * Evaluates the given mobius function at x = 0.\r\n * \r\n * @ignore\r\n * @param {number[][]} mobius - The mobius function \r\n * M(x) = (ax + b) / (cx + d) represented as [[a,b],[c,d]]\r\n * @returns {number} The result of the evaluation.\r\n */",
       "meta": {
         "range": [
-          1790,
-          1870
+          1848,
+          1919
         ],
         "filename": "mobius.js",
-        "lineno": 76,
+        "lineno": 82,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100003217",
-          "name": "Mobius.evaluateAt0",
-          "type": "FunctionExpression",
+          "id": "astnode100003402",
+          "name": "evaluateAt0",
+          "type": "FunctionDeclaration",
           "paramnames": [
             "mobius"
           ]
@@ -2906,27 +2985,26 @@
         }
       ],
       "name": "evaluateAt0",
-      "longname": "Mobius.evaluateAt0",
+      "longname": "evaluateAt0",
       "kind": "function",
-      "memberof": "Mobius",
-      "scope": "static",
-      "___id": "T000002R000362",
+      "scope": "global",
+      "___id": "T000002R000377",
       "___s": true
     },
     {
       "comment": "/**\r\n * Evaluates the given mobius function in the limit as x → ∞.\r\n * \r\n * @ignore\r\n * @param {number[][]} mobius - The mobius function \r\n * M(x) = (ax + b) / (cx + d) represented as [[a,b],[c,d]]\r\n * @returns {number} The result of the evaluation.\r\n */",
       "meta": {
         "range": [
-          2132,
-          2214
+          2181,
+          2254
         ],
         "filename": "mobius.js",
-        "lineno": 89,
+        "lineno": 95,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100003237",
-          "name": "Mobius.evaluateAtInf",
-          "type": "FunctionExpression",
+          "id": "astnode100003418",
+          "name": "evaluateAtInf",
+          "type": "FunctionDeclaration",
           "paramnames": [
             "mobius"
           ]
@@ -2956,27 +3034,26 @@
         }
       ],
       "name": "evaluateAtInf",
-      "longname": "Mobius.evaluateAtInf",
+      "longname": "evaluateAtInf",
       "kind": "function",
-      "memberof": "Mobius",
-      "scope": "static",
-      "___id": "T000002R000363",
+      "scope": "global",
+      "___id": "T000002R000378",
       "___s": true
     },
     {
       "comment": "/**\r\n * Evaluates the given mobius function at a specific x.\r\n * \r\n * @ignore\r\n * @param {number[][]} mobius - The mobius function\r\n * @param {number} x - The x value at which to evaluate\r\n * M(x) = (ax + b) / (cx + d) represented as [[a,b],[c,d]]\r\n * @returns {number} The result of the evaluation.\r\n */",
       "meta": {
         "range": [
-          2526,
-          2638
+          2566,
+          2669
         ],
         "filename": "mobius.js",
-        "lineno": 103,
+        "lineno": 109,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100003257",
-          "name": "Mobius.evaluate",
-          "type": "FunctionExpression",
+          "id": "astnode100003434",
+          "name": "evaluate",
+          "type": "FunctionDeclaration",
           "paramnames": [
             "mobius",
             "x"
@@ -3019,55 +3096,25 @@
         }
       ],
       "name": "evaluate",
-      "longname": "Mobius.evaluate",
-      "kind": "function",
-      "memberof": "Mobius",
-      "scope": "static",
-      "___id": "T000002R000364",
-      "___s": true
-    },
-    {
-      "comment": "/**\r\n * Returns the maximum value within the supplied array of numbers.\r\n * @ignore \r\n */",
-      "meta": {
-        "range": [
-          450,
-          506
-        ],
-        "filename": "root-bounds.js",
-        "lineno": 22,
-        "path": "C:\\Projects\\Polynomial\\js",
-        "code": {
-          "id": "astnode100003322",
-          "name": "max",
-          "type": "FunctionDeclaration",
-          "paramnames": [
-            "ns"
-          ]
-        }
-      },
-      "description": "Returns the maximum value within the supplied array of numbers.",
-      "ignore": true,
-      "name": "max",
-      "longname": "max",
+      "longname": "evaluate",
       "kind": "function",
       "scope": "global",
-      "params": [],
-      "___id": "T000002R000376",
+      "___id": "T000002R000379",
       "___s": true
     },
     {
       "comment": "/**\r\n * Returns the maximum magnitude value within the supplied array of \r\n * numbers.\r\n * @ignore \r\n */",
       "meta": {
         "range": [
-          618,
-          699
+          463,
+          544
         ],
         "filename": "root-bounds.js",
-        "lineno": 32,
+        "lineno": 23,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100003335",
-          "name": "maxabs",
+          "id": "astnode100003498",
+          "name": "maxAbs",
           "type": "FunctionDeclaration",
           "paramnames": [
             "ns"
@@ -3079,26 +3126,26 @@
       },
       "description": "Returns the maximum magnitude value within the supplied array of \rnumbers.",
       "ignore": true,
-      "name": "maxabs",
-      "longname": "maxabs",
+      "name": "maxAbs",
+      "longname": "maxAbs",
       "kind": "function",
       "scope": "global",
       "params": [],
-      "___id": "T000002R000377",
+      "___id": "T000002R000392",
       "___s": true
     },
     {
-      "comment": "/**\r\n * Finds an upper bound on the magnitude (absolute value) of the roots\r\n * (including complex roots) of the given polynomial using Rouche's \r\n * Theorem with k = n. This function is fast but not tight.\r\n * \r\n * @ignore\r\n * @param p {number[]} p - The polynomial.\r\n * @returns {number} The bound.\r\n */",
+      "comment": "/**\r\n * Finds an upper bound on the magnitude (absolute value) of the roots\r\n * (including complex roots) of the given polynomial using Rouche's \r\n * Theorem with k = n. This function is fast but the bound is not tight.\r\n * \r\n * @param p {number[]} p - The polynomial.\r\n * @returns {number} The bound.\r\n */",
       "meta": {
         "range": [
-          1012,
-          1136
+          858,
+          982
         ],
         "filename": "root-bounds.js",
-        "lineno": 46,
+        "lineno": 36,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100003358",
+          "id": "astnode100003521",
           "name": "rootMagnitudeUpperBound_rouche",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -3110,8 +3157,7 @@
           "R": "rootMagnitudeUpperBound_rouche~R"
         }
       },
-      "description": "Finds an upper bound on the magnitude (absolute value) of the roots\r(including complex roots) of the given polynomial using Rouche's \rTheorem with k = n. This function is fast but not tight.",
-      "ignore": true,
+      "description": "Finds an upper bound on the magnitude (absolute value) of the roots\r(including complex roots) of the given polynomial using Rouche's \rTheorem with k = n. This function is fast but the bound is not tight.",
       "params": [
         {
           "type": {
@@ -3137,21 +3183,21 @@
       "longname": "rootMagnitudeUpperBound_rouche",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000378",
+      "___id": "T000002R000393",
       "___s": true
     },
     {
       "comment": "/**\r\n * Finds an upper bound on the magnitude (absolute value) of the roots\r\n * of the given polynomial using the near-optimal Fujiwara bound. Note\r\n * that the bound includes complex roots. The bound is tight but slow \r\n * due to usage of Math.pow().\r\n * \r\n * @see https://en.wikipedia.org/wiki/Properties_of_polynomial_roots#cite_note-Fujiwara1916-4\r\n * \r\n * @param {number[]} p - The polynomial.\r\n * @returns {number} The bound.\r\n * @example\r\n * FloPoly.rootMagnitudeUpperBound_fujiwara([2,-3,6,5,-130]); //=> 6.753296750770361\r\n * FloPoly.allRoots([2,-3,6,5,-130]); //=> [-2.397918624065303, 2.8793785310848383]\r\n */",
       "meta": {
         "range": [
-          1764,
-          2103
+          1610,
+          1949
         ],
         "filename": "root-bounds.js",
-        "lineno": 67,
+        "lineno": 57,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100003390",
+          "id": "astnode100003553",
           "name": "rootMagnitudeUpperBound_fujiwara",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -3198,21 +3244,21 @@
       "longname": "rootMagnitudeUpperBound_fujiwara",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000381",
+      "___id": "T000002R000396",
       "___s": true
     },
     {
       "comment": "/**\r\n * <p> \r\n * Returns an upper bound for the positive real roots of the given \r\n * polynomial.\r\n * </p>\r\n * <p>\r\n * See algoritm 6 of the paper by Vigklas, Akritas and Strzeboński, \r\n * specifically the LocalMaxQuadratic algorithm hence LMQ.\r\n * </p>  \r\n * \r\n * @param {number[]} p - The polynomial\r\n * @returns {number} A lower bound.\r\n * @example\r\n * FloPoly.positiveRootUpperBound_LMQ([2,-3,6,5,-130]); //=> 4.015534272870436 \r\n * FloPoly.positiveRootUpperBound_LMQ([2,3]);           //=> 0 \r\n * FloPoly.positiveRootUpperBound_LMQ([-2,-3,-4]);      //=> 0\r\n */",
       "meta": {
         "range": [
-          2809,
-          3782
+          2655,
+          3628
         ],
         "filename": "root-bounds.js",
-        "lineno": 113,
+        "lineno": 103,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100003508",
+          "id": "astnode100003671",
           "name": "positiveRootUpperBound_LMQ",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -3263,21 +3309,21 @@
       "longname": "positiveRootUpperBound_LMQ",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000388",
+      "___id": "T000002R000403",
       "___s": true
     },
     {
       "comment": "/**\r\n * <p> \r\n * Calculates a lower bound for the positive roots of the given \r\n * polynomial.\r\n * </p>\r\n * <p>\r\n * See algoritm 6 of the paper by Vigklas, Akritas and Strzeboński, \r\n * specifically the LocalMaxQuadratic algorithm hence LMQ.\r\n * </p>\r\n *  \r\n * @param {number[]} p - The polynomial\r\n * @returns {number} A lower bound.\r\n * @example\r\n * FloPoly.positiveRootLowerBound_LMQ([2,-3,6,5,-130]); //=> 1.6883241876925903\r\n * FloPoly.positiveRootLowerBound_LMQ([2,3]);           //=> 0 \r\n * FloPoly.positiveRootLowerBound_LMQ([-2,-3,-4]);      //=> 0\r\n */",
       "meta": {
         "range": [
-          4352,
-          4492
+          4198,
+          4338
         ],
         "filename": "root-bounds.js",
-        "lineno": 182,
+        "lineno": 172,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100003694",
+          "id": "astnode100003857",
           "name": "positiveRootLowerBound_LMQ",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -3317,21 +3363,21 @@
       "longname": "positiveRootLowerBound_LMQ",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000406",
+      "___id": "T000002R000421",
       "___s": true
     },
     {
       "comment": "/**\r\n * See positiveRootUpperBound_LMQ\r\n * \r\n * @param {number[]} p - The polynomial\r\n * @returns {number} An upper bound.\r\n */",
       "meta": {
         "range": [
-          4627,
-          4730
+          4473,
+          4576
         ],
         "filename": "root-bounds.js",
-        "lineno": 195,
+        "lineno": 185,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100003717",
+          "id": "astnode100003880",
           "name": "negativeRootUpperBound_LMQ",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -3365,21 +3411,21 @@
       "longname": "negativeRootUpperBound_LMQ",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000408",
+      "___id": "T000002R000423",
       "___s": true
     },
     {
       "comment": "/**\r\n * See positiveRootLowerBound_LMQ\r\n * \r\n * @param {number[]} p - The polynomial\r\n * @returns {number} A lower bound.\r\n */",
       "meta": {
         "range": [
-          4864,
-          4967
+          4710,
+          4813
         ],
         "filename": "root-bounds.js",
-        "lineno": 206,
+        "lineno": 196,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100003728",
+          "id": "astnode100003891",
           "name": "negativeRootLowerBound_LMQ",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -3413,7 +3459,7 @@
       "longname": "negativeRootLowerBound_LMQ",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000409",
+      "___id": "T000002R000424",
       "___s": true
     },
     {
@@ -3427,7 +3473,7 @@
         "lineno": 27,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100003766",
+          "id": "astnode100003929",
           "name": "conditionNumber",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -3477,21 +3523,21 @@
       "longname": "conditionNumber",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000415",
+      "___id": "T000002R000430",
       "___s": true
     },
     {
-      "comment": "/**\r\n * <p>\r\n * Classic rule of thumb approximate error bound using Horner's method \r\n * to evaluate polynomials. \r\n * </p>\r\n * <p>\r\n * http://www-pequan.lip6.fr/~jmc/polycopies/Compensation-horner.pdf\r\n * </p>\r\n * @param p {number[]} - The polynomial\r\n * @param x {number} - Value at which polynomial is evaluated. \r\n * @returns {number} The error bound\r\n */",
+      "comment": "/**\r\n * <p>\r\n * Classic rule of thumb approximate error bound when using Horner's \r\n * method to evaluate polynomials. \r\n * </p>\r\n * <p>\r\n * See for instance <a href=\"http://www-pequan.lip6.fr/~jmc/polycopies/Compensation-horner.pdf\">compensated horner evaluation</a>\r\n * </p>\r\n * @param p {number[]} - The polynomial\r\n * @param x {number} - Value at which polynomial is evaluated. \r\n * @returns {number} The error bound\r\n * @example\r\n * hornerErrorBound([1.1,2.2,-3.3], 1.5); //=> 5.1292303737682235e-15 \r\n */",
       "meta": {
         "range": [
-          1179,
-          1404
+          1330,
+          1458
         ],
         "filename": "error-analysis.js",
-        "lineno": 50,
+        "lineno": 52,
         "path": "C:\\Projects\\Polynomial\\js",
         "code": {
-          "id": "astnode100003815",
+          "id": "astnode100003978",
           "name": "hornerErrorBound",
           "type": "FunctionDeclaration",
           "paramnames": [
@@ -3501,11 +3547,10 @@
         },
         "vars": {
           "δ": "hornerErrorBound~δ",
-          "d": "hornerErrorBound~d",
-          "res": "hornerErrorBound~res"
+          "d": "hornerErrorBound~d"
         }
       },
-      "description": "<p>\rClassic rule of thumb approximate error bound using Horner's method \rto evaluate polynomials. \r</p>\r<p>\rhttp://www-pequan.lip6.fr/~jmc/polycopies/Compensation-horner.pdf\r</p>",
+      "description": "<p>\rClassic rule of thumb approximate error bound when using Horner's \rmethod to evaluate polynomials. \r</p>\r<p>\rSee for instance <a href=\"http://www-pequan.lip6.fr/~jmc/polycopies/Compensation-horner.pdf\">compensated horner evaluation</a>\r</p>",
       "params": [
         {
           "type": {
@@ -3536,11 +3581,14 @@
           "description": "The error bound"
         }
       ],
+      "examples": [
+        "hornerErrorBound([1.1,2.2,-3.3], 1.5); //=> 5.1292303737682235e-15 "
+      ],
       "name": "hornerErrorBound",
       "longname": "hornerErrorBound",
       "kind": "function",
       "scope": "global",
-      "___id": "T000002R000420",
+      "___id": "T000002R000435",
       "___s": true
     },
     {
@@ -3557,7 +3605,7 @@
         "C:\\Projects\\Polynomial\\js\\root-bounds.js",
         "C:\\Projects\\Polynomial\\js\\error-analysis.js"
       ],
-      "___id": "T000002R000425",
+      "___id": "T000002R000439",
       "___s": true
     }
   ]
