@@ -1,4 +1,5 @@
 [![Coverage Status](https://coveralls.io/repos/github/FlorisSteenkamp/FloPoly/badge.svg?branch=master)](https://coveralls.io/github/FlorisSteenkamp/FloPoly?branch=master)
+[![Build Status](https://travis-ci.org/FlorisSteenkamp/FloPoly.svg?branch=master)](https://travis-ci.org/FlorisSteenkamp/FloPoly)
 
 The focus is to find real polynomial roots from degree 2 (quadratic) up to about degree 20 as
 accurately and as fast as possible, e.g.  
