@@ -2,7 +2,6 @@
 .nyc_output
 .npm-debug.log
 .coveralls.yml
-.travis.yml
 referenced papers
 node_modules
 coverage
