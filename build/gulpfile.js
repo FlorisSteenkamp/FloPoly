@@ -25,7 +25,6 @@ function browserifyDistTask() {
 	
     return browserify({
     		entries: '../js/flo-poly.js',
-    		//plugins: ["transform-es2015-arrow-functions"],
     		standalone: 'FloPoly',
     	})
 		.transform("babelify", { presets: [env] })

@@ -57,6 +57,7 @@
     "build-copy-min": "call copy .\\dist\\flo-poly.min.js ..\\mat_demo\\war\\bower_components\\flo-poly\\dist",
     "build-copy-map": "call copy .\\dist\\flo-poly.min.js.map ..\\mat_demo\\war\\bower_components\\flo-poly\\dist",
     "build-copy": "npm run build-copy-main && npm run build-copy-min && npm run build-copy-map",
-    "build-all": "npm run build && npm run build-copy"
+    "build-all": "npm run build && npm run build-copy",
+    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
   }
 }

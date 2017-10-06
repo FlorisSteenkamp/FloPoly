@@ -1617,23 +1617,9 @@ function bisection(f, a, b) {
  * linearly (unlike the Secant and Regula-Falsi methods).
  * </p>
  * <p>
- * The max error, δ, is set equal to 2*Number.EPSILON*Math.abs(b) 
- * + Number.EPSILON after each iteration where b is the current best 
- * guess. A much larger δ of say 1e-10 does not really make sense
- * for polynomials since nearly always by that stage convergence 
- * proceeds superlinearly and by the next iteration a δ of
- * around Number.EPSILON is achieved. On the other hand, a δ of 
- * much less than Number.EPSILON is sometimes useful, say for finding  
- * the root of the polynomial x**2 - 3*x*1e-13 + 2*1e-26 to within less
- * than 1e-15, but this is rare enough not to be considered in this 
- * implementation. (For JavaScript doubles Number.EPSILON === 
- * 2.220446049250313e-16 and since b is typically around 1 the max δ 
- * will be about 3*2.220446049250313e-16 or about 1e-15. As another 
- * example, a root near -1000 will have a max error, i.e. δ, of 
- * about 1e-12. In conclusion, for roots near zero the error can be up
- * to Number.EPSILON or about 1e-15 - we don't bother to calculate the
- * root more accurately than this since it may require up to 4 or 5 
- * additional iterations.
+ * The max error, δ, is set equal to 2*Number.EPSILON*Math.abs(b)
+ * after each iteration where b is the max of the current 2 best 
+ * guesses.
  * </p>
  * <p> 
  * See <a href="https://en.wikipedia.org/wiki/Brent%27s_method">Wikipedia</a>
@@ -1683,7 +1669,7 @@ function brent(f, a, b) {
   var mflag = true;
   var d = void 0; // Value of guess before previous guess
   while (true) {
-    var δ = 2 * Number.EPSILON * Math.abs(b) + Number.EPSILON;
+    var δ = 2 * Number.EPSILON * Math.abs(b); // + Number.EPSILON;
 
     var fc = f(c);
 
