@@ -1,9 +1,9 @@
-(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.FloPoly = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.FloPoly = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
 'use strict';
 
-var coreOperators = require('./core-operators.js');
-var rootOperators = require('./root-operators.js');
-var rootBounds = require('./root-bounds.js');
+var coreOperators = _dereq_('./core-operators.js');
+var rootOperators = _dereq_('./root-operators.js');
+var rootBounds = _dereq_('./root-bounds.js');
 
 var brent = rootOperators.brent,
     quadraticRoots = rootOperators.quadraticRoots;
@@ -186,7 +186,7 @@ function rootsWithin(p, intervals) {
 
 module.exports = allRootsRecursive;
 
-},{"./core-operators.js":2,"./root-bounds.js":7,"./root-operators.js":8}],2:[function(require,module,exports){
+},{"./core-operators.js":2,"./root-bounds.js":7,"./root-operators.js":8}],2:[function(_dereq_,module,exports){
 'use strict';
 
 var coreOperators = {
@@ -769,10 +769,10 @@ function toCasStr(p) {
 
 module.exports = coreOperators;
 
-},{}],3:[function(require,module,exports){
+},{}],3:[function(_dereq_,module,exports){
 'use strict';
 
-var coreOperators = require('./core-operators.js');
+var coreOperators = _dereq_('./core-operators.js');
 
 var errorAnalysis = {
   hornerErrorBound: hornerErrorBound
@@ -830,17 +830,17 @@ function hornerErrorBound(p, x) {
 
 module.exports = errorAnalysis;
 
-},{"./core-operators.js":2}],4:[function(require,module,exports){
+},{"./core-operators.js":2}],4:[function(_dereq_,module,exports){
 'use strict';
 
-var coreOperators = require('./core-operators.js');
-var rootOperators = require('./root-operators.js');
-var rootBounds = require('./root-bounds.js');
+var coreOperators = _dereq_('./core-operators.js');
+var rootOperators = _dereq_('./root-operators.js');
+var rootBounds = _dereq_('./root-bounds.js');
 //let allRootsVAS       = require('./all-roots-vas.js');
-var allRootsRecursive = require('./all-roots-recursive.js');
-var random = require('./random.js');
-var errorAnalysis = require('./error-analysis.js');
-var fromRoots = require('./from-roots.js');
+var allRootsRecursive = _dereq_('./all-roots-recursive.js');
+var random = _dereq_('./random.js');
+var errorAnalysis = _dereq_('./error-analysis.js');
+var fromRoots = _dereq_('./from-roots.js');
 
 var multiply = coreOperators.multiply;
 
@@ -864,10 +864,10 @@ var FloPoly = Object.assign({}, coreOperators, rootOperators, rootBounds, { rand
 
 module.exports = exports = FloPoly;
 
-},{"./all-roots-recursive.js":1,"./core-operators.js":2,"./error-analysis.js":3,"./from-roots.js":5,"./random.js":6,"./root-bounds.js":7,"./root-operators.js":8}],5:[function(require,module,exports){
+},{"./all-roots-recursive.js":1,"./core-operators.js":2,"./error-analysis.js":3,"./from-roots.js":5,"./random.js":6,"./root-bounds.js":7,"./root-operators.js":8}],5:[function(_dereq_,module,exports){
 'use strict';
 
-var _require = require('./core-operators.js'),
+var _require = _dereq_('./core-operators.js'),
     multiply = _require.multiply;
 
 /**
@@ -905,10 +905,10 @@ function fromRoots(roots) {
 
 module.exports = fromRoots;
 
-},{"./core-operators.js":2}],6:[function(require,module,exports){
+},{"./core-operators.js":2}],6:[function(_dereq_,module,exports){
 'use strict';
 
-var fromRoots = require('./from-roots.js');
+var fromRoots = _dereq_('./from-roots.js');
 
 /**
  * Some seed value for the simple random number generator.
@@ -1137,10 +1137,10 @@ function createArrFunction(f) {
 
 module.exports = random;
 
-},{"./from-roots.js":5}],7:[function(require,module,exports){
+},{"./from-roots.js":5}],7:[function(_dereq_,module,exports){
 'use strict';
 
-var coreOperators = require('./core-operators.js');
+var coreOperators = _dereq_('./core-operators.js');
 
 var invert = coreOperators.invert,
     negate = coreOperators.negate,
@@ -1330,12 +1330,12 @@ function negativeRootLowerBound_LMQ(p) {
 
 module.exports = rootBounds;
 
-},{"./core-operators.js":2}],8:[function(require,module,exports){
+},{"./core-operators.js":2}],8:[function(_dereq_,module,exports){
 'use strict';
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-var coreOperators = require('./core-operators.js');
+var coreOperators = _dereq_('./core-operators.js');
 
 /**
  * Operators (i.e. functions) directly related to roots and root 
