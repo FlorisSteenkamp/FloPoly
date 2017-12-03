@@ -1,4 +1,3 @@
-.project
 .nyc_output
 .npm-debug.log
 .coveralls.yml
