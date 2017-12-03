@@ -10,7 +10,7 @@ FloPoly.allRoots([1, -21, 175, -735, 1624, -1764, 720]); //=> [0.999999999999999
 # Documentation, Benchmarks and more
 Please visit [the site](http://mat-demo.appspot.com/#!/test-polynomials).
 
-# Installation
+# Installation and Usage
 
 ## Node (or the browser if you use [Browserify](http://browserify.org)) 
 
@@ -18,35 +18,23 @@ Please visit [the site](http://mat-demo.appspot.com/#!/test-polynomials).
 npm install flo-poly
 ```
 
+```javascript
+var Poly = require("flo-poly");
+```
+
 ## Browser
 
-### Direct
-Download the [minified script file](https://github.com/FlorisSteenkamp/FloPoly/blob/master/dist/flo-poly.min.js) and include it in your project:
-```html 
-<script src='[path-to-file]/flo-poly.min.js'></script>
-```
-There is also a [map file](https://github.com/FlorisSteenkamp/FloPoly/blob/master/dist/flo-poly.min.js.map) and a [non-minified version](https://github.com/FlorisSteenkamp/FloPoly/blob/master/dist/flo-poly.js) available.
-
-### Bower
-
-From the command line, navigate to your project root and type:
 ```cli
-bower install flo-poly --save
+npm install flo-poly
 ```
+
 Include the script in your project:
 ```html
-<script src='bower_components/flo-poly/dist/flo-poly.min.js'></script>
+<script src='node_modules/flo-poly/browser/index.min.js'></script>
 ```
 
-# Usage
-
-## Node
-```javascript
-var FloPoly = require("flo-poly");
-```
-
-## Browser
-
-After having included the script file in your HTML there will be a new global viariable available called `FloPoly` that represents the library. See the [docs](http://mat-demo.appspot.com/#!/test-polynomials#docs).
+After having included the script file in your HTML there will be a new global 
+viariable available called `FloPoly` that represents the library. See the 
+[docs](http://mat-demo.appspot.com/#!/test-polynomials#docs).
 
 
