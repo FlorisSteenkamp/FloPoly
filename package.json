@@ -1,9 +1,14 @@
 {
   "name": "flo-poly",
-  "version": "1.0.2",
   "description": "A practical, root-focused JavaScript polynomial utility library.",
+  "version": "1.0.2",
+  "author": {
+    "name": "Floris Steenkamp"
+  },
   "private": false,
-  "main": "dist/flo-poly.js",
+  "license": "MIT",
+  "main": "index.js",
+  "typings": "node/index",
   "directories": {
     "test": "test"
   },
@@ -17,8 +22,6 @@
     "root",
     "finding"
   ],
-  "author": "Floris Steenkamp",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/FlorisSteenkamp/FloPoly/issues"
   },
@@ -36,29 +39,30 @@
     "gulp-derequire": "^2.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^1.6.0",
+    "gulp-typescript": "^3.2.3",
     "gulp-uglify": "^2.0.0",
     "istanbul": "^0.4.5",
     "jsdoc": "3.4.x",
     "mocha": "^3.5.3",
     "nyc": "^11.2.1",
     "transform": "^1.1.2",
+    "tsify": "^3.0.3",
+    "typescript": "^2.6.1",    
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "vinyl-transform": "^1.0.0"
   },
   "scripts": {
-    "build": "cd build && gulp",
+    "build": "gulp",
+    "build-node": "gulp node",
+    "build-browser": "gulp browser",    
     "test-only": "mocha --compilers js:babel-core/register ./test/js",
     "test": "npm run build && npm run test-only",
     "coverage": "./node_modules/.bin/nyc --reporter=html --reporter=text mocha --compilers js:babel-core/register ./test/js",
     "jsdoc": "cd docs && jsdoc --template jsdoc-json --destination doc.json -c conf.json",
-    "jsdoc-copy": "call copy .\\docs\\doc.json ..\\mat_demo\\war\\html\\polynomial\\jsdoc.json",
-    "jsdoc-all": "npm run jsdoc && npm run jsdoc-copy",
-    "build-copy-main": "call copy .\\dist\\flo-poly.js  ..\\mat_demo\\war\\bower_components\\flo-poly\\dist",
-    "build-copy-min": "call copy .\\dist\\flo-poly.min.js ..\\mat_demo\\war\\bower_components\\flo-poly\\dist",
-    "build-copy-map": "call copy .\\dist\\flo-poly.min.js.map ..\\mat_demo\\war\\bower_components\\flo-poly\\dist",
-    "build-copy": "npm run build-copy-main && npm run build-copy-min && npm run build-copy-map",
-    "build-all": "npm run build && npm run build-copy",
     "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
+  },
+    "browserify": {
+      "transform": [["babelify", { "presets": ["env"] }]]
   }
 }

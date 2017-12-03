@@ -12,7 +12,7 @@ if (typeof require === 'undefined') {
 	mocha   = require('mocha');
 	chai    = require('chai');
 	helper  = require('./helpers/helper.js');
-	FloPoly = require('../../js/flo-poly.js');
+	FloPoly = require('../../node/index.js').default;
 }
 
 var { assert, expect } = chai;

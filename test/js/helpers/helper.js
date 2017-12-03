@@ -3,7 +3,7 @@
 var FloPoly;
 
 if (typeof require !== 'undefined') {
-	FloPoly = require('../../../js/flo-poly.js');
+	FloPoly = require('../../../node/index.js').default;
 }
 
 var { evaluate, hornerErrorBound } = FloPoly;
