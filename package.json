@@ -1,7 +1,7 @@
 {
   "name": "flo-poly",
   "description": "A practical, root-focused JavaScript polynomial utility library.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": {
     "name": "Floris Steenkamp"
   },
@@ -47,7 +47,7 @@
     "nyc": "^11.2.1",
     "transform": "^1.1.2",
     "tsify": "^3.0.3",
-    "typescript": "^2.6.1",    
+    "typescript": "^2.6.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "vinyl-transform": "^1.0.0"
@@ -55,14 +55,23 @@
   "scripts": {
     "build": "gulp",
     "build-node": "gulp node",
-    "build-browser": "gulp browser",    
+    "build-browser": "gulp browser",
     "test-only": "mocha --compilers js:babel-core/register ./test/js",
     "test": "npm run build && npm run test-only",
     "coverage": "./node_modules/.bin/nyc --reporter=html --reporter=text mocha --compilers js:babel-core/register ./test/js",
     "jsdoc": "cd docs && jsdoc --template jsdoc-json --destination doc.json -c conf.json",
     "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
   },
-    "browserify": {
-      "transform": [["babelify", { "presets": ["env"] }]]
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "env"
+          ]
+        }
+      ]
+    ]
   }
 }
