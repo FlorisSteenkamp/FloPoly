@@ -14,21 +14,24 @@ Please visit [the site](http://mat-demo.appspot.com/#!/test-polynomials).
 
 ## Node (or the browser if you use [Browserify](http://browserify.org)) 
 
+On the command line
 ```cli
 npm install flo-poly
 ```
 
+Then, in your project
 ```javascript
 var Poly = require("flo-poly");
 ```
 
 ## Browser
 
+On the command line
 ```cli
 npm install flo-poly
 ```
 
-Include the script in your project:
+Then, include the script in your project:
 ```html
 <script src='node_modules/flo-poly/browser/index.min.js'></script>
 ```
