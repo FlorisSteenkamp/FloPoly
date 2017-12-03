@@ -7,7 +7,7 @@
   },
   "private": false,
   "license": "MIT",
-  "main": "index.js",
+  "main": "node/index.js",
   "typings": "node/index",
   "directories": {
     "test": "test"
