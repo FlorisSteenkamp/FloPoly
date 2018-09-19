@@ -26,6 +26,7 @@
     "url": "https://github.com/FlorisSteenkamp/FloPoly/issues"
   },
   "homepage": "http://mat-demo.appspot.com/#!/test-polynomials",
+  "dependencies": { },
   "devDependencies": {
     "babel-cli": "^6.22.2",
     "babel-core": "^6.26.0",
