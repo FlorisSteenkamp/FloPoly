@@ -11,12 +11,42 @@ var rename     = require('gulp-rename');
 var derequire  = require('gulp-derequire');
 var ts         = require("gulp-typescript");
 var tsify      = require("tsify");
+var typedoc    = require("gulp-typedoc");
 
 var tsProject  = ts.createProject("./tsconfig.json");
 
 gulp.task('default', nodeTask);
 gulp.task('node',    nodeTask);
 gulp.task('browser', browserTask);
+gulp.task("docs",    docsTask);
+
+
+function docsTask() {
+	return gulp
+        .src([
+			"index.ts"
+			/*
+			"./src/all-roots-recursive.js",
+    		"./src/all-roots-vas.js",
+    		"./src/core-operators.js",
+    		"./src/flo-poly.js",
+    		"./src/root-operators.js",
+    		"./src/random.js",
+			"./src/mobius.js",
+    		"./src/root-bounds.js",
+			"./src/error-analysis.js"*/
+		])
+        .pipe(typedoc({
+			mode: "modules",
+			exclude: "**/*..ts",
+            module: "commonjs",
+            target: "es2015",
+            //out: "docs/",
+			name: "Poly",
+			json: "docs/docs.json",
+			//ignoreCompilerErrors: true,
+        }));
+}
 
 
 /**

@@ -1,0 +1,6411 @@
+{
+	"id": 0,
+	"name": "Poly",
+	"kind": 0,
+	"flags": {},
+	"children": [
+		{
+			"id": 311,
+			"name": "\"index\"",
+			"kind": 1,
+			"kindString": "External module",
+			"flags": {
+				"isExported": true
+			},
+			"originalName": "C:/Projects/poly/index.ts",
+			"children": [
+				{
+					"id": 312,
+					"name": "multiply",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 11,
+							"character": 14
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "multiply",
+						"id": 20
+					},
+					"defaultValue": " coreOperators.multiply"
+				},
+				{
+					"id": 313,
+					"name": "FloPoly",
+					"kind": 2097152,
+					"kindString": "Object literal",
+					"flags": {
+						"isExported": true,
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "Simple & fast practical library functions for functional univariate\npolynomials over the reals (actually ECMAScript numbers, i.e. double\nfloats).",
+						"text": "All polinomials are represented as a simple array starting with the\nhighest non-zero power, e.g.\n  3x^3 + 5x^2 + 7x + 2 -> [3,5,7,2]\n",
+						"tags": [
+							{
+								"tag": "ignore",
+								"text": "\n"
+							}
+						]
+					},
+					"children": [
+						{
+							"id": 337,
+							"name": "allRoots",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "index.ts",
+									"line": 32,
+									"character": 9
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "allRoots",
+								"id": 177
+							}
+						},
+						{
+							"id": 336,
+							"name": "fromRoots",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "index.ts",
+									"line": 31,
+									"character": 10
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "fromRoots",
+								"id": 195
+							}
+						},
+						{
+							"id": 314,
+							"name": "random",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "index.ts",
+									"line": 30,
+									"character": 7
+								}
+							],
+							"type": {
+								"type": "reflection",
+								"declaration": {
+									"id": 315,
+									"name": "__type",
+									"kind": 65536,
+									"kindString": "Type literal",
+									"flags": {
+										"isExported": true
+									},
+									"children": [
+										{
+											"id": 326,
+											"name": "flatCoefficients",
+											"kind": 32,
+											"kindString": "Variable",
+											"flags": {
+												"isExported": true
+											},
+											"sources": [
+												{
+													"fileName": "src/random.ts",
+													"line": 236,
+													"character": 20
+												}
+											],
+											"type": {
+												"type": "reference",
+												"name": "flatCoefficients",
+												"id": 269
+											}
+										},
+										{
+											"id": 327,
+											"name": "flatCoefficientsArr",
+											"kind": 32,
+											"kindString": "Variable",
+											"flags": {
+												"isExported": true
+											},
+											"sources": [
+												{
+													"fileName": "src/random.ts",
+													"line": 237,
+													"character": 23
+												}
+											],
+											"type": {
+												"type": "reflection",
+												"declaration": {
+													"id": 328,
+													"name": "__type",
+													"kind": 65536,
+													"kindString": "Type literal",
+													"flags": {
+														"isExported": true
+													},
+													"signatures": [
+														{
+															"id": 329,
+															"name": "__call",
+															"kind": 4096,
+															"kindString": "Call signature",
+															"flags": {},
+															"parameters": [
+																{
+																	"id": 330,
+																	"name": "n",
+																	"kind": 32768,
+																	"kindString": "Parameter",
+																	"flags": {},
+																	"type": {
+																		"type": "intrinsic",
+																		"name": "number"
+																	}
+																},
+																{
+																	"id": 331,
+																	"name": "d",
+																	"kind": 32768,
+																	"kindString": "Parameter",
+																	"flags": {},
+																	"type": {
+																		"type": "intrinsic",
+																		"name": "number"
+																	}
+																},
+																{
+																	"id": 332,
+																	"name": "a",
+																	"kind": 32768,
+																	"kindString": "Parameter",
+																	"flags": {},
+																	"type": {
+																		"type": "intrinsic",
+																		"name": "number"
+																	}
+																},
+																{
+																	"id": 333,
+																	"name": "b",
+																	"kind": 32768,
+																	"kindString": "Parameter",
+																	"flags": {},
+																	"type": {
+																		"type": "intrinsic",
+																		"name": "number"
+																	}
+																},
+																{
+																	"id": 334,
+																	"name": "seed",
+																	"kind": 32768,
+																	"kindString": "Parameter",
+																	"flags": {},
+																	"type": {
+																		"type": "intrinsic",
+																		"name": "number"
+																	}
+																},
+																{
+																	"id": 335,
+																	"name": "odds",
+																	"kind": 32768,
+																	"kindString": "Parameter",
+																	"flags": {},
+																	"type": {
+																		"type": "intrinsic",
+																		"name": "number"
+																	}
+																}
+															],
+															"type": {
+																"type": "array",
+																"elementType": {
+																	"type": "array",
+																	"elementType": {
+																		"type": "intrinsic",
+																		"name": "number"
+																	}
+																}
+															}
+														}
+													]
+												}
+											}
+										},
+										{
+											"id": 316,
+											"name": "flatRoots",
+											"kind": 32,
+											"kindString": "Variable",
+											"flags": {
+												"isExported": true
+											},
+											"sources": [
+												{
+													"fileName": "src/random.ts",
+													"line": 234,
+													"character": 13
+												}
+											],
+											"type": {
+												"type": "reference",
+												"name": "flatRoots",
+												"id": 259
+											}
+										},
+										{
+											"id": 317,
+											"name": "flatRootsArr",
+											"kind": 32,
+											"kindString": "Variable",
+											"flags": {
+												"isExported": true
+											},
+											"sources": [
+												{
+													"fileName": "src/random.ts",
+													"line": 235,
+													"character": 16
+												}
+											],
+											"type": {
+												"type": "reflection",
+												"declaration": {
+													"id": 318,
+													"name": "__type",
+													"kind": 65536,
+													"kindString": "Type literal",
+													"flags": {
+														"isExported": true
+													},
+													"signatures": [
+														{
+															"id": 319,
+															"name": "__call",
+															"kind": 4096,
+															"kindString": "Call signature",
+															"flags": {},
+															"parameters": [
+																{
+																	"id": 320,
+																	"name": "n",
+																	"kind": 32768,
+																	"kindString": "Parameter",
+																	"flags": {},
+																	"type": {
+																		"type": "intrinsic",
+																		"name": "number"
+																	}
+																},
+																{
+																	"id": 321,
+																	"name": "d",
+																	"kind": 32768,
+																	"kindString": "Parameter",
+																	"flags": {},
+																	"type": {
+																		"type": "intrinsic",
+																		"name": "number"
+																	}
+																},
+																{
+																	"id": 322,
+																	"name": "a",
+																	"kind": 32768,
+																	"kindString": "Parameter",
+																	"flags": {},
+																	"type": {
+																		"type": "intrinsic",
+																		"name": "number"
+																	}
+																},
+																{
+																	"id": 323,
+																	"name": "b",
+																	"kind": 32768,
+																	"kindString": "Parameter",
+																	"flags": {},
+																	"type": {
+																		"type": "intrinsic",
+																		"name": "number"
+																	}
+																},
+																{
+																	"id": 324,
+																	"name": "seed",
+																	"kind": 32768,
+																	"kindString": "Parameter",
+																	"flags": {},
+																	"type": {
+																		"type": "intrinsic",
+																		"name": "number"
+																	}
+																},
+																{
+																	"id": 325,
+																	"name": "odds",
+																	"kind": 32768,
+																	"kindString": "Parameter",
+																	"flags": {},
+																	"type": {
+																		"type": "intrinsic",
+																		"name": "number"
+																	}
+																}
+															],
+															"type": {
+																"type": "array",
+																"elementType": {
+																	"type": "array",
+																	"elementType": {
+																		"type": "intrinsic",
+																		"name": "number"
+																	}
+																}
+															}
+														}
+													]
+												}
+											}
+										}
+									],
+									"groups": [
+										{
+											"title": "Variables",
+											"kind": 32,
+											"children": [
+												326,
+												327,
+												316,
+												317
+											]
+										}
+									]
+								}
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Variables",
+							"kind": 32,
+							"children": [
+								337,
+								336,
+								314
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 25,
+							"character": 13
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "object"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Variables",
+					"kind": 32,
+					"children": [
+						312
+					]
+				},
+				{
+					"title": "Object literals",
+					"kind": 2097152,
+					"children": [
+						313
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 164,
+			"name": "\"src/all-roots-recursive\"",
+			"kind": 1,
+			"kindString": "External module",
+			"flags": {
+				"isExported": true,
+				"isExternal": true
+			},
+			"originalName": "C:/Projects/poly/src/all-roots-recursive.ts",
+			"children": [
+				{
+					"id": 176,
+					"name": "INF",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExternal": true,
+						"isConst": true
+					},
+					"sources": [
+						{
+							"fileName": "src/all-roots-recursive.ts",
+							"line": 18,
+							"character": 9
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "number"
+					},
+					"defaultValue": " Number.POSITIVE_INFINITY"
+				},
+				{
+					"id": 169,
+					"name": "brent",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExternal": true
+					},
+					"sources": [
+						{
+							"fileName": "src/all-roots-recursive.ts",
+							"line": 8,
+							"character": 13
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "brent",
+						"id": 118
+					}
+				},
+				{
+					"id": 165,
+					"name": "clip0",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExternal": true
+					},
+					"sources": [
+						{
+							"fileName": "src/all-roots-recursive.ts",
+							"line": 7,
+							"character": 13
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "clip0",
+						"id": 68
+					}
+				},
+				{
+					"id": 167,
+					"name": "differentiate",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExternal": true
+					},
+					"sources": [
+						{
+							"fileName": "src/all-roots-recursive.ts",
+							"line": 7,
+							"character": 38
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "differentiate",
+						"id": 17
+					}
+				},
+				{
+					"id": 166,
+					"name": "evaluate",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExternal": true
+					},
+					"sources": [
+						{
+							"fileName": "src/all-roots-recursive.ts",
+							"line": 7,
+							"character": 23
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "evaluate",
+						"id": 31
+					}
+				},
+				{
+					"id": 175,
+					"name": "negativeRootLowerBound_LMQ",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExternal": true
+					},
+					"sources": [
+						{
+							"fileName": "src/all-roots-recursive.ts",
+							"line": 14,
+							"character": 27
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "negativeRootLowerBound_LMQ",
+						"id": 154
+					}
+				},
+				{
+					"id": 174,
+					"name": "negativeRootUpperBound_LMQ",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExternal": true
+					},
+					"sources": [
+						{
+							"fileName": "src/all-roots-recursive.ts",
+							"line": 13,
+							"character": 27
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "negativeRootUpperBound_LMQ",
+						"id": 151
+					}
+				},
+				{
+					"id": 173,
+					"name": "positiveRootLowerBound_LMQ",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExternal": true
+					},
+					"sources": [
+						{
+							"fileName": "src/all-roots-recursive.ts",
+							"line": 12,
+							"character": 27
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "positiveRootLowerBound_LMQ",
+						"id": 148
+					}
+				},
+				{
+					"id": 172,
+					"name": "positiveRootUpperBound_LMQ",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExternal": true
+					},
+					"sources": [
+						{
+							"fileName": "src/all-roots-recursive.ts",
+							"line": 11,
+							"character": 27
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "positiveRootUpperBound_LMQ",
+						"id": 145
+					}
+				},
+				{
+					"id": 170,
+					"name": "quadraticRoots",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExternal": true
+					},
+					"sources": [
+						{
+							"fileName": "src/all-roots-recursive.ts",
+							"line": 8,
+							"character": 29
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "quadraticRoots",
+						"id": 102
+					}
+				},
+				{
+					"id": 171,
+					"name": "rootMagnitudeUpperBound_fujiwara",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExternal": true
+					},
+					"sources": [
+						{
+							"fileName": "src/all-roots-recursive.ts",
+							"line": 10,
+							"character": 33
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "rootMagnitudeUpperBound_fujiwara",
+						"id": 141
+					}
+				},
+				{
+					"id": 168,
+					"name": "toCasStr",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExternal": true
+					},
+					"sources": [
+						{
+							"fileName": "src/all-roots-recursive.ts",
+							"line": 7,
+							"character": 48
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "toCasStr",
+						"id": 74
+					}
+				},
+				{
+					"id": 177,
+					"name": "allRoots",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true,
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 178,
+							"name": "allRoots",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "<p>Finds a near optimal approximation to the real roots (or those\nwithin a range) of the input polynomial.\n</p>\n<p>\nOnly multiple roots of even order that is very close together may be\nmissed. (This is rarely a problem in practice - in a geometrical\napplication, for instance, this may mean two objects are barely\ntouching and returning either, all, or none of the repeated even\nroots should not break the algorithm).\n</p>",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\nFloPoly.allRoots([1, -10, 35, -50, 24]); //=> [1, 2.0000000000000036, 3.0000000000000067, 4]\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 179,
+									"name": "p",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The polynomial"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								},
+								{
+									"id": 180,
+									"name": "a",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Lower limit of root values that should be returned -\ndefaults to -∞"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									},
+									"defaultValue": " -INF"
+								},
+								{
+									"id": 181,
+									"name": "b",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Upper limit of root values that should be returned -\ndefaults to +∞"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									},
+									"defaultValue": " +INF"
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "intrinsic",
+									"name": "number"
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/all-roots-recursive.ts",
+							"line": 40,
+							"character": 17
+						}
+					]
+				},
+				{
+					"id": 182,
+					"name": "inRange",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isPrivate": true,
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 183,
+							"name": "inRange",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isPrivate": true
+							},
+							"comment": {
+								"shortText": "Returns a function that returns true if x is in the range [a,b]."
+							},
+							"parameters": [
+								{
+									"id": 184,
+									"name": "a",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 185,
+									"name": "b",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "reflection",
+								"declaration": {
+									"id": 186,
+									"name": "__type",
+									"kind": 65536,
+									"kindString": "Type literal",
+									"flags": {},
+									"signatures": [
+										{
+											"id": 187,
+											"name": "__call",
+											"kind": 4096,
+											"kindString": "Call signature",
+											"flags": {},
+											"parameters": [
+												{
+													"id": 188,
+													"name": "x",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {},
+													"type": {
+														"type": "intrinsic",
+														"name": "number"
+													}
+												}
+											],
+											"type": {
+												"type": "intrinsic",
+												"name": "boolean"
+											}
+										}
+									],
+									"sources": [
+										{
+											"fileName": "src/all-roots-recursive.ts",
+											"line": 129,
+											"character": 39
+										}
+									]
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/all-roots-recursive.ts",
+							"line": 129,
+							"character": 16
+						}
+					]
+				},
+				{
+					"id": 189,
+					"name": "rootsWithin",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isPrivate": true,
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 190,
+							"name": "rootsWithin",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isPrivate": true
+							},
+							"comment": {
+								"shortText": "Finds all roots of the given polynomial within the given intervals."
+							},
+							"parameters": [
+								{
+									"id": 191,
+									"name": "p",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								},
+								{
+									"id": 192,
+									"name": "intervals",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "\n"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "intrinsic",
+									"name": "number"
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/all-roots-recursive.ts",
+							"line": 140,
+							"character": 20
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Variables",
+					"kind": 32,
+					"children": [
+						176,
+						169,
+						165,
+						167,
+						166,
+						175,
+						174,
+						173,
+						172,
+						170,
+						171,
+						168
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						177,
+						182,
+						189
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "src/all-roots-recursive.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 1,
+			"name": "\"src/core-operators\"",
+			"kind": 1,
+			"kindString": "External module",
+			"flags": {
+				"isExported": true,
+				"isExternal": true
+			},
+			"originalName": "C:/Projects/poly/src/core-operators.ts",
+			"children": [
+				{
+					"id": 6,
+					"name": "add",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 7,
+							"name": "add",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Adds two polynomials.",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\nFloPoly.add([1,2,3],[3,4]); //=> [1,5,7]\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 8,
+									"name": "p1",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The first polynomial"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								},
+								{
+									"id": 9,
+									"name": "p2",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The second polynomial"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "intrinsic",
+									"name": "number"
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/core-operators.ts",
+							"line": 27,
+							"character": 12
+						}
+					]
+				},
+				{
+					"id": 53,
+					"name": "changeVariables",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 54,
+							"name": "changeVariables",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "<p>\nPerforms a change of variables of the form: p(x) <- p(ax + b).\n</p>\n<p>\nSee <a href=\"http://stackoverflow.com/questions/141422/how-can-a-transform-a-polynomial-to-another-coordinate-system\">this stackoverflow question</a>\n</p>",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\nFloPoly.changeVariables([1,2,7], 3, 4); //=> [9, 30, 31]\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 55,
+									"name": "p",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The polynomial"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								},
+								{
+									"id": 56,
+									"name": "a",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 57,
+									"name": "b",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "intrinsic",
+									"name": "number"
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/core-operators.ts",
+							"line": 324,
+							"character": 24
+						}
+					]
+				},
+				{
+					"id": 64,
+					"name": "clip",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 65,
+							"name": "clip",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "If the highest power coefficient is small in the sense that the\nhighest power term has a negligible contribution (compared to the\nother terms) at x = 1 then clip() can be called to remove all such\nhighest terms. A contribution of less than Number.EPSILON of the\nhighest coefficient will be considered negligible by default.",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\nFloPoly.clip([1e-18, 1e-10, 1e-5]); //=> [1e-18, 1e-10, 1e-5]\nFloPoly.clip([1e-18, 1e-10, 1e-1]); //=> [1e-10, 1e-1]\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 66,
+									"name": "p",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The polynomial to be clipped."
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								},
+								{
+									"id": 67,
+									"name": "δ",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The optional contribution tolerence else\n       Number.EPSILON will be used by default."
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "intrinsic",
+									"name": "number"
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/core-operators.ts",
+							"line": 458,
+							"character": 13
+						}
+					]
+				},
+				{
+					"id": 68,
+					"name": "clip0",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 69,
+							"name": "clip0",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "If the highest power coefficient is 0 then clip() can be called to\nremove all such highest terms so that the array is a valid\npresentation of a polynomial.",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\nFloPoly.clip0([1e-18, 1e-10, 1e-1]); //=> [1e-18, 1e-10, 1e-1]\nFloPoly.clip0([0, 1e-10, 1e-1]); //=> [1e-10, 1e-1]\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 70,
+									"name": "p",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The polynomial to be clipped."
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "intrinsic",
+									"name": "number"
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/core-operators.ts",
+							"line": 486,
+							"character": 14
+						}
+					]
+				},
+				{
+					"id": 46,
+					"name": "deflate",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 47,
+							"name": "deflate",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Deflates the given polynomial by removing a factor (x - r), where\nr is a root of the polynomial.",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n// The polynomial x^3 - 5x^2 + 8x - 4 has a root at 1 and a double root at 2\nFloPoly.deflate([1, -5, 8, -4], 2); //=> [1, -3, 2]\nFloPoly.deflate([1, -3, 2], 2);     //=> [1,-1]\nFloPoly.deflate([1, -1], 1);        //=> [1]\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 48,
+									"name": "p",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The polynomial"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								},
+								{
+									"id": 49,
+									"name": "root",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "A pre-calculated root of the polynomial."
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "intrinsic",
+									"name": "number"
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/core-operators.ts",
+							"line": 285,
+							"character": 16
+						}
+					]
+				},
+				{
+					"id": 28,
+					"name": "degree",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 29,
+							"name": "degree",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Returns the degree of the polynomial.",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\nFloPoly.degree([9,8,7,6,5,4,3,2,1]); //=> 9\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 30,
+									"name": "p",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The polynomial"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/core-operators.ts",
+							"line": 183,
+							"character": 15
+						}
+					]
+				},
+				{
+					"id": 17,
+					"name": "differentiate",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 18,
+							"name": "differentiate",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Differentiates the given polynomial.",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\nFloPoly.differentiate([5, 4, 3, 2, 1]); //=> [20, 12, 6, 2]\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 19,
+									"name": "p",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The polynomial"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "intrinsic",
+									"name": "number"
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/core-operators.ts",
+							"line": 109,
+							"character": 22
+						}
+					]
+				},
+				{
+					"id": 2,
+					"name": "equal",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 3,
+							"name": "equal",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Returns true if two polynomials are exactly equal by comparing\ncoefficients.",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\nFloPoly.equal([1,2,3,4], [1,2,3,4]);   //=> true\nFloPoly.equal([1,2,3,4], [1,2,3,4,5]); //=> false\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 4,
+									"name": "p1",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "A polynomial"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								},
+								{
+									"id": 5,
+									"name": "p2",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Another polynomial"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "boolean"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/core-operators.ts",
+							"line": 11,
+							"character": 14
+						}
+					]
+				},
+				{
+					"id": 31,
+					"name": "evaluate",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 32,
+							"name": "evaluate",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Evaluates a univariate polynomial using Horner's method. This\nfunction is curried (see examples below).\nSee https://en.wikipedia.org/wiki/Horner%27s_method",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\nlet ev = FloPoly.evaluate([3,2,1]);\nev(1); // => 6\nev(2); // => 17\n\nFloPoly.evaluate([3,2,1], 1); // => 6\nFloPoly.evaluate([3,2,1], 2); // => 17\n\nFloPoly.evaluate([3,2,1])(1); // => 6\nFloPoly.evaluate([3,2,1])(2); // => 17\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 33,
+									"name": "p",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The polynomial"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								},
+								{
+									"id": 34,
+									"name": "a",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The value at which to evaluate the polynomial."
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						},
+						{
+							"id": 35,
+							"name": "evaluate",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 36,
+									"name": "p",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "reflection",
+								"declaration": {
+									"id": 37,
+									"name": "__type",
+									"kind": 65536,
+									"kindString": "Type literal",
+									"flags": {},
+									"signatures": [
+										{
+											"id": 38,
+											"name": "__call",
+											"kind": 4096,
+											"kindString": "Call signature",
+											"flags": {},
+											"parameters": [
+												{
+													"id": 39,
+													"name": "a",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {},
+													"type": {
+														"type": "intrinsic",
+														"name": "number"
+													}
+												}
+											],
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										}
+									],
+									"sources": [
+										{
+											"fileName": "src/core-operators.ts",
+											"line": 207,
+											"character": 31
+										}
+									]
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/core-operators.ts",
+							"line": 206,
+							"character": 17
+						},
+						{
+							"fileName": "src/core-operators.ts",
+							"line": 207,
+							"character": 17
+						},
+						{
+							"fileName": "src/core-operators.ts",
+							"line": 208,
+							"character": 17
+						}
+					]
+				},
+				{
+					"id": 40,
+					"name": "evaluateAt0",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 41,
+							"name": "evaluateAt0",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Evaluates the given polynomial at 0 - it is much faster than at an\narbitrary point.",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\nFloPoly.evaluateAt0([3,2,99]); //=> 99\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 42,
+									"name": "p",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The polynomial"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/core-operators.ts",
+							"line": 233,
+							"character": 20
+						}
+					]
+				},
+				{
+					"id": 50,
+					"name": "invert",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 51,
+							"name": "invert",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Inverts the given polynomial by reversing the order of the\ncoefficients, i.e. p(x) -> x^deg(p) * p(1/x)",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\nFloPoly.invert([1,2,3,4]); // => [4,3,2,1]\nFloPoly.invert([3,2,-5]);  // => [-5,2,3]\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 52,
+									"name": "p",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The polynomial"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "intrinsic",
+									"name": "number"
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/core-operators.ts",
+							"line": 306,
+							"character": 15
+						}
+					]
+				},
+				{
+					"id": 71,
+					"name": "maxCoefficient",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 72,
+							"name": "maxCoefficient",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Returns the absolute value of the highest coefficient of the polynomial.",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\nFloPoly.maxCoefficient([-2, 0.1, 0.2]); //=> 2\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 73,
+									"name": "p",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The polynomial."
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/core-operators.ts",
+							"line": 497,
+							"character": 23
+						}
+					]
+				},
+				{
+					"id": 20,
+					"name": "multiply",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 21,
+							"name": "multiply",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "<p>\nMultiplies the two given polynomials and returns the result.\n</p>\n<p>\nSee <a href=\"https://en.wikipedia.org/wiki/Polynomial_arithmetic\">polynomial arithmetic</a>\n</p>\n<p>\nSee <a href=\"https://en.wikipedia.org/wiki/Discrete_Fourier_transform#Polynomial_multiplication\">polynomial multiplication</a>\n</p>\n<p>\nSee <a herf=\"http://web.cs.iastate.edu/~cs577/handouts/polymultiply.pdf\">polynomial multiplication (pdf)</a>\n</p>",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\nFloPoly.multiply([1,2,3], [2,5,3,5]); //=> [2, 9, 19, 26, 19, 15]\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 22,
+									"name": "p1",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The one polynomial."
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								},
+								{
+									"id": 23,
+									"name": "p2",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The other polynomial."
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "intrinsic",
+									"name": "number"
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/core-operators.ts",
+							"line": 140,
+							"character": 17
+						}
+					]
+				},
+				{
+					"id": 24,
+					"name": "multiplyByConst",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 25,
+							"name": "multiplyByConst",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Multiplies 2 polynomials by a constant.",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\nFloPoly.multiplyByConst(0.25, [3,2,1]); //=> [0.75, 0.5, 0.25]\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 26,
+									"name": "c",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The constant"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 27,
+									"name": "p",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The polynomial"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "intrinsic",
+									"name": "number"
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/core-operators.ts",
+							"line": 163,
+							"character": 24
+						}
+					]
+				},
+				{
+					"id": 14,
+					"name": "negate",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 15,
+							"name": "negate",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Negate the given polynomial (p -> -p).",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\nFloPoly.negate([0.1, -0.2]); //=> [-0.1, 0.2]\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 16,
+									"name": "p",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The polynomial"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "intrinsic",
+									"name": "number"
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/core-operators.ts",
+							"line": 98,
+							"character": 15
+						}
+					]
+				},
+				{
+					"id": 58,
+					"name": "reflectAboutYAxis",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 59,
+							"name": "reflectAboutYAxis",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Reflects the given polynomial about the Y-axis, i.e. perform the\nchange of variables: p(x) <- p(-x).",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\nFloPoly.reflectAboutYAxis([5,4,3,2,1]); //=> [5, -4, 3, -2, 1]\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 60,
+									"name": "p",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The polynomial to reflect"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "intrinsic",
+									"name": "number"
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/core-operators.ts",
+							"line": 368,
+							"character": 26
+						}
+					]
+				},
+				{
+					"id": 43,
+					"name": "signChanges",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 44,
+							"name": "signChanges",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "<p>\nReturns the number of sign changes in the polynomial coefficents\nwhen ordered in descending order; zeros are ignored.\n</p>\n<p>\nDescartes' rule of signs states (quoted from Wikipedia):\n\"if the terms of a polynomial are ordered by descending variable\nexponent, then the number of positive roots of the polynomial is\neither equal to the number of sign differences between consecutive\nnonzero coefficients, or is less than it by an even number. Multiple\nroots of the same value are counted separately.\"\n</p>\nSee https://en.wikipedia.org/wiki/Descartes%27_rule_of_signs",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\nFloPoly.signChanges([1,2,-3,0,0,3,-1]); //=> 3\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 45,
+									"name": "p",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The polynomial"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/core-operators.ts",
+							"line": 256,
+							"character": 20
+						}
+					]
+				},
+				{
+					"id": 61,
+					"name": "sturmChain",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 62,
+							"name": "sturmChain",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Generates a sturm chain for the given polynomial.\nSee https://en.wikipedia.org/wiki/Sturm%27s_theorem",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\nFloPoly.sturmChain([-3,4,2,-2]); //=> [[-3, 4, 2, -2], [-9, 8, 2], [-2.5185185185185186, 1.7037037037037037], [-3.2932525951557086]]\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 63,
+									"name": "p",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The polynomial"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "array",
+									"elementType": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/core-operators.ts",
+							"line": 389,
+							"character": 19
+						}
+					]
+				},
+				{
+					"id": 10,
+					"name": "subtract",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 11,
+							"name": "subtract",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Subtracts the second polynomial from first (p1 - p2).",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\nFloPoly.subtract([2,3],[4,4]); //=> [-2, -1]\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 12,
+									"name": "p1",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The polynomial from which will be subtracted"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								},
+								{
+									"id": 13,
+									"name": "p2",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The polynomial that will be subtracted"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "intrinsic",
+									"name": "number"
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/core-operators.ts",
+							"line": 63,
+							"character": 17
+						}
+					]
+				},
+				{
+					"id": 74,
+					"name": "toCasStr",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 75,
+							"name": "toCasStr",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Returns a string representing the given polynomial that is readable\nby a human or a CAS (Computer Algebra System).",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\nFloPoly.toCasStr([5,4,3,2,1]); //=> \"x^4*5 + x^3*4 + x^2*3 + x*2 + 1\"\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 76,
+									"name": "p",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The polynomial"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/core-operators.ts",
+							"line": 517,
+							"character": 17
+						}
+					]
+				},
+				{
+					"id": 77,
+					"name": "coreOperators",
+					"kind": 2097152,
+					"kindString": "Object literal",
+					"flags": {
+						"isExported": true,
+						"isExternal": true,
+						"isLet": true
+					},
+					"children": [
+						{
+							"id": 79,
+							"name": "add",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/core-operators.ts",
+									"line": 538,
+									"character": 4
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "add",
+								"id": 6
+							}
+						},
+						{
+							"id": 90,
+							"name": "changeVariables",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/core-operators.ts",
+									"line": 549,
+									"character": 16
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "changeVariables",
+								"id": 53
+							}
+						},
+						{
+							"id": 93,
+							"name": "clip",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/core-operators.ts",
+									"line": 552,
+									"character": 5
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "clip",
+								"id": 64
+							}
+						},
+						{
+							"id": 94,
+							"name": "clip0",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/core-operators.ts",
+									"line": 553,
+									"character": 6
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "clip0",
+								"id": 68
+							}
+						},
+						{
+							"id": 95,
+							"name": "deflate",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/core-operators.ts",
+									"line": 554,
+									"character": 8
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "deflate",
+								"id": 46
+							}
+						},
+						{
+							"id": 85,
+							"name": "degree",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/core-operators.ts",
+									"line": 544,
+									"character": 7
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "degree",
+								"id": 28
+							}
+						},
+						{
+							"id": 83,
+							"name": "differentiate",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/core-operators.ts",
+									"line": 542,
+									"character": 14
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "differentiate",
+								"id": 17
+							}
+						},
+						{
+							"id": 78,
+							"name": "equal",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/core-operators.ts",
+									"line": 537,
+									"character": 6
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "equal",
+								"id": 2
+							}
+						},
+						{
+							"id": 86,
+							"name": "evaluate",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/core-operators.ts",
+									"line": 545,
+									"character": 9
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "evaluate",
+								"id": 31
+							}
+						},
+						{
+							"id": 87,
+							"name": "evaluateAt0",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/core-operators.ts",
+									"line": 546,
+									"character": 12
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "evaluateAt0",
+								"id": 40
+							}
+						},
+						{
+							"id": 89,
+							"name": "invert",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/core-operators.ts",
+									"line": 548,
+									"character": 7
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "invert",
+								"id": 50
+							}
+						},
+						{
+							"id": 96,
+							"name": "maxCoefficient",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/core-operators.ts",
+									"line": 555,
+									"character": 15
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "maxCoefficient",
+								"id": 71
+							}
+						},
+						{
+							"id": 84,
+							"name": "multiply",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/core-operators.ts",
+									"line": 543,
+									"character": 9
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "multiply",
+								"id": 20
+							}
+						},
+						{
+							"id": 81,
+							"name": "multiplyByConst",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/core-operators.ts",
+									"line": 540,
+									"character": 16
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "multiplyByConst",
+								"id": 24
+							}
+						},
+						{
+							"id": 82,
+							"name": "negate",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/core-operators.ts",
+									"line": 541,
+									"character": 7
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "negate",
+								"id": 14
+							}
+						},
+						{
+							"id": 91,
+							"name": "reflectAboutYAxis",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/core-operators.ts",
+									"line": 550,
+									"character": 18
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "reflectAboutYAxis",
+								"id": 58
+							}
+						},
+						{
+							"id": 88,
+							"name": "signChanges",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/core-operators.ts",
+									"line": 547,
+									"character": 12
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "signChanges",
+								"id": 43
+							}
+						},
+						{
+							"id": 92,
+							"name": "sturmChain",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/core-operators.ts",
+									"line": 551,
+									"character": 11
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "sturmChain",
+								"id": 61
+							}
+						},
+						{
+							"id": 80,
+							"name": "subtract",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/core-operators.ts",
+									"line": 539,
+									"character": 9
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "subtract",
+								"id": 10
+							}
+						},
+						{
+							"id": 97,
+							"name": "toCasStr",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/core-operators.ts",
+									"line": 556,
+									"character": 9
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "toCasStr",
+								"id": 74
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Variables",
+							"kind": 32,
+							"children": [
+								79,
+								90,
+								93,
+								94,
+								95,
+								85,
+								83,
+								78,
+								86,
+								87,
+								89,
+								96,
+								84,
+								81,
+								82,
+								91,
+								88,
+								92,
+								80,
+								97
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/core-operators.ts",
+							"line": 536,
+							"character": 17
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "object"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						6,
+						53,
+						64,
+						68,
+						46,
+						28,
+						17,
+						2,
+						31,
+						40,
+						50,
+						71,
+						20,
+						24,
+						14,
+						58,
+						43,
+						61,
+						10,
+						74
+					]
+				},
+				{
+					"title": "Object literals",
+					"kind": 2097152,
+					"children": [
+						77
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "src/core-operators.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 299,
+			"name": "\"src/error-analysis\"",
+			"kind": 1,
+			"kindString": "External module",
+			"flags": {
+				"isExported": true,
+				"isExternal": true
+			},
+			"originalName": "C:/Projects/poly/src/error-analysis.ts",
+			"children": [
+				{
+					"id": 300,
+					"name": "evaluate",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExternal": true
+					},
+					"sources": [
+						{
+							"fileName": "src/error-analysis.ts",
+							"line": 5,
+							"character": 16
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "evaluate",
+						"id": 31
+					}
+				},
+				{
+					"id": 301,
+					"name": "conditionNumber",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 302,
+							"name": "conditionNumber",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "<p>\nApproximate condition number for polynomial evaluation multiplied by the\nexact value of the polynomial evaluation.\n</p>\n<p>\nSee <a href=\"http://www-pequan.lip6.fr/~jmc/polycopies/Compensation-horner.pdf\">Compensated Horner Scheme - paragraph 1.1</a>\n</p>",
+								"tags": [
+									{
+										"tag": "ignore",
+										"text": ""
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 303,
+									"name": "p",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The polynomial"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								},
+								{
+									"id": 304,
+									"name": "x",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The evaluation point\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/error-analysis.ts",
+							"line": 20,
+							"character": 24
+						}
+					]
+				},
+				{
+					"id": 305,
+					"name": "hornerErrorBound",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 306,
+							"name": "hornerErrorBound",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "<p>\nClassic rule of thumb approximate error bound when using Horner's\nmethod to evaluate polynomials.\n</p>\n<p>\nSee for instance <a href=\"http://www-pequan.lip6.fr/~jmc/polycopies/Compensation-horner.pdf\">compensated horner evaluation</a>\n</p>",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\nhornerErrorBound([1.1,2.2,-3.3], 1.5); //=> 5.1292303737682235e-15\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 307,
+									"name": "p",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The polynomial"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								},
+								{
+									"id": 308,
+									"name": "x",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Value at which polynomial is evaluated."
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/error-analysis.ts",
+							"line": 45,
+							"character": 25
+						}
+					]
+				},
+				{
+					"id": 309,
+					"name": "errorAnalysis",
+					"kind": 2097152,
+					"kindString": "Object literal",
+					"flags": {
+						"isExported": true,
+						"isExternal": true,
+						"isLet": true
+					},
+					"children": [
+						{
+							"id": 310,
+							"name": "hornerErrorBound",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/error-analysis.ts",
+									"line": 54,
+									"character": 17
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "hornerErrorBound",
+								"id": 305
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Variables",
+							"kind": 32,
+							"children": [
+								310
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/error-analysis.ts",
+							"line": 53,
+							"character": 17
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "object"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Variables",
+					"kind": 32,
+					"children": [
+						300
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						301,
+						305
+					]
+				},
+				{
+					"title": "Object literals",
+					"kind": 2097152,
+					"children": [
+						309
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "src/error-analysis.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 193,
+			"name": "\"src/from-roots\"",
+			"kind": 1,
+			"kindString": "External module",
+			"flags": {
+				"isExported": true,
+				"isExternal": true
+			},
+			"originalName": "C:/Projects/poly/src/from-roots.ts",
+			"children": [
+				{
+					"id": 194,
+					"name": "multiply",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExternal": true
+					},
+					"sources": [
+						{
+							"fileName": "src/from-roots.ts",
+							"line": 4,
+							"character": 16
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "multiply",
+						"id": 20
+					}
+				},
+				{
+					"id": 195,
+					"name": "fromRoots",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExported": true,
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 196,
+							"name": "fromRoots",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "<p>\nConstructs a polynomial from the given roots by multiplying out the\nfactors (x - root1)(x - root2)... Note that the resulting polynomial\nwill not have any complex roots.\n</p>\n<p>\nMostly provided for testing purposes. Note that the real roots of the\nconstructed polynomial may not be exactly the same as the roots that\nthe polynomial has been constructed from due to floating-point\nround-off.\n</p>",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\nFloPoly.fromRoots([1,2,3,3]); //=> [1, -9, 29, -39, 18]\nFloPoly.allRoots([1, -9, 29, -39, 18]); //=> [1.0000000000000007, 2.000000000000004]\n// In the above note the rounding error. Also note the multiple root of 3 that has been missed but as stated previously this does not generally pose a problem for even multiple roots. See the examples below.\nFloPoly.allRoots([1, -9, 29, -39, 17.99999999999999]); //=> [0.9999999999999973, 2.00000000000002, 2.9999999999999982]\nFloPoly.allRoots([1, -9, 29, -39, 17.9999999999999]); //=> [0.999999999999975, 2.0000000000000986, 2.9999997898930832, 3.0000002095475775]\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 197,
+									"name": "roots",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The roots"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "intrinsic",
+									"name": "number"
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/from-roots.ts",
+							"line": 28,
+							"character": 18
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Variables",
+					"kind": 32,
+					"children": [
+						194
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						195
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "src/from-roots.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 198,
+			"name": "\"src/random\"",
+			"kind": 1,
+			"kindString": "External module",
+			"flags": {
+				"isExported": true,
+				"isExternal": true
+			},
+			"originalName": "C:/Projects/poly/src/random.ts",
+			"children": [
+				{
+					"id": 200,
+					"name": "RANGE",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExternal": true,
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "The range for the simple random number generator, i.e. the generated\nnumbers will be in [0,RANGE].",
+						"tags": [
+							{
+								"tag": "ignore",
+								"text": "\n"
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "src/random.ts",
+							"line": 16,
+							"character": 11
+						}
+					],
+					"type": {
+						"type": "unknown",
+						"name": "4294967296"
+					},
+					"defaultValue": "4294967296"
+				},
+				{
+					"id": 199,
+					"name": "SEED",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExternal": true,
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "Some seed value for the simple random number generator.",
+						"tags": [
+							{
+								"tag": "ignore",
+								"text": "\n"
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "src/random.ts",
+							"line": 9,
+							"character": 10
+						}
+					],
+					"type": {
+						"type": "unknown",
+						"name": "123456789"
+					},
+					"defaultValue": "123456789"
+				},
+				{
+					"id": 231,
+					"name": "flatCoefficientsArr",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExternal": true,
+						"isLet": true
+					},
+					"comment": {
+						"shortText": "Generates an array of random polynomials as specified by\nflatCoefficients. The exact same polynomials will be created on each\ncall to this function if the same seed is used - this is by design to\nimprove testability.",
+						"tags": [
+							{
+								"tag": "memberof",
+								"text": "Random"
+							},
+							{
+								"tag": "param",
+								"text": "The number of polynomials to generate.",
+								"param": "n"
+							},
+							{
+								"tag": "param",
+								"text": "The degree of the polynomials",
+								"param": "d"
+							},
+							{
+								"tag": "param",
+								"text": "The lower bound of the distribution - defaults\nto 0",
+								"param": "a"
+							},
+							{
+								"tag": "param",
+								"text": "The upper bound of the distribution - defaults\nto 1",
+								"param": "b"
+							},
+							{
+								"tag": "param",
+								"text": "A seed value for generating random values (so\nthat the results are reproducable)",
+								"param": "seed"
+							},
+							{
+								"tag": "returns",
+								"text": "The array of random polynomials."
+							},
+							{
+								"tag": "example",
+								"text": "\nFloPoly.Random.flatCoefficientsArr(2,3,-2,2); //=> [[0.1749166026711464, -0.20349335670471191, 0.9375684261322021], [1.0617692470550537, -1.8918039798736572, 0.8040215969085693]]\nFloPoly.Random.flatCoefficientsArr(2,3,-2,2); //=> [[0.1749166026711464, -0.20349335670471191, 0.9375684261322021], [1.0617692470550537, -1.8918039798736572, 0.8040215969085693]]\n"
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "src/random.ts",
+							"line": 96,
+							"character": 23
+						}
+					],
+					"type": {
+						"type": "reflection",
+						"declaration": {
+							"id": 232,
+							"name": "__type",
+							"kind": 65536,
+							"kindString": "Type literal",
+							"flags": {},
+							"signatures": [
+								{
+									"id": 233,
+									"name": "__call",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 234,
+											"name": "n",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										},
+										{
+											"id": 235,
+											"name": "d",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										},
+										{
+											"id": 236,
+											"name": "a",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										},
+										{
+											"id": 237,
+											"name": "b",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										},
+										{
+											"id": 238,
+											"name": "seed",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										},
+										{
+											"id": 239,
+											"name": "odds",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										}
+									],
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "array",
+											"elementType": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										}
+									}
+								}
+							]
+						}
+					},
+					"defaultValue": " createArrFunction(flatCoefficients)"
+				},
+				{
+					"id": 222,
+					"name": "flatRootsArr",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExternal": true,
+						"isLet": true
+					},
+					"comment": {
+						"shortText": "Generates an array of random polynomials with parameters as specified\nby flatRoots. The exact same polynomials will be created on each\ncall to this function if the same seed is used - this is by design to\nimprove testability.",
+						"tags": [
+							{
+								"tag": "memberof",
+								"text": "Random"
+							},
+							{
+								"tag": "param",
+								"text": "The number of polynomials to generate.",
+								"param": "n"
+							},
+							{
+								"tag": "param",
+								"text": "The degree of the polynomials",
+								"param": "d"
+							},
+							{
+								"tag": "param",
+								"text": "The lower bound of the distribution - defaults\nto 0",
+								"param": "a"
+							},
+							{
+								"tag": "param",
+								"text": "The upper bound of the distribution - defaults\nto 1",
+								"param": "b"
+							},
+							{
+								"tag": "param",
+								"text": "A seed value for generating random values (so\nthat the results are reproducable)",
+								"param": "seed"
+							},
+							{
+								"tag": "param",
+								"text": "The odds that a root will be doubled (applied\nrecursively so that some roots will be tripled, etc. - defaults to 0",
+								"param": "odds"
+							},
+							{
+								"tag": "example",
+								"text": "\nFloPoly.Random.flatRootsArr(2,3,0,10); //=> [[1, -17.27247918024659, 97.33487287168995, -179.34094494147305], [1, -14.934967160224915, 57.624514485645406, -14.513933300587215]]\nFloPoly.Random.flatRootsArr(2,3,0,10); //=> [[1, -17.27247918024659, 97.33487287168995, -179.34094494147305], [1, -14.934967160224915, 57.624514485645406, -14.513933300587215]]\n"
+							}
+						]
+					},
+					"sources": [
+						{
+							"fileName": "src/random.ts",
+							"line": 73,
+							"character": 16
+						}
+					],
+					"type": {
+						"type": "reflection",
+						"declaration": {
+							"id": 223,
+							"name": "__type",
+							"kind": 65536,
+							"kindString": "Type literal",
+							"flags": {},
+							"signatures": [
+								{
+									"id": 224,
+									"name": "__call",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 225,
+											"name": "n",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										},
+										{
+											"id": 226,
+											"name": "d",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										},
+										{
+											"id": 227,
+											"name": "a",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										},
+										{
+											"id": 228,
+											"name": "b",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										},
+										{
+											"id": 229,
+											"name": "seed",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										},
+										{
+											"id": 230,
+											"name": "odds",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										}
+									],
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "array",
+											"elementType": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										}
+									}
+								}
+							]
+						}
+					},
+					"defaultValue": " createArrFunction(flatRoots)"
+				},
+				{
+					"id": 201,
+					"name": "createArrFunction",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isPrivate": true,
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 202,
+							"name": "createArrFunction",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isPrivate": true
+							},
+							"comment": {
+								"shortText": "Creates a function from the given function with parameters similar\nto flatRoots but with an extra parameter in the beginning indicating\nthe length of the array generated by the original function.",
+								"returns": "\n"
+							},
+							"parameters": [
+								{
+									"id": 203,
+									"name": "f",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {},
+									"type": {
+										"type": "reflection",
+										"declaration": {
+											"id": 204,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {},
+											"signatures": [
+												{
+													"id": 205,
+													"name": "__call",
+													"kind": 4096,
+													"kindString": "Call signature",
+													"flags": {},
+													"parameters": [
+														{
+															"id": 206,
+															"name": "d",
+															"kind": 32768,
+															"kindString": "Parameter",
+															"flags": {},
+															"type": {
+																"type": "intrinsic",
+																"name": "number"
+															}
+														},
+														{
+															"id": 207,
+															"name": "a",
+															"kind": 32768,
+															"kindString": "Parameter",
+															"flags": {},
+															"type": {
+																"type": "intrinsic",
+																"name": "number"
+															}
+														},
+														{
+															"id": 208,
+															"name": "b",
+															"kind": 32768,
+															"kindString": "Parameter",
+															"flags": {},
+															"type": {
+																"type": "intrinsic",
+																"name": "number"
+															}
+														},
+														{
+															"id": 209,
+															"name": "seed",
+															"kind": 32768,
+															"kindString": "Parameter",
+															"flags": {},
+															"type": {
+																"type": "intrinsic",
+																"name": "number"
+															}
+														},
+														{
+															"id": 210,
+															"name": "odds",
+															"kind": 32768,
+															"kindString": "Parameter",
+															"flags": {},
+															"type": {
+																"type": "intrinsic",
+																"name": "number"
+															}
+														}
+													],
+													"type": {
+														"type": "reflection",
+														"declaration": {
+															"id": 211,
+															"name": "__type",
+															"kind": 65536,
+															"kindString": "Type literal",
+															"flags": {},
+															"children": [
+																{
+																	"id": 212,
+																	"name": "p",
+																	"kind": 32,
+																	"kindString": "Variable",
+																	"flags": {
+																		"isExternal": true
+																	},
+																	"sources": [
+																		{
+																			"fileName": "src/random.ts",
+																			"line": 28,
+																			"character": 79
+																		}
+																	],
+																	"type": {
+																		"type": "array",
+																		"elementType": {
+																			"type": "intrinsic",
+																			"name": "number"
+																		}
+																	}
+																},
+																{
+																	"id": 213,
+																	"name": "seed",
+																	"kind": 32,
+																	"kindString": "Variable",
+																	"flags": {
+																		"isExternal": true
+																	},
+																	"sources": [
+																		{
+																			"fileName": "src/random.ts",
+																			"line": 28,
+																			"character": 95
+																		}
+																	],
+																	"type": {
+																		"type": "intrinsic",
+																		"name": "number"
+																	}
+																}
+															],
+															"groups": [
+																{
+																	"title": "Variables",
+																	"kind": 32,
+																	"children": [
+																		212,
+																		213
+																	]
+																}
+															],
+															"sources": [
+																{
+																	"fileName": "src/random.ts",
+																	"line": 28,
+																	"character": 75
+																}
+															]
+														}
+													}
+												}
+											],
+											"sources": [
+												{
+													"fileName": "src/random.ts",
+													"line": 28,
+													"character": 10
+												}
+											]
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "reflection",
+								"declaration": {
+									"id": 214,
+									"name": "__type",
+									"kind": 65536,
+									"kindString": "Type literal",
+									"flags": {},
+									"signatures": [
+										{
+											"id": 215,
+											"name": "__call",
+											"kind": 4096,
+											"kindString": "Call signature",
+											"flags": {},
+											"parameters": [
+												{
+													"id": 216,
+													"name": "n",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {},
+													"type": {
+														"type": "intrinsic",
+														"name": "number"
+													}
+												},
+												{
+													"id": 217,
+													"name": "d",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {},
+													"type": {
+														"type": "intrinsic",
+														"name": "number"
+													}
+												},
+												{
+													"id": 218,
+													"name": "a",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {},
+													"type": {
+														"type": "intrinsic",
+														"name": "number"
+													}
+												},
+												{
+													"id": 219,
+													"name": "b",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {},
+													"type": {
+														"type": "intrinsic",
+														"name": "number"
+													}
+												},
+												{
+													"id": 220,
+													"name": "seed",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {},
+													"type": {
+														"type": "intrinsic",
+														"name": "number"
+													}
+												},
+												{
+													"id": 221,
+													"name": "odds",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {},
+													"type": {
+														"type": "intrinsic",
+														"name": "number"
+													}
+												}
+											],
+											"type": {
+												"type": "array",
+												"elementType": {
+													"type": "array",
+													"elementType": {
+														"type": "intrinsic",
+														"name": "number"
+													}
+												}
+											}
+										}
+									],
+									"sources": [
+										{
+											"fileName": "src/random.ts",
+											"line": 28,
+											"character": 107
+										}
+									]
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/random.ts",
+							"line": 27,
+							"character": 26
+						}
+					]
+				},
+				{
+					"id": 269,
+					"name": "flatCoefficients",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 270,
+							"name": "flatCoefficients",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Generates a random polynomial with coefficients picked from a bounded\nflat distribution (i.e. a rectangular distribution).",
+								"tags": [
+									{
+										"tag": "memberof",
+										"text": "Random"
+									},
+									{
+										"tag": "example",
+										"text": "\nFloPoly.Random.flatCoefficients(3,-5,5); //=> { p: [0.437291506677866, -0.5087333917617798, 2.3439210653305054], seed: 939629312 }\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 271,
+									"name": "d",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The degree of the polynomials"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 272,
+									"name": "a",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The lower bound of the distribution - defaults to -1"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									},
+									"defaultValue": " -1"
+								},
+								{
+									"id": 273,
+									"name": "b",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The upper bound of the distribution - defaults to 1"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									},
+									"defaultValue": " +1"
+								},
+								{
+									"id": 274,
+									"name": "seed",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "A seed value for generating random values (so that the results\nare reproducable)"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									},
+									"defaultValue": " SEED"
+								}
+							],
+							"type": {
+								"type": "reflection",
+								"declaration": {
+									"id": 275,
+									"name": "__type",
+									"kind": 65536,
+									"kindString": "Type literal",
+									"flags": {},
+									"children": [
+										{
+											"id": 276,
+											"name": "p",
+											"kind": 32,
+											"kindString": "Variable",
+											"flags": {
+												"isExternal": true
+											},
+											"sources": [
+												{
+													"fileName": "src/random.ts",
+													"line": 218,
+													"character": 33
+												}
+											],
+											"type": {
+												"type": "array",
+												"elementType": {
+													"type": "intrinsic",
+													"name": "number"
+												}
+											}
+										},
+										{
+											"id": 277,
+											"name": "seed",
+											"kind": 32,
+											"kindString": "Variable",
+											"flags": {
+												"isExternal": true
+											},
+											"sources": [
+												{
+													"fileName": "src/random.ts",
+													"line": 218,
+													"character": 49
+												}
+											],
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										}
+									],
+									"groups": [
+										{
+											"title": "Variables",
+											"kind": 32,
+											"children": [
+												276,
+												277
+											]
+										}
+									],
+									"sources": [
+										{
+											"fileName": "src/random.ts",
+											"line": 218,
+											"character": 29
+										}
+									]
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/random.ts",
+							"line": 214,
+							"character": 25
+						}
+					]
+				},
+				{
+					"id": 259,
+					"name": "flatRoots",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 260,
+							"name": "flatRoots",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Generates a random polynomial with roots picked from a bounded flat\ndistribution (i.e. a rectangular distribution) with specified odds of\nduplication of consecutive values. Note that the resulting polynomial\nwon't have any complex roots.",
+								"tags": [
+									{
+										"tag": "memberof",
+										"text": "Random"
+									},
+									{
+										"tag": "example",
+										"text": "\nFloPoly.Random.flatRoots(3,0,10); //=> { p: [1, -17.27247918024659, 97.33487287168995, -179.34094494147305], seed: 939629312 }\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 261,
+									"name": "d",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The degree of the polynomials"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 262,
+									"name": "a",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The lower bound of the distribution - defaults\nto 0"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									},
+									"defaultValue": "0"
+								},
+								{
+									"id": 263,
+									"name": "b",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The upper bound of the distribution - defaults\nto 1"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									},
+									"defaultValue": "1"
+								},
+								{
+									"id": 264,
+									"name": "seed",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "A seed value for generating random values (so\nthat the results are reproducable)"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									},
+									"defaultValue": " SEED"
+								},
+								{
+									"id": 265,
+									"name": "odds",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The odds that a root will be doubled (applied\nrecursively so that some roots will be tripled, etc. - defaults to 0"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									},
+									"defaultValue": "0"
+								}
+							],
+							"type": {
+								"type": "reflection",
+								"declaration": {
+									"id": 266,
+									"name": "__type",
+									"kind": 65536,
+									"kindString": "Type literal",
+									"flags": {},
+									"children": [
+										{
+											"id": 267,
+											"name": "p",
+											"kind": 32,
+											"kindString": "Variable",
+											"flags": {
+												"isExternal": true
+											},
+											"sources": [
+												{
+													"fileName": "src/random.ts",
+													"line": 191,
+													"character": 30
+												}
+											],
+											"type": {
+												"type": "array",
+												"elementType": {
+													"type": "intrinsic",
+													"name": "number"
+												}
+											}
+										},
+										{
+											"id": 268,
+											"name": "seed",
+											"kind": 32,
+											"kindString": "Variable",
+											"flags": {
+												"isExternal": true
+											},
+											"sources": [
+												{
+													"fileName": "src/random.ts",
+													"line": 191,
+													"character": 46
+												}
+											],
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										}
+									],
+									"groups": [
+										{
+											"title": "Variables",
+											"kind": 32,
+											"children": [
+												267,
+												268
+											]
+										}
+									],
+									"sources": [
+										{
+											"fileName": "src/random.ts",
+											"line": 191,
+											"character": 26
+										}
+									]
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/random.ts",
+							"line": 186,
+							"character": 18
+						}
+					]
+				},
+				{
+					"id": 240,
+					"name": "predictiveRandom",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isPrivate": true,
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 241,
+							"name": "predictiveRandom",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isPrivate": true
+							},
+							"comment": {
+								"shortText": "Returns a quasi-random number to be used as the next input to this function.\nSee https://stackoverflow.com/questions/3062746/special-simple-random-number-generator"
+							},
+							"parameters": [
+								{
+									"id": 242,
+									"name": "seed",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/random.ts",
+							"line": 105,
+							"character": 25
+						}
+					]
+				},
+				{
+					"id": 253,
+					"name": "push",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isPrivate": true,
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 254,
+							"name": "push",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isPrivate": true
+							},
+							"comment": {
+								"shortText": "Helper function that will add more numbers to the passed array - modifies the\nvalues parameter."
+							},
+							"parameters": [
+								{
+									"id": 255,
+									"name": "seed",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 256,
+									"name": "values",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "An existing array of values - will be modified!"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								},
+								{
+									"id": 257,
+									"name": "x",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The number that will be added (possibly multiple times)"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 258,
+									"name": "odds",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The odds that the number will be added again (recursively).\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/random.ts",
+							"line": 156,
+							"character": 13
+						}
+					]
+				},
+				{
+					"id": 243,
+					"name": "randomArray",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 244,
+							"name": "randomArray",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Generates a random array of numbers picked from a bounded flat\ndistribution (i.e. a rectangular distribution) with specified odds of\nduplication of consecutive values.",
+								"tags": [
+									{
+										"tag": "ignore",
+										"text": ""
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 245,
+									"name": "n",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The number of values to generate."
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 246,
+									"name": "a",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The lower bound of the distribution - defaults\nto 0"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 247,
+									"name": "b",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The upper bound of the distribution - defaults\nto 1"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 248,
+									"name": "seed",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "A seed value for generating random values (so\nthat the results are reproducable)"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									},
+									"defaultValue": " SEED"
+								},
+								{
+									"id": 249,
+									"name": "odds",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The odds that a root will be doubled (applied\nrecursively so that some roots will be tripled, etc. - defaults to 0\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									},
+									"defaultValue": "0"
+								}
+							],
+							"type": {
+								"type": "reflection",
+								"declaration": {
+									"id": 250,
+									"name": "__type",
+									"kind": 65536,
+									"kindString": "Type literal",
+									"flags": {},
+									"children": [
+										{
+											"id": 252,
+											"name": "seed",
+											"kind": 32,
+											"kindString": "Variable",
+											"flags": {
+												"isExternal": true
+											},
+											"sources": [
+												{
+													"fileName": "src/random.ts",
+													"line": 133,
+													"character": 47
+												}
+											],
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										},
+										{
+											"id": 251,
+											"name": "vs",
+											"kind": 32,
+											"kindString": "Variable",
+											"flags": {
+												"isExternal": true
+											},
+											"sources": [
+												{
+													"fileName": "src/random.ts",
+													"line": 133,
+													"character": 31
+												}
+											],
+											"type": {
+												"type": "array",
+												"elementType": {
+													"type": "intrinsic",
+													"name": "number"
+												}
+											}
+										}
+									],
+									"groups": [
+										{
+											"title": "Variables",
+											"kind": 32,
+											"children": [
+												252,
+												251
+											]
+										}
+									],
+									"sources": [
+										{
+											"fileName": "src/random.ts",
+											"line": 133,
+											"character": 26
+										}
+									]
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/random.ts",
+							"line": 128,
+							"character": 20
+						}
+					]
+				},
+				{
+					"id": 278,
+					"name": "random",
+					"kind": 2097152,
+					"kindString": "Object literal",
+					"flags": {
+						"isExported": true,
+						"isExternal": true,
+						"isLet": true
+					},
+					"children": [
+						{
+							"id": 289,
+							"name": "flatCoefficients",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/random.ts",
+									"line": 236,
+									"character": 20
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "flatCoefficients",
+								"id": 269
+							}
+						},
+						{
+							"id": 290,
+							"name": "flatCoefficientsArr",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/random.ts",
+									"line": 237,
+									"character": 23
+								}
+							],
+							"type": {
+								"type": "reflection",
+								"declaration": {
+									"id": 291,
+									"name": "__type",
+									"kind": 65536,
+									"kindString": "Type literal",
+									"flags": {
+										"isExported": true
+									},
+									"signatures": [
+										{
+											"id": 292,
+											"name": "__call",
+											"kind": 4096,
+											"kindString": "Call signature",
+											"flags": {},
+											"parameters": [
+												{
+													"id": 293,
+													"name": "n",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {},
+													"type": {
+														"type": "intrinsic",
+														"name": "number"
+													}
+												},
+												{
+													"id": 294,
+													"name": "d",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {},
+													"type": {
+														"type": "intrinsic",
+														"name": "number"
+													}
+												},
+												{
+													"id": 295,
+													"name": "a",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {},
+													"type": {
+														"type": "intrinsic",
+														"name": "number"
+													}
+												},
+												{
+													"id": 296,
+													"name": "b",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {},
+													"type": {
+														"type": "intrinsic",
+														"name": "number"
+													}
+												},
+												{
+													"id": 297,
+													"name": "seed",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {},
+													"type": {
+														"type": "intrinsic",
+														"name": "number"
+													}
+												},
+												{
+													"id": 298,
+													"name": "odds",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {},
+													"type": {
+														"type": "intrinsic",
+														"name": "number"
+													}
+												}
+											],
+											"type": {
+												"type": "array",
+												"elementType": {
+													"type": "array",
+													"elementType": {
+														"type": "intrinsic",
+														"name": "number"
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						},
+						{
+							"id": 279,
+							"name": "flatRoots",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/random.ts",
+									"line": 234,
+									"character": 13
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "flatRoots",
+								"id": 259
+							}
+						},
+						{
+							"id": 280,
+							"name": "flatRootsArr",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/random.ts",
+									"line": 235,
+									"character": 16
+								}
+							],
+							"type": {
+								"type": "reflection",
+								"declaration": {
+									"id": 281,
+									"name": "__type",
+									"kind": 65536,
+									"kindString": "Type literal",
+									"flags": {
+										"isExported": true
+									},
+									"signatures": [
+										{
+											"id": 282,
+											"name": "__call",
+											"kind": 4096,
+											"kindString": "Call signature",
+											"flags": {},
+											"parameters": [
+												{
+													"id": 283,
+													"name": "n",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {},
+													"type": {
+														"type": "intrinsic",
+														"name": "number"
+													}
+												},
+												{
+													"id": 284,
+													"name": "d",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {},
+													"type": {
+														"type": "intrinsic",
+														"name": "number"
+													}
+												},
+												{
+													"id": 285,
+													"name": "a",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {},
+													"type": {
+														"type": "intrinsic",
+														"name": "number"
+													}
+												},
+												{
+													"id": 286,
+													"name": "b",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {},
+													"type": {
+														"type": "intrinsic",
+														"name": "number"
+													}
+												},
+												{
+													"id": 287,
+													"name": "seed",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {},
+													"type": {
+														"type": "intrinsic",
+														"name": "number"
+													}
+												},
+												{
+													"id": 288,
+													"name": "odds",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {},
+													"type": {
+														"type": "intrinsic",
+														"name": "number"
+													}
+												}
+											],
+											"type": {
+												"type": "array",
+												"elementType": {
+													"type": "array",
+													"elementType": {
+														"type": "intrinsic",
+														"name": "number"
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Variables",
+							"kind": 32,
+							"children": [
+								289,
+								290,
+								279,
+								280
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/random.ts",
+							"line": 233,
+							"character": 10
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "object"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Variables",
+					"kind": 32,
+					"children": [
+						200,
+						199,
+						231,
+						222
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						201,
+						269,
+						259,
+						240,
+						253,
+						243
+					]
+				},
+				{
+					"title": "Object literals",
+					"kind": 2097152,
+					"children": [
+						278
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "src/random.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 131,
+			"name": "\"src/root-bounds\"",
+			"kind": 1,
+			"kindString": "External module",
+			"flags": {
+				"isExported": true,
+				"isExternal": true
+			},
+			"originalName": "C:/Projects/poly/src/root-bounds.ts",
+			"children": [
+				{
+					"id": 144,
+					"name": "POWERS",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExternal": true,
+						"isConst": true
+					},
+					"sources": [
+						{
+							"fileName": "src/root-bounds.ts",
+							"line": 66,
+							"character": 12
+						}
+					],
+					"type": {
+						"type": "array",
+						"elementType": {
+							"type": "intrinsic",
+							"name": "number"
+						}
+					},
+					"defaultValue": " [\r\n\t1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768, \r\n\t65536,131072,262144,524288,1048576,2097152\r\n]"
+				},
+				{
+					"id": 132,
+					"name": "invert",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExternal": true
+					},
+					"sources": [
+						{
+							"fileName": "src/root-bounds.ts",
+							"line": 4,
+							"character": 14
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "invert",
+						"id": 50
+					}
+				},
+				{
+					"id": 133,
+					"name": "negate",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExternal": true
+					},
+					"sources": [
+						{
+							"fileName": "src/root-bounds.ts",
+							"line": 4,
+							"character": 22
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "negate",
+						"id": 14
+					}
+				},
+				{
+					"id": 134,
+					"name": "reflectAboutYAxis",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExternal": true
+					},
+					"sources": [
+						{
+							"fileName": "src/root-bounds.ts",
+							"line": 4,
+							"character": 41
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "reflectAboutYAxis",
+						"id": 58
+					}
+				},
+				{
+					"id": 135,
+					"name": "maxAbs",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isPrivate": true,
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 136,
+							"name": "maxAbs",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isPrivate": true
+							},
+							"comment": {
+								"shortText": "Returns the maximum magnitude value within the supplied array of numbers."
+							},
+							"parameters": [
+								{
+									"id": 137,
+									"name": "ns",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/root-bounds.ts",
+							"line": 11,
+							"character": 15
+						}
+					]
+				},
+				{
+					"id": 154,
+					"name": "negativeRootLowerBound_LMQ",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 155,
+							"name": "negativeRootLowerBound_LMQ",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "See positiveRootLowerBound_LMQ",
+								"returns": "A lower bound.\n"
+							},
+							"parameters": [
+								{
+									"id": 156,
+									"name": "p",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The polynomial"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/root-bounds.ts",
+							"line": 176,
+							"character": 35
+						}
+					]
+				},
+				{
+					"id": 151,
+					"name": "negativeRootUpperBound_LMQ",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 152,
+							"name": "negativeRootUpperBound_LMQ",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "See positiveRootUpperBound_LMQ",
+								"returns": "An upper bound.\n"
+							},
+							"parameters": [
+								{
+									"id": 153,
+									"name": "p",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The polynomial"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/root-bounds.ts",
+							"line": 165,
+							"character": 35
+						}
+					]
+				},
+				{
+					"id": 148,
+					"name": "positiveRootLowerBound_LMQ",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 149,
+							"name": "positiveRootLowerBound_LMQ",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "<p>\nCalculates a lower bound for the positive roots of the given\npolynomial.\n</p>\n<p>\nSee algoritm 6 of the paper by Vigklas, Akritas and Strzeboński,\nspecifically the LocalMaxQuadratic algorithm hence LMQ.\n</p>",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\nFloPoly.positiveRootLowerBound_LMQ([2,-3,6,5,-130]); //=> 1.6883241876925903\nFloPoly.positiveRootLowerBound_LMQ([2,3]);           //=> 0\nFloPoly.positiveRootLowerBound_LMQ([-2,-3,-4]);      //=> 0\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 150,
+									"name": "p",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The polynomial"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/root-bounds.ts",
+							"line": 152,
+							"character": 35
+						}
+					]
+				},
+				{
+					"id": 145,
+					"name": "positiveRootUpperBound_LMQ",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 146,
+							"name": "positiveRootUpperBound_LMQ",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "<p>\nReturns an upper bound for the positive real roots of the given\npolynomial.\n</p>\n<p>\nSee algoritm 6 of the paper by Vigklas, Akritas and Strzeboński,\nspecifically the LocalMaxQuadratic algorithm hence LMQ.\n</p>",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\nFloPoly.positiveRootUpperBound_LMQ([2,-3,6,5,-130]); //=> 4.015534272870436\nFloPoly.positiveRootUpperBound_LMQ([2,3]);           //=> 0\nFloPoly.positiveRootUpperBound_LMQ([-2,-3,-4]);      //=> 0\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 147,
+									"name": "p",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The polynomial"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/root-bounds.ts",
+							"line": 85,
+							"character": 35
+						}
+					]
+				},
+				{
+					"id": 141,
+					"name": "rootMagnitudeUpperBound_fujiwara",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 142,
+							"name": "rootMagnitudeUpperBound_fujiwara",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Finds an upper bound on the magnitude (absolute value) of the roots\nof the given polynomial using the near-optimal Fujiwara bound. Note\nthat the bound includes complex roots. The bound is tight but slow\ndue to usage of Math.pow().\nSee https://en.wikipedia.org/wiki/Properties_of_polynomial_roots#cite_note-Fujiwara1916-4",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\nFloPoly.rootMagnitudeUpperBound_fujiwara([2,-3,6,5,-130]); //=> 6.753296750770361\nFloPoly.allRoots([2,-3,6,5,-130]); //=> [-2.397918624065303, 2.8793785310848383]\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 143,
+									"name": "p",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The polynomial."
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/root-bounds.ts",
+							"line": 41,
+							"character": 41
+						}
+					]
+				},
+				{
+					"id": 138,
+					"name": "rootMagnitudeUpperBound_rouche",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 139,
+							"name": "rootMagnitudeUpperBound_rouche",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Finds an upper bound on the magnitude (absolute value) of the roots\n(including complex roots) of the given polynomial using Rouche's\nTheorem with k = n. This function is fast but the bound is not tight."
+							},
+							"parameters": [
+								{
+									"id": 140,
+									"name": "p",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The polynomial.\n"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/root-bounds.ts",
+							"line": 22,
+							"character": 39
+						}
+					]
+				},
+				{
+					"id": 157,
+					"name": "rootBounds",
+					"kind": 2097152,
+					"kindString": "Object literal",
+					"flags": {
+						"isExported": true,
+						"isExternal": true,
+						"isLet": true
+					},
+					"children": [
+						{
+							"id": 162,
+							"name": "negativeRootLowerBound_LMQ",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/root-bounds.ts",
+									"line": 186,
+									"character": 27
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "negativeRootLowerBound_LMQ",
+								"id": 154
+							}
+						},
+						{
+							"id": 161,
+							"name": "negativeRootUpperBound_LMQ",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/root-bounds.ts",
+									"line": 185,
+									"character": 27
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "negativeRootUpperBound_LMQ",
+								"id": 151
+							}
+						},
+						{
+							"id": 160,
+							"name": "positiveRootLowerBound_LMQ",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/root-bounds.ts",
+									"line": 184,
+									"character": 27
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "positiveRootLowerBound_LMQ",
+								"id": 148
+							}
+						},
+						{
+							"id": 159,
+							"name": "positiveRootUpperBound_LMQ",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/root-bounds.ts",
+									"line": 183,
+									"character": 27
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "positiveRootUpperBound_LMQ",
+								"id": 145
+							}
+						},
+						{
+							"id": 158,
+							"name": "rootMagnitudeUpperBound_fujiwara",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/root-bounds.ts",
+									"line": 182,
+									"character": 33
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "rootMagnitudeUpperBound_fujiwara",
+								"id": 141
+							}
+						},
+						{
+							"id": 163,
+							"name": "rootMagnitudeUpperBound_rouche",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/root-bounds.ts",
+									"line": 187,
+									"character": 31
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "rootMagnitudeUpperBound_rouche",
+								"id": 138
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Variables",
+							"kind": 32,
+							"children": [
+								162,
+								161,
+								160,
+								159,
+								158,
+								163
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/root-bounds.ts",
+							"line": 181,
+							"character": 14
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "object"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Variables",
+					"kind": 32,
+					"children": [
+						144,
+						132,
+						133,
+						134
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						135,
+						154,
+						151,
+						148,
+						145,
+						141,
+						138
+					]
+				},
+				{
+					"title": "Object literals",
+					"kind": 2097152,
+					"children": [
+						157
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "src/root-bounds.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 98,
+			"name": "\"src/root-operators\"",
+			"kind": 1,
+			"kindString": "External module",
+			"flags": {
+				"isExported": true,
+				"isExternal": true
+			},
+			"originalName": "C:/Projects/poly/src/root-operators.ts",
+			"children": [
+				{
+					"id": 100,
+					"name": "evaluate",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExternal": true
+					},
+					"sources": [
+						{
+							"fileName": "src/root-operators.ts",
+							"line": 4,
+							"character": 28
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "evaluate",
+						"id": 31
+					}
+				},
+				{
+					"id": 101,
+					"name": "signChanges",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExternal": true
+					},
+					"sources": [
+						{
+							"fileName": "src/root-operators.ts",
+							"line": 4,
+							"character": 41
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "signChanges",
+						"id": 43
+					}
+				},
+				{
+					"id": 99,
+					"name": "sturmChain",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isExternal": true
+					},
+					"sources": [
+						{
+							"fileName": "src/root-operators.ts",
+							"line": 4,
+							"character": 18
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "sturmChain",
+						"id": 61
+					}
+				},
+				{
+					"id": 110,
+					"name": "bisection",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 111,
+							"name": "bisection",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "<p>\nSearches an interval (a,b) for a root (i.e. zero) of the\ngiven function with respect to its first argument using the Bisection\nMethod root-finding algorithm. Any function can be supplied (it does\nnot even have to be continuous) as long as the root is bracketed.\n</p>\n<p>\nNote: This function has no advantages above the Brent method except\nfor its simpler implementation and can be much slower. Use brent\ninstead.\n</p>",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\nlet p = FloPoly.fromRoots([-10,2,3,4]);  //=> [1, 1, -64, 236, -240]\nlet f = FloPoly.evaluate(p);\nFloPoly.bisection(f,2.2,3.8); //=> 3\nFloPoly.bisection(f,2.2,3.1); //=> 3.0000000000000044\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 112,
+									"name": "f",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The function for which the root is sought."
+									},
+									"type": {
+										"type": "reflection",
+										"declaration": {
+											"id": 113,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {},
+											"signatures": [
+												{
+													"id": 114,
+													"name": "__call",
+													"kind": 4096,
+													"kindString": "Call signature",
+													"flags": {},
+													"parameters": [
+														{
+															"id": 115,
+															"name": "n",
+															"kind": 32768,
+															"kindString": "Parameter",
+															"flags": {},
+															"type": {
+																"type": "intrinsic",
+																"name": "number"
+															}
+														}
+													],
+													"type": {
+														"type": "intrinsic",
+														"name": "number"
+													}
+												}
+											],
+											"sources": [
+												{
+													"fileName": "src/root-operators.ts",
+													"line": 193,
+													"character": 21
+												}
+											]
+										}
+									}
+								},
+								{
+									"id": 116,
+									"name": "a",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The lower limit of the search interval."
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 117,
+									"name": "b",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The upper limit of the search interval."
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/root-operators.ts",
+							"line": 193,
+							"character": 18
+						}
+					]
+				},
+				{
+					"id": 118,
+					"name": "brent",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 119,
+							"name": "brent",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "<p>\nSearches an interval (a,b) for a root (i.e. zero) of the\ngiven function with respect to its first argument using the Brent's\nMethod root-finding algorithm. Any function can be supplied (it does\nnot even have to be continuous) as long as the root is bracketed.\n</p>\n<p>\nBrent's Method is an excellent root-finding choice since it is\n(1) guaranteed to converge (unlike the Newton and other so-called\nsingle-point methods), (2) converges in a reasonable number of\niterations even for highly contrived functions (unlike Dekker's\nMethod) and (3) nearly always converges extremely fast, i.e. super-\nlinearly (unlike the Secant and Regula-Falsi methods).\n</p>\n<p>\nThe max error, δ, is set equal to 2*Number.EPSILON*Math.abs(b)\nafter each iteration where b is the max of the current 2 best\nguesses.\n</p>\n<p>\nSee <a href=\"https://en.wikipedia.org/wiki/Brent%27s_method\">Wikipedia</a>\n</p>\n<p>\nSee <a href=\"https://maths-people.anu.edu.au/~brent/pd/rpb011i.pdf\">Brent (page 47)</a>\n</p>",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\nlet p = FloPoly.fromRoots([-10,2,3,4]);  //=> [1, 1, -64, 236, -240]\nlet f = FloPoly.evaluate(p);\nFloPoly.brent(f,2.2,3.8); //=> 3.000000000000003\nFloPoly.brent(f,2.2,3.1); //=> 3.000000000000001\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 120,
+									"name": "f",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The function for which the root is sought."
+									},
+									"type": {
+										"type": "reflection",
+										"declaration": {
+											"id": 121,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {},
+											"signatures": [
+												{
+													"id": 122,
+													"name": "__call",
+													"kind": 4096,
+													"kindString": "Call signature",
+													"flags": {},
+													"parameters": [
+														{
+															"id": 123,
+															"name": "n",
+															"kind": 32768,
+															"kindString": "Parameter",
+															"flags": {},
+															"type": {
+																"type": "intrinsic",
+																"name": "number"
+															}
+														}
+													],
+													"type": {
+														"type": "intrinsic",
+														"name": "number"
+													}
+												}
+											],
+											"sources": [
+												{
+													"fileName": "src/root-operators.ts",
+													"line": 270,
+													"character": 17
+												}
+											]
+										}
+									}
+								},
+								{
+									"id": 124,
+									"name": "a",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The lower limit of the search interval."
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 125,
+									"name": "b",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The upper limit of the search interval.\nabout 1e-15 multiplied by the root magnitued)."
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/root-operators.ts",
+							"line": 270,
+							"character": 14
+						}
+					]
+				},
+				{
+					"id": 105,
+					"name": "numRootsWithin",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 106,
+							"name": "numRootsWithin",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Returns the number of real roots in the interval (a,b) of the given\npolynomial.",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\nlet p = [1, 1, -64, 236, -240];\nFloPoly.numRootsWithin(p,-20,-11); //=> 0\nFloPoly.numRootsWithin(p,-11,-9);  //=> 1\nFloPoly.numRootsWithin(p,-11,3.5); //=> 3\nFloPoly.numRootsWithin(p,-11,5);   //=> 4\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 107,
+									"name": "p",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The polynomial"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								},
+								{
+									"id": 108,
+									"name": "a",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The lower bound"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 109,
+									"name": "b",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The upper bound"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/root-operators.ts",
+							"line": 162,
+							"character": 23
+						}
+					]
+				},
+				{
+					"id": 102,
+					"name": "quadraticRoots",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {
+						"isExternal": true
+					},
+					"signatures": [
+						{
+							"id": 103,
+							"name": "quadraticRoots",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "<p>\nFloating-point-stably calculates and returns the ordered quadratic\nroots of the given quadratic polynomial.\n</p>\n<p>\nThis function is included only because it might be slightly faster\nthan calling allRoots due to allRoots first checking if the\npolynomial is quadratic and checking if the roots are within the\ngiven range.\n</p>",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\nFloPoly.quadraticRoots([1, -3, 2]); //=> [1,2]\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 104,
+									"name": "p",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The 2nd order polynomial"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "intrinsic",
+									"name": "number"
+								}
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/root-operators.ts",
+							"line": 22,
+							"character": 23
+						}
+					]
+				},
+				{
+					"id": 126,
+					"name": "rootOperators",
+					"kind": 2097152,
+					"kindString": "Object literal",
+					"flags": {
+						"isExported": true,
+						"isExternal": true,
+						"isLet": true
+					},
+					"children": [
+						{
+							"id": 130,
+							"name": "bisection",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/root-operators.ts",
+									"line": 382,
+									"character": 10
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "bisection",
+								"id": 110
+							}
+						},
+						{
+							"id": 129,
+							"name": "brent",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/root-operators.ts",
+									"line": 381,
+									"character": 6
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "brent",
+								"id": 118
+							}
+						},
+						{
+							"id": 128,
+							"name": "numRootsWithin",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/root-operators.ts",
+									"line": 380,
+									"character": 15
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "numRootsWithin",
+								"id": 105
+							}
+						},
+						{
+							"id": 127,
+							"name": "quadraticRoots",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true,
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "src/root-operators.ts",
+									"line": 379,
+									"character": 15
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "quadraticRoots",
+								"id": 102
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Variables",
+							"kind": 32,
+							"children": [
+								130,
+								129,
+								128,
+								127
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/root-operators.ts",
+							"line": 378,
+							"character": 17
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "object"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Variables",
+					"kind": 32,
+					"children": [
+						100,
+						101,
+						99
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						110,
+						118,
+						105,
+						102
+					]
+				},
+				{
+					"title": "Object literals",
+					"kind": 2097152,
+					"children": [
+						126
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "src/root-operators.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		}
+	],
+	"groups": [
+		{
+			"title": "External modules",
+			"kind": 1,
+			"children": [
+				311,
+				164,
+				1,
+				299,
+				193,
+				198,
+				131,
+				98
+			]
+		}
+	]
+}
