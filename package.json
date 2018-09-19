@@ -1,7 +1,7 @@
 {
   "name": "flo-poly",
   "description": "A practical, root-focused JavaScript polynomial utility library.",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "author": {
     "name": "Floris Steenkamp"
   },
@@ -26,7 +26,7 @@
     "url": "https://github.com/FlorisSteenkamp/FloPoly/issues"
   },
   "homepage": "http://mat-demo.appspot.com/#!/test-polynomials",
-  "dependencies": { },
+  "dependencies": {},
   "devDependencies": {
     "babel-cli": "^6.22.2",
     "babel-core": "^6.26.0",
