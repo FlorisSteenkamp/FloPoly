@@ -1,7 +1,5 @@
 
-import coreOperators from './core-operators';
-
-const { multiply } = coreOperators;
+import { multiply } from './core-operators';
 
 
 /**
@@ -35,4 +33,4 @@ function fromRoots(roots: number[]): number[] {
 }
 
 
-export default fromRoots;
+export { fromRoots }

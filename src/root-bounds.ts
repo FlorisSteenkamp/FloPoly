@@ -1,7 +1,5 @@
 
-import coreOperators from './core-operators';
-
-const { invert, negate, reflectAboutYAxis } = coreOperators;
+import { invert, negate, reflectAboutYAxis } from './core-operators';
 
 
 /**
@@ -171,14 +169,14 @@ function negativeRootUpperBound_LMQ(p: number[]): number {
  * See positiveRootLowerBound_LMQ
  * 
  * @param p - The polynomial
- * @returns {number} A lower bound.
+ * @returns A lower bound.
  */
 function negativeRootLowerBound_LMQ(p: number[]): number {
 	return -positiveRootUpperBound_LMQ(reflectAboutYAxis(p));
 }
 
 
-let rootBounds = {
+export {
 	rootMagnitudeUpperBound_fujiwara,
 	positiveRootUpperBound_LMQ,
 	positiveRootLowerBound_LMQ,
@@ -186,6 +184,3 @@ let rootBounds = {
 	negativeRootLowerBound_LMQ,
 	rootMagnitudeUpperBound_rouche
 }
-
-
-export default rootBounds;

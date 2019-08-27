@@ -1,9 +1,5 @@
 .nyc_output
-.npm-debug.log
-.coveralls.yml
-referenced papers
-node_modules
-coverage
-c.bat
 npm-debug.log
-
+papers
+node_modules
+c.bat

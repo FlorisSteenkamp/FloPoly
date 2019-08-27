@@ -1,25 +1,48 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const core_operators_1 = require("./src/core-operators");
-const root_operators_1 = require("./src/root-operators");
-const root_bounds_1 = require("./src/root-bounds");
-const all_roots_recursive_1 = require("./src/all-roots-recursive");
-const random_1 = require("./src/random");
-const error_analysis_1 = require("./src/error-analysis");
-const from_roots_1 = require("./src/from-roots");
-const multiply = core_operators_1.default.multiply;
-/**
-* Simple & fast practical library functions for functional univariate
-* polynomials over the reals (actually ECMAScript numbers, i.e. double
-* floats).
-*
-* All polinomials are represented as a simple array starting with the
-* highest non-zero power, e.g.
-*   3x^3 + 5x^2 + 7x + 2 -> [3,5,7,2]
-*
-* @ignore
-*/
-const FloPoly = Object.assign({}, core_operators_1.default, root_operators_1.default, root_bounds_1.default, error_analysis_1.default, { random: random_1.default,
-    fromRoots: from_roots_1.default,
-    allRoots: all_roots_recursive_1.default });
-exports.default = FloPoly;
+const core_operators_1 = require("./core-operators");
+exports.equal = core_operators_1.equal;
+exports.add = core_operators_1.add;
+exports.subtract = core_operators_1.subtract;
+exports.multiplyByConst = core_operators_1.multiplyByConst;
+exports.negate = core_operators_1.negate;
+exports.differentiate = core_operators_1.differentiate;
+exports.multiply = core_operators_1.multiply;
+exports.degree = core_operators_1.degree;
+exports.evaluate = core_operators_1.evaluate;
+exports.evaluateAt0 = core_operators_1.evaluateAt0;
+exports.signChanges = core_operators_1.signChanges;
+exports.invert = core_operators_1.invert;
+exports.changeVariables = core_operators_1.changeVariables;
+exports.reflectAboutYAxis = core_operators_1.reflectAboutYAxis;
+exports.sturmChain = core_operators_1.sturmChain;
+exports.clip = core_operators_1.clip;
+exports.clip0 = core_operators_1.clip0;
+exports.deflate = core_operators_1.deflate;
+exports.maxCoefficient = core_operators_1.maxCoefficient;
+exports.toCasStr = core_operators_1.toCasStr;
+const root_operators_1 = require("./root-operators");
+exports.quadraticRoots = root_operators_1.quadraticRoots;
+exports.numRootsWithin = root_operators_1.numRootsWithin;
+exports.brent = root_operators_1.brent;
+exports.bisection = root_operators_1.bisection;
+const root_bounds_1 = require("./root-bounds");
+exports.rootMagnitudeUpperBound_fujiwara = root_bounds_1.rootMagnitudeUpperBound_fujiwara;
+exports.positiveRootUpperBound_LMQ = root_bounds_1.positiveRootUpperBound_LMQ;
+exports.positiveRootLowerBound_LMQ = root_bounds_1.positiveRootLowerBound_LMQ;
+exports.negativeRootUpperBound_LMQ = root_bounds_1.negativeRootUpperBound_LMQ;
+exports.negativeRootLowerBound_LMQ = root_bounds_1.negativeRootLowerBound_LMQ;
+exports.rootMagnitudeUpperBound_rouche = root_bounds_1.rootMagnitudeUpperBound_rouche;
+const all_roots_recursive_1 = require("./all-roots-recursive");
+exports.allRoots = all_roots_recursive_1.allRoots;
+const random_1 = require("./random");
+exports.flatRoots = random_1.flatRoots;
+exports.flatRootsArr = random_1.flatRootsArr;
+exports.flatCoefficients = random_1.flatCoefficients;
+exports.flatCoefficientsArr = random_1.flatCoefficientsArr;
+exports.predictiveRandom = random_1.predictiveRandom;
+const error_analysis_1 = require("./error-analysis");
+exports.hornerErrorBound = error_analysis_1.hornerErrorBound;
+const from_roots_1 = require("./from-roots");
+exports.fromRoots = from_roots_1.fromRoots;
+//# sourceMappingURL=index.js.map

@@ -1,18 +1,9 @@
 
-import coreOperators from './core-operators';
-
-
-const { evaluate } = coreOperators;
-
-
 /**
- * <p>
  * Approximate condition number for polynomial evaluation multiplied by the 
  * exact value of the polynomial evaluation.
- * </p>
- * <p>
- * See <a href="http://www-pequan.lip6.fr/~jmc/polycopies/Compensation-horner.pdf">Compensated Horner Scheme - paragraph 1.1</a>
- * </p>
+ * See Compensated Horner Scheme - paragraph 1.1 
+ * http://www-pequan.lip6.fr/~jmc/polycopies/Compensation-horner.pdf
  * @ignore
  * @param p - The polynomial
  * @param x - The evaluation point
@@ -30,13 +21,9 @@ function conditionNumber(p: number[], x: number): number {
 
 
 /**
- * <p>
  * Classic rule of thumb approximate error bound when using Horner's 
  * method to evaluate polynomials. 
- * </p>
- * <p>
- * See for instance <a href="http://www-pequan.lip6.fr/~jmc/polycopies/Compensation-horner.pdf">compensated horner evaluation</a>
- * </p>
+ * See for instance compensated horner evaluation http://www-pequan.lip6.fr/~jmc/polycopies/Compensation-horner.pdf"
  * @param p - The polynomial
  * @param x - Value at which polynomial is evaluated. 
   * @example
@@ -50,9 +37,6 @@ function hornerErrorBound(p: number[], x: number): number {
 }
 
 
-let errorAnalysis = {
-	hornerErrorBound		
+export {
+	hornerErrorBound
 }
-
-
-export default errorAnalysis;

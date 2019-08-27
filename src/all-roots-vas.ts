@@ -1,20 +1,14 @@
 
-import rootOperators from './root-operators';
+import { brent } from './root-operators';
 import Mobius        from './mobius';
-import coreOperators from './core-operators';
-import rootBounds    from './root-bounds';
+import {
+	evaluate, evaluateAt0, negate, invert, 
+	signChanges, changeVariables } from './core-operators';
+import { 
+	positiveRootUpperBound_LMQ,	
+	positiveRootLowerBound_LMQ
+} from './root-bounds';
         
-
-const { 
-    evaluate, evaluateAt0, negate, invert, 
-    signChanges, changeVariables 
-} = coreOperators;
-const { brent } = rootOperators;
-const { 
-    positiveRootUpperBound_LMQ,	
-    positiveRootLowerBound_LMQ, 
-} = rootBounds;
-
 	  
 /** 
  * DO NOT USE. EXPERIMENTAL.
@@ -174,7 +168,7 @@ function vasRootIntervalsHelper(p: number[], mobius: number[][]): number[][] {
 		intervals1.push([m,m]);
 	}
 	
-	return [].concat(intervals1, intervals3); 
+	return [...intervals1, ...intervals3]; 
 }
 
 

@@ -208,7 +208,8 @@ function evaluate(p: number[]): (a: number) => number;
 function evaluate(p: number[], a?: number) {
 
     function f(a: number): number {
-		//if p.length === 0 { return 0; }
+		if (p.length === 0) { return 0; }
+
 		let result = p[0]; 
 		for (let i=1; i<p.length; i++) {
 			result = p[i] + result*a;
@@ -455,7 +456,7 @@ function sturmChain(p: number[]): number[][] {
  * FloPoly.clip([1e-18, 1e-10, 1e-5]); //=> [1e-18, 1e-10, 1e-5] 
  * FloPoly.clip([1e-18, 1e-10, 1e-1]); //=> [1e-10, 1e-1]
  */
-function clip(p: number[], δ: number): number[] {
+function clip(p: number[], δ?: number): number[] {
 	δ = (δ === undefined) ? Number.EPSILON : δ;  
 
 	let c = maxCoefficient(p);
@@ -533,7 +534,7 @@ function toCasStr(p: number[]): string {
 }
 
 
-let coreOperators = {
+export {
 	equal,
 	add,
 	subtract,
@@ -555,6 +556,3 @@ let coreOperators = {
 	maxCoefficient,
 	toCasStr,
 }
-
-
-export default coreOperators;

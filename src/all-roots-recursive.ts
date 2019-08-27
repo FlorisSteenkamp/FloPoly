@@ -1,18 +1,13 @@
 
-import coreOperators from './core-operators';
-import rootOperators from './root-operators';
-import rootBounds    from './root-bounds';
-
-
-const { clip0, evaluate, differentiate, toCasStr } = coreOperators;
-const { brent, quadraticRoots } = rootOperators;
-const {
+import { clip0, evaluate, differentiate, toCasStr } from './core-operators';
+import { brent, quadraticRoots } from './root-operators';
+import {
 	rootMagnitudeUpperBound_fujiwara,
 	positiveRootUpperBound_LMQ,
 	positiveRootLowerBound_LMQ,
 	negativeRootUpperBound_LMQ,
-	negativeRootLowerBound_LMQ,
-} = rootBounds;
+	negativeRootLowerBound_LMQ
+} from './root-bounds';
 
 
 const INF = Number.POSITIVE_INFINITY;
@@ -176,4 +171,4 @@ function rootsWithin(p: number[], intervals: number[]): number[] {
 }
 
 
-export default allRoots;
+export { allRoots }

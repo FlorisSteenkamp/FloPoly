@@ -1,7 +1,5 @@
 
-import coreOperators from './core-operators';
-
-const { sturmChain, evaluate, signChanges } = coreOperators;
+import { sturmChain, evaluate, signChanges } from './core-operators';
 
 
 /**
@@ -296,7 +294,7 @@ function brent(f: (n: number) => number, a: number, b: number): number {
     c = a;
     
     let mflag = true;
-    let d; // Value of guess before previous guess
+    let d: number; // Value of guess before previous guess
     while (true) {
     	let δ = 2*Number.EPSILON*Math.abs(b);// + Number.EPSILON;
     	
@@ -323,7 +321,7 @@ function brent(f: (n: number) => number, a: number, b: number): number {
     	let t1 = (3*a + b) / 4;
     	let b_c = Math.abs(b-c);
     	let s_b = Math.abs(s-b);
-    	let c_d = Math.abs(c-d);
+    	let c_d = Math.abs(c-d!); // c_d will not be used on first iteration
     	
     	if (
     		(!( // condition 1
@@ -375,12 +373,9 @@ function brent(f: (n: number) => number, a: number, b: number): number {
 }
 
 
-let rootOperators = {
+export {
 	quadraticRoots,
 	numRootsWithin,
 	brent,
 	bisection,
-};
-
-
-export default rootOperators;
+}
