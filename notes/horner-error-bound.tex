@@ -1,0 +1,23 @@
+
+\documentclass[17pt,a4paper]{extarticle}
+\usepackage[a4paper,margin=6mm]{geometry}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+\begin{document}
+
+\section{hornerErrorBound}
+
+According to [1], p.95, the error bound for evaluating a polynomial using Horner's Algorithm is:
+\[
+	\left|p(x) - \hat{r}_0(x)\right| \leq \gamma_{2n}\sum_{i=0}^n\left|a_i\right|\left|x^i\right| \equiv \gamma_{2n}\tilde{p}(|x|)
+\]
+where $p(x)$ is the exact evaluation at $x$ and $\hat{r}_0(x)$ is the result using Horner's Algorithm.
+
+A running error bound, which is tighter, can be calculated via a slight modification:
+
+
+
+[1] - N. J. Higham. Accuracy and Stability of Numerical Algorithms. SIAM, second edition, 2002.
+
+\end{document}

@@ -1,0 +1,1 @@
+{"version":3,"file":"draw-elem.js","sourceRoot":"","sources":["../../../src/debug/draw-elem/draw-elem.ts"],"names":[],"mappings":";;AAEA,uCAAkC;AAWlC,SAAS,SAAS,CAChB,CAAc,EACd,CAAW;IAET,IAAI,MAAM,GAAG,iBAAM,CAAC,SAAS,CACxB,CAAC,EAAE,CAAC,EAAE,kBAAkB,EAAE,GAAG,CACpC,CAAC;IAEC,OAAO,MAAM,CAAC;AAClB,CAAC;AAGD,IAAI,iBAAiB,GAAuB;IAC3C,SAAS;CACT,CAAA;AAGQ,8CAAiB"}
