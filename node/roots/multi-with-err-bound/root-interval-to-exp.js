@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.rootIntervalToExp = void 0;
 /**
  * Converts a double precision root interval to a quad precision one (without)
  * @param ri a root interval

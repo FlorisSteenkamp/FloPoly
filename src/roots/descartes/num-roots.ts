@@ -1,11 +1,22 @@
 
-import { sturmChain, sturmChainExact } from "../../remainder-sequences/sturm-chain";
-import { evaluate } from "../../evaluate/evaluate";
-import { evaluateExact } from "../../evaluate/evaluate-exact";
-import { signChanges, expSignChanges } from "./sign-changes";
-import { sign } from "flo-numerical";
-import { degree } from "../../basic/degree";
-import { expEvaluateAt1 } from "../../evaluate/evaluate-at-1";
+import { sturmChain as sturmChain_, sturmChainExact as sturmChainExact_ } from "../../remainder-sequences/sturm-chain";
+import { evaluate as evaluate_ } from "../../evaluate/evaluate";
+import { evaluateExact as evaluateExact_ } from "../../evaluate/evaluate-exact";
+import { signChanges as signChanges_, expSignChanges as expSignChanges_ } from "./sign-changes";
+import { eSign as eSign_ } from "big-float-ts";
+import { degree as degree_ } from "../../basic/degree";
+import { expEvaluateAt1 as expEvaluateAt1_ } from "../../evaluate/evaluate-at-1";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const sturmChain = sturmChain_;
+const evaluate = evaluate_;
+const evaluateExact = evaluateExact_;
+const signChanges = signChanges_;
+const eSign = eSign_;
+const degree = degree_;
+const expEvaluateAt1 = expEvaluateAt1_;
+const sturmChainExact = sturmChainExact_;
+const expSignChanges = expSignChanges_;
 
 
 /** 
@@ -70,8 +81,8 @@ function numRootsInRangeExact(
  */
 function numRootsExact(p: number[][]): number {
 	let ps = sturmChainExact(p);
-	let as = ps.map(p => degree(p) % 2 === 0 ? sign(p[0]) : -sign(p[0]));
-	let bs = ps.map(p => sign(p[0]));
+	let as = ps.map(p => degree(p) % 2 === 0 ? eSign(p[0]) : -eSign(p[0]));
+	let bs = ps.map(p => eSign(p[0]));
 	
 	return signChanges(as) - signChanges(bs);
 }

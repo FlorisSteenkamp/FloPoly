@@ -1,7 +1,10 @@
 "use strict";
+//import { eSign } from "big-float-ts";
 Object.defineProperty(exports, "__esModule", { value: true });
-const flo_numerical_1 = require("flo-numerical");
-const sgn = Math.sign;
+exports.expSignChanges = exports.signChanges = void 0;
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const big_float_ts_1 = require("big-float-ts");
+const { eSign } = big_float_ts_1.operators;
 /**
  * Returns the number of sign changes in the polynomial coefficents
  * when ordered in descending order; zeros are ignored.
@@ -21,9 +24,9 @@ const sgn = Math.sign;
 function signChanges(p) {
     let d = p.length - 1;
     let result = 0;
-    let prevSign = sgn(p[0]);
+    let prevSign = Math.sign(p[0]);
     for (let i = 1; i < d + 1; i++) {
-        let sign = sgn(p[i]);
+        let sign = Math.sign(p[i]);
         if (sign !== prevSign && sign !== 0) {
             result++;
             prevSign = sign;
@@ -51,9 +54,9 @@ exports.signChanges = signChanges;
 function expSignChanges(p) {
     let d = p.length - 1;
     let result = 0;
-    let prevSign = sgn(flo_numerical_1.sign(p[0]));
+    let prevSign = Math.sign(eSign(p[0]));
     for (let i = 1; i < d + 1; i++) {
-        let sign_ = sgn(flo_numerical_1.sign(p[i]));
+        let sign_ = Math.sign(eSign(p[i]));
         if (sign_ !== prevSign && sign_ !== 0) {
             result++;
             prevSign = sign_;

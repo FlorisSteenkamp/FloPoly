@@ -1,6 +1,10 @@
 "use strict";
+//import { eEstimate } from "big-float-ts";
 Object.defineProperty(exports, "__esModule", { value: true });
-const flo_numerical_1 = require("flo-numerical");
+exports.toCasStr = void 0;
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const big_float_ts_1 = require("big-float-ts");
+const { eEstimate } = big_float_ts_1.operators;
 /**
  * Returns a string representing the given polynomial that is readable by a
  * human or a CAS (Computer Algebra System).
@@ -12,7 +16,7 @@ function toCasStr(p) {
     let d = p.length - 1;
     let str = '';
     for (let i = 0; i < d + 1; i++) {
-        let v = Array.isArray(p[i]) ? flo_numerical_1.estimate(p[i]) : p[i];
+        let v = Array.isArray(p[i]) ? eEstimate(p[i]) : p[i];
         let cStr = numberToString(Math.abs(v));
         cStr = (v >= 0 ? ' + ' : ' - ') + cStr;
         if (i === d) {

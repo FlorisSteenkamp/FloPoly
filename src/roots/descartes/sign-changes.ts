@@ -1,8 +1,9 @@
 
-import { sign } from "flo-numerical";
+//import { eSign } from "big-float-ts";
 
-
-const sgn = Math.sign;
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+import { operators as bigFloatOperators } from "big-float-ts";
+const { eSign } = bigFloatOperators;
 
 
 /** 
@@ -25,9 +26,9 @@ function signChanges(p: number[]): number {
 	let d = p.length-1;
 
 	let result = 0;
-	let prevSign = sgn(p[0]);
+	let prevSign = Math.sign(p[0]);
 	for (let i=1; i<d+1; i++) {
-		let sign = sgn(p[i]);
+		let sign = Math.sign(p[i]);
 		
 		if (sign !== prevSign && sign !== 0) {
 			result++;
@@ -59,9 +60,9 @@ function expSignChanges(p: number[][]): number {
 	let d = p.length-1;
 
 	let result = 0;
-	let prevSign = sgn(sign(p[0]));
+	let prevSign = Math.sign(eSign(p[0]));
 	for (let i=1; i<d+1; i++) {
-		let sign_ = sgn(sign(p[i]));
+		let sign_ = Math.sign(eSign(p[i]));
 		
 		if (sign_ !== prevSign && sign_ !== 0) {
 			result++;

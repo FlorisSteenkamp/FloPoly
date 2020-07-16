@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.predictiveRandom = exports.flatCoefficientsArr = exports.flatCoefficients = exports.flatRootsArr = exports.flatRoots = void 0;
 const from_roots_1 = require("../roots/from-roots");
 /**
  * Some seed value for the simple random number generator.

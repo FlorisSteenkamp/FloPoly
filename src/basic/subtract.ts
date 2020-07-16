@@ -1,6 +1,15 @@
 
-import { removeLeadingZeros, expRemoveLeadingZeros } from "./remove-leading-zeros";
-import { expansionDiff } from "flo-numerical";
+import { 
+	removeLeadingZeros as removeLeadingZeros_, 
+	expRemoveLeadingZeros as expRemoveLeadingZeros_
+} from "./remove-leading-zeros";
+//import { eDiff } from "big-float-ts";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+import { operators as bigFloatOperators } from "big-float-ts";
+const { eDiff } = bigFloatOperators;
+const removeLeadingZeros = removeLeadingZeros_;
+const expRemoveLeadingZeros = expRemoveLeadingZeros_;
 
 
 /** 
@@ -67,7 +76,7 @@ function subtractExact(p1: number[][], p2: number[][]): number[][] {
 	for (let i=0; i<d+1; i++) {
 		let c1 = p1[i+Δd1] || [0];
 		let c2 = p2[i+Δd2] || [0];
-		result.push(expansionDiff(c1, c2));  
+		result.push(eDiff(c1, c2));  
 	}
 	
 	// Ensure the result is a valid polynomial representation

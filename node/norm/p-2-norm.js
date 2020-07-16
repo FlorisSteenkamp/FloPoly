@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.p2Norm = void 0;
 /**
  * Returns the approximate p-2 norm, i.e. the Euclidean norm of the given array
  * of numbers.

@@ -1,5 +1,8 @@
 
-import { getContent } from "./get-content";
+import { getContent as getContent_ } from "./get-content";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const getContent = getContent_;
 
 
 /**

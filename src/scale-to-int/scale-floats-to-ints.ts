@@ -1,5 +1,9 @@
 
-import { exponent, bitLength } from "flo-numerical";
+//import { exponent, bitLength } from "big-float-ts";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+import { operators as bigFloatOperators } from "big-float-ts";
+const { exponent, bitLength } = bigFloatOperators;
 
 
 /**

@@ -1,1 +1,1 @@
-{"version":3,"file":"is-const.js","sourceRoot":"","sources":["../../src/basic/is-const.ts"],"names":[],"mappings":";;AACA;;;GAGG;AACH,SAAS,UAAU,CAAC,CAAa;IAC7B,OAAO,CAAC,CAAC,MAAM,IAAI,CAAC,CAAC;AACzB,CAAC;AAGQ,gCAAU"}
+{"version":3,"file":"is-const.js","sourceRoot":"","sources":["../../src/basic/is-const.ts"],"names":[],"mappings":";;;AACA;;;GAGG;AACH,SAAS,UAAU,CAAC,CAAa;IAC7B,OAAO,CAAC,CAAC,MAAM,IAAI,CAAC,CAAC;AACzB,CAAC;AAGQ,gCAAU"}

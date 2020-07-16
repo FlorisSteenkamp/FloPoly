@@ -8,7 +8,7 @@ import {
 	flatCoefficients, hornerErrorBound, allRoots
 } from '../../src/index';
 import { evaluateExact } from '../../src/core-operators/evaluate/evaluate-exact';
-import { estimate, expansionProduct, fastExpansionSum } from 'flo-numerical';
+import { estimate, expansionProduct, fastExpansionSum } from 'big-float-ts';
 import { fromRootsPrecise } from '../../src/from-roots';
 import { compHorner } from '../../src/core-operators/evaluate/evaluate-precise';
 import { Horner } from '../../src/core-operators/evaluate/evaluate';

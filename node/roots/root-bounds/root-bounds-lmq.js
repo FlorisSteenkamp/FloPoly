@@ -1,8 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.negativeRootLowerBound_LMQ = exports.negativeRootUpperBound_LMQ = exports.positiveRootLowerBound_LMQ = exports.positiveRootUpperBound_LMQ = void 0;
 const negate_1 = require("../../basic/negate");
 const upper_to_lower_bound_1 = require("./upper-to-lower-bound");
 const positive_to_negative_bound_1 = require("./positive-to-negative-bound");
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const negate = negate_1.negate;
+const upperToLowerBound = upper_to_lower_bound_1.upperToLowerBound;
+const positiveToNegativeBound = positive_to_negative_bound_1.positiveToNegativeBound;
 const POWERS = [
     1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768,
     65536, 131072, 262144, 524288, 1048576, 2097152
@@ -25,7 +30,7 @@ function positiveRootUpperBound_LMQ(p) {
         return 0;
     }
     if (p[0] < 0) {
-        p = negate_1.negate(p);
+        p = negate(p);
     }
     let timesUsed = [];
     for (let i = 0; i < deg; i++) {
@@ -67,18 +72,18 @@ function positiveRootUpperBound_LMQ(p) {
 }
 exports.positiveRootUpperBound_LMQ = positiveRootUpperBound_LMQ;
 /** Returns a positive lower bound of the roots of the given polynomial */
-let positiveRootLowerBound_LMQ = upper_to_lower_bound_1.upperToLowerBound(positiveRootUpperBound_LMQ);
+let positiveRootLowerBound_LMQ = upperToLowerBound(positiveRootUpperBound_LMQ);
 exports.positiveRootLowerBound_LMQ = positiveRootLowerBound_LMQ;
 /**
  * Returns a negative upper (upper here means further from zero) bound of the
  * roots of the given polynomial .
  */
-let negativeRootUpperBound_LMQ = positive_to_negative_bound_1.positiveToNegativeBound(positiveRootUpperBound_LMQ);
+let negativeRootUpperBound_LMQ = positiveToNegativeBound(positiveRootUpperBound_LMQ);
 exports.negativeRootUpperBound_LMQ = negativeRootUpperBound_LMQ;
 /**
  * Returns a negative lower (lower here means closer to zero) bound of the roots
  * of the given polynomial.
  */
-let negativeRootLowerBound_LMQ = upper_to_lower_bound_1.upperToLowerBound(negativeRootUpperBound_LMQ);
+let negativeRootLowerBound_LMQ = upperToLowerBound(negativeRootUpperBound_LMQ);
 exports.negativeRootLowerBound_LMQ = negativeRootLowerBound_LMQ;
 //# sourceMappingURL=root-bounds-lmq.js.map

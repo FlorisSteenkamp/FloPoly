@@ -1,11 +1,21 @@
 
-import { degree } from "../basic/degree";
-import { expansionDiv } from "flo-numerical";
-import { expElevateDegree } from "./exp-elevate-degree";
-import { addExact } from "../basic/add";
-import { multiplyExact } from "../basic/multiply";
-import { subtractExact } from "../basic/subtract";
-import { expApproxRemoveLeadingZeros } from "../basic/remove-leading-zeros";
+//import { eDiv } from "big-float-ts";
+import { degree as degree_ } from "../basic/degree";
+import { expElevateDegree as expElevateDegree_ } from "./exp-elevate-degree";
+import { addExact as addExact_ } from "../basic/add";
+import { multiplyExact as multiplyExact_ } from "../basic/multiply";
+import { subtractExact as subtractExact_ } from "../basic/subtract";
+import { expApproxRemoveLeadingZeros as expApproxRemoveLeadingZeros_ } from "../basic/remove-leading-zeros";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+import { operators as bigFloatOperators } from "big-float-ts";
+const { eDiv } = bigFloatOperators;
+const degree = degree_;
+const expElevateDegree = expElevateDegree_;
+const addExact = addExact_;
+const multiplyExact = multiplyExact_;
+const subtractExact = subtractExact_;
+const expApproxRemoveLeadingZeros = expApproxRemoveLeadingZeros_;
 
 
 /**
@@ -30,7 +40,7 @@ function rem(a: number[][], b: number[][]) {
     while (true) {
         let deg = degree(r) - d;
         // The division below is guaranteed to be exact
-        let s = [expansionDiv(r[0],c,0)];
+        let s = [eDiv(r[0],c,0)];
         s = expElevateDegree(s, deg);
         q = addExact(q, s);
         let m = multiplyExact([s,b]);

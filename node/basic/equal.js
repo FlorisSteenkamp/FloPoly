@@ -1,6 +1,10 @@
 "use strict";
+//import { eCompare } from "big-float-ts";
 Object.defineProperty(exports, "__esModule", { value: true });
-const flo_numerical_1 = require("flo-numerical");
+exports.expEqual = exports.equal = void 0;
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const big_float_ts_1 = require("big-float-ts");
+const { eCompare } = big_float_ts_1.operators;
 /**
  * Returns true if two polynomials are exactly equal by comparing coefficients.
  * @param p1 a polynomial
@@ -34,7 +38,7 @@ function expEqual(p1, p2) {
         return false;
     }
     for (let i = 0; i < p1.length; i++) {
-        if (flo_numerical_1.compare(p1[i], p2[i]) !== 0) {
+        if (eCompare(p1[i], p2[i]) !== 0) {
             return false;
         }
     }

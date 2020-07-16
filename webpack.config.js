@@ -1,5 +1,6 @@
 
 const path = require('path');
+const CircularDependencyPlugin = require('circular-dependency-plugin');
 
 module.exports = {
     entry: './src/index.ts',
@@ -15,17 +16,31 @@ module.exports = {
     },
     resolve: {
         extensions: [ '.tsx', '.ts', '.js', '.d.ts' ],
-        // The aliases below should not be used in production - rather, the correct node modules should be referenced.
-        /*
         alias: {
-            'flo-numerical$': path.resolve(__dirname, projectRoot + 'numerical/src/index.ts')
+            
         }
-        */
     },
     output: {
         filename: 'index.min.js',
         path: path.resolve(__dirname, 'browser'),
         library: 'FloPoly',
         libraryTarget: 'var'
-    }
+    },
+    stats: {
+        // Don't display anything, then display colors, ...
+        all: false,
+        colors: true,
+        errors: true,
+        builtAt: true
+    },
+    plugins: [
+        new CircularDependencyPlugin({
+            // exclude detection of files based on a RegExp
+            exclude: /a\.js|node_modules/,
+            // add errors to webpack instead of warnings
+            failOnError: true,
+            // set the current working directory for displaying module paths
+            cwd: process.cwd(),
+        })
+    ]
 };

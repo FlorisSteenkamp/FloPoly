@@ -1,12 +1,17 @@
 
-import { hornerWithRunningError } from "./horner-with-running-error";
-import { CompHornerK } from "./comp-horner-k";
-import { compHornerWithRunningError } from "./comp-horner-with-running-error";
-import { quadSplit } from "./quad-split";
-import { γs } from "./gammas";
+import { hornerWithRunningError as hornerWithRunningError_ } from "./horner-with-running-error";
+import { CompHornerK as CompHornerK_ } from "./comp-horner-k";
+import { compHornerWithRunningError as compHornerWithRunningError_ } from "./comp-horner-with-running-error";
+import { quadSplit as quadSplit_ } from "./quad-split";
+import { γs as γs_ } from "./gammas";
 
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const γs = γs_;
+const quadSplit = quadSplit_;
+const hornerWithRunningError = hornerWithRunningError_;
+const CompHornerK = CompHornerK_;
+const compHornerWithRunningError = compHornerWithRunningError_;
 
-let u = Number.EPSILON;
 
 
 type TEval = {

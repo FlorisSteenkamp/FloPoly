@@ -1,2 +1,2 @@
-declare let γs: number[];
+declare const γs: number[];
 export { γs };

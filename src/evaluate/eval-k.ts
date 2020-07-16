@@ -1,6 +1,12 @@
-import { hornerWithRunningError } from "./horner-with-running-error";
-import { CompHornerK } from "./comp-horner-k";
-import { compHornerWithRunningError } from "./comp-horner-with-running-error";
+
+import { hornerWithRunningError as hornerWithRunningError_ } from "./horner-with-running-error";
+import { CompHornerK as CompHornerK_ } from "./comp-horner-k";
+import { compHornerWithRunningError as compHornerWithRunningError_ } from "./comp-horner-with-running-error";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const hornerWithRunningError = hornerWithRunningError_;
+const CompHornerK = CompHornerK_;
+const compHornerWithRunningError = compHornerWithRunningError_;
 
 
 /**

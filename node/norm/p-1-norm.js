@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.p1Norm = void 0;
 /**
  * Returns the p-1 norm, a.k.a. the Taxicab norm, i.e. the sum of the absolute
  * values of the given array of numbers.

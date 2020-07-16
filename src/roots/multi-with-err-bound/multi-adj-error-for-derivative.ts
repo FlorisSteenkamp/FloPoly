@@ -1,5 +1,6 @@
 
-import { γ1 } from "../../error-analysis/gamma";
+import { γ } from "../../error-analysis/gamma";
+const γ1 = γ(1);
 
 
 /**

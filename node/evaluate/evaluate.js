@@ -20,6 +20,7 @@
  * evaluate([3,2,1])(2); // => 17
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.evaluate = void 0;
 function evaluate(p, a) {
     function f(a) {
         if (p.length === 0) {

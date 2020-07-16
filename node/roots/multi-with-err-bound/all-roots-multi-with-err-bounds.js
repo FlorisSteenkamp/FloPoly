@@ -1,19 +1,27 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.allRootsMultiWithErrBounds = void 0;
 const differentiate_1 = require("../../calculus/differentiate");
 const eval_k_multi_with_err_bounds_1 = require("../../evaluate/eval-k-multi-with-err-bounds");
 const horner_exact_1 = require("../../evaluate/horner-exact");
 const transpose_poly_1 = require("./transpose-poly");
 const eval_adaptive_1 = require("./eval-adaptive");
 const refine_multi_with_err_bounds_1 = require("./refine-multi-with-err-bounds");
-const abs = Math.abs;
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const differentiateQuadWithError = differentiate_1.differentiateQuadWithError;
+const evalK1MultiWithErrBounds = eval_k_multi_with_err_bounds_1.evalK1MultiWithErrBounds;
+const HornerExact = horner_exact_1.HornerExact;
+const transposePoly = transpose_poly_1.transposePoly;
+const evalAdaptive = eval_adaptive_1.evalAdaptive;
+const refineMultiWithErrBounds = refine_multi_with_err_bounds_1.refineMultiWithErrBounds;
+const differentiateExact = differentiate_1.differentiateExact;
 /**
  * Finds and returns all root intervals within [0,1] of a given polynomial,
  * including their multiplicities (see points below).
  * * **precondition** interval must be a subset of [0,1]
  * * specialized for the interval [0,1]
  * * multiplicities are positive integers - in extremely rare cases a
- * multiplicity may be an even number higher than the one returned
+ * multiplicity may be an even number higher than the one returned ????
  * * the returned intervals are of max width 2*Number.EPSILON; if an interval
  * is of higher width then it contains multiple roots; the max width
  * * the highest degree coefficient of the input polynomial's exact value should
@@ -35,13 +43,13 @@ function allRootsMultiWithErrBounds(p, pE, getPsExact = undefined, lb = 0, ub = 
             let poly = p;
             let psExact = [poly];
             while (poly.length > 1) {
-                poly = differentiate_1.differentiateExact(psExact[psExact.length - 1]);
+                poly = differentiateExact(psExact[psExact.length - 1]);
                 psExact.push(poly);
             }
             return psExact;
         };
     }
-    let p_ = transpose_poly_1.transposePoly(p);
+    let p_ = transposePoly(p);
     /** evaluation at lb */
     let LB = 0;
     /** evaluation at ub */
@@ -52,8 +60,8 @@ function allRootsMultiWithErrBounds(p, pE, getPsExact = undefined, lb = 0, ub = 
     exact = false;
     do {
         LB = exact
-            ? horner_exact_1.HornerExact(psExact.ps[0], lb)
-            : eval_k_multi_with_err_bounds_1.evalK1MultiWithErrBounds(p_, pE, lb).r̂;
+            ? HornerExact(psExact.ps[0], lb)
+            : evalK1MultiWithErrBounds(p_, pE, lb).r̂;
         if (LB === 0) {
             bCount++;
             // the max bCount is imperically selected for max performance
@@ -69,8 +77,8 @@ function allRootsMultiWithErrBounds(p, pE, getPsExact = undefined, lb = 0, ub = 
     exact = false;
     do {
         UB = exact
-            ? horner_exact_1.HornerExact(psExact.ps[0], ub)
-            : eval_k_multi_with_err_bounds_1.evalK1MultiWithErrBounds(p_, pE, ub).r̂;
+            ? HornerExact(psExact.ps[0], ub)
+            : evalK1MultiWithErrBounds(p_, pE, ub).r̂;
         if (UB === 0) {
             bCount++;
             if (bCount >= 3 && !exact) { // the max bCount is imperically selected for max performance
@@ -83,22 +91,22 @@ function allRootsMultiWithErrBounds(p, pE, getPsExact = undefined, lb = 0, ub = 
     } while (UB === 0);
     let ps = [{ p, pE }];
     for (let i = 0; i < p.length - 1; i++) {
-        ps.push(differentiate_1.differentiateQuadWithError(ps[i]));
+        ps.push(differentiateQuadWithError(ps[i]));
     }
     //console.log(ps)
     let rs = [];
     let deg = p.length - 1;
-    let maxDp_ = abs(ps[deg].p[0][1]); // abs value of last derivative msb
+    let maxDp_ = Math.abs(ps[deg].p[0][1]); // abs value of last derivative msb
     let maxDp; // only used after second iteration
     for (let i = 1; i < p.length; i++) {
         let { p, pE } = ps[deg - i];
-        let p_ = transpose_poly_1.transposePoly(p);
+        let p_ = transposePoly(p);
         rs = getRootsWithin(p_, pE, rs, δ, deg - i);
         maxDp = maxDp_;
         maxDp_ = 0;
         let p0 = p_[0];
         for (let j = 0; j < p.length; j++) {
-            maxDp_ += abs(p0[j]);
+            maxDp_ += Math.abs(p0[j]);
         }
     }
     return rs;
@@ -156,25 +164,25 @@ function allRootsMultiWithErrBounds(p, pE, getPsExact = undefined, lb = 0, ub = 
     function getRootsWithin(p, pE, is, δ, diffCount) {
         let roots = [];
         // If there are no micro-intervals then check the interval between lb and ub.
-        let LB = eval_adaptive_1.evalAdaptive(p, pE, lb, psExact, getPsExact, diffCount);
+        let LB = evalAdaptive(p, pE, lb, psExact, getPsExact, diffCount);
         if (!is.length) {
             // close even root not possible
-            let UB = eval_adaptive_1.evalAdaptive(p, pE, ub, psExact, getPsExact, diffCount);
+            let UB = evalAdaptive(p, pE, ub, psExact, getPsExact, diffCount);
             if (LB * UB >= 0) {
                 return [];
             }
-            let [tS, tE] = refine_multi_with_err_bounds_1.refineMultiWithErrBounds(p, pE, lb, ub, LB, UB, psExact, getPsExact, diffCount, δ);
+            let [tS, tE] = refineMultiWithErrBounds(p, pE, lb, ub, LB, UB, psExact, getPsExact, diffCount, δ);
             return [{ tS, tE /*, tM: (tE + tS)/2*/, multiplicity: 1 }];
         }
         //---- First check from lb to the left side of the first micro-interval.
         let _a = is[0].tS;
-        let _A = eval_adaptive_1.evalAdaptive(p, pE, _a, psExact, getPsExact, diffCount);
+        let _A = evalAdaptive(p, pE, _a, psExact, getPsExact, diffCount);
         if (LB * _A > 0) {
             // no roots possible (curve is monotone increasing or decreasing)
         }
         else if (LB * _A < 0) {
             // recall LB must !== 0 as a precondition
-            let [tS, tE] = refine_multi_with_err_bounds_1.refineMultiWithErrBounds(p, pE, lb, _a, LB, _A, psExact, getPsExact, diffCount, δ);
+            let [tS, tE] = refineMultiWithErrBounds(p, pE, lb, _a, LB, _A, psExact, getPsExact, diffCount, δ);
             roots.push({ tS, tE /*, tM: (tE + tS)/2*/, multiplicity: 1 });
         } //else {
         // _A === 0
@@ -192,8 +200,8 @@ function allRootsMultiWithErrBounds(p, pE, getPsExact = undefined, lb = 0, ub = 
             _b = i_ ? i_.tS : ub;
             let B_ = A_;
             _A = _B;
-            A_ = eval_adaptive_1.evalAdaptive(p, pE, a_, psExact, getPsExact, diffCount);
-            _B = eval_adaptive_1.evalAdaptive(p, pE, _b, psExact, getPsExact, diffCount);
+            A_ = evalAdaptive(p, pE, a_, psExact, getPsExact, diffCount);
+            _B = evalAdaptive(p, pE, _b, psExact, getPsExact, diffCount);
             /** if we must check for even roots */
             let checkEvenAA = false;
             if (_A * A_ > 0) {
@@ -214,7 +222,7 @@ function allRootsMultiWithErrBounds(p, pE, getPsExact = undefined, lb = 0, ub = 
                         checkEvenAA = true;
                     }
                     // [a_,_b] → single root (curve is monotone increasing or decreasing)
-                    let [tS, tE] = refine_multi_with_err_bounds_1.refineMultiWithErrBounds(p, pE, a_, _b, A_, _B, psExact, getPsExact, diffCount, δ);
+                    let [tS, tE] = refineMultiWithErrBounds(p, pE, a_, _b, A_, _B, psExact, getPsExact, diffCount, δ);
                     roots.push({ tS, tE /*, tM: (tE + tS)/2*/, multiplicity: 1 });
                 }
                 else { // _B === 0
@@ -236,7 +244,7 @@ function allRootsMultiWithErrBounds(p, pE, getPsExact = undefined, lb = 0, ub = 
                     //---- CASE 2A: _A⇑ | A_⇓ | _B⇑   OR   _A⇓ | A_⇑ | _B⇓
                     //console.log('CASE 2A');
                     // [a_,_b] → single root
-                    let [tS, tE] = refine_multi_with_err_bounds_1.refineMultiWithErrBounds(p, pE, a_, _b, A_, _B, psExact, getPsExact, diffCount, δ);
+                    let [tS, tE] = refineMultiWithErrBounds(p, pE, a_, _b, A_, _B, psExact, getPsExact, diffCount, δ);
                     roots.push({ tS, tE /*, tM: (tE + tS)/2*/, multiplicity: 1 });
                 }
                 else if (A_ * _B > 0) {
@@ -276,7 +284,7 @@ function allRootsMultiWithErrBounds(p, pE, getPsExact = undefined, lb = 0, ub = 
                 // [_a,a_] → rational root at _a
                 if (A_ * _B < 0) {
                     // [a_,_b] → single root
-                    let [tS, tE] = refine_multi_with_err_bounds_1.refineMultiWithErrBounds(p, pE, a_, _b, A_, _B, psExact, getPsExact, diffCount, δ);
+                    let [tS, tE] = refineMultiWithErrBounds(p, pE, a_, _b, A_, _B, psExact, getPsExact, diffCount, δ);
                     roots.push({ tS, tE /*, tM: (tE + tS)/2*/, multiplicity: 1 });
                 }
                 else if (A_ * _B > 0) {

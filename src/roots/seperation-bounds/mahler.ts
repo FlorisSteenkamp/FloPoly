@@ -1,5 +1,8 @@
 
-import { degree } from "../../basic/degree";
+import { degree as degree_ } from "../../basic/degree";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const degree = degree_;
 
 
 /**

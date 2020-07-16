@@ -1,5 +1,9 @@
 
-import { twoProduct, twoSum } from "flo-numerical";
+//import { twoProduct, twoSum } from "big-float-ts";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+import { operators as bigFloatOperators } from "big-float-ts";
+const { twoSum, twoProduct } = bigFloatOperators;
 
 
 /**
@@ -29,8 +33,6 @@ function EFTHorner(p: number[], x: number) {
 
 // inlined
 //let pπ: number[] = []; let pσ: number[] = []; let σ: number; let r̂ = p[0];	for (let i=1; i<p.length; i++) { let [π,pi] = twoProduct(r̂,x); [σ,r̂] = twoSum(pi, p[i]); pπ.push(π); pσ.push(σ); } return { r̂, pπ, pσ }
-
-	
 
 
 export { EFTHorner }

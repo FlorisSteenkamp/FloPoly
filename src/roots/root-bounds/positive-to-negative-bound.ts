@@ -1,5 +1,8 @@
 
-import { reflectAboutYAxis } from "../../change-variables/reflect-about-y-axis";
+import { reflectAboutYAxis as reflectAboutYAxis_ } from "../../change-variables/reflect-about-y-axis";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const reflectAboutYAxis = reflectAboutYAxis_;
 
 
 /**

@@ -1,7 +1,11 @@
 
-import { sign, estimate } from "flo-numerical";
-import { pInfNorm } from "../norm/p-inf-norm";
+//import { eSign, eEstimate } from "big-float-ts";
+import { pInfNorm as pInfNorm_ } from "../norm/p-inf-norm";
 
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+import { operators as bigFloatOperators } from "big-float-ts";
+const { eSign, eEstimate } = bigFloatOperators;
+const pInfNorm = pInfNorm_;
 
 /**
  * If the highest power coefficient is 0 then removeLeadingZeros can be called 
@@ -26,7 +30,7 @@ function removeLeadingZeros(p: number[]): number[] {
  * expRemoveLeadingZeros([[0], [1e-10], [1e-1]]); //=> [[1e-10], [1e-1]]
  */
 function expRemoveLeadingZeros(p: number[][]): number[][] {
-	return p.length <= 1 || sign(p[0]) !== 0 
+	return p.length <= 1 || eSign(p[0]) !== 0 
 		? p :
 		expRemoveLeadingZeros(p.slice(1)); 
 }
@@ -74,7 +78,7 @@ function expApproxRemoveLeadingZeros(p: number[][]): number[][] {
 	/** the smallest non-subnormal float */
 	let DELTA = 2.2250738585072014e-308;
 
-	let lc = Math.abs(estimate(p[0])); // estimate of the leading coefficient
+	let lc = Math.abs(eEstimate(p[0])); // estimate of the leading coefficient
 
 	if (p.length === 0 || (p.length === 1 && lc <= DELTA)) {
 		return [[0]]; 
@@ -83,7 +87,7 @@ function expApproxRemoveLeadingZeros(p: number[][]): number[][] {
 	if (lc > DELTA) { return p;	}
 	
 	let p_ = p.slice(1);
-	while (p_.length > 0 && Math.abs(estimate(p_[0])) < DELTA) {
+	while (p_.length > 0 && Math.abs(eEstimate(p_[0])) < DELTA) {
 		p_ = p_.slice(1);	
 	}
 

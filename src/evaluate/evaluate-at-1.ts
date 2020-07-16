@@ -1,4 +1,10 @@
-import { fastTwoSum, fastExpansionSum } from "flo-numerical";
+
+//import { fastExpansionSum } from "big-float-ts";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+import { operators as bigFloatOperators } from "big-float-ts";
+const { fastExpansionSum } = bigFloatOperators;
+
 
 /** 
  * Returns the approximate result of evaluating the given polynomial at 1 - it 

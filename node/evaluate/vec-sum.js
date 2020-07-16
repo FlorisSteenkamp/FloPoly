@@ -1,6 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const flo_numerical_1 = require("flo-numerical");
+exports.vecSum = void 0;
+const big_float_ts_1 = require("big-float-ts");
+const { twoSum } = big_float_ts_1.operators;
 /**
  * see http://www.ti3.tuhh.de/paper/rump/OgRuOi05.pdf
  * @param x
@@ -9,7 +11,7 @@ const flo_numerical_1 = require("flo-numerical");
 function vecSum(p_) {
     let p = p_.slice();
     for (let i = 1; i < p.length; i++) {
-        [p[i - 1], p[i]] = flo_numerical_1.twoSum(p[i], p[i - 1]);
+        [p[i - 1], p[i]] = twoSum(p[i], p[i - 1]);
     }
     return p;
 }

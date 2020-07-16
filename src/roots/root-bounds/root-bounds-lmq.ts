@@ -1,7 +1,12 @@
 
-import { negate } from "../../basic/negate";
-import { upperToLowerBound } from "./upper-to-lower-bound";
-import { positiveToNegativeBound } from "./positive-to-negative-bound";
+import { negate as negate_ } from "../../basic/negate";
+import { upperToLowerBound as upperToLowerBound_ } from "./upper-to-lower-bound";
+import { positiveToNegativeBound as positiveToNegativeBound_ } from "./positive-to-negative-bound";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const negate = negate_;
+const upperToLowerBound = upperToLowerBound_;
+const positiveToNegativeBound = positiveToNegativeBound_;
 
 
 const POWERS = [

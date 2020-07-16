@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.gcdIntsTree = exports.gcdInts = exports.gcdIntBinary = exports.gcdInt = void 0;
 /**
  * Computes the greatest common divisor of two integers a and b, using the
  * Euclidean Algorithm.

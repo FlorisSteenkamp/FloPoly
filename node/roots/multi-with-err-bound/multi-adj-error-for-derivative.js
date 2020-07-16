@@ -1,5 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const gamma_1 = require("../../error-analysis/gamma");
+const γ1 = gamma_1.γ(1);
 /**
  * * precondition: deg(pE) <= 9
  * @param pE an error polynomial

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.HornerSum = void 0;
 /**
  * @param p1
  * @param p2

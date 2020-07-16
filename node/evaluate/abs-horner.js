@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.AbsHorner = void 0;
 const abs = Math.abs;
 /**
  * Returns the approximate result of evaluating a univariate polynomial using

@@ -1,9 +1,9 @@
 
-import { qMultDouble2, qAddQuad } from "flo-numerical";
+import { ddMultDouble2, ddAddDd } from "double-double";
 
 
-const qmd = qMultDouble2;
-const qaq = qAddQuad;
+const qmd = ddMultDouble2;
+const qaq = ddAddDd;
 
 
 /**

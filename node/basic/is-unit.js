@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.expIsUnit = void 0;
 /**
  * Returns true if the given polynomial is the unit polynomial, i.e. === 1
  * @param a a polynomial

@@ -1,11 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.refineMultiWithErrBounds = void 0;
 const eval_k_multi_with_err_bounds_1 = require("../../evaluate/eval-k-multi-with-err-bounds");
 const horner_exact_1 = require("../../evaluate/horner-exact");
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const evalK1MultiWithErrBounds = eval_k_multi_with_err_bounds_1.evalK1MultiWithErrBounds;
+const HornerExact = horner_exact_1.HornerExact;
 let eps = Number.EPSILON;
 let abs = Math.abs;
-//(window as any).qcount = 0;
-//(window as any).qtot = 0;
 /**
  * Exact, original Brent Dekker Method - modified slightly to allow for error
  * bounds.
@@ -120,8 +122,8 @@ function refineMultiWithErrBounds(p, pE, lb, ub, fa, fb, psExact, getPsExact, di
             b = b - δ;
         }
         fb = exact
-            ? horner_exact_1.HornerExact(psExact.ps[diffCount], b)
-            : eval_k_multi_with_err_bounds_1.evalK1MultiWithErrBounds(p, pE, b).r̂;
+            ? HornerExact(psExact.ps[diffCount], b)
+            : evalK1MultiWithErrBounds(p, pE, b).r̂;
         if (fb === 0) {
             // Since evalK1MultiWithErrBounds is approximate the zero result
             // cannot be fully trusted at this point.
@@ -140,8 +142,8 @@ function refineMultiWithErrBounds(p, pE, lb, ub, fa, fb, psExact, getPsExact, di
             let sR = Math.min(ub, b + δ); // dont overstep bounds
             // Note: sR - sL <= 2*δ provided lb, ub are in [-1..1] - usually 
             // (when sL === s - δ and sR === s + δ) sR - sL === 2*δ. Also δ > 0
-            let fsL = eval_k_multi_with_err_bounds_1.evalK1MultiWithErrBounds(p, pE, sL).r̂;
-            let fsR = eval_k_multi_with_err_bounds_1.evalK1MultiWithErrBounds(p, pE, sR).r̂;
+            let fsL = evalK1MultiWithErrBounds(p, pE, sL).r̂;
+            let fsR = evalK1MultiWithErrBounds(p, pE, sR).r̂;
             // if the evaluation method is strong enough return the result
             if (fsL * fsR !== 0) {
                 //(window as any).qcount++;
@@ -157,7 +159,7 @@ function refineMultiWithErrBounds(p, pE, lb, ub, fa, fb, psExact, getPsExact, di
             // the quad polynomial and we very rarely expect to get to this 
             // point)
             psExact.ps = psExact.ps || getPsExact();
-            fb = horner_exact_1.HornerExact(psExact.ps[diffCount], b);
+            fb = HornerExact(psExact.ps[diffCount], b);
             // if the exact evaluation returns 0 we have an exact root
             if (fb === 0) {
                 //(window as any).qcount++;

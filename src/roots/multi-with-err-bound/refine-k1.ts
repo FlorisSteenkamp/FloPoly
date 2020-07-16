@@ -1,10 +1,17 @@
 
-import { toQuad, twoSum } from "flo-numerical";
+//import { eToDd, twoSum } from "big-float-ts";
 import { RootInterval } from "./root-interval";
 import { RootIntervalExp } from "./root-interval-exp";
-import { changeVariablesLinearExact } from "../../change-variables/change-variables-linear";
-import { differentiateExact } from "../../calculus/differentiate";
-import { allRootsMultiWithErrBounds } from "./all-roots-multi-with-err-bounds";
+import { changeVariablesLinearExact as changeVariablesLinearExact_ } from "../../change-variables/change-variables-linear";
+import { differentiateExact as differentiateExact_ } from "../../calculus/differentiate";
+import { allRootsMultiWithErrBounds as allRootsMultiWithErrBounds_ } from "./all-roots-multi-with-err-bounds";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+import { operators as bigFloatOperators } from "big-float-ts";
+const { eToDd, twoSum } = bigFloatOperators;
+const changeVariablesLinearExact = changeVariablesLinearExact_;
+const differentiateExact = differentiateExact_;
+const allRootsMultiWithErrBounds = allRootsMultiWithErrBounds_;
 
 
 const eps = Number.EPSILON;
@@ -30,7 +37,7 @@ function refineK1(
     // scale it such that the roots stay < 1, i.e. is in [0,1]
     let pExactK1 = changeVariablesLinearExact(pExact, scale, tS);
     // reduce the polynomial to quad precision for faster root finding
-    let pQuadK1 = pExactK1.map(toQuad);
+    let pQuadK1 = pExactK1.map(eToDd);
     // update the quad precision error bound - it is simply the error in 
     // rounding the exact coefficients to quad precision
     let errBoundK1 = pQuadK1.map(c => eps*eps*c[1]);

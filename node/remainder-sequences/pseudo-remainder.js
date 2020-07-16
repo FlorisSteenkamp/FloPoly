@@ -1,9 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const flo_numerical_1 = require("flo-numerical");
+exports.prem = void 0;
+//import { expansionProduct, eAbs } from "big-float-ts";
 const degree_1 = require("../basic/degree");
 const multiply_by_const_1 = require("../basic/multiply-by-const");
 const euclidean_division_1 = require("../euclidean-division/euclidean-division");
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const big_float_ts_1 = require("big-float-ts");
+const { eAbs, expansionProduct } = big_float_ts_1.operators;
+const degree = degree_1.degree;
+const expMultiplyByConst = multiply_by_const_1.expMultiplyByConst;
+const rem = euclidean_division_1.rem;
 /**
  * Returns the trivial pseudo-remainder, i.e. with α === 1.
  *
@@ -25,14 +32,14 @@ function prem(a, b, positiveMultiplier = false) {
     // change to pseudo-remainder, i.e. not simply r = a; this allows the 
     // remainders to stay in 'Z'
     // let m = leadingCoeff(b)^(deg(a)-deg(b)+1)
-    let exponent = degree_1.degree(a) - degree_1.degree(b) + 1;
+    let exponent = degree(a) - degree(b) + 1;
     let m = b[0];
     for (let i = 1; i < exponent; i++) {
-        m = flo_numerical_1.expansionProduct(m, b[0]);
+        m = expansionProduct(m, b[0]);
     }
-    m = positiveMultiplier ? flo_numerical_1.abs(m) : m;
-    let a_ = multiply_by_const_1.expMultiplyByConst(m, a);
-    return euclidean_division_1.rem(a_, b);
+    m = positiveMultiplier ? eAbs(m) : m;
+    let a_ = expMultiplyByConst(m, a);
+    return rem(a_, b);
 }
 exports.prem = prem;
 //# sourceMappingURL=pseudo-remainder.js.map

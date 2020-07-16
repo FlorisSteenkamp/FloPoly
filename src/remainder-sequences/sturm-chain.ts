@@ -1,9 +1,17 @@
 
-import { differentiate, differentiateExact } from "../calculus/differentiate";
-import { multiply } from "../basic/multiply";
-import { multiplyByConst } from "../basic/multiply-by-const";
-import { subtract } from "../basic/subtract";
-import { subresultantPseudoRemainderSequence } from "./subresultant-pseudo-remainder-sequence";
+import { differentiate as differentiate_, differentiateExact as differentiateExact_ } from "../calculus/differentiate";
+import { multiply as multiply_ } from "../basic/multiply";
+import { multiplyByConst as multiplyByConst_ } from "../basic/multiply-by-const";
+import { subtract as subtract_ } from "../basic/subtract";
+import { subresultantPseudoRemainderSequence as subresultantPseudoRemainderSequence_ } from "./subresultant-pseudo-remainder-sequence";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const differentiate = differentiate_;
+const differentiateExact = differentiateExact_;
+const multiply = multiply_;
+const multiplyByConst = multiplyByConst_;
+const subtract = subtract_;
+const subresultantPseudoRemainderSequence = subresultantPseudoRemainderSequence_;
 
 
 /** 

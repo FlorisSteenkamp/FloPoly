@@ -1,12 +1,18 @@
 
-import { EFTHorner } from "./eft-horner";
-import { hornerWithRunningError } from "./horner-with-running-error";
-import { Horner } from "./horner";
-import { AbsHorner } from "./abs-horner";
-import { γ1, γ2 } from "../error-analysis/gamma";
+import { EFTHorner as EFTHorner_ } from "./eft-horner";
+import { hornerWithRunningError as hornerWithRunningError_ } from "./horner-with-running-error";
+import { Horner as Horner_ } from "./horner";
+import { AbsHorner as AbsHorner_ } from "./abs-horner";
+import { γ as γ_ } from "../error-analysis/gamma";
 
-
-const abs = Math.abs;
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const γ = γ_;
+const EFTHorner = EFTHorner_;
+const hornerWithRunningError = hornerWithRunningError_;
+const Horner = Horner_;
+const AbsHorner = AbsHorner_;
+const γ1 = γ(1);
+const γ2 = γ(2);
 
 
 /**
@@ -31,7 +37,7 @@ function evalK1MultiWithErrBounds(
     let E = Horner(pE, x); // error due to imprecision in coefficients
     //let ee = e1+e2+maxE; // in difficult cases maxE can be larger than e1+e2
     let ee = e1+e2+E; // in difficult cases maxE can be larger than e1+e2
-    if (ee*multiplier < abs(r)) {
+    if (ee*multiplier < Math.abs(r)) {
         // we are within bounds
         return {r̂:r,e:ee};
     }
@@ -47,7 +53,7 @@ function evalK1MultiWithErrBounds(
     r̂ = (C1 + C2 + C3) + r̂;  // typically: C1,C2 < C3 < r̂ and (C1 + C2 + C3 < r̂)
     e += γ1*r̂;
 
-    if (e*multiplier < abs(r̂)) {
+    if (e*multiplier < Math.abs(r̂)) {
         return { r̂, e };
     }
 

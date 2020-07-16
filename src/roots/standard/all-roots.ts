@@ -1,10 +1,22 @@
 
-import { brent } from './brent';
-import { quadraticRoots } from '../quadratic-roots';
-import { positiveRootUpperBound_LMQ, negativeRootUpperBound_LMQ } from '../root-bounds/root-bounds-lmq';
-import { removeLeadingZeros } from '../../basic/remove-leading-zeros';
-import { differentiate } from '../../calculus/differentiate';
-import { evaluate } from '../../evaluate/evaluate';
+import { brent as brent_ } from './brent';
+import { quadraticRoots as quadraticRoots_ } from '../quadratic-roots';
+import { 
+	positiveRootUpperBound_LMQ as positiveRootUpperBound_LMQ_, 
+	negativeRootUpperBound_LMQ as negativeRootUpperBound_LMQ_ 
+} from '../root-bounds/root-bounds-lmq';
+import { removeLeadingZeros as removeLeadingZeros_ } from '../../basic/remove-leading-zeros';
+import { differentiate as differentiate_ } from '../../calculus/differentiate';
+import { evaluate as evaluate_ } from '../../evaluate/evaluate';
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const brent = brent_;
+const quadraticRoots = quadraticRoots_;
+const positiveRootUpperBound_LMQ = positiveRootUpperBound_LMQ_;
+const negativeRootUpperBound_LMQ = negativeRootUpperBound_LMQ_;
+const removeLeadingZeros = removeLeadingZeros_;
+const differentiate = differentiate_;
+const evaluate = evaluate_;
 
 
 /**

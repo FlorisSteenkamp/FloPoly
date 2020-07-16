@@ -1,6 +1,10 @@
 "use strict";
+//import { expansionProduct, fastExpansionSum, scaleExpansion2 } from "big-float-ts";
 Object.defineProperty(exports, "__esModule", { value: true });
-const flo_numerical_1 = require("flo-numerical");
+exports.changeVariablesLinearExact = exports.changeVariablesLinearExactExp = exports.changeVariablesLinear = void 0;
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const big_float_ts_1 = require("big-float-ts");
+const { expansionProduct, fastExpansionSum, scaleExpansion2 } = big_float_ts_1.operators;
 /**
  * Returns the approximate result of performing a change of variables of the form: p(x) <- p(ax + b).
  * See this stackoverflow question http://stackoverflow.com/questions/141422/how-can-a-transform-a-polynomial-to-another-coordinate-system
@@ -62,9 +66,9 @@ function changeVariablesLinearExactExp(p, a, b) {
     // Calculate the triangular matrix T
     t[0][0] = [1];
     for (let j = 1; j <= d; j++) {
-        t[0][j] = flo_numerical_1.expansionProduct(b, t[0][j - 1]);
+        t[0][j] = expansionProduct(b, t[0][j - 1]);
         for (let i = 1; i <= j; i++) {
-            t[i][j] = flo_numerical_1.fastExpansionSum(flo_numerical_1.expansionProduct(b, t[i][j - 1]), flo_numerical_1.expansionProduct(a, t[i - 1][j - 1]));
+            t[i][j] = fastExpansionSum(expansionProduct(b, t[i][j - 1]), expansionProduct(a, t[i - 1][j - 1]));
         }
     }
     // Multiply
@@ -72,8 +76,8 @@ function changeVariablesLinearExactExp(p, a, b) {
     for (let i = 0; i <= d; i++) {
         res[d - i] = [0];
         for (let j = i; j <= d; j++) {
-            let acc = flo_numerical_1.expansionProduct(t[i][j], p[d - j]);
-            res[d - i] = flo_numerical_1.fastExpansionSum(res[d - i], acc);
+            let acc = expansionProduct(t[i][j], p[d - j]);
+            res[d - i] = fastExpansionSum(res[d - i], acc);
         }
     }
     return res;
@@ -100,9 +104,9 @@ function changeVariablesLinearExact(p, a, b) {
     // Calculate the triangular matrix T
     t[0][0] = [1];
     for (let j = 1; j <= d; j++) {
-        t[0][j] = flo_numerical_1.scaleExpansion2(b, t[0][j - 1]);
+        t[0][j] = scaleExpansion2(b, t[0][j - 1]);
         for (let i = 1; i <= j; i++) {
-            t[i][j] = flo_numerical_1.fastExpansionSum(flo_numerical_1.scaleExpansion2(b, t[i][j - 1]), flo_numerical_1.scaleExpansion2(a, t[i - 1][j - 1]));
+            t[i][j] = fastExpansionSum(scaleExpansion2(b, t[i][j - 1]), scaleExpansion2(a, t[i - 1][j - 1]));
         }
     }
     // Multiply
@@ -110,8 +114,8 @@ function changeVariablesLinearExact(p, a, b) {
     for (let i = 0; i <= d; i++) {
         res[d - i] = [0];
         for (let j = i; j <= d; j++) {
-            let acc = flo_numerical_1.expansionProduct(t[i][j], p[d - j]);
-            res[d - i] = flo_numerical_1.fastExpansionSum(res[d - i], acc);
+            let acc = expansionProduct(t[i][j], p[d - j]);
+            res[d - i] = fastExpansionSum(res[d - i], acc);
         }
     }
     return res;

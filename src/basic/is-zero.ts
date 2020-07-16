@@ -1,5 +1,9 @@
 
-import { sign } from "flo-numerical";
+//import { eSign } from "big-float-ts";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+import { operators as bigFloatOperators } from "big-float-ts";
+const { eSign } = bigFloatOperators;
 
 
 /**
@@ -7,7 +11,7 @@ import { sign } from "flo-numerical";
  * @param a a polynomial
  */
 function expIsZero(a: number[][]) {
-    return a.length === 0 || (a.length === 1 && sign(a[0]) === 0);
+    return a.length === 0 || (a.length === 1 && eSign(a[0]) === 0);
 }
 
 

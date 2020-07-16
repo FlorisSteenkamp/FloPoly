@@ -1,7 +1,12 @@
 
-import { SumK } from "./sum-k";
-import { EFTHornerK } from "./eft-horner.k";
-import { Horner } from "./horner";
+import { SumK as SumK_ } from "./sum-k";
+import { EFTHornerK as EFTHornerK_ } from "./eft-horner.k";
+import { Horner as Horner_ } from "./horner";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const SumK = SumK_;
+const EFTHornerK = EFTHornerK_;
+const Horner = Horner_;
 
 
 /**

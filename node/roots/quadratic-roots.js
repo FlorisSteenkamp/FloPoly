@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.quadraticRoots = void 0;
 /**
  * Floating-point-stably calculates and returns the ordered quadratic
  * roots of the given quadratic polynomial.

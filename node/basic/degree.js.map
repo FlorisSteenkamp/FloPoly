@@ -1,1 +1,1 @@
-{"version":3,"file":"degree.js","sourceRoot":"","sources":["../../src/basic/degree.ts"],"names":[],"mappings":";;AACA;;;;;GAKG;AACH,SAAS,MAAM,CAAC,CAAwB;IACvC,OAAO,CAAC,CAAC,MAAM,GAAC,CAAC,CAAC;AACnB,CAAC;AAGQ,wBAAM"}
+{"version":3,"file":"degree.js","sourceRoot":"","sources":["../../src/basic/degree.ts"],"names":[],"mappings":";;;AACA;;;;;GAKG;AACH,SAAS,MAAM,CAAC,CAAwB;IACvC,OAAO,CAAC,CAAC,MAAM,GAAC,CAAC,CAAC;AACnB,CAAC;AAGQ,wBAAM"}

@@ -1,5 +1,9 @@
 
-import { fastExpansionSum, scaleExpansion, estimate } from "flo-numerical";
+//import { fastExpansionSum, scaleExpansion, eEstimate } from "big-float-ts";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+import { operators as bigFloatOperators } from "big-float-ts";
+const { fastExpansionSum, scaleExpansion, eEstimate } = bigFloatOperators;
 
 
 /** 
@@ -17,7 +21,7 @@ function HornerExact(p: number[][], x: number): number {
 	}
 	
 	//return q[q.length-1];
-	return estimate(q);
+	return eEstimate(q);
 }
 
 

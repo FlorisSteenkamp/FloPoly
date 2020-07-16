@@ -1,9 +1,15 @@
 
-import { expansionProduct, abs } from "flo-numerical";
+//import { expansionProduct, eAbs } from "big-float-ts";
+import { degree as degree_ } from "../basic/degree";
+import { expMultiplyByConst as expMultiplyByConst_ } from "../basic/multiply-by-const";
+import { rem as rem_ } from "../euclidean-division/euclidean-division";
 
-import { degree } from "../basic/degree";
-import { expMultiplyByConst } from "../basic/multiply-by-const";
-import { rem } from "../euclidean-division/euclidean-division";
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+import { operators as bigFloatOperators } from "big-float-ts";
+const { eAbs, expansionProduct } = bigFloatOperators;
+const degree = degree_;
+const expMultiplyByConst = expMultiplyByConst_;
+const rem = rem_;
 
 
 /**
@@ -33,7 +39,7 @@ function prem(a: number[][], b: number[][], positiveMultiplier = false) {
     for (let i=1; i<exponent; i++) {
         m = expansionProduct(m, b[0]);
     }
-    m = positiveMultiplier ? abs(m) : m;
+    m = positiveMultiplier ? eAbs(m) : m;
     let a_ = expMultiplyByConst(m, a); 
 
     return rem(a_, b);

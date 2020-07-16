@@ -1,4 +1,10 @@
-import { estimate } from "flo-numerical";
+
+//import { eEstimate } from "big-float-ts";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+import { operators as bigFloatOperators } from "big-float-ts";
+const { eEstimate  } = bigFloatOperators;
+
 
 /**
  * Returns a string representing the given polynomial that is readable by a 
@@ -12,7 +18,7 @@ function toCasStr(p: number[] | number[][]): string {
 	
 	let str = '';
 	for (let i=0; i<d+1; i++) {
-		let v = Array.isArray(p[i]) ? estimate(p[i] as number[]) : p[i] as number;
+		let v = Array.isArray(p[i]) ? eEstimate(p[i] as number[]) : p[i] as number;
 		let cStr = numberToString(Math.abs(v));
 		cStr = (v >= 0 ? ' + ' : ' - ') + cStr;
 		if (i === d) {

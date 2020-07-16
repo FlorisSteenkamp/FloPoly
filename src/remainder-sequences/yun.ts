@@ -1,15 +1,29 @@
 
-import { gcdExact } from "../gcd/gcd-prs/gcd-prs";
-import { differentiateExact } from "../calculus/differentiate";
-import { rem } from "../euclidean-division/euclidean-division";
-import { subtractExact } from "../basic/subtract";
-import { degree } from "../basic/degree";
-import { expIsUnit } from "../basic/is-unit";
-import { expIsConst } from "../basic/is-const";
-import { prem } from "./pseudo-remainder";
-import { expMultiplyByConst } from "../basic/multiply-by-const";
-import { abs } from "flo-numerical";
-import { scalePolyToIntsExp } from "..";
+//import { eAbs } from "big-float-ts";
+import { gcdExact as gcdExact_ } from "../gcd/gcd-prs/gcd-prs";
+import { differentiateExact as differentiateExact_ } from "../calculus/differentiate";
+import { rem as rem_ } from "../euclidean-division/euclidean-division";
+import { subtractExact as subtractExact_ } from "../basic/subtract";
+import { degree as degree_ } from "../basic/degree";
+import { expIsUnit as expIsUnit_ } from "../basic/is-unit";
+import { expIsConst as expIsConst_ } from "../basic/is-const";
+import { prem as prem_ } from "./pseudo-remainder";
+import { expMultiplyByConst as expMultiplyByConst_ } from "../basic/multiply-by-const";
+import { scalePolyToIntsExp as scalePolyToIntsExp_ } from '../scale-to-int/scale-poly-to-ints';
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+import { operators as bigFloatOperators } from "big-float-ts";
+const { eAbs } = bigFloatOperators;
+const gcdExact = gcdExact_;
+const differentiateExact = differentiateExact_;
+const rem = rem_;
+const subtractExact = subtractExact_;
+const degree = degree_;
+const expIsUnit = expIsUnit_;
+const expIsConst = expIsConst_;
+const prem = prem_;
+const expMultiplyByConst = expMultiplyByConst_;
+const scalePolyToIntsExp = scalePolyToIntsExp_;
 
 
 /**

@@ -1,7 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.subtractExact = exports.subtract = void 0;
 const remove_leading_zeros_1 = require("./remove-leading-zeros");
-const flo_numerical_1 = require("flo-numerical");
+//import { eDiff } from "big-float-ts";
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const big_float_ts_1 = require("big-float-ts");
+const { eDiff } = big_float_ts_1.operators;
+const removeLeadingZeros = remove_leading_zeros_1.removeLeadingZeros;
+const expRemoveLeadingZeros = remove_leading_zeros_1.expRemoveLeadingZeros;
 /**
  * Returns an approximate result of subtracting the second polynomial from first (p1 - p2).
  * @param p1 the polynomial from which will be subtracted
@@ -31,7 +37,7 @@ function subtract(p1, p2) {
         result.push(c1 - c2);
     }
     // Ensure the result is a valid polynomial representation
-    return remove_leading_zeros_1.removeLeadingZeros(result);
+    return removeLeadingZeros(result);
 }
 exports.subtract = subtract;
 /**
@@ -60,10 +66,10 @@ function subtractExact(p1, p2) {
     for (let i = 0; i < d + 1; i++) {
         let c1 = p1[i + Δd1] || [0];
         let c2 = p2[i + Δd2] || [0];
-        result.push(flo_numerical_1.expansionDiff(c1, c2));
+        result.push(eDiff(c1, c2));
     }
     // Ensure the result is a valid polynomial representation
-    return remove_leading_zeros_1.expRemoveLeadingZeros(result);
+    return expRemoveLeadingZeros(result);
 }
 exports.subtractExact = subtractExact;
 //# sourceMappingURL=subtract.js.map

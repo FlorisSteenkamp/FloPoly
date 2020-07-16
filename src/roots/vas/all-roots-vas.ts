@@ -1,18 +1,37 @@
 
-import { brent } from '../standard/brent';
-import { positiveRootUpperBound_LMQ, positiveRootLowerBound_LMQ } from '../root-bounds/root-bounds-lmq';
-import { mobEvaluateAt0 } from '../../mobius/evaluate-at-0';
-import { mobEvaluateAtInf } from '../../mobius/evaluate-at-inf';
-import { mobEvaluate } from '../../mobius/evaluate';
-import { mobChangeVariables } from '../../mobius/change-variables';
-import { mobInvert } from '../../mobius/invert';
-import { evaluate } from '../../evaluate/evaluate';
-import { evaluateAt0 } from '../../evaluate/evaluate-at-0';
-import { changeVariablesLinear } from '../../change-variables/change-variables-linear';
-import { negate } from '../../basic/negate';
-import { invert } from '../../basic/invert';
-import { signChanges } from '../descartes/sign-changes';
-        
+import { brent as brent_ } from '../standard/brent';
+import { 
+	positiveRootUpperBound_LMQ as positiveRootUpperBound_LMQ_, 
+	positiveRootLowerBound_LMQ as positiveRootLowerBound_LMQ_
+} from '../root-bounds/root-bounds-lmq';
+import { mobEvaluateAt0 as mobEvaluateAt0_ } from '../../mobius/evaluate-at-0';
+import { mobEvaluateAtInf as mobEvaluateAtInf_ } from '../../mobius/evaluate-at-inf';
+import { mobEvaluate as mobEvaluate_ } from '../../mobius/evaluate';
+import { mobChangeVariables as mobChangeVariables_ } from '../../mobius/change-variables';
+import { mobInvert as mobInvert_ } from '../../mobius/invert';
+import { evaluate as evaluate_ } from '../../evaluate/evaluate';
+import { evaluateAt0 as evaluateAt0_ } from '../../evaluate/evaluate-at-0';
+import { changeVariablesLinear as changeVariablesLinear_ } from '../../change-variables/change-variables-linear';
+import { negate as negate_ } from '../../basic/negate';
+import { invert as invert_ } from '../../basic/invert';
+import { signChanges as signChanges_ } from '../descartes/sign-changes';
+		
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const brent = brent_;
+const positiveRootUpperBound_LMQ = positiveRootUpperBound_LMQ_;
+const mobEvaluateAt0 = mobEvaluateAt0_;
+const mobEvaluateAtInf = mobEvaluateAtInf_;
+const mobEvaluate = mobEvaluate_;
+const mobChangeVariables = mobChangeVariables_;
+const mobInvert = mobInvert_;
+const evaluate = evaluate_;
+const evaluateAt0 = evaluateAt0_;
+const changeVariablesLinear = changeVariablesLinear_;
+const negate = negate_;
+const invert = invert_;
+const signChanges = signChanges_;
+const positiveRootLowerBound_LMQ = positiveRootLowerBound_LMQ_;
+
 	  
 /** 
  * DO NOT USE. EXPERIMENTAL.

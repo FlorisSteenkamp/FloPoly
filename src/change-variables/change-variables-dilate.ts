@@ -1,5 +1,9 @@
 
-import { scaleExpansion, expansionProduct, fastExpansionSum, scaleExpansion2 } from "flo-numerical";
+//import { expansionProduct, fastExpansionSum, scaleExpansion2 } from "big-float-ts";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+import { operators as bigFloatOperators } from "big-float-ts";
+const { expansionProduct, fastExpansionSum, scaleExpansion2 } = bigFloatOperators;
 
 
 /**

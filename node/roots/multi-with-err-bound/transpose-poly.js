@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.transposePoly = void 0;
 /**
  * Transposes the given polynomial coefficients into multiple polynomials.
  * @param p

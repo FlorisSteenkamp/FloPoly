@@ -1,4 +1,10 @@
-import { compare } from "flo-numerical";
+
+//import { eCompare } from "big-float-ts";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+import { operators as bigFloatOperators } from "big-float-ts";
+const { eCompare } = bigFloatOperators;
+
 
 /**
  * Returns true if two polynomials are exactly equal by comparing coefficients.
@@ -28,7 +34,7 @@ function equal(p1: number[], p2: number[]): boolean {
 function expEqual(p1: number[][], p2: number[][]): boolean {
 	if (p1.length !== p2.length) { return false; }
 	for (let i=0; i<p1.length; i++) {
-		if (compare(p1[i], p2[i]) !== 0) { return false; }
+		if (eCompare(p1[i], p2[i]) !== 0) { return false; }
 	}
 	return true;
 }

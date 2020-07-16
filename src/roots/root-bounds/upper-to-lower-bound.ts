@@ -1,5 +1,8 @@
 
-import { invert } from "../../basic/invert";
+import { invert as invert_ } from "../../basic/invert";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const invert = invert_;
 
 
 /**

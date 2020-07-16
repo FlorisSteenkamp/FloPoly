@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.expEvaluateAt0 = exports.evaluateAt0 = void 0;
 /**
  * Returns the exact result of evaluating the given polynomial at 0 - it
  * is much faster than at an arbitrary point.

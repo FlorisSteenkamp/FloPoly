@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-let u = Number.EPSILON / 2;
+exports.γs = void 0;
+const u = Number.EPSILON / 2;
 // pre-calculate standard error bound units
-let γs = [];
+const γs = [];
 exports.γs = γs;
 γs.push(0);
 for (let i = 1; i < 50; i++) {

@@ -1,12 +1,20 @@
 
-import { EFTHorner } from "./eft-horner";
-import { HornerSum } from "./horner-sum";
-import { HornerAbsSum } from "./horner-abs-sum";
-import { twoSum } from "flo-numerical";
-import { γs } from "./gammas";
+//import { twoSum } from "big-float-ts";
+import { EFTHorner as EFTHorner_ } from "./eft-horner";
+import { HornerSum as HornerSum_ } from "./horner-sum";
+import { HornerAbsSum as HornerAbsSum_ } from "./horner-abs-sum";
+import { γs as γs_ } from "./gammas";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+import { operators as bigFloatOperators } from "big-float-ts";
+const { twoSum } = bigFloatOperators;
+const HornerSum = HornerSum_;
+const EFTHorner = EFTHorner_;
+const HornerAbsSum = HornerAbsSum_;
+const γs = γs_;
 
 
-let u = Number.EPSILON;
+const u = Number.EPSILON;
 
 
 /**

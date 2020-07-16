@@ -1,6 +1,10 @@
 
-import { expSignChanges } from "./sign-changes";
-import { changeVariablesTranslateXExactExp } from "../../change-variables/change-variables-translate-x";
+import { expSignChanges as expSignChanges_ } from "./sign-changes";
+import { changeVariablesTranslateXExactExp as changeVariablesTranslateXExactExp_ } from "../../change-variables/change-variables-translate-x";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const expSignChanges = expSignChanges_;
+const changeVariablesTranslateXExactExp = changeVariablesTranslateXExactExp_;
 
 
 /** 

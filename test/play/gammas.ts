@@ -1,5 +1,5 @@
 
-import { expansionProduct, expansionDiff, expansionDiv, estimate } from 'flo-numerical';
+import { expansionProduct, eDiff, eDiv, eEstimate } from 'big-float-ts';
 
 
 let u = Number.EPSILON;
@@ -8,8 +8,8 @@ let ku = (k: number) => expansionProduct([k],[u]);
 let getGamma = (k: number) => ({
     k,
     float: (k*u)/(1-k*u),
-    //exact: estimate(expansionDiv(ku(k), expansionDiff([1], ku(k)), 10)) 
-    exact: expansionDiv(ku(k), expansionDiff([1], ku(k)), 10) 
+    //exact: eEstimate(eDiv(ku(k), eDiff([1], ku(k)), 10)) 
+    exact: eDiv(ku(k), eDiff([1], ku(k)), 10) 
 });
 
 let γs = [...Array(n+1).keys()].slice(1)

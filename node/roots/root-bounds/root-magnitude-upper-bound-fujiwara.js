@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.rootMagnitudeUpperBound_fujiwara = void 0;
 /**
  * Finds an upper bound on the magnitude (absolute value) of the roots
  * of the given polynomial using the near-optimal Fujiwara bound. Note

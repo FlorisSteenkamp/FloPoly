@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const flo_numerical_1 = require("flo-numerical");
-const qmd = flo_numerical_1.qMultDouble2;
-const qaq = flo_numerical_1.qAddQuad;
+exports.deflateQuad = exports.deflate = void 0;
+const double_double_1 = require("double-double");
+const qmd = double_double_1.ddMultDouble2;
+const qaq = double_double_1.ddAddDd;
 /**
  * Deflates the given polynomial approximately by removing a factor (x - r),
  * where r is a root of the polynomial.

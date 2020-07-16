@@ -1,7 +1,7 @@
 
 import { absCoeff } from "../basic/abs-coeff";
 import { evaluateExact } from "../evaluate/evaluate-exact";
-import { estimate } from "flo-numerical";
+import { eEstimate } from "big-float-ts";
 
 
 /**
@@ -16,7 +16,7 @@ function conditionNumber(p: number[], x: number) {
     let N = evaluateExact(pN, [x]);
     let D = evaluateExact(pD, [x]);
 
-    return Math.abs(estimate(N) / estimate(D));
+    return Math.abs(eEstimate(N) / eEstimate(D));
 }
 
 

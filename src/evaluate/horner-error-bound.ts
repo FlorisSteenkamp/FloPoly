@@ -1,6 +1,10 @@
 
-import { maxAbsCoeffPolyEval } from "./max-abs-coeff-poly-eval";
-import { γ } from '../error-analysis/gamma';
+import { maxAbsCoeffPolyEval as maxAbsCoeffPolyEval_ } from "./max-abs-coeff-poly-eval";
+import { γ as γ_ } from '../error-analysis/gamma';
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const γ = γ_;
+const maxAbsCoeffPolyEval = maxAbsCoeffPolyEval_;
 
 
 /**

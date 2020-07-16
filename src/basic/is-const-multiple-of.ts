@@ -1,5 +1,9 @@
 
-import { expansionDiv, sign, compare, expansionProduct } from "flo-numerical";
+//import { eDiv, eSign, eCompare, expansionProduct } from "big-float-ts";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+import { operators as bigFloatOperators } from "big-float-ts";
+const { eDiv, eSign, eCompare, expansionProduct } = bigFloatOperators;
 
 
 /**
@@ -14,11 +18,11 @@ function isConstMultipleOf(a: number[][], b: number[][]) {
     let lcB = b[0]; 
 
     // If either polynomial is zero
-    if (sign(lcA) === 0 || sign(lcB) === 0) { return true; }
+    if (eSign(lcA) === 0 || eSign(lcB) === 0) { return true; }
     if (a.length !== b.length) { return false; }
 
     let multiplier: number[];
-    let cmpAB = compare(lcA,lcB);
+    let cmpAB = eCompare(lcA,lcB);
     if (cmpAB === 0) { 
         multiplier = [1];
     } else {
@@ -26,13 +30,13 @@ function isConstMultipleOf(a: number[][], b: number[][]) {
             [a,b] = [b,a];
             [lcA,lcB] = [lcB,lcA];
         }
-        multiplier = expansionDiv(lcA, lcB, 0);            
+        multiplier = eDiv(lcA, lcB, 0);            
     } 
 
     for (let i=0; i<a.length; i++) {
         let v = expansionProduct(multiplier, b[i]);
         //console.log(v, a[i])
-        if (compare(v, a[i]) !== 0) {
+        if (eCompare(v, a[i]) !== 0) {
             return false;
         }
     }

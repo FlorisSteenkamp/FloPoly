@@ -1,7 +1,14 @@
 
-import { absCoeff } from "../basic/abs-coeff";
-import { Horner } from "./horner";
-import { γ1 } from "../error-analysis/gamma";
+import { absCoeff as absCoeff_ } from "../basic/abs-coeff";
+import { Horner as Horner_ } from "./horner";
+import { γ as γ_ } from "../error-analysis/gamma";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+import { operators as polyOperators } from "../index";
+const γ = γ_;
+const Horner = Horner_;
+const absCoeff = absCoeff_;
+const γ1 = γ(1);
 
 
 /**

@@ -1,5 +1,8 @@
 
-import { EFTHorner } from "./eft-horner";
+import { EFTHorner as EFTHorner_ } from "./eft-horner";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const EFTHorner = EFTHorner_;
 
 
 function EFTHornerK(p: number[], x: number, K: number) {

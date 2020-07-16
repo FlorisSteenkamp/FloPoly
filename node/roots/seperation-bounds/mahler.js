@@ -1,6 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const degree_1 = require("../../basic/degree");
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const degree = degree_1.degree;
 /**
  * Returns the Mahler seperation bound, i.e. a bound on the minimum complex root
  * seperation of the given polynomial.
@@ -12,7 +14,7 @@ const degree_1 = require("../../basic/degree");
  *
  */
 function complexMahlerSep(p, lowerBound, upperBound) {
-    let d = degree_1.degree(p);
+    let d = degree(p);
     let sqrt3 = Math.sqrt(3);
     /** the maximum absolute value of one of the roots */
     let m = Math.max(Math.abs(lowerBound), Math.abs(upperBound));

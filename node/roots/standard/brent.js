@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.brent = void 0;
 /**
  * Searches an interval (a,b) for a root (i.e. zero) of the
  * given function with respect to its first argument using the Brent's

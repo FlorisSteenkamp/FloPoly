@@ -1,6 +1,6 @@
 
-import { twoSum } from "flo-numerical";
-
+import { operators as bigFloatOperators } from "big-float-ts";
+const { twoSum } = bigFloatOperators;
 
 /**
  * see http://www.ti3.tuhh.de/paper/rump/OgRuOi05.pdf

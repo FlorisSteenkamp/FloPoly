@@ -1,6 +1,11 @@
 
-import { multiplyByConst } from "./multiply-by-const";
-import { negativeOf } from "flo-numerical";
+import { multiplyByConst as multiplyByConst_ } from "./multiply-by-const";
+//import { eNegativeOf } from "big-float-ts";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+import { operators as bigFloatOperators } from "big-float-ts";
+const { eNegativeOf } = bigFloatOperators;
+const multiplyByConst = multiplyByConst_;
 
 
 /**
@@ -23,7 +28,7 @@ function negate(p: number[]): number[] {
 function expNegate(p: number[][]): number[][] {
 	let result: number[][] = [];
 	for (let i=0; i<p.length; i++) {
-		result.push(negativeOf(p[i]))
+		result.push(eNegativeOf(p[i]))
 	}
 	return result;
 }

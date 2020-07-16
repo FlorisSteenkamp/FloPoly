@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.degree = void 0;
 /**
  * Returns the degree of the polynomial.
  * @param p a polynomial

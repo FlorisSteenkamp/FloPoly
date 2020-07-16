@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.expInvert = exports.invert = void 0;
 /**
  * Inverts the given polynomial by reversing the order of the
  * coefficients, i.e. p(x) -> x^deg(p) * p(1/x)

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.mobChangeVariables = void 0;
 /**
  * Performs a change of variables x → px + q on the given Mobius
  * function.

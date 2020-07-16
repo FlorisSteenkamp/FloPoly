@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.absCoeff = void 0;
 /**
  * Returns the polynomial with all coeffients made positive of the given
  * polynomial

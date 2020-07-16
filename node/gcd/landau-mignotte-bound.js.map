@@ -1,1 +1,1 @@
-{"version":3,"file":"landau-mignotte-bound.js","sourceRoot":"","sources":["../../src/gcd/landau-mignotte-bound.ts"],"names":[],"mappings":";;AACA;;;;GAIG;AACH,kEAAkE;AAClE,SAAS,mBAAmB,CAAC,CAAW,EAAE,CAAW;IACjD,OAAO;IACP,MAAM,IAAI,KAAK,CAAC,sBAAsB,CAAC,CAAC;AAC5C,CAAC;AAGQ,kDAAmB"}
+{"version":3,"file":"landau-mignotte-bound.js","sourceRoot":"","sources":["../../src/gcd/landau-mignotte-bound.ts"],"names":[],"mappings":";;;AACA;;;;GAIG;AACH,kEAAkE;AAClE,SAAS,mBAAmB,CAAC,CAAW,EAAE,CAAW;IACjD,OAAO;IACP,MAAM,IAAI,KAAK,CAAC,sBAAsB,CAAC,CAAC;AAC5C,CAAC;AAGQ,kDAAmB"}

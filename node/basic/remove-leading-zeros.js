@@ -1,7 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const flo_numerical_1 = require("flo-numerical");
+exports.expApproxRemoveLeadingZeros = exports.approxRemoveLeadingZeros = exports.expRemoveLeadingZeros = exports.removeLeadingZeros = void 0;
+//import { eSign, eEstimate } from "big-float-ts";
 const p_inf_norm_1 = require("../norm/p-inf-norm");
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const big_float_ts_1 = require("big-float-ts");
+const { eSign, eEstimate } = big_float_ts_1.operators;
+const pInfNorm = p_inf_norm_1.pInfNorm;
 /**
  * If the highest power coefficient is 0 then removeLeadingZeros can be called
  * to remove all such highest terms so that the array is a valid presentation of
@@ -24,7 +29,7 @@ exports.removeLeadingZeros = removeLeadingZeros;
  * expRemoveLeadingZeros([[0], [1e-10], [1e-1]]); //=> [[1e-10], [1e-1]]
  */
 function expRemoveLeadingZeros(p) {
-    return p.length <= 1 || flo_numerical_1.sign(p[0]) !== 0
+    return p.length <= 1 || eSign(p[0]) !== 0
         ? p :
         expRemoveLeadingZeros(p.slice(1));
 }
@@ -43,7 +48,7 @@ exports.expRemoveLeadingZeros = expRemoveLeadingZeros;
  * approxRemoveLeadingZeros([1e-18, 1e-10, 1e-1]); //=> [1e-10, 1e-1]
  */
 function approxRemoveLeadingZeros(p, δ = Number.EPSILON) {
-    let c = p_inf_norm_1.pInfNorm(p);
+    let c = pInfNorm(p);
     if (c === 0) {
         return [0];
     }
@@ -67,7 +72,7 @@ exports.approxRemoveLeadingZeros = approxRemoveLeadingZeros;
 function expApproxRemoveLeadingZeros(p) {
     /** the smallest non-subnormal float */
     let DELTA = 2.2250738585072014e-308;
-    let lc = Math.abs(flo_numerical_1.estimate(p[0])); // estimate of the leading coefficient
+    let lc = Math.abs(eEstimate(p[0])); // estimate of the leading coefficient
     if (p.length === 0 || (p.length === 1 && lc <= DELTA)) {
         return [[0]];
     }
@@ -75,7 +80,7 @@ function expApproxRemoveLeadingZeros(p) {
         return p;
     }
     let p_ = p.slice(1);
-    while (p_.length > 0 && Math.abs(flo_numerical_1.estimate(p_[0])) < DELTA) {
+    while (p_.length > 0 && Math.abs(eEstimate(p_[0])) < DELTA) {
         p_ = p_.slice(1);
     }
     if (p_.length === 0) {

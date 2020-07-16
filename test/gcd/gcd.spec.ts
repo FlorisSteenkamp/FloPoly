@@ -6,7 +6,7 @@ import { multiplyExact } from '../../src/basic/multiply';
 import { differentiateExact } from '../../src/calculus/differentiate';
 import { multiplyByConst, isConstMultipleOf } from '../../src/index';
 import { expMultiplyByConst } from '../../src/basic/multiply-by-const';
-import { estimate } from 'flo-numerical';
+import { eEstimate } from 'big-float-ts';
 
 
 describe('gcd', function() {
@@ -120,7 +120,7 @@ describe('gcd', function() {
             *//*
             let gcd = gcdExact(p,dp);
             //console.log(gcd);
-            console.log(gcd.map(estimate));
+            console.log(gcd.map(eEstimate));
             //assert(gcd.length === 1)
         }
 /*

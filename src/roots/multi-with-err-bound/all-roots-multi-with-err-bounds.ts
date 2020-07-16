@@ -1,14 +1,20 @@
 
-import { differentiateQuadWithError, differentiateExact } from "../../calculus/differentiate";
-import { evalK1MultiWithErrBounds } from "../../evaluate/eval-k-multi-with-err-bounds";
-import { HornerExact } from "../../evaluate/horner-exact";
-import { transposePoly } from "./transpose-poly";
+import { differentiateQuadWithError as differentiateQuadWithError_, differentiateExact as differentiateExact_ } from "../../calculus/differentiate";
+import { evalK1MultiWithErrBounds as evalK1MultiWithErrBounds_ } from "../../evaluate/eval-k-multi-with-err-bounds";
+import { HornerExact as HornerExact_ } from "../../evaluate/horner-exact";
+import { transposePoly as transposePoly_ } from "./transpose-poly";
 import { RootInterval } from "./root-interval";
-import { evalAdaptive } from "./eval-adaptive";
-import { refineMultiWithErrBounds } from "./refine-multi-with-err-bounds";
+import { evalAdaptive as evalAdaptive_ } from "./eval-adaptive";
+import { refineMultiWithErrBounds as refineMultiWithErrBounds_ } from "./refine-multi-with-err-bounds";
 
-
-const abs = Math.abs;
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const differentiateQuadWithError = differentiateQuadWithError_;
+const evalK1MultiWithErrBounds = evalK1MultiWithErrBounds_;
+const HornerExact = HornerExact_;
+const transposePoly = transposePoly_;
+const evalAdaptive = evalAdaptive_;
+const refineMultiWithErrBounds = refineMultiWithErrBounds_;
+const differentiateExact = differentiateExact_;
 
 
 /**
@@ -17,7 +23,7 @@ const abs = Math.abs;
  * * **precondition** interval must be a subset of [0,1]
  * * specialized for the interval [0,1]
  * * multiplicities are positive integers - in extremely rare cases a
- * multiplicity may be an even number higher than the one returned
+ * multiplicity may be an even number higher than the one returned ????
  * * the returned intervals are of max width 2*Number.EPSILON; if an interval
  * is of higher width then it contains multiple roots; the max width
  * * the highest degree coefficient of the input polynomial's exact value should
@@ -107,7 +113,7 @@ function allRootsMultiWithErrBounds(
 
 	let rs: RootInterval[] = [];
 	let deg = p.length-1;
-	let maxDp_ = abs(ps[deg].p[0][1]); // abs value of last derivative msb
+	let maxDp_ = Math.abs(ps[deg].p[0][1]); // abs value of last derivative msb
 	let maxDp: number; // only used after second iteration
 	for (let i=1; i<p.length; i++) {
 		let { p, pE } = ps[deg-i];
@@ -119,7 +125,7 @@ function allRootsMultiWithErrBounds(
 		maxDp_ = 0;
 		let p0 = p_[0];
 		for (let j=0; j<p.length; j++) {
-			maxDp_ += abs(p0[j]);
+			maxDp_ += Math.abs(p0[j]);
 		}
 	}
 

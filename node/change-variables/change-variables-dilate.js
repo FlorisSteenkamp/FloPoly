@@ -1,6 +1,10 @@
 "use strict";
+//import { expansionProduct, fastExpansionSum, scaleExpansion2 } from "big-float-ts";
 Object.defineProperty(exports, "__esModule", { value: true });
-const flo_numerical_1 = require("flo-numerical");
+exports.changeVariablesDilateExact = exports.changeVariablesDilateExactExp = exports.changeVariablesDilate = void 0;
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const big_float_ts_1 = require("big-float-ts");
+const { expansionProduct, fastExpansionSum, scaleExpansion2 } = big_float_ts_1.operators;
 /**
  * Returns the approximate result of performing a change of variables of the form: p(x) <- p(ax).
  * See this stackoverflow question http://stackoverflow.com/questions/141422/how-can-a-transform-a-polynomial-to-another-coordinate-system
@@ -60,7 +64,7 @@ function changeVariablesDilateExactExp(p, a) {
     for (let j = 1; j <= d; j++) {
         t[0][j] = [0];
         for (let i = 1; i <= j; i++) {
-            t[i][j] = flo_numerical_1.expansionProduct(a, t[i - 1][j - 1]);
+            t[i][j] = expansionProduct(a, t[i - 1][j - 1]);
         }
     }
     // Multiply
@@ -68,8 +72,8 @@ function changeVariablesDilateExactExp(p, a) {
     for (let i = 0; i <= d; i++) {
         res[d - i] = [0];
         for (let j = i; j <= d; j++) {
-            let acc = flo_numerical_1.expansionProduct(t[i][j], p[d - j]);
-            res[d - i] = flo_numerical_1.fastExpansionSum(res[d - i], acc);
+            let acc = expansionProduct(t[i][j], p[d - j]);
+            res[d - i] = fastExpansionSum(res[d - i], acc);
         }
     }
     return res;
@@ -97,7 +101,7 @@ function changeVariablesDilateExact(p, a) {
     for (let j = 1; j <= d; j++) {
         t[0][j] = [0];
         for (let i = 1; i <= j; i++) {
-            t[i][j] = flo_numerical_1.scaleExpansion2(a, t[i - 1][j - 1]);
+            t[i][j] = scaleExpansion2(a, t[i - 1][j - 1]);
         }
     }
     // Multiply
@@ -105,8 +109,8 @@ function changeVariablesDilateExact(p, a) {
     for (let i = 0; i <= d; i++) {
         res[d - i] = [0];
         for (let j = i; j <= d; j++) {
-            let acc = flo_numerical_1.expansionProduct(t[i][j], p[d - j]);
-            res[d - i] = flo_numerical_1.fastExpansionSum(res[d - i], acc);
+            let acc = expansionProduct(t[i][j], p[d - j]);
+            res[d - i] = fastExpansionSum(res[d - i], acc);
         }
     }
     return res;

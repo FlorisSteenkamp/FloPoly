@@ -1,8 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.evalK1WithErrBounds = void 0;
 const horner_with_running_error_1 = require("./horner-with-running-error");
 const horner_1 = require("./horner");
-let temp = true;
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const hornerWithRunningError = horner_with_running_error_1.hornerWithRunningError;
+const Horner = horner_1.Horner;
 /**
  * Returns the result of evaluating the given polynomial at x, and a level that
  * indicates the difficulty of attaining the correct sign.
@@ -14,8 +17,8 @@ let temp = true;
  * @param x an evaluation point
  */
 function evalK1WithErrBounds(p, pE, x) {
-    let [r̂, e] = horner_with_running_error_1.hornerWithRunningError(p, x);
-    let E = horner_1.Horner(pE, x);
+    let [r̂, e] = hornerWithRunningError(p, x);
+    let E = Horner(pE, x);
     //if (temp) {
     //    console.log(toCasStr(p.map(c => c/(2**40))));
     //    console.log(toCasStr(pE.map(c => c/(2**40))));

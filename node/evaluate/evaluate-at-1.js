@@ -1,6 +1,10 @@
 "use strict";
+//import { fastExpansionSum } from "big-float-ts";
 Object.defineProperty(exports, "__esModule", { value: true });
-const flo_numerical_1 = require("flo-numerical");
+exports.expEvaluateAt1 = exports.evaluateAt1 = void 0;
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const big_float_ts_1 = require("big-float-ts");
+const { fastExpansionSum } = big_float_ts_1.operators;
 /**
  * Returns the approximate result of evaluating the given polynomial at 1 - it
  * is much faster than at an arbitrary point.
@@ -22,7 +26,7 @@ exports.evaluateAt1 = evaluateAt1;
 function expEvaluateAt1(p) {
     let res = p[0];
     for (let i = 1; i < p.length; i++) {
-        res = flo_numerical_1.fastExpansionSum(res, p[i]);
+        res = fastExpansionSum(res, p[i]);
     }
     return res;
 }

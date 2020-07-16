@@ -1,10 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.sturmChainExact = exports.sturmChain = void 0;
 const differentiate_1 = require("../calculus/differentiate");
 const multiply_1 = require("../basic/multiply");
 const multiply_by_const_1 = require("../basic/multiply-by-const");
 const subtract_1 = require("../basic/subtract");
 const subresultant_pseudo_remainder_sequence_1 = require("./subresultant-pseudo-remainder-sequence");
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const differentiate = differentiate_1.differentiate;
+const differentiateExact = differentiate_1.differentiateExact;
+const multiply = multiply_1.multiply;
+const multiplyByConst = multiply_by_const_1.multiplyByConst;
+const subtract = subtract_1.subtract;
+const subresultantPseudoRemainderSequence = subresultant_pseudo_remainder_sequence_1.subresultantPseudoRemainderSequence;
 /**
  * Returns an exact Sturm chain for the given polynomial using pseudo remainders.
  * * https://en.wikipedia.org/wiki/Sturm%27s_theorem
@@ -14,8 +22,8 @@ const subresultant_pseudo_remainder_sequence_1 = require("./subresultant-pseudo-
  * sturmChain([[-3],[4],[2],[-2]]);
  */
 function sturmChainExact(p) {
-    let dp = differentiate_1.differentiateExact(p);
-    return subresultant_pseudo_remainder_sequence_1.subresultantPseudoRemainderSequence(p, dp, true);
+    let dp = differentiateExact(p);
+    return subresultantPseudoRemainderSequence(p, dp, true);
 }
 exports.sturmChainExact = sturmChainExact;
 /**
@@ -38,12 +46,12 @@ function sturmChain(p) {
     function negRemainder(p1, p2) {
         let a = p1[1] / p1[0] - p2[1] / p2[0];
         let b = p1[0] / p2[0];
-        let p3 = multiply_1.multiply(multiply_by_const_1.multiplyByConst(b, p2), [1, a]);
-        return subtract_1.subtract(p3, p1);
+        let p3 = multiply(multiplyByConst(b, p2), [1, a]);
+        return subtract(p3, p1);
     }
     let m = []; // Sturm chain
     m.push(p);
-    m.push(differentiate_1.differentiate(p));
+    m.push(differentiate(p));
     let i = 1;
     while (m[i].length - 1 > 0) {
         let pnext = negRemainder(m[i - 1], m[i]);

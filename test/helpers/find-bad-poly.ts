@@ -2,7 +2,7 @@
 import { flatCoefficients, toCasStr } from "../../src";
 import { perturb } from "./perturb";
 import { fromRootsExact } from "../../src/roots/from-roots";
-import { estimate } from "flo-numerical";
+import { eEstimate } from "big-float-ts";
 
 
 /**
@@ -60,7 +60,7 @@ function findBadPoly(
     //let p_ = _p_.map(x => [x[x.length-1]]) // this poly has estimated expansion coeffs
 
     //let p_ = _p_;
-    let p = p_.map(estimate); // this poly has double coeffs
+    let p = p_.map(eEstimate); // this poly has double coeffs
 
     //console.log(toCasStr(p));
 

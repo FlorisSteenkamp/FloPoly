@@ -3,7 +3,7 @@ import { assert, expect } from 'chai';
 //import { describe } from 'mocha';
 import 'mocha';
 import { evaluateExact } from '../../src/evaluate/evaluate-exact';
-import { estimate, twoSum } from 'flo-numerical';
+import { eEstimate, twoSum } from 'big-float-ts';
 import { SumK } from '../../src/evaluate/sum-k'
 import { compHorner } from '../../src/evaluate/comp-horner'
 import { compHornerIsFaithful } from '../../src/evaluate/comp-horner-is-faithful'
@@ -62,7 +62,7 @@ describe('evluatePrecise', function() {
 		console.log('compHorner ', compHorner(p_, c));
 		console.log('faithful ', faith);
 		console.log('compHornerK ', CompHornerK(p_, c, 2));
-		console.log('exact', estimate(evaluateExact(p, [c])));
+		console.log('exact', eEstimate(evaluateExact(p, [c])));
 
 
 
@@ -85,7 +85,7 @@ describe('evluatePrecise', function() {
 		//let roots = allRootsPrecise(p,[0],[1]);
 		//console.log(roots);
 		
-		//console.log(roots.map(estimate));
+		//console.log(roots.map(eEstimate));
 	});
 });
 

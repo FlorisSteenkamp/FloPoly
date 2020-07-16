@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.expElevateDegree = void 0;
 function expElevateDegree(p, deg) {
     let p_ = p.slice();
     for (let i = 0; i < deg; i++) {

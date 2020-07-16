@@ -1,9 +1,15 @@
 
-import { scaleExpansion, qMultDouble2, estimate } from "flo-numerical";
-import { γγ3, γ1 } from '../error-analysis/gamma';
+//import { scaleExpansion, eEstimate } from "big-float-ts";
+//import { ddMultDouble2 } from 'double-double';
+import { γγ as γγ_ } from '../error-analysis/gamma';
 
-
-const abs = Math.abs;
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+import { operators as ddOperators } from "double-double";
+import { operators as bigFloatOperators } from "big-float-ts";
+const { ddMultDouble2 } = ddOperators;
+const { scaleExpansion, eEstimate } = bigFloatOperators;
+const γγ = γγ_;
+const γγ3 = γγ(3);
 
 
 /**  
@@ -36,7 +42,7 @@ function differentiateQuad(p: number[][]): number[][] {
 	
 	let d = p.length - 1;
 	for (let i=0; i<d; i++) {
-		result.push(qMultDouble2((d-i), p[i]));
+		result.push(ddMultDouble2((d-i), p[i]));
 	}
 	
 	return result;
@@ -57,7 +63,7 @@ function differentiateQuadWithError(
     let d = p.length - 1;
     for (let i=0; i<d; i++) {
 		let deg = d-i;
-		let c = qMultDouble2(deg, p[i]);
+		let c = ddMultDouble2(deg, p[i]);
 		dp.push(c);
 
         // if 1,2,4 or 8, etc. then no additional error occurs on multiply
@@ -65,10 +71,10 @@ function differentiateQuadWithError(
         // deg is a power of 2 <=> (deg & deg-1) === 0
 		let extraErr = (deg & deg-1) === 0 ? 0 : γγ3;
 		
-		let $c = estimate(c);
+		let $c = eEstimate(c);
         dpE.push(
 			//deg * (pE[i] + Math.abs($c)*extraErr)
-			deg*pE[i] + abs($c)*extraErr
+			deg*pE[i] + Math.abs($c)*extraErr
 		);
     }
 

@@ -1,5 +1,9 @@
 
-import { negativeOf } from "flo-numerical";
+//import { eNegativeOf } from "big-float-ts";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+import { operators as bigFloatOperators } from "big-float-ts";
+const { eNegativeOf } = bigFloatOperators;
 
 
 /**
@@ -36,7 +40,7 @@ function expReflectAboutYAxis(p: number[][]): number[][] {
 	let result = p.slice();
 	for (let i=0; i<d+1; i++) {
 		if (i % 2) {
-			result[i] = negativeOf(result[i]); 
+			result[i] = eNegativeOf(result[i]); 
 		}
 	}
 	

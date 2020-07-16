@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.landauMignotteBound = void 0;
 /**
  * Returns the Landau-Mignotte bound of the given two polynomials.
  * @param a

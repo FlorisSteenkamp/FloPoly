@@ -1,7 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.fromRootsExact = exports.fromRoots = void 0;
+//import { eEstimate, eCompress } from "big-float-ts";
 const multiply_1 = require("../basic/multiply");
-const flo_numerical_1 = require("flo-numerical");
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const big_float_ts_1 = require("big-float-ts");
+const { eEstimate, eCompress } = big_float_ts_1.operators;
+const multiply = multiply_1.multiply;
+const multiplyExact = multiply_1.multiplyExact;
 /**
  * Constructs a polynomial from the given roots by multiplying out the
  * factors (x - root1)(x - root2)... Note that the resulting polynomial
@@ -23,7 +29,7 @@ const flo_numerical_1 = require("flo-numerical");
 function fromRoots(roots) {
     let p = [1];
     for (let i = 0; i < roots.length; i++) {
-        p = multiply_1.multiply(p, [1, -roots[i]]);
+        p = multiply(p, [1, -roots[i]]);
     }
     return p;
 }
@@ -40,9 +46,9 @@ exports.fromRoots = fromRoots;
 function fromRootsExact(roots) {
     let p = [[1]];
     for (let i = 0; i < roots.length; i++) {
-        p = multiply_1.multiplyExact([p, [[1], [-roots[i]]]]);
+        p = multiplyExact([p, [[1], [-roots[i]]]]);
     }
-    return p.map(flo_numerical_1.compress);
+    return p.map(eCompress);
 }
 exports.fromRootsExact = fromRootsExact;
 //# sourceMappingURL=from-roots.js.map

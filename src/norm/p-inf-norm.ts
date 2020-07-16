@@ -1,5 +1,9 @@
 
-import { abs, compare } from "flo-numerical";
+//import { eAbs, eCompare } from "big-float-ts";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+import { operators as bigFloatOperators } from "big-float-ts";
+const { eAbs, eCompare } = bigFloatOperators;
 
 
 /**
@@ -24,8 +28,8 @@ function pInfNorm(p: number[]): number {
 function expPInfNorm(p: number[][]): number[] {
 	let max = [0];
 	for (let i=0; i<p.length; i++) {
-		let v = abs(p[i]);
-		if (compare(v, max) > 0) { max = v; }
+		let v = eAbs(p[i]);
+		if (eCompare(v, max) > 0) { max = v; }
 	} 
 	
 	return max;

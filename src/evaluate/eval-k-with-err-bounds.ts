@@ -1,10 +1,11 @@
 
-import { hornerWithRunningError } from "./horner-with-running-error";
-import { Horner } from "./horner";
-import { toCasStr } from "../basic/to-cas-str";
+import { hornerWithRunningError as hornerWithRunningError_ } from "./horner-with-running-error";
+import { Horner as Horner_ } from "./horner";
 
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const hornerWithRunningError = hornerWithRunningError_;
+const Horner = Horner_;
 
-let temp = true;
 
 /**
  * Returns the result of evaluating the given polynomial at x, and a level that

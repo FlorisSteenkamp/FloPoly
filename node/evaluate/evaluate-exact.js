@@ -1,6 +1,10 @@
 "use strict";
+//import { fastExpansionSum, expansionProduct } from "big-float-ts";
 Object.defineProperty(exports, "__esModule", { value: true });
-const flo_numerical_1 = require("flo-numerical");
+exports.evaluateExact = void 0;
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const big_float_ts_1 = require("big-float-ts");
+const { fastExpansionSum, expansionProduct } = big_float_ts_1.operators;
 /**
  * Returns the exact (bar underflow/overflow) result of evaluating a univariate
  * polynomial using Horner's method.
@@ -13,7 +17,7 @@ function evaluateExact(p, a) {
     }
     let result = p[0];
     for (let i = 1; i < p.length; i++) {
-        result = flo_numerical_1.fastExpansionSum(p[i], flo_numerical_1.expansionProduct(result, a));
+        result = fastExpansionSum(p[i], expansionProduct(result, a));
     }
     return result;
 }

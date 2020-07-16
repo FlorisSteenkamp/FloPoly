@@ -1,7 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.multiplyExact = exports.multiply = void 0;
 const remove_leading_zeros_1 = require("./remove-leading-zeros");
-const flo_numerical_1 = require("flo-numerical");
+//import { expansionProduct, fastExpansionSum } from "big-float-ts";
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const big_float_ts_1 = require("big-float-ts");
+const { expansionProduct, fastExpansionSum } = big_float_ts_1.operators;
+const removeLeadingZeros = remove_leading_zeros_1.removeLeadingZeros;
+const expRemoveLeadingZeros = remove_leading_zeros_1.expRemoveLeadingZeros;
 /**
  * Returns the approximate result of multiplying 2 polynomials.
  * * See polynomial arithmetic https://en.wikipedia.org/wiki/Polynomial_arithmetic
@@ -22,7 +28,7 @@ function multiply(p1, p2) {
             result[d - (i + j)] += (p1[d1 - i] * p2[d2 - j]);
         }
     }
-    return remove_leading_zeros_1.removeLeadingZeros(result);
+    return removeLeadingZeros(result);
 }
 exports.multiply = multiply;
 /**
@@ -42,10 +48,10 @@ function multiplyExact_(p1, p2) {
     let result = new Array(d + 1).fill([0]);
     for (let i = 0; i < d1 + 1; i++) {
         for (let j = 0; j < d2 + 1; j++) {
-            result[d - (i + j)] = flo_numerical_1.fastExpansionSum(result[d - (i + j)], flo_numerical_1.expansionProduct(p1[d1 - i], p2[d2 - j]));
+            result[d - (i + j)] = fastExpansionSum(result[d - (i + j)], expansionProduct(p1[d1 - i], p2[d2 - j]));
         }
     }
-    return remove_leading_zeros_1.expRemoveLeadingZeros(result);
+    return expRemoveLeadingZeros(result);
 }
 /**
  * Returns the exact result of multiplying 1 or more polynomials.

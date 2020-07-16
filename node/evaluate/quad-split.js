@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.quadSplit = void 0;
 /**
  * Returns two new polynomials by splitting the given polynomial into two where
  * the first polynomial's coefficients are the high order bits and the second's

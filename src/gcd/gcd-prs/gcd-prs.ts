@@ -1,6 +1,10 @@
 
-import { subresultantPseudoRemainderSequence } from "../../remainder-sequences/subresultant-pseudo-remainder-sequence";
-import { expIsZero } from "../../basic/is-zero";
+import { subresultantPseudoRemainderSequence as subresultantPseudoRemainderSequence_ } from "../../remainder-sequences/subresultant-pseudo-remainder-sequence";
+import { expIsZero as expIsZero_ } from "../../basic/is-zero";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const subresultantPseudoRemainderSequence = subresultantPseudoRemainderSequence_;
+const expIsZero = expIsZero_;
 
 
 /**

@@ -1,7 +1,12 @@
 
-import { prem } from "./pseudo-remainder";
-import { expIsZero } from "../basic/is-zero";
-import { expIsConst } from "../basic/is-const";
+import { prem as prem_ } from "./pseudo-remainder";
+import { expIsZero as expIsZero_ } from "../basic/is-zero";
+import { expIsConst as expIsConst_ } from "../basic/is-const";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const prem = prem_;
+const expIsZero = expIsZero_;
+const expIsConst = expIsConst_;
 
 
 /**

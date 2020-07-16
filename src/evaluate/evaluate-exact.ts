@@ -1,5 +1,10 @@
 
-import { fastExpansionSum, expansionProduct } from "flo-numerical";
+//import { fastExpansionSum, expansionProduct } from "big-float-ts";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+import { operators as bigFloatOperators } from "big-float-ts";
+const { fastExpansionSum, expansionProduct } = bigFloatOperators;
+
 
 /**
  * Returns the exact (bar underflow/overflow) result of evaluating a univariate 

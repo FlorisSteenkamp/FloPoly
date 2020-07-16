@@ -1,6 +1,10 @@
 
-import { EFTHorner } from "./eft-horner";
-import { HornerSum } from "./horner-sum";
+import { EFTHorner as EFTHorner_ } from "./eft-horner";
+import { HornerSum as HornerSum_ } from "./horner-sum";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const EFTHorner = EFTHorner_;
+const HornerSum = HornerSum_;
 
 
 /** 

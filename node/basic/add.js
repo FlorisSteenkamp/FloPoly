@@ -1,7 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.addExact = exports.add = void 0;
 const remove_leading_zeros_1 = require("./remove-leading-zeros");
-const flo_numerical_1 = require("flo-numerical");
+//import { fastExpansionSum } from "big-float-ts";
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const big_float_ts_1 = require("big-float-ts");
+const { fastExpansionSum } = big_float_ts_1.operators;
+const removeLeadingZeros = remove_leading_zeros_1.removeLeadingZeros;
+const expRemoveLeadingZeros = remove_leading_zeros_1.expRemoveLeadingZeros;
 /**
  * Returns the approximate result of adding two polynomials.
  * @param p1 a polynomial
@@ -25,7 +31,7 @@ function add(p1, p2) {
         result.push(c1 + c2);
     }
     // Ensure the result is a valid polynomial representation
-    return remove_leading_zeros_1.removeLeadingZeros(result);
+    return removeLeadingZeros(result);
 }
 exports.add = add;
 /**
@@ -48,10 +54,10 @@ function addExact(p1, p2) {
     for (let i = 0; i < d + 1; i++) {
         let c1 = p1[i + Δd1] || [0];
         let c2 = p2[i + Δd2] || [0];
-        result.push(flo_numerical_1.fastExpansionSum(c1, c2));
+        result.push(fastExpansionSum(c1, c2));
     }
     // Ensure the result is a valid polynomial representation
-    return remove_leading_zeros_1.expRemoveLeadingZeros(result);
+    return expRemoveLeadingZeros(result);
 }
 exports.addExact = addExact;
 //# sourceMappingURL=add.js.map

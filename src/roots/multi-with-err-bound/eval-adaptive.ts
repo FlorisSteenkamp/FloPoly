@@ -1,7 +1,10 @@
 
-import { evalK1MultiWithErrBounds } from "../../evaluate/eval-k-multi-with-err-bounds";
-import { HornerExact } from "../../evaluate/horner-exact";
+import { evalK1MultiWithErrBounds as evalK1MultiWithErrBounds_ } from "../../evaluate/eval-k-multi-with-err-bounds";
+import { HornerExact as HornerExact_ } from "../../evaluate/horner-exact";
 
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const evalK1MultiWithErrBounds = evalK1MultiWithErrBounds_;
+const HornerExact = HornerExact_;
 
 
 function evalAdaptive(

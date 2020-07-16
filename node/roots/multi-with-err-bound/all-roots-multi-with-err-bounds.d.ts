@@ -5,7 +5,7 @@ import { RootInterval } from "./root-interval";
  * * **precondition** interval must be a subset of [0,1]
  * * specialized for the interval [0,1]
  * * multiplicities are positive integers - in extremely rare cases a
- * multiplicity may be an even number higher than the one returned
+ * multiplicity may be an even number higher than the one returned ????
  * * the returned intervals are of max width 2*Number.EPSILON; if an interval
  * is of higher width then it contains multiple roots; the max width
  * * the highest degree coefficient of the input polynomial's exact value should

@@ -6,7 +6,7 @@ import { yunExp } from '../../src/remainder-sequences/yun';
 import { gcdExact } from '../../src';
 import { differentiateExact } from '../../src/calculus/differentiate';
 import { multiplyExact } from '../../src/basic/multiply';
-import { estimate } from 'flo-numerical';
+import { eEstimate } from 'big-float-ts';
 import { scalePolyToIntsExp } from '../../src';
 
 
@@ -115,7 +115,7 @@ describe('yun', function() {
                 [ -1.1083495718355216e-34, 4.3648640257742955e-17, 0.681472 ]
             ];
             
-            //console.log('yun', yunExp(p).map(poly => poly.map(estimate)));
+            //console.log('yun', yunExp(p).map(poly => poly.map(eEstimate)));
         }
 
         {
@@ -136,7 +136,7 @@ describe('yun', function() {
                 ]
             ];
             
-            console.log('yun', yunExp(p).map(poly => poly.map(estimate)));
+            console.log('yun', yunExp(p).map(poly => poly.map(eEstimate)));
         }
 
         {
@@ -150,7 +150,7 @@ describe('yun', function() {
 
             //console.log(scalePolyToIntsExp(p))
 
-            //console.log('yun', yunExp(p).map(poly => poly.map(estimate)));
+            //console.log('yun', yunExp(p).map(poly => poly.map(eEstimate)));
         }
 
         {
@@ -162,7 +162,7 @@ describe('yun', function() {
 
             //console.log(scalePolyToIntsExp(p))
 
-            //console.log('yun', yunExp(p).map(poly => poly.map(estimate)));
+            //console.log('yun', yunExp(p).map(poly => poly.map(eEstimate)));
         }
 
         {
@@ -175,7 +175,7 @@ describe('yun', function() {
             ]);
 
             // wrong answer
-            //console.log('yun', yunExp(p).map(poly => poly.map(estimate)));
+            //console.log('yun', yunExp(p).map(poly => poly.map(eEstimate)));
         }
 	});
 });

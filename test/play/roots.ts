@@ -1,7 +1,7 @@
-
+/*
 import { hornerErrorBound } from '../../src/evaluate/horner-error-bound';
 import { evaluateExact } from '../../src/evaluate/evaluate-exact';
-import { estimate, twoSum } from 'flo-numerical';
+import { eEstimate, twoSum } from 'big-float-ts';
 import { quadAllRootsPrecise } from '../../src/roots/quad-precise/quad-all-roots-precise';
 import { SumK } from '../../src/evaluate/sum-k'
 import { compHorner } from '../../src/evaluate/comp-horner'
@@ -10,7 +10,7 @@ import { Horner } from '../../src/evaluate/horner'
 import { CompHornerK } from '../../src/evaluate/comp-horner-k'
 import { conditionNumber } from '../../src/error-analysis/condition-number';
 import { hornerWithRunningError } from '../../src/evaluate/horner-with-running-error';
-import { flatCoefficients, allRootsPrecise, allRoots, toCasStr, multiply } from '../../src';
+import { flatCoefficients, allRootsPrecise, allRoots, toCasStr, multiply } from '../../src/index';
 import { fromRootsExact, fromRoots } from '../../src/roots/from-roots';
 import { allRootsExact } from '../../src/roots/exact/all-roots-exact';
 import { differentiateExact } from '../../src/calculus/differentiate';
@@ -91,7 +91,7 @@ function play() {
         console.log('faithful ', faith);
         console.log('compHornerK = 2 ', CompHornerK(p, c, 2));
         console.log('compHornerK = 3 ', CompHornerK(p, c, 3));
-        console.log('exact           ', estimate(evaluateExact(p_, [c])));
+        console.log('exact           ', eEstimate(evaluateExact(p_, [c])));
     }
 }
 
@@ -102,7 +102,7 @@ function wilkonsonRoots() {
     console.log(toCasStr(wilkonsonsPoly));
     console.log(allRoots(wilkonsonsPoly));
     console.log(allRootsPrecise(wilkonsonsPoly, 0, 20));
-    console.log(allRootsExact(wilkonsonsPoly.map(x => [x]), [0], [20]).map(estimate));
+    console.log(allRootsExact(wilkonsonsPoly.map(x => [x]), [0], [20]).map(eEstimate));
 }
 
 
@@ -122,10 +122,11 @@ function roots() {
     let len = Math.max(roots.length, rootsPrecise.length, rootsVeryPrecise.length)
     for (let i=0; i<_roots.length; i++) {
         console.log('roots                    ', _roots[i]);
-        console.log('super precise            ', rootsSuperPrecise[i] ? estimate(rootsSuperPrecise[i]) : undefined);
+        console.log('super precise            ', rootsSuperPrecise[i] ? eEstimate(rootsSuperPrecise[i]) : undefined);
         console.log('very precise             ', rootsVeryPrecise[i]);
         console.log('precise (Number.EPSILON) ', rootsPrecise[i]);
         console.log('standard                 ', roots[i]);
         console.log('----------------------------------------------');
     }
 }
+*/

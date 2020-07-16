@@ -1,12 +1,23 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.numRootsIn01Exact = exports.numRootsExact = exports.numRootsInRangeExact = exports.numRootsInRange = void 0;
 const sturm_chain_1 = require("../../remainder-sequences/sturm-chain");
 const evaluate_1 = require("../../evaluate/evaluate");
 const evaluate_exact_1 = require("../../evaluate/evaluate-exact");
 const sign_changes_1 = require("./sign-changes");
-const flo_numerical_1 = require("flo-numerical");
+const big_float_ts_1 = require("big-float-ts");
 const degree_1 = require("../../basic/degree");
 const evaluate_at_1_1 = require("../../evaluate/evaluate-at-1");
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const sturmChain = sturm_chain_1.sturmChain;
+const evaluate = evaluate_1.evaluate;
+const evaluateExact = evaluate_exact_1.evaluateExact;
+const signChanges = sign_changes_1.signChanges;
+const eSign = big_float_ts_1.eSign;
+const degree = degree_1.degree;
+const expEvaluateAt1 = evaluate_at_1_1.expEvaluateAt1;
+const sturmChainExact = sturm_chain_1.sturmChainExact;
+const expSignChanges = sign_changes_1.expSignChanges;
 /**
  * Returns the approximate number of *distinct* real roots in the interval (a,b) of the
  * given polynomial.
@@ -21,10 +32,10 @@ const evaluate_at_1_1 = require("../../evaluate/evaluate-at-1");
  * numRootsInRange(p,-11,5);   //=> 4
  */
 function numRootsInRange(p, a, b) {
-    let ps = sturm_chain_1.sturmChain(p);
-    let as = ps.map(p => evaluate_1.evaluate(p, a));
-    let bs = ps.map(p => evaluate_1.evaluate(p, b));
-    return sign_changes_1.signChanges(as) - sign_changes_1.signChanges(bs);
+    let ps = sturmChain(p);
+    let as = ps.map(p => evaluate(p, a));
+    let bs = ps.map(p => evaluate(p, b));
+    return signChanges(as) - signChanges(bs);
 }
 exports.numRootsInRange = numRootsInRange;
 /**
@@ -42,10 +53,10 @@ exports.numRootsInRange = numRootsInRange;
  * numRootsInRangeExact(p,-11,5);   //=> 4
  */
 function numRootsInRangeExact(p, a, b) {
-    let ps = sturm_chain_1.sturmChainExact(p);
-    let as = ps.map(p => evaluate_exact_1.evaluateExact(p, a));
-    let bs = ps.map(p => evaluate_exact_1.evaluateExact(p, b));
-    return sign_changes_1.expSignChanges(as) - sign_changes_1.expSignChanges(bs);
+    let ps = sturmChainExact(p);
+    let as = ps.map(p => evaluateExact(p, a));
+    let bs = ps.map(p => evaluateExact(p, b));
+    return expSignChanges(as) - expSignChanges(bs);
 }
 exports.numRootsInRangeExact = numRootsInRangeExact;
 /**
@@ -60,10 +71,10 @@ exports.numRootsInRangeExact = numRootsInRangeExact;
  * numRootsExact(p); //=> 4
  */
 function numRootsExact(p) {
-    let ps = sturm_chain_1.sturmChainExact(p);
-    let as = ps.map(p => degree_1.degree(p) % 2 === 0 ? flo_numerical_1.sign(p[0]) : -flo_numerical_1.sign(p[0]));
-    let bs = ps.map(p => flo_numerical_1.sign(p[0]));
-    return sign_changes_1.signChanges(as) - sign_changes_1.signChanges(bs);
+    let ps = sturmChainExact(p);
+    let as = ps.map(p => degree(p) % 2 === 0 ? eSign(p[0]) : -eSign(p[0]));
+    let bs = ps.map(p => eSign(p[0]));
+    return signChanges(as) - signChanges(bs);
 }
 exports.numRootsExact = numRootsExact;
 /**
@@ -74,10 +85,10 @@ exports.numRootsExact = numRootsExact;
  * @param b an upper bound
  */
 function numRootsIn01Exact(p) {
-    let ps = sturm_chain_1.sturmChainExact(p);
+    let ps = sturmChainExact(p);
     let as = ps.map(p => p[p.length - 1]); // evaluate at 0
-    let bs = ps.map(p => evaluate_at_1_1.expEvaluateAt1(p)); // evaluate at 1
-    return sign_changes_1.expSignChanges(as) - sign_changes_1.expSignChanges(bs);
+    let bs = ps.map(p => expEvaluateAt1(p)); // evaluate at 1
+    return expSignChanges(as) - expSignChanges(bs);
 }
 exports.numRootsIn01Exact = numRootsIn01Exact;
 //# sourceMappingURL=num-roots.js.map

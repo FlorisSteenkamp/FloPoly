@@ -1,6 +1,10 @@
 "use strict";
+//import { twoProduct, twoSum } from "big-float-ts";
 Object.defineProperty(exports, "__esModule", { value: true });
-const flo_numerical_1 = require("flo-numerical");
+exports.EFTHorner = void 0;
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const big_float_ts_1 = require("big-float-ts");
+const { twoSum, twoProduct } = big_float_ts_1.operators;
 /**
  * Returns an EFT (error free transformation) for the Horner evaluation of a
  * polymial at a specified x.
@@ -14,8 +18,8 @@ function EFTHorner(p, x) {
     let σ;
     let r̂ = p[0];
     for (let i = 1; i < p.length; i++) {
-        let [π, pi] = flo_numerical_1.twoProduct(r̂, x); // TODO - unroll all critical twoProduct and twoSum and fastTwoSums
-        [σ, r̂] = flo_numerical_1.twoSum(pi, p[i]);
+        let [π, pi] = twoProduct(r̂, x); // TODO - unroll all critical twoProduct and twoSum and fastTwoSums
+        [σ, r̂] = twoSum(pi, p[i]);
         // inlined
         //r̂ = pi + p[i]; let bv = r̂ - pi; σ = (pi - (x-bv)) + (p[i]-bv);
         pπ.push(π);

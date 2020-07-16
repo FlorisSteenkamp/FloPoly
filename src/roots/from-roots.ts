@@ -1,6 +1,12 @@
 
-import { multiply, multiplyExact } from "../basic/multiply";
-import { estimate, compress } from "flo-numerical";
+//import { eEstimate, eCompress } from "big-float-ts";
+import { multiply as multiply_, multiplyExact as multiplyExact_ } from "../basic/multiply";
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+import { operators as bigFloatOperators } from "big-float-ts";
+const { eEstimate, eCompress } = bigFloatOperators;
+const multiply = multiply_;
+const multiplyExact = multiplyExact_;
 
 
 /**
@@ -46,7 +52,7 @@ function fromRootsExact(roots: number[]): number[][] {
 		p = multiplyExact([p, [[1], [-roots[i]]]]);
 	}
 	
-	return p.map(compress);
+	return p.map(eCompress);
 }
 
 

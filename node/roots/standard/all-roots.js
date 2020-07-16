@@ -1,11 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.allRoots = void 0;
 const brent_1 = require("./brent");
 const quadratic_roots_1 = require("../quadratic-roots");
 const root_bounds_lmq_1 = require("../root-bounds/root-bounds-lmq");
 const remove_leading_zeros_1 = require("../../basic/remove-leading-zeros");
 const differentiate_1 = require("../../calculus/differentiate");
 const evaluate_1 = require("../../evaluate/evaluate");
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const brent = brent_1.brent;
+const quadraticRoots = quadratic_roots_1.quadraticRoots;
+const positiveRootUpperBound_LMQ = root_bounds_lmq_1.positiveRootUpperBound_LMQ;
+const negativeRootUpperBound_LMQ = root_bounds_lmq_1.negativeRootUpperBound_LMQ;
+const removeLeadingZeros = remove_leading_zeros_1.removeLeadingZeros;
+const differentiate = differentiate_1.differentiate;
+const evaluate = evaluate_1.evaluate;
 /**
  * Finds an approximation to the real roots (or those within a range) of the
  * input polynomial.
@@ -18,24 +27,24 @@ const evaluate_1 = require("../../evaluate/evaluate");
  * allRoots([1, -10, 35, -50, 24]); //=> [1, 2.0000000000000036, 3.0000000000000067, 4]
  */
 function allRoots(p, a = Number.NEGATIVE_INFINITY, b = Number.POSITIVE_INFINITY) {
-    p = remove_leading_zeros_1.removeLeadingZeros(p);
+    p = removeLeadingZeros(p);
     let d = p.length - 1;
     let rangeFilter = inRange(a, b);
     if (d === 2) {
-        return quadratic_roots_1.quadraticRoots(p)
+        return quadraticRoots(p)
             .filter(rangeFilter);
     }
     else if (d >= 2) {
         let lowerBound = a === Number.NEGATIVE_INFINITY
-            ? root_bounds_lmq_1.negativeRootUpperBound_LMQ(p)
+            ? negativeRootUpperBound_LMQ(p)
             : a;
         let upperBound = b === Number.POSITIVE_INFINITY
-            ? root_bounds_lmq_1.positiveRootUpperBound_LMQ(p)
+            ? positiveRootUpperBound_LMQ(p)
             : b;
         // If the roots of the differentiated polynomial is out of range 
         // then the roots of the polynomial itself will also be out of 
         // range.
-        let dp = differentiate_1.differentiate(p);
+        let dp = differentiate(p);
         let roots = allRoots(dp, lowerBound, upperBound)
             .filter(rangeFilter);
         if (roots[0] !== lowerBound) {
@@ -83,7 +92,7 @@ function inRange(a, b) {
  */
 function rootsWithin(p, intervals) {
     let roots = [];
-    let peval = evaluate_1.evaluate(p);
+    let peval = evaluate(p);
     let prevRoot;
     let a = intervals[0];
     for (let i = 1; i < intervals.length; i++) {
@@ -101,7 +110,7 @@ function rootsWithin(p, intervals) {
             }
         }
         else if (evA * evB < 0) {
-            root = brent_1.brent(peval, a, b);
+            root = brent(peval, a, b);
         }
         // Add root if it exists and suppress exact duplicates
         if (root !== undefined && root !== prevRoot) {

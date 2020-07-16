@@ -1,9 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const flo_numerical_1 = require("flo-numerical");
+exports.refineK1 = void 0;
 const change_variables_linear_1 = require("../../change-variables/change-variables-linear");
 const differentiate_1 = require("../../calculus/differentiate");
 const all_roots_multi_with_err_bounds_1 = require("./all-roots-multi-with-err-bounds");
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const big_float_ts_1 = require("big-float-ts");
+const { eToDd, twoSum } = big_float_ts_1.operators;
+const changeVariablesLinearExact = change_variables_linear_1.changeVariablesLinearExact;
+const differentiateExact = differentiate_1.differentiateExact;
+const allRootsMultiWithErrBounds = all_roots_multi_with_err_bounds_1.allRootsMultiWithErrBounds;
 const eps = Number.EPSILON;
 /**
  * Returns once compensated root(s).
@@ -20,9 +26,9 @@ function refineK1(tS, getPsExact) {
     let scale = 4 * Number.EPSILON;
     // Translate the polynomial such that the root is within 4 eps from 0, then
     // scale it such that the roots stay < 1, i.e. is in [0,1]
-    let pExactK1 = change_variables_linear_1.changeVariablesLinearExact(pExact, scale, tS);
+    let pExactK1 = changeVariablesLinearExact(pExact, scale, tS);
     // reduce the polynomial to quad precision for faster root finding
-    let pQuadK1 = pExactK1.map(flo_numerical_1.toQuad);
+    let pQuadK1 = pExactK1.map(eToDd);
     // update the quad precision error bound - it is simply the error in 
     // rounding the exact coefficients to quad precision
     let errBoundK1 = pQuadK1.map(c => eps * eps * c[1]);
@@ -30,17 +36,17 @@ function refineK1(tS, getPsExact) {
         let polyK1 = pExactK1;
         let psExactK1 = [polyK1];
         while (polyK1.length > 1) {
-            polyK1 = differentiate_1.differentiateExact(psExactK1[psExactK1.length - 1]);
+            polyK1 = differentiateExact(psExactK1[psExactK1.length - 1]);
             psExactK1.push(polyK1);
         }
         return psExactK1;
     };
-    let _risLo = all_roots_multi_with_err_bounds_1.allRootsMultiWithErrBounds(pQuadK1, errBoundK1, getPsExactK1);
+    let _risLo = allRootsMultiWithErrBounds(pQuadK1, errBoundK1, getPsExactK1);
     let ris = [];
     for (let riLo of _risLo) {
         ris.push({
-            tS: flo_numerical_1.twoSum(tS, riLo.tS * 4 * Number.EPSILON),
-            tE: flo_numerical_1.twoSum(tS, riLo.tE * 4 * Number.EPSILON),
+            tS: twoSum(tS, riLo.tS * 4 * Number.EPSILON),
+            tE: twoSum(tS, riLo.tE * 4 * Number.EPSILON),
             multiplicity: riLo.multiplicity
         });
     }

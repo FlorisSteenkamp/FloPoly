@@ -1,6 +1,10 @@
 "use strict";
+//import { eNegativeOf } from "big-float-ts";
 Object.defineProperty(exports, "__esModule", { value: true });
-const flo_numerical_1 = require("flo-numerical");
+exports.expReflectAboutYAxis = exports.reflectAboutYAxis = void 0;
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const big_float_ts_1 = require("big-float-ts");
+const { eNegativeOf } = big_float_ts_1.operators;
 /**
  * Returns the result of reflecting the given polynomial about the Y-axis, i.e.
  * perform the change of variables: p(x) <- p(-x).
@@ -31,7 +35,7 @@ function expReflectAboutYAxis(p) {
     let result = p.slice();
     for (let i = 0; i < d + 1; i++) {
         if (i % 2) {
-            result[i] = flo_numerical_1.negativeOf(result[i]);
+            result[i] = eNegativeOf(result[i]);
         }
     }
     return result;
