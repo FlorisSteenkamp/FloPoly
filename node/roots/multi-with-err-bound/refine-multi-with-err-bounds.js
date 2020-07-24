@@ -3,9 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.refineMultiWithErrBounds = void 0;
 const eval_k_multi_with_err_bounds_1 = require("../../evaluate/eval-k-multi-with-err-bounds");
 const horner_exact_1 = require("../../evaluate/horner-exact");
+const big_float_ts_1 = require("big-float-ts");
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const evalK1MultiWithErrBounds = eval_k_multi_with_err_bounds_1.evalK1MultiWithErrBounds;
 const HornerExact = horner_exact_1.HornerExact;
+const eEstimate = big_float_ts_1.eEstimate;
 let eps = Number.EPSILON;
 let abs = Math.abs;
 /**
@@ -122,7 +124,7 @@ function refineMultiWithErrBounds(p, pE, lb, ub, fa, fb, psExact, getPsExact, di
             b = b - δ;
         }
         fb = exact
-            ? HornerExact(psExact.ps[diffCount], b)
+            ? eEstimate(HornerExact(psExact.ps[diffCount], b))
             : evalK1MultiWithErrBounds(p, pE, b).r̂;
         if (fb === 0) {
             // Since evalK1MultiWithErrBounds is approximate the zero result
@@ -159,7 +161,7 @@ function refineMultiWithErrBounds(p, pE, lb, ub, fa, fb, psExact, getPsExact, di
             // the quad polynomial and we very rarely expect to get to this 
             // point)
             psExact.ps = psExact.ps || getPsExact();
-            fb = HornerExact(psExact.ps[diffCount], b);
+            fb = eEstimate(HornerExact(psExact.ps[diffCount], b));
             // if the exact evaluation returns 0 we have an exact root
             if (fb === 0) {
                 //(window as any).qcount++;

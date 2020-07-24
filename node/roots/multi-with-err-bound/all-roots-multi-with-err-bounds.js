@@ -7,6 +7,7 @@ const horner_exact_1 = require("../../evaluate/horner-exact");
 const transpose_poly_1 = require("./transpose-poly");
 const eval_adaptive_1 = require("./eval-adaptive");
 const refine_multi_with_err_bounds_1 = require("./refine-multi-with-err-bounds");
+const big_float_ts_1 = require("big-float-ts");
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const differentiateQuadWithError = differentiate_1.differentiateQuadWithError;
 const evalK1MultiWithErrBounds = eval_k_multi_with_err_bounds_1.evalK1MultiWithErrBounds;
@@ -15,6 +16,7 @@ const transposePoly = transpose_poly_1.transposePoly;
 const evalAdaptive = eval_adaptive_1.evalAdaptive;
 const refineMultiWithErrBounds = refine_multi_with_err_bounds_1.refineMultiWithErrBounds;
 const differentiateExact = differentiate_1.differentiateExact;
+const eEstimate = big_float_ts_1.eEstimate;
 /**
  * Finds and returns all root intervals within [0,1] of a given polynomial,
  * including their multiplicities (see points below).
@@ -60,7 +62,7 @@ function allRootsMultiWithErrBounds(p, pE, getPsExact = undefined, lb = 0, ub = 
     exact = false;
     do {
         LB = exact
-            ? HornerExact(psExact.ps[0], lb)
+            ? eEstimate(HornerExact(psExact.ps[0], lb))
             : evalK1MultiWithErrBounds(p_, pE, lb).r̂;
         if (LB === 0) {
             bCount++;
@@ -77,7 +79,7 @@ function allRootsMultiWithErrBounds(p, pE, getPsExact = undefined, lb = 0, ub = 
     exact = false;
     do {
         UB = exact
-            ? HornerExact(psExact.ps[0], ub)
+            ? eEstimate(HornerExact(psExact.ps[0], ub))
             : evalK1MultiWithErrBounds(p_, pE, ub).r̂;
         if (UB === 0) {
             bCount++;
