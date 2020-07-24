@@ -1,10 +1,12 @@
 
 import { evalK1MultiWithErrBounds as evalK1MultiWithErrBounds_ } from "../../evaluate/eval-k-multi-with-err-bounds";
 import { HornerExact as HornerExact_ } from "../../evaluate/horner-exact";
+import { eEstimate as eEstimate_ } from 'big-float-ts';
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const evalK1MultiWithErrBounds = evalK1MultiWithErrBounds_;
 const HornerExact = HornerExact_;
+const eEstimate = eEstimate_;
 
 
 function evalAdaptive(
@@ -19,7 +21,7 @@ function evalAdaptive(
     if (r === 0) {
         // condition number is too high - request higher precision
         psExact.ps = psExact.ps || getPsExact();
-        return HornerExact(psExact.ps[diffCount],x);
+        return eEstimate(HornerExact(psExact.ps[diffCount],x));
     }
 
     return r;

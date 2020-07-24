@@ -6,6 +6,7 @@ import { transposePoly as transposePoly_ } from "./transpose-poly";
 import { RootInterval } from "./root-interval";
 import { evalAdaptive as evalAdaptive_ } from "./eval-adaptive";
 import { refineMultiWithErrBounds as refineMultiWithErrBounds_ } from "./refine-multi-with-err-bounds";
+import { eEstimate as eEstimate_ } from "big-float-ts";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const differentiateQuadWithError = differentiateQuadWithError_;
@@ -15,6 +16,7 @@ const transposePoly = transposePoly_;
 const evalAdaptive = evalAdaptive_;
 const refineMultiWithErrBounds = refineMultiWithErrBounds_;
 const differentiateExact = differentiateExact_;
+const eEstimate = eEstimate_;
 
 
 /**
@@ -73,7 +75,7 @@ function allRootsMultiWithErrBounds(
 	exact = false;
 	do {
 		LB = exact 
-			? HornerExact(psExact.ps[0], lb)
+			? eEstimate(HornerExact(psExact.ps[0], lb))
 			: evalK1MultiWithErrBounds(p_, pE, lb).r̂;
 		if (LB === 0) {
 			bCount++;
@@ -91,7 +93,7 @@ function allRootsMultiWithErrBounds(
 	exact = false;
 	do {
 		UB = exact 
-			? HornerExact(psExact.ps[0], ub)
+			? eEstimate(HornerExact(psExact.ps[0], ub))
 			: evalK1MultiWithErrBounds(p_, pE, ub).r̂;
 		if (UB === 0) {
 			bCount++;
