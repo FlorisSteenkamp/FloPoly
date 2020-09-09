@@ -5,19 +5,32 @@ const uu = u*u;
 
 /**
  * The canonical floating point error function, γ.
- * see e.g. https://hal.archives-ouvertes.fr/hal-00285603/document
  * 
- * * γ is multiplied by (1+u) since it is calculated in floating point so we
- * must ensure it is bigger than the real value.
- * @param k the parameter
+ * * roughly `=== n * (Number.EPSILON / 2)`
+ * * see e.g. [Algorithms for Accurate, Validated and Fast Polynomial Evaluation](https://hal.archives-ouvertes.fr/hal-00285603/document)
+ * @param n the parameter - typically a small positive integer, e.g. for 
+ * polynomial evaluation this === 2*d + 1, where d is the degree of the 
+ * polynomial
  */
 function γ(n: number) {
     let nu = n*u;
+
     return nu/(1-nu);
 }
 
+/**
+ * The canonical, once compensated (implying double-double precision), 
+ * floating point error function.
+ * 
+ * * roughly `=== n * (Number.EPSILON / 2)**2`
+ * * see e.g. [Algorithms for Accurate, Validated and Fast Polynomial Evaluation](https://hal.archives-ouvertes.fr/hal-00285603/document)
+ * @param n the parameter - typically a small positive integer, e.g. for 
+ * polynomial evaluation this === 2*d + 1, where d is the degree of the 
+ * polynomial
+ */
 function γγ(n: number) {
     let nuu = n*uu;
+    
     return nuu/(1-nuu);
 }
 

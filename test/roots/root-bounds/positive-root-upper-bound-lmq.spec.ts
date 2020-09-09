@@ -4,13 +4,13 @@ import { describe } from 'mocha';
 import { positiveRootUpperBound_LMQ } from '../../../src/index';
 
 
-describe('positiveRootUpperBound_LMQ', function() {/*
+describe('positiveRootUpperBound_LMQ', function() {
 	it('should correctly find bounds of some polynomial roots', 
 	function() {
 		let p1 = [2,-3,6,5,-130];
 		let p2: number[] = [];
 		let p3 = [3];
-		// Wilkinson's polynomial 
+		// Wilkinson's polynomial of degree 21 - roots at 1,2,...,21
 		let p4 = [
 			1, -231, 25025, -1689765, 79721796, -2792167686, 
 			75289668850, -1599718388730, 27188611869881, 
@@ -21,9 +21,13 @@ describe('positiveRootUpperBound_LMQ', function() {/*
 			284093315901811460000, -298631902863216400000, 
 			186244810780170260000, -51090942171709440000
 		];
+		// real roots at about -2.397918624065303 and 2.8793785310848383
 		expect(positiveRootUpperBound_LMQ(p1)).to.equal(4.015534272870436);
+		// real roots everywhere
 		expect(positiveRootUpperBound_LMQ(p2)).to.equal(0);
+		// real roots nowhere
 		expect(positiveRootUpperBound_LMQ(p3)).to.equal(0);
+		// real roots at 1,2,...,21
 		expect(positiveRootUpperBound_LMQ(p4)).to.equal(462);
-	});*/
+	});
 });

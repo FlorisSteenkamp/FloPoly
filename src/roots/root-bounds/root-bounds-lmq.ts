@@ -1,5 +1,5 @@
 
-import { negate as negate_ } from "../../basic/negate";
+import { negate as negate_ } from "../../basic/double/negate";
 import { upperToLowerBound as upperToLowerBound_ } from "./upper-to-lower-bound";
 import { positiveToNegativeBound as positiveToNegativeBound_ } from "./positive-to-negative-bound";
 
@@ -9,23 +9,26 @@ const upperToLowerBound = upperToLowerBound_;
 const positiveToNegativeBound = positiveToNegativeBound_;
 
 
-const POWERS = [
-	1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768, 
-	65536,131072,262144,524288,1048576,2097152
-];
 /**
- * Returns an upper bound for the positive real roots of the given 
- * polynomial.
+ * Returns an upper bound for the positive real roots of the given polynomial.
  * 
  * See algoritm 6 of the paper by Vigklas, Akritas and Strzeboński, 
  * specifically the LocalMaxQuadratic algorithm hence LMQ.
- * @param p a polynomial
+ * 
+ * @param p a polynomial with coefficients given densely as an array of double
+ * floating point numbers from highest to lowest power, e.g. `[5,-3,0]` 
+ * represents the polynomial `5x^2 - 3x`
+ * 
  * @example
  * positiveRootUpperBound_LMQ([2,-3,6,5,-130]); //=> 4.015534272870436 
  * positiveRootUpperBound_LMQ([2,3]);           //=> 0 
  * positiveRootUpperBound_LMQ([-2,-3,-4]);      //=> 0
  */
 function positiveRootUpperBound_LMQ(p: number[]): number {
+	if (p.length <= 1) {
+		return 0;
+	}
+
 	let deg = p.length-1;
 	if (deg < 1) { return 0; }
 	
@@ -47,20 +50,7 @@ function positiveRootUpperBound_LMQ(p: number[]): number {
 		for (let k=0; k<m; k++) {
 			if (p[k] <= 0) { continue; }
 
-			// Table lookup is about 70% faster but both are
-			// extemely fast anyway. 
-			// Result is at https://www.measurethat.net/Benchmarks/ShowResult/6610
-			let pow = timesUsed[k];
-			let powres;
-			if (pow > 20) {
-				powres = Math.pow(2, pow);
-			} else {
-				powres = POWERS[pow];
-			}
-			let temp = Math.pow(
-					-p[m] / (p[k] / powres),
-					1/(m-k)
-			);
+			let temp = (-p[m] / (p[k] / 2**timesUsed[k]))**(1/(m-k));
 			
 			timesUsed[k]++;
 			
@@ -77,23 +67,49 @@ function positiveRootUpperBound_LMQ(p: number[]): number {
 }
 
 
-/** Returns a positive lower bound of the roots of the given polynomial */
+/** 
+ * Returns a positive lower bound of the real roots of the given polynomial
+ * 
+ * See algoritm 6 of the paper by Vigklas, Akritas and Strzeboński, 
+ * specifically the LocalMaxQuadratic algorithm hence LMQ.
+ * 
+ * @param p a polynomial with coefficients given densely as an array of double
+ * floating point numbers from highest to lowest power, e.g. `[5,-3,0]` 
+ * represents the polynomial `5x^2 - 3x`
+ */
 let positiveRootLowerBound_LMQ = upperToLowerBound(positiveRootUpperBound_LMQ);
-/** 
- * Returns a negative upper (upper here means further from zero) bound of the 
- * roots of the given polynomial .
- */
-let negativeRootUpperBound_LMQ = positiveToNegativeBound(positiveRootUpperBound_LMQ);
-/** 
- * Returns a negative lower (lower here means closer to zero) bound of the roots 
- * of the given polynomial.
- */
-let negativeRootLowerBound_LMQ = upperToLowerBound(negativeRootUpperBound_LMQ);
 
+
+/** 
+ * Returns a negative lower (further from zero) bound of the real roots of the 
+ * given polynomial.
+ * 
+ * See algoritm 6 of the paper by Vigklas, Akritas and Strzeboński, 
+ * specifically the LocalMaxQuadratic algorithm hence LMQ.
+ * 
+ * @param p a polynomial with coefficients given densely as an array of double
+ * floating point numbers from highest to lowest power, e.g. `[5,-3,0]` 
+ * represents the polynomial `5x^2 - 3x`
+ */
+let negativeRootLowerBound_LMQ = positiveToNegativeBound(positiveRootUpperBound_LMQ);
+
+
+/** 
+ * Returns a negative upper (closer to zero) bound of the real roots of the 
+ * given polynomial.
+ * 
+ * See algoritm 6 of the paper by Vigklas, Akritas and Strzeboński, 
+ * specifically the LocalMaxQuadratic algorithm hence LMQ.
+ * 
+ * @param p a polynomial with coefficients given densely as an array of double
+ * floating point numbers from highest to lowest power, e.g. `[5,-3,0]` 
+ * represents the polynomial `5x^2 - 3x`
+ */
+let negativeRootUpperBound_LMQ = upperToLowerBound(negativeRootLowerBound_LMQ);
 
 export { 
 	positiveRootUpperBound_LMQ,
 	positiveRootLowerBound_LMQ,
-	negativeRootUpperBound_LMQ,
-	negativeRootLowerBound_LMQ
+	negativeRootLowerBound_LMQ,
+	negativeRootUpperBound_LMQ
 }

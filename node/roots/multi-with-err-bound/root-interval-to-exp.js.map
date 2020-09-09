@@ -1,1 +1,0 @@
-{"version":3,"file":"root-interval-to-exp.js","sourceRoot":"","sources":["../../../src/roots/multi-with-err-bound/root-interval-to-exp.ts"],"names":[],"mappings":";;;AAKA;;;GAGG;AACH,SAAS,iBAAiB,CAAC,EAAgB;IACvC,OAAO;QACH,EAAE,EAAE,CAAC,CAAC,EAAE,EAAE,CAAC,EAAE,CAAC;QACd,EAAE,EAAE,CAAC,CAAC,EAAE,EAAE,CAAC,EAAE,CAAC;QACd,YAAY,EAAE,EAAE,CAAC,YAAY;KAChC,CAAC;AACN,CAAC;AAGQ,8CAAiB"}
