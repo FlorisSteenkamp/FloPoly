@@ -22,9 +22,9 @@ const eSign = eSign_;
  */
 function numRootsIn01(p: number[]): number {
 	const p_ = p.map(c => [c]);
-	let ps = eSturmChain(p_);
-	let as = ps.map(p_ => eSign(p_[p_.length-1])); // evaluate at 0
-	let bs = ps.map(p_ => eSign(eEvaluateAt1(p_))); // evaluate at 1
+	const ps = eSturmChain(p_);
+	const as = ps.map(p_ => eSign(p_[p_.length-1])); // evaluate at 0
+	const bs = ps.map(p_ => eSign(eEvaluateAt1(p_))); // evaluate at 1
 	
 	return signChanges(as) - signChanges(bs);
 }

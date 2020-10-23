@@ -57,25 +57,28 @@ const γ2 = γ(2);
  */
 function evalCertified(
         p: number[][],
+        x: number,
         pE: number[] = undefined,
-        x: number = 0,
         multiplier = 1): number {
 
+    const absX = Math.abs(x);
     const p0 = p[0];
     
     // first do a fast evaluation
     const [r,e1] = hornerWithRunningError(p0,x);
     // inlined above line:
-    //let r = p0[0]; let e1 = Math.abs(r) / 2; for (let i=1; i<p0.length; i++) { r = r*x + p0[i]; e1 = Math.abs(x)*e1 + Math.abs(r); } e1 = Number.EPSILON * (2*e1 - Math.abs(r));
+    //const r = p0[0]; const e1 = Math.abs(r) / 2; for (const i=1; i<p0.length; i++) { r = r*x + p0[i]; e1 = Math.abs(x)*e1 + Math.abs(r); } e1 = Number.EPSILON * (2*e1 - Math.abs(r));
 
     /** the error due to not considering p[1] */
-    const e2 = γ2*AbsHorner(p0,x); 
+    // the line below was changed due to negative values of x now also allowed
+    const e2 = γ2*AbsHorner(p0,absX); 
     // inlined above line:
-    //let e2 = abs(p0[0]); for (let i=1; i<p0.length; i++) { e2 = e2*x + abs(p0[i]); }
+    //const e2 = abs(p0[0]); for (const i=1; i<p0.length; i++) { e2 = e2*x + abs(p0[i]); }
 
     /** error due to imprecision in coefficients */
-    const E = pE ? Horner(pE, x) : 0; 
-    //let E = p0[0]; for (let i=1; i<p0.length; i++) {E = E*x + p0[i]; }
+    // the line below was changed due to negative values of x now also allowed
+    const E = pE ? Horner(pE,absX) : 0; 
+    //const E = p0[0]; for (const i=1; i<p0.length; i++) {E = E*x + p0[i]; }
 
     const ee = e1+e2+E; // in difficult cases E can be larger than e1+e2
     if (ee*multiplier < Math.abs(r)) {

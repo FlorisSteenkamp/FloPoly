@@ -34,16 +34,16 @@ function isBigint(x: number | bigint | number[]): x is bigint {
  * toCasStr([5n,4n,3n,2n,1n]); //=> "x^4*5 + x^3*4 + x^2*3 + x*2 + 1"
  */
 function toCasStr(p: number[] | number[][] | bigint[]): string {
-	let d = p.length-1;
+	const d = p.length-1;
 	
 	let str = '';
 	for (let i=0; i<d+1; i++) {
-        let _v = p[i];
-        let v = isShewchuk(_v) 
+        const _v = p[i];
+        const v = isShewchuk(_v) 
             ? eEstimate(_v) 
             : _v;  // bigint or number
 
-        let absV = isBigint(v) 
+        const absV = isBigint(v) 
             ? (_v < 0n ? -v : v)
             : Math.abs(v);
 
@@ -76,7 +76,7 @@ function nonNegativeNumberToString(num: number | bigint) {
     }
 
     if (Math.abs(num) < 1) {
-        let e = parseInt(numStr.split('e-')[1]);
+        const e = parseInt(numStr.split('e-')[1]);
         if (e) {
             num *= 10**(e - 1);
             numStr = '0.' + (new Array(e)).join('0') + num.toString().substring(2);

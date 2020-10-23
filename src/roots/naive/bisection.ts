@@ -24,22 +24,29 @@ const max = Math.max;
  * @param b the upper limit of the search interval
  * 
  * @example
- * let p = fromRoots([-10,2,3,4]);  //=> [1, 1, -64, 236, -240]
- * let f = t => Horner(p,t);
+ * const p = fromRoots([-10,2,3,4]);  //=> [1, 1, -64, 236, -240]
+ * const f = t => Horner(p,t);
  * bisection(f,2.2,3.8); //=> 3
  * bisection(f,2.2,3.1); //=> 3.0000000000000044
  */
 function bisection(f: (n: number) => number, a: number, b: number): number {
-	if (a === b) {
-		// Presumably the root is already found.
-		return a; 
-	} else if (b < a) {
+	if (b < a) {
 		[a,b] = [b,a]; // Swap a and b 
-	} 
-	
-	let fa = f(a);
-	let fb = f(b);
+	}
 
+	const fa = f(a);
+	const fb = f(b);
+
+	if (a === b) {
+		if (fa !== 0) {
+			// Root is not bracketed - this is a precondition.
+			throw new Error('Root not bracketed'); 
+		}
+
+		// the root is already found.
+		return a; 
+	}  
+	
 	if (fa === 0) { 
 		return a; 
 	} 
@@ -53,8 +60,8 @@ function bisection(f: (n: number) => number, a: number, b: number): number {
     }
 	
 	while (true) {
-		let c = a + (b-a)/2; // Take midpoint
-		let fc = f(c);
+		const c = a + (b-a)/2; // Take midpoint
+		const fc = f(c);
 		
 		if (fc === 0) { 
 			return c; 
@@ -66,7 +73,7 @@ function bisection(f: (n: number) => number, a: number, b: number): number {
 			a = c;
 		}
 		
-	    let δ = 2 * Number.EPSILON * max(1,abs(a),abs(b));
+	    const δ = 2 * Number.EPSILON * max(1,abs(a),abs(b));
 		if (Math.abs(a - b) <= δ) {
 	    	return b; 
 	    }

@@ -182,6 +182,7 @@ import { bFlatCoefficientsArr } from './predictive-random/bigint/b-random';
 
 // roots certified
 import { allRootsCertified } from './roots/certified/all-roots-certified';
+import { allRootsCertifiedSimplified } from './roots/certified/all-roots-certified-simplified';
 import { refineK1 } from './roots/certified/refine-k1';
 import { RootInterval } from './roots/certified/root-interval';
 import { mid } from './roots/certified/root-interval';
@@ -210,6 +211,7 @@ import { eSignChanges } from './roots/descartes/expansion/e-sign-changes';
 // roots from roots
 import { bFromRoots } from './roots/from-roots/bigint/b-from-roots';
 import { fromRoots } from './roots/from-roots/double/from-roots';
+import { eFromRoots } from './roots/from-roots/expansion/e-from-roots';
 
 // roots naive
 import { allRoots } from './roots/naive/all-roots';
@@ -238,9 +240,242 @@ import { scaleFloatssToBigintss } from './scale-to-int/scale-floatss-to-bigintss
 
 
 const operators = { 
-	// TODO
-	// Basic
+	// basic
+	toCasStr,
+
+	// basic bigint
+	bAbsCoeff,
+	bAdd,
+	bDegree,
+	bDivideByConst,
+	bEqual,
+	bInvert,
+	bIsRationalMultipleOf,
+	bMultiply,
+	bMultiplyByConst,
+	bNegate,
+	bRemoveLeadingZeros,
+	bSubtract,
+
+	// basic double
+	absCoeff,
+	add,
+	degree,
+	divideByConst,
 	equal,
+	invert,
+	isRationalMultipleOf,
+	multiply,
+	multiplyByConst,
+	negate,
+	removeLeadingZeros,
+	subtract,
+
+	// basic expansion
+	eAbsCoeff,
+	eAdd,
+	eDegree,
+	eEqual,
+	eInvert,
+	eIsConstOrZero,
+	eIsRationalMultipleOf,
+	eIsUnit,
+	eMultiply,
+	eMultiplyByConst,
+	eNegate,
+	eProduct,
+	eRemoveLeadingZeros,
+	eSubtract,
+
+	// calculus bigint
+	bDifferentiate,
+
+	// calculus double
+	differentiate,
+
+	// calculus double-double
+	ddDifferentiate,
+	ddDifferentiateWithError,
+
+	// calculus expansion
+	eDifferentiate,
+
+	// change variables bigint
+	bChangeVariablesLinear,
+	bChangeVariablesScale,
+	bChangeVariablesTranslateX,
+	bReflectAboutYAxis,
+
+	// change variables double
+	changeVariablesLinear,
+	changeVariablesScale,
+	changeVariablesTranslateX,
+	reflectAboutYAxis,
+
+	// change variables expansion
+	eChangeVariablesLinear,
+	eChangeVariablesScale,
+	eChangeVariablesTranslateX,
+	eReflectAboutYAxis,
+
+	// error analysis
+	conditionNumber,
+	γ, 
+	γγ,
+
+	// euclidean division related bigint
+	bPdivTrivial,
+	bPremSequencePrimitive,
+	bPremSequenceSubresultant,
+	bPremSequenceTrivial,
+	bSturmChain,
+
+	// euclidean division related double
+	premSequenceSubresultant,
+	sturmChain,
+
+	// euclidean division related expansion
+	ePdivTrivial,
+	ePremSequencePrimitive,
+	ePremSequenceSubresultant,
+	eSturmChain,
+
+	// evaluate bigint
+	bHorner,
+	bEvaluateAt0,
+	bEvaluateAt1,
+
+	// evaluate double
+	AbsHorner,
+	compHorner,
+	compHornerIsFaithful,
+	CompHornerK,
+	compHornerWithRunningError,
+	EFTHorner,
+	evalCertified,
+	evalCertifiedInclError,
+	evalK,
+	evaluateAt0,
+	evaluateAt1,
+	Horner,
+	hornerWithRunningError,
+
+	// evaluate expansion
+	eeHorner,
+	eEvaluateAt0,
+	eEvaluateAt1,
+	eHorner,
+
+	// factor bigint
+	bContent,
+	bPrimitivePart,
+
+	// factor double
+	content,
+	primitivePart,
+
+	// factor expansion
+	eContent,
+	ePrimitivePart,
+
+	// norm bigint
+	bP1Norm,
+	bP2NormSquared,
+	bPInfNorm,
+
+	// norm double
+	p1Norm,
+	p2Norm,
+	pInfNorm,
+
+	// norm expansion
+	eP1Norm,
+	eP2Norm,
+	ePInfNorm,
+
+	// predictive random double
+	flatRoots,
+	flatRootsArr,
+	flatCoefficients,
+	flatCoefficientsArr,
+	predictiveRandom,
+
+	// predictive random bigint
+	bFlatRoots,
+	bFlatRootsArr,
+	bFlatCoefficients,
+	bFlatCoefficientsArr,
+
+	// roots certified
+	allRootsCertified,
+	allRootsCertifiedSimplified,
+	refineK1,
+	mid,
+	createRootExact,
+	rootIntervalToExp,
+
+	// roots descartes bigint
+	bNumRoots,
+	bNumRootsIn01,
+	bNumRootsInRange,
+	bSignChanges,
+
+	// roots descartes double
+	numRoots,
+	numRootsIn01,
+	numRootsInRange,
+	signChanges,
+
+	// roots descartes expansion
+	eNumRoots,
+	eNumRootsIn01,
+	eNumRootsInRange,
+	eSignChanges,
+
+	// roots from roots
+	bFromRoots,
+	fromRoots,
+	eFromRoots,
+
+	// roots naive
+	allRoots,
+	bisection,
+	brent,
+	brentPoly,
+	ddDeflate,
+	deflate,
+	quadraticRoots,
+
+	// roots root bounds
+	positiveRootUpperBound_LMQ,
+	positiveRootLowerBound_LMQ,
+	negativeRootLowerBound_LMQ,
+	negativeRootUpperBound_LMQ,
+	rootMagnitudeUpperBound_fujiwara,
+	rootMagnitudeUpperBound_rouche,
+
+	// scale to int
+	scaleFloatToInt,
+	scaleFloatsToInts,
+	scaleFloatssToIntss,
+	scaleFloatToBigint,
+	scaleFloatsToBigints,
+	scaleFloatssToBigintss,
+
+	// gcd bigint
+	bGcdPrs,
+	bGcdInt,
+	bGcdInts,
+
+	// gcd double
+	//gcdPrs,
+	gcdInt,
+	gcdInts,
+
+	// gcd expansion
+	//eGcdPrs,
+	eGcdInt,
+	eGcdInts
 }
 
 
@@ -416,6 +651,7 @@ export {
 
 	// roots certified
 	allRootsCertified,
+	allRootsCertifiedSimplified,
 	refineK1,
 	RootInterval,
 	mid,
@@ -444,6 +680,7 @@ export {
 	// roots from roots
 	bFromRoots,
 	fromRoots,
+	eFromRoots,
 
 	// roots naive
 	allRoots,

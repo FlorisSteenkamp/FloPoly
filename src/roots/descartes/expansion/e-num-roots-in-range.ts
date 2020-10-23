@@ -26,7 +26,7 @@ const eSignChanges = eSignChanges_;
  * @param b an upper bound
  * 
  * @example 
- * let p = [[1], [1], [-64], [236], [-240]];
+ * const p = [[1], [1], [-64], [236], [-240]];
  * eNumRootsInRange(p,-20,-11); //=> 0
  * eNumRootsInRange(p,-11,-9);  //=> 1  
  * eNumRootsInRange(p,-11,3.5); //=> 3
@@ -37,9 +37,9 @@ function eNumRootsInRange(
 		a: number[], 
 		b: number[]): number {
 
-	let ps = eSturmChain(p);
-	let as = ps.map(p => eeHorner(p,a));
-	let bs = ps.map(p => eeHorner(p,b));
+	const ps = eSturmChain(p);
+	const as = ps.map(p => eeHorner(p,a));
+	const bs = ps.map(p => eeHorner(p,b));
 	
 	return eSignChanges(as) - eSignChanges(bs);
 }

@@ -1,10 +1,11 @@
 
 import { eToDd as eToDd_ } from "big-float-ts";
 import { twoSum as twoSum_ } from "big-float-ts";
-import { RootIntervalExp } from "./root-interval-exp";
 import { eChangeVariablesLinear as eChangeVariablesLinear_ } from "../../change-variables/expansion/e-change-variables-linear";
 import { allRootsCertified as allRootsCertified_ } from "./all-roots-certified";
 import { RootInterval } from "./root-interval";
+import { RootIntervalExp } from "./root-interval-exp";
+
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const eChangeVariablesLinear = eChangeVariablesLinear_;
@@ -14,7 +15,6 @@ const twoSum = twoSum_;
 
 
 const eps = Number.EPSILON;
-const u = eps/2;
 
 
 /**
@@ -35,25 +35,27 @@ function refineK1(
         ri: RootInterval, 
         p: number[][]): RootIntervalExp[] {
 
-    let tS = ri.tS;
+    const tS = ri.tS;
 
     // scale is exact by the precondition put on `RootInterval`
-    const δ = ri.tE - ri.tS;
+    const δ = ri.tE - tS;
 
     // Translate the polynomial such that the root is within δ from 0, then
     // scale it such that the roots stay <= 1, i.e. is in [0,1]
-    let pExactK1 = eChangeVariablesLinear(p, δ, tS);
+    const pExactK1 = eChangeVariablesLinear(p, δ, tS);
 
     // reduce the polynomial to double-double precision for faster root finding
-    let pDdK1 = pExactK1.map(eToDd);
+    const pDdK1 = pExactK1.map(eToDd);
 
     // update the double-double precision error bound - it is simply the error 
     // in rounding the exact coefficients to double-double precision
-    let errBoundK1 = pDdK1.map(c => eps*eps*c[1]);
-    let getPExactK1 = () => pExactK1;
+    const errBoundK1 = pDdK1.map(
+        c => eps*eps*c[1]
+    );
+    const getPExactK1 = () => pExactK1;
 
-    let risLo = allRootsCertified(pDdK1, 0, 1, errBoundK1, getPExactK1);
-    let ris: RootIntervalExp[] = [];
+    const risLo = allRootsCertified(pDdK1, 0, 1, errBoundK1, getPExactK1);
+    const ris: RootIntervalExp[] = [];
     for (let riLo of risLo) {
         ris.push({
             tS: twoSum(tS, riLo.tS * δ),

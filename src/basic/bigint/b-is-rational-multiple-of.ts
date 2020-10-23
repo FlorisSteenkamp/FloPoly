@@ -16,20 +16,20 @@ function bIsRationalMultipleOf(a: bigint[], b: bigint[]): boolean {
     if (a.length !== b.length) { return false; }
 
     // multiply by -1 if appropriate to make the leading coefficients positive
-    let a_ = a[0] < 0n ? a.map(c => -c) : a;
-    let b_ = b[0] < 0n ? b.map(c => -c) : b;
+    const a_ = a[0] < 0n ? a.map(c => -c) : a;
+    const b_ = b[0] < 0n ? b.map(c => -c) : b;
 
     /** leading coefficient of a */
-    let lcA = a_[0]; 
+    const lcA = a_[0]; 
     /** leading coefficient of b */
-    let lcB = b_[0]; 
+    const lcB = b_[0]; 
 
-    let gcd = bGcdInt(lcA, lcB);
-    let A = lcA / gcd;  // this division is exact
-    let B = lcB / gcd;  // this division is exact
+    const gcd = bGcdInt(lcA, lcB);
+    const A = lcA / gcd;  // this division is exact
+    const B = lcB / gcd;  // this division is exact
 
     for (let i=0; i<a_.length; i++) {
-        let Ab = A * b_[i];
+        const Ab = A * b_[i];
 
         if (Ab % B !== 0n) { return false; }
         if (Ab / B !== a_[i]) { return false; }

@@ -27,10 +27,9 @@ const compHornerWithRunningError = compHornerWithRunningError_;
  * @param x the value at which to evaluate the polynomial
  */
 function evalK(p: number[], x: number) {
-    let [r̂, e] = hornerWithRunningError(p, x);
+    const [r̂, e] = hornerWithRunningError(p, x);
     // inlined 
-
-    //let r̂ = p[0]; let e = Math.abs(r̂) / 2; for (let i=1; i<p.length; i++) { r̂ = r̂*x + p[i]; e = Math.abs(x)*e + Math.abs(r̂); } e = Number.EPSILON * (2*e - Math.abs(r̂));
+    //const r̂ = p[0]; const e = Math.abs(r̂) / 2; for (const i=1; i<p.length; i++) { r̂ = r̂*x + p[i]; e = Math.abs(x)*e + Math.abs(r̂); } e = Number.EPSILON * (2*e - Math.abs(r̂));
 
     if (Math.abs(r̂) - e < 0) {
         return evalK2(p, x);
@@ -43,7 +42,7 @@ function evalK(p: number[], x: number) {
 
 
 function evalK2(p: number[], x: number) {
-    let [r̂, e] = compHornerWithRunningError(p, x);
+    const [r̂, e] = compHornerWithRunningError(p, x);
 
     if (Math.abs(r̂) - e < 0) {
         return evalK4(p, x);
@@ -56,7 +55,7 @@ function evalK2(p: number[], x: number) {
 
 
 function evalK4(p: number[], x: number) {
-    let r̂ = CompHornerK(p, x, 4);
+    const r̂ = CompHornerK(p, x, 4);
 
     return r̂;
 }

@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { bPremSequencePrimitive } from '../../../src/index';
+import { bPremSequencePrimitive, bMultiply } from '../../../src/index';
 
 
 describe('bPremSequencePrimitive', function() {
@@ -24,6 +24,20 @@ describe('bPremSequencePrimitive', function() {
                     [1n]
                 ]);
             }
+        }
+
+
+        {
+            let p1 = [2n,-3n,6n,5n,-130n];
+            let p2 = [3n,4n,-2n];
+            let p = bMultiply(p1,p2);
+
+            let r = bPremSequencePrimitive(p, p2);
+
+            expect(r).to.deep.equal([
+                [6n, -1n, 2n, 45n, -382n, -530n, 260n],
+                [3n, 4n, -2n]
+            ]);
         }
 	});
 });

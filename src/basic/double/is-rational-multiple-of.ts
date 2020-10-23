@@ -18,26 +18,23 @@ function isRationalMultipleOf(a: number[], b: number[]): boolean {
     if (a.length !== b.length) { return false; }
 
     // multiply by -1 if appropriate to make the leading coefficients positive
-    let a_ = a[0] < 0 ? a.map(c => -c) : a;
-    let b_ = b[0] < 0 ? b.map(c => -c) : b;
-
-    // scale floating point coefficients to integers
-    a_ = scaleFloatsToInts(a_);
-    b_ = scaleFloatsToInts(b_);
+    // then scale floating point coefficients to integers
+    const a_ = scaleFloatsToInts(a[0] < 0 ? a.map(c => -c) : a);
+    const b_ = scaleFloatsToInts(b[0] < 0 ? b.map(c => -c) : b);
 
     /** leading coefficient of a */
-    let lcA = a_[0]; 
+    const lcA = a_[0]; 
     /** leading coefficient of b */
-    let lcB = b_[0]; 
+    const lcB = b_[0]; 
 
-    let gcd = gcdInt(lcA, lcB);
-    let A = lcA / gcd;  // this division is exact
-    let B = lcB / gcd;  // this division is exact
+    const gcd = gcdInt(lcA, lcB);
+    const A = lcA / gcd;  // this division is exact
+    const B = lcB / gcd;  // this division is exact
 
     for (let i=0; i<a_.length; i++) {
-        let Ab = twoProduct(A, b_[i]);
+        const Ab = twoProduct(A, b_[i]);
 
-        let { div, rem } = eLongDivide(Ab,[B]);
+        const { div, rem } = eLongDivide(Ab,[B]);
 
         if (eSign(rem) !== 0) { return false; }
         if (eCompare(div, [a_[i]]) !== 0) { return false; }

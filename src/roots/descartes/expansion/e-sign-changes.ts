@@ -36,12 +36,14 @@ const eSign = eSign_;
  * eSignChanges([[1],[2],[-3],[0],[0],[3],[-1]]); //=> 3
  */
 function eSignChanges(p: number[][]): number {
-	let d = p.length-1;
+	const d = p.length-1;
+
+	if (d < 1) { return 0; }
 
 	let result = 0;
 	let prevSign = Math.sign(eSign(p[0]));
 	for (let i=1; i<d+1; i++) {
-		let sign_ = Math.sign(eSign(p[i]));
+		const sign_ = Math.sign(eSign(p[i]));
 		
 		if (sign_ !== prevSign && sign_ !== 0) {
 			result++;

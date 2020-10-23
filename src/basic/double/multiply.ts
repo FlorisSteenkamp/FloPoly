@@ -20,16 +20,16 @@ const removeLeadingZeros = removeLeadingZeros_;
  * multiply([1,2,3], [2,5,3,5]); //=> [2, 9, 19, 26, 19, 15]
  */
 function multiply(p1: number[], p2: number[]): number[] {
-	let d1 = p1.length-1;
-	let d2 = p2.length-1;
+	const d1 = p1.length-1;
+	const d2 = p2.length-1;
 
 	// if either or both is the zero polynomial
 	if (d1 < 0 || d2 < 0) { 
 		return [];
 	}
 
-	let d = d1+d2;
-	let r = new Array(d+1).fill(0);
+	const d = d1+d2;
+	const r = new Array(d+1).fill(0);
 	for (let i=0; i<d1+1; i++) {
 		for (let j=0; j<d2+1; j++) {
 			r[d-(i+j)] += (p1[d1-i] * p2[d2-j]); 				

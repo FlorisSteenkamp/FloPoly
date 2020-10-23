@@ -27,8 +27,8 @@ const qaq = ddAddDd;
  * ddDeflate([[0,1], [0,-1]], [0,1]);                //=> [[0,1]]
  */
 function ddDeflate(p: number[][], root: number): number[][] {
-	let d = p.length-1;
-	let bs = [p[0]];
+	const d = p.length-1;
+	const bs = [p[0]];
 	for (let i=1; i<d; i++) {
 		bs.push(
 			qaq(p[i],qmd(root,bs[i-1]))

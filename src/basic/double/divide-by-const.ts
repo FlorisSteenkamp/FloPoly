@@ -8,8 +8,8 @@
  * @param c a constant
  */
 function divideByConst(p: number[], c: number): number[] {
-	let d = p.length;
-	let r: number[] = [];
+	const d = p.length;
+	const r: number[] = [];
 	for (let i=0; i<d; i++) {
 		r.push(p[i] / c);
 	}

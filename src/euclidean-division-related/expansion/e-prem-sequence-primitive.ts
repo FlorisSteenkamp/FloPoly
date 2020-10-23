@@ -23,13 +23,15 @@ function ePremSequencePrimitive(
         f: number[][],
         g: number[][]): number[][][] {
 
-    let r = [f,g]; // Initialize the PRS
+    const r = [f,g]; // Initialize the PRS
     let i = 1;
     while (true) {
         let r_ = ePdivTrivial(r[i-1], r[i]).r;
         r_ = eGetPrimitivePart(r_);
 
-        if (r_.length === 0) { return r; } 
+        if (r_.length === 0) { 
+            return r; 
+        } 
         r.push(r_);
         if (r_.length === 1) {
             // the remainder is a constant so the next remainder 

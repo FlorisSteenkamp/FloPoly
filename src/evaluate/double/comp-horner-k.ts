@@ -33,13 +33,13 @@ const Horner = Horner_;
 function CompHornerK(p: number[], x: number, K: number) {
 	K = Math.min(p.length-1, K);
 
-	let { hs, ps } = EFTHornerK(p, x, K);
-	let leafStart = 2**(K-1); // cardinality and start of the leaves
+	const { hs, ps } = EFTHornerK(p, x, K);
+	const leafStart = 2**(K-1); // cardinality and start of the leaves
 	for (let i=0; i<leafStart; i++) {
 		hs.push(Horner(ps[leafStart+i], x));
 	}
 
-	let r̄ = SumK(hs, K);
+	const r̄ = SumK(hs, K);
 
 	return r̄;
 }

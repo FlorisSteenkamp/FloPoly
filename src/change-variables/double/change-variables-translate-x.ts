@@ -20,12 +20,12 @@ function changeVariablesTranslateX(
 	// We let the coefficients of p(x + b) be denoted by d_i in the code below. 
 	// d_i is calculated as d = T*c, where c are the original coefficients.
 	 
-	let d = p.length-1;
+	const d = p.length-1;
 
 	if (d < 0) { return []; }
 	
 	// Initialize a zero matrix
-	let t: number[][] = [];
+	const t: number[][] = [];
 	for (let i=0; i<d+1; i++) {
 		t.push(new Array(d+1).fill(0));
 	}
@@ -40,12 +40,11 @@ function changeVariablesTranslateX(
 	}
 	
 	// Multiply
-	let res: number[] = new Array(d+1).fill(0);
+	const res: number[] = new Array(d+1).fill(0);
 	for (let i=0; i<=d; i++) {
 		res[d-i] = 0;
 		for (let j=i; j<=d; j++) {
-			let acc = t[i][j] * p[d-j];
-			res[d-i] += acc;
+			res[d-i] += t[i][j] * p[d-j];
 		}
 	}
 	

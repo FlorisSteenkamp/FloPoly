@@ -16,7 +16,7 @@ function bGcdInt(a: bigint, b: bigint): bigint {
 	if (b === 0n) { return a; }
 
 	while (b !== 0n) {
-		let t = b;
+		const t = b;
 		b = a % b;
 		a = t;
 	}
@@ -34,8 +34,8 @@ function bGcdInt(a: bigint, b: bigint): bigint {
  * @param vals the integers for which the GCD is to be calculated
  */
 function bGcdInts(vals: bigint[]): bigint {
-	let vals_ = vals.slice();
-    let len = vals_.length;
+	const vals_ = vals.slice();
+    const len = vals_.length;
 
     // make array of numbers all positive
 	for (let i=0; i<len; i++) { 
@@ -58,20 +58,20 @@ function bGcdInts(vals: bigint[]): bigint {
  * calculating GCDs rescursively using a tree (Divide and Conquer).
  * 
  * * It turns out this method is *slower* than the naive method
- */
+ *//*
 function bGcdIntsTree(vals: bigint[]): bigint {
-	let vals_ = vals.slice();
+	const vals_ = vals.slice();
 
     // make array of numbers all positive
-	for (let i=0; i<vals_.length; i++) { 
+	for (const i=0; i<vals_.length; i++) { 
 		vals_[i] = vals_[i] < 0n ? -vals_[i] : vals_[i]; 
 	}
 	
 	// Divide and conquer
 	while (vals_.length > 1) {
-		let newVals = [];
-		let len = vals_.length;
-		for (let i=0; i<len-1; i += 2) {
+		const newVals = [];
+		const len = vals_.length;
+		for (const i=0; i<len-1; i += 2) {
 			newVals.push(bGcdInt(vals_[i], vals_[i+1]));
 		}
 		if (len % 2 !== 0) {
@@ -83,6 +83,7 @@ function bGcdIntsTree(vals: bigint[]): bigint {
     
 	return vals_[0];
 } 
+*/
 
 
-export { bGcdInt, bGcdInts, bGcdIntsTree }
+export { bGcdInt, bGcdInts/*, bGcdIntsTree*/ }

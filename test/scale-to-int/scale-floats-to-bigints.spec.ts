@@ -23,7 +23,6 @@ describe('scaleFloatsToBigints', function() {
 			0n, 1n
 		]);
 
-
 		let p4 = [
 			1,
 			-3.08,
@@ -47,6 +46,14 @@ describe('scaleFloatsToBigints', function() {
 			   148955429253356544n,
 			    -4437733221812307n,
 			    0n
+		]);
+
+
+		// the trivial case
+		let p5 = [3, 7];
+		let res5 = scaleFloatsToBigints(p5);
+		expect(res5).to.eql([
+			3n, 7n
 		]);
 	});
 });

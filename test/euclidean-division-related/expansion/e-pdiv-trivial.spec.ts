@@ -9,30 +9,94 @@ describe('ePdivTrivial', function() {
 	function() {
         {
             const ps = [
-                [[1],[7],[6]],
-                [[1],[-5],[-6]],
-                [[1],[6]],
-                [[1],[-6]],
-                [[1],[1]]
+                [[1],[7],[6]],      // 0
+                [[1],[-5],[-6]],    // 1
+                [[1],[6]],          // 2
+                [[1],[-6]],         // 3
+                [[1],[1]],          // 4
+                [[1],[7],[6],[4]],  // 5
+                [[-1],[6]],         // 6
+                [[-1],[-6]],        // 7
             ];
 
             {
-                let r = ePdivTrivial(ps[0], ps[2]);  
-                expect(r).to.deep.equal({ q: [[1],[1]], r: [] });
+                let r = ePdivTrivial(ps[0], ps[2]);
+                let expected: { q: number[][]; r: number[][] } = { q: [[1],[1]], r: [] };
+                expect(r).to.deep.equal(
+                    expected,
+                    `result: ${r}, expected: ${expected}`
+                );
             }
             {
-                let r = ePdivTrivial(ps[0], ps[4]);
-                expect(r).to.deep.equal({ q: [[1],[6]], r: [] });
+                let r = ePdivTrivial(ps[2], ps[0]);
+                let expected: { q: number[][]; r: number[][] } = { q: [], r: ps[2] };
+                expect(r).to.deep.equal(
+                    expected,
+                    `result: ${r}, expected: ${expected}`
+                );
             }
+
+
+            {
+                let r = ePdivTrivial(ps[0], ps[4]);
+                let expected: { q: number[][]; r: number[][] } = { q: [[1],[6]], r: [] };
+                expect(r).to.deep.equal(
+                    expected,
+                    `result: ${r}, expected: ${expected}`
+                );
+            }
+
 
             {
                 let r = ePdivTrivial(ps[1], ps[3]);
-                expect(r).to.deep.equal({ q: [[1],[1]], r: [] });
+                let expected: { q: number[][]; r: number[][] } = { q: [[1],[1]], r: [] };
+                expect(r).to.deep.equal(
+                    expected,
+                    `result: ${r}, expected: ${expected}`
+                );
             }
+
 
             {
                 let r = ePdivTrivial(ps[1], ps[4]);
-                expect(r).to.deep.equal({ q: [[1],[-6]], r: [] });
+                let expected: { q: number[][]; r: number[][] } = { q: [[1],[-6]], r: [] };
+                expect(r).to.deep.equal(
+                    expected,
+                    `result: ${r}, expected: ${expected}`
+                );
+            }
+
+
+            {
+                let r = ePdivTrivial(ps[2], ps[5]);
+                let expected: { q: number[][]; r: number[][] } = { q: [], r: ps[2] };
+                expect(r).to.deep.equal(
+                    expected,
+                    `result: ${r}, expected: ${expected}`
+                );
+            }
+
+
+            // test positiveMultiplier parameter
+            {
+                let r = ePdivTrivial(ps[6], ps[7], false);
+                let expected: { q: number[][]; r: number[][] } = { q: [[-1]], r: [[-12]] };
+                expect(r).to.deep.equal(expected, `result: ${r}, expected: ${expected}`);
+            }
+            {
+                let r = ePdivTrivial(ps[7], ps[6], false);
+                let expected: { q: number[][]; r: number[][] } = { q: [[-1]], r: [[12]] };
+                expect(r).to.deep.equal(expected, `result: ${r}, expected: ${expected}`);
+            }
+            {
+                let r = ePdivTrivial(ps[6], ps[7], true);
+                let expected: { q: number[][]; r: number[][] } = { q: [[1]], r: [[12]] };
+                expect(r).to.deep.equal(expected, `result: ${r}, expected: ${expected}`);
+            }
+            {
+                let r = ePdivTrivial(ps[7], ps[6], true);
+                let expected: { q: number[][]; r: number[][] } = { q: [[1]], r: [[-12]] };
+                expect(r).to.deep.equal(expected, `result: ${r}, expected: ${expected}`);
             }
         }
 

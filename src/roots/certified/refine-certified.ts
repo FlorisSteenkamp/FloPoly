@@ -1,11 +1,11 @@
 
 import { evalCertified as evalCertified_ } from "../../evaluate/double/eval-certified";
-import { eHorner as HornerExact_ } from "../../evaluate/expansion/e-horner";
+import { eHorner as eHorner_ } from "../../evaluate/expansion/e-horner";
 import { eEstimate as eEstimate_ } from 'big-float-ts';
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const evalCertified = evalCertified_;
-const HornerExact = HornerExact_;
+const eHorner = eHorner_;
 const eEstimate = eEstimate_;
 
 
@@ -94,7 +94,7 @@ function refineCertified(
 		//let δ = 2 * eps * max(1,abs(b));
 		//let δ = 2 * u * max(1,abs(b));
 		let δ: number;
-		let mm = max(abs(a),abs(b))
+		const mm = max(abs(a),abs(b))
 		if (mm <= 1) {
 			δ = eps;
 		} else {
@@ -103,7 +103,7 @@ function refineCertified(
 			δ = eps * 2**Math.ceil(Math.log2(mm)); 
 		}
 		//tol = 2.0 * macheps * abs ( b ) + t;
-		let m = 0.5*(c - b);
+		const m = 0.5*(c - b);
 
 		//if (abs(m) <= δ || fb === 0) {
 		// modified from the original since we dont need the fb === 0 check here
@@ -124,7 +124,7 @@ function refineCertified(
 				q = 1 - s;
 			} else {
 				q = fa / fc;
-				let r = fb / fc;
+				const r = fb / fc;
 				p = s*(2*m*q*(q - r) - (b - a)*(r - 1));
 				q = (q - 1)*(r - 1)*(s - 1);
 			}
@@ -154,8 +154,8 @@ function refineCertified(
 		}
 
 		fb = exact 
-			? eEstimate(HornerExact(psExact.ps[diffCount],b))
-			: evalCertified(p,pE,b);
+			? eEstimate(eHorner(psExact.ps[diffCount],b))
+			: evalCertified(p, b, pE);
 
 		if (fb === 0) {
 			// Since `evalCertified` returns zero if undecided the zero result
@@ -168,12 +168,12 @@ function refineCertified(
 			// results that should usually be !== 0. 
 			// It is a pre-filter. If the result === 0 we need to sharpen the
 			// ability of the evaluation by somehow reducing the error bound
-			let sL = Math.max(lb, b - δ);  // dont overstep bounds
-			let sR = Math.min(ub, b + δ);  // dont overstep bounds
+			const sL = Math.max(lb, b - δ);  // dont overstep bounds
+			const sR = Math.min(ub, b + δ);  // dont overstep bounds
 			// Note: sR - sL <= 2*δ provided lb, ub are in [-1..1] - usually 
 			// (when sL === s - δ and sR === s + δ) sR - sL === 2*δ. Also δ > 0
-			let fsL = evalCertified(p,pE,sL);
-			let fsR = evalCertified(p,pE,sR);
+			const fsL = evalCertified(p, sL, pE);
+			const fsR = evalCertified(p, sR, pE);
 			// if the evaluation method is strong enough return the result
 			if (fsL*fsR !== 0) { 
 				return [sL,sR]; 
@@ -187,7 +187,7 @@ function refineCertified(
 			// a double-double polynomial and we very rarely expect to get to 
 			// this point)
 			psExact.ps = psExact.ps || getPsExact();
-			fb = eEstimate(HornerExact(psExact.ps[diffCount],b));
+			fb = eEstimate(eHorner(psExact.ps[diffCount],b));
 			// if the exact evaluation returns 0 we have an exact root
 			if (fb === 0) { 
 				return [b,b]; 

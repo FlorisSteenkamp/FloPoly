@@ -3,9 +3,11 @@ import { assert, expect } from 'chai';
 import { describe } from 'mocha';
 import { 
 	allRoots, fromRoots, flatRootsArr, 
-	flatCoefficientsArr, flatCoefficients, Horner, hornerWithRunningError, toCasStr 
+	flatCoefficientsArr, flatCoefficients, Horner, hornerWithRunningError, 
+	toCasStr, multiply
 } from '../../../src/index';
 import { rootAccurateEnough } from './root-accurate-enough';
+import {  } from '../../../node';
 
 
 const negInf = Number.NEGATIVE_INFINITY;
@@ -23,6 +25,50 @@ describe('allRoots', function() {
 		assert(roots1.length === 0);
 		assert(roots2.length === 0);
 	});
+
+
+	it('should return sorted roots when there are roots at zero',
+	function() {
+		// roots at -1, 1
+		let p: number[] = multiply([1,1], [1,-1]);
+		// add 3 more at 0
+		p.push(0,0,0);
+
+		let roots = allRoots(p);
+		
+		expect(roots).to.eql([-1,0,0,0,1]);
+	});
+
+
+	it('should return roots correctly if a root is very close to the lower bound',
+	function() {
+		// roots at -1, 1
+		let p: number[] = multiply([1,-1.07], [1,-1.000000000000001]);
+		// add 2 more at 0
+		p.push(0,0);
+
+		let roots = allRoots(p,1,5);
+		
+		//console.log(roots);
+		//console.log(toCasStr(p));
+		expect(roots).to.eql([1, 1.0700000000000023]);
+	});
+
+
+	it('should return roots correctly if a root is very close to the upper bound',
+	function() {
+		// roots at -1, 1
+		let p: number[] = multiply([1,-1.07], [1,-1.000000000000001]);
+		// add 2 more at 0
+		p.push(0,0);
+
+		let roots = allRoots(p,-5,1);
+		
+		//console.log(roots);
+		//console.log(toCasStr(p));
+		expect(roots).to.eql([0, 0, 1]);
+	});
+
 
 	it('should only return roots in the given left half-open range', 
 	function() {

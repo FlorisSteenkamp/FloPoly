@@ -16,7 +16,7 @@ const twoSum = twoSum_;
  * @param K 
  */
 function vecSum(p_: number[]) {
-	let p = p_.slice();
+	const p = p_.slice();
 	for (let i=1; i<p.length; i++) {
 		[p[i-1], p[i]] = twoSum(p[i], p[i-1]);
 	}

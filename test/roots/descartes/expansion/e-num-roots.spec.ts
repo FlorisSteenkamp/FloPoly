@@ -3,7 +3,7 @@ import { assert, expect } from 'chai';
 import { describe } from 'mocha';
 import { eNumRoots } from '../../../../src/index';
 
-/*
+
 describe('eNumRoots', function() {
 	it('should correctly calculate the number of roots of some polynomials', 
 	function() {
@@ -13,4 +13,3 @@ describe('eNumRoots', function() {
 		}
 	});
 });
-*/

@@ -21,9 +21,9 @@ const eSign = eSign_;
  * represents the polynomial `5x^2 - 3x`
  */
 function eNumRootsIn01(p: number[][]): number {
-	let ps = eSturmChain(p);
-	let as = ps.map(p => eSign(p[p.length-1])); // evaluate at 0
-	let bs = ps.map(p => eSign(eEvaluateAt1(p))); // evaluate at 1
+	const ps = eSturmChain(p);
+	const as = ps.map(p => eSign(p[p.length-1])); // evaluate at 0
+	const bs = ps.map(p => eSign(eEvaluateAt1(p))); // evaluate at 1
 	
 	return signChanges(as) - signChanges(bs);
 }

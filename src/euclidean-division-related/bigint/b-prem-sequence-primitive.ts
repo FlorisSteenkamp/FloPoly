@@ -23,7 +23,7 @@ function bPremSequencePrimitive(
         f: bigint[],
         g: bigint[]): bigint[][] {
 
-    let r = [f,g]; // Initialize the PRS
+    const r = [f,g]; // Initialize the PRS
     let i = 1;
     while (true) {
         let r_ = bPdivTrivial(r[i-1], r[i]).r;

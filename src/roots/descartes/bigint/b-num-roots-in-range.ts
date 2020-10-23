@@ -20,7 +20,7 @@ const bSignChanges = bSignChanges_;
  * @param b an upper bound
  * 
  * @example 
- * let p = [1n, 1n, -64n, 236n, -240n];
+ * const p = [1n, 1n, -64n, 236n, -240n];
  * bNumRootsInRange(p,-20,-11);  //=> 0
  * bNumRootsInRange(p,-11,-9);   //=> 1  
  * bNumRootsInRange(p,-11,3.5);  //=> 3
@@ -29,9 +29,9 @@ const bSignChanges = bSignChanges_;
 function bNumRootsInRange(
 		p: bigint[], a: bigint, b: bigint): number {
 
-	let ps = bSturmChain(p);
-	let as = ps.map(p => bHorner(p,a));
-	let bs = ps.map(p => bHorner(p,b));
+	const ps = bSturmChain(p);
+	const as = ps.map(p => bHorner(p,a));
+	const bs = ps.map(p => bHorner(p,b));
 	
 	return bSignChanges(as) - bSignChanges(bs);
 }

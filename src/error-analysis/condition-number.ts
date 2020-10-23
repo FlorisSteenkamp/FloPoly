@@ -15,11 +15,11 @@ import { CompHornerK } from "../evaluate/double/comp-horner-k";
  * represents the polynomial `5x^2 - 3x`
  */
 function conditionNumber(p: number[], x: number) {
-    let pN = absCoeff(p);
-    let pD = p;
+    const pN = absCoeff(p);
+    const pD = p;
 
-    let N = CompHornerK(pN, x, 4);
-    let D = Math.abs(CompHornerK(pD, x, 4));
+    const N = CompHornerK(pN, x, 4);
+    const D = Math.abs(CompHornerK(pD, x, 4));
 
     return Math.abs(N / D);
 }

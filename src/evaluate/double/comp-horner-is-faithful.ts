@@ -35,15 +35,15 @@ const u = Number.EPSILON;
  * @param x the value at which to evaluate the polynomial
  */
 function compHornerIsFaithful(p: number[], x: number) {
-	let n = p.length-1;
+	const n = p.length-1;
 	
-	let { r̂, pπ, pσ } = EFTHorner(p,x);
-	let ĉ = HornerSum(pπ, pσ, x);
-	let [e, r̄] = twoSum(r̂, ĉ);
+	const { r̂, pπ, pσ } = EFTHorner(p,x);
+	const ĉ = HornerSum(pπ, pσ, x);
+	const [e, r̄] = twoSum(r̂, ĉ);
 
-	let b̂ = HornerAbsSum(pπ, pσ, Math.abs(x));
-	let α̂  = (γs(2*n - 1) * b̂) / ((1 - 2*(n+1) * u));
-	let β̂  = (α̂ + Math.abs(e)) / (1 - 2*u);
+	const b̂ = HornerAbsSum(pπ, pσ, Math.abs(x));
+	const α̂  = (γs(2*n - 1) * b̂) / ((1 - 2*(n+1) * u));
+	const β̂  = (α̂ + Math.abs(e)) / (1 - 2*u);
 
 	return { 
 		isFaithful: α̂  < (u/2) * Math.abs(r̄),

@@ -20,12 +20,12 @@
  * bSignChanges([1n,2n,-3n,0n,0n,3n,-1n]); //=> 3
  */
 function bSignChanges(p: bigint[]): number {
-	let d = p.length-1;
+	const d = p.length-1;
 
 	let result = 0;
 	let prevSign = p[0] === 0n ? 0 : p[0] < 0n ? -1 : +1;
 	for (let i=1; i<d+1; i++) {
-		let sign = p[i] === 0n ? 0 : p[i] < 0n ? -1 : +1;
+		const sign = p[i] === 0n ? 0 : p[i] < 0n ? -1 : +1;
 		
 		if (sign !== prevSign && sign !== 0) {
 			result++;

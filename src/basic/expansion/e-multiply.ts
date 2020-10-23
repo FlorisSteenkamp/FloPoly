@@ -28,16 +28,16 @@ const fastExpansionSum = fastExpansionSum_;
 function eMultiply(
 		a: number[][], b: number[][]): number[][] {
 
-	let da = a.length-1;
-	let db = b.length-1;
+	const da = a.length-1;
+	const db = b.length-1;
 
 	// if either or both is the zero polynomial
 	if (da < 0 || db < 0) { 
 		return [];
 	}
 
-	let d = da + db;
-	let result: number[][] = new Array(d+1).fill([0]);
+	const d = da + db;
+	const result: number[][] = new Array(d+1).fill([0]);
 	for (let i=0; i<da+1; i++) {
 		for (let j=0; j<db+1; j++) {
 			result[d-(i+j)] = fastExpansionSum(

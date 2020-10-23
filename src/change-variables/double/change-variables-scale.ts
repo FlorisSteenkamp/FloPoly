@@ -21,12 +21,14 @@ function changeVariablesScale(
 	// `d_i` is calculated as `d = T*c`, where `c` is the original coefficient
 	// vector.
 	 
-	let d = p.length-1;
+	const d = p.length-1;
 
-	if (d < 0) { return []; }
+	if (d < 0) { 
+		return []; 
+	}
 	
 	// Initialize a zero matrix
-	let t: number[][] = [];
+	const t: number[][] = [];
 	for (let i=0; i<d+1; i++) {
 		t.push(new Array(d+1).fill(0));
 	}
@@ -41,7 +43,7 @@ function changeVariablesScale(
 	}
 	
 	// Multiply
-	let res: number[] = new Array(d+1).fill(0);
+	const res: number[] = new Array(d+1).fill(0);
 	for (let i=0; i<=d; i++) {
 		res[d-i] = 0;
 		for (let j=i; j<=d; j++) {

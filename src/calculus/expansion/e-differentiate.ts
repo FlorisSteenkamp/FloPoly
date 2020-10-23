@@ -17,9 +17,9 @@ const scaleExpansion = scaleExpansion_;
  * eDifferentiate([[5], [4], [3], [2], [1]]); //=> [[20], [12], [6], [2]]
  */
 function eDifferentiate(p: number[][]): number[][] {
-	let result: number[][] = [];
+	const result: number[][] = [];
 	
-	let d = p.length - 1;
+	const d = p.length - 1;
 	for (let i=0; i<d; i++) {
 		result.push(scaleExpansion(p[i], d-i));
 	}

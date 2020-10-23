@@ -11,7 +11,7 @@ const bMultiply = bMultiply_;
  * 
  * * currently, only integer roots are allowed
  * 
- * @param roots any array of roots
+ * @param roots an array of roots
  * 
  * @example
  * fromRoots([1n,2n,3n,3n]); //=> [1n, -9n, 29n, -39n, 18n]

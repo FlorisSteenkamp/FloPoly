@@ -23,8 +23,8 @@ const expansionProduct = expansionProduct_;
 function eMultiplyByConst(c: number[], p: number[][]): number[][] {
 	if (eSign(c) === 0) { return []; }
 	
-	let d = p.length-1;
-	let result = [];
+	const d = p.length-1;
+	const result = [];
 	for (let i=0; i<d+1; i++) {
 		result.push(expansionProduct(c, p[i]));
 	}

@@ -22,9 +22,9 @@ const getContent = content_;
  * `[5,-3,0]` represents the polynomial `5x^2 - 3x`
  */
 function primitivePart(p: number[]): number[] {
-    let c = getContent(p);
+    const c = getContent(p);
 
-    let p_: number[] = [];
+    const p_: number[] = [];
 
     for (let i=0; i<p.length; i++) {
         p_.push(p[i] / c);

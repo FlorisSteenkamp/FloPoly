@@ -16,11 +16,11 @@ const eNegativeOf = eNegativeOf_;
  * eReflectAboutYAxis([[5],[4],[3],[2],[1]]); //=> [[5], [-4], [3], [-2], [1]]
  */
 function eReflectAboutYAxis(p: number[][]): number[][] {
-	let d = p.length-1;
+	const d = p.length-1;
 
 	if (d < 0) { return []; }
 
-	let result = p.slice();
+	const result = p.slice();
 	for (let i=0; i<d+1; i++) {
 		if (i % 2) {
 			result[i] = eNegativeOf(result[i]); 

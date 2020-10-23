@@ -20,9 +20,9 @@ const bContent = bContent_;
  * polynomial `5x^2 - 3x`
  */
 function bPrimitivePart(p: bigint[]): bigint[] {
-    let c = bContent(p);
+    const c = bContent(p);
 
-    let p_: bigint[] = [];
+    const p_: bigint[] = [];
 
     for (let i=0; i<p.length; i++) {
         p_.push(p[i] / c);

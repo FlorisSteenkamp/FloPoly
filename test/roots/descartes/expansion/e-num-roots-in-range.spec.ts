@@ -3,7 +3,7 @@ import { assert, expect } from 'chai';
 import { describe } from 'mocha';
 import { eNumRootsInRange } from '../../../../src/index';
 
-/*
+
 describe('eNumRootsInRange', function() {
 	it('should correctly calculate the number of roots within an interval for some polynomials', 
 	function() {
@@ -18,4 +18,3 @@ describe('eNumRootsInRange', function() {
 		}
 	});
 });
-*/

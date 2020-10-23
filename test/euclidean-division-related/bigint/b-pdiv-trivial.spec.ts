@@ -9,11 +9,14 @@ describe('bPdivTrivial', function() {
 	function() {
         {
             const ps = [
-                [1n,7n,6n],
-                [1n,-5n,-6n],
-                [1n,6n],
-                [1n,-6n],
-                [1n,1n]
+                [1n,7n,6n],     // 0
+                [1n,-5n,-6n],   // 1
+                [1n,6n],        // 2
+                [1n,-6n],       // 3
+                [1n,1n],        // 4
+                [1n,7n,6n,4n],  // 5
+                [-1n,6n],       // 6
+                [-1n,-6n],      // 7
             ];
 
             {
@@ -25,6 +28,16 @@ describe('bPdivTrivial', function() {
                 );
             }
             {
+                let r = bPdivTrivial(ps[2], ps[0]);  
+                let expected: { q: bigint[]; r: bigint[] } = { q: [], r: ps[2] };
+                expect(r).to.deep.equal(
+                    expected,
+                    `result: ${r}, expected: ${expected}`
+                );
+            }
+
+
+            {
                 let r = bPdivTrivial(ps[0], ps[4]);
                 let expected: { q: bigint[]; r: bigint[] } = { q: [1n,6n], r: [] };
                 expect(r).to.deep.equal(
@@ -32,6 +45,15 @@ describe('bPdivTrivial', function() {
                     `result: ${r}, expected: ${expected}`
                 );
             }
+            {
+                let r = bPdivTrivial(ps[4], ps[0]);
+                let expected: { q: bigint[]; r: bigint[] } = { q: [], r: ps[4] };
+                expect(r).to.deep.equal(
+                    expected,
+                    `result: ${r}, expected: ${expected}`
+                );
+            }
+
 
             {
                 let r = bPdivTrivial(ps[1], ps[3]);
@@ -41,6 +63,15 @@ describe('bPdivTrivial', function() {
                     `result: ${r}, expected: ${expected}`
                 );
             }
+            {
+                let r = bPdivTrivial(ps[3], ps[1]);
+                let expected: { q: bigint[]; r: bigint[] } = { q: [], r: ps[3] };
+                expect(r).to.deep.equal(
+                    expected,
+                    `result: ${r}, expected: ${expected}`
+                );
+            }
+
 
             {
                 let r = bPdivTrivial(ps[1], ps[4]);
@@ -49,6 +80,47 @@ describe('bPdivTrivial', function() {
                     expected,
                     `result: ${r}, expected: ${expected}`
                 );
+            }
+            {
+                let r = bPdivTrivial(ps[4], ps[1]);
+                let expected: { q: bigint[]; r: bigint[] } = { q: [], r: ps[4] };
+                expect(r).to.deep.equal(
+                    expected,
+                    `result: ${r}, expected: ${expected}`
+                );
+            }
+
+
+            {
+                let r = bPdivTrivial(ps[2], ps[5]);
+                let expected: { q: bigint[]; r: bigint[] } = { q: [], r: ps[2] };
+                expect(r).to.deep.equal(
+                    expected,
+                    `result: ${r}, expected: ${expected}`
+                );
+            }
+
+
+            // test positiveMultiplier parameter
+            {
+                let r = bPdivTrivial(ps[6], ps[7], false);
+                let expected: { q: bigint[]; r: bigint[] } = { q: [-1n], r: [-12n] };
+                expect(r).to.deep.equal(expected, `result: ${r}, expected: ${expected}`);
+            }
+            {
+                let r = bPdivTrivial(ps[7], ps[6], false);
+                let expected: { q: bigint[]; r: bigint[] } = { q: [-1n], r: [12n] };
+                expect(r).to.deep.equal(expected, `result: ${r}, expected: ${expected}`);
+            }
+            {
+                let r = bPdivTrivial(ps[6], ps[7], true);
+                let expected: { q: bigint[]; r: bigint[] } = { q: [1n], r: [12n] };
+                expect(r).to.deep.equal(expected, `result: ${r}, expected: ${expected}`);
+            }
+            {
+                let r = bPdivTrivial(ps[7], ps[6], true);
+                let expected: { q: bigint[]; r: bigint[] } = { q: [1n], r: [-12n] };
+                expect(r).to.deep.equal(expected, `result: ${r}, expected: ${expected}`);
             }
         }
         {

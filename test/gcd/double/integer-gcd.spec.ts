@@ -97,5 +97,26 @@ describe('integer gcd', function() {
             let t1 = performance.now();
             //console.log("gcd tree took " + ((t1 - t0)).toFixed(3) + " milliseconds.");
         }
+
+
+        {
+            let a = 1072;
+            let b = 464; 
+            let r = gcdIntBinary(a,b);
+            expect(r).to.equal(16);
+        }
+
+        {
+            let a = 0;
+            let b = 464; 
+            let r1 = gcdInt(a,b);
+            let r2 = gcdInt(b,a);
+            let r3 = gcdIntBinary(a,b);
+            let r4 = gcdIntBinary(b,a);
+            expect(r1).to.equal(b);
+            expect(r2).to.equal(b);
+            expect(r3).to.equal(b);
+            expect(r4).to.equal(b);
+        }
 	});
 });

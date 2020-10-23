@@ -22,7 +22,7 @@ const eDegree = eDegree_;
  * 
  * * **precondition:** g !== [], i.e. unequal to the zero polynomial.
  * 
- * * **precondition:** the coefficients must integer Shewchuk floating point 
+ * * **precondition:** the coefficients must be integer Shewchuk floating point 
  * expansions; if they are not they can easily be scaled from 
  * floating point numbers to Shewchuk expansions by calling `scaleFloatsToInts` 
  * or similar before calling this function (recall that all floating point 
@@ -48,22 +48,22 @@ function ePremSequenceSubresultant(
         g: number[][], 
         sturm = false): number[][][] {
 
-    let r = [f,g]; // Initialize the PRS
-    let d = [eDegree(f), eDegree(g)];
-    let a = [[1]]; // a_1 === 1
-    let c = [[1]]; // c_1 === 1
+    const r = [f,g]; // Initialize the PRS
+    const d = [eDegree(f), eDegree(g)];
+    const a = [[1]]; // a_1 === 1
+    const c = [[1]]; // c_1 === 1
     let i = 2;
 
     while (true) {
         a.push(r[i-1][0]); // leading coefficient of r[i-1]
-        let d_ = d[i-2] - d[i-1];
-        let sgn = sturm
+        const d_ = d[i-2] - d[i-1];
+        const sgn = sturm
             ? -1
             : (d_+1) % 2 === 0 ? +1 : -1;
-        let D = expansionProduct(a[i-2], eIntPow(c[i-2], d_));
-        let exp = -d_+1;
-        let cTerm1 = eIntPow(a[i-1], d_);
-        let cTerm2 = eIntPow(c[i-2], Math.abs(exp));
+        const D = expansionProduct(a[i-2], eIntPow(c[i-2], d_));
+        const exp = -d_+1;
+        const cTerm1 = eIntPow(a[i-1], d_);
+        const cTerm2 = eIntPow(c[i-2], Math.abs(exp));
 
         c.push(exp < 0 
             ? eDiv(cTerm1, cTerm2, 0)

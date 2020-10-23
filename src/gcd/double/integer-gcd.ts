@@ -18,7 +18,7 @@ function gcdInt(a: number, b: number): number {
 	if (b === 0) { return a; }
 
 	while (b !== 0) {
-		let t = b;
+		const t = b;
 		b = a % b;
 		a = t;
 	}
@@ -81,8 +81,8 @@ function gcdIntBinary(a: number, b: number): number {
  * @param vals the integers for which the GCD is to be calculated
  */
 function gcdInts(vals: number[]): number {
-	let vals_ = vals.slice();
-    let len = vals_.length;
+	const vals_ = vals.slice();
+    const len = vals_.length;
 
     // make array of numbers all positive
 	for (let i=0; i<len; i++) { 
@@ -116,8 +116,8 @@ function gcdIntsTree(vals: number[]): number {
 	
 	// Divide and conquer
 	while (vals_.length > 1) {
-		let newVals = [];
-		let len = vals_.length;
+		const newVals = [];
+		const len = vals_.length;
 		for (let i=0; i<len-1; i += 2) {
 			newVals.push(gcdInt(vals_[i], vals_[i+1]));
 		}

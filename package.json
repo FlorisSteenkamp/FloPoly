@@ -35,7 +35,6 @@
         "@types/chai": "^4.2.12",
         "@types/mocha": "^7.0.2",
         "@types/node": "^13.13.15",
-        "assemblyscript": "^0.12.5",
         "chai": "^4.2.0",
         "circular-dependency-plugin": "^5.2.0",
         "mocha": "^7.2.0",
@@ -55,6 +54,6 @@
         "build-browser": "rimraf browser && webpack",
         "build-wasm": "asc --runtime none --converge --optimizeLevel 3 --shrinkLevel 2 --binaryFile index.wasm --textFile index.wat assembly/refine-multi-with-err-bounds.ts",
         "test": "nyc mocha",
-        "a": "mocha ./test/basic/bigint/b-is-rational-multiple-of.spec.ts --timeout 13000 --require ts-node/register --require source-map-support/register"
+        "a": "mocha ./test/evaluate/expansion/e-e-horner.spec.ts --timeout 13000 --require ts-node/register --require source-map-support/register"
     }
 }

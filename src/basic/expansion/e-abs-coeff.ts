@@ -14,7 +14,7 @@ const eAbs = eAbs_;
  * represents the polynomial `5x^2 - 3x`
  */
 function eAbsCoeff(p: number[][]) {
-    let p_: number[][] = [];
+    const p_: number[][] = [];
     for (let i=0; i<p.length; i++) {
         p_.push(eAbs(p[i]));
     }

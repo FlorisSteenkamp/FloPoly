@@ -21,5 +21,18 @@ describe('scaleFloatssToBigintss', function() {
 		expect(res3).to.eql([
 			[0n, 1n], [0n]
 		]);
+
+		let p4 = [[0, 1/2], [0]];
+		let res4 = scaleFloatssToBigintss(p4);
+		expect(res4).to.eql([
+			[0n, 1n], [0n]
+		]);
+
+		// the trivial case
+		let p5 = [[3,7],[7,3]];
+		let res5 = scaleFloatssToBigintss(p5);
+		expect(res5).to.eql([
+			[3n, 7n],[7n,3n]
+		]);
 	});
 });

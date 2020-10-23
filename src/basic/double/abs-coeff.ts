@@ -8,7 +8,7 @@
  * represents the polynomial `5x^2 - 3x`
  */
 function absCoeff(p: number[]) {
-    let p_: number[] = [];
+    const p_: number[] = [];
     for (let i=0; i<p.length; i++) {
         p_.push(Math.abs(p[i]));
     }

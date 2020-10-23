@@ -1,10 +1,8 @@
 
 import { bPdivTrivial as bPdivTrivial_ } from "./b-pdiv-trivial";
-import { bPrimitivePart as bGetPrimitivePart_ } from "../../factor/bigint/b-primitive-part";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const bPdivTrivial = bPdivTrivial_;
-const bGetPrimitivePart = bGetPrimitivePart_;
 
 
 /**
@@ -26,12 +24,14 @@ function bPremSequenceTrivial(
         f: bigint[],
         g: bigint[]): bigint[][] {
 
-    let r = [f,g]; // Initialize the PRS
+    const r = [f,g]; // Initialize the PRS
     let i = 1;
     while (true) {
-        let r_ = bPdivTrivial(r[i-1], r[i]).r;
+        const r_ = bPdivTrivial(r[i-1], r[i]).r;
 
-        if (r_.length === 0) { return r; } 
+        if (r_.length === 0) { 
+            return r; 
+        } 
         r.push(r_);
         if (r_.length === 1) {
             // the remainder is a constant so the next remainder 

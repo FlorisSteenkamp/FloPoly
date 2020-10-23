@@ -45,9 +45,9 @@ const max = Math.max;
  * evaluating the input polynomial at `b`
  * 
  * @example
- * let p = fromRoots([-10,2,3,4]);  //=> [1, 1, -64, 236, -240]
- * let a = 2.2;
- * let b = 3.8;
+ * const p = fromRoots([-10,2,3,4]);  //=> [1, 1, -64, 236, -240]
+ * const a = 2.2;
+ * const b = 3.8;
  * brent(p,a,b); //=> 3.000000000000003
  * b = 3.1;
  * brent(p,a,b); //=> 3.000000000000001
@@ -76,9 +76,9 @@ function brentPoly(
             fa = fb; fb = fc; fc = fa;
         }
 
-        let δ = 2 * u * max(1,abs(a),abs(b));
+        const δ = 2 * u * max(1,abs(a),abs(b));
 
-        let m = 0.5*(c - b);
+        const m = 0.5*(c - b);
 
         //if (abs(m) <= δ || fb === 0) {
         if (abs(m) <= δ) {
@@ -107,7 +107,7 @@ function brentPoly(
                 q = 1 - s;
             } else {
                 q = fa / fc;
-                let r = fb / fc;
+                const r = fb / fc;
                 p = s*(2*m*q*(q - r) - (b - a)*(r - 1));
                 q = (q - 1)*(r - 1)*(s - 1);
             }

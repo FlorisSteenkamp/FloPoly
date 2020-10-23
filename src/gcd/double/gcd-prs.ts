@@ -43,7 +43,7 @@ function gcdPrs(a: number[], b: number[]): number[][] {
         return a_.map(c => [c]);
     }
 
-    let seq = premSequenceSubresultant(a_,b_,false);
+    const seq = premSequenceSubresultant(a_,b_,false);
 
     //console.log(seq)
 

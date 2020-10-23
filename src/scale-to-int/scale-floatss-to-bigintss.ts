@@ -7,6 +7,9 @@ const exponent = exponent_;
 const bitLength = bitLength_;
 
 
+const b0 = 0n;  // so tests are not tripped up - awaiting better support
+
+
 /**
  * Returns the result of scaling the given array of array of floats by the 
  * *same* power of two such that all floats become bigints.
@@ -19,11 +22,11 @@ const bitLength = bitLength_;
 function scaleFloatssToBigintss(ass: number[][]): bigint[][] {
     let e = -1024;
     for (let i=0; i<ass.length; i++) {
-        let c = ass[i];
+        const c = ass[i];
         for (let j=0; j<c.length; j++) {
-            let a = c[j];
+            const a = c[j];
             if (a === 0) { continue; }
-            let scaleFactor = -exponent(a) + bitLength(a) - 1;
+            const scaleFactor = -exponent(a) + bitLength(a) - 1;
             if (scaleFactor > e) {
                 e = scaleFactor;
             }
@@ -35,11 +38,13 @@ function scaleFloatssToBigintss(ass: number[][]): bigint[][] {
         return ass.map(as => as.map(a => BigInt(a)));
     }
 
-    if (e >= 0) {
+    if (e > 0) {
         return ass.map(as => as.map(a => {
-            if (a === 0) { return 0n; }
+            if (a === 0) { 
+                return b0;
+            }
             
-            let scalePower = -exponent(a) + bitLength(a) - 1;
+            const scalePower = -exponent(a) + bitLength(a) - 1;
             // we first scale `a` to an integer without overflow and then
             // convert it to a bigint before multiplying
             return BigInt(a*2**scalePower)*2n**BigInt(e-scalePower);

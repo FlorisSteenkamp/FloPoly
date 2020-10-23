@@ -7,7 +7,7 @@ import {
 	eeHorner, compHorner, compHornerIsFaithful, Horner, 
     CompHornerK, conditionNumber, compHornerWithRunningError,
     EFTHorner, eHorner, evalCertified, evalCertifiedInclError,
-    evalK
+    evalK, multiply
 } from '../../../src/index'
 import { transposePoly } from '../../../src/roots/certified/transpose-poly';
 
@@ -49,7 +49,7 @@ describe('eeHorner', function() {
 			-0.021130026752576234
         ];
         
-        // map to Shewchuk
+        // map to Shewchuk expansion
         let p = p_.map(x => [x]);
 
         // roots accurate to 1 ulps: 
@@ -169,25 +169,85 @@ describe('eeHorner', function() {
         let ddP_ = transposePoly(ddP);
 
         // we are too close to the root to decide the sign
-        let certA = evalCertified(ddP_, pE, c);
+        let certA = evalCertified(ddP_, c, pE);
         assert(certA === 0);
 
         // we are not too close to the root to decide the sign
-        let certB = evalCertified(ddP_, pE, c+0.00001);
+        let certB = evalCertified(ddP_, c+0.00001, pE);
         assert(certB !== 0);
 
 
         // we are too close to the root to decide the sign
-        let certEA = evalCertifiedInclError(ddP_, pE, c);
-        expect(certEA).to.eql({ 'r̂': 0, e: 1.0944460238556618e-15 });
+        let certEA = evalCertifiedInclError(ddP_, c, pE);
+        let certEA_ = evalCertified(ddP_, c, pE);
+        expect(certEA).to.eql({ r̂: 0, e: 1.0944460238556618e-15 });
+        expect(certEA_).to.eql(certEA.r̂);
 
         // we are not too close to the root to decide the sign
-        let certEB = evalCertifiedInclError(ddP_, pE, c+0.00001);
-        expect(certEB).to.eql({ 'r̂': 3.9180861780702125e-8, e: 1.3056137644801344e-15 });
+        let certEB = evalCertifiedInclError(ddP_, c+0.00001, pE);
+        let certEB_ = evalCertified(ddP_, c+0.00001, pE);
+        expect(certEB).to.eql({ r̂: 3.9180861780702125e-8, e: 1.3056137644801344e-15 });
+        expect(certEB_).to.eql(certEB.r̂);
 
-        let evalK_ = evalK(p_, c);
+        {
+            // pE needs to be reduced a bit for this test
+            let pE = p_.map(x => Math.abs(x*2**-80));
+            
+            // we are too close to the root to decide the value to within some multiple of the error
+            let certEC = evalCertifiedInclError(ddP_, c+0.000000000001, pE, 64);
+            let certEC_ = evalCertified(ddP_, c+0.000000000001, pE, 64);
+            expect(certEC).to.eql({ r̂: 3.9189495492975434e-15, e: 5.09641621577133e-25 });
+            expect(certEC_).to.eql(certEC.r̂);
+        }
+
+
+        // no error polynomial => assumed zero polynomial
+        let certED = evalCertifiedInclError(ddP_, c);
+        let certED_ = evalCertified(ddP_, c);
+        expect(certED).to.eql({ r̂: -6.6865131963207694e-21, e: 3.212160411083628e-32 });
+        expect(certED_).to.eql(certED.r̂);
+
+
+        // ----------------
+        // evalK
+        // ----------------
+
+        let evalK_A = evalK(p_, c);
         // expect the result to be quite close to the exact result
-        expect(evalK_).to.eql(-6.6865131963207694e-21);
+        // this is the K2 path
+        expect(evalK_A).to.eql(-6.6865131963207694e-21);
+
+        let evalK_B = evalK(p_, c + 0.000001);
+        // this is the K1 path
+        expect(evalK_B).to.eql(3.918947256986716e-9);
+        
+
+        // below is how p_2 was created - triple root at 1835, single at 1000 and 1834
+        //let p_2 = multiply(
+        //    multiply(
+        //        multiply([1,-1835],[1,-1834]),
+        //        multiply([1,-1835],[1,-1835])
+        //    ),
+        //    [1,-1000]
+        //);
+        // this polynomial has a really high condition number close to 1835
+        let p_2 = [
+			1,
+            -8339,
+            27536845,
+            -44903174825,
+            36037355167750,
+            -11332025342750000
+        ];
+
+        let c2 = 1834.999999999992;
+        let cn2 = conditionNumber(p_2, c2);
+        //console.log(cn)  // => about 10^48
+
+
+        let evalK_C = evalK(p_2, c2);
+        // this is the K4 path, i.e. double-double-double-double precision
+        expect(evalK_C).to.eql(-4.208343244307185e-31);
 	});
 });
 

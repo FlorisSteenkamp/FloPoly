@@ -20,12 +20,12 @@
  * signChanges([1,2,-3,0,0,3,-1]); //=> 3
  */
 function signChanges(p: number[]): number {
-	let d = p.length-1;
+	const d = p.length-1;
 
 	let result = 0;
 	let prevSign = Math.sign(p[0]);
 	for (let i=1; i<d+1; i++) {
-		let sign = Math.sign(p[i]);
+		const sign = Math.sign(p[i]);
 		
 		if (sign !== prevSign && sign !== 0) {
 			result++;

@@ -43,5 +43,14 @@ describe('integer gcd', function() {
                 expect(r).to.eql([7]);
             }
         }
+
+        {
+            let a = [0];
+            let b = [464];
+            let r1 = eGcdInt(a,b);
+            let r2 = eGcdInt(b,a);
+            expect(r1).to.deep.equal(b);
+            expect(r2).to.deep.equal(b);
+        }
 	});
 });

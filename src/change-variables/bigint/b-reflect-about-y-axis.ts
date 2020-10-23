@@ -13,11 +13,11 @@
 function bReflectAboutYAxis(
 		p: bigint[]): bigint[] {
 			
-	let d = p.length-1;
+	const d = p.length-1;
 
 	if (d < 0) { return []; }
 
-	let result = p.slice();
+	const result = p.slice();
 	for (let i=0; i<d+1; i++) {
 		if (i % 2) {
 			result[i] = -result[i]; 

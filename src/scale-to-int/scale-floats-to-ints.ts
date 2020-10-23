@@ -19,9 +19,9 @@ const bitLength = bitLength_;
 function scaleFloatsToInts(as: number[]): number[] {
     let e = -1024;
     for (let i=0; i<as.length; i++) {
-        let a = as[i];
+        const a = as[i];
         if (a === 0) { continue; }
-        let scaleFactor = -exponent(a) + bitLength(a) - 1;
+        const scaleFactor = -exponent(a) + bitLength(a) - 1;
         if (scaleFactor > e) {
             e = scaleFactor;
         }

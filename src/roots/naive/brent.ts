@@ -64,9 +64,9 @@ function brent(
             fa = fb; fb = fc; fc = fa;
         }
 
-        let δ = 2 * eps * max(1,abs(a),abs(b));
+        const δ = 2 * eps * max(1,abs(a),abs(b));
 
-        let m = 0.5*(c - b);
+        const m = 0.5*(c - b);
 
         //if (abs(m) <= δ || fb === 0) {
         if (abs(m) <= δ) {
@@ -95,7 +95,7 @@ function brent(
                 q = 1 - s;
             } else {
                 q = fa / fc;
-                let r = fb / fc;
+                const r = fb / fc;
                 p = s*(2*m*q*(q - r) - (b - a)*(r - 1));
                 q = (q - 1)*(r - 1)*(s - 1);
             }

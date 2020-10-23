@@ -21,12 +21,12 @@ function bChangeVariablesScale(
 	// `d_i` is calculated as `d = T*c`, where `c` is the original coefficient
 	// vector.
 	 
-	let d = p.length-1;
+	const d = p.length-1;
 
 	if (d < 0) { return []; }
 	
 	// Initialize a zero matrix
-	let t: bigint[][] = [];
+	const t: bigint[][] = [];
 	for (let i=0; i<d+1; i++) {
 		t.push(new Array(d+1).fill(0n));
 	}
@@ -41,7 +41,7 @@ function bChangeVariablesScale(
 	}
 	
 	// Multiply
-	let res: bigint[] = new Array(d+1).fill(0n);
+	const res: bigint[] = new Array(d+1).fill(0n);
 	for (let i=0; i<=d; i++) {
 		res[d-i] = 0n;
 		for (let j=i; j<=d; j++) {

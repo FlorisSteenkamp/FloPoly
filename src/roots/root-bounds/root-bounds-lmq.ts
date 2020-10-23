@@ -25,16 +25,14 @@ const positiveToNegativeBound = positiveToNegativeBound_;
  * positiveRootUpperBound_LMQ([-2,-3,-4]);      //=> 0
  */
 function positiveRootUpperBound_LMQ(p: number[]): number {
-	if (p.length <= 1) {
-		return 0;
+	const deg = p.length-1;
+	if (deg < 1) { 
+		return 0; 
 	}
-
-	let deg = p.length-1;
-	if (deg < 1) { return 0; }
 	
 	if (p[0] < 0) { p = negate(p); }
 	
-	let timesUsed = [];
+	const timesUsed = [];
 	for (let i=0; i<deg; i++) {
 		timesUsed.push(1);
 	}
@@ -50,7 +48,7 @@ function positiveRootUpperBound_LMQ(p: number[]): number {
 		for (let k=0; k<m; k++) {
 			if (p[k] <= 0) { continue; }
 
-			let temp = (-p[m] / (p[k] / 2**timesUsed[k]))**(1/(m-k));
+			const temp = (-p[m] / (p[k] / 2**timesUsed[k]))**(1/(m-k));
 			
 			timesUsed[k]++;
 			
@@ -77,7 +75,7 @@ function positiveRootUpperBound_LMQ(p: number[]): number {
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]` 
  * represents the polynomial `5x^2 - 3x`
  */
-let positiveRootLowerBound_LMQ = upperToLowerBound(positiveRootUpperBound_LMQ);
+const positiveRootLowerBound_LMQ = upperToLowerBound(positiveRootUpperBound_LMQ);
 
 
 /** 
@@ -91,7 +89,7 @@ let positiveRootLowerBound_LMQ = upperToLowerBound(positiveRootUpperBound_LMQ);
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]` 
  * represents the polynomial `5x^2 - 3x`
  */
-let negativeRootLowerBound_LMQ = positiveToNegativeBound(positiveRootUpperBound_LMQ);
+const negativeRootLowerBound_LMQ = positiveToNegativeBound(positiveRootUpperBound_LMQ);
 
 
 /** 
@@ -105,7 +103,7 @@ let negativeRootLowerBound_LMQ = positiveToNegativeBound(positiveRootUpperBound_
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]` 
  * represents the polynomial `5x^2 - 3x`
  */
-let negativeRootUpperBound_LMQ = upperToLowerBound(negativeRootLowerBound_LMQ);
+const negativeRootUpperBound_LMQ = upperToLowerBound(negativeRootLowerBound_LMQ);
 
 export { 
 	positiveRootUpperBound_LMQ,

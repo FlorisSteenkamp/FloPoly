@@ -16,7 +16,7 @@ const eNegativeOf = eNegativeOf_;
  * eNegate([[0.1], [-0.2]]); //=> [[-0.1], [0.2]]
  */
 function eNegate(p: number[][]): number[][] {
-	let result: number[][] = [];
+	const result: number[][] = [];
 	for (let i=0; i<p.length; i++) {
 		result.push(eNegativeOf(p[i]))
 	}

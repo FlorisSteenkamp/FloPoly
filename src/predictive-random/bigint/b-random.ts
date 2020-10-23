@@ -36,15 +36,15 @@ function bFlatRoots(
         seed: number = SEED, 
         odds: number = 0): { p: bigint[], seed: number; } {
 
-    let res = flatRoots(d,a,b,seed,odds);
+    const res = flatRoots(d,a,b,seed,odds);
 
     return { p: scaleFloatsToBigints(res.p), seed: res.seed };
 }
 
 
 /**
- * Generates and returns an array of polynomials with random **roots** (with coefficients 
- * given densely as an array of bigints from highest to 
+ * Generates and returns an array of polynomials with random **roots** (with 
+ * coefficients given densely as an array of bigints from highest to 
  * lowest power, e.g. `[5n,-3n,0n]` represents the polynomial `5x^2 - 3x`).
  * 
  * * all roots will approximate real values so is not at all representative of 
@@ -76,12 +76,12 @@ function bFlatRootsArr(
 /**
  * Generates and returns a polynomial with random **coefficients** 
  * (with coefficients given densely as an array of bigints from highest to 
- * lowest power, e.g. `[5,-3,0]` represents the polynomial `5x^2 - 3x`).
+ * lowest power, e.g. `[5n,-3n,0n]` represents the polynomial `5x^2 - 3x`).
  * 
  * * the exact same polynomials will be created on each call to this function 
  * if the same seed is used; this is by design to improve testing.
  * 
- * @param d the degree of the polynomials 
+ * @param d the length of the polynomial coefficients array
  * @param a defaults to 0; the lower bound of the coefficients
  * @param b defaults to 1; the upper bound of the coefficients
  * @param seed defaults to 123456789; a seed value in [0,4294967296]
@@ -94,7 +94,7 @@ function bFlatCoefficients(
         b: number = 1, 
         seed: number = SEED): { p: bigint[], seed: number; } {
 
-    let res = flatCoefficients(d,a,b,seed);
+    const res = flatCoefficients(d,a,b,seed);
 
     return { p: scaleFloatsToBigints(res.p), seed: res.seed };
 }
@@ -103,13 +103,13 @@ function bFlatCoefficients(
 /**
  * Generates and returns an array of polynomials with random **coefficients** 
  * (with coefficients given densely as an array of bigints from highest to 
- * lowest power, e.g. `[5,-3,0]` represents the polynomial `5x^2 - 3x`).
+ * lowest power, e.g. `[5n,-3n,0n]` represents the polynomial `5x^2 - 3x`).
  * 
  * * the exact same polynomials will be created on each call to this function 
  * if the same seed is used; this is by design to improve testing.
  * 
  * @param n the number of polynomials to generate.
- * @param d the degree of the polynomials 
+ * @param d the length of the polynomial coefficients array
  * @param a defaults to 0; the lower bound of the coefficients
  * @param b defaults to 1; the upper bound of the coefficients
  * @param seed defaults to 123456789; a seed value in [0,4294967296]

@@ -11,7 +11,7 @@
 function bP1Norm(p: bigint[]): bigint {
     let s = 0n;
     for (let i=0; i<p.length; i++) {
-        let n = p[i];
+        const n = p[i];
         s += n < 0n ? -n : n;
     }
     

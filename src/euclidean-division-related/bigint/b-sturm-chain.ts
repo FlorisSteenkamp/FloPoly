@@ -21,7 +21,7 @@ const bPremSequenceSubresultant = bPremSequenceSubresultant_;
  * bSturmChain([-3n,4n,2n,-2n]); //=> [[-3n, 4n, 2n, -2n], [-9n, 8n, 2n], [-204n, 138n], [-1692n]]
  */
 function bSturmChain(p: bigint[]): bigint[][] {
-	let dp = bDifferentiate(p);
+	const dp = bDifferentiate(p);
 
 	return bPremSequenceSubresultant(p, dp, true);
 }

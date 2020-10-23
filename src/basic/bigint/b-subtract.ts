@@ -20,25 +20,20 @@ const bRemoveLeadingZeros = bRemoveLeadingZeros_;
  */
 function bSubtract(a: bigint[], b: bigint[]): bigint[] {
 	// Initialize result array  
-	let da = a.length - 1;
-	let db = b.length - 1;
-	let Δd = da - db;
+	const da = a.length - 1;
+	const db = b.length - 1;
+	const Δd = da - db;
 	
-	let Δd1 = 0;
-	let Δd2 = 0;
-	if (Δd > 0) {
-		Δd2 = -Δd;
-	} else if (Δd < 0) {
-		Δd1 = +Δd;
-	}
-	
-	let d = Math.max(da, db);
+	const Δd2 = Δd > 0 ? -Δd : 0;
+	const Δd1 = Δd < 0 ? +Δd : 0;
+
+	const d = Math.max(da, db);
 	
 	// Add coefficients
-	let result: bigint[] = [];
+	const result: bigint[] = [];
 	for (let i=0; i<d+1; i++) {
-		let c1 = a[i+Δd1] || 0n;
-		let c2 = b[i+Δd2] || 0n;
+		const c1 = a[i+Δd1] || 0n;
+		const c2 = b[i+Δd2] || 0n;
 		result.push(c1 - c2);  
 	}
 	

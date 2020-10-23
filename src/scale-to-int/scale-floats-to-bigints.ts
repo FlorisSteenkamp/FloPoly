@@ -21,9 +21,9 @@ const b0 = 0n;  // so tests are not tripped up - awaiting better support
 function scaleFloatsToBigints(as: number[]): bigint[] {
     let e = -1024;
     for (let i=0; i<as.length; i++) {
-        let a = as[i];
+        const a = as[i];
         if (a === 0) { continue; }
-        let scalePower = -exponent(a) + bitLength(a) - 1;
+        const scalePower = -exponent(a) + bitLength(a) - 1;
         if (scalePower > e) {
             e = scalePower;
         }
@@ -35,10 +35,12 @@ function scaleFloatsToBigints(as: number[]): bigint[] {
         return as.map(a => BigInt(a));
     }
 
-    if (e >= 0) {
+    if (e > 0) {
         return as.map(a => {
-            if (a === 0) { return b0; }
-            let scalePower = -exponent(a) + bitLength(a) - 1;
+            if (a === 0) { 
+                return b0; 
+            }
+            const scalePower = -exponent(a) + bitLength(a) - 1;
             // we first scale `a` to an integer without overflow and then
             // convert it to a bigint before multiplying
             return BigInt(a*2**scalePower) * 2n**BigInt(e-scalePower);

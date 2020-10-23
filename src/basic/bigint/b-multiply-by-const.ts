@@ -11,8 +11,8 @@
 function bMultiplyByConst(c: bigint, p: bigint[]): bigint[] {
 	if (c === 0n) { return []; }
 	
-	let d = p.length;
-	let r: bigint[] = [];
+	const d = p.length;
+	const r: bigint[] = [];
 	for (let i=0; i<d; i++) {
 		r.push(c*p[i]);
 	}

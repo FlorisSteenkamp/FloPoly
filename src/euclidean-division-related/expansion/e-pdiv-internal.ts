@@ -38,13 +38,13 @@ const subtractExact = eSubtract;
  */
 function ePdivInternal(a: number[][], b: number[][]) {
     let q: number[][] = [];
-    let d = eDegree(b);
-    let c = b[0];
+    const d = eDegree(b);
+    const c = b[0];
 
     let r = a; 
 
     while (true) {
-        let deg = eDegree(r) - d;
+        const deg = eDegree(r) - d;
         if (deg < 0) { 
             return { q, r }; 
         }

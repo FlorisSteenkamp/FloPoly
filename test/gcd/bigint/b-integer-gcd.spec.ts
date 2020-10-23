@@ -63,5 +63,14 @@ describe('integer gcd', function() {
             let t1 = performance.now();
             //console.log("gcd naive took " + ((t1 - t0)).toFixed(3) + " milliseconds.");
         }
+
+        {
+            let a = 0n;
+            let b = 464n; 
+            let r1 = bGcdInt(a,b);
+            let r2 = bGcdInt(b,a);
+            expect(r1).to.equal(b);
+            expect(r2).to.equal(b);
+        }
 	});
 });

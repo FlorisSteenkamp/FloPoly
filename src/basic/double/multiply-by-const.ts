@@ -20,8 +20,8 @@ const removeLeadingZeros = removeLeadingZeros_;
 function multiplyByConst(c: number, p: number[]): number[] {
 	if (c === 0) { return []; }
 	
-	let d = p.length;
-	let p_: number[] = [];
+	const d = p.length;
+	const p_: number[] = [];
 	for (let i=0; i<d; i++) {
 		p_.push(c*p[i]);
 	}

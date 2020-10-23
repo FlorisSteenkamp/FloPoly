@@ -53,7 +53,7 @@ function bPdivInternal(
         }
 
         // The division below is guaranteed to be exact
-        let s = bElevateDegree([r[0]/c], deg);
+        const s = bElevateDegree([r[0]/c], deg);
         q = bAdd(q, s);
         r = bSubtract(r, bMultiply(s, b));
     }

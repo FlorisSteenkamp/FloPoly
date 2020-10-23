@@ -40,10 +40,10 @@ function createArrFunction(
             seed: number = SEED, 
             odds: number = 0) {
                 
-		let res: number[][] = [];
+		const res: number[][] = [];
 		for (let i=0; i<n; i++) {
-			let v = f(d, a, b, seed, odds);
-			let p = v.p;
+			const v = f(d, a, b, seed, odds);
+			const p = v.p;
 			seed = v.seed;
 			
 			res.push(p);
@@ -77,7 +77,7 @@ function createArrFunction(
  * flatRootsArr(2,3,0,10); //=> [[1, -17.27247918024659, 97.33487287168995, -179.34094494147305], [1, -14.934967160224915, 57.624514485645406, -14.513933300587215]]
  * flatRootsArr(2,3,0,10); //=> [[1, -17.27247918024659, 97.33487287168995, -179.34094494147305], [1, -14.934967160224915, 57.624514485645406, -14.513933300587215]]
  */
-let flatRootsArr = createArrFunction(flatRoots);
+const flatRootsArr = createArrFunction(flatRoots);
 
 
 /**
@@ -89,7 +89,7 @@ let flatRootsArr = createArrFunction(flatRoots);
  * if the same seed is used; this is by design to improve testing.
  * 
  * @param n the number of polynomials to generate.
- * @param d the degree of the polynomials 
+ * @param d the length of the polynomial coefficients array
  * @param a defaults to 0; the lower bound of the coefficients
  * @param b defaults to 1; the upper bound of the coefficients
  * @param seed defaults to 123456789; a seed value in [0,4294967296]
@@ -100,7 +100,7 @@ let flatRootsArr = createArrFunction(flatRoots);
  * flatCoefficientsArr(2,3,-2,2); //=> [[0.1749166026711464, -0.20349335670471191, 0.9375684261322021], [1.0617692470550537, -1.8918039798736572, 0.8040215969085693]]
  * flatCoefficientsArr(2,3,-2,2); //=> [[0.1749166026711464, -0.20349335670471191, 0.9375684261322021], [1.0617692470550537, -1.8918039798736572, 0.8040215969085693]]
  */
-let flatCoefficientsArr = createArrFunction(flatCoefficients);
+const flatCoefficientsArr = createArrFunction(flatCoefficients);
 	
 
 /**
@@ -135,15 +135,15 @@ function predictiveRandom(seed: number): number {
  */
 function randomArray(
         n: number, 
-        a: number = 0, 
-        b: number = 1, 
-        seed: number = SEED, 
+        a: number, 
+        b: number, 
+        seed: number, 
         odds: number = 0): { vs: number[], seed: number } {
 
 	let vs: number[] = [];
 	for (let i=0; i<n; i++) {
 		seed = predictiveRandom(seed);
-		let v = ((seed/RANGE) * (b-a)) + a;
+		const v = ((seed/RANGE) * (b-a)) + a;
 		seed = push(seed, vs, v, odds);
 	}
     vs = vs.slice(0,n);
@@ -201,15 +201,15 @@ function push(seed: number, values: number[], x: number, odds: number): number {
  */
 function flatRoots(
         d: number, 
-        a: number = 0, 
-        b: number = 1, 
+        a: number = 0,
+        b: number = 1,
         seed: number = SEED, 
         odds: number = 0): { p: number[], seed: number } {
 
-	let randArr = randomArray(d, a, b, seed, odds);
+	const randArr = randomArray(d, a, b, seed, odds);
 	seed = randArr.seed;
 
-	let p = fromRoots(randArr.vs);
+	const p = fromRoots(randArr.vs);
 
 	return { p, seed };
 }
@@ -226,7 +226,7 @@ function flatRoots(
  * * the exact same polynomial will be created on each call to this function 
  * if the same seed is used; this is by design to improve testing.
  * 
- * @param d the degree of the polynomials 
+ * @param d the length of the polynomial coefficients array
  * @param a defaults to 0; the lower bound of the coefficients
  * @param b defaults to 1; the upper bound of the coefficients
  * @param seed defaults to 123456789; a seed value in [0,4294967296]
@@ -238,18 +238,14 @@ function flatRoots(
  */
 function flatCoefficients(
         d: number, 
-        a: number = -1, 
-        b: number = +1, 
-        seed: number = SEED): { p: number[], seed: number } {
+        a = -1, 
+        b = +1, 
+        seed = SEED): { p: number[], seed: number } {
 
-	a = (a === undefined) ? -1 : a;
-	b = (b === undefined) ? +1 : b;
-	seed = (seed === undefined) ? SEED : seed;
-	
-	let randArr = randomArray(d, a, b, seed);
+	const randArr = randomArray(d, a, b, seed);
 	seed = randArr.seed;
 	
-	let p = randArr.vs;
+	const p = randArr.vs;
 	
 	return { p, seed };
 }

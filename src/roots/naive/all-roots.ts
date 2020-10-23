@@ -15,8 +15,6 @@ const negativeRootUpperBound_LMQ = negativeRootUpperBound_LMQ_;
 const positiveRootUpperBound_LMQ = positiveRootUpperBound_LMQ_;
 const removeLeadingZeros = removeLeadingZeros_;
 
-const eps = Number.EPSILON;
-
 
 /**
  * Find and return all roots of the given polynomial in the given interval.
@@ -37,9 +35,8 @@ const eps = Number.EPSILON;
  * 
  * * roots are refined using the celebrated Brent's Method (and evaluated using
  * Horner's Method) until a root interval is found with 
- * width `< 2*eps * max(1, max(abs(intervalLower), abs(intervalUpper)))`, 
- * where `eps = Number.EPSILON`, `intervalLower` is the current lower interval 
- * value and `intervalUpper` the current upper interval value
+ * width `<= eps * max(1, 2^⌈log₂r⌉)`, where `eps = Number.EPSILON` and 
+ * `r` is a root
  * 
  * * **ordered:** the returned roots are ordered from lowest to highest
  * 

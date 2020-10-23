@@ -19,8 +19,8 @@
  * deflate([1, -1], 1);         //=> [1]
  */
 function deflate(p: number[], root: number): number[] {
-	let d = p.length-1;
-	let bs = [p[0]];
+	const d = p.length-1;
+	const bs = [p[0]];
 	for (let i=1; i<d; i++) {
 		bs.push(
 			p[i] + root*bs[i-1]

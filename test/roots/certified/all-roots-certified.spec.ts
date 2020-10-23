@@ -1,8 +1,8 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { allRootsCertified, RootInterval, allRoots } from '../../../src/index';
-import { twoSum } from 'big-float-ts';
+import { allRootsCertified, RootInterval, allRoots, eMultiply, eProduct } from '../../../src/index';
+import { twoSum, eToDd } from 'big-float-ts';
 
 
 describe('allRootsCertified - find all roots within an interval of a polynomial with multi-precision coefficients such that all roots are guaranteed to be captured in some interval', 
@@ -40,69 +40,202 @@ function() {
 
 	it('should find roots correctly of some polynomials (withing some range [-50,100])',
 	function() {
-		{
-			// coefficients in double-double precision
-			let p = [
-				[ 0.1580350755837278, 3770986809251668.5 ],
-				[ -0.437621888289444, -11611163849314706 ],
-				[ 0.37925906415346655, 13622867559528270 ],
-				[ -0.18215364304839451, -6015675011409949 ],
-				[ -0.2113068076998193, -2535765899677980.5 ],
-				[ -0.03234301695064162, 1004670324427690 ],
-				[ -0.13228935570003014, 5119556864733271 ],
-				[ 0.46839905715354696, -5283583821747902 ],
-				[ -0.0020342528097285484, 1955103350624411 ],
-				[ -0.004629837980953938, -252827841312240.88 ]
-			];
+		// coefficients in double-double precision
+		let p = [
+			[ 0.1580350755837278, 3770986809251668.5 ],
+			[ -0.437621888289444, -11611163849314706 ],
+			[ 0.37925906415346655, 13622867559528270 ],
+			[ -0.18215364304839451, -6015675011409949 ],
+			[ -0.2113068076998193, -2535765899677980.5 ],
+			[ -0.03234301695064162, 1004670324427690 ],
+			[ -0.13228935570003014, 5119556864733271 ],
+			[ 0.46839905715354696, -5283583821747902 ],
+			[ -0.0020342528097285484, 1955103350624411 ],
+			[ -0.004629837980953938, -252827841312240.88 ]
+		];
 
-			// coefficients in double precision
-			let pD = [
-				3770986809251668.5,
-				-11611163849314706,
-				13622867559528270,
-				-6015675011409949,
-				-2535765899677980.5,
-				1004670324427690,
-				5119556864733271,
-				-5283583821747902,
-				1955103350624411,
-				-252827841312240.88
-			];
+		// coefficients in double precision
+		let pD = [
+			3770986809251668.5,
+			-11611163849314706,
+			13622867559528270,
+			-6015675011409949,
+			-2535765899677980.5,
+			1004670324427690,
+			5119556864733271,
+			-5283583821747902,
+			1955103350624411,
+			-252827841312240.88
+		];
 
-			// coefficient-wise error bound of double-double precision 
-			// coefficients
-			let pE = [
-				5.973763369817942e-16,
-				3.154260190691488e-15,
-				1.0432584785199789e-14,
-				2.0265321429548282e-14,
-				3.236053769569458e-14,
-				3.1173345325629133e-14,
-				2.228376621708172e-14,
-				1.2374462883419778e-14,
-				3.82255386973334e-15,
-				5.160968273258298e-16
-			];
+		// coefficient-wise error bound of double-double precision 
+		// coefficients
+		let pE = [
+			5.973763369817942e-16,
+			3.154260190691488e-15,
+			1.0432584785199789e-14,
+			2.0265321429548282e-14,
+			3.236053769569458e-14,
+			3.1173345325629133e-14,
+			2.228376621708172e-14,
+			1.2374462883419778e-14,
+			3.82255386973334e-15,
+			5.160968273258298e-16
+		];
 
-			//getPExact - not specified
+		//getPExact - not specified
 
-			let lb = -50;
-			let ub = 100;
-			const ts = allRootsCertified(p, lb, ub, pE, undefined);
-			
-			// roots:
-			// [
-			// 	{ tS: 0.3361742829036018, tE: 0.336174282903602, multiplicity: 1 },
-			// 	{ tS: 0.6260997031130031, tE: 0.6260997031130033, multiplicity: 1 },
-			// 	{ tS: 1.3255582424034447, tE: 1.3255582424034453, multiplicity: 1 }
-			// ]
+		let lb = -50;
+		let ub = 100;
+		const ts = allRootsCertified(p, lb, ub, pE, undefined);
+		
+		// roots:
+		// [
+		// 	{ tS: 0.3361742829036018, tE: 0.336174282903602, multiplicity: 1 },
+		// 	{ tS: 0.6260997031130031, tE: 0.6260997031130033, multiplicity: 1 },
+		// 	{ tS: 1.3255582424034447, tE: 1.3255582424034453, multiplicity: 1 }
+		// ]
 
-			assert(isThereRootAt(0.3361742829036019, 1, ts));
-			assert(isThereRootAt(0.6260997031130032, 1, ts));
-			assert(isThereRootAt(1.3255582424034449, 1, ts));
+		assert(isThereRootAt(0.3361742829036019, 1, ts));
+		assert(isThereRootAt(0.6260997031130032, 1, ts));
+		assert(isThereRootAt(1.3255582424034449, 1, ts));
 
-			//const tsf = allRoots(pD, lb, ub);
-		}
+		//const tsf = allRoots(pD, lb, ub);
+	});
+
+
+	it('should find roots correctly of some polynomials (some special cases 0)',
+	function() {
+		// Here we're trying to put roots on top of lower and upper bounds
+		// to trigger some special case causing specific lines in 
+		// `evalAdaptive` to be triggered.
+
+		// coefficients in infinite precision (double root at 1 and 2)
+		let _p = eMultiply(
+			eMultiply([[1],[-1]],[[1],[-1]]),
+			eMultiply([[1],[-2]],[[1],[-2]])
+		);
+		// coefficients in double-double precision
+		let p = _p.map(c => eToDd(c));
+		// coefficient-wise error bound of double-double precision 
+		// coefficients (faked)
+		let pE = p.map(c => Math.abs(c[1])*Number.EPSILON);
+		let lb = 1;
+		let ub = 2;
+
+		const ts = allRootsCertified(p, lb, ub, pE);
+		
+		// roots:
+		// [
+		// 	{ tS: 0.3361742829036018, tE: 0.336174282903602, multiplicity: 1 },
+		// 	{ tS: 0.6260997031130031, tE: 0.6260997031130033, multiplicity: 1 },
+		// 	{ tS: 1.3255582424034447, tE: 1.3255582424034453, multiplicity: 1 }
+		// ]
+
+		//assert(isThereRootAt(0.3361742829036019, 1, ts));
+		//assert(isThereRootAt(0.6260997031130032, 1, ts));
+		//assert(isThereRootAt(1.3255582424034449, 1, ts));
+
+		//const tsf = allRoots(pD, lb, ub);
+	});
+
+
+	it('should find roots correctly of some polynomials (some special cases 1)',
+	function() {
+		// coefficients in infinite precision - lots o' roots at 3.4
+		let _p = eMultiply(
+			eMultiply([[1],[-2*1.7]],[[1],[-2*1.7]]),
+			eMultiply([[1],[-2.32*1.7]],[[1],[-2.12*1.7]])
+		);
+		// coefficients in double-double precision
+		let p = _p.map(c => eToDd(c));
+		// coefficient-wise error bound of double-double precision 
+		// coefficients (faked)
+		let pE = p.map(c => Math.abs(c[1])*Number.EPSILON);
+		let lb0 = 0;
+		let lb1 = 3.4;
+		let ub1 = 100;
+		let lb2 = 1;
+		let ub2 = 3.4;
+		
+		const ts0 = allRootsCertified(p, lb0, ub1, pE);
+		const ts1 = allRootsCertified(p, lb1, ub1, pE);
+		const ts2 = allRootsCertified(p, lb2, ub2, pE);
+		
+	
+		expect(ts0).to.eql([
+			{ tS: 3.3999999999999955, tE: 3.3999999999999964, multiplicity: 1 },
+			{ tS: 3.4, tE: 3.400000000000001, multiplicity: 2 },
+			{ tS: 3.4000000000000035, tE: 3.4000000000000044, multiplicity: 1 },
+			{ tS: 3.603999999999999, tE: 3.604, multiplicity: 1 },
+			{ tS: 3.9439999999999995, tE: 3.9440000000000004, multiplicity: 1 }
+		]);
+
+		expect(ts1).to.eql([
+			{ tS: 3.4, tE: 3.400000000000001, multiplicity: 2 },
+			{ tS: 3.4000000000000035, tE: 3.4000000000000044, multiplicity: 1 },
+			{ tS: 3.603999999999999, tE: 3.604, multiplicity: 1 },
+			{ tS: 3.9439999999999995, tE: 3.9440000000000004, multiplicity: 1 }
+		]);
+
+		expect(ts2).to.eql([
+			{ tS: 3.3999999999999955, tE: 3.3999999999999964, multiplicity: 1 },
+			{ tS: 3.4, tE: 3.4000000000000017, multiplicity: 2 }
+		]);
+	});
+
+
+	it('should find roots correctly of some polynomials (some special cases 2)',
+	function() {
+		let _p = eProduct([
+			[[1],[-3.3999999999999986]],
+			[[1],[-3.3999999999999995]], 
+			[[1],[-3.4]],
+			[[1],[-3.4]],
+			[[1],[-3.9439999999999995]], 
+			[[1],[+0.604]]
+		]);
+
+		let pDd = _p.map(c => eToDd(c));
+		// some fake generated error
+		let pE = pDd.map(c => Math.abs(c[1])*Number.EPSILON);
+		let lb0 = -50;
+		let ub0 = 50;
+		function f() { return _p; }
+		const ts = allRootsCertified(pDd, lb0, ub0, pE, f);
+
+		expect(ts).to.eql([
+			{ tS: -0.6040000000000002, tE: -0.6039999999999998, multiplicity: 1 },
+			{ tS: 3.3999999999999986, tE: 3.4000000000000004, multiplicity: 2 },  
+			{ tS: 3.9439999999999995, tE: 3.9439999999999995, multiplicity: 1 }
+		]);
+	});
+
+
+	it('should find roots correctly of some polynomials (some special cases 3)',
+	function() {
+		let _p = eProduct([
+			[[1],[-3.4]],
+			[[1],[-3.4]], 
+			[[1],[-3.4000000000000004]],
+			[[1],[-3.400000000000001]],
+			[[1],[-3.9439999999999995]], 
+			[[1],[+0.604]]
+		]);
+
+		let pDd = _p.map(c => eToDd(c));
+		// some fake generated error
+		let pE = pDd.map(c => Math.abs(c[1])*Number.EPSILON);
+		let lb0 = -50;
+		let ub0 = 50;
+		function f() { return _p; }
+		const ts = allRootsCertified(pDd, lb0, ub0, pE, f);
+
+		expect(ts).to.eql([
+			{ tS: -0.6040000000000001, tE: -0.6039999999999999, multiplicity: 1 },
+			{ tS: 3.4, tE: 3.400000000000001, multiplicity: 4 },
+				{ tS: 3.9439999999999995, tE: 3.9439999999999995, multiplicity: 1 }
+		]);
 	});
 });
 

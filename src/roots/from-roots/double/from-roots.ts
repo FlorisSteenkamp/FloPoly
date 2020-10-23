@@ -18,7 +18,7 @@ const multiply = multiply_;
  * the same as the roots that the polynomial has been constructed from due to 
  * floating-point round-off.
  * 
- * @param roots any array of roots
+ * @param roots an array of roots
  * 
  * @example
  * fromRoots([1,2,3,3]); //=> [1, -9, 29, -39, 18]

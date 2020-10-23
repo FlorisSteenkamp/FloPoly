@@ -25,23 +25,23 @@ function bPremSequenceSubresultant(
         g: bigint[],
         sturm = false): bigint[][] {
 
-    let r = [f,g]; // Initialize the PRS
-    let d: number[] = [bDegree(f), bDegree(g)];
-    let a: bigint[] = [1n]; // a_1 === 1
-    let c: bigint[] = [1n]; // c_1 === 1
+    const r = [f,g]; // Initialize the PRS
+    const d: number[] = [bDegree(f), bDegree(g)];
+    const a: bigint[] = [1n]; // a_1 === 1
+    const c: bigint[] = [1n]; // c_1 === 1
     let i = 1;
 
     while (true) {
         a.push(r[i][0]); // leading coefficient of r[i-1]
-        let d_ = d[i-1] - d[i];
-        let bD_ = BigInt(d_);
-        let sgn = sturm
+        const d_ = d[i-1] - d[i];
+        const bD_ = BigInt(d_);
+        const sgn = sturm
             ? -1
             : (d_+1) % 2 === 0 ? +1 : -1;
-        let D = a[i-1]*c[i-1]**bD_;
-        let exp = -bD_ + 1n;
-        let cTerm1 = a[i]**bD_;
-        let cTerm2 = c[i-1]**(exp < 0n ? -exp : exp);
+        const D = a[i-1]*c[i-1]**bD_;
+        const exp = -bD_ + 1n;
+        const cTerm1 = a[i]**bD_;
+        const cTerm2 = c[i-1]**(exp < 0n ? -exp : exp);
         c.push(exp < 0
             ? cTerm1 / cTerm2
             : cTerm1 * cTerm2

@@ -18,9 +18,9 @@ const bEvaluateAt1 = bEvaluateAt1_;
  * polynomial `5x^2 - 3x`
  */
 function bNumRootsIn01(p: bigint[]): number {
-	let ps = bSturmChain(p);
-	let as = ps.map(p => p[p.length-1]); // evaluate at 0
-	let bs = ps.map(p => bEvaluateAt1(p)); // evaluate at 1
+	const ps = bSturmChain(p);
+	const as = ps.map(p => p[p.length-1]); // evaluate at 0
+	const bs = ps.map(p => bEvaluateAt1(p)); // evaluate at 1
 	
 	return bSignChanges(as) - bSignChanges(bs);
 }

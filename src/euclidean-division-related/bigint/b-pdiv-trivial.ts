@@ -10,6 +10,7 @@ const bPdivInternal = bPdivInternal_;
 
 const abs = (n: bigint) => n >= 0 ? n : -n;
 
+
 /**
  * Performs a **trivial pseudo-division** and returns the `quotient` and `remainder` 
  * of the pseudo division of `a/b` (a, b both being polynomials) in such a way 
@@ -40,11 +41,17 @@ const abs = (n: bigint) => n >= 0 ? n : -n;
 function bPdivTrivial(
         a: bigint[], b: bigint[], positiveMultiplier = false): { q: bigint[]; r: bigint[]; } {
 
-    let d = bDegree(a) - bDegree(b) + 1;
+    const d = bDegree(a) - bDegree(b) + 1;
+    if (d < 1) {
+        return { q: [], r: a };
+    }
     let m = b[0]**BigInt(d);
 
-    m = positiveMultiplier ? abs(m) : m;
-    let a_ = bMultiplyByConst(m, a); 
+    m = positiveMultiplier 
+        ? abs(m) 
+        : m;
+
+    const a_ = bMultiplyByConst(m, a); 
 
     return bPdivInternal(a_, b);
 }

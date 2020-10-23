@@ -10,9 +10,9 @@
  * bDifferentiate([5n, 4n, 3n, 2n, 1n]); //=> [20n, 12n, 6n, 2n]
  */
 function bDifferentiate(p: bigint[]): bigint[] {
-	let r: bigint[] = [];
+	const r: bigint[] = [];
 	
-	let d = p.length - 1;
+	const d = p.length - 1;
 	for (let i=0; i<d; i++) {
 		r.push(BigInt((d-i)) * p[i]);
 	}

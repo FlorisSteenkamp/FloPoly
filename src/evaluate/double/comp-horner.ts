@@ -25,8 +25,8 @@ const HornerSum = HornerSum_;
  * @param x the value at which to evaluate the polynomial
  */
 function compHorner(p: number[], x: number): number {
-	let { r̂, pπ, pσ } = EFTHorner(p,x);
-	let ĉ = HornerSum(pπ, pσ, x);
+	const { r̂, pπ, pσ } = EFTHorner(p,x);
+	const ĉ = HornerSum(pπ, pσ, x);
 
 	return r̂ + ĉ;
 }

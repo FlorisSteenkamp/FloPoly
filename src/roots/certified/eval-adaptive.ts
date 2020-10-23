@@ -1,11 +1,11 @@
 
 import { evalCertified as evalCertified_ } from "../../evaluate/double/eval-certified";
-import { eHorner as HornerExact_ } from "../../evaluate/expansion/e-horner";
+import { eHorner as eHorner_ } from "../../evaluate/expansion/e-horner";
 import { eEstimate as eEstimate_ } from 'big-float-ts';
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const evalCertified = evalCertified_;
-const HornerExact = HornerExact_;
+const eHorner = eHorner_;
 const eEstimate = eEstimate_;
 
 
@@ -20,7 +20,9 @@ const eEstimate = eEstimate_;
  * 
  * @internal
  * 
- * @param p a polynomial (with double-double precision coefficients)
+ * @param p a polynomial given as an array with each consecutive element of
+ * the array having more accurate coefficients than the previous (by adding 
+ * consecutive double precision coefficients to prior coefficients)
  * @param pE a coefficientwise error bound
  * @param x the point of evaluation
  * @param psExact an object holding the exact polynomial and all its exact 
@@ -37,12 +39,15 @@ function evalAdaptive(
         getPsExact: () => number[][][],
         diffCount: number) {
 
-    let r = evalCertified(p, pE, x, 4);
+    const r = evalCertified(p, x, pE, 4);
     if (r !== 0) { return r; }
 
     // condition number is too high - request higher precision
-    psExact.ps = psExact.ps || getPsExact();
-    return eEstimate(HornerExact(psExact.ps[diffCount],x));
+    psExact.ps = 
+        psExact.ps || 
+        getPsExact();
+
+    return eEstimate(eHorner(psExact.ps[diffCount], x));
 }
 
 

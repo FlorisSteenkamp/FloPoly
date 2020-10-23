@@ -2,10 +2,7 @@
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
 import { 
-    bGcdPrs, multiplyByConst, bIsRationalMultipleOf, bMultiply, 
-    bDifferentiate,
-    bMultiplyByConst,
-    bFromRoots
+    bGcdPrs, bIsRationalMultipleOf, bMultiply, bDifferentiate, bFromRoots
 } from '../../../src/index';
 import { bPrimitivePart } from '../../../src/factor/bigint/b-primitive-part';
 
@@ -110,6 +107,18 @@ describe('bGcdPrs', function() {
             let gcd = bGcdPrs(p1,dp1);
 
             assert(bIsRationalMultipleOf(gcd, [1n, 0n, 1n]));
+        }
+
+
+        {
+            let p1: bigint[] = [];
+            let p2 = bMultiply([1n,0n,1n], [1n,0n,1n]);
+
+            let gcd1 = bGcdPrs(p1,p2);
+            let gcd2 = bGcdPrs(p2,p1);
+
+            assert(bIsRationalMultipleOf(gcd1, []));
+            assert(bIsRationalMultipleOf(gcd2, []));
         }
 	});
 });

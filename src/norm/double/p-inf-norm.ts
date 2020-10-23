@@ -10,7 +10,7 @@
 function pInfNorm(p: number[]): number {
     let max = 0;
     for (let i=0; i<p.length; i++) {
-        let v = Math.abs(p[i]);
+        const v = Math.abs(p[i]);
         if (v > max) { 
             max = v; 
         }

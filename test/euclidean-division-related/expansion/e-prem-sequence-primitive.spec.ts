@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { ePremSequencePrimitive } from '../../../src/index';
+import { multiply, ePremSequencePrimitive } from '../../../src/index';
 
 
 describe('ePremSequencePrimitive', function() {
@@ -24,6 +24,20 @@ describe('ePremSequencePrimitive', function() {
                     [[1]]
                 ]);
             }
+        }
+
+
+        {
+            let p1 = [2,-3,6,5,-130];
+            let p2 = [3,4,-2];
+            let p = multiply(p1,p2);
+
+            let r = ePremSequencePrimitive(p.map(c => [c]), p2.map(c => [c]));
+
+            expect(r).to.deep.equal([
+                [[6], [-1], [2], [45], [-382], [-530], [260]],
+                [[3], [4], [-2]]
+            ]);
         }
 	});
 });

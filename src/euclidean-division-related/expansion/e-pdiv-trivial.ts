@@ -55,12 +55,17 @@ function ePdivTrivial(
 
     // change to pseudo-remainder, i.e. not simply r = a; this allows the 
     // remainders to stay in 'Z', i.e. let m = leadingCoeff(b)^(deg(a)-deg(b)+1)
-    let d = eDegree(a) - eDegree(b) + 1;
+    const d = eDegree(a) - eDegree(b) + 1;
+    if (d < 1) {
+        return { q: [], r: a };
+    }
     let m = eIntPow(b[0],d);
 
-    m = positiveMultiplier ? eAbs(m) : m;
+    m = positiveMultiplier 
+        ? eAbs(m) 
+        : m;
 
-    let a_ = eMultiplyByConst(m, a);
+    const a_ = eMultiplyByConst(m, a);
 
     return ePdivInternal(a_, b);
 }

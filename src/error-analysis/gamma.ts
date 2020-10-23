@@ -13,7 +13,7 @@ const uu = u*u;
  * polynomial
  */
 function γ(n: number) {
-    let nu = n*u;
+    const nu = n*u;
 
     return nu/(1-nu);
 }
@@ -29,7 +29,7 @@ function γ(n: number) {
  * polynomial
  */
 function γγ(n: number) {
-    let nuu = n*uu;
+    const nuu = n*uu;
     
     return nuu/(1-nuu);
 }

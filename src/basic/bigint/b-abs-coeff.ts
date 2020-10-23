@@ -8,7 +8,7 @@
  * represents the polynomial `5x^2 - 3x`
  */
 function bAbsCoeff(p: bigint[]) {
-    let p_: bigint[] = [];
+    const p_: bigint[] = [];
     for (let i=0; i<p.length; i++) {
         const v = p[i];
         p_.push(v < 0n ? -v : v);

@@ -57,18 +57,24 @@ const γ2 = γ(2);
  */
 function evalCertifiedInclError(
         p: number[][],
-        pE: number[],
         x: number,
+        pE: number[] = undefined,
         multiplier = 1): { r̂: number, e: number } {
 
+    const absX = Math.abs(x);
     // first do a fast evaluation
-    let [r,e1] = hornerWithRunningError(p[0],x);
-    let e2 = γ2*AbsHorner(p[0],x); // the error due to not considering p[1]
+    const [r,e1] = hornerWithRunningError(p[0],x);
+    // the line below was changed due to negative values of x now also allowed
+    const e2 = γ2*AbsHorner(p[0],absX); // the error due to not considering p[1]
 
     // error due to imprecision in coefficients
-    const E = pE ? Horner(pE, x) : 0; 
+    // the line below was changed due to negative values of x now also allowed
+    //const E = pE ? Horner(pE, x) : 0; 
+    const E = pE 
+        ? Horner(pE, absX) 
+        : 0; 
     
-    let ee = e1+e2+E; // in difficult cases E can be larger than e1+e2
+    const ee = e1+e2+E; // in difficult cases E can be larger than e1+e2
     if (ee*multiplier < Math.abs(r)) {
         // we are within bounds
         return {r̂:r, e:ee};
@@ -76,9 +82,9 @@ function evalCertifiedInclError(
 
     // error is too large - do a more precise evaluation
     let { r̂, pπ, pσ } = EFTHorner(p[0],x);
-    let [C1,c1] = hornerWithRunningError(pπ, x);
-    let [C2,c2] = hornerWithRunningError(pσ, x);
-    let [C3,c3] = hornerWithRunningError(p[1], x);
+    const [C1,c1] = hornerWithRunningError(pπ, x);
+    const [C2,c2] = hornerWithRunningError(pσ, x);
+    const [C3,c3] = hornerWithRunningError(p[1], x);
 
     let e = (c1 + c2 + c3) + E; // typically: c1,c2 < c3 < E
 

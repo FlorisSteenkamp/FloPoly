@@ -20,11 +20,11 @@ const bitLength = bitLength_;
 function scaleFloatssToIntss(ass: number[][]): number[][] {
     let e = -1024;
     for (let i=0; i<ass.length; i++) {
-        let c = ass[i];
+        const c = ass[i];
         for (let j=0; j<c.length; j++) {
-            let a = c[j];
+            const a = c[j];
             if (a === 0) { continue; }
-            let scaleFactor = -exponent(a) + bitLength(a) - 1;
+            const scaleFactor = -exponent(a) + bitLength(a) - 1;
             if (scaleFactor > e) {
                 e = scaleFactor;
             }

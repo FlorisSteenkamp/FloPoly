@@ -17,9 +17,9 @@ const ddMultDouble2 = ddMultDouble2_;
  * ddDifferentiate([[0,5], [0,4], [0,3], [0,2], [0,1]]); //=> [[0,20], [0,12], [0,6], [0,2]]
  */
 function ddDifferentiate(p: number[][]): number[][] {
-	let result: number[][] = [];
+	const result: number[][] = [];
 	
-	let d = p.length - 1;
+	const d = p.length - 1;
 	for (let i=0; i<d; i++) {
 		result.push(ddMultDouble2((d-i), p[i]));
 	}

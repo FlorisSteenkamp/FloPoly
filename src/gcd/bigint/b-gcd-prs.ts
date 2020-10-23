@@ -26,7 +26,7 @@ function bGcdPrs(a: bigint[], b: bigint[]): bigint[] {
         return a;
     }
     
-    let seq = bPremSequenceSubresultant(a,b,false);
+    const seq = bPremSequenceSubresultant(a,b,false);
 
     return seq[seq.length-1];
 }

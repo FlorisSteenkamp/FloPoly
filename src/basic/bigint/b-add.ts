@@ -18,20 +18,20 @@ const bRemoveLeadingZeros = bRemoveLeadingZeros_;
  */
 function bAdd(p1: bigint[], p2: bigint[]): bigint[] {
 	// Initialize result array  
-	let d1 = p1.length-1;
-	let d2 = p2.length-1;
-	let Δd = d1-d2;
+	const d1 = p1.length-1;
+	const d2 = p2.length-1;
+	const Δd = d1-d2;
 	
-	let Δd1 = Δd < 0 ? +Δd : 0;
-	let Δd2 = Δd > 0 ? -Δd : 0;
+	const Δd1 = Δd < 0 ? +Δd : 0;
+	const Δd2 = Δd > 0 ? -Δd : 0;
 	
-	let d = Math.max(d1, d2);
+	const d = Math.max(d1, d2);
 	
 	// Add coefficients
-	let result = [];
+	const result = [];
 	for (let i=0; i<d+1; i++) {
-		let c1 = p1[i+Δd1] || 0n;
-		let c2 = p2[i+Δd2] || 0n;
+		const c1 = p1[i+Δd1] || 0n;
+		const c2 = p2[i+Δd2] || 0n;
 		result.push(c1 + c2);  
 	}
 	
