@@ -67,11 +67,55 @@ import { RootInterval } from "./root-interval";
  * // ---------------------------------------------------------------
  * // 1. a basic example of an order 11 polynomial (with 10 roots) --
  * // ---------------------------------------------------------------
- * TODO
+ * const p = [
+ *     3.033321234234234,
+ *     31.78342995971597,
+ *     -115.09145437671532,
+ *     -48.18962838294827,
+ *     241.04136127393173,
+ *     -26.63962334942254,
+ *     -81.82713958224285,
+ *     13.96128683321424,
+ *     7.3963444329341455,
+ *     -1.50733058206533,
+ *     -0.0015147128834111722
+ * ];
+ * //console.log(toCasStr(p))
+ * // => 3.033321234234234*x^10 + 31.78342995971597*x^9 - 115.09145437671532*x^8 -
+ * //    48.18962838294827*x^7 + 241.04136127393173*x^6 - 26.63962334942254*x^5 -
+ * //    81.82713958224285*x^4 + 13.96128683321424*x^3 + 7.3963444329341455*x^2 -
+ * //    1.50733058206533*x - 0.0015147128834111722
+ * // function to convert a double precision number to double-double precision
+ * // (note that the 'low double' is zero since the coefficients are assumed exact)
+ * const toDoubleDouble = c => [0,c];
+ * const roots = allRootsCertified(
+ *     p.map(toDoubleDouble),
+ *     Number.NEGATIVE_INFINITY,
+ *     Number.POSITIVE_INFINITY
+ * );
+ * //console.log(roots);
+ * // => [
+ * //   { tS: -13.222221, tE: -13.222220999999996, multiplicity: 1 },
+ * //   { tS: -1.3498348570000003, tE: -1.3498348569999998, multiplicity: 1 },
+ * //   { tS: -0.4444777699999987, tE: -0.4444777699999985, multiplicity: 1 },
+ * //   { tS: -0.43554300000000135, tE: -0.4355430000000011, multiplicity: 1 },
+ * //   { tS: -0.001000000000000222, tE: -0.001, multiplicity: 1 },
+ * //   { tS: 0.22999999999999984, tE: 0.23000000000000007, multiplicity: 1 },
+ * //   { tS: 0.345347, tE: 0.34534700000000024, multiplicity: 1 },
+ * //   { tS: 0.5429999999999989, tE: 0.5429999999999993, multiplicity: 1 },
+ * //   { tS: 1.3221000000000016, tE: 1.322100000000002, multiplicity: 1 },
+ * //   { tS: 2.534533999999997, tE: 2.534533999999998, multiplicity: 1 }
+ * // ]
+ * //
+ * // note: the above could also be achieved by using `allRootsCertifiedSimplified`
+ * // as follows:
+ * // const rs = allRootsCertifiedSimplified(p);
+ * const rs = allRootsCertifiedSimplified(p);
  *
  *
  * // -----------------------------------------------------------------------
- * // 2. the Wilksonson polynomial of degree 50 (an *extremely* hard case) --
+ * // 2. the Wilkinson polynomial of degree 50 (an *extremely* hard case) --
+ * // see: https://en.wikipedia.org/wiki/Wilkinson%27s_polynomial
  * // -----------------------------------------------------------------------
  * const _roots = [...Array(50+1).keys()].slice(1).map(c => [c]);  // => [1,2,3,...,50]
  * const { pDd: p, pE, getPExact } = eFromRoots(_roots);
