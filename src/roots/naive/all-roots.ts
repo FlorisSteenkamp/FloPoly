@@ -1,4 +1,3 @@
-
 import { differentiate as differentiate_ } from "../../calculus/double/differentiate";
 import { Horner as Horner_ } from "../../evaluate/double/horner";
 import { brentPoly as brentPoly_ } from "./brent-poly";
@@ -23,8 +22,8 @@ const removeLeadingZeros = removeLeadingZeros_;
  * 
  * * **non-exact:** roots are found 'naively' using double-precision arithmetic
  * and accuracy will thus depend on the condition number around the root - use 
- * `allRootsCertified` instead if certified root bounds are required (it is 
- * about 3x slower)
+ * [[allRootsCertifiedSimplified]] or [[allRootsCertified]] instead if certified 
+ * root bounds are required (it is about 3x slower, but still very fast!)
  * 
  * * close (where the definition of closeness depends on the condition 
  * number) or multiple *even* roots can be returned as 0, 1 or more close 
@@ -47,6 +46,8 @@ const removeLeadingZeros = removeLeadingZeros_;
  * returned
  * @param ub defaults to `Number.POSITIVE_INFINITY`; upper bound of roots to be 
  * returned
+ * 
+ * @doc
  */
 function allRoots(
 		p: number[],

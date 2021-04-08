@@ -1,4 +1,3 @@
-
 import { exponent as exponent_ } from "big-float-ts";
 import { bitLength as bitLength_ } from "big-float-ts";
 
@@ -16,6 +15,8 @@ const bitLength = bitLength_;
  * expansions)
  * 
  * @param ass an array of an array of double precision floating point numbers
+ * 
+ * @doc
  */
 function scaleFloatssToIntss(ass: number[][]): number[][] {
     let e = -1024;

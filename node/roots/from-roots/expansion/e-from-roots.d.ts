@@ -8,6 +8,8 @@
  * * mostly for testing purposes.
  *
  * @param roots an array of roots
+ *
+ * @doc
  */
 declare function eFromRoots(roots: number[][]): {
     pDd: number[][];

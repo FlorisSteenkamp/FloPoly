@@ -1,4 +1,3 @@
-
 /**
  * Returns the result of reflecting the given polynomial about the Y-axis, i.e. 
  * perform the change of variables: p(x) <- p(-x).
@@ -8,7 +7,11 @@
  * represents the polynomial `5x^2 - 3x`
  * 
  * @example
+ * ```typescript
  * reflectAboutYAxis([5,4,3,2,1]); //=> [5, -4, 3, -2, 1]
+ * ```
+ * 
+ * @doc
  */
 function reflectAboutYAxis(p: number[]): number[] {
 	const d = p.length-1;

@@ -3,10 +3,10 @@
  *
  * see http://www.ti3.tuhh.de/paper/rump/OgRuOi05.pdf
  *
- * @internal
- *
  * @param x
  * @param K
+ *
+ * @internal
  */
 declare function vecSum(p_: number[]): number[];
 export { vecSum };

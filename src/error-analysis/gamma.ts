@@ -1,4 +1,3 @@
-
 const u = Number.EPSILON / 2;
 const uu = u*u;
 
@@ -11,6 +10,8 @@ const uu = u*u;
  * @param n the parameter - typically a small positive integer, e.g. for 
  * polynomial evaluation this === 2*d + 1, where d is the degree of the 
  * polynomial
+ * 
+ * @doc
  */
 function γ(n: number) {
     const nu = n*u;
@@ -27,6 +28,8 @@ function γ(n: number) {
  * @param n the parameter - typically a small positive integer, e.g. for 
  * polynomial evaluation this === 2*d + 1, where d is the degree of the 
  * polynomial
+ * 
+ * @doc
  */
 function γγ(n: number) {
     const nuu = n*uu;

@@ -1,4 +1,3 @@
-
 /** 
  * Returns the result of evaluating a univariate polynomial using 
  * Horner's method in double precision floating point arithmetic.
@@ -9,6 +8,8 @@
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]` 
  * represents the polynomial `5x^2 - 3x`
  * @param x the value at which to evaluate the polynomial
+ * 
+ * @doc
  */
 function Horner(p: number[], x: number): number {
 	let q = 0; 

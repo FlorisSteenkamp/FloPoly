@@ -1,4 +1,3 @@
-
 /**
  * Returns the negative of the given polynomial (p -> -p).
  * 
@@ -7,7 +6,11 @@
  * polynomial `5x^2 - 3x`
  * 
  * @example
+ * ```typescript
  * bNegate([1n, -2n]); //=> [-1n, 2n]
+ * ```
+ * 
+ * @doc
  */
 function bNegate(p: bigint[]): bigint[] {
 	const p_: bigint[] = [];

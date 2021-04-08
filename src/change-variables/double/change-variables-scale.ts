@@ -1,4 +1,3 @@
-
 /**
  * Returns the result of performing a change of variables of the 
  * form: p(x) <- p(ax) in double precision.
@@ -11,7 +10,11 @@
  * @param a a scaling factor, i.e. the `a` in `p(x) <- p(ax)`
  * 
  * @example
+ * ```typescript
  * changeVariablesScale([1,2,7], 3); //=> [9, 6, 7]
+ * ```
+ * 
+ * @doc
  */
 function changeVariablesScale(
 		p: number[], 

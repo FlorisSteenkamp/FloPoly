@@ -10,7 +10,11 @@
  * @param a a scaling factor, i.e. the `a` in `p(x) <- p(ax)`
  *
  * @example
+ * ```typescript
  * eChangeVariablesScale([[1],[2],[7]], 3); //=> [[9], [6], [7]]
+ * ```
+ *
+ * @doc
  */
 declare function eChangeVariablesScale(p: number[][], a: number): number[][];
 export { eChangeVariablesScale };

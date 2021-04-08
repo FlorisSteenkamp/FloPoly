@@ -7,6 +7,8 @@ exports.p2Norm = void 0;
  *
  * @param p an array of numbers; can represent an array of polynomial
  * coefficients
+ *
+ * @doc
  */
 function p2Norm(p) {
     let s = 0;

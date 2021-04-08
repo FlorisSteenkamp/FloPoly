@@ -24,11 +24,15 @@ const eSignChanges = e_sign_changes_1.eSignChanges;
  * @param b an upper bound
  *
  * @example
+ * ```typescript
  * const p = [[1], [1], [-64], [236], [-240]];
  * eNumRootsInRange(p,-20,-11); //=> 0
  * eNumRootsInRange(p,-11,-9);  //=> 1
  * eNumRootsInRange(p,-11,3.5); //=> 3
  * eNumRootsInRange(p,-11,5);   //=> 4
+ * ```
+ *
+ * @doc
  */
 function eNumRootsInRange(p, a, b) {
     const ps = eSturmChain(p);

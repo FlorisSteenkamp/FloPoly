@@ -22,7 +22,11 @@ const scaleExpansion2 = big_float_ts_3.scaleExpansion2;
  * @param b the `b` in `ax + b`
  *
  * @example
+ * ```typescript
  * eChangeVariablesLinear([[1],[2],[7]], 3, 4); //=> [[9], [30], [31]]
+ * ```
+ *
+ * @doc
  */
 function eChangeVariablesLinear(p, a, b) {
     // We let the coefficients of p(ax + b) be denoted by d_i in the code below. 

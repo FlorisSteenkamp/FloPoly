@@ -9,6 +9,8 @@
  * with coefficients as a dense array of Shewchuk expansions from highest to
  * lowest power, e.g. `[[5],[-3],[0]]` represents the  polynomial `5x^2 - 3x`
  * @param g the polynomial b in the formula a = bq + r;
+ *
+ * @doc
  */
 declare function ePremSequencePrimitive(f: number[][], g: number[][]): number[][][];
 export { ePremSequencePrimitive };

@@ -14,6 +14,8 @@ const b0 = 0n; // so tests are not tripped up - awaiting better support
  * * can be used to scale polynomials
  *
  * @param as an array of double precision floating point numbers
+ *
+ * @doc
  */
 function scaleFloatsToBigints(as) {
     let e = -1024;

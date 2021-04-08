@@ -6,7 +6,11 @@
  * polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * bDifferentiate([5n, 4n, 3n, 2n, 1n]); //=> [20n, 12n, 6n, 2n]
+ * ```
+ *
+ * @doc
  */
 declare function bDifferentiate(p: bigint[]): bigint[];
 export { bDifferentiate };

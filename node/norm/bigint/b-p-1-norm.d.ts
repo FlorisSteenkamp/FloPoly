@@ -6,6 +6,8 @@
  * norm is known as the `length` of the polynomial
  *
  * @param p an array of bigints
+ *
+ * @doc
  */
 declare function bP1Norm(p: bigint[]): bigint;
 export { bP1Norm };

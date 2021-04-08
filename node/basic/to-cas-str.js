@@ -2,12 +2,15 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.toCasStr = void 0;
 const big_float_ts_1 = require("big-float-ts");
-//function isNumber(x: number | bigint | number[]): x is number {
-//    return typeof x === 'number';
-//}
+/** @internal */
+function isNumber(x) {
+    return typeof x === 'number';
+}
+/** @internal */
 function isShewchuk(x) {
     return Array.isArray(x);
 }
+/** @internal */
 function isBigint(x) {
     return typeof x === 'bigint';
 }
@@ -19,13 +22,18 @@ function isBigint(x) {
  * then the coefficients are first down-converted to double precision
  *
  * @param p a polynomial (with coefficients given densely as an array of Shewchuk
- * floating point expansions **OR** double floating point numbers) from highest
- * to lowest power, e.g. `[[5],[-3],[0]]` represents the polynomial `5x^2 - 3x`
+ * floating point expansions **or** double precision floating point numbers **or**
+ * bigints) from highest to lowest power, e.g. `[5,-3,0]` represents the
+ * polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * toCasStr([5,4,3,2,1]); //=> "x^4*5 + x^3*4 + x^2*3 + x*2 + 1"
  * toCasStr([[5],[4],[3],[2],[1]]); //=> "x^4*5 + x^3*4 + x^2*3 + x*2 + 1"
  * toCasStr([5n,4n,3n,2n,1n]); //=> "x^4*5 + x^3*4 + x^2*3 + x*2 + 1"
+ * ```
+ *
+ * @doc
  */
 function toCasStr(p) {
     const d = p.length - 1;

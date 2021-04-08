@@ -1,10 +1,3 @@
-
-import { bRemoveLeadingZeros as bRemoveLeadingZeros_ } from "./b-remove-leading-zeros";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const bRemoveLeadingZeros = bRemoveLeadingZeros_;
-
-
 /**
  * Returns the result of multiplying 2 polynomials with bigint coefficients.
  * 
@@ -18,7 +11,11 @@ const bRemoveLeadingZeros = bRemoveLeadingZeros_;
  * @param b another polynomial.
  * 
  * @example
+ * ```typescript
  * bMultiply([1n,2n,3n], [2n,5n,3n,5n]); //=> [2n, 9n, 19n, 26n, 19n, 15n]
+ * ```
+ * 
+ * @doc
  */
 function bMultiply(a: bigint[], b: bigint[]): bigint[] {
 	const da = a.length-1;

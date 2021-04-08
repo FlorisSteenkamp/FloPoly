@@ -28,6 +28,8 @@ const Horner = horner_1.Horner;
  * represents the polynomial `5x^2 - 3x`
  * @param x the value at which to evaluate the polynomial
  * @param K (K - 1) === the number of compensations to do
+ *
+ * @doc
  */
 function CompHornerK(p, x, K) {
     K = Math.min(p.length - 1, K);

@@ -32,7 +32,11 @@ const eSign = big_float_ts_1.eSign;
  * represents the polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * eSignChanges([[1],[2],[-3],[0],[0],[3],[-1]]); //=> 3
+ * ```
+ *
+ * @doc
  */
 function eSignChanges(p) {
     const d = p.length - 1;

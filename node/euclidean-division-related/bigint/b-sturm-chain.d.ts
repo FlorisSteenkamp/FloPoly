@@ -9,7 +9,11 @@
  * polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * bSturmChain([-3n,4n,2n,-2n]); //=> [[-3n, 4n, 2n, -2n], [-9n, 8n, 2n], [-204n, 138n], [-1692n]]
+ * ```
+ *
+ * @doc
  */
 declare function bSturmChain(p: bigint[]): bigint[][];
 export { bSturmChain };

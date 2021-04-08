@@ -10,7 +10,11 @@
  * @param b the `b` in `x + b`
  *
  * @example
+ * ```typescript
  * changeVariablesTranslateX([1,2,7], 3); //=> [1, 8, 22]
+ * ```
+ *
+ * @doc
  */
 declare function changeVariablesTranslateX(p: number[], b: number): number[];
 export { changeVariablesTranslateX };

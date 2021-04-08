@@ -11,7 +11,11 @@ exports.eInvert = void 0;
  * represents the polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * eInvert([[3],[2],[-5]]);  // => [[-5],[2],[3]]
+ * ```
+ *
+ * @doc
  */
 function eInvert(p) {
     return p.slice().reverse();

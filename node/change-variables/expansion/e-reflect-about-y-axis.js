@@ -12,7 +12,11 @@ const eNegativeOf = big_float_ts_1.eNegativeOf;
  * represents the polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * eReflectAboutYAxis([[5],[4],[3],[2],[1]]); //=> [[5], [-4], [3], [-2], [1]]
+ * ```
+ *
+ * @doc
  */
 function eReflectAboutYAxis(p) {
     const d = p.length - 1;

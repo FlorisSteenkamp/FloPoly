@@ -6,6 +6,8 @@ exports.rootIntervalToExp = void 0;
  * double-double precision one
  *
  * @param ri a root interval
+ *
+ * @doc
  */
 function rootIntervalToExp(ri) {
     return {

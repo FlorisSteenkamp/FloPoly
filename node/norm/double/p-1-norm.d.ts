@@ -7,6 +7,8 @@
  * norm is known as the `length` of the polynomial
  *
  * @param p an array of numbers
+ *
+ * @doc
  */
 declare function p1Norm(p: number[]): number;
 export { p1Norm };

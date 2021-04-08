@@ -15,6 +15,8 @@ const bitLength = big_float_ts_2.bitLength;
  * expansions)
  *
  * @param ass an array of an array of double precision floating point numbers
+ *
+ * @doc
  */
 function scaleFloatssToIntss(ass) {
     let e = -1024;

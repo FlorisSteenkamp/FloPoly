@@ -18,6 +18,8 @@ const eSign = big_float_ts_1.eSign;
  * @param p a polynomial with coefficients given densely as an array of double
  * precision floating point numbers from highest to lowest power,
  * e.g. `[5,-3,0]` represents the polynomial `5x^2 - 3x`
+ *
+ * @doc
  */
 function numRootsIn01(p) {
     const p_ = p.map(c => [c]);

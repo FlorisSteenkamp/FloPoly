@@ -1,4 +1,3 @@
-
 import { eToDd as eToDd_ } from "big-float-ts";
 import { twoSum as twoSum_ } from "big-float-ts";
 import { eChangeVariablesLinear as eChangeVariablesLinear_ } from "../../change-variables/expansion/e-change-variables-linear";
@@ -19,7 +18,7 @@ const eps = Number.EPSILON;
 
 /**
  * Returns once compensated root(s) (bar underflow / overflow) given a root 
- * interval previously calculated using `allRootsCertified`.
+ * interval previously calculated using [[allRootsCertified]].
  * 
  * * 'once-compensated' here means that the typical root interval, `W`,
  * (`= Number.EPSILON` at `1`) is reduced to `W**2`; if multiple roots were
@@ -30,6 +29,8 @@ const eps = Number.EPSILON;
  * @param p the exact polynomial with coefficients given densely as an array of 
  * Shewchuk floating point expansions from highest to lowest power, 
  * e.g. `[[5],[-3],[0]]` represents the polynomial `5x^2 - 3x`
+ * 
+ * @doc
  */
 function refineK1(
         ri: RootInterval, 

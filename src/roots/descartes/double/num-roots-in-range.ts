@@ -1,4 +1,3 @@
-
 import { sturmChain as sturmChain_ } from "../../../euclidean-division-related/double/sturm-chain";
 import { eHorner as eHorner_ } from "../../../evaluate/expansion/e-horner";
 import { eSignChanges as eSignChanges_ } from '../expansion/e-sign-changes';
@@ -20,12 +19,16 @@ const eSignChanges = eSignChanges_;
  * @param a a lower bound
  * @param b an upper bound
  * 
- * @example 
+ * @example
+ * ```typescript 
  * const p = [1, 1, -64, 236, -240];
  * numRootsInRange(p,-20,-11);  //=> 0
  * numRootsInRange(p,-11,-9);   //=> 1  
  * numRootsInRange(p,-11,3.5);  //=> 3
  * numRootsInRange(p,-11,5);    //=> 4
+ * ```
+ * 
+ * @doc
  */ 
 function numRootsInRange(
 		p: number[], a: number, b: number): number {

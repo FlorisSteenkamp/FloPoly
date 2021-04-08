@@ -1,4 +1,3 @@
-
 import { bDegree as bDegree_ } from "../../basic/bigint/b-degree";
 import { bMultiplyByConst as bMultiplyByConst_ } from "../../basic/bigint/b-multiply-by-const";
 import { bPdivInternal as bPdivInternal_ } from './b-pdiv-internal';
@@ -21,7 +20,7 @@ const abs = (n: bigint) => n >= 0 ? n : -n;
  * 
  * * **precondition:** the coefficients must be bigints; if they are not they 
  * can easily be scaled from floating point numbers to bigints by calling 
- * `scaleFloatsToBigints` or similar before calling this function (recall that 
+ * [[scaleFloatsToBigints]] or similar before calling this function (recall that 
  * all floating point numbers are rational).
  * 
  * * **precondition:** b !== [0], i.e. unequal to the zero polynomial.
@@ -37,6 +36,8 @@ const abs = (n: bigint) => n >= 0 ? n : -n;
  * multiplier (of the coefficients of the dividend) 
  * `leadingCoeff(b)^(deg(a)-deg(b)+1)` will be 
  * modified to `abs(leadingCoeff(b)^(deg(a)-deg(b)+1))`
+ * 
+ * @doc
  */
 function bPdivTrivial(
         a: bigint[], b: bigint[], positiveMultiplier = false): { q: bigint[]; r: bigint[]; } {

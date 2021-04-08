@@ -1,4 +1,3 @@
-
 import { eDifferentiate as eDifferentiate_ } from '../../calculus/expansion/e-differentiate';
 import { ePremSequenceSubresultant as ePremSequenceSubresultant_ } from "../expansion/e-prem-sequence-subresultant";
 
@@ -25,7 +24,11 @@ const ePremSequenceSubresultant = ePremSequenceSubresultant_;
  * e.g. `[5,-3,0]` represents the polynomial `5x^2 - 3x`
  * 
  * @example
+ * ```typescript
  * sturmChain([-3,4,2,-2]); //=> [[[-3],[4],[2],[-2]],[[-9],[8],[2]],[[-204],[138]],[[-1692]]]
+ * ```
+ * 
+ * @doc
  */
 function sturmChain(p: number[]): number[][][] {
 	// convert from double precision to Shewchuk expansion

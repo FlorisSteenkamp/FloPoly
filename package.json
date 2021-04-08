@@ -27,7 +27,8 @@
     "homepage": "http://mat-demo.appspot.com/#!/test-polynomials",
     "dependencies": {
         "big-float-ts": "^2.0.0",
-        "double-double": "^1.0.3"
+        "double-double": "^1.0.3",
+        "json-stringify-safe": "^5.0.1"
     },
     "devDependencies": {
         "@istanbuljs/nyc-config-typescript": "^1.0.1",
@@ -51,6 +52,9 @@
         "build-node": "rimraf node && tsc",
         "build-browser": "rimraf browser && webpack",
         "test": "nyc mocha --require ts-node/register --require source-map-support/register ./test/**/*.spec.ts",
-        "a": "mocha ./test/evaluate/expansion/e-e-horner.spec.ts --timeout 13000 --require ts-node/register --require source-map-support/register"
+        "docs": "ts-node ../typedoc-mod/src/run.ts --options typedoc.json",
+        "docs2": "typedoc --json ./json/json.json --options typedoc2.json",
+        "docs3": "typedoc --options typedoc3.json",
+        "docs4": "typedoc --options typedoc4.json"
     }
 }

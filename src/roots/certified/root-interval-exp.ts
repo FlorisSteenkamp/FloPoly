@@ -1,11 +1,12 @@
-
 /**
- * Represents a root(s) bracketing interval with the bracket limits given as
- * Shewchuk expansions
+ * Represents a root bracketing interval with the bracket limits given as
+ * Shewchuk expansions.
  * 
  * * **precondition:** `tE - tS` when calculated in double precision must be 
  * exact - this is actually almost guaranteed due to a theorem stating that if
  * `|a - b| <= |a|` and `|a - b| <= |b|` then `a - b` is exact
+ * 
+ * @doc
  */
 interface RootIntervalExp {
     /** the minimum possible root value */

@@ -6,6 +6,8 @@
  * @param n the parameter - typically a small positive integer, e.g. for
  * polynomial evaluation this === 2*d + 1, where d is the degree of the
  * polynomial
+ *
+ * @doc
  */
 declare function γ(n: number): number;
 /**
@@ -17,6 +19,8 @@ declare function γ(n: number): number;
  * @param n the parameter - typically a small positive integer, e.g. for
  * polynomial evaluation this === 2*d + 1, where d is the degree of the
  * polynomial
+ *
+ * @doc
  */
 declare function γγ(n: number): number;
 export { γ, γγ };

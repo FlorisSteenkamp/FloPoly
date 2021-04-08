@@ -1,11 +1,10 @@
-
 /**
  * Returns the result of elevating the given polynomial by the given degree.
  * 
- * @internal
- * 
  * @param p 
- * @param deg 
+ * @param deg
+ * 
+ * @internal
  */
 function bElevateDegree(p: bigint[], deg: number) {
     const p_ = p.slice();

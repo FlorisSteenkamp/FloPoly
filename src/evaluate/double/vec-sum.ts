@@ -1,4 +1,3 @@
-
 import { twoSum as twoSum_ } from "big-float-ts";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -10,10 +9,10 @@ const twoSum = twoSum_;
  * 
  * see http://www.ti3.tuhh.de/paper/rump/OgRuOi05.pdf
  * 
- * @internal
- * 
  * @param x 
  * @param K 
+ * 
+ * @internal
  */
 function vecSum(p_: number[]) {
 	const p = p_.slice();

@@ -14,6 +14,8 @@ const pInfNorm = p_inf_norm_1.pInfNorm;
  * @param p a polynomial with coefficients given densely as an array of double
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`
  * represents the polynomial `5x^2 - 3x`
+ *
+ * @doc
  */
 function rootMagnitudeUpperBound_rouche(p) {
     if (p.length <= 1) {

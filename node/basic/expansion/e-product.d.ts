@@ -11,7 +11,11 @@
  * e.g. `[[5],[-3],[0]]` represents the polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * eProduct([[[1],[2],[3]], [[2],[5],[3],[5]]]); //=> [[2], [9], [19], [26], [19], [15]]
+ * ```
+ *
+ * @doc
  */
 declare function eProduct(ps: number[][][]): number[][];
 export { eProduct };

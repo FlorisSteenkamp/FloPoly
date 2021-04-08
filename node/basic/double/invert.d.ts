@@ -7,7 +7,11 @@
  * represents the polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * invert([3,2,-5]);  // => [-5,2,3]
+ * ```
+ *
+ * @doc
  */
 declare function invert(p: number[]): number[];
 export { invert };

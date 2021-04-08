@@ -1,4 +1,3 @@
-
 import { bDegree as bDegree_ } from "../../basic/bigint/b-degree";
 import { bElevateDegree as bElevateDegree_ } from "./b-elevate-degree";
 import { bAdd as bAdd_ } from "../../basic/bigint/b-add";
@@ -24,19 +23,19 @@ const bSubtract = bSubtract_;
  * 
  * * **precondition:** the coefficients must be integers; if they are not they 
  * can easily be scaled from floating point numbers to integers by calling 
- * `scaleFloatssToBigintss` before calling this function (recall that all floating 
+ * [[scaleFloatssToBigintss]] before calling this function (recall that all floating 
  * point numbers are rational).
  * 
  * * **precondition:** b !== [], i.e. unequal to the zero polynomial.
  * 
  * * see [Polynomial long division](https://en.wikipedia.org/wiki/Polynomial_long_division)
- *
- * @internal
  * 
  * @param a the polynomial a in the formula a = bq + r; the polynomial is given
  * with coefficients as a dense array of bigints from highest to lowest 
  * power, e.g. `[5n,-3n,0n]` represents the  polynomial `5x^2 - 3x`
  * @param b the polynomial b in the formula a = bq + r
+ * 
+ * @internal
  */
 function bPdivInternal(
         a: bigint[], b: bigint[]): { q: bigint[]; r: bigint[]; } {

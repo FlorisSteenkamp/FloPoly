@@ -12,8 +12,12 @@
  * represents the polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * rootMagnitudeUpperBound_fujiwara([2,-3,6,5,-130]); //=> 6.753296750770361
  * allRoots([2,-3,6,5,-130]); //=> [-2.397918624065303, 2.8793785310848383]
+ * ```
+ *
+ * @doc
  */
 declare function rootMagnitudeUpperBound_fujiwara(p: number[]): number;
 export { rootMagnitudeUpperBound_fujiwara };

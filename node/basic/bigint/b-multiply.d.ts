@@ -11,7 +11,11 @@
  * @param b another polynomial.
  *
  * @example
+ * ```typescript
  * bMultiply([1n,2n,3n], [2n,5n,3n,5n]); //=> [2n, 9n, 19n, 26n, 19n, 15n]
+ * ```
+ *
+ * @doc
  */
 declare function bMultiply(a: bigint[], b: bigint[]): bigint[];
 export { bMultiply };

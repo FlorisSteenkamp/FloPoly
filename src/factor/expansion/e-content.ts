@@ -1,4 +1,3 @@
-
 import { eGcdInts as eGcdInts_ } from "../../gcd/expansion/e-integer-gcd";
 import { eSign as eSign_ } from "big-float-ts";
 import { eNegativeOf as eNegativeOf_ } from "big-float-ts";
@@ -24,6 +23,8 @@ const eNegativeOf = eNegativeOf_;
  * @param p a polynomial with coefficients given densely as an array of
  * Shewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
  * represents the polynomial `5x^2 - 3x`
+ * 
+ * @doc
  */
 function eContent(p: number[][]): number[] {
     if (p.length === 0) { 

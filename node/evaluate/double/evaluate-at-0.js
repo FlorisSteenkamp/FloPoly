@@ -9,7 +9,11 @@ exports.evaluateAt0 = void 0;
  * represents the polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * evaluateAt0([3,2,99]); //=> 99
+ * ```
+ *
+ * @doc
  */
 function evaluateAt0(p) {
     return p.length === 0 ? 0 : p[p.length - 1];

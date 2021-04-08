@@ -39,5 +39,3 @@ Then, include the script in your project:
 After having included the script file in your HTML there will be a new global 
 viariable available called `FloPoly` that represents the library. See the 
 [docs](http://mat-demo.appspot.com/#!/test-polynomials#docs).
-
-

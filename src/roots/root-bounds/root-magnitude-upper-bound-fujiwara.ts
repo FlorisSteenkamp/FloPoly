@@ -1,4 +1,3 @@
-
 /**
  * Returns an upper bound on the magnitude (absolute value) of the complex 
  * roots of the given polynomial using the near-optimal Fujiwara bound.
@@ -13,8 +12,12 @@
  * represents the polynomial `5x^2 - 3x`
  * 
  * @example
+ * ```typescript
  * rootMagnitudeUpperBound_fujiwara([2,-3,6,5,-130]); //=> 6.753296750770361
  * allRoots([2,-3,6,5,-130]); //=> [-2.397918624065303, 2.8793785310848383]
+ * ```
+ * 
+ * @doc
  */
 function rootMagnitudeUpperBound_fujiwara(p: number[]): number {
 	if (p.length <= 1) {

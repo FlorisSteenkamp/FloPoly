@@ -5,6 +5,8 @@
  *
  * @param p an array of numbers; can represent an array of polynomial
  * coefficients
+ *
+ * @doc
  */
 declare function pInfNorm(p: number[]): number;
 export { pInfNorm };

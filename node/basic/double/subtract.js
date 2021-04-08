@@ -15,7 +15,11 @@ const removeLeadingZeros = remove_leading_zeros_1.removeLeadingZeros;
  * @param p2 subtrahend; the polynomial that will be subtracted
  *
  * @example
+ * ```typescript
  * subtract([2,3],[4,4]); //=> [-2, -1]
+ * ```
+ *
+ * @doc
  */
 function subtract(p1, p2) {
     // Initialize result array  

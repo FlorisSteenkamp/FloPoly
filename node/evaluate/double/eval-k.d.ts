@@ -1,5 +1,5 @@
 /**
- * Returns the result of evaluating the given polynomial at x such that at least
+ * Returns the result of evaluating the given polynomial at `x` such that at least
  * the sign bit is correct *up to 3-times compensated evaluation (K = 4)*, i.e.
  * as if evaluating in double-double-double-double precision.
  *
@@ -14,6 +14,8 @@
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`
  * represents the polynomial `5x^2 - 3x`
  * @param x the value at which to evaluate the polynomial
+ *
+ * @doc
  */
 declare function evalK(p: number[], x: number): number;
 declare function evalK2(p: number[], x: number): number;

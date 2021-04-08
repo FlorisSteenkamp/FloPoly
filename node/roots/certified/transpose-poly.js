@@ -6,9 +6,9 @@ exports.transposePoly = void 0;
  * into multiple polynomials with each consecutive polynomial 'adjusting'
  * the prior one to higher precision.
  *
- * @internal
- *
  * @param p
+ *
+ * @internal
  */
 function transposePoly(p) {
     // transpose the polynomial coefficients into multiple polynomials

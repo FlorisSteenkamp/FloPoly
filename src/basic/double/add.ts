@@ -1,4 +1,3 @@
-
 import { removeLeadingZeros as removeLeadingZeros_ } from "./remove-leading-zeros";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -12,8 +11,13 @@ const removeLeadingZeros = removeLeadingZeros_;
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]` 
  * represents the polynomial `5x^2 - 3x`
  * @param p2 another polynomial
+ * 
  * @example
+ * ```typescript
  * add([1,2,3],[3,4]); //=> [1,5,7]
+ * ```
+ * 
+ * @doc
  */
 function add(p1: number[], p2: number[]): number[] {
 	// Initialize result array  

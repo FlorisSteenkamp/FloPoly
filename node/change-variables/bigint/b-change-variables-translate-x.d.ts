@@ -10,7 +10,11 @@
  * @param b the `b` in `x + b`
  *
  * @example
+ * ```typescript
  * bChangeVariablesTranslateX([1n,2n,7n], 3n); //=> [1n, 8n, 22n]
+ * ```
+ *
+ * @doc
  */
 declare function bChangeVariablesTranslateX(p: bigint[], b: bigint): bigint[];
 export { bChangeVariablesTranslateX };

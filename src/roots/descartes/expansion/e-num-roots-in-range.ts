@@ -1,4 +1,3 @@
-
 import { eSturmChain as eSturmChain_ } from "../../../euclidean-division-related/expansion/e-sturm-chain";
 import { eeHorner as eeHorner_ } from "../../../evaluate/expansion/e-e-horner";
 import { eSignChanges as eSignChanges_ } from './e-sign-changes';
@@ -25,12 +24,16 @@ const eSignChanges = eSignChanges_;
  * @param a a lower bound given as a Shewchuk expansion
  * @param b an upper bound
  * 
- * @example 
+ * @example
+ * ```typescript 
  * const p = [[1], [1], [-64], [236], [-240]];
  * eNumRootsInRange(p,-20,-11); //=> 0
  * eNumRootsInRange(p,-11,-9);  //=> 1  
  * eNumRootsInRange(p,-11,3.5); //=> 3
  * eNumRootsInRange(p,-11,5);   //=> 4
+ * ```
+ * 
+ * @doc
  */
 function eNumRootsInRange(
 		p: number[][], 

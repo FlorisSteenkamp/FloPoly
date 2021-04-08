@@ -1,4 +1,3 @@
-
 import { bSturmChain as bSturmChain_ } from "../../../euclidean-division-related/bigint/b-sturm-chain";
 import { bDegree as bDegree_ } from "../../../basic/bigint/b-degree";
 import { bSignChanges as bSignChanges_ } from "./b-sign-changes";
@@ -22,9 +21,13 @@ const bSignChanges = bSignChanges_;
  * bigints from highest to lowest power, e.g. `[5n,-3n,0n]`
  * represents the polynomial `5x^2 - 3x`
  * 
- * @example 
+ * @example
+ * ```typescript 
  * const p = [n1, 1n, -64n, 236n, -240n];
  * bNumRoots(p); //=> 4
+ * ```
+ * 
+ * @doc
  */
 function bNumRoots(p: bigint[]): number {
 	const ps = bSturmChain(p);

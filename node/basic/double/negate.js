@@ -8,7 +8,11 @@ exports.negate = void 0;
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`
  * represents the polynomial `5x^2 - 3x`
  * @example
+ * ```typescript
  * negate([0.1, -0.2]); //=> [-0.1, 0.2]
+ * ```
+ *
+ * @doc
  */
 function negate(p) {
     const p_ = [];

@@ -6,7 +6,11 @@
  * polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * bNegate([1n, -2n]); //=> [-1n, 2n]
+ * ```
+ *
+ * @doc
  */
 declare function bNegate(p: bigint[]): bigint[];
 export { bNegate };

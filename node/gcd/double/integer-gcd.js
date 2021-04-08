@@ -1,11 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.gcdIntBinary = exports.gcdIntsTree = exports.gcdInts = exports.gcdInt = void 0;
+exports.gcdInts = exports.gcdInt = void 0;
 /**
  * Computes the greatest common divisor of two integers a and b, using the
  * Euclidean Algorithm.
  *
  * **precondition** a, b must be integers
+ *
+ * @doc
  */
 function gcdInt(a, b) {
     a = Math.abs(a);
@@ -69,7 +71,6 @@ function gcdIntBinary(a, b) {
     // Restore common factors of 2...
     return k * a;
 }
-exports.gcdIntBinary = gcdIntBinary;
 /**
  * Naively computes and returns the greatest common divisor of 2 or more
  * integers by taking each integer in turn and calculating the GCD of that
@@ -77,6 +78,8 @@ exports.gcdIntBinary = gcdIntBinary;
  * taken as the first number).
  *
  * @param vals the integers for which the GCD is to be calculated
+ *
+ * @doc
  */
 function gcdInts(vals) {
     const vals_ = vals.slice();
@@ -93,7 +96,9 @@ function gcdInts(vals) {
 }
 exports.gcdInts = gcdInts;
 /**
- * ❗ don't use - too slow - use `gcdInts` instead ❗
+ * :::tip Heads up!
+ * don't use - too slow - use [[gcdInts]] instead
+ * :::
  *
  * Computes and returns the greatest common divisor of 2 or more integers by
  * calculating GCDs rescursively using a tree (Divide and Conquer).
@@ -122,5 +127,4 @@ function gcdIntsTree(vals) {
     }
     return vals_[0];
 }
-exports.gcdIntsTree = gcdIntsTree;
 //# sourceMappingURL=integer-gcd.js.map

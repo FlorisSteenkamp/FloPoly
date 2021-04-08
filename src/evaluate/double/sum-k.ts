@@ -1,4 +1,3 @@
-
 import { vecSum as vecSum_ } from "./vec-sum";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -10,10 +9,10 @@ const vecSum = vecSum_;
  * 
  * see http://www.ti3.tuhh.de/paper/rump/OgRuOi05.pdf
  * 
- * @internal
- * 
  * @param x 
  * @param K 
+ * 
+ * @internal
  */
 function SumK(p: number[], K: number) {
 	for (let i=1; i<K; i++) {

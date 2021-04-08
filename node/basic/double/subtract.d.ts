@@ -9,7 +9,11 @@
  * @param p2 subtrahend; the polynomial that will be subtracted
  *
  * @example
+ * ```typescript
  * subtract([2,3],[4,4]); //=> [-2, -1]
+ * ```
+ *
+ * @doc
  */
 declare function subtract(p1: number[], p2: number[]): number[];
 export { subtract };

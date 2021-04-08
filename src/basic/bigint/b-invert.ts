@@ -1,4 +1,3 @@
-
 /**
  * Inverts the given polynomial by reversing the order of the coefficients, 
  * i.e. p(x) -> x^deg(p) * p(1/x)
@@ -8,7 +7,11 @@
  * polynomial `5x^2 - 3x`
  * 
  * @example
+ * ```typescript
  * bInvert([3n,2n,-5n]);  // => [-5n,2n,3n]
+ * ```
+ * 
+ * @doc
  */
 function bInvert(p: bigint[]): bigint[] {
 	return p.slice().reverse();

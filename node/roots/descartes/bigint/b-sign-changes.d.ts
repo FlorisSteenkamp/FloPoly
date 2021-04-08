@@ -16,7 +16,11 @@
  * represents the polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * bSignChanges([1n,2n,-3n,0n,0n,3n,-1n]); //=> 3
+ * ```
+ *
+ * @doc
  */
 declare function bSignChanges(p: bigint[]): number;
 export { bSignChanges };

@@ -7,6 +7,8 @@ exports.bP2NormSquared = void 0;
  *
  * @param p an array of bigints; can represent an array of polynomial
  * coefficients
+ *
+ * @doc
  */
 function bP2NormSquared(p) {
     let s = 0n;

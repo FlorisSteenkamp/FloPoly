@@ -4,6 +4,8 @@
  * * **precondition:** `tE - tS` when calculated in double precision must be
  * exact - this is actually almost guaranteed due to a theorem stating that if
  * `|a - b| <= |a|` and `|a - b| <= |b|` then `a - b` is exact
+ *
+ * @doc
  */
 declare type RootInterval = {
     /** the minimum possible root value */
@@ -21,6 +23,8 @@ declare type RootInterval = {
  * interval width of 0 and multiplicity 1)
  *
  * @param t
+ *
+ * @doc
  */
 declare function createRootExact(t: number): RootInterval;
 /**
@@ -28,6 +32,8 @@ declare function createRootExact(t: number): RootInterval;
  * be used to estimate the root
  *
  * @param ri a root interval
+ *
+ * @doc
  */
 declare function mid(ri: RootInterval): number;
 export { RootInterval, createRootExact, mid };

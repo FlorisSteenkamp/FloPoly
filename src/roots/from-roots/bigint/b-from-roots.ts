@@ -1,4 +1,3 @@
-
 import { bMultiply as bMultiply_ } from "../../../basic/bigint/b-multiply";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -14,7 +13,11 @@ const bMultiply = bMultiply_;
  * @param roots an array of roots
  * 
  * @example
+ * ```typescript
  * fromRoots([1n,2n,3n,3n]); //=> [1n, -9n, 29n, -39n, 18n]
+ * ```
+ * 
+ * @doc
  */
 function bFromRoots(roots: bigint[]): bigint[] {
 	let p = [1n]; 

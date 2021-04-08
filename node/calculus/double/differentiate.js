@@ -10,7 +10,11 @@ exports.differentiate = void 0;
  * represents the polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * differentiate([5, 4, 3, 2, 1]); //=> [20, 12, 6, 2]
+ * ```
+ *
+ * @doc
  */
 function differentiate(p) {
     const result = [];

@@ -1,4 +1,3 @@
-
 import { negate as negate_ } from "../../basic/double/negate";
 import { upperToLowerBound as upperToLowerBound_ } from "./upper-to-lower-bound";
 import { positiveToNegativeBound as positiveToNegativeBound_ } from "./positive-to-negative-bound";
@@ -20,9 +19,13 @@ const positiveToNegativeBound = positiveToNegativeBound_;
  * represents the polynomial `5x^2 - 3x`
  * 
  * @example
+ * ```typescript
  * positiveRootUpperBound_LMQ([2,-3,6,5,-130]); //=> 4.015534272870436 
  * positiveRootUpperBound_LMQ([2,3]);           //=> 0 
  * positiveRootUpperBound_LMQ([-2,-3,-4]);      //=> 0
+ * ```
+ * 
+ * @doc
  */
 function positiveRootUpperBound_LMQ(p: number[]): number {
 	const deg = p.length-1;
@@ -74,6 +77,8 @@ function positiveRootUpperBound_LMQ(p: number[]): number {
  * @param p a polynomial with coefficients given densely as an array of double
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]` 
  * represents the polynomial `5x^2 - 3x`
+ * 
+ * @doc
  */
 const positiveRootLowerBound_LMQ = upperToLowerBound(positiveRootUpperBound_LMQ);
 
@@ -88,6 +93,8 @@ const positiveRootLowerBound_LMQ = upperToLowerBound(positiveRootUpperBound_LMQ)
  * @param p a polynomial with coefficients given densely as an array of double
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]` 
  * represents the polynomial `5x^2 - 3x`
+ * 
+ * @doc
  */
 const negativeRootLowerBound_LMQ = positiveToNegativeBound(positiveRootUpperBound_LMQ);
 
@@ -102,6 +109,8 @@ const negativeRootLowerBound_LMQ = positiveToNegativeBound(positiveRootUpperBoun
  * @param p a polynomial with coefficients given densely as an array of double
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]` 
  * represents the polynomial `5x^2 - 3x`
+ * 
+ * @doc
  */
 const negativeRootUpperBound_LMQ = upperToLowerBound(negativeRootLowerBound_LMQ);
 

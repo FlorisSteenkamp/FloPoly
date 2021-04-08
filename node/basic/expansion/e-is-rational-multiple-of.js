@@ -11,6 +11,8 @@ const e_integer_gcd_1 = require("../../gcd/expansion/e-integer-gcd");
  * Shewchuk expansions from highest to lowest power,
  * e.g. `[[5],[-3],[0]]` represents the polynomial `5x^2 - 3x`
  * @param b another polynomial
+ *
+ * @doc
  */
 function eIsRationalMultipleOf(a, b) {
     // If either polynomial is zero

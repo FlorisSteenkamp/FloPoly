@@ -7,8 +7,12 @@
  * represents the polynomial `5x^2 - 3x`
  * @param p2 another polynomial
  * @example
+ * ```typescript
  * equal([1,2,3,4], [1,2,3,4]);   //=> true
  * equal([1,2,3,4], [1,2,3,4,5]); //=> false
+ * ```
+ *
+ * @doc
  */
 declare function equal(p1: number[], p2: number[]): boolean;
 export { equal };

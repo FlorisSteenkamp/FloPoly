@@ -2,10 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HornerAbsSum = void 0;
 /**
- * @internal
- *
  * @param p1
  * @param p2
+ *
+ * @internal
  */
 function HornerAbsSum(p1, p2, x) {
     let q = 0;

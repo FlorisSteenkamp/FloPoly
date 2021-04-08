@@ -32,19 +32,21 @@ const eps = Number.EPSILON;
 const onePlusEps = 1 + eps;
 /**
  * Finds and returns all *certified* root intervals (bar underflow / overflow)
- * of the given polynomial, including their multiplicities (see points below).
+ * of the given polynomial (with coefficients given in double-double precision
+ * (use [[allRootsCertifiedSimplified]] if you only require coefficients in double
+ * precision (the usual case))), including their multiplicities (see points below).
  *
  * * returns an empty array for a constant or the zero polynomial
  *
  * * Let `W = m * Number.EPSILON * max(1, 2^⌈log₂r⌉)`, where
- *  * `r` is a root
- *  * `m` is the number of roots (the 'multiplicity') within the
- *     interval, where multiplicity here includes roots seperated by less than
- *    `2*Number.EPSILON` and not necessarily only exact multiple roots;
+ *   * `r` is a root
+ *   * `m` is the number of roots (the 'multiplicity') within the
+ *      interval, where multiplicity here includes roots seperated by less than
+ *     `2*Number.EPSILON` and not necessarily only exact multiple roots;
  *
- * * the returned intervals are of max width `W` - use `refineK` to
+ * * the returned intervals are of max width `W` - use [[refineK1]] to
  * reduce the root interval widths further and thus 'resolving' the roots if
- * required
+ * required (although the roots are already *guaranteed* extremely accurate!)
  *
  * * the retuned root intervals will contain *all* roots hence the *certified*
  * in the function name.
@@ -52,14 +54,14 @@ const onePlusEps = 1 + eps;
  * * the reported multiplicities will be correct *up to a multiple of 2* in cases
  * where *more* than 1 root is reported in the interval `W` described above
  * (else if a multiplicity of 0 or 1 is reported the result is correct)
- * * `refineK` can then be used to resolve them further; note however
+ * * [[refineK1]] can then be used to resolve them further; note however
  * that root seperation is a function of polynomial height and can be very small
  * (see e.g. [Improving Root Separation Bounds, *Aaron Herman, Hoon Hong, Elias Tsigaridas*](https://hal.inria.fr/hal-01456686/document)
  *
  * * optimized for polynomials of degree 1 to about 30
- *  * this is due to [Rolle's Theorem](https://en.wikipedia.org/wiki/Rolle%27s_theorem)
+ *   * this is due to [Rolle's Theorem](https://en.wikipedia.org/wiki/Rolle%27s_theorem)
  * being used and not [Descartes' rule of signs](https://en.wikipedia.org/wiki/Descartes%27_rule_of_signs)
- *  * Descartes' methods are asymptotically faster and thus better suited for higher
+ *   * Descartes' methods are asymptotically faster and thus better suited for higher
  * degree polynomials but for lower degrees Rolle's Theorem seems to be faster
  *
  * * **precondition:** the coefficient magnitudes and degree of the polynomial
@@ -74,7 +76,9 @@ const onePlusEps = 1 + eps;
  * them to infinity for automatic calculation
  *
  * @param p a polynomial with coefficients given densely as an array of
- * double-double precision floating point numbers from highest to lowest power,
+ * double-double precision floating point numbers (if only double precision
+ * coefficients are required then use [[allRootsCertifiedSimplified]] instead)
+ * from highest to lowest power,
  * e.g. `[[0,5],[0,-3],[0,0]]` represents the polynomial `5x^2 - 3x`; if the
  * coefficients are double precision (as opposed to double-double) then instead
  * of passing `p` pass `p.map(c => [0,c])` - this will transform the
@@ -94,6 +98,7 @@ const onePlusEps = 1 + eps;
  * input polynomial will be assumed exact
  *
  * @example
+ * ```typescript
  *
  * // ---------------------------------------------------------------
  * // 1. a basic example of an order 11 polynomial (with 10 roots) --
@@ -171,6 +176,9 @@ const onePlusEps = 1 + eps;
  * // Note: Due to floating point overflow of the evaluation of a Wilkinson
  * // polynomial of degree >= 58 evaluated at 59 the returned roots starts
  * // getting inaccurate at this degree (i.e. >= 58).
+ * ```
+ *
+ * @doc
  */
 function allRootsCertified(p, lb = 0, ub = 1, pE = undefined, getPExact = undefined) {
     // return an empty array for a constant or the zero polynomial

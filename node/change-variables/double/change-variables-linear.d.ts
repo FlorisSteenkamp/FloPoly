@@ -11,7 +11,11 @@
  * @param b the `b` in `ax + b`
  *
  * @example
+ * ```typescript
  * changeVariablesLinear([1,2,7], 3, 4); //=> [9, 30, 31]
+ * ```
+ *
+ * @doc
  */
 declare function changeVariablesLinear(p: number[], a: number, b: number): number[];
 export { changeVariablesLinear };

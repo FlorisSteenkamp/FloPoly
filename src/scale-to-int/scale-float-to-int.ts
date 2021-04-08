@@ -1,4 +1,3 @@
-
 import { exponent as exponent_ } from "big-float-ts";
 import { bitLength as bitLength_ } from "big-float-ts";
 
@@ -15,6 +14,8 @@ const bitLength = bitLength_;
  * * the result is exact (no round-off can occur)
  * 
  * @param a a double precision floating point number
+ * 
+ * @doc
  */
 function scaleFloatToInt(a: number): number {
     if (a === 0) { return 0; }

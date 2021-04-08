@@ -12,7 +12,7 @@ const HornerSum = HornerSum_;
  * Horner's method. 
  * 
  * * once compensated means the error in the evaluation is reduced by roughly
- * `1 / Number.EPSILON` which is again roughly `2^53` - it is the same as using
+ * `1 / Number.EPSILON` which is again roughly `2^53` - it is equivalent as using
  * double-double precision in a normal Horner evaluation
  * 
  * * see [Algorithms for Accurate, Validated and Fast Polynomial Evaluation, *Stef Graillat, Philippe Langlois and Nicolas Louvet*](https://projecteuclid.org/download/pdf_1/euclid.jjiam/1265033778)
@@ -23,6 +23,8 @@ const HornerSum = HornerSum_;
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]` 
  * represents the polynomial `5x^2 - 3x`
  * @param x the value at which to evaluate the polynomial
+ * 
+ * @doc
  */
 function compHorner(p: number[], x: number): number {
 	const { r̂, pπ, pσ } = EFTHorner(p,x);

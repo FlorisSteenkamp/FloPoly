@@ -10,7 +10,11 @@ exports.eDegree = void 0;
  * represents the polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * eDegree([[9],[8],[7],[6],[5],[4],[3],[2],[1]]); //=> 8
+ * ```
+ *
+ * @doc
  */
 function eDegree(p) {
     return p.length - 1;

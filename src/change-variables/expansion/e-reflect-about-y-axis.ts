@@ -1,4 +1,3 @@
-
 import { eNegativeOf as eNegativeOf_ } from "big-float-ts";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -13,7 +12,11 @@ const eNegativeOf = eNegativeOf_;
  * represents the polynomial `5x^2 - 3x`
  * 
  * @example
+ * ```typescript
  * eReflectAboutYAxis([[5],[4],[3],[2],[1]]); //=> [[5], [-4], [3], [-2], [1]]
+ * ```
+ * 
+ * @doc
  */
 function eReflectAboutYAxis(p: number[][]): number[][] {
 	const d = p.length-1;

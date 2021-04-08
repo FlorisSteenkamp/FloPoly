@@ -7,7 +7,11 @@
  * represents the polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * degree([9,8,7,6,5,4,3,2,1]); //=> 8
+ * ```
+ *
+ * @doc
  */
 declare function degree(p: number[]): number;
 export { degree };

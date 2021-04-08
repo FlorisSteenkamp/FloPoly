@@ -14,7 +14,11 @@ const removeLeadingZeros = remove_leading_zeros_1.removeLeadingZeros;
  * represents the polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * multiplyByConst(0.25, [3,2,1]); //=> [0.75, 0.5, 0.25]
+ * ```
+ *
+ * @doc
  */
 function multiplyByConst(c, p) {
     if (c === 0) {

@@ -8,8 +8,12 @@
  * @param p2 another polynomial
  *
  * @example
+ * ```typescript
  * eEqual([[1],[2],[3],[0,4]], [[1],[2],[3],[4]]);   //=> true
  * eEqual([[1],[2],[3],[4]], [[1],[2],[3],[4],[5]]); //=> false
+ * ```
+ *
+ * @doc
  */
 declare function eEqual(p1: number[][], p2: number[][]): boolean;
 export { eEqual };

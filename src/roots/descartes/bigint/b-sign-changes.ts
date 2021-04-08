@@ -1,4 +1,3 @@
-
 /** 
  * Returns the number of sign changes in the polynomial coefficents when 
  * ordered in descending order; zeros are ignored.
@@ -17,7 +16,11 @@
  * represents the polynomial `5x^2 - 3x`
  * 
  * @example
+ * ```typescript
  * bSignChanges([1n,2n,-3n,0n,0n,3n,-1n]); //=> 3
+ * ```
+ * 
+ * @doc
  */
 function bSignChanges(p: bigint[]): number {
 	const d = p.length-1;

@@ -20,7 +20,7 @@ const eIntPow = big_float_ts_2.eIntPow;
  *
  * * **precondition:** the coefficients must integers (and also Shewchuk
  * floating point expansions); if they are not they can easily be scaled from
- * floating point numbers to Shewchuk expansions by calling `scaleFloatsToInts`
+ * floating point numbers to Shewchuk expansions by calling [[scaleFloatsToInts]]
  * or similar before calling this function (recall that all floating point
  * numbers are rational).
  *
@@ -28,7 +28,7 @@ const eIntPow = big_float_ts_2.eIntPow;
  * infinite precision up to overlow (meaning integers can be represented
  * *exactly* up to `2^1024 === 1797...(300 more digits)...37216`) and may
  * thus not be applicable to very high degree polynomials (in which case it is
- * better to use `bPdivTrivial`)
+ * better to use [[bPdivTrivial]])
  *
  * * **precondition:** b !== [], i.e. unequal to the zero polynomial.
  *
@@ -46,6 +46,8 @@ const eIntPow = big_float_ts_2.eIntPow;
  * multiplier (of the coefficients of the dividend)
  * `leadingCoeff(b)^(deg(a)-deg(b)+1)` will be
  * modified to `abs(leadingCoeff(b)^(deg(a)-deg(b)+1))`
+ *
+ * @doc
  */
 function ePdivTrivial(a, b, positiveMultiplier = false) {
     // change to pseudo-remainder, i.e. not simply r = a; this allows the 

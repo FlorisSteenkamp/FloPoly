@@ -1,4 +1,3 @@
-
 /** 
  * Returns the exact result of evaluating the given polynomial at 1.
  * 
@@ -7,6 +6,8 @@
  * @param p a polynomial with coefficients given densely as an array of 
  * bigints from highest to lowest power, e.g. `[5n,-3n,0n]` 
  * represents the polynomial `5x^2 - 3x`
+ * 
+ * @doc
  */
 function bEvaluateAt1(p: bigint[]): bigint {
 	let res = 0n;

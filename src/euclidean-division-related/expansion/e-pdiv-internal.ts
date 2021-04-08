@@ -1,4 +1,3 @@
-
 import { eDiv as eDiv_ } from "big-float-ts";
 import { eDegree as eDegree_ } from "../../basic/expansion/e-degree";
 import { eElevateDegree as eElevateDegree_ } from "./e-elevate-degree";
@@ -26,7 +25,7 @@ const subtractExact = eSubtract;
  * 
  * * **precondition:** the coefficients must be integers; if they are not they 
  * can easily be scaled from floating point numbers to integers by calling 
- * `scaleFloatsToBigints` or similar before calling this function (recall that 
+ * [[scaleFloatsToBigints]] or similar before calling this function (recall that 
  * all floating point numbers are rational).
  * 
  * * **precondition:** b !== [], i.e. unequal to the zero polynomial.
@@ -35,6 +34,8 @@ const subtractExact = eSubtract;
  *
  * @param a the polynomial a in the formula a = bq + r
  * @param b the polynomial b in the formula a = bq + r
+ * 
+ * @internal
  */
 function ePdivInternal(a: number[][], b: number[][]) {
     let q: number[][] = [];

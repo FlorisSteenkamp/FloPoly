@@ -3,7 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.allRootsCertifiedSimplified = void 0;
 const all_roots_certified_1 = require("./all-roots-certified");
 /**
- * ❗ Simplified version of `allRootsCertified` - following are the changes:
+ * :::tip Heads up!
+ * Simplified version of `allRootsCertified` - following are the changes:
  * * input polynomial coefficients are double precision numbers (as opposed
  * to double-double precision)
  * * the input polynomial coefficients are assumed exact; neither an error
@@ -11,6 +12,7 @@ const all_roots_certified_1 = require("./all-roots-certified");
  * be specified
  * * the search range lower and upper bounds defaults to
  * `Number.NEGATIVE_INFINITY` and `Number.POSITIVE_INFINITY` respectively
+ * :::
  *
  * Finds and returns all *certified* root intervals (bar underflow / overflow)
  * of the given polynomial, including their multiplicities (see points below).
@@ -18,30 +20,28 @@ const all_roots_certified_1 = require("./all-roots-certified");
  * * returns an empty array for a constant or the zero polynomial
  *
  * * Let `W = m * Number.EPSILON * max(1, 2^⌈log₂r⌉)`, where
- *  * `r` is a root
- *  * `m` is the number of roots (the 'multiplicity') within the
- *     interval, where multiplicity here includes roots seperated by less than
- *    `2*Number.EPSILON` and not necessarily only exact multiple roots;
+ *   * `r` is a root
+ *   * `m` is the number of roots (the 'multiplicity') within the
+ *      interval, where multiplicity here includes roots seperated by less than
+ *     `2*Number.EPSILON` and not necessarily only exact multiple roots;
  *
- * * the returned intervals are of max width `W` - use `refineK` to
- * reduce the root interval widths further and thus 'resolving' the roots if
- * required
+ * * the returned intervals are of max width `W`
  *
  * * the retuned root intervals will contain *all* roots hence the *certified*
  * in the function name.
  *
  * * the reported multiplicities will be correct *up to a multiple of 2* in cases
  * where *more* than 1 root is reported in the interval `W` described above
- * (else if a multiplicity of 0 or 1 is reported the result is correct)
- * * `refineK` can then be used to resolve them further; note however
+ * (else if a multiplicity of 0 or 1 is reported the result is guaranteed correct)
+ * * [[refineK1]] can then be used to resolve them further; note however
  * that root seperation is a function of polynomial height and can be very small
  * (see e.g. [Improving Root Separation Bounds, *Aaron Herman, Hoon Hong, Elias Tsigaridas*](https://hal.inria.fr/hal-01456686/document)
  *
  * * optimized for polynomials of degree 1 to about 30
- *  * this is due to [Rolle's Theorem](https://en.wikipedia.org/wiki/Rolle%27s_theorem)
- * being used and not [Descartes' rule of signs](https://en.wikipedia.org/wiki/Descartes%27_rule_of_signs)
- *  * Descartes' methods are asymptotically faster and thus better suited for higher
- * degree polynomials but for lower degrees Rolle's Theorem seems to be faster
+ *   * this is due to [Rolle's Theorem](https://en.wikipedia.org/wiki/Rolle%27s_theorem)
+ *     being used and not [Descartes' rule of signs](https://en.wikipedia.org/wiki/Descartes%27_rule_of_signs)
+ *   * Descartes' methods are asymptotically faster and thus better suited for higher
+ *     degree polynomials but for lower degrees Rolle's Theorem is faster
  *
  * * **precondition:** the coefficient magnitudes and degree of the polynomial
  *  must be such that overflow won't occur at evaluation points where roots
@@ -63,6 +63,7 @@ const all_roots_certified_1 = require("./all-roots-certified");
  * returned
  *
  * @example
+ * ```typescript
  *
  * // -------------------------------------------------------
  * // 1. example of an order 11 polynomial (with 10 roots) --
@@ -99,6 +100,9 @@ const all_roots_certified_1 = require("./all-roots-certified");
  * //   { tS: 1.3221000000000016, tE: 1.322100000000002, multiplicity: 1 },
  * //   { tS: 2.534533999999997, tE: 2.534533999999998, multiplicity: 1 }
  * // ]
+ * ```
+ *
+ * @doc
  */
 function allRootsCertifiedSimplified(p, lb = Number.NEGATIVE_INFINITY, ub = Number.POSITIVE_INFINITY) {
     return all_roots_certified_1.allRootsCertified(p.map(c => [0, c]), lb, ub);

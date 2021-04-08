@@ -13,6 +13,8 @@ const comp_horner_k_1 = require("../evaluate/double/comp-horner-k");
  * @param p a polynomial with coefficients given densely as an array of double
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`
  * represents the polynomial `5x^2 - 3x`
+ *
+ * @doc
  */
 function conditionNumber(p, x) {
     const pN = abs_coeff_1.absCoeff(p);

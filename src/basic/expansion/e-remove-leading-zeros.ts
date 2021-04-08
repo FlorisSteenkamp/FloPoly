@@ -1,4 +1,3 @@
-
 import { eSign as eSign_ } from "big-float-ts";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -17,8 +16,12 @@ const eSign = eSign_;
  * represents the polynomial `5x^2 - 3x`
  * 
  * @example
+ * ```typescript
  * eRemoveLeadingZeros([[1e-18], [1e-10], [1e-1]]); //=> [[1e-18], [1e-10], [1e-1]]
  * eRemoveLeadingZeros([[0], [1e-10], [1e-1]]); //=> [[1e-10], [1e-1]]
+ * ```
+ * 
+ * @doc
  */
 function eRemoveLeadingZeros(p: number[][]): number[][] {
 	let lzCount = 0;

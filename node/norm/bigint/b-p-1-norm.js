@@ -9,6 +9,8 @@ exports.bP1Norm = void 0;
  * norm is known as the `length` of the polynomial
  *
  * @param p an array of bigints
+ *
+ * @doc
  */
 function bP1Norm(p) {
     let s = 0n;

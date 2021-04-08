@@ -1,4 +1,3 @@
-
 import { eSign as eSign_ } from "big-float-ts";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -33,7 +32,11 @@ const eSign = eSign_;
  * represents the polynomial `5x^2 - 3x`
  * 
  * @example
+ * ```typescript
  * eSignChanges([[1],[2],[-3],[0],[0],[3],[-1]]); //=> 3
+ * ```
+ * 
+ * @doc
  */
 function eSignChanges(p: number[][]): number {
 	const d = p.length-1;

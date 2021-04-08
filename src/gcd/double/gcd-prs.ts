@@ -1,4 +1,3 @@
-
 import { premSequenceSubresultant as premSequenceSubresultant_ } from "../../euclidean-division-related/double/prem-sequence-subresultant";
 import { scaleFloatsToInts as scaleFloatsToInts_ } from "../../scale-to-int/scale-floats-to-ints";
 
@@ -32,6 +31,8 @@ const scaleFloatsToInts = scaleFloatsToInts_;
  * double precision floating point numbers from highest to lowest power, 
  * e.g. `[[5],[-3],[0]]` represents the polynomial `5x^2 - 3x`
  * @param b another polynomial
+ * 
+ * @internal
  */
 function gcdPrs(a: number[], b: number[]): number[][] {
     const a_ = scaleFloatsToInts(a);

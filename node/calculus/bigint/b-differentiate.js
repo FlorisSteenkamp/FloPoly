@@ -9,7 +9,11 @@ exports.bDifferentiate = void 0;
  * polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * bDifferentiate([5n, 4n, 3n, 2n, 1n]); //=> [20n, 12n, 6n, 2n]
+ * ```
+ *
+ * @doc
  */
 function bDifferentiate(p) {
     const r = [];

@@ -1,9 +1,8 @@
-
 /**
- * @internal
- * 
  * @param p1 
  * @param p2 
+ * 
+ * @internal
  */
 function HornerAbsSum(p1: number[], p2: number[], x: number): number {
 	let q = 0;

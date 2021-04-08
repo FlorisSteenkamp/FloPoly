@@ -8,7 +8,11 @@
  * @param p2 another polynomial
  *
  * @example
+ * ```typescript
  * eAdd([[1],[2],[3]],[[3],[4]]); //=> [[1],[5],[7]]
+ * ```
+ *
+ * @doc
  */
 declare function eAdd(p1: number[][], p2: number[][]): number[][];
 export { eAdd };

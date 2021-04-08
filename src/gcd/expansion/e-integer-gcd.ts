@@ -1,4 +1,3 @@
-
 import { eAbs as eAbs_ } from 'big-float-ts';
 import { eSign as eSign_ } from 'big-float-ts';
 import { eRem as eRem_ } from  'big-float-ts';
@@ -14,6 +13,8 @@ const eRem = eRem_;
  * Euclidean Algorithm.
  * 
  * **precondition** a, b must be integers given as Shewchuk expansions
+ * 
+ * @doc
  */
 function eGcdInt(a: number[], b: number[]): number[] {
     a = eAbs(a);

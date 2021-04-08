@@ -6,7 +6,11 @@
  * represents the polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * eReflectAboutYAxis([[5],[4],[3],[2],[1]]); //=> [[5], [-4], [3], [-2], [1]]
+ * ```
+ *
+ * @doc
  */
 declare function eReflectAboutYAxis(p: number[][]): number[][];
 export { eReflectAboutYAxis };

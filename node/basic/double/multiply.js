@@ -16,7 +16,11 @@ const removeLeadingZeros = remove_leading_zeros_1.removeLeadingZeros;
  * represents the polynomial `5x^2 - 3x`
  * @param p2 another polynomial.
  * @example
+ * ```typescript
  * multiply([1,2,3], [2,5,3,5]); //=> [2, 9, 19, 26, 19, 15]
+ * ```
+ *
+ * @doc
  */
 function multiply(p1, p2) {
     const d1 = p1.length - 1;

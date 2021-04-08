@@ -1,4 +1,3 @@
-
 /** 
  * Returns the constant term of the given polynomial.
  * 
@@ -7,7 +6,11 @@
  * represents the polynomial `5x^2 - 3x`
  * 
  * @example
+ * ```typescript
  * bEvaluateAt0([3n,2n,99n]); //=> 99n
+ * ```
+ * 
+ * @doc
  */
 function bEvaluateAt0(p: bigint[]): bigint {
 	return p.length === 0 ? 0n : p[p.length-1];

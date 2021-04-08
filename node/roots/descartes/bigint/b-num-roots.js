@@ -21,8 +21,12 @@ const bSignChanges = b_sign_changes_1.bSignChanges;
  * represents the polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * const p = [n1, 1n, -64n, 236n, -240n];
  * bNumRoots(p); //=> 4
+ * ```
+ *
+ * @doc
  */
 function bNumRoots(p) {
     const ps = bSturmChain(p);

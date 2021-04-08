@@ -13,7 +13,11 @@ exports.changeVariablesScale = void 0;
  * @param a a scaling factor, i.e. the `a` in `p(x) <- p(ax)`
  *
  * @example
+ * ```typescript
  * changeVariablesScale([1,2,7], 3); //=> [9, 6, 7]
+ * ```
+ *
+ * @doc
  */
 function changeVariablesScale(p, a) {
     // We let the coefficients of `p(ax)` be denoted by `d_i` in the code below. 

@@ -12,8 +12,12 @@
  * represents the polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * const p = [[1], [1], [-64], [236], [-240]];
  * eNumRoots(p); //=> 4
+ * ```
+ *
+ * @doc
  */
 declare function eNumRoots(p: number[][]): number;
 export { eNumRoots };

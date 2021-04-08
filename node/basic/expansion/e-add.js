@@ -16,7 +16,11 @@ const eRemoveLeadingZeros = e_remove_leading_zeros_1.eRemoveLeadingZeros;
  * @param p2 another polynomial
  *
  * @example
+ * ```typescript
  * eAdd([[1],[2],[3]],[[3],[4]]); //=> [[1],[5],[7]]
+ * ```
+ *
+ * @doc
  */
 function eAdd(p1, p2) {
     // Initialize result array  

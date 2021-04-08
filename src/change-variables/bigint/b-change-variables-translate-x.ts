@@ -1,4 +1,3 @@
-
 /**
  * Returns the result of performing a change of variables of the 
  * form: p(x) <- p(x + b).
@@ -11,7 +10,11 @@
  * @param b the `b` in `x + b`
  * 
  * @example
+ * ```typescript
  * bChangeVariablesTranslateX([1n,2n,7n], 3n); //=> [1n, 8n, 22n]
+ * ```
+ * 
+ * @doc
  */
 function bChangeVariablesTranslateX(
 		p: bigint[], 

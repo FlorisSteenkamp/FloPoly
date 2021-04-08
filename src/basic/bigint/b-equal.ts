@@ -1,4 +1,3 @@
-
 /**
  * Returns true if two polynomials are exactly equal by comparing coefficients,
  * false otherwise.
@@ -9,8 +8,12 @@
  * @param b another polynomial 
  * 
  * @example
+ * ```typescript
  * bEqual([1n,2n,3n,4n], [1n,2n,3n,4n]);   //=> true
  * bEqual([1n,2n,3n,4n], [1n,2n,3n,4n,5n]); //=> false
+ * ```
+ * 
+ * @doc
  */
 function bEqual(a: bigint[], b: bigint[]): boolean {
 	if (a.length !== b.length) { 

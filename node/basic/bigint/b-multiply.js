@@ -1,9 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.bMultiply = void 0;
-const b_remove_leading_zeros_1 = require("./b-remove-leading-zeros");
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const bRemoveLeadingZeros = b_remove_leading_zeros_1.bRemoveLeadingZeros;
 /**
  * Returns the result of multiplying 2 polynomials with bigint coefficients.
  *
@@ -17,7 +14,11 @@ const bRemoveLeadingZeros = b_remove_leading_zeros_1.bRemoveLeadingZeros;
  * @param b another polynomial.
  *
  * @example
+ * ```typescript
  * bMultiply([1n,2n,3n], [2n,5n,3n,5n]); //=> [2n, 9n, 19n, 26n, 19n, 15n]
+ * ```
+ *
+ * @doc
  */
 function bMultiply(a, b) {
     const da = a.length - 1;

@@ -1,4 +1,3 @@
-
 import { eContent as eContent_ } from "./e-content";
 import { eDiv as eDiv_ } from "big-float-ts";
 
@@ -20,6 +19,8 @@ const eDiv = eDiv_;
  * @param a polynomial with coefficients given densely as an array of
  * Shewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
  * represents the polynomial `5x^2 - 3x`
+ * 
+ * @doc
  */
 function ePrimitivePart(p: number[][]): number[][] {
     let c = eContent(p);

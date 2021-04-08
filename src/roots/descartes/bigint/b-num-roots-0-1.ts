@@ -1,4 +1,3 @@
-
 import { bSturmChain as bSturmChain_ } from "../../../euclidean-division-related/bigint/b-sturm-chain";
 import { bSignChanges as bSignChanges_ } from "./b-sign-changes";
 import { bEvaluateAt1 as bEvaluateAt1_ } from "../../../evaluate/bigint/b-evaluate-at-1";
@@ -16,6 +15,8 @@ const bEvaluateAt1 = bEvaluateAt1_;
  * @param p a polynomial with coefficients given densely as an array of
  * bigints from highest to lowest power, e.g. `[5n,-3n,0n]` represents the 
  * polynomial `5x^2 - 3x`
+ * 
+ * @doc
  */
 function bNumRootsIn01(p: bigint[]): number {
 	const ps = bSturmChain(p);

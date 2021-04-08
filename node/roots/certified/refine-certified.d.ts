@@ -20,8 +20,6 @@
  * * see [Brent (page 47)](https://maths-people.anu.edu.au/~brent/pd/rpb011i.pdf)
  * * [c++ implementation of Brent's Method](https://people.sc.fsu.edu/~jburkardt/cpp_src/brent/brent.cpp)
  *
- * @internal
- *
  * @param p a polynomial with coefficients given densely as an array of double-double
  * floating point numbers from highest to lowest power, e.g. `[[0,5],[0,-3],[0,0]]`
  * represents the polynomial `5x^2 - 3x`
@@ -34,6 +32,8 @@
  * @param psExact
  * @param getPsExact
  * @param diffCount
+ *
+ * @internal
  */
 declare function refineCertified(p: number[][], pE: number[], lb: number, ub: number, fa: number, fb: number, psExact: {
     ps: number[][][];

@@ -1,11 +1,10 @@
-
 /**
  * * helper function
  * 
- * @internal
- * 
  * @param p1 
  * @param p2 
+ * 
+ * @internal
  */
 function HornerSum(p1: number[], p2: number[], a: number): number {
 	let result = 0;

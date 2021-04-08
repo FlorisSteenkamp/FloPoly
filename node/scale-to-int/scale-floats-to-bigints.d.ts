@@ -5,6 +5,8 @@
  * * can be used to scale polynomials
  *
  * @param as an array of double precision floating point numbers
+ *
+ * @doc
  */
 declare function scaleFloatsToBigints(as: number[]): bigint[];
 export { scaleFloatsToBigints };

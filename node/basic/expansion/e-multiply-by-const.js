@@ -17,7 +17,11 @@ const expansionProduct = big_float_ts_2.expansionProduct;
  * represents the polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * eMultiplyByConst([0.25], [[3],[2],[1]]); //=> [[0.75], [0.5], [0.25]]
+ * ```
+ *
+ * @doc
  */
 function eMultiplyByConst(c, p) {
     if (eSign(c) === 0) {

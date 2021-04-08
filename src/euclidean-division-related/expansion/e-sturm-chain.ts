@@ -1,13 +1,10 @@
-
 import { eDifferentiate as eDifferentiate_ } from '../../calculus/expansion/e-differentiate';
 import { ePremSequenceSubresultant as ePremSequenceSubresultant_ } from "./e-prem-sequence-subresultant";
-import { scaleFloatsToInts as scaleFloatsToInts_ } from '../../scale-to-int/scale-floats-to-ints';
 import { scaleFloatssToIntss as scaleFloatssToIntss_ } from '../../scale-to-int/scale-floatss-to-intss';
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const eDifferentiate = eDifferentiate_;
 const ePremSequenceSubresultant = ePremSequenceSubresultant_;
-const scaleFloatsToInts = scaleFloatsToInts_;
 const scaleFloatssToIntss = scaleFloatssToIntss_;
 
 
@@ -22,7 +19,11 @@ const scaleFloatssToIntss = scaleFloatssToIntss_;
  * represents the polynomial `5x^2 - 3x`
  * 
  * @example
+ * ```typescript
  * eSturmChain([[-3],[4],[2],[-2]]); //=> [[[-3],[4],[2],[-2]],[[-9],[8],[2]],[[-204],[138]],[[-1692]]]
+ * ```
+ * 
+ * @doc
  */
 function eSturmChain(p: number[][]): number[][][] {
 	p = scaleFloatssToIntss(p);

@@ -4,10 +4,10 @@ exports.bElevateDegree = void 0;
 /**
  * Returns the result of elevating the given polynomial by the given degree.
  *
- * @internal
- *
  * @param p
  * @param deg
+ *
+ * @internal
  */
 function bElevateDegree(p, deg) {
     const p_ = p.slice();

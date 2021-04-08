@@ -1,4 +1,3 @@
-
 import { expansionProduct as expansionProduct_ } from "big-float-ts";
 import { fastExpansionSum as fastExpansionSum_ } from "big-float-ts";
 import { scaleExpansion2 as scaleExpansion2_ } from "big-float-ts";
@@ -23,7 +22,11 @@ const scaleExpansion2 = scaleExpansion2_;
  * @param b the `b` in `ax + b`
  * 
  * @example
+ * ```typescript
  * eChangeVariablesLinear([[1],[2],[7]], 3, 4); //=> [[9], [30], [31]]
+ * ```
+ * 
+ * @doc
  */
 function eChangeVariablesLinear(
 		p: number[][], 

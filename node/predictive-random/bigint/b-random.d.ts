@@ -15,6 +15,8 @@
  * @param seed defaults to 123456789; a seed value in [0,4294967296]
  * @param odds defaults to 0; the odds that a root will be doubled (applied
  * recursively so that some roots could be tripled, etc.
+ *
+ * @doc
  */
 declare function bFlatRoots(d: number, a?: number, b?: number, seed?: number, odds?: number): {
     p: bigint[];
@@ -38,6 +40,8 @@ declare function bFlatRoots(d: number, a?: number, b?: number, seed?: number, od
  * @param seed defaults to 123456789; a seed value in [0,4294967296]
  * @param odds defaults to 0; the odds that a root will be doubled (applied
  * recursively so that some roots could be tripled, etc.
+ *
+ * @doc
  */
 declare function bFlatRootsArr(n: number, d: number, a?: number, b?: number, seed?: number, odds?: number): bigint[][];
 /**
@@ -54,6 +58,8 @@ declare function bFlatRootsArr(n: number, d: number, a?: number, b?: number, see
  * @param seed defaults to 123456789; a seed value in [0,4294967296]
  * @param odds defaults to 0; the odds that a root will be doubled (applied
  * recursively so that some roots could be tripled, etc.
+ *
+ * @doc
  */
 declare function bFlatCoefficients(d: number, a?: number, b?: number, seed?: number): {
     p: bigint[];
@@ -74,6 +80,8 @@ declare function bFlatCoefficients(d: number, a?: number, b?: number, seed?: num
  * @param seed defaults to 123456789; a seed value in [0,4294967296]
  * @param odds defaults to 0; the odds that a root will be doubled (applied
  * recursively so that some roots could be tripled, etc.
+ *
+ * @doc
  */
 declare function bFlatCoefficientsArr(n: number, d: number, a?: number, b?: number, seed?: number, odds?: number): bigint[][];
 export { bFlatRoots, bFlatRootsArr, bFlatCoefficients, bFlatCoefficientsArr };

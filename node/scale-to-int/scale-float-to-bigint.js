@@ -12,6 +12,8 @@ const b0 = 0n; // temp until support is better otherwise test fails
  * it becomes a bigint - the smallest such integer is returned.
  *
  * @param a a double precision floating point number
+ *
+ * @doc
  */
 function scaleFloatToBigint(a) {
     if (a === 0) {

@@ -1,4 +1,3 @@
-
 /**
  * Returns the `p-1 norm`, a.k.a. `Taxicab norm`, i.e. the sum of the absolute 
  * values of the given array of numbers (with intermediate calculations done
@@ -8,6 +7,8 @@
  * norm is known as the `length` of the polynomial
  * 
  * @param p an array of numbers
+ * 
+ * @doc
  */
 function p1Norm(p: number[]): number {
     let s = 0;

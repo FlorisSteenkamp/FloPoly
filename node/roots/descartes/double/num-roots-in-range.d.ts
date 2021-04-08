@@ -10,11 +10,15 @@
  * @param b an upper bound
  *
  * @example
+ * ```typescript
  * const p = [1, 1, -64, 236, -240];
  * numRootsInRange(p,-20,-11);  //=> 0
  * numRootsInRange(p,-11,-9);   //=> 1
  * numRootsInRange(p,-11,3.5);  //=> 3
  * numRootsInRange(p,-11,5);    //=> 4
+ * ```
+ *
+ * @doc
  */
 declare function numRootsInRange(p: number[], a: number, b: number): number;
 export { numRootsInRange };

@@ -22,7 +22,11 @@ const fastExpansionSum = big_float_ts_2.fastExpansionSum;
  * @param b another polynomial.
  *
  * @example
+ * ```typescript
  * eMultiply([[1],[2],[3]], [[2],[5],[3],[5]]); //=> [[2], [9], [19], [26], [19], [15]]
+ * ```
+ *
+ * @doc
  */
 function eMultiply(a, b) {
     const da = a.length - 1;

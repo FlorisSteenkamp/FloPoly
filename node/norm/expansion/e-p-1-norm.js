@@ -13,6 +13,8 @@ const eEstimate = big_float_ts_1.eEstimate;
  * norm is known as the `length` of the polynomial
  *
  * @param p an array of Shewchuk expansions
+ *
+ * @doc
  */
 function eP1Norm(p) {
     let s = 0;

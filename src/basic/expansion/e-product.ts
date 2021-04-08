@@ -1,4 +1,3 @@
-
 import { eMultiply } from "./e-multiply";
 
 
@@ -15,7 +14,11 @@ import { eMultiply } from "./e-multiply";
  * e.g. `[[5],[-3],[0]]` represents the polynomial `5x^2 - 3x`
  * 
  * @example
+ * ```typescript
  * eProduct([[[1],[2],[3]], [[2],[5],[3],[5]]]); //=> [[2], [9], [19], [26], [19], [15]]
+ * ```
+ * 
+ * @doc
  */
 function eProduct(ps: number[][][]): number[][] {
 	if (ps.length === 0) { return [[1]]; }

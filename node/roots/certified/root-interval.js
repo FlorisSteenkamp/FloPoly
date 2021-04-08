@@ -6,6 +6,8 @@ exports.mid = exports.createRootExact = void 0;
  * interval width of 0 and multiplicity 1)
  *
  * @param t
+ *
+ * @doc
  */
 function createRootExact(t) {
     return { tS: t, tE: t, multiplicity: 1 };
@@ -16,6 +18,8 @@ exports.createRootExact = createRootExact;
  * be used to estimate the root
  *
  * @param ri a root interval
+ *
+ * @doc
  */
 function mid(ri) {
     return (ri.tS + ri.tE) / 2;

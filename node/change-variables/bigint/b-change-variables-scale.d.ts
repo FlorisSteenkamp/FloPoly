@@ -10,7 +10,11 @@
  * @param a a scaling factor, i.e. the `a` in `p(x) <- p(ax)`
  *
  * @example
+ * ```typescript
  * bChangeVariablesScale([1n,2n,7n], 3n); //=> [9n, 6n, 7n]
+ * ```
+ *
+ * @doc
  */
 declare function bChangeVariablesScale(p: bigint[], a: bigint): bigint[];
 export { bChangeVariablesScale };

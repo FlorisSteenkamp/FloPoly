@@ -10,8 +10,12 @@ exports.equal = void 0;
  * represents the polynomial `5x^2 - 3x`
  * @param p2 another polynomial
  * @example
+ * ```typescript
  * equal([1,2,3,4], [1,2,3,4]);   //=> true
  * equal([1,2,3,4], [1,2,3,4,5]); //=> false
+ * ```
+ *
+ * @doc
  */
 function equal(p1, p2) {
     if (p1.length !== p2.length) {

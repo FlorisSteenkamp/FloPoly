@@ -1,4 +1,3 @@
-
 import { SumK as SumK_ } from "./sum-k";
 import { EFTHornerK as EFTHornerK_ } from "./eft-horner-k";
 import { Horner as Horner_ } from "./horner";
@@ -29,6 +28,8 @@ const Horner = Horner_;
  * represents the polynomial `5x^2 - 3x`
  * @param x the value at which to evaluate the polynomial
  * @param K (K - 1) === the number of compensations to do 
+ * 
+ * @doc
  */
 function CompHornerK(p: number[], x: number, K: number) {
 	K = Math.min(p.length-1, K);

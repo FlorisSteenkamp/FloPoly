@@ -1,4 +1,3 @@
-
 import { RootInterval } from "./root-interval";
 import { RootIntervalExp } from "./root-interval-exp";
 
@@ -8,6 +7,8 @@ import { RootIntervalExp } from "./root-interval-exp";
  * double-double precision one
  *
  * @param ri a root interval
+ * 
+ * @doc
  */
 function rootIntervalToExp(ri: RootInterval): RootIntervalExp {
     return { 

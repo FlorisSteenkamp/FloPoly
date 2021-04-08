@@ -1,4 +1,3 @@
-
 import { twoSum as twoSum_ } from "big-float-ts";
 import { EFTHorner as EFTHorner_ } from "./eft-horner";
 import { HornerSum as HornerSum_ } from "./horner-sum";
@@ -33,8 +32,10 @@ const u = Number.EPSILON;
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]` 
  * represents the polynomial `5x^2 - 3x`
  * @param x the value at which to evaluate the polynomial
+ * 
+ * @doc
  */
-function compHornerIsFaithful(p: number[], x: number) {
+function compHornerIsFaithful(p: number[], x: number): { isFaithful: boolean; errBound: number; r̄: number } {
 	const n = p.length-1;
 	
 	const { r̂, pπ, pσ } = EFTHorner(p,x);

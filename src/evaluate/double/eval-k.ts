@@ -1,4 +1,3 @@
-
 import { hornerWithRunningError as hornerWithRunningError_ } from "./horner-with-running-error";
 import { CompHornerK as CompHornerK_ } from "./comp-horner-k";
 import { compHornerWithRunningError as compHornerWithRunningError_ } from "./comp-horner-with-running-error";
@@ -10,7 +9,7 @@ const compHornerWithRunningError = compHornerWithRunningError_;
 
 
 /**
- * Returns the result of evaluating the given polynomial at x such that at least
+ * Returns the result of evaluating the given polynomial at `x` such that at least
  * the sign bit is correct *up to 3-times compensated evaluation (K = 4)*, i.e. 
  * as if evaluating in double-double-double-double precision.
  * 
@@ -25,6 +24,8 @@ const compHornerWithRunningError = compHornerWithRunningError_;
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]` 
  * represents the polynomial `5x^2 - 3x`
  * @param x the value at which to evaluate the polynomial
+ * 
+ * @doc
  */
 function evalK(p: number[], x: number) {
     const [r̂, e] = hornerWithRunningError(p, x);

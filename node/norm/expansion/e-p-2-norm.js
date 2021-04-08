@@ -11,6 +11,8 @@ const eEstimate = big_float_ts_1.eEstimate;
  *
  * @param p an array of Shewchuk expansions; can represent an array of polynomial
  * coefficients
+ *
+ * @doc
  */
 function eP2Norm(p) {
     let s = 0;

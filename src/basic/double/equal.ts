@@ -1,4 +1,3 @@
-
 /**
  * Returns true if two polynomials are exactly equal by comparing coefficients,
  * false otherwise.
@@ -8,8 +7,12 @@
  * represents the polynomial `5x^2 - 3x`
  * @param p2 another polynomial 
  * @example
+ * ```typescript
  * equal([1,2,3,4], [1,2,3,4]);   //=> true
  * equal([1,2,3,4], [1,2,3,4,5]); //=> false
+ * ```
+ * 
+ * @doc
  */
 function equal(p1: number[], p2: number[]): boolean {
 	if (p1.length !== p2.length) { 

@@ -1,4 +1,3 @@
-
 import { eCompare as eCompare_ } from "big-float-ts";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -15,8 +14,12 @@ const eCompare = eCompare_;
  * @param p2 another polynomial 
  * 
  * @example
+ * ```typescript
  * eEqual([[1],[2],[3],[0,4]], [[1],[2],[3],[4]]);   //=> true
  * eEqual([[1],[2],[3],[4]], [[1],[2],[3],[4],[5]]); //=> false
+ * ```
+ * 
+ * @doc
  */
 function eEqual(p1: number[][], p2: number[][]): boolean {
 	if (p1.length !== p2.length) { return false; }

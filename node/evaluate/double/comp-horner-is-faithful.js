@@ -30,6 +30,8 @@ const u = Number.EPSILON;
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`
  * represents the polynomial `5x^2 - 3x`
  * @param x the value at which to evaluate the polynomial
+ *
+ * @doc
  */
 function compHornerIsFaithful(p, x) {
     const n = p.length - 1;

@@ -7,8 +7,6 @@
  * * the evaluation is done adaptively, i.e. if the evaluation cannot be done
  * accurately enough then an exact precision polynomial is requested
  *
- * @internal
- *
  * @param p a polynomial given as an array with each consecutive element of
  * the array having more accurate coefficients than the previous (by adding
  * consecutive double precision coefficients to prior coefficients)
@@ -19,6 +17,8 @@
  * @param getPsExact a function to retrieve the exact polynomial and all its
  * exact derivatives
  * @param diffCount the number of differentiations done up to this point
+ *
+ * @internal
  */
 declare function evalAdaptive(p: number[][], pE: number[], x: number, psExact: {
     ps: number[][][];

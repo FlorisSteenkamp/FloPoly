@@ -1,4 +1,3 @@
-
 import { bRemoveLeadingZeros as bRemoveLeadingZeros_ } from "./b-remove-leading-zeros";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -16,7 +15,11 @@ const bRemoveLeadingZeros = bRemoveLeadingZeros_;
  * @param b subtrahend; the polynomial that will be subtracted
  * 
  * @example
+ * ```typescript
  * bSubtract([2n,3n],[4n,4n]); //=> [-2n, -1n]
+ * ```
+ * 
+ * @doc
  */
 function bSubtract(a: bigint[], b: bigint[]): bigint[] {
 	// Initialize result array  

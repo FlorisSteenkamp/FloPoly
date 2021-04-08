@@ -1,4 +1,3 @@
-
 import { expansionProduct as expansionProduct_ } from "big-float-ts";
 import { fastExpansionSum as fastExpansionSum_ } from "big-float-ts";
 import { scaleExpansion2 as scaleExpansion2_ } from "big-float-ts";
@@ -20,6 +19,8 @@ const scaleExpansion2 = scaleExpansion2_;
  * floating point expansions from highest to lowest power, e.g. `[[5],[-3],[0]]`
  * represents the polynomial `5x^2 - 3x`
  * @param b the `b` in `x + b`
+ * 
+ * @doc
  */
 function eChangeVariablesTranslateX(
 		p: number[][], 

@@ -1,4 +1,3 @@
-
 import { bRemoveLeadingZeros as bRemoveLeadingZeros_ } from "./b-remove-leading-zeros";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -14,7 +13,11 @@ const bRemoveLeadingZeros = bRemoveLeadingZeros_;
  * @param p2 another polynomial
  * 
  * @example
+ * ```typescript
  * bAdd([1n,2n,3n],[3n,4n]); //=> [1n,5n,7n]
+ * ```
+ * 
+ * @doc
  */
 function bAdd(p1: bigint[], p2: bigint[]): bigint[] {
 	// Initialize result array  

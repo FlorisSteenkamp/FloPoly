@@ -9,7 +9,11 @@
  * represents the polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * eSturmChain([[-3],[4],[2],[-2]]); //=> [[[-3],[4],[2],[-2]],[[-9],[8],[2]],[[-204],[138]],[[-1692]]]
+ * ```
+ *
+ * @doc
  */
 declare function eSturmChain(p: number[][]): number[][][];
 export { eSturmChain };

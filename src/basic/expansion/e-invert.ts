@@ -1,4 +1,3 @@
-
 /**
  * Inverts the given polynomial (with coefficients given as Shewchuk floating 
  * point expansions) by reversing the order of the coefficients, 
@@ -9,7 +8,11 @@
  * represents the polynomial `5x^2 - 3x`
  * 
  * @example
+ * ```typescript
  * eInvert([[3],[2],[-5]]);  // => [[-5],[2],[3]]
+ * ```
+ * 
+ * @doc
  */
 function eInvert(p: number[][]): number[][] {
 	return p.slice().reverse();

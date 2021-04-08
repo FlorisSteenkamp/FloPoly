@@ -10,6 +10,8 @@ exports.p1Norm = void 0;
  * norm is known as the `length` of the polynomial
  *
  * @param p an array of numbers
+ *
+ * @doc
  */
 function p1Norm(p) {
     let s = 0;

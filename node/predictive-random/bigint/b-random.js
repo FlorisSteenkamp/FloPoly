@@ -26,6 +26,8 @@ const SEED = 123456789;
  * @param seed defaults to 123456789; a seed value in [0,4294967296]
  * @param odds defaults to 0; the odds that a root will be doubled (applied
  * recursively so that some roots could be tripled, etc.
+ *
+ * @doc
  */
 function bFlatRoots(d, a = 0, b = 1, seed = SEED, odds = 0) {
     const res = random_1.flatRoots(d, a, b, seed, odds);
@@ -50,6 +52,8 @@ exports.bFlatRoots = bFlatRoots;
  * @param seed defaults to 123456789; a seed value in [0,4294967296]
  * @param odds defaults to 0; the odds that a root will be doubled (applied
  * recursively so that some roots could be tripled, etc.
+ *
+ * @doc
  */
 function bFlatRootsArr(n, d, a = 0, b = 1, seed = SEED, odds = 0) {
     return random_1.flatRootsArr(n, d, a, b, seed, odds).map(scale_floats_to_bigints_1.scaleFloatsToBigints);
@@ -69,6 +73,8 @@ exports.bFlatRootsArr = bFlatRootsArr;
  * @param seed defaults to 123456789; a seed value in [0,4294967296]
  * @param odds defaults to 0; the odds that a root will be doubled (applied
  * recursively so that some roots could be tripled, etc.
+ *
+ * @doc
  */
 function bFlatCoefficients(d, a = 0, b = 1, seed = SEED) {
     const res = random_1.flatCoefficients(d, a, b, seed);
@@ -90,6 +96,8 @@ exports.bFlatCoefficients = bFlatCoefficients;
  * @param seed defaults to 123456789; a seed value in [0,4294967296]
  * @param odds defaults to 0; the odds that a root will be doubled (applied
  * recursively so that some roots could be tripled, etc.
+ *
+ * @doc
  */
 function bFlatCoefficientsArr(n, d, a = 0, b = 1, seed = SEED, odds = 0) {
     return random_1.flatCoefficientsArr(n, d, a, b, seed, odds).map(scale_floats_to_bigints_1.scaleFloatsToBigints);

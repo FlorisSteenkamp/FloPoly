@@ -1,4 +1,3 @@
-
 /**
  * Returns the result of performing a change of variables of the 
  * form: p(x) <- p(x + b) in double precision.
@@ -11,7 +10,11 @@
  * @param b the `b` in `x + b`
  * 
  * @example
+ * ```typescript
  * changeVariablesTranslateX([1,2,7], 3); //=> [1, 8, 22]
+ * ```
+ * 
+ * @doc
  */
 function changeVariablesTranslateX(
 		p: number[], 

@@ -8,9 +8,9 @@ const reflectAboutYAxis = reflect_about_y_axis_1.reflectAboutYAxis;
  * Returns a function that returns a negative root bound given a function that
  * returns a positive root bound.
  *
- * @internal
- *
  * @param positiveBoundFunction
+ *
+ * @internal
  */
 function positiveToNegativeBound(positiveBoundFunction) {
     return (p) => {

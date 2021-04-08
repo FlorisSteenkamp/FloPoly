@@ -1,4 +1,3 @@
-
 import { bDifferentiate as bDifferentiate_ } from '../../calculus/bigint/b-differentiate';
 import { bPremSequenceSubresultant as bPremSequenceSubresultant_ } from "./b-prem-sequence-subresultant";
 
@@ -18,7 +17,11 @@ const bPremSequenceSubresultant = bPremSequenceSubresultant_;
  * polynomial `5x^2 - 3x`
  * 
  * @example
+ * ```typescript
  * bSturmChain([-3n,4n,2n,-2n]); //=> [[-3n, 4n, 2n, -2n], [-9n, 8n, 2n], [-204n, 138n], [-1692n]]
+ * ```
+ * 
+ * @doc
  */
 function bSturmChain(p: bigint[]): bigint[][] {
 	const dp = bDifferentiate(p);

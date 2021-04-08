@@ -7,7 +7,11 @@
  * @param p2 another polynomial
  *
  * @example
+ * ```typescript
  * bAdd([1n,2n,3n],[3n,4n]); //=> [1n,5n,7n]
+ * ```
+ *
+ * @doc
  */
 declare function bAdd(p1: bigint[], p2: bigint[]): bigint[];
 export { bAdd };

@@ -1,10 +1,11 @@
-
 /**
  * Returns the `p-infinity norm`, i.e. the maximum magnitude absolute value 
  * within the given array of bigints / coefficients.
  * 
  * @param p an array of bigints; can represent an array of polynomial 
  * coefficients
+ * 
+ * @doc
  */
 function bPInfNorm(p: bigint[]): bigint {
     let max = 0n;

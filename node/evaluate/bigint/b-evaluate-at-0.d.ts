@@ -6,7 +6,11 @@
  * represents the polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * bEvaluateAt0([3n,2n,99n]); //=> 99n
+ * ```
+ *
+ * @doc
  */
 declare function bEvaluateAt0(p: bigint[]): bigint;
 export { bEvaluateAt0 };

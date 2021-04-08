@@ -1,4 +1,3 @@
-
 import { ddMultDouble2 } from "double-double";
 import { ddAddDd } from "double-double";
 
@@ -21,10 +20,14 @@ const qaq = ddAddDd;
  * @param root a root of the polynomial.
  * 
  * @example
+ * ```typescript
  * // The polynomial x^3 - 5x^2 + 8x - 4 has a root at 1 and a double root at 2 
  * ddDeflate([[0,1], [0,-5], [0,8], [0,-4]], [0,2]); //=> [[0,1], [0,-3], [0,2]] 
  * ddDeflate([[0,1], [0,-3], [0,2], [0,2]);          //=> [[0,1], [0,-1]] 
  * ddDeflate([[0,1], [0,-1]], [0,1]);                //=> [[0,1]]
+ * ```
+ * 
+ * @doc
  */
 function ddDeflate(p: number[][], root: number): number[][] {
 	const d = p.length-1;

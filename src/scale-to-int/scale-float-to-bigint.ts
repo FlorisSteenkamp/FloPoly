@@ -1,4 +1,3 @@
-
 import { exponent as exponent_ } from "big-float-ts";
 import { bitLength as bitLength_ } from "big-float-ts";
 
@@ -15,6 +14,8 @@ const b0 = 0n;  // temp until support is better otherwise test fails
  * it becomes a bigint - the smallest such integer is returned.
  * 
  * @param a a double precision floating point number
+ * 
+ * @doc
  */
 function scaleFloatToBigint(a: number): bigint {
     if (a === 0) { return b0; }

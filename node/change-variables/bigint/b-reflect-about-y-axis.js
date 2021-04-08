@@ -10,7 +10,11 @@ exports.bReflectAboutYAxis = void 0;
  * polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * bReflectAboutYAxis([5n, 4n, 3n, 2n, 1n]); //=> [5n, -4n, 3n, -2n, 1n]
+ * ```
+ *
+ * @doc
  */
 function bReflectAboutYAxis(p) {
     const d = p.length - 1;

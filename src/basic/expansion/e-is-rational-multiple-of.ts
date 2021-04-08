@@ -1,7 +1,4 @@
-
-import { scaleFloatsToInts } from "../../scale-to-int/scale-floats-to-ints";
-import { gcdInt } from "../../gcd/double/integer-gcd";
-import { twoProduct, eLongDivide, eSign, eCompare, eNegativeOf, eIntDiv, expansionProduct } from "big-float-ts";
+import { eLongDivide, eSign, eCompare, eNegativeOf, eIntDiv, expansionProduct } from "big-float-ts";
 import { scaleFloatssToIntss } from "../../scale-to-int/scale-floatss-to-intss";
 import { eGcdInt } from "../../gcd/expansion/e-integer-gcd";
 
@@ -13,6 +10,8 @@ import { eGcdInt } from "../../gcd/expansion/e-integer-gcd";
  * Shewchuk expansions from highest to lowest power, 
  * e.g. `[[5],[-3],[0]]` represents the polynomial `5x^2 - 3x`
  * @param b another polynomial
+ * 
+ * @doc
  */
 function eIsRationalMultipleOf(a: number[][], b: number[][]): boolean {
     // If either polynomial is zero

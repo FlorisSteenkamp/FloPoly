@@ -1,4 +1,3 @@
-
 import { ddMultDouble2 as ddMultDouble2_ } from "double-double";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -14,7 +13,11 @@ const ddMultDouble2 = ddMultDouble2_;
  * e.g. `[[5],[-3],[0]]` represents the polynomial `5x^2 - 3x`
  * 
  * @example
+ * ```typescript
  * ddDifferentiate([[0,5], [0,4], [0,3], [0,2], [0,1]]); //=> [[0,20], [0,12], [0,6], [0,2]]
+ * ```
+ * 
+ * @doc
  */
 function ddDifferentiate(p: number[][]): number[][] {
 	const result: number[][] = [];

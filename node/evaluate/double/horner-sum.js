@@ -4,10 +4,10 @@ exports.HornerSum = void 0;
 /**
  * * helper function
  *
- * @internal
- *
  * @param p1
  * @param p2
+ *
+ * @internal
  */
 function HornerSum(p1, p2, a) {
     let result = 0;

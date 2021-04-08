@@ -1,4 +1,3 @@
-
 import { removeLeadingZeros as removeLeadingZeros_ } from "./remove-leading-zeros";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -16,7 +15,11 @@ const removeLeadingZeros = removeLeadingZeros_;
  * @param p2 subtrahend; the polynomial that will be subtracted
  * 
  * @example
+ * ```typescript
  * subtract([2,3],[4,4]); //=> [-2, -1]
+ * ```
+ * 
+ * @doc
  */
 function subtract(p1: number[], p2: number[]): number[] {
 	// Initialize result array  

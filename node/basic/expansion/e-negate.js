@@ -13,7 +13,11 @@ const eNegativeOf = big_float_ts_1.eNegativeOf;
  * represents the polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * eNegate([[0.1], [-0.2]]); //=> [[-0.1], [0.2]]
+ * ```
+ *
+ * @doc
  */
 function eNegate(p) {
     const result = [];

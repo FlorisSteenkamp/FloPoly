@@ -7,7 +7,11 @@
  * represents the polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * eDifferentiate([[5], [4], [3], [2], [1]]); //=> [[20], [12], [6], [2]]
+ * ```
+ *
+ * @doc
  */
 declare function eDifferentiate(p: number[][]): number[][];
 export { eDifferentiate };

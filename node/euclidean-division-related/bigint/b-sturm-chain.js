@@ -17,7 +17,11 @@ const bPremSequenceSubresultant = b_prem_sequence_subresultant_1.bPremSequenceSu
  * polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * bSturmChain([-3n,4n,2n,-2n]); //=> [[-3n, 4n, 2n, -2n], [-9n, 8n, 2n], [-204n, 138n], [-1692n]]
+ * ```
+ *
+ * @doc
  */
 function bSturmChain(p) {
     const dp = bDifferentiate(p);

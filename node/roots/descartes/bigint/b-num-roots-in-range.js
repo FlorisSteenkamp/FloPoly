@@ -19,11 +19,15 @@ const bSignChanges = b_sign_changes_1.bSignChanges;
  * @param b an upper bound
  *
  * @example
+ * ```typescript
  * const p = [1n, 1n, -64n, 236n, -240n];
  * bNumRootsInRange(p,-20,-11);  //=> 0
  * bNumRootsInRange(p,-11,-9);   //=> 1
  * bNumRootsInRange(p,-11,3.5);  //=> 3
  * bNumRootsInRange(p,-11,5);    //=> 4
+ * ```
+ *
+ * @doc
  */
 function bNumRootsInRange(p, a, b) {
     const ps = bSturmChain(p);

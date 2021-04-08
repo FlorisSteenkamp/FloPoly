@@ -1,4 +1,3 @@
-
 import { pInfNorm as pInfNorm_ } from "../../norm/double/p-inf-norm";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -15,6 +14,8 @@ const pInfNorm = pInfNorm_;
  * @param p a polynomial with coefficients given densely as an array of double
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]` 
  * represents the polynomial `5x^2 - 3x`
+ * 
+ * @doc
  */
 function rootMagnitudeUpperBound_rouche(p: number[]): number {
     if (p.length <= 1) {

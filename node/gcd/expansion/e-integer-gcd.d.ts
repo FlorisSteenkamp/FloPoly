@@ -3,6 +3,8 @@
  * Euclidean Algorithm.
  *
  * **precondition** a, b must be integers given as Shewchuk expansions
+ *
+ * @doc
  */
 declare function eGcdInt(a: number[], b: number[]): number[];
 /**

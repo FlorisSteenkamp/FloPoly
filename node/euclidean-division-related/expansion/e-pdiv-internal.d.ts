@@ -9,7 +9,7 @@
  *
  * * **precondition:** the coefficients must be integers; if they are not they
  * can easily be scaled from floating point numbers to integers by calling
- * `scaleFloatsToBigints` or similar before calling this function (recall that
+ * [[scaleFloatsToBigints]] or similar before calling this function (recall that
  * all floating point numbers are rational).
  *
  * * **precondition:** b !== [], i.e. unequal to the zero polynomial.
@@ -18,6 +18,8 @@
  *
  * @param a the polynomial a in the formula a = bq + r
  * @param b the polynomial b in the formula a = bq + r
+ *
+ * @internal
  */
 declare function ePdivInternal(a: number[][], b: number[][]): {
     q: number[][];

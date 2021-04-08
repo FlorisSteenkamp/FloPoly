@@ -1,4 +1,3 @@
-
 import { eRemoveLeadingZeros as eRemoveLeadingZeros_ } from "./e-remove-leading-zeros";
 import { fastExpansionSum as fastExpansionSum_ } from "big-float-ts";
 
@@ -17,7 +16,11 @@ const eRemoveLeadingZeros = eRemoveLeadingZeros_;
  * @param p2 another polynomial
  * 
  * @example
+ * ```typescript
  * eAdd([[1],[2],[3]],[[3],[4]]); //=> [[1],[5],[7]]
+ * ```
+ * 
+ * @doc
  */
 function eAdd(p1: number[][], p2: number[][]): number[][] {
 	// Initialize result array  

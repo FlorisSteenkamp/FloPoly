@@ -8,6 +8,8 @@ exports.pInfNorm = void 0;
  *
  * @param p an array of numbers; can represent an array of polynomial
  * coefficients
+ *
+ * @doc
  */
 function pInfNorm(p) {
     let max = 0;

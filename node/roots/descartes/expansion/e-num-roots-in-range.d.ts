@@ -14,11 +14,15 @@
  * @param b an upper bound
  *
  * @example
+ * ```typescript
  * const p = [[1], [1], [-64], [236], [-240]];
  * eNumRootsInRange(p,-20,-11); //=> 0
  * eNumRootsInRange(p,-11,-9);  //=> 1
  * eNumRootsInRange(p,-11,3.5); //=> 3
  * eNumRootsInRange(p,-11,5);   //=> 4
+ * ```
+ *
+ * @doc
  */
 declare function eNumRootsInRange(p: number[][], a: number[], b: number[]): number;
 export { eNumRootsInRange };

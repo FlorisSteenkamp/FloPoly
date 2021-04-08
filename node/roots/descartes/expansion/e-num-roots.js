@@ -24,8 +24,12 @@ const eSturmChain = e_sturm_chain_1.eSturmChain;
  * represents the polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * const p = [[1], [1], [-64], [236], [-240]];
  * eNumRoots(p); //=> 4
+ * ```
+ *
+ * @doc
  */
 function eNumRoots(p) {
     const ps = eSturmChain(p);

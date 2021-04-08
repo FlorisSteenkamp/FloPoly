@@ -1,4 +1,3 @@
-
 /**
  * Returns the `p-1 norm`, a.k.a. `Taxicab norm`, i.e. the sum of the absolute 
  * values of the given array of bigints.
@@ -7,6 +6,8 @@
  * norm is known as the `length` of the polynomial
  * 
  * @param p an array of bigints
+ * 
+ * @doc
  */
 function bP1Norm(p: bigint[]): bigint {
     let s = 0n;

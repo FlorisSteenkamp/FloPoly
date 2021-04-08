@@ -1,4 +1,3 @@
-
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 import { eNegativeOf as eNegativeOf_ } from "big-float-ts";
 const eNegativeOf = eNegativeOf_;
@@ -13,7 +12,11 @@ const eNegativeOf = eNegativeOf_;
  * represents the polynomial `5x^2 - 3x`
  * 
  * @example
+ * ```typescript
  * eNegate([[0.1], [-0.2]]); //=> [[-0.1], [0.2]]
+ * ```
+ * 
+ * @doc
  */
 function eNegate(p: number[][]): number[][] {
 	const result: number[][] = [];

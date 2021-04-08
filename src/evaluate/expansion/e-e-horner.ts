@@ -1,4 +1,3 @@
-
 import { fastExpansionSum as fastExpansionSum_ } from "big-float-ts";
 import { expansionProduct as expansionProduct_ } from "big-float-ts";
 
@@ -16,6 +15,8 @@ const expansionProduct = expansionProduct_;
  * Shewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
  * represents the polynomial `5x^2 - 3x`
  * @param x the value at which to evaluate the polynomial
+ * 
+ * @doc
  */
 function eeHorner(p: number[][], x: number[]): number[] {
 	let result = [0]; 

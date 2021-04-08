@@ -1,4 +1,3 @@
-
 import { eSign as eSign_ } from "big-float-ts";
 import { eSturmChain as eSturmChain_ } from "../../../euclidean-division-related/expansion/e-sturm-chain";
 import { signChanges as signChanges_ } from "../double/sign-changes";
@@ -25,9 +24,13 @@ const eSturmChain = eSturmChain_;
  * Shewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
  * represents the polynomial `5x^2 - 3x`
  * 
- * @example 
+ * @example
+ * ```typescript 
  * const p = [[1], [1], [-64], [236], [-240]];
  * eNumRoots(p); //=> 4
+ * ```
+ * 
+ * @doc
  */
 function eNumRoots(p: number[][]): number {
 	const ps = eSturmChain(p);

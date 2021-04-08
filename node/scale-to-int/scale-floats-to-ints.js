@@ -14,6 +14,8 @@ const bitLength = big_float_ts_2.bitLength;
  * * can be used to scale polynomials or Shewchuk expansions
  *
  * @param as an array of double precision floating point numbers
+ *
+ * @doc
  */
 function scaleFloatsToInts(as) {
     let e = -1024;

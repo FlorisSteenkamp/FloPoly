@@ -1,4 +1,3 @@
-
 import { bSturmChain as bSturmChain_ } from "../../../euclidean-division-related/bigint/b-sturm-chain";
 import { bHorner as bHorner_ } from "../../../evaluate/bigint/b-horner";
 import { bSignChanges as bSignChanges_ } from "./b-sign-changes";
@@ -19,12 +18,16 @@ const bSignChanges = bSignChanges_;
  * @param a a lower bound
  * @param b an upper bound
  * 
- * @example 
+ * @example
+ * ```typescript 
  * const p = [1n, 1n, -64n, 236n, -240n];
  * bNumRootsInRange(p,-20,-11);  //=> 0
  * bNumRootsInRange(p,-11,-9);   //=> 1  
  * bNumRootsInRange(p,-11,3.5);  //=> 3
  * bNumRootsInRange(p,-11,5);    //=> 4
+ * ```
+ * 
+ * @doc
  */ 
 function bNumRootsInRange(
 		p: bigint[], a: bigint, b: bigint): number {

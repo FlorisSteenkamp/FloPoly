@@ -16,7 +16,11 @@
  * e.g. `[5,-3,0]` represents the polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * sturmChain([-3,4,2,-2]); //=> [[[-3],[4],[2],[-2]],[[-9],[8],[2]],[[-204],[138]],[[-1692]]]
+ * ```
+ *
+ * @doc
  */
 declare function sturmChain(p: number[]): number[][][];
 export { sturmChain };

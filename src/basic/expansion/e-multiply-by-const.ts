@@ -1,4 +1,3 @@
-
 import { eSign as eSign_ } from "big-float-ts";
 import { expansionProduct as expansionProduct_ } from "big-float-ts";
 
@@ -17,8 +16,12 @@ const expansionProduct = expansionProduct_;
  * floating point expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
  * represents the polynomial `5x^2 - 3x`
  * 
- * @example 
+ * @example
+ * ```typescript 
  * eMultiplyByConst([0.25], [[3],[2],[1]]); //=> [[0.75], [0.5], [0.25]]  
+ * ```
+ * 
+ * @doc
  */
 function eMultiplyByConst(c: number[], p: number[][]): number[][] {
 	if (eSign(c) === 0) { return []; }

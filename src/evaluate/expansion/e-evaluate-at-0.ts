@@ -1,4 +1,3 @@
-
 /** 
  * Returns the constant term of the given polynomial.
  * 
@@ -7,7 +6,11 @@
  * represents the polynomial `5x^2 - 3x`
  * 
  * @example
+ * ```typescript
  * evaluateAt0([[3],[2],[99]]); //=> [99]
+ * ```
+ * 
+ * @doc
  */
 function eEvaluateAt0(p: number[][]): number[] {
 	return p.length === 0 ? [0] : p[p.length-1];

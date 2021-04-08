@@ -20,7 +20,11 @@ const scaleExpansion2 = big_float_ts_3.scaleExpansion2;
  * @param a a scaling factor, i.e. the `a` in `p(x) <- p(ax)`
  *
  * @example
+ * ```typescript
  * eChangeVariablesScale([[1],[2],[7]], 3); //=> [[9], [6], [7]]
+ * ```
+ *
+ * @doc
  */
 function eChangeVariablesScale(p, a) {
     // We let the coefficients of `p(ax)` be denoted by `d_i` in the code below. 

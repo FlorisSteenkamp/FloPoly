@@ -1,4 +1,3 @@
-
 import { ePdivTrivial as ePdivTrivial_ } from "./e-pdiv-trivial";
 import { ePrimitivePart as eGetPrimitivePart_ } from "../../factor/expansion/e-primitive-part";
 
@@ -18,6 +17,8 @@ const eGetPrimitivePart = eGetPrimitivePart_;
  * with coefficients as a dense array of Shewchuk expansions from highest to 
  * lowest power, e.g. `[[5],[-3],[0]]` represents the  polynomial `5x^2 - 3x`
  * @param g the polynomial b in the formula a = bq + r;
+ * 
+ * @doc
  */
 function ePremSequencePrimitive(
         f: number[][],

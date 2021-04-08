@@ -1,4 +1,3 @@
-
 import { exponent as exponent_ } from "big-float-ts";
 import { bitLength as bitLength_ } from "big-float-ts";
 
@@ -18,6 +17,8 @@ const b0 = 0n;  // so tests are not tripped up - awaiting better support
  * expansions)
  * 
  * @param ass an array of an array of double precision floating point numbers
+ * 
+ * @doc
  */
 function scaleFloatssToBigintss(ass: number[][]): bigint[][] {
     let e = -1024;

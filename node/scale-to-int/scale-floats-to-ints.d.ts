@@ -6,6 +6,8 @@
  * * can be used to scale polynomials or Shewchuk expansions
  *
  * @param as an array of double precision floating point numbers
+ *
+ * @doc
  */
 declare function scaleFloatsToInts(as: number[]): number[];
 export { scaleFloatsToInts };

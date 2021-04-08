@@ -1,4 +1,3 @@
-
 import { removeLeadingZeros as removeLeadingZeros_ } from "./remove-leading-zeros";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -14,8 +13,12 @@ const removeLeadingZeros = removeLeadingZeros_;
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]` 
  * represents the polynomial `5x^2 - 3x`
  * 
- * @example 
- * multiplyByConst(0.25, [3,2,1]); //=> [0.75, 0.5, 0.25]  
+ * @example
+ * ```typescript 
+ * multiplyByConst(0.25, [3,2,1]); //=> [0.75, 0.5, 0.25]
+ * ```
+ * 
+ * @doc
  */
 function multiplyByConst(c: number, p: number[]): number[] {
 	if (c === 0) { return []; }

@@ -1,4 +1,3 @@
-
 import { eEstimate as eEstimate_ } from "big-float-ts";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -14,6 +13,8 @@ const eEstimate = eEstimate_;
  * norm is known as the `length` of the polynomial
  * 
  * @param p an array of Shewchuk expansions
+ * 
+ * @doc
  */
 function eP1Norm(p: number[][]): number {
     let s = 0;

@@ -7,7 +7,11 @@
  * polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * bDegree([9n,8n,7n,6n,5n,4n,3n,2n,1n]); //=> 8
+ * ```
+ *
+ * @doc
  */
 declare function bDegree(p: bigint[]): number;
 export { bDegree };

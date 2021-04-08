@@ -18,8 +18,12 @@
  * recursively so that some roots could be tripled, etc.
  *
  * @example
+ * ```typescript
  * flatRootsArr(2,3,0,10); //=> [[1, -17.27247918024659, 97.33487287168995, -179.34094494147305], [1, -14.934967160224915, 57.624514485645406, -14.513933300587215]]
  * flatRootsArr(2,3,0,10); //=> [[1, -17.27247918024659, 97.33487287168995, -179.34094494147305], [1, -14.934967160224915, 57.624514485645406, -14.513933300587215]]
+ * ```
+ *
+ * @doc
  */
 declare const flatRootsArr: (n: number, d: number, a?: number, b?: number, seed?: number, odds?: number) => number[][];
 /**
@@ -39,8 +43,12 @@ declare const flatRootsArr: (n: number, d: number, a?: number, b?: number, seed?
  * recursively so that some roots could be tripled, etc.
  *
  * @example
+ * ```typescript
  * flatCoefficientsArr(2,3,-2,2); //=> [[0.1749166026711464, -0.20349335670471191, 0.9375684261322021], [1.0617692470550537, -1.8918039798736572, 0.8040215969085693]]
  * flatCoefficientsArr(2,3,-2,2); //=> [[0.1749166026711464, -0.20349335670471191, 0.9375684261322021], [1.0617692470550537, -1.8918039798736572, 0.8040215969085693]]
+ * ```
+ *
+ * @doc
  */
 declare const flatCoefficientsArr: (n: number, d: number, a?: number, b?: number, seed?: number, odds?: number) => number[][];
 /**
@@ -48,9 +56,9 @@ declare const flatCoefficientsArr: (n: number, d: number, a?: number, b?: number
  *
  * * see [stackoverflow](https://stackoverflow.com/questions/3062746/special-simple-random-number-generator)
  *
- * @internal
- *
  * @param seed
+ *
+ * @internal
  */
 declare function predictiveRandom(seed: number): number;
 /**
@@ -75,7 +83,11 @@ declare function predictiveRandom(seed: number): number;
  * recursively so that some roots could be tripled, etc.
  *
  * @example
+ * ```typescript
  * flatRoots(3,0,10); //=> { p: [1, -17.27247918024659, 97.33487287168995, -179.34094494147305], seed: 939629312 }
+ * ```
+ *
+ * @doc
  */
 declare function flatRoots(d: number, a?: number, b?: number, seed?: number, odds?: number): {
     p: number[];
@@ -100,7 +112,11 @@ declare function flatRoots(d: number, a?: number, b?: number, seed?: number, odd
  * recursively so that some roots could be tripled, etc.
  *
  * @example
+ * ```typescript
  * flatCoefficients(3,-5,5); //=> { p: [0.437291506677866, -0.5087333917617798, 2.3439210653305054], seed: 939629312 }
+ * ```
+ *
+ * @doc
  */
 declare function flatCoefficients(d: number, a?: number, b?: number, seed?: number): {
     p: number[];

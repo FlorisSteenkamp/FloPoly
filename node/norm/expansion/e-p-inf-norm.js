@@ -11,6 +11,8 @@ const eEstimate = big_float_ts_1.eEstimate;
  *
  * @param p an array of numbers; can represent an array of polynomial
  * coefficients
+ *
+ * @doc
  */
 function ePInfNorm(p) {
     let max = 0;

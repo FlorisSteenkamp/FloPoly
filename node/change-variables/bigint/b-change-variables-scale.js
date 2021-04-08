@@ -13,7 +13,11 @@ exports.bChangeVariablesScale = void 0;
  * @param a a scaling factor, i.e. the `a` in `p(x) <- p(ax)`
  *
  * @example
+ * ```typescript
  * bChangeVariablesScale([1n,2n,7n], 3n); //=> [9n, 6n, 7n]
+ * ```
+ *
+ * @doc
  */
 function bChangeVariablesScale(p, a) {
     // We let the coefficients of `p(ax)` be denoted by `d_i` in the code below. 

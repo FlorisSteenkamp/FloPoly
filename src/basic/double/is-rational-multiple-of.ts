@@ -1,4 +1,3 @@
-
 import { scaleFloatsToInts } from "../../scale-to-int/scale-floats-to-ints";
 import { gcdInt } from "../../gcd/double/integer-gcd";
 import { twoProduct, eLongDivide, eSign, eCompare } from "big-float-ts";
@@ -11,6 +10,8 @@ import { twoProduct, eLongDivide, eSign, eCompare } from "big-float-ts";
  * double precision floating point numbers from highest to lowest power, 
  * e.g. `[5,-3,0]` represents the polynomial `5x^2 - 3x`
  * @param b another polynomial
+ * 
+ * @doc
  */
 function isRationalMultipleOf(a: number[], b: number[]): boolean {
     // If either polynomial is zero

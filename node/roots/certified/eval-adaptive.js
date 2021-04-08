@@ -17,8 +17,6 @@ const eEstimate = big_float_ts_1.eEstimate;
  * * the evaluation is done adaptively, i.e. if the evaluation cannot be done
  * accurately enough then an exact precision polynomial is requested
  *
- * @internal
- *
  * @param p a polynomial given as an array with each consecutive element of
  * the array having more accurate coefficients than the previous (by adding
  * consecutive double precision coefficients to prior coefficients)
@@ -29,6 +27,8 @@ const eEstimate = big_float_ts_1.eEstimate;
  * @param getPsExact a function to retrieve the exact polynomial and all its
  * exact derivatives
  * @param diffCount the number of differentiations done up to this point
+ *
+ * @internal
  */
 function evalAdaptive(p, pE, x, psExact, getPsExact, diffCount) {
     const r = evalCertified(p, x, pE, 4);

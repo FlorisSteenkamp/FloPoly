@@ -15,6 +15,8 @@ const b0 = 0n; // so tests are not tripped up - awaiting better support
  * expansions)
  *
  * @param ass an array of an array of double precision floating point numbers
+ *
+ * @doc
  */
 function scaleFloatssToBigintss(ass) {
     let e = -1024;

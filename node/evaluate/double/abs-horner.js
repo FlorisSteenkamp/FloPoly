@@ -12,6 +12,8 @@ const abs = Math.abs;
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`
  * represents the polynomial `5x^2 - 3x`
  * @param x the value at which `p` should be evaluated
+ *
+ * @doc
  */
 function AbsHorner(p, x) {
     let q = 0;

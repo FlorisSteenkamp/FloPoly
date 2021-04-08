@@ -1,4 +1,3 @@
-
 import { ePremSequenceSubresultant as ePremSequenceSubresultant_ } from "../../euclidean-division-related/expansion/e-prem-sequence-subresultant";
 import { scaleFloatssToIntss as scaleFloatssToIntss_ } from "../../scale-to-int/scale-floatss-to-intss";
 
@@ -29,6 +28,8 @@ const scaleFloatssToIntss = scaleFloatssToIntss_;
  * Shewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
  * represents the polynomial `5x^2 - 3x`
  * @param b another polynomial
+ * 
+ * @internal
  */
 function eGcdPrs(a: number[][], b: number[][]): number[][] {
     const a_ = scaleFloatssToIntss(a);

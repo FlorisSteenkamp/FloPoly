@@ -12,7 +12,11 @@
  * @param b another polynomial.
  *
  * @example
+ * ```typescript
  * eMultiply([[1],[2],[3]], [[2],[5],[3],[5]]); //=> [[2], [9], [19], [26], [19], [15]]
+ * ```
+ *
+ * @doc
  */
 declare function eMultiply(a: number[][], b: number[][]): number[][];
 export { eMultiply };

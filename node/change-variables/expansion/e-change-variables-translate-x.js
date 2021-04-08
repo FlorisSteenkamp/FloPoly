@@ -19,6 +19,8 @@ const scaleExpansion2 = big_float_ts_3.scaleExpansion2;
  * floating point expansions from highest to lowest power, e.g. `[[5],[-3],[0]]`
  * represents the polynomial `5x^2 - 3x`
  * @param b the `b` in `x + b`
+ *
+ * @doc
  */
 function eChangeVariablesTranslateX(p, b) {
     // We let the coefficients of p(x + b) be denoted by d_i in the code below. 

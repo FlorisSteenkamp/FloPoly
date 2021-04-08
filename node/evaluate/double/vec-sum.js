@@ -9,10 +9,10 @@ const twoSum = big_float_ts_1.twoSum;
  *
  * see http://www.ti3.tuhh.de/paper/rump/OgRuOi05.pdf
  *
- * @internal
- *
  * @param x
  * @param K
+ *
+ * @internal
  */
 function vecSum(p_) {
     const p = p_.slice();

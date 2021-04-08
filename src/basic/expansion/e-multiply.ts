@@ -1,4 +1,3 @@
-
 import { eRemoveLeadingZeros as eRemoveLeadingZeros_ } from "./e-remove-leading-zeros";
 import { expansionProduct as expansionProduct_ } from "big-float-ts";
 import { fastExpansionSum as fastExpansionSum_ } from "big-float-ts";
@@ -23,7 +22,11 @@ const fastExpansionSum = fastExpansionSum_;
  * @param b another polynomial.
  * 
  * @example
+ * ```typescript
  * eMultiply([[1],[2],[3]], [[2],[5],[3],[5]]); //=> [[2], [9], [19], [26], [19], [15]]
+ * ```
+ * 
+ * @doc
  */
 function eMultiply(
 		a: number[][], b: number[][]): number[][] {

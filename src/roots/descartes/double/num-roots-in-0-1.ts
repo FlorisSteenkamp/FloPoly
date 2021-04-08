@@ -1,4 +1,3 @@
-
 import { eSturmChain as eSturmChain_ } from "../../../euclidean-division-related/expansion/e-sturm-chain";
 import { signChanges as signChanges_ } from "./sign-changes";
 import { eEvaluateAt1 as eEvaluateAt1_ } from "../../../evaluate/expansion/e-evaluate-at-1";
@@ -19,6 +18,8 @@ const eSign = eSign_;
  * @param p a polynomial with coefficients given densely as an array of double
  * precision floating point numbers from highest to lowest power, 
  * e.g. `[5,-3,0]` represents the polynomial `5x^2 - 3x`
+ * 
+ * @doc
  */
 function numRootsIn01(p: number[]): number {
 	const p_ = p.map(c => [c]);

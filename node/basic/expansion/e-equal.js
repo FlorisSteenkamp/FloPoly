@@ -14,8 +14,12 @@ const eCompare = big_float_ts_1.eCompare;
  * @param p2 another polynomial
  *
  * @example
+ * ```typescript
  * eEqual([[1],[2],[3],[0,4]], [[1],[2],[3],[4]]);   //=> true
  * eEqual([[1],[2],[3],[4]], [[1],[2],[3],[4],[5]]); //=> false
+ * ```
+ *
+ * @doc
  */
 function eEqual(p1, p2) {
     if (p1.length !== p2.length) {

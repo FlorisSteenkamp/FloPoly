@@ -7,7 +7,11 @@
  * @param roots an array of roots
  *
  * @example
+ * ```typescript
  * fromRoots([1n,2n,3n,3n]); //=> [1n, -9n, 29n, -39n, 18n]
+ * ```
+ *
+ * @doc
  */
 declare function bFromRoots(roots: bigint[]): bigint[];
 export { bFromRoots };

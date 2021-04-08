@@ -8,7 +8,7 @@
  *
  * * **precondition:** the coefficients must be bigints; if they are not they
  * can easily be scaled from floating point numbers to bigints by calling
- * `scaleFloatsToBigints` or similar before calling this function (recall that
+ * [[scaleFloatsToBigints]] or similar before calling this function (recall that
  * all floating point numbers are rational).
  *
  * * **precondition:** b !== [0], i.e. unequal to the zero polynomial.
@@ -24,6 +24,8 @@
  * multiplier (of the coefficients of the dividend)
  * `leadingCoeff(b)^(deg(a)-deg(b)+1)` will be
  * modified to `abs(leadingCoeff(b)^(deg(a)-deg(b)+1))`
+ *
+ * @doc
  */
 declare function bPdivTrivial(a: bigint[], b: bigint[], positiveMultiplier?: boolean): {
     q: bigint[];

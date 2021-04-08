@@ -1,4 +1,3 @@
-
 /**  
  * Returns the result of differentiating the given polynomial in double 
  * precision.
@@ -8,7 +7,11 @@
  * represents the polynomial `5x^2 - 3x`
  * 
  * @example
+ * ```typescript
  * differentiate([5, 4, 3, 2, 1]); //=> [20, 12, 6, 2]
+ * ```
+ * 
+ * @doc
  */
 function differentiate(p: number[]): number[] {
 	const result: number[] = [];

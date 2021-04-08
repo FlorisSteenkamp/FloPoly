@@ -5,6 +5,8 @@
  *
  * @param p an array of Shewchuk expansions; can represent an array of polynomial
  * coefficients
+ *
+ * @doc
  */
 declare function eP2Norm(p: number[][]): number;
 export { eP2Norm };

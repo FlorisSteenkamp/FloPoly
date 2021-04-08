@@ -18,7 +18,11 @@ const eRemoveLeadingZeros = e_remove_leading_zeros_1.eRemoveLeadingZeros;
  * @param p2 subtrahend; the polynomial that will be subtracted
  *
  * @example
+ * ```typescript
  * eSubtract([[2],[3]],[[4],[4]]); //=> [[-2], [-1]]
+ * ```
+ *
+ * @doc
  */
 function eSubtract(p1, p2) {
     // Initialize result array  

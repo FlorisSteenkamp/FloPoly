@@ -9,11 +9,15 @@
  * @param b an upper bound
  *
  * @example
+ * ```typescript
  * const p = [1n, 1n, -64n, 236n, -240n];
  * bNumRootsInRange(p,-20,-11);  //=> 0
  * bNumRootsInRange(p,-11,-9);   //=> 1
  * bNumRootsInRange(p,-11,3.5);  //=> 3
  * bNumRootsInRange(p,-11,5);    //=> 4
+ * ```
+ *
+ * @doc
  */
 declare function bNumRootsInRange(p: bigint[], a: bigint, b: bigint): number;
 export { bNumRootsInRange };

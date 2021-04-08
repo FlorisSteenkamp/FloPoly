@@ -10,8 +10,12 @@
  * represents the polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * eRemoveLeadingZeros([[1e-18], [1e-10], [1e-1]]); //=> [[1e-18], [1e-10], [1e-1]]
  * eRemoveLeadingZeros([[0], [1e-10], [1e-1]]); //=> [[1e-10], [1e-1]]
+ * ```
+ *
+ * @doc
  */
 declare function eRemoveLeadingZeros(p: number[][]): number[][];
 export { eRemoveLeadingZeros };

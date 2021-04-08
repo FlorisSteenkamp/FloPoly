@@ -11,8 +11,13 @@ const removeLeadingZeros = remove_leading_zeros_1.removeLeadingZeros;
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`
  * represents the polynomial `5x^2 - 3x`
  * @param p2 another polynomial
+ *
  * @example
+ * ```typescript
  * add([1,2,3],[3,4]); //=> [1,5,7]
+ * ```
+ *
+ * @doc
  */
 function add(p1, p2) {
     // Initialize result array  

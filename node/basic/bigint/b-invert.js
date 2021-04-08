@@ -10,7 +10,11 @@ exports.bInvert = void 0;
  * polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * bInvert([3n,2n,-5n]);  // => [-5n,2n,3n]
+ * ```
+ *
+ * @doc
  */
 function bInvert(p) {
     return p.slice().reverse();

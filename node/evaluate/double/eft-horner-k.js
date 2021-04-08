@@ -5,11 +5,11 @@ const eft_horner_1 = require("./eft-horner");
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const EFTHorner = eft_horner_1.EFTHorner;
 /**
- * @internal
- *
  * @param p
  * @param x
  * @param K
+ *
+ * @internal
  */
 function EFTHornerK(p, x, K) {
     const ps = [p];

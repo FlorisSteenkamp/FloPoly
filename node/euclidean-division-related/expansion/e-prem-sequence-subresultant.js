@@ -23,7 +23,7 @@ const eDegree = e_degree_1.eDegree;
  *
  * * **precondition:** the coefficients must be integer Shewchuk floating point
  * expansions; if they are not they can easily be scaled from
- * floating point numbers to Shewchuk expansions by calling `scaleFloatsToInts`
+ * floating point numbers to Shewchuk expansions by calling [[scaleFloatsToInts]]
  * or similar before calling this function (recall that all floating point
  * numbers are rational).
  *
@@ -31,7 +31,7 @@ const eDegree = e_degree_1.eDegree;
  * infinite precision up to overlow (meaning integers can be represented
  * *exactly* up to `2^1024 === 1797...(300 more digits)...37216`) and may
  * thus not be applicable to very high degree polynomials (in which case it is
- * better to use `bPremSequenceSubresultant`)
+ * better to use [[bPremSequenceSubresultant]])
  *
  * * see [*The subresultant polynomial remainder sequence algorithm* by Ruiyuan (Ronnie) Chen, p.10](https://pdfs.semanticscholar.org/2e6b/95ba84e2160748ba8fc310cdc408fc9bbade.pdf)
  *
@@ -41,6 +41,8 @@ const eDegree = e_degree_1.eDegree;
  * polynomial `5x^2 - 3x`
  * @param g the polynomial b in the formula a = bq + r
  * @param sturm if set to true then calculate a Sturm sequence instead
+ *
+ * @doc
  */
 function ePremSequenceSubresultant(f, g, sturm = false) {
     const r = [f, g]; // Initialize the PRS

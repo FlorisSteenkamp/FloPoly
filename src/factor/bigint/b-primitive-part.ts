@@ -1,4 +1,3 @@
-
 import { bContent as bContent_ } from "./b-content";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -18,6 +17,8 @@ const bContent = bContent_;
  * @param p a polynomial with coefficients given densely as an array of
  * bigints from highest to lowest power, e.g. `[5n,-3n,0n]` represents the 
  * polynomial `5x^2 - 3x`
+ * 
+ * @doc
  */
 function bPrimitivePart(p: bigint[]): bigint[] {
     const c = bContent(p);

@@ -18,6 +18,8 @@ const eToDd = big_float_ts_2.eToDd;
  * * mostly for testing purposes.
  *
  * @param roots an array of roots
+ *
+ * @doc
  */
 function eFromRoots(roots) {
     let p = [[1]];

@@ -11,7 +11,11 @@
  * @param b the `b` in `ax + b`
  *
  * @example
+ * ```typescript
  * bChangeVariablesLinear([1n,2n,7n], 3n, 4n); //=> [9n, 30n, 31n]
+ * ```
+ *
+ * @doc
  */
 declare function bChangeVariablesLinear(p: bigint[], a: bigint, b: bigint): bigint[];
 export { bChangeVariablesLinear };

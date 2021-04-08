@@ -10,7 +10,11 @@ exports.invert = void 0;
  * represents the polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * invert([3,2,-5]);  // => [-5,2,3]
+ * ```
+ *
+ * @doc
  */
 function invert(p) {
     return p.slice().reverse();

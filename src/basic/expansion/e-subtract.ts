@@ -1,4 +1,3 @@
-
 import { eDiff as eDiff_ } from "big-float-ts";
 import { eRemoveLeadingZeros as eRemoveLeadingZeros_ } from "./e-remove-leading-zeros";
 
@@ -19,7 +18,11 @@ const eRemoveLeadingZeros = eRemoveLeadingZeros_;
  * @param p2 subtrahend; the polynomial that will be subtracted
  * 
  * @example
+ * ```typescript
  * eSubtract([[2],[3]],[[4],[4]]); //=> [[-2], [-1]]
+ * ```
+ * 
+ * @doc
  */
 function eSubtract(p1: number[][], p2: number[][]): number[][] {
 	// Initialize result array  

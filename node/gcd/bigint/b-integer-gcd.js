@@ -4,6 +4,8 @@ exports.bGcdInts = exports.bGcdInt = void 0;
 /**
  * Computes and returns the greatest common divisor of two integers a and b,
  * using the [Euclidean Algorithm](https://en.wikipedia.org/wiki/Euclidean_algorithm).
+ *
+ * @doc
  */
 function bGcdInt(a, b) {
     a = a < 0n ? -a : a;
@@ -32,6 +34,8 @@ exports.bGcdInt = bGcdInt;
  * taken as the first number).
  *
  * @param vals the integers for which the GCD is to be calculated
+ *
+ * @doc
  */
 function bGcdInts(vals) {
     const vals_ = vals.slice();

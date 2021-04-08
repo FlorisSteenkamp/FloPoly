@@ -13,6 +13,8 @@ const eRem = big_float_ts_3.eRem;
  * Euclidean Algorithm.
  *
  * **precondition** a, b must be integers given as Shewchuk expansions
+ *
+ * @doc
  */
 function eGcdInt(a, b) {
     a = eAbs(a);

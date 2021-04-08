@@ -11,6 +11,8 @@ const uu = u * u;
  * @param n the parameter - typically a small positive integer, e.g. for
  * polynomial evaluation this === 2*d + 1, where d is the degree of the
  * polynomial
+ *
+ * @doc
  */
 function γ(n) {
     const nu = n * u;
@@ -26,6 +28,8 @@ exports.γ = γ;
  * @param n the parameter - typically a small positive integer, e.g. for
  * polynomial evaluation this === 2*d + 1, where d is the degree of the
  * polynomial
+ *
+ * @doc
  */
 function γγ(n) {
     const nuu = n * uu;

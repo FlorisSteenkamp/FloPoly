@@ -1,4 +1,3 @@
-
 import { removeLeadingZeros as removeLeadingZeros_ } from "./remove-leading-zeros";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -17,7 +16,11 @@ const removeLeadingZeros = removeLeadingZeros_;
  * represents the polynomial `5x^2 - 3x`
  * @param p2 another polynomial.
  * @example
+ * ```typescript
  * multiply([1,2,3], [2,5,3,5]); //=> [2, 9, 19, 26, 19, 15]
+ * ```
+ * 
+ * @doc
  */
 function multiply(p1: number[], p2: number[]): number[] {
 	const d1 = p1.length-1;

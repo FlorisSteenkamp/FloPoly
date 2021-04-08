@@ -15,10 +15,14 @@ exports.deflate = void 0;
  * @param root a root of the polynomial.
  *
  * @example
+ * ```typescript
  * // The polynomial x^3 - 5x^2 + 8x - 4 has a root at 1 and a double root at 2
  * deflate([1, -5, 8, -4], 2);  //=> [1, -3, 2]
  * deflate([1, -3, 2], 2);      //=> [1,-1]
  * deflate([1, -1], 1);         //=> [1]
+ * ```
+ *
+ * @doc
  */
 function deflate(p, root) {
     const d = p.length - 1;

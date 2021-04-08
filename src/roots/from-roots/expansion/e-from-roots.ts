@@ -1,4 +1,3 @@
-
 import { eMultiply as eMultiply_ } from "../../../basic/expansion/e-multiply";
 import { eNegativeOf as eNegativeOf_ } from "big-float-ts";
 import { eToDd as eToDd_ } from "big-float-ts";
@@ -19,6 +18,8 @@ const eToDd = eToDd_;
  * * mostly for testing purposes. 
  * 
  * @param roots an array of roots
+ * 
+ * @doc
  */
 function eFromRoots(
 		roots: number[][]): {

@@ -14,6 +14,8 @@ const sce = big_float_ts_1.scaleExpansion;
  * Shewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]`
  * represents the polynomial `5x^2 - 3x`
  * @param x the value at which to evaluate the polynomial
+ *
+ * @doc
  */
 function eHorner(p, x) {
     let q = [0];

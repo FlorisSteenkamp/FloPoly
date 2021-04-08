@@ -1,4 +1,3 @@
-
 import { evalCertified as evalCertified_ } from "../../evaluate/double/eval-certified";
 import { eHorner as eHorner_ } from "../../evaluate/expansion/e-horner";
 import { eEstimate as eEstimate_ } from 'big-float-ts';
@@ -18,8 +17,6 @@ const eEstimate = eEstimate_;
  * * the evaluation is done adaptively, i.e. if the evaluation cannot be done
  * accurately enough then an exact precision polynomial is requested
  * 
- * @internal
- * 
  * @param p a polynomial given as an array with each consecutive element of
  * the array having more accurate coefficients than the previous (by adding 
  * consecutive double precision coefficients to prior coefficients)
@@ -30,6 +27,8 @@ const eEstimate = eEstimate_;
  * @param getPsExact a function to retrieve the exact polynomial and all its 
  * exact derivatives
  * @param diffCount the number of differentiations done up to this point
+ * 
+ * @internal
  */
 function evalAdaptive(
         p: number[][], 

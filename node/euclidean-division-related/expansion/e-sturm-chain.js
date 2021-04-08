@@ -3,12 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.eSturmChain = void 0;
 const e_differentiate_1 = require("../../calculus/expansion/e-differentiate");
 const e_prem_sequence_subresultant_1 = require("./e-prem-sequence-subresultant");
-const scale_floats_to_ints_1 = require("../../scale-to-int/scale-floats-to-ints");
 const scale_floatss_to_intss_1 = require("../../scale-to-int/scale-floatss-to-intss");
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const eDifferentiate = e_differentiate_1.eDifferentiate;
 const ePremSequenceSubresultant = e_prem_sequence_subresultant_1.ePremSequenceSubresultant;
-const scaleFloatsToInts = scale_floats_to_ints_1.scaleFloatsToInts;
 const scaleFloatssToIntss = scale_floatss_to_intss_1.scaleFloatssToIntss;
 /**
  * Returns the Sturm chain for the given polynomial using pseudo remainders.
@@ -21,7 +19,11 @@ const scaleFloatssToIntss = scale_floatss_to_intss_1.scaleFloatssToIntss;
  * represents the polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * eSturmChain([[-3],[4],[2],[-2]]); //=> [[[-3],[4],[2],[-2]],[[-9],[8],[2]],[[-204],[138]],[[-1692]]]
+ * ```
+ *
+ * @doc
  */
 function eSturmChain(p) {
     p = scaleFloatssToIntss(p);

@@ -1,10 +1,10 @@
-
-
 /**
  * Computes the greatest common divisor of two integers a and b, using the 
  * Euclidean Algorithm.
  * 
  * **precondition** a, b must be integers
+ * 
+ * @doc
  */
 function gcdInt(a: number, b: number): number {
     a = Math.abs(a);
@@ -79,6 +79,8 @@ function gcdIntBinary(a: number, b: number): number {
  * taken as the first number).
  * 
  * @param vals the integers for which the GCD is to be calculated
+ * 
+ * @doc
  */
 function gcdInts(vals: number[]): number {
 	const vals_ = vals.slice();
@@ -99,7 +101,9 @@ function gcdInts(vals: number[]): number {
 
 
 /**
- * ❗ don't use - too slow - use `gcdInts` instead ❗
+ * :::tip Heads up!
+ * don't use - too slow - use [[gcdInts]] instead
+ * :::
  * 
  * Computes and returns the greatest common divisor of 2 or more integers by 
  * calculating GCDs rescursively using a tree (Divide and Conquer).
@@ -132,4 +136,5 @@ function gcdIntsTree(vals: number[]): number {
 } 
 
 
-export { gcdInt, gcdInts, gcdIntsTree, gcdIntBinary }
+//export { gcdInt, gcdInts, gcdIntsTree, gcdIntBinary }
+export { gcdInt, gcdInts }

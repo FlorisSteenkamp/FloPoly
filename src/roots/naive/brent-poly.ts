@@ -1,4 +1,3 @@
-
 import { Horner as Horner_ } from '../../evaluate/double/horner';
 
 const Horner = Horner_;
@@ -17,7 +16,7 @@ const max = Math.max;
  * * near exact implementation of the original Brent Dekker Method (also known 
  * as Brent's Method), except that it is specialzed to polynomial evaluation
  * 
- * * * the algorithm stops once the interval width becomes equal or less than
+ * * the algorithm stops once the interval width becomes equal or less than
  * `2 * Number.EPSILON/2 * max(1,abs(a),abs(b))` where `a` and `b` are the current
  * lower and upper interval limits
  * 
@@ -45,12 +44,16 @@ const max = Math.max;
  * evaluating the input polynomial at `b`
  * 
  * @example
+ * ```typescript
  * const p = fromRoots([-10,2,3,4]);  //=> [1, 1, -64, 236, -240]
  * const a = 2.2;
  * const b = 3.8;
  * brent(p,a,b); //=> 3.000000000000003
  * b = 3.1;
  * brent(p,a,b); //=> 3.000000000000001
+ * ```
+ * 
+ * @doc
  */
 function brentPoly(
         p: number[], 

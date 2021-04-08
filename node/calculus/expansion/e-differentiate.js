@@ -13,7 +13,11 @@ const scaleExpansion = big_float_ts_1.scaleExpansion;
  * represents the polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * eDifferentiate([[5], [4], [3], [2], [1]]); //=> [[20], [12], [6], [2]]
+ * ```
+ *
+ * @doc
  */
 function eDifferentiate(p) {
     const result = [];

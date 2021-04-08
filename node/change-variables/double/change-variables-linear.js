@@ -14,7 +14,11 @@ exports.changeVariablesLinear = void 0;
  * @param b the `b` in `ax + b`
  *
  * @example
+ * ```typescript
  * changeVariablesLinear([1,2,7], 3, 4); //=> [9, 30, 31]
+ * ```
+ *
+ * @doc
  */
 function changeVariablesLinear(p, a, b) {
     // We let the coefficients of p(ax + b) be denoted by d_i in the 

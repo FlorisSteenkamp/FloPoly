@@ -1,4 +1,3 @@
-
 import { flatRoots, flatRootsArr, flatCoefficients, flatCoefficientsArr } from "../double/random"
 import { scaleFloatsToBigints } from "../../scale-to-int/scale-floats-to-bigints";
 
@@ -28,6 +27,8 @@ const SEED = 123456789;
  * @param seed defaults to 123456789; a seed value in [0,4294967296]
  * @param odds defaults to 0; the odds that a root will be doubled (applied
  * recursively so that some roots could be tripled, etc.
+ * 
+ * @doc
  */
 function bFlatRoots(
         d: number,
@@ -60,6 +61,8 @@ function bFlatRoots(
  * @param seed defaults to 123456789; a seed value in [0,4294967296]
  * @param odds defaults to 0; the odds that a root will be doubled (applied
  * recursively so that some roots could be tripled, etc.
+ * 
+ * @doc
  */
 function bFlatRootsArr(
         n: number, 
@@ -87,6 +90,8 @@ function bFlatRootsArr(
  * @param seed defaults to 123456789; a seed value in [0,4294967296]
  * @param odds defaults to 0; the odds that a root will be doubled (applied
  * recursively so that some roots could be tripled, etc.
+ * 
+ * @doc
  */
 function bFlatCoefficients(
         d: number,
@@ -115,6 +120,8 @@ function bFlatCoefficients(
  * @param seed defaults to 123456789; a seed value in [0,4294967296]
  * @param odds defaults to 0; the odds that a root will be doubled (applied
  * recursively so that some roots could be tripled, etc.
+ * 
+ * @doc
  */
 function bFlatCoefficientsArr(
         n: number, 

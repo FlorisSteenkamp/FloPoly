@@ -14,6 +14,8 @@ const bitLength = big_float_ts_2.bitLength;
  * * the result is exact (no round-off can occur)
  *
  * @param a a double precision floating point number
+ *
+ * @doc
  */
 function scaleFloatToInt(a) {
     if (a === 0) {

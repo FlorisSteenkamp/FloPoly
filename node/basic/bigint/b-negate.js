@@ -9,7 +9,11 @@ exports.bNegate = void 0;
  * polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * bNegate([1n, -2n]); //=> [-1n, 2n]
+ * ```
+ *
+ * @doc
  */
 function bNegate(p) {
     const p_ = [];

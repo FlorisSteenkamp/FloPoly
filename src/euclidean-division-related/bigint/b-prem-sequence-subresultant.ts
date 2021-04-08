@@ -1,4 +1,3 @@
-
 import { bDegree as bDegree_ } from "../../basic/bigint/b-degree";
 import { bPdivTrivial as bPdivTrivial_ } from "./b-pdiv-trivial";
 
@@ -19,6 +18,8 @@ const bPdivTrivial = bPdivTrivial_;
  * power, e.g. `[5n,-3n,0n]` represents the  polynomial `5x^2 - 3x`
  * @param g the polynomial b in the formula a = bq + r;
  * @param sturm if set to true then calculate a Sturm sequence instead
+ * 
+ * @doc
  */
 function bPremSequenceSubresultant(
         f: bigint[],

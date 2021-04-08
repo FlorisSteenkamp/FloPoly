@@ -8,9 +8,9 @@ const invert = invert_1.invert;
  * Returns a function that returns a positive lower root bound given a function
  * that returns a positive upper root bound.
  *
- * @internal
- *
  * @param positiveUpperBoundFunction
+ *
+ * @internal
  */
 function upperToLowerBound(positiveUpperBoundFunction) {
     return (p) => {

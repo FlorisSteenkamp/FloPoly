@@ -17,6 +17,8 @@ const eGetPrimitivePart = e_primitive_part_1.ePrimitivePart;
  * with coefficients as a dense array of Shewchuk expansions from highest to
  * lowest power, e.g. `[[5],[-3],[0]]` represents the  polynomial `5x^2 - 3x`
  * @param g the polynomial b in the formula a = bq + r;
+ *
+ * @doc
  */
 function ePremSequencePrimitive(f, g) {
     const r = [f, g]; // Initialize the PRS

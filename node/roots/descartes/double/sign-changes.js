@@ -19,7 +19,11 @@ exports.signChanges = void 0;
  * represents the polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * signChanges([1,2,-3,0,0,3,-1]); //=> 3
+ * ```
+ *
+ * @doc
  */
 function signChanges(p) {
     const d = p.length - 1;

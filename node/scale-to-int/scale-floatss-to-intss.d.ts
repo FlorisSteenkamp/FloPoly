@@ -7,6 +7,8 @@
  * expansions)
  *
  * @param ass an array of an array of double precision floating point numbers
+ *
+ * @doc
  */
 declare function scaleFloatssToIntss(ass: number[][]): number[][];
 export { scaleFloatssToIntss };

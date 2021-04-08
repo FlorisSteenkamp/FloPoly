@@ -7,7 +7,11 @@
  * polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * bInvert([3n,2n,-5n]);  // => [-5n,2n,3n]
+ * ```
+ *
+ * @doc
  */
 declare function bInvert(p: bigint[]): bigint[];
 export { bInvert };

@@ -1,4 +1,3 @@
-
 import { exponent as exponent_ } from "big-float-ts";
 import { bitLength as bitLength_ } from "big-float-ts";
 
@@ -15,6 +14,8 @@ const bitLength = bitLength_;
  * * can be used to scale polynomials or Shewchuk expansions
  * 
  * @param as an array of double precision floating point numbers
+ * 
+ * @doc
  */
 function scaleFloatsToInts(as: number[]): number[] {
     let e = -1024;

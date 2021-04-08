@@ -26,7 +26,11 @@
  * represents the polynomial `5x^2 - 3x`
  *
  * @example
+ * ```typescript
  * eSignChanges([[1],[2],[-3],[0],[0],[3],[-1]]); //=> 3
+ * ```
+ *
+ * @doc
  */
 declare function eSignChanges(p: number[][]): number;
 export { eSignChanges };

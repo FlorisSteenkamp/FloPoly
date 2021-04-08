@@ -9,10 +9,10 @@ const vecSum = vec_sum_1.vecSum;
  *
  * see http://www.ti3.tuhh.de/paper/rump/OgRuOi05.pdf
  *
- * @internal
- *
  * @param x
  * @param K
+ *
+ * @internal
  */
 function SumK(p, K) {
     for (let i = 1; i < K; i++) {

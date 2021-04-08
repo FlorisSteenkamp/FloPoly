@@ -13,7 +13,11 @@ exports.bChangeVariablesTranslateX = void 0;
  * @param b the `b` in `x + b`
  *
  * @example
+ * ```typescript
  * bChangeVariablesTranslateX([1n,2n,7n], 3n); //=> [1n, 8n, 22n]
+ * ```
+ *
+ * @doc
  */
 function bChangeVariablesTranslateX(p, b) {
     // We let the coefficients of p(x + b) be denoted by d_i in the code below. 

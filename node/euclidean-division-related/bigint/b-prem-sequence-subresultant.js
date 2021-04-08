@@ -18,6 +18,8 @@ const bPdivTrivial = b_pdiv_trivial_1.bPdivTrivial;
  * power, e.g. `[5n,-3n,0n]` represents the  polynomial `5x^2 - 3x`
  * @param g the polynomial b in the formula a = bq + r;
  * @param sturm if set to true then calculate a Sturm sequence instead
+ *
+ * @doc
  */
 function bPremSequenceSubresultant(f, g, sturm = false) {
     const r = [f, g]; // Initialize the PRS

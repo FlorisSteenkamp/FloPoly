@@ -7,6 +7,8 @@ exports.bPInfNorm = void 0;
  *
  * @param p an array of bigints; can represent an array of polynomial
  * coefficients
+ *
+ * @doc
  */
 function bPInfNorm(p) {
     let max = 0n;
