@@ -51,7 +51,7 @@
         "build": "npm run build-browser && npm run build-node",
         "build-node": "rimraf node && tsc",
         "build-browser": "rimraf browser && webpack",
-        "test": "nyc mocha --require ts-node/register --require source-map-support/register ./test/**/*.spec.ts",
+        "test": "nyc mocha --require ts-node/register --require source-map-support/register \"test/**/*.spec.ts\" --recursive",
         "docs": "ts-node ../typedoc-mod/src/run.ts --options typedoc.json",
         "docs2": "typedoc --json ./json/json.json --options typedoc2.json",
         "docs3": "typedoc --options typedoc3.json",
