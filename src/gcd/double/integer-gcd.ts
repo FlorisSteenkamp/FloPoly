@@ -111,6 +111,8 @@ function gcdInts(vals: number[]): number {
  * * It turns out this method is *slower* than the naive method
  * 
  * @param vals the integers for which the GCD is to be calculated
+ * 
+ * @internal
  */
 function gcdIntsTree(vals: number[]): number {
 	let vals_ = vals.slice();
@@ -136,5 +138,5 @@ function gcdIntsTree(vals: number[]): number {
 } 
 
 
-//export { gcdInt, gcdInts, gcdIntsTree, gcdIntBinary }
-export { gcdInt, gcdInts }
+export { gcdInt, gcdInts, gcdIntsTree, gcdIntBinary }
+//export { gcdInt, gcdInts }
