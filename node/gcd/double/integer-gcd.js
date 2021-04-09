@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.gcdInts = exports.gcdInt = void 0;
+exports.gcdIntBinary = exports.gcdIntsTree = exports.gcdInts = exports.gcdInt = void 0;
 /**
  * Computes the greatest common divisor of two integers a and b, using the
  * Euclidean Algorithm.
@@ -71,6 +71,7 @@ function gcdIntBinary(a, b) {
     // Restore common factors of 2...
     return k * a;
 }
+exports.gcdIntBinary = gcdIntBinary;
 /**
  * Naively computes and returns the greatest common divisor of 2 or more
  * integers by taking each integer in turn and calculating the GCD of that
@@ -106,6 +107,8 @@ exports.gcdInts = gcdInts;
  * * It turns out this method is *slower* than the naive method
  *
  * @param vals the integers for which the GCD is to be calculated
+ *
+ * @internal
  */
 function gcdIntsTree(vals) {
     let vals_ = vals.slice();
@@ -127,4 +130,6 @@ function gcdIntsTree(vals) {
     }
     return vals_[0];
 }
+exports.gcdIntsTree = gcdIntsTree;
+//export { gcdInt, gcdInts }
 //# sourceMappingURL=integer-gcd.js.map
