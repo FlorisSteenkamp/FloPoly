@@ -30,7 +30,9 @@ const bSignChanges = bSignChanges_;
  * @doc
  */ 
 function bNumRootsInRange(
-		p: bigint[], a: bigint, b: bigint): number {
+		p: bigint[], 
+		a: bigint, 
+		b: bigint): number {
 
 	const ps = bSturmChain(p);
 	const as = ps.map(p => bHorner(p,a));

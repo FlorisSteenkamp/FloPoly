@@ -23,7 +23,7 @@ function() {
             let pE = p.map(c => Math.abs(c[1])*Number.EPSILON);
             let getPExact = () => p;
             
-            const getPsExact = () => {
+            const getPolyExact = () => {
                 let poly = getPExact();
                 const psExact = [poly];
                 while (poly.length > 1) {
@@ -31,14 +31,11 @@ function() {
                     psExact.push(poly);
                 }
             
-                return psExact;
+                return psExact[0];
             }
 
-            //let psExact = { ps: getPsExact() };
-            let psExact: { ps: number[][][] } = { ps: undefined };
-
             let p_ = transposePoly(p);
-            const V1 = evalAdaptive(p_, pE, 1, psExact, getPsExact, 0);
+            const V1 = evalAdaptive(p_, pE, 1, getPolyExact);
             //const V2 = Horner(p.map(c => eEstimate(c)), 1);
 
             assert(V1 === 0);

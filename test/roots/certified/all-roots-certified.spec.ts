@@ -1,4 +1,3 @@
-
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
 import { allRootsCertified, RootInterval, allRoots, eMultiply, eProduct } from '../../../src/index';
@@ -7,6 +6,88 @@ import { twoSum, eToDd } from 'big-float-ts';
 
 describe('allRootsCertified - find all roots within an interval of a polynomial with multi-precision coefficients such that all roots are guaranteed to be captured in some interval', 
 function() {
+	it('should not give a type error when omitting the `returnUndefinedForZeroPoly` paramter', 
+	function() {
+		// The below commented lines implicitly explains what we're trying to 
+		// achieve with this test.
+		//
+		// const a = [] as number[] | undefined;
+		// a[0];  // TypeScript error: "Object is possibly 'undefined'.ts(2532)"
+		//
+		// const b = [] as number[];
+		// b[0];  // no TypeScript error
+
+		const t1 = allRootsCertified([],0,1,[],()=>[], true);        // RootInterval[] | undefined
+		const t2 = allRootsCertified([],0,1,[],()=>[], false);       // RootInterval[]
+		const t3 = allRootsCertified([],0,1,[],()=>[], undefined);   // RootInterval[]
+		const t4 = allRootsCertified([],0,1,[],()=>[], );            // RootInterval[]
+		const t5 = allRootsCertified([],0,1,[],()=>[]  );            // RootInterval[]
+
+		try {
+			// @ts-expect-error (if TypeScript shows an error here: "Unused '@ts-expect-error' directive.ts(2578)" then don't worry! It is due to tsconfig.json not using 'strict')
+			t1[0];  // should give a TypeScript error: "Object is possibly 'undefined'.ts(2532)"
+		} catch {
+			// We ain't catchin' nothing
+		}
+		t2[0];  // should not give a TypeScript error
+		t3[0];  // should not give a TypeScript error
+		t4[0];  // should not give a TypeScript error
+		t5[0];  // should not give a TypeScript error
+	});
+	
+
+	it('should not return roots for the zero or a constant polynomial and `undefined` when appropriate - part 1', 
+	function() {
+		let p1: number[][] = [];
+		let p2 = [[3]];		
+		let roots1 = allRootsCertified(p1, undefined, undefined, undefined, undefined, true);
+		let roots2 = allRootsCertified(p2, undefined, undefined, undefined, undefined, true);
+		assert(roots1 === undefined);
+		assert(roots2 && roots2.length === 0);
+	});
+	it('should not return roots for the zero or a constant polynomial and `undefined` when appropriate - part 2',
+	function() {
+		let p: number[][] = [[0,0],[0,0],[0,0]];
+		let pE: number[] = [1,1,1];
+		let getPExact = () => [[0],[0],[0]];
+		let roots = allRootsCertified(p, 0, 1, pE, getPExact, true);
+		assert(roots === undefined);
+	});
+	it('should not return roots for the zero or a constant polynomial and `undefined` when appropriate - part 3',
+	function() {
+		let p: number[][] = [[0,0],[0,0],[0,0],[0,1e-9]];
+		let pE: number[] = [0,0,0,1];
+		let getPExact = () => [[0],[0],[0],[1e-10]];
+		let roots = allRootsCertified(p, 0, 1, pE, getPExact, true);
+		assert(roots && roots.length === 0);
+	});
+	it('should not return roots for the zero or a constant polynomial and `undefined` when appropriate - part 4',
+	function() {
+		let p: number[][] = [[0,0],[0,0],[0,1e-8],[0,0],[0,-1e-9]];
+		let pE: number[] = [1,1,1,1,1];
+		let getPExact = () => [[0],[0],[0],[0],[1e-10]];
+		let roots = allRootsCertified(p, 0, 1, pE, getPExact, true);
+		assert(roots && roots.length === 0);
+	});
+	it('should not return roots for the zero or a constant polynomial and `undefined` when appropriate - part 5',
+	function() {
+		let p: number[][] = [[0,0],[0,0],[0,1e-8],[0,0],[0,-1e-9]];
+		let pE: number[] = [1,1,1,1,1];
+		let getPExact = () => [[0],[0],[0],[0],[0]];
+		let roots = allRootsCertified(p, 0, 1, pE, getPExact, true);
+		assert(roots === undefined);
+	});
+
+	it('should not return roots for the zero or a constant polynomial and `undefined` when appropriate - part 5',
+	function() {
+		let p: number[][] = [[0,0],[0,0],[0,1],[0,0],[0,-0.5]];
+		let pE: number[] = [1,1,0.5,0,0.25];
+		//let getPExact = () => [[0],[0],[0.99999999],[0],[-0.50001]];
+		let getPExact = () => [[0],[0],[1],[0],[-0.5]];
+		let roots = allRootsCertified(p, 0, 1, pE, getPExact, true);
+		assert(roots && roots.length === 1);
+	});
+
 	it('should not return roots for the zero or a constant polynomial', 
 	function() {
 		let p1: number[][] = [];

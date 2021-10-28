@@ -14,7 +14,7 @@ const eAbs = eAbs_;
  * 
  * @doc
  */
-function eAbsCoeff(p: number[][]) {
+function eAbsCoeff(p: number[][]): number[][] {
     const p_: number[][] = [];
     for (let i=0; i<p.length; i++) {
         p_.push(eAbs(p[i]));

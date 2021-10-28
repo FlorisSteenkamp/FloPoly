@@ -35,11 +35,13 @@ const max = Math.max;
  * * see [Brent (page 47)](https://maths-people.anu.edu.au/~brent/pd/rpb011i.pdf)
  * * [c++ implementation of Brent's Method](https://people.sc.fsu.edu/~jburkardt/cpp_src/brent/brent.cpp)
  * 
- * @param p a polynomial with coefficients given densely as an array of double-double
+ * @param p A polynomial with coefficients given densely as an array of double-double
  * floating point numbers from highest to lowest power, e.g. `[[0,5],[0,-3],[0,0]]` 
- * represents the polynomial `5x^2 - 3x`
- * @param pE an error polynomial that provides a coefficientwise error bound on 
- * the input polynomial; all coefficients must be positive
+ * represents the polynomial `5x^2 - 3x`. If `exact` is `true` then this is allowed
+ * to be `undefined`.
+ * @param pE An error polynomial that provides a coefficientwise error bound on 
+ * the input polynomial; all coefficients must be positive. If `exact` is `true` 
+ * then this is allowed to be `undefined`.
  * @param lb the lower limit of the search interval.
  * @param ub the upper limit of the search interval.
  * @param fa the result of evaluating the input polynomial at `a`
@@ -47,25 +49,19 @@ const max = Math.max;
  * @param psExact 
  * @param getPsExact 
  * @param diffCount 
+ * @param exact set to true if you need to do exact evaluations from the start
  * 
  * @internal
  */
 function refineCertified(
-		p: number[][], 
-		pE: number[],
+		p: number[][] | undefined, 
+		pE: number[] | undefined,
 		lb: number, 
 		ub: number,
 		fa: number,
 		fb: number,
-		psExact: { ps: number[][][] },
-		getPsExact: () => number[][][],
-		diffCount: number): number[] {
-
-	/** 
-	 * true if we need to do precise evaluations, i.e. we are too close to a
-	 * very tough root. 
-	 */
-	let exact = false;
+		getPolyExact: () => number[][],
+		exact?: boolean): number[] {
 
 	//---- Make local copies of a and b.
 	let a = lb;
@@ -78,7 +74,6 @@ function refineCertified(
 
 	while (true) {
 		// update delta
-		
 
 		if (abs(fc) < abs(fb)) {
 			a = b; b = c; c = a;
@@ -153,8 +148,10 @@ function refineCertified(
 		}
 
 		fb = exact 
-			? eEstimate(eHorner(psExact.ps[diffCount],b))
-			: evalCertified(p, b, pE);
+			? eEstimate(eHorner(getPolyExact(),b))
+			// keep TypeScript happy; neither `p` nor `pE` can be `undefined` 
+			// here by a precondition
+			: evalCertified(p!, b, pE!);
 
 		if (fb === 0) {
 			// Since `evalCertified` returns zero if undecided the zero result
@@ -171,8 +168,10 @@ function refineCertified(
 			const sR = Math.min(ub, b + δ);  // dont overstep bounds
 			// Note: sR - sL <= 2*δ provided lb, ub are in [-1..1] - usually 
 			// (when sL === s - δ and sR === s + δ) sR - sL === 2*δ. Also δ > 0
-			const fsL = evalCertified(p, sL, pE);
-			const fsR = evalCertified(p, sR, pE);
+			// keep TypeScript happy; neither `p` nor `pE` can be `undefined` 
+			// here by a precondition
+			const fsL = evalCertified(p!, sL, pE!);
+			const fsR = evalCertified(p!, sR, pE!);
 			// if the evaluation method is strong enough return the result
 			if (fsL*fsR !== 0) { 
 				return [sL,sR]; 
@@ -185,8 +184,7 @@ function refineCertified(
 			// an exact polynomial takes about 15 times more time than getting
 			// a double-double polynomial and we very rarely expect to get to 
 			// this point)
-			psExact.ps = psExact.ps || getPsExact();
-			fb = eEstimate(eHorner(psExact.ps[diffCount],b));
+			fb = eEstimate(eHorner(getPolyExact(),b));
 			// if the exact evaluation returns 0 we have an exact root
 			if (fb === 0) { 
 				return [b,b]; 

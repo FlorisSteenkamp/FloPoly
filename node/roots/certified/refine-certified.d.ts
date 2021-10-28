@@ -20,11 +20,13 @@
  * * see [Brent (page 47)](https://maths-people.anu.edu.au/~brent/pd/rpb011i.pdf)
  * * [c++ implementation of Brent's Method](https://people.sc.fsu.edu/~jburkardt/cpp_src/brent/brent.cpp)
  *
- * @param p a polynomial with coefficients given densely as an array of double-double
+ * @param p A polynomial with coefficients given densely as an array of double-double
  * floating point numbers from highest to lowest power, e.g. `[[0,5],[0,-3],[0,0]]`
- * represents the polynomial `5x^2 - 3x`
- * @param pE an error polynomial that provides a coefficientwise error bound on
- * the input polynomial; all coefficients must be positive
+ * represents the polynomial `5x^2 - 3x`. If `exact` is `true` then this is allowed
+ * to be `undefined`.
+ * @param pE An error polynomial that provides a coefficientwise error bound on
+ * the input polynomial; all coefficients must be positive. If `exact` is `true`
+ * then this is allowed to be `undefined`.
  * @param lb the lower limit of the search interval.
  * @param ub the upper limit of the search interval.
  * @param fa the result of evaluating the input polynomial at `a`
@@ -32,10 +34,9 @@
  * @param psExact
  * @param getPsExact
  * @param diffCount
+ * @param exact set to true if you need to do exact evaluations from the start
  *
  * @internal
  */
-declare function refineCertified(p: number[][], pE: number[], lb: number, ub: number, fa: number, fb: number, psExact: {
-    ps: number[][][];
-}, getPsExact: () => number[][][], diffCount: number): number[];
+declare function refineCertified(p: number[][] | undefined, pE: number[] | undefined, lb: number, ub: number, fa: number, fb: number, getPolyExact: () => number[][], exact?: boolean): number[];
 export { refineCertified };

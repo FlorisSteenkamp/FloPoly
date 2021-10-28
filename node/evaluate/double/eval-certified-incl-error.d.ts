@@ -29,7 +29,7 @@
  * seen as a matrix
  * @param pE defaults to `undefined`; an error polynomial that provides a
  * coefficient-wise error bound on the input polynomial; all coefficients must
- * be positive; if undefined then the input polynomial will be assumed exact
+ * be positive; if `undefined` then the input polynomial will be assumed exact
  * @param x the value at which to evaluate the polynomial
  * @param multiplier defaults to 1; the final calculation error needs to be a
  * multiple of this number smaller than the evaluated value, otherwise zero is
@@ -38,7 +38,7 @@
  *
  * @doc
  */
-declare function evalCertifiedInclError(p: number[][], x: number, pE?: number[], multiplier?: number): {
+declare function evalCertifiedInclError(p: number[][], x: number, pE?: number[] | undefined, multiplier?: number): {
     r̂: number;
     e: number;
 };

@@ -34,19 +34,14 @@ function evalAdaptive(
         p: number[][], 
         pE: number[], 
         x: number, 
-        psExact: { ps: number[][][] },
-        getPsExact: () => number[][][],
-        diffCount: number) {
+        getPolyExact: () => number[][]): number {
 
     const r = evalCertified(p, x, pE, 4);
     if (r !== 0) { return r; }
 
     // condition number is too high - request higher precision
-    psExact.ps = 
-        psExact.ps || 
-        getPsExact();
 
-    return eEstimate(eHorner(psExact.ps[diffCount], x));
+    return eEstimate(eHorner(getPolyExact(), x));
 }
 
 

@@ -40,6 +40,8 @@ function refineK1(ri, p) {
     // in rounding the exact coefficients to double-double precision
     const errBoundK1 = pDdK1.map(c => eps * eps * c[1]);
     const getPExactK1 = () => pExactK1;
+    // keep TypeScript happy; `allRootsCertified` can safely be assumed not to
+    // return `undefined`
     const risLo = allRootsCertified(pDdK1, 0, 1, errBoundK1, getPExactK1);
     const ris = [];
     for (let riLo of risLo) {

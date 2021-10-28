@@ -45,7 +45,7 @@ const γ2 = γ(2);
  * seen as a matrix
  * @param pE defaults to `undefined`; an error polynomial that provides a
  * coefficient-wise error bound on the input polynomial; all coefficients must
- * be positive; if undefined then the input polynomial will be assumed exact
+ * be positive; if `undefined` then the input polynomial will be assumed exact
  * @param x the value at which to evaluate the polynomial
  * @param multiplier defaults to 1; the final calculation error needs to be a
  * multiple of this number smaller than the evaluated value, otherwise zero is
@@ -68,12 +68,10 @@ function evalCertified(p, x, pE = undefined, multiplier = 1) {
     //const e2 = abs(p0[0]); for (const i=1; i<p0.length; i++) { e2 = e2*x + abs(p0[i]); }
     /** error due to imprecision in coefficients */
     // the line below was changed due to negative values of x now also allowed
-    const E = pE ? Horner(pE, absX) : 0;
+    const E = pE !== undefined ? Horner(pE, absX) : 0;
     //const E = p0[0]; for (const i=1; i<p0.length; i++) {E = E*x + p0[i]; }
     const ee = e1 + e2 + E; // in difficult cases E can be larger than e1+e2
     if (ee * multiplier < Math.abs(r)) {
-        //console.log(`R ${Math.abs(r)}`, `e1: ${e1}`, `e2: ${e2}`, `E: ${E}`);
-        //if (q++ > 20) { throw 'aaa' }
         // we are within bounds
         return r;
     }

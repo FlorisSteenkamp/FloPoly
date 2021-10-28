@@ -13,7 +13,7 @@ const reflectAboutYAxis = reflectAboutYAxis_;
  * @internal
  */
 function positiveToNegativeBound(positiveBoundFunction: (p: number[]) => number) {
-    return (p: number[]) => {
+    return (p: number[]): number => {
         return -positiveBoundFunction(reflectAboutYAxis(p));
     }
 }

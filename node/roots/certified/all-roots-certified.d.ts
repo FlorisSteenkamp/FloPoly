@@ -1,11 +1,13 @@
 import { RootInterval } from "./root-interval";
 /**
- * Finds and returns all *certified* root intervals (bar underflow / overflow)
- * of the given polynomial (with coefficients given in double-double precision
- * (use [[allRootsCertifiedSimplified]] if you only require coefficients in double
- * precision (the usual case))), including their multiplicities (see points below).
+ * Finds and returns all ordered *certified* root intervals (bar underflow /
+ * overflow) of the given polynomial (with coefficients given in double-double
+ * precision (use [[allRootsCertifiedSimplified]] if you only require coefficients
+ * in double precision (the usual case))), including their multiplicities (see
+ * points below).
  *
- * * returns an empty array for a constant or the zero polynomial
+ * * returns an empty array for a constant or the zero polynomial (or
+ * `undefined` for the zero polynomial - see the parameters for details)
  *
  * * Let `W = m * Number.EPSILON * max(1, 2^⌈log₂r⌉)`, where
  *   * `r` is a root
@@ -65,6 +67,11 @@ import { RootInterval } from "./root-interval";
  * lazy loaded) when the error bounds are too high during calculation
  * preventing certification of the root intervals; if `undefined `then the
  * input polynomial will be assumed exact
+ * @param returnUndefinedForZeroPoly if the given polynomial is the zero
+ * polynomial and `returnUndefinedForZeroPoly` is `true` then `undefined` will
+ * be returned (and not `[]`) to differentiate between the edge cases of a
+ * constant polynomial (returns `[]`, i.e. no roots) and the zero polynomial
+ * in which case there is an infinite number of roots.
  *
  * @example
  * ```typescript
@@ -149,5 +156,7 @@ import { RootInterval } from "./root-interval";
  *
  * @doc
  */
-declare function allRootsCertified(p: number[][], lb?: number, ub?: number, pE?: number[], getPExact?: () => number[][]): RootInterval[];
+declare function allRootsCertified(p: number[][], lb?: number, ub?: number, pE?: number[], getPExact?: () => number[][], returnUndefinedForZeroPoly?: false): RootInterval[];
+declare function allRootsCertified(p: number[][], lb?: number, ub?: number, pE?: number[], getPExact?: () => number[][], returnUndefinedForZeroPoly?: true): RootInterval[] | undefined;
+declare function allRootsCertified(p: number[][], lb?: number, ub?: number, pE?: number[], getPExact?: () => number[][], returnUndefinedForZeroPoly?: boolean): RootInterval[];
 export { allRootsCertified };

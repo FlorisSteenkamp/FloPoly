@@ -8,7 +8,7 @@
  * 
  * @doc
  */
-function eIsConstOrZero(p: number[][]) {
+function eIsConstOrZero(p: number[][]): boolean {
     return p.length <= 1;
 }
 

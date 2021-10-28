@@ -7,7 +7,7 @@
  * 
  * @internal
  */
-function transposePoly(p: number[][]) {
+function transposePoly(p: number[][]): number[][] {
     // transpose the polynomial coefficients into multiple polynomials
 	const len = p[0].length;
 	const p_: number[][] = [];

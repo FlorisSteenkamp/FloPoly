@@ -52,7 +52,7 @@ const eIntPow = eIntPow_;
 function ePdivTrivial(
         a: number[][], 
         b: number[][],
-        positiveMultiplier = false) {
+        positiveMultiplier = false): { q: number[][]; r: number[][]; } {
 
     // change to pseudo-remainder, i.e. not simply r = a; this allows the 
     // remainders to stay in 'Z', i.e. let m = leadingCoeff(b)^(deg(a)-deg(b)+1)

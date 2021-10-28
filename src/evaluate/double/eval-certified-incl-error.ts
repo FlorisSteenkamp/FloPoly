@@ -45,7 +45,7 @@ const γ2 = γ(2);
  * seen as a matrix
  * @param pE defaults to `undefined`; an error polynomial that provides a 
  * coefficient-wise error bound on the input polynomial; all coefficients must 
- * be positive; if undefined then the input polynomial will be assumed exact
+ * be positive; if `undefined` then the input polynomial will be assumed exact
  * @param x the value at which to evaluate the polynomial
  * @param multiplier defaults to 1; the final calculation error needs to be a 
  * multiple of this number smaller than the evaluated value, otherwise zero is 
@@ -57,7 +57,7 @@ const γ2 = γ(2);
 function evalCertifiedInclError(
         p: number[][],
         x: number,
-        pE: number[] = undefined,
+        pE: number[] | undefined = undefined,
         multiplier = 1): { r̂: number, e: number } {
 
     const absX = Math.abs(x);
@@ -69,7 +69,7 @@ function evalCertifiedInclError(
     // error due to imprecision in coefficients
     // the line below was changed due to negative values of x now also allowed
     //const E = pE ? Horner(pE, x) : 0; 
-    const E = pE 
+    const E = pE !== undefined
         ? Horner(pE, absX) 
         : 0; 
     

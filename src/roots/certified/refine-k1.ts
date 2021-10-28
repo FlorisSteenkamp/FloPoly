@@ -55,7 +55,9 @@ function refineK1(
     );
     const getPExactK1 = () => pExactK1;
 
-    const risLo = allRootsCertified(pDdK1, 0, 1, errBoundK1, getPExactK1);
+    // keep TypeScript happy; `allRootsCertified` can safely be assumed not to
+    // return `undefined`
+    const risLo = allRootsCertified(pDdK1, 0, 1, errBoundK1, getPExactK1)!;
     const ris: RootIntervalExp[] = [];
     for (let riLo of risLo) {
         ris.push({

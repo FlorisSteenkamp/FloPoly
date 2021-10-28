@@ -14,7 +14,7 @@ const vecSum = vecSum_;
  * 
  * @internal
  */
-function SumK(p: number[], K: number) {
+function SumK(p: number[], K: number): number {
 	for (let i=1; i<K; i++) {
 		p = vecSum(p);
 	}

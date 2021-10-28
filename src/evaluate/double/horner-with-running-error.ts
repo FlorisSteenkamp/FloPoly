@@ -18,7 +18,7 @@ const u = Number.EPSILON / 2;
  */
 function hornerWithRunningError(
         p: number[], 
-        x: number) {
+        x: number): number[] {
 
     let r̂ = p[0]; 
     let e = abs(r̂) * 0.5;

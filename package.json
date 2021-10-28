@@ -55,6 +55,7 @@
         "build-browser": "rimraf browser && webpack",
         "test": "mocha --require ts-node/register --require source-map-support/register \"test/**/*.spec.ts\" --recursive",
         "coverage": "nyc npm test",
-        "test-ci": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
+        "test-ci": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
+        "a": "mocha --require ts-node/register --require source-map-support/register \"test/roots/certified/all-roots-certified.spec.ts\" --recursive"
     }
 }

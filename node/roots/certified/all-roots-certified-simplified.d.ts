@@ -1,3 +1,4 @@
+import { RootInterval } from "./root-interval";
 /**
  * :::tip Heads up!
  * Simplified version of `allRootsCertified` - following are the changes:
@@ -57,6 +58,11 @@
  * returned
  * @param ub defaults to Number.POSITIVE_INFINITY; upper bound of roots to be
  * returned
+ * @param returnUndefinedForZeroPoly if the given polynomial is the zero
+ * polynomial and `returnUndefinedForZeroPoly` is `true` then `undefined` will
+ * be returned (and not `[]`) to differentiate between the cases of a
+ * constant polynomial (returns `[]`, i.e. no roots) and the zero polynomial
+ * in which case there is an infinite number of roots.
  *
  * @example
  * ```typescript
@@ -100,5 +106,7 @@
  *
  * @doc
  */
-declare function allRootsCertifiedSimplified(p: number[], lb?: number, ub?: number): import("./root-interval").RootInterval[];
+declare function allRootsCertifiedSimplified(p: number[], lb?: number, ub?: number, returnUndefinedForZeroPoly?: false): RootInterval[];
+declare function allRootsCertifiedSimplified(p: number[], lb?: number, ub?: number, returnUndefinedForZeroPoly?: true): RootInterval[] | undefined;
+declare function allRootsCertifiedSimplified(p: number[], lb?: number, ub?: number, returnUndefinedForZeroPoly?: boolean): RootInterval[];
 export { allRootsCertifiedSimplified };

@@ -34,8 +34,8 @@ function createArrFunction(
 	return function(
             n: number, 
             d: number, 
-            a: number, 
-            b: number, 
+            a?: number, 
+            b?: number, 
             seed: number = SEED, 
             odds: number = 0) {
                 

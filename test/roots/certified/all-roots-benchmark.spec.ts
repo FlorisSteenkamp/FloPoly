@@ -1,4 +1,3 @@
-
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
 import { allRootsCertified, allRoots, toCasStr } from '../../../src/index';
@@ -80,7 +79,7 @@ function test(log: boolean) {
         for (let i=0; i<n; i++) {
             const { coeffs, coeffsD, errBound, getPExact } = polys[i];
             const ts = allRootsCertified(coeffs, lb, ub, errBound, getPExact);
-            total1 += ts.length;
+            if (ts) { total1 += ts.length; }
         }
     }
     let timingC = performance.now() - timeStartC;

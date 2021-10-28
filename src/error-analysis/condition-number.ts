@@ -15,7 +15,7 @@ import { CompHornerK } from "../evaluate/double/comp-horner-k";
  * 
  * @doc
  */
-function conditionNumber(p: number[], x: number) {
+function conditionNumber(p: number[], x: number): number {
     const pN = absCoeff(p);
     const pD = p;
 

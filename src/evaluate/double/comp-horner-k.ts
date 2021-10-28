@@ -31,7 +31,7 @@ const Horner = Horner_;
  * 
  * @doc
  */
-function CompHornerK(p: number[], x: number, K: number) {
+function CompHornerK(p: number[], x: number, K: number): number {
 	K = Math.min(p.length-1, K);
 
 	const { hs, ps } = EFTHornerK(p, x, K);

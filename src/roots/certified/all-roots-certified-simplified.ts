@@ -1,4 +1,5 @@
 import { allRootsCertified } from "./all-roots-certified"
+import { RootInterval } from "./root-interval";
 
 
 /**
@@ -60,6 +61,11 @@ import { allRootsCertified } from "./all-roots-certified"
  * returned
  * @param ub defaults to Number.POSITIVE_INFINITY; upper bound of roots to be 
  * returned
+ * @param returnUndefinedForZeroPoly if the given polynomial is the zero 
+ * polynomial and `returnUndefinedForZeroPoly` is `true` then `undefined` will
+ * be returned (and not `[]`) to differentiate between the cases of a
+ * constant polynomial (returns `[]`, i.e. no roots) and the zero polynomial
+ * in which case there is an infinite number of roots.
  * 
  * @example
  * ```typescript
@@ -103,12 +109,20 @@ import { allRootsCertified } from "./all-roots-certified"
  * 
  * @doc
  */
+function allRootsCertifiedSimplified(p: number[], lb?: number, ub?: number, returnUndefinedForZeroPoly?: false): RootInterval[];
+function allRootsCertifiedSimplified(p: number[], lb?: number, ub?: number, returnUndefinedForZeroPoly?: true): RootInterval[] | undefined;
+function allRootsCertifiedSimplified(p: number[], lb?: number, ub?: number, returnUndefinedForZeroPoly?: boolean): RootInterval[];
 function allRootsCertifiedSimplified(
         p: number[],
         lb = Number.NEGATIVE_INFINITY,
-        ub = Number.POSITIVE_INFINITY) {
+        ub = Number.POSITIVE_INFINITY,
+        returnUndefinedForZeroPoly?: boolean): RootInterval[] | undefined {
 
-    return allRootsCertified(p.map(c => [0,c]), lb, ub);
+    return allRootsCertified(
+        p.map(c => [0,c]), lb, ub, 
+        undefined, undefined, 
+        returnUndefinedForZeroPoly
+    );
 }
 
 

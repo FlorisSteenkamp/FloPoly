@@ -30,16 +30,13 @@ const eEstimate = big_float_ts_1.eEstimate;
  *
  * @internal
  */
-function evalAdaptive(p, pE, x, psExact, getPsExact, diffCount) {
+function evalAdaptive(p, pE, x, getPolyExact) {
     const r = evalCertified(p, x, pE, 4);
     if (r !== 0) {
         return r;
     }
     // condition number is too high - request higher precision
-    psExact.ps =
-        psExact.ps ||
-            getPsExact();
-    return eEstimate(eHorner(psExact.ps[diffCount], x));
+    return eEstimate(eHorner(getPolyExact(), x));
 }
 exports.evalAdaptive = evalAdaptive;
 //# sourceMappingURL=eval-adaptive.js.map

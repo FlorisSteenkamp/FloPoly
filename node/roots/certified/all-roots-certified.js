@@ -25,164 +25,55 @@ const positiveRootUpperBound_LMQ = root_bounds_lmq_2.positiveRootUpperBound_LMQ;
 const eDifferentiate = e_differentiate_1.eDifferentiate;
 const eEstimate = big_float_ts_1.eEstimate;
 const hornerWithRunningError = horner_with_running_error_1.hornerWithRunningError;
+const eSign = big_float_ts_1.eSign;
 const max = Math.max;
 const min = Math.min;
 const abs = Math.abs;
 const eps = Number.EPSILON;
 const onePlusEps = 1 + eps;
-/**
- * Finds and returns all *certified* root intervals (bar underflow / overflow)
- * of the given polynomial (with coefficients given in double-double precision
- * (use [[allRootsCertifiedSimplified]] if you only require coefficients in double
- * precision (the usual case))), including their multiplicities (see points below).
- *
- * * returns an empty array for a constant or the zero polynomial
- *
- * * Let `W = m * Number.EPSILON * max(1, 2^⌈log₂r⌉)`, where
- *   * `r` is a root
- *   * `m` is the number of roots (the 'multiplicity') within the
- *      interval, where multiplicity here includes roots seperated by less than
- *     `2*Number.EPSILON` and not necessarily only exact multiple roots;
- *
- * * the returned intervals are of max width `W` - use [[refineK1]] to
- * reduce the root interval widths further and thus 'resolving' the roots if
- * required (although the roots are already *guaranteed* extremely accurate!)
- *
- * * the retuned root intervals will contain *all* roots hence the *certified*
- * in the function name.
- *
- * * the reported multiplicities will be correct *up to a multiple of 2* in cases
- * where *more* than 1 root is reported in the interval `W` described above
- * (else if a multiplicity of 0 or 1 is reported the result is correct)
- * * [[refineK1]] can then be used to resolve them further; note however
- * that root seperation is a function of polynomial height and can be very small
- * (see e.g. [Improving Root Separation Bounds, *Aaron Herman, Hoon Hong, Elias Tsigaridas*](https://hal.inria.fr/hal-01456686/document)
- *
- * * optimized for polynomials of degree 1 to about 30
- *   * this is due to [Rolle's Theorem](https://en.wikipedia.org/wiki/Rolle%27s_theorem)
- * being used and not [Descartes' rule of signs](https://en.wikipedia.org/wiki/Descartes%27_rule_of_signs)
- *   * Descartes' methods are asymptotically faster and thus better suited for higher
- * degree polynomials but for lower degrees Rolle's Theorem seems to be faster
- *
- * * **precondition:** the coefficient magnitudes and degree of the polynomial
- *  must be such that overflow won't occur at evaluation points where roots
- * are searched for, e.g. a 20th degree polynomial with coefficients of
- * magnitude around `Number.MAX_SAFE_INTEGER (= 9007199254740991)` evaluated at
- * `x = 1000000` will evaluate to about `10^136` (10 the the power of 136) which
- * is way too small for overflow to occur, however when evaluated at `x = 10^15`
- * overflow will occur; to prevent this unlikely possibility (roots are
- * typically not that large in applications) limit the bounds `lb` and `ub`
- * where roots are to be searched for to the range of interest, i.e. don't set
- * them to infinity for automatic calculation
- *
- * @param p a polynomial with coefficients given densely as an array of
- * double-double precision floating point numbers (if only double precision
- * coefficients are required then use [[allRootsCertifiedSimplified]] instead)
- * from highest to lowest power,
- * e.g. `[[0,5],[0,-3],[0,0]]` represents the polynomial `5x^2 - 3x`; if the
- * coefficients are double precision (as opposed to double-double) then instead
- * of passing `p` pass `p.map(c => [0,c])` - this will transform the
- * coefficients to double-double precision
- * @param lb defaults to 0; lower bound of roots to be returned;
- * `Number.NEGATIVE_INFINITY` may be given if there is no lower bound
- * @param ub defaults to 1; upper bound of roots to be returned;
- * `Number.POSITIVE_INFINITY` may be given if there is no upper bound
- * @param pE defaults to `undefined`; an error polynomial that provides a
- * coefficientwise error bound on the input polynomial; all coefficients must
- * be positive; if `undefined `then the input polynomial will be assumed exact
- * @param getPExact defaults to `undefined`; a function returning the exact
- * polynomial (with coefficients given as Shewchuk expansions (see the example
- * below)) - `getPExact` will *only* be called if required (and can thus be
- * lazy loaded) when the error bounds are too high during calculation
- * preventing certification of the root intervals; if `undefined `then the
- * input polynomial will be assumed exact
- *
- * @example
- * ```typescript
- *
- * // ---------------------------------------------------------------
- * // 1. a basic example of an order 11 polynomial (with 10 roots) --
- * // ---------------------------------------------------------------
- * const p = [
- *     3.033321234234234,
- *     31.78342995971597,
- *     -115.09145437671532,
- *     -48.18962838294827,
- *     241.04136127393173,
- *     -26.63962334942254,
- *     -81.82713958224285,
- *     13.96128683321424,
- *     7.3963444329341455,
- *     -1.50733058206533,
- *     -0.0015147128834111722
- * ];
- * //console.log(toCasStr(p))
- * // => 3.033321234234234*x^10 + 31.78342995971597*x^9 - 115.09145437671532*x^8 -
- * //    48.18962838294827*x^7 + 241.04136127393173*x^6 - 26.63962334942254*x^5 -
- * //    81.82713958224285*x^4 + 13.96128683321424*x^3 + 7.3963444329341455*x^2 -
- * //    1.50733058206533*x - 0.0015147128834111722
- * // function to convert a double precision number to double-double precision
- * // (note that the 'low double' is zero since the coefficients are assumed exact)
- * const toDoubleDouble = c => [0,c];
- * const roots = allRootsCertified(
- *     p.map(toDoubleDouble),
- *     Number.NEGATIVE_INFINITY,
- *     Number.POSITIVE_INFINITY
- * );
- * //console.log(roots);
- * // => [
- * //   { tS: -13.222221, tE: -13.222220999999996, multiplicity: 1 },
- * //   { tS: -1.3498348570000003, tE: -1.3498348569999998, multiplicity: 1 },
- * //   { tS: -0.4444777699999987, tE: -0.4444777699999985, multiplicity: 1 },
- * //   { tS: -0.43554300000000135, tE: -0.4355430000000011, multiplicity: 1 },
- * //   { tS: -0.001000000000000222, tE: -0.001, multiplicity: 1 },
- * //   { tS: 0.22999999999999984, tE: 0.23000000000000007, multiplicity: 1 },
- * //   { tS: 0.345347, tE: 0.34534700000000024, multiplicity: 1 },
- * //   { tS: 0.5429999999999989, tE: 0.5429999999999993, multiplicity: 1 },
- * //   { tS: 1.3221000000000016, tE: 1.322100000000002, multiplicity: 1 },
- * //   { tS: 2.534533999999997, tE: 2.534533999999998, multiplicity: 1 }
- * // ]
- * //
- * // note: the above could also be achieved by using `allRootsCertifiedSimplified`
- * // as follows:
- * // const rs = allRootsCertifiedSimplified(p);
- * const rs = allRootsCertifiedSimplified(p);
- *
- *
- * // -----------------------------------------------------------------------
- * // 2. the Wilkinson polynomial of degree 50 (an *extremely* hard case) --
- * // see: https://en.wikipedia.org/wiki/Wilkinson%27s_polynomial
- * // -----------------------------------------------------------------------
- * const _roots = [...Array(50+1).keys()].slice(1).map(c => [c]);  // => [1,2,3,...,50]
- * const { pDd: p, pE, getPExact } = eFromRoots(_roots);
- * // => polynomial of degree 50 with double-double precision coefficients
- * //    including coefficient-wise error bound polynomial and a function to
- * //    return the exact polynomial with Shewchuk expansion coefficients
- * //console.log(toCasStr(getPExact()));
- * // => x^50 - 1275*x^49 + 791350*x^48 - 318622500*x^47 + 93570498490*x^46 -
- * //    21366198225750*x^45 + 3949131291964600*x^44 - ...
- * const roots = allRootsCertified(p,0,51,pE,getPExact);
- * console.log(roots);  // => [
- * //	{ tS: 1, tE: 1, multiplicity: 1 },
- * //	{ tS: 2, tE: 2, multiplicity: 1 },
- * //	.
- * //	.
- * //	.
- * //	{ tS: 50, tE: 50, multiplicity: 1 }
- * // ]
- * //
- * // ...thus roots are returned accurately.
- * //
- * // Note: Due to floating point overflow of the evaluation of a Wilkinson
- * // polynomial of degree >= 58 evaluated at 59 the returned roots starts
- * // getting inaccurate at this degree (i.e. >= 58).
- * ```
- *
- * @doc
- */
-function allRootsCertified(p, lb = 0, ub = 1, pE = undefined, getPExact = undefined) {
-    // return an empty array for a constant or the zero polynomial
-    if (p.length <= 1) {
+function allRootsCertified(p, lb = 0, ub = 1, pE, getPExact, returnUndefinedForZeroPoly) {
+    // if `getPExact` is not specified then assume the given double-double 
+    // precision coefficient polynomial is exact
+    if (!getPExact) {
+        getPExact = () => p;
+    }
+    //const δ = 2*Number.EPSILON * max(1, max(abs(lb), abs(ub)));
+    // if `pE` is not specified then assume there is no error
+    pE = pE || new Array(p.length).fill(0); // no error
+    // set `diffCount` to 0 so `getPolyExact` can be accurate
+    let diffCount = 0;
+    // lazy loaded array of the given polynomial and its derivatives
+    let psExact = undefined;
+    //----------------------------------------------------------------------
+    // Remove leading zero coefficients 
+    // (the case of leading zero coefficients can now be handled)
+    // `p` and `getPExact()` *must* be of same length
+    //----------------------------------------------------------------------
+    let polyExact = undefined; // lazy loaded
+    // while the leading coefficient is smaller then the error bound 
+    // i.e. possibly zero	
+    while (p.length > 0 && abs(p[0][1]) <= pE[0]) {
+        polyExact = polyExact || getPExact();
+        // if leading coefficient really is zero
+        if (eSign(polyExact[0]) === 0) {
+            // shift the leading coefficient and error out without altering the 
+            // given polynomial and error bound (shift is destructive, slice is not)
+            p = p.slice();
+            p.shift();
+            pE = pE.slice();
+            pE.shift();
+            // also shift out the exact polynomial's leading coefficient
+            polyExact.shift();
+            continue;
+        }
+        break;
+    }
+    if (p.length === 0) {
+        // return `undefined` for the zero polynomial?
+        return returnUndefinedForZeroPoly ? undefined : [];
+    }
+    else if (p.length === 1) {
+        // return `[]` for a degree 1 polynomial (a non-zero constant)
         return [];
     }
     if (lb === Number.NEGATIVE_INFINITY || ub === Number.POSITIVE_INFINITY) {
@@ -194,37 +85,22 @@ function allRootsCertified(p, lb = 0, ub = 1, pE = undefined, getPExact = undefi
             ub = positiveRootUpperBound_LMQ(pDoubleCoeffs);
         }
     }
-    //const δ = 2*Number.EPSILON * max(1, max(abs(lb), abs(ub)));
-    pE = pE || new Array(p.length).fill(0); // no error
-    const psExact = { ps: undefined };
-    if (!getPExact) {
-        getPExact = () => p;
-    }
-    const getPsExact = () => {
-        let poly = getPExact();
-        const psExact = [poly];
-        while (poly.length > 1) {
-            poly = eDifferentiate(psExact[psExact.length - 1]);
-            psExact.push(poly);
-        }
-        return psExact;
-    };
     const p_ = transposePoly(p);
     let bCount;
     let exact;
+    const deg = p.length - 1;
     bCount = 0;
     exact = false;
-    let LB = 0; // evaluation at lb
+    let LB; // evaluation at lb
     do {
         LB = exact
-            ? eEstimate(eHorner(psExact.ps[0], lb))
+            ? eEstimate(eHorner(getPolyExact(), lb))
             : evalCertified(p_, lb, pE);
         if (LB === 0) {
             bCount++;
             // the max bCount is empirically selected for max performance
             if (bCount >= 3 && !exact) {
                 exact = true;
-                psExact.ps = psExact.ps || getPsExact();
                 continue;
             }
             lb -= 2 * Number.EPSILON * max(1, abs(lb));
@@ -232,22 +108,20 @@ function allRootsCertified(p, lb = 0, ub = 1, pE = undefined, getPExact = undefi
     } while (LB === 0);
     bCount = 0;
     exact = false;
-    let UB = 0; // evaluation at ub
+    let UB; // evaluation at ub
     do {
         UB = exact
-            ? eEstimate(eHorner(psExact.ps[0], ub))
+            ? eEstimate(eHorner(getPolyExact(), ub))
             : evalCertified(p_, ub, pE);
         if (UB === 0) {
             bCount++;
             if (bCount >= 3 && !exact) { // the max bCount is empirically selected for max performance
                 exact = true;
-                psExact.ps = psExact.ps || getPsExact();
                 continue;
             }
             ub += 2 * Number.EPSILON * max(1, abs(ub));
         }
     } while (UB === 0);
-    const deg = p.length - 1;
     // Get all derivatives with their coefficient-wise error bounds, i.e. 
     // ps === [p, dp, ddp, ..., constant]
     //        [0,  1,   2, ..., deg     ]
@@ -259,14 +133,30 @@ function allRootsCertified(p, lb = 0, ub = 1, pE = undefined, getPExact = undefi
         ps_.push(transposePoly(dP.p)); // the transposed versions
     }
     let is = [];
-    let diffCount = deg - 1;
     let curPE;
     let curP_;
+    diffCount = deg - 1; // update diffcount
     for (; diffCount >= 0; diffCount--) {
         curPE = ps[diffCount].pE;
-        // on first iteration p_ is linear, on second it is quadratic, etc. ...
+        // on first iteration curP_ is linear, 
+        // on second it is quadratic, etc. ...
         curP_ = ps_[diffCount];
         is = getRootsWithin();
+    }
+    // depends externally on `diffCount` and `psExact`
+    function getPolyExact() {
+        // cache
+        if (psExact !== undefined) {
+            return psExact[diffCount];
+        }
+        // keep TypeScript happy; `getPExact` cannot be `undefined` here
+        let poly = polyExact || getPExact();
+        psExact = [poly];
+        while (poly.length > 1) {
+            poly = eDifferentiate(poly);
+            psExact.push(poly);
+        }
+        return psExact[diffCount];
     }
     return is;
     // All cases:
@@ -330,25 +220,25 @@ function allRootsCertified(p, lb = 0, ub = 1, pE = undefined, getPExact = undefi
     function getRootsWithin() {
         const roots = [];
         // If there are no micro-intervals then check the interval between lb and ub.
-        const LB = evalAdaptive(curP_, curPE, lb, psExact, getPsExact, diffCount);
+        const LB = evalAdaptive(curP_, curPE, lb, getPolyExact);
         if (!is.length) {
             // close even root not possible
-            const UB = evalAdaptive(curP_, curPE, ub, psExact, getPsExact, diffCount);
+            const UB = evalAdaptive(curP_, curPE, ub, getPolyExact);
             if (LB * UB >= 0) {
                 return [];
             }
-            const [tS, tE] = refineCertified(curP_, curPE, lb, ub, LB, UB, psExact, getPsExact, diffCount /*, δ*/);
+            const [tS, tE] = refineCertified(curP_, curPE, lb, ub, LB, UB, getPolyExact /*, δ*/);
             return [{ tS, tE, multiplicity: 1 }];
         }
         //---- First check from lb to the left side of the first micro-interval.
         let _a = is[0].tS;
-        let _A = evalAdaptive(curP_, curPE, _a, psExact, getPsExact, diffCount);
+        let _A = evalAdaptive(curP_, curPE, _a, getPolyExact);
         if (LB * _A > 0) {
             // no roots possible (curve is monotone increasing or decreasing)
         }
         else if (LB * _A < 0) {
             // recall LB must !== 0 as a precondition
-            const [tS, tE] = refineCertified(curP_, curPE, lb, _a, LB, _A, psExact, getPsExact, diffCount /*, δ*/);
+            const [tS, tE] = refineCertified(curP_, curPE, lb, _a, LB, _A, getPolyExact /*, δ*/);
             roots.push({ tS, tE, multiplicity: 1 });
         } //else {
         // _A === 0
@@ -367,8 +257,8 @@ function allRootsCertified(p, lb = 0, ub = 1, pE = undefined, getPExact = undefi
             _b = i_ ? i_.tS : ub;
             const B_ = A_;
             _A = _B;
-            A_ = evalAdaptive(curP_, curPE, a_, psExact, getPsExact, diffCount);
-            _B = evalAdaptive(curP_, curPE, _b, psExact, getPsExact, diffCount);
+            A_ = evalAdaptive(curP_, curPE, a_, getPolyExact);
+            _B = evalAdaptive(curP_, curPE, _b, getPolyExact);
             if (_A * A_ > 0) {
                 //---- CASE 1: _A⇑ | A_⇑   OR   _A⇓ | A_⇓
                 if (A_ * _B > 0) {
@@ -390,7 +280,7 @@ function allRootsCertified(p, lb = 0, ub = 1, pE = undefined, getPExact = undefi
                         checkEvenAA();
                     }
                     // [a_,_b] → single root (curve is monotone increasing or decreasing)
-                    const [tS, tE] = refineCertified(curP_, curPE, a_, _b, A_, _B, psExact, getPsExact, diffCount /*, δ*/);
+                    const [tS, tE] = refineCertified(curP_, curPE, a_, _b, A_, _B, getPolyExact /*, δ*/);
                     roots.push({ tS, tE, multiplicity: 1 });
                 }
                 else { // _B === 0
@@ -415,7 +305,7 @@ function allRootsCertified(p, lb = 0, ub = 1, pE = undefined, getPExact = undefi
                     //---- CASE 2A: _A⇑ | A_⇓ | _B⇑   OR   _A⇓ | A_⇑ | _B⇓
                     //console.log('CASE 2A');
                     // [a_,_b] → single root
-                    const [tS, tE] = refineCertified(curP_, curPE, a_, _b, A_, _B, psExact, getPsExact, diffCount /*, δ*/);
+                    const [tS, tE] = refineCertified(curP_, curPE, a_, _b, A_, _B, getPolyExact /*, δ*/);
                     roots.push({ tS, tE, multiplicity: 1 });
                 }
                 else if (A_ * _B > 0) {
@@ -455,7 +345,7 @@ function allRootsCertified(p, lb = 0, ub = 1, pE = undefined, getPExact = undefi
                 // [_a,a_] → rational root at _a
                 if (A_ * _B < 0) {
                     // [a_,_b] → single root
-                    const [tS, tE] = refineCertified(curP_, curPE, a_, _b, A_, _B, psExact, getPsExact, diffCount /*, δ*/);
+                    const [tS, tE] = refineCertified(curP_, curPE, a_, _b, A_, _B, getPolyExact /*, δ*/);
                     roots.push({ tS, tE, multiplicity: 1 });
                 }
                 else if (A_ * _B > 0) {
@@ -554,4 +444,11 @@ function joinRoots(rs) {
     newRs.push(curR);
     return newRs;
 }
+////////////////////////////////////////////////////////////////////////////////////
+// const t1 = allRootsCertified([],0,1,[],()=>[], true);        // RootInterval[] | undefined
+// const t2 = allRootsCertified([],0,1,[],()=>[], false);       // RootInterval[]
+// const t3 = allRootsCertified([],0,1,[],()=>[], undefined);   // RootInterval[]
+// const t4 = allRootsCertified([],0,1,[],()=>[], );            // RootInterval[]
+// const t5 = allRootsCertified([],0,1,[],()=>[]  );            // RootInterval[]
+////////////////////////////////////////////////////////////////////////////////////
 //# sourceMappingURL=all-roots-certified.js.map

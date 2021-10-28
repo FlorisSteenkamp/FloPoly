@@ -34,6 +34,8 @@ function getXY(ps: number[][]): number[][] {
 			y0,       // t^0 - max bitlength increase 0
         ]];
 	}
+
+	throw new Error('must be of length 2, 3 or 4');
 }
 
 

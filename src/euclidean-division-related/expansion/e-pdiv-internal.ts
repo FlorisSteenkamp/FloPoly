@@ -37,7 +37,9 @@ const subtractExact = eSubtract;
  * 
  * @internal
  */
-function ePdivInternal(a: number[][], b: number[][]) {
+function ePdivInternal(
+        a: number[][], b: number[][]): { q: number[][]; r: number[][]; } {
+
     let q: number[][] = [];
     const d = eDegree(b);
     const c = b[0];

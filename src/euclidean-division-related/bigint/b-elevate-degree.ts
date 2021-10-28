@@ -6,7 +6,7 @@
  * 
  * @internal
  */
-function bElevateDegree(p: bigint[], deg: number) {
+function bElevateDegree(p: bigint[], deg: number): bigint[] {
     const p_ = p.slice();
     for (let i=0; i<deg; i++) { 
         p_.push(0n); 

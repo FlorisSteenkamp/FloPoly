@@ -8,7 +8,7 @@
  * 
  * @doc
  */
-function eIsUnit(p: number[][]) {
+function eIsUnit(p: number[][]): boolean {
     return p.length === 1 && p[0].length === 1 && p[0][0] === 1;
 }
 

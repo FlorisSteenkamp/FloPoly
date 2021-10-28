@@ -75,7 +75,7 @@ function toCasStr(p: number[] | number[][] | bigint[]): string {
  * 
  * @internal
  */
-function nonNegativeNumberToString(num: number | bigint) {
+function nonNegativeNumberToString(num: number | bigint): string {
     let numStr = num.toString();
 
     if (isBigint(num)) {

@@ -35,7 +35,9 @@ const u = Number.EPSILON;
  * 
  * @doc
  */
-function compHornerIsFaithful(p: number[], x: number): { isFaithful: boolean; errBound: number; r̄: number } {
+function compHornerIsFaithful(
+		p: number[], x: number): { isFaithful: boolean; errBound: number; r̄: number } {
+
 	const n = p.length-1;
 	
 	const { r̂, pπ, pσ } = EFTHorner(p,x);

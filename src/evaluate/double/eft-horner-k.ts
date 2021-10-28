@@ -11,7 +11,9 @@ const EFTHorner = EFTHorner_;
  * 
  * @internal
  */
-function EFTHornerK(p: number[], x: number, K: number) {
+function EFTHornerK(
+		p: number[], x: number, K: number): { hs: number[]; ps: number[][]; } {
+
 	const ps = [p];
 	const hs: number[] = [];
 	const card = (2**K)-1; // size of the tree, i.e. cardinality of the nodes

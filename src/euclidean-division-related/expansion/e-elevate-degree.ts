@@ -6,7 +6,7 @@
  * 
  * @internal
  */
-function eElevateDegree(p: number[][], deg: number) {
+function eElevateDegree(p: number[][], deg: number): number[][] {
     const p_ = p.slice();
     for (let i=0; i<deg; i++) { 
         p_.push([0]); 

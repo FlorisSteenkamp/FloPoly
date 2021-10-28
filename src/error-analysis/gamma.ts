@@ -13,7 +13,7 @@ const uu = u*u;
  * 
  * @doc
  */
-function γ(n: number) {
+function γ(n: number): number {
     const nu = n*u;
 
     return nu/(1-nu);
@@ -31,7 +31,7 @@ function γ(n: number) {
  * 
  * @doc
  */
-function γγ(n: number) {
+function γγ(n: number): number {
     const nuu = n*uu;
     
     return nuu/(1-nuu);

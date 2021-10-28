@@ -13,7 +13,7 @@ const invert = invert_;
  * @internal
  */
 function upperToLowerBound(positiveUpperBoundFunction: (p: number[]) => number) {
-    return (p: number[]) => {
+    return (p: number[]): number => {
         return 1 / positiveUpperBoundFunction(invert(p));
     }
 }

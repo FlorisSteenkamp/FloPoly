@@ -20,7 +20,5 @@
  *
  * @internal
  */
-declare function evalAdaptive(p: number[][], pE: number[], x: number, psExact: {
-    ps: number[][][];
-}, getPsExact: () => number[][][], diffCount: number): number;
+declare function evalAdaptive(p: number[][], pE: number[], x: number, getPolyExact: () => number[][]): number;
 export { evalAdaptive };
