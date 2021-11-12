@@ -54,7 +54,6 @@
         "build-browser": "rimraf browser && webpack",
         "test": "mocha",
         "coverage": "c8 mocha",
-        "test-package": "npm pack",
-        "test-ci": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
+        "test-package": "npm pack"
     }
 }
