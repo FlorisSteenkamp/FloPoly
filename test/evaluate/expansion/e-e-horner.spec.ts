@@ -8,7 +8,7 @@ import {
     CompHornerK, conditionNumber, compHornerWithRunningError,
     EFTHorner, eHorner, evalCertified, evalCertifiedInclError,
     evalK, multiply
-} from '../../../src/index'
+} from '../../../src/index.js'
 import { transposePoly } from '../../../src/roots/certified/transpose-poly';
 
 

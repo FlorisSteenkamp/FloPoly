@@ -1,4 +1,4 @@
-import { SumK as SumK_ } from "./sum-k";
+import { SumK as SumK_ } from "./sum-k.js";import { SumK as SumK_ } from "./sum-k.jsimport { SumK as SumK_ } from "./sum-k.js
 import { EFTHornerK as EFTHornerK_ } from "./eft-horner-k";
 import { Horner as Horner_ } from "./horner";
 

@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { mid, RootInterval } from '../../../src/index';
+import { mid, RootInterval } from '../../../src/index.js';
 
 
 describe('mid',

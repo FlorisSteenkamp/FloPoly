@@ -1,5 +1,5 @@
 
-import { bSturmChain } from '../../../src/index';
+import { bSturmChain } from '../../../src/index.js';
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
 

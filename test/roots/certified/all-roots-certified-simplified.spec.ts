@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { allRootsCertifiedSimplified } from '../../../src/index';
+import { allRootsCertifiedSimplified } from '../../../src/index.js';
 
 
 describe('allRootsCertifiedSimplified - find all roots within an interval of a polynomial such that all roots are guaranteed to be captured in some interval', 

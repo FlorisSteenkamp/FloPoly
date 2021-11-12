@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { createRootExact } from '../../../src/index';
+import { createRootExact } from '../../../src/index.js';
 
 
 describe('createRootExact',

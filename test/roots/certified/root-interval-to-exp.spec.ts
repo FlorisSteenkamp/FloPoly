@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { rootIntervalToExp, RootInterval, RootIntervalExp } from '../../../src/index';
+import { rootIntervalToExp, RootInterval, RootIntervalExp } from '../../../src/index.js';
 
 
 describe('rootIntervalToExp',

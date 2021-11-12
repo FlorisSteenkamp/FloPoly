@@ -1,5 +1,5 @@
 import { eLongDivide, eSign, eCompare, eNegativeOf, eIntDiv, expansionProduct } from "big-float-ts";
-import { scaleFloatssToIntss } from "../../scale-to-int/scale-floatss-to-intss";
+import { scaleFloatssToIntss } from "../../scale-to-int/scale-floatss-to-intss.js";import { scaleFloatssToIntss } from "../../scale-to-int/scale-floatss-to-intss.js
 import { eGcdInt } from "../../gcd/expansion/e-integer-gcd";
 
 

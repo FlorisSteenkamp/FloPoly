@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { bPremSequenceSubresultant, bMultiply, scaleFloatsToInts, bPremSequencePrimitive } from '../../../src/index';
+import { bPremSequenceSubresultant, bMultiply, scaleFloatsToInts, bPremSequencePrimitive } from '../../../src/index.js';
 
 
 describe('bPremSequenceSubresultant', function() {

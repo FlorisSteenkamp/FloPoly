@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { negativeRootUpperBound_LMQ } from '../../../src/index';
+import { negativeRootUpperBound_LMQ } from '../../../src/index.js';
 
 
 describe('negativeRootUpperBound_LMQ', function() {

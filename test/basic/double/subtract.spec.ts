@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { subtract } from '../../../src/index';
+import { subtract } from '../../../src/index.js';
 
 
 describe('subtract', function() {

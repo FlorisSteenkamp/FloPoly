@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { allRootsCertified, refineK1, eHorner, eeHorner } from '../../../src/index';
+import { allRootsCertified, refineK1, eHorner, eeHorner } from '../../../src/index.js';
 import { eEstimate } from 'big-float-ts';
 
 

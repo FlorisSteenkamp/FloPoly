@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { equal, quadraticRoots } from '../../../src/index';
+import { equal, quadraticRoots } from '../../../src/index.js';
 
 
 describe('quadraticRoots', function() {

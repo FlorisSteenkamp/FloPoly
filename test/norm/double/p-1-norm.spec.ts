@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { p1Norm } from '../../../src/index';
+import { p1Norm } from '../../../src/index.js';
 
 
 describe('p1Norm', function() {

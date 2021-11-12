@@ -1,4 +1,4 @@
-import { bPdivTrivial as bPdivTrivial_ } from "./b-pdiv-trivial";
+import { bPdivTrivial as bPdivTrivial_ } from "./b-pdiv-trivial.js";import { bPdivTrivial as bPdivTrivial_ } from "./b-pdiv-trivial.js
 import { bPrimitivePart as bGetPrimitivePart_ } from "../../factor/bigint/b-primitive-part";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗

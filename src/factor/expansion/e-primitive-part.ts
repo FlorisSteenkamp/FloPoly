@@ -1,4 +1,4 @@
-import { eContent as eContent_ } from "./e-content";
+import { eContent as eContent_ } from "./e-content.js";
 import { eDiv as eDiv_ } from "big-float-ts";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗

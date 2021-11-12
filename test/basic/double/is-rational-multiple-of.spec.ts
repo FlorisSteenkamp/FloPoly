@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { isRationalMultipleOf } from '../../../src/index';
+import { isRationalMultipleOf } from '../../../src/index.js';
 
 
 describe('isRationalMultipleOf', function() {

@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { eEqual, eReflectAboutYAxis } from '../../../src/index';
+import { eEqual, eReflectAboutYAxis } from '../../../src/index.js';
 
 
 describe('eReflectAboutYAxis', function() {

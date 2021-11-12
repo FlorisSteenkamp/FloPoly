@@ -1,4 +1,4 @@
-import { eDifferentiate as eDifferentiate_ } from '../../calculus/expansion/e-differentiate';
+import { eDifferentiate as eDifferentiate_ } from '../../calculus/expansion/e-differentiate.js';import { eDifferentiate as eDifferentiate_ } from '../../calculus/expansion/e-differentiate.jsimport { eDifferentiate as eDifferentiate_ } from '../../calculus/expansion/e-differentiate.js
 import { ePremSequenceSubresultant as ePremSequenceSubresultant_ } from "./e-prem-sequence-subresultant";
 import { scaleFloatssToIntss as scaleFloatssToIntss_ } from '../../scale-to-int/scale-floatss-to-intss';
 

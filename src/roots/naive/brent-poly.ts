@@ -1,4 +1,4 @@
-import { Horner as Horner_ } from '../../evaluate/double/horner';
+import { Horner as Horner_ } from '../../evaluate/double/horner.js';
 
 const Horner = Horner_;
 

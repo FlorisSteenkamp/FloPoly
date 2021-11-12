@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { bSignChanges } from '../../../../src/index';
+import { bSignChanges } from '../../../../src/index.js';
 
 
 describe('bSignChanges', function() {

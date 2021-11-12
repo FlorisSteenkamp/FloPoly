@@ -1,4 +1,4 @@
-import { eRemoveLeadingZeros as eRemoveLeadingZeros_ } from "./e-remove-leading-zeros";
+import { eRemoveLeadingZeros as eRemoveLeadingZeros_ } from "./e-remove-leading-zeros.js";
 import { fastExpansionSum as fastExpansionSum_ } from "big-float-ts";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗

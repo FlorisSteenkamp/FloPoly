@@ -1,4 +1,4 @@
-import { pInfNorm as pInfNorm_ } from "../../norm/double/p-inf-norm";
+import { pInfNorm as pInfNorm_ } from "../../norm/double/p-inf-norm.js";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const pInfNorm = pInfNorm_;

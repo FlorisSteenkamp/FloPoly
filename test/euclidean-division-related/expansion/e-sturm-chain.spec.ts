@@ -1,6 +1,6 @@
 
 import { assert, expect } from 'chai';
-import { eSturmChain } from '../../../src/index';
+import { eSturmChain } from '../../../src/index.js';
 
 
 describe('eSturmChain', function() {

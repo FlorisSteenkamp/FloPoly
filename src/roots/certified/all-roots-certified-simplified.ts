@@ -1,4 +1,4 @@
-import { allRootsCertified } from "./all-roots-certified"
+import { allRootsCertified } from "./all-roots-certified.js"import { allRootsCertified } from "./all-roots-certified.js
 import { RootInterval } from "./root-interval";
 
 

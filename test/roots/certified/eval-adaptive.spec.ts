@@ -2,7 +2,7 @@
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
 import { evalAdaptive } from '../../../src/roots/certified/eval-adaptive';
-import { eMultiply, eDifferentiate, Horner } from '../../../src/index';
+import { eMultiply, eDifferentiate, Horner } from '../../../src/index.js';
 import { eToDd, eEstimate } from 'big-float-ts';
 import { transposePoly } from '../../../src/roots/certified/transpose-poly';
 

@@ -1,4 +1,4 @@
-import { bSturmChain as bSturmChain_ } from "../../../euclidean-division-related/bigint/b-sturm-chain";
+import { bSturmChain as bSturmChain_ } from "../../../euclidean-division-related/bigint/b-sturm-chain.js";import { bSturmChain as bSturmChain_ } from "../../../euclidean-division-related/bigint/b-sturm-chain.jsimport { bSturmChain as bSturmChain_ } from "../../../euclidean-division-related/bigint/b-sturm-chain.js
 import { bHorner as bHorner_ } from "../../../evaluate/bigint/b-horner";
 import { bSignChanges as bSignChanges_ } from "./b-sign-changes";
 

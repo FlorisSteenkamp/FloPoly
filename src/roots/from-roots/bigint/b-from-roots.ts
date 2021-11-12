@@ -1,4 +1,4 @@
-import { bMultiply as bMultiply_ } from "../../../basic/bigint/b-multiply";
+import { bMultiply as bMultiply_ } from "../../../basic/bigint/b-multiply.js";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const bMultiply = bMultiply_;

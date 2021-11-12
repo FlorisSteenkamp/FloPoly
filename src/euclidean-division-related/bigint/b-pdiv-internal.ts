@@ -1,4 +1,4 @@
-import { bDegree as bDegree_ } from "../../basic/bigint/b-degree";
+import { bDegree as bDegree_ } from "../../basic/bigint/b-degree.js";import { bDegree as bDegree_ } from "../../basic/bigint/b-degree.jsimport { bDegree as bDegree_ } from "../../basic/bigint/b-degree.jsimport { bDegree as bDegree_ } from "../../basic/bigint/b-degree.jsimport { bDegree as bDegree_ } from "../../basic/bigint/b-degree.js
 import { bElevateDegree as bElevateDegree_ } from "./b-elevate-degree";
 import { bAdd as bAdd_ } from "../../basic/bigint/b-add";
 import { bMultiply as bMultiply_ } from "../../basic/bigint/b-multiply";

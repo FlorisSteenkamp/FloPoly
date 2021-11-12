@@ -5,7 +5,7 @@ import {
 	allRoots, fromRoots, flatRootsArr, 
 	flatCoefficientsArr, flatCoefficients, Horner, hornerWithRunningError, 
 	toCasStr, multiply
-} from '../../../src/index';
+} from '../../../src/index.js';
 import { rootAccurateEnough } from './root-accurate-enough';
 import {  } from '../../../node';
 

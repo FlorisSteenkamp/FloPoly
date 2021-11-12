@@ -5,7 +5,7 @@ import { describe } from 'mocha';
 import { 
     gcdPrs, multiplyByConst, eIsRationalMultipleOf, multiply, 
     differentiate
-} from '../../../src/index';
+} from '../../../src/index.js';
 
 
 describe('gcdPrs', function() {

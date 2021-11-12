@@ -1,4 +1,4 @@
-import { eMultiply } from "./e-multiply";
+import { eMultiply } from "./e-multiply.js";
 
 
 /**

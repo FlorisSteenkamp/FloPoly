@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { conditionNumber } from '../../src/index';
+import { conditionNumber } from '../../src/index.js';
 
 
 describe('conditionNumber', function() {

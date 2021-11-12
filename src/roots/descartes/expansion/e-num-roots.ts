@@ -1,5 +1,5 @@
 import { eSign as eSign_ } from "big-float-ts";
-import { eSturmChain as eSturmChain_ } from "../../../euclidean-division-related/expansion/e-sturm-chain";
+import { eSturmChain as eSturmChain_ } from "../../../euclidean-division-related/expansion/e-sturm-chain.js";import { eSturmChain as eSturmChain_ } from "../../../euclidean-division-related/expansion/e-sturm-chain.jsimport { eSturmChain as eSturmChain_ } from "../../../euclidean-division-related/expansion/e-sturm-chain.js
 import { signChanges as signChanges_ } from "../double/sign-changes";
 import { eDegree as eDegree_ } from "../../../basic/expansion/e-degree";
 

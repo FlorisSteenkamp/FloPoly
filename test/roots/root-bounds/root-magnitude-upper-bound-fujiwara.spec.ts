@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { rootMagnitudeUpperBound_fujiwara } from '../../../src/index';
+import { rootMagnitudeUpperBound_fujiwara } from '../../../src/index.js';
 
 
 describe('rootMagnitudeUpperBound_fujiwara', function() {

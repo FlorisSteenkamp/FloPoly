@@ -1,7 +1,7 @@
 
 import { expect } from 'chai';
 import { describe } from 'mocha';
-import { eAbsCoeff } from '../../../src/index';
+import { eAbsCoeff } from '../../../src/index.js';
 
 
 describe('eAbsCoeff', function() {

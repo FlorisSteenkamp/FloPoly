@@ -2,7 +2,7 @@
 import { expect } from 'chai';
 import { describe } from 'mocha';
 
-import { scaleFloatssToBigintss } from '../../src/index';
+import { scaleFloatssToBigintss } from '../../src/index.js';
 
 
 describe('scaleFloatssToBigintss', function() {

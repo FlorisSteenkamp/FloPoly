@@ -1,4 +1,4 @@
-import { eRemoveLeadingZeros as eRemoveLeadingZeros_ } from "./e-remove-leading-zeros";
+import { eRemoveLeadingZeros as eRemoveLeadingZeros_ } from "./e-remove-leading-zeros.js";
 import { expansionProduct as expansionProduct_ } from "big-float-ts";
 import { fastExpansionSum as fastExpansionSum_ } from "big-float-ts";
 

@@ -1,4 +1,4 @@
-import { eMultiply as eMultiply_ } from "../../../basic/expansion/e-multiply";
+import { eMultiply as eMultiply_ } from "../../../basic/expansion/e-multiply.js";
 import { eNegativeOf as eNegativeOf_ } from "big-float-ts";
 import { eToDd as eToDd_ } from "big-float-ts";
 

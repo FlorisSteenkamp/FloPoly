@@ -1,5 +1,5 @@
 import { eDiv as eDiv_ } from "big-float-ts";
-import { eDegree as eDegree_ } from "../../basic/expansion/e-degree";
+import { eDegree as eDegree_ } from "../../basic/expansion/e-degree.js";import { eDegree as eDegree_ } from "../../basic/expansion/e-degree.jsimport { eDegree as eDegree_ } from "../../basic/expansion/e-degree.jsimport { eDegree as eDegree_ } from "../../basic/expansion/e-degree.jsimport { eDegree as eDegree_ } from "../../basic/expansion/e-degree.js
 import { eElevateDegree as eElevateDegree_ } from "./e-elevate-degree";
 import { eAdd as eAdd_ } from "../../basic/expansion/e-add";
 import { eMultiply as eMultiply_ } from "../../basic/expansion/e-multiply";

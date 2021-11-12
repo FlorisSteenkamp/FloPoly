@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { brent, fromRoots, Horner } from '../../../src/index';
+import { brent, fromRoots, Horner } from '../../../src/index.js';
 import { rootAccurateEnough } from './root-accurate-enough';
 
 

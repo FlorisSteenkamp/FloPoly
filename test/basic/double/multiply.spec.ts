@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { equal, multiply } from '../../../src/index';
+import { equal, multiply } from '../../../src/index.js';
 
 
 describe('multiply', function() {

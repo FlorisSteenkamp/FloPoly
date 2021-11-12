@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { bEqual, bChangeVariablesLinear } from '../../../src/index';
+import { bEqual, bChangeVariablesLinear } from '../../../src/index.js';
 
 
 describe('bChangeVariablesLinear', function() {

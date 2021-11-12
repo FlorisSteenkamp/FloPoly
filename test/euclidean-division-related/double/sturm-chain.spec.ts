@@ -1,6 +1,6 @@
 
 import { assert, expect } from 'chai';
-import { sturmChain } from '../../../src/index';
+import { sturmChain } from '../../../src/index.js';
 
 
 describe('sturmChain', function() {

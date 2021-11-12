@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { bEqual, bDifferentiate } from '../../../src/index';
+import { bEqual, bDifferentiate } from '../../../src/index.js';
 
 
 describe('bDifferentiate', function() {

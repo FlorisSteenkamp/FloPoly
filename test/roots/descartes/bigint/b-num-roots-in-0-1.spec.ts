@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { bNumRootsIn01, toCasStr, multiply, scaleFloatsToBigints } from '../../../../src/index';
+import { bNumRootsIn01, toCasStr, multiply, scaleFloatsToBigints } from '../../../../src/index.js';
 
 
 describe('bNumRootsIn01', function() {

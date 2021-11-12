@@ -1,7 +1,7 @@
 
 import { assert } from 'chai';
 import { describe } from 'mocha';
-import { equal, deflate } from '../../../src/index';
+import { equal, deflate } from '../../../src/index.js';
 
 
 describe('deflate', function() {

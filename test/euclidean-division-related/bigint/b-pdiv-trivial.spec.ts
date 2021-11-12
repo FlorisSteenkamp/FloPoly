@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { bPdivTrivial } from '../../../src/index';
+import { bPdivTrivial } from '../../../src/index.js';
 
 
 describe('bPdivTrivial', function() {

@@ -6,7 +6,7 @@ import { eEstimate } from 'big-float-ts';
 import { 
     eGcdPrs, eMultiplyByConst, eIsRationalMultipleOf,
     eMultiply, eDifferentiate 
-} from '../../../src/index';
+} from '../../../src/index.js';
 
 
 describe('eGcdPrs', function() {

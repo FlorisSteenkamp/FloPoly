@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { bDivideByConst } from '../../../src/index';
+import { bDivideByConst } from '../../../src/index.js';
 
 
 describe('bDivideByConst', function() {

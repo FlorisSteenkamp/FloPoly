@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { eEqual, eFromRoots } from '../../../../src/index';
+import { eEqual, eFromRoots } from '../../../../src/index.js';
 
 
 describe('eFromRoots', function() {

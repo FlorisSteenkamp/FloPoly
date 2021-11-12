@@ -1,4 +1,4 @@
-import { multiply as multiply_ } from "../../../basic/double/multiply";
+import { multiply as multiply_ } from "../../../basic/double/multiply.js";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const multiply = multiply_;

@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { rootMagnitudeUpperBound_rouche } from '../../../src/index';
+import { rootMagnitudeUpperBound_rouche } from '../../../src/index.js';
 
 
 describe('rootMagnitudeUpperBound_rouche', function() {

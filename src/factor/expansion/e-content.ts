@@ -1,4 +1,4 @@
-import { eGcdInts as eGcdInts_ } from "../../gcd/expansion/e-integer-gcd";
+import { eGcdInts as eGcdInts_ } from "../../gcd/expansion/e-integer-gcd.js";
 import { eSign as eSign_ } from "big-float-ts";
 import { eNegativeOf as eNegativeOf_ } from "big-float-ts";
 

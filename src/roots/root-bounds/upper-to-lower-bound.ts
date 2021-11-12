@@ -1,4 +1,4 @@
-import { invert as invert_ } from "../../basic/double/invert";
+import { invert as invert_ } from "../../basic/double/invert.js";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const invert = invert_;

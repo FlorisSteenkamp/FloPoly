@@ -2,7 +2,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { γ, γγ } from '../../src/index';
+import { γ, γγ } from '../../src/index.js';
 
 
 const eps = Number.EPSILON;

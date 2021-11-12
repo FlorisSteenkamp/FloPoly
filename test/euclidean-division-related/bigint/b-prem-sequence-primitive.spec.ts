@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { bPremSequencePrimitive, bMultiply } from '../../../src/index';
+import { bPremSequencePrimitive, bMultiply } from '../../../src/index.js';
 
 
 describe('bPremSequencePrimitive', function() {

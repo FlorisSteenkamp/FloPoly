@@ -1,4 +1,4 @@
-import { bDegree as bDegree_ } from "../../basic/bigint/b-degree";
+import { bDegree as bDegree_ } from "../../basic/bigint/b-degree.js";import { bDegree as bDegree_ } from "../../basic/bigint/b-degree.js
 import { bPdivTrivial as bPdivTrivial_ } from "./b-pdiv-trivial";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗

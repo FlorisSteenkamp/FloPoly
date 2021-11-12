@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { toCasStr } from '../../src/index';
+import { toCasStr } from '../../src/index.js';
 
 
 describe('toCasStr', function() {

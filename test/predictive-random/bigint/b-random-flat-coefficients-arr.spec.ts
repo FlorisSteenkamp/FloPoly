@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { bEqual, bFlatCoefficientsArr } from '../../../src/index';
+import { bEqual, bFlatCoefficientsArr } from '../../../src/index.js';
 
 
 describe('random.bFlatCoefficientsArr', function() {

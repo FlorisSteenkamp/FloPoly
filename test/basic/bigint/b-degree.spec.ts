@@ -1,7 +1,7 @@
 
 import { expect } from 'chai';
 import { describe } from 'mocha';
-import { bDegree } from '../../../src/index';
+import { bDegree } from '../../../src/index.js';
 
 
 describe('degree', function() {

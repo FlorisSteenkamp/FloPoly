@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { Horner, hornerWithRunningError } from '../../../src/index';
+import { Horner, hornerWithRunningError } from '../../../src/index.js';
 
 // see also the file: e-e-horner.spec.ts
 

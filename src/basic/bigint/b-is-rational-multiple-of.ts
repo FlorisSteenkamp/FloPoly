@@ -1,4 +1,4 @@
-import { bGcdInt } from "../../gcd/bigint/b-integer-gcd";
+import { bGcdInt } from "../../gcd/bigint/b-integer-gcd.js";
 
 
 /**

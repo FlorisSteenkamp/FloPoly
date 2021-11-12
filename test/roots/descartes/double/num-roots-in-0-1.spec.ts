@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { numRootsIn01, multiply } from '../../../../src/index';
+import { numRootsIn01, multiply } from '../../../../src/index.js';
 
 
 describe('numRootsIn01', function() {

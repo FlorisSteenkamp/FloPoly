@@ -1,4 +1,4 @@
-import { bRemoveLeadingZeros as bRemoveLeadingZeros_ } from "./b-remove-leading-zeros";
+import { bRemoveLeadingZeros as bRemoveLeadingZeros_ } from "./b-remove-leading-zeros.js";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const bRemoveLeadingZeros = bRemoveLeadingZeros_;

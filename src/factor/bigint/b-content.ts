@@ -1,4 +1,4 @@
-import { bGcdInts as bGcdInts_ } from "../../gcd/bigint/b-integer-gcd";
+import { bGcdInts as bGcdInts_ } from "../../gcd/bigint/b-integer-gcd.js";
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗

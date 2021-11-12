@@ -1,4 +1,4 @@
-import { evalCertified as evalCertified_ } from "../../evaluate/double/eval-certified";
+import { evalCertified as evalCertified_ } from "../../evaluate/double/eval-certified.js";import { evalCertified as evalCertified_ } from "../../evaluate/double/eval-certified.js
 import { eHorner as eHorner_ } from "../../evaluate/expansion/e-horner";
 import { eEstimate as eEstimate_ } from 'big-float-ts';
 

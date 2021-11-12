@@ -1,4 +1,4 @@
-import { content as content_ } from "./content";
+import { content as content_ } from "./content.js";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const getContent = content_;

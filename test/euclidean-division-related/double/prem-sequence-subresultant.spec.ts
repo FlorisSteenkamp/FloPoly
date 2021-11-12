@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { premSequenceSubresultant } from '../../../src/index';
+import { premSequenceSubresultant } from '../../../src/index.js';
 
 
 describe('premSequenceSubresultant', function() {

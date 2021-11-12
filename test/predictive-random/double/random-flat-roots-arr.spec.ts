@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { equal, flatRootsArr } from '../../../src/index';
+import { equal, flatRootsArr } from '../../../src/index.js';
 
 
 describe('random.flatRootsArr', function() {

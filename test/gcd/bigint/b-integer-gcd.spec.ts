@@ -1,7 +1,7 @@
 
 import { expect } from 'chai';
 import { describe } from 'mocha';
-import { bGcdInt, bGcdInts, scaleFloatToInt } from '../../../src/index';
+import { bGcdInt, bGcdInts, scaleFloatToInt } from '../../../src/index.js';
 import { performance } from 'perf_hooks';
 
 

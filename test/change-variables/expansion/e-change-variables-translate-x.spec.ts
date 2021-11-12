@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { eEqual, eChangeVariablesTranslateX } from '../../../src/index';
+import { eEqual, eChangeVariablesTranslateX } from '../../../src/index.js';
 
 
 describe('eChangeVariablesTranslateX', function() {

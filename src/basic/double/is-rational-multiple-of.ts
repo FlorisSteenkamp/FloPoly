@@ -1,4 +1,4 @@
-import { scaleFloatsToInts } from "../../scale-to-int/scale-floats-to-ints";
+import { scaleFloatsToInts } from "../../scale-to-int/scale-floats-to-ints.js";import { scaleFloatsToInts } from "../../scale-to-int/scale-floats-to-ints.js
 import { gcdInt } from "../../gcd/double/integer-gcd";
 import { twoProduct, eLongDivide, eSign, eCompare } from "big-float-ts";
 

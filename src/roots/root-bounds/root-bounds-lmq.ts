@@ -1,4 +1,4 @@
-import { negate as negate_ } from "../../basic/double/negate";
+import { negate as negate_ } from "../../basic/double/negate.js";import { negate as negate_ } from "../../basic/double/negate.jsimport { negate as negate_ } from "../../basic/double/negate.js
 import { upperToLowerBound as upperToLowerBound_ } from "./upper-to-lower-bound";
 import { positiveToNegativeBound as positiveToNegativeBound_ } from "./positive-to-negative-bound";
 

@@ -1,4 +1,4 @@
-import { ePremSequenceSubresultant as ePremSequenceSubresultant_ } from "../expansion/e-prem-sequence-subresultant";
+import { ePremSequenceSubresultant as ePremSequenceSubresultant_ } from "../expansion/e-prem-sequence-subresultant.js";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const ePremSequenceSubresultant = ePremSequenceSubresultant_;

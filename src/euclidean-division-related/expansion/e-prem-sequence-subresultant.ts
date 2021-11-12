@@ -2,7 +2,7 @@ import { expansionProduct as expansionProduct_ } from "big-float-ts";
 import { eIntPow as eIntPow_ } from "big-float-ts";
 import { eDiv as eDiv_ } from "big-float-ts";
 import { eNegativeOf as eNegativeOf_ } from "big-float-ts";
-import { eIsConstOrZero as eIsConstOrZero_ } from "../../basic/expansion/e-is-const-or-zero";
+import { eIsConstOrZero as eIsConstOrZero_ } from "../../basic/expansion/e-is-const-or-zero.js";import { eIsConstOrZero as eIsConstOrZero_ } from "../../basic/expansion/e-is-const-or-zero.jsimport { eIsConstOrZero as eIsConstOrZero_ } from "../../basic/expansion/e-is-const-or-zero.js
 import { eDegree as eDegree_ } from "../../basic/expansion/e-degree";
 import { ePdivTrivial as ePdivTrivial_ } from "./e-pdiv-trivial";
 

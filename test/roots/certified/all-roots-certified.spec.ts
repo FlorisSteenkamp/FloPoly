@@ -1,6 +1,6 @@
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { allRootsCertified, RootInterval, allRoots, eMultiply, eProduct } from '../../../src/index';
+import { allRootsCertified, RootInterval, allRoots, eMultiply, eProduct } from '../../../src/index.js';
 import { twoSum, eToDd } from 'big-float-ts';
 
 

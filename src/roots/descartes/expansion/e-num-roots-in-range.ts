@@ -1,4 +1,4 @@
-import { eSturmChain as eSturmChain_ } from "../../../euclidean-division-related/expansion/e-sturm-chain";
+import { eSturmChain as eSturmChain_ } from "../../../euclidean-division-related/expansion/e-sturm-chain.js";import { eSturmChain as eSturmChain_ } from "../../../euclidean-division-related/expansion/e-sturm-chain.jsimport { eSturmChain as eSturmChain_ } from "../../../euclidean-division-related/expansion/e-sturm-chain.js
 import { eeHorner as eeHorner_ } from "../../../evaluate/expansion/e-e-horner";
 import { eSignChanges as eSignChanges_ } from './e-sign-changes';
 

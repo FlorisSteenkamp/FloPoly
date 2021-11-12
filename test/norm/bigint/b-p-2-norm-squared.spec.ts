@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { bP2NormSquared } from '../../../src/index';
+import { bP2NormSquared } from '../../../src/index.js';
 
 
 describe('bP2NormSquared', function() {

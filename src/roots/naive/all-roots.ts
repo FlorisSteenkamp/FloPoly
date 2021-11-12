@@ -1,4 +1,4 @@
-import { differentiate as differentiate_ } from "../../calculus/double/differentiate";
+import { differentiate as differentiate_ } from "../../calculus/double/differentiate.js";import { differentiate as differentiate_ } from "../../calculus/double/differentiate.jsimport { differentiate as differentiate_ } from "../../calculus/double/differentiate.jsimport { differentiate as differentiate_ } from "../../calculus/double/differentiate.jsimport { differentiate as differentiate_ } from "../../calculus/double/differentiate.jsimport { differentiate as differentiate_ } from "../../calculus/double/differentiate.js
 import { Horner as Horner_ } from "../../evaluate/double/horner";
 import { brentPoly as brentPoly_ } from "./brent-poly";
 import { negativeRootLowerBound_LMQ as negativeRootUpperBound_LMQ_ } from "../root-bounds/root-bounds-lmq";

@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { eMultiplyByConst } from '../../../src/index';
+import { eMultiplyByConst } from '../../../src/index.js';
 
 
 describe('eMultiplyByConst', function() {

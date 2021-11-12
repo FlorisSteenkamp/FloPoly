@@ -1,7 +1,7 @@
 
 import { expect } from 'chai';
 import { describe } from 'mocha';
-import { bRemoveLeadingZeros } from '../../../src/index';
+import { bRemoveLeadingZeros } from '../../../src/index.js';
 
 
 describe('bRemoveLeadingZeros', function() {

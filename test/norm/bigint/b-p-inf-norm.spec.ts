@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { bPInfNorm } from '../../../src/index';
+import { bPInfNorm } from '../../../src/index.js';
 
 
 describe('bPInfNorm', function() {

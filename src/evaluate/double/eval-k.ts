@@ -1,4 +1,4 @@
-import { hornerWithRunningError as hornerWithRunningError_ } from "./horner-with-running-error";
+import { hornerWithRunningError as hornerWithRunningError_ } from "./horner-with-running-error.js";import { hornerWithRunningError as hornerWithRunningError_ } from "./horner-with-running-error.jsimport { hornerWithRunningError as hornerWithRunningError_ } from "./horner-with-running-error.js
 import { CompHornerK as CompHornerK_ } from "./comp-horner-k";
 import { compHornerWithRunningError as compHornerWithRunningError_ } from "./comp-horner-with-running-error";
 

@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { eIsRationalMultipleOf } from '../../../src/index';
+import { eIsRationalMultipleOf } from '../../../src/index.js';
 import { twoProduct } from 'big-float-ts';
 
 

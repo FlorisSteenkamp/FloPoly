@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { equal, changeVariablesScale } from '../../../src/index';
+import { equal, changeVariablesScale } from '../../../src/index.js';
 
 
 describe('changeVariablesScale', function() {

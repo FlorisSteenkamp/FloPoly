@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { bPrimitivePart } from '../../../src/index';
+import { bPrimitivePart } from '../../../src/index.js';
 
 
 describe('bPrimitivePart', function() {

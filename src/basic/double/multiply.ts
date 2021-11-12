@@ -1,4 +1,4 @@
-import { removeLeadingZeros as removeLeadingZeros_ } from "./remove-leading-zeros";
+import { removeLeadingZeros as removeLeadingZeros_ } from "./remove-leading-zeros.js";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const removeLeadingZeros = removeLeadingZeros_;

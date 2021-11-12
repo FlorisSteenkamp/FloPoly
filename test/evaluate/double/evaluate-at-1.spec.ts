@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { evaluateAt1, Horner } from '../../../src/index';
+import { evaluateAt1, Horner } from '../../../src/index.js';
 
 
 describe('evaluateAt1', function() {

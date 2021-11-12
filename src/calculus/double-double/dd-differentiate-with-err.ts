@@ -1,4 +1,4 @@
-import { γγ } from '../../error-analysis/gamma';
+import { γγ } from '../../error-analysis/gamma.js';
 import { ddMultDouble2 as ddMultDouble2_ } from "double-double";
 import { eEstimate as eEstimate_ } from "big-float-ts";
 

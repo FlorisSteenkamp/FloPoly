@@ -1,7 +1,7 @@
 
 import { assert } from 'chai';
 import { describe } from 'mocha';
-import { changeVariablesLinear } from '../../src/index';
+import { changeVariablesLinear } from '../../src/index.js';
 
 
 describe('changeVariables', function() {

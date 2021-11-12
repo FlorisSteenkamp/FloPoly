@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { bHorner } from '../../../src/index';
+import { bHorner } from '../../../src/index.js';
 
 
 describe('bHorner', function() {

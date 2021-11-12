@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { eNumRoots } from '../../../../src/index';
+import { eNumRoots } from '../../../../src/index.js';
 
 
 describe('eNumRoots', function() {

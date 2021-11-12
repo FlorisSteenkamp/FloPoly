@@ -1,4 +1,4 @@
-import { EFTHorner as EFTHorner_ } from "./eft-horner";
+import { EFTHorner as EFTHorner_ } from "./eft-horner.js";import { EFTHorner as EFTHorner_ } from "./eft-horner.jsimport { EFTHorner as EFTHorner_ } from "./eft-horner.jsimport { EFTHorner as EFTHorner_ } from "./eft-horner.jsimport { EFTHorner as EFTHorner_ } from "./eft-horner.js
 import { hornerWithRunningError as hornerWithRunningError_ } from "./horner-with-running-error";
 import { Horner as Horner_ } from "./horner";
 import { AbsHorner as AbsHorner_ } from "./abs-horner";

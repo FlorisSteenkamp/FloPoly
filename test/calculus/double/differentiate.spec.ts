@@ -1,7 +1,7 @@
 
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { equal, differentiate } from '../../../src/index';
+import { equal, differentiate } from '../../../src/index.js';
 
 
 describe('differentiate', function() {

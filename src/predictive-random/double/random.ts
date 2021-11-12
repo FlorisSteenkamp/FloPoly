@@ -1,4 +1,4 @@
-import { fromRoots } from '../../roots/from-roots/double/from-roots';
+import { fromRoots } from '../../roots/from-roots/double/from-roots.js';
 
 
 /**

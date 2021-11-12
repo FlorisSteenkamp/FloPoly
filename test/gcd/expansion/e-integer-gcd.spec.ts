@@ -1,7 +1,7 @@
 
 import { expect } from 'chai';
 import { describe } from 'mocha';
-import { scaleFloatToInt, eGcdInt, eGcdInts } from '../../../src/index';
+import { scaleFloatToInt, eGcdInt, eGcdInts } from '../../../src/index.js';
 import { performance } from 'perf_hooks';
 
 
