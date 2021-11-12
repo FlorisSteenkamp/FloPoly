@@ -1,6 +1,6 @@
 import { bSturmChain as bSturmChain_ } from "../../../euclidean-division-related/bigint/b-sturm-chain.js";
-import { bDegree as bDegree_ } from "../../../basic/bigint/b-degree";
-import { bSignChanges as bSignChanges_ } from "./b-sign-changes";
+import { bDegree as bDegree_ } from "../../../basic/bigint/b-degree.js";
+import { bSignChanges as bSignChanges_ } from "./b-sign-changes.js";
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗

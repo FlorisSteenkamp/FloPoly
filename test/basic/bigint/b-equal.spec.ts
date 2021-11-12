@@ -1,4 +1,3 @@
-
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
 import { bEqual } from '../../../src/index.js';

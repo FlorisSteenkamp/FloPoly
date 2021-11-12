@@ -1,4 +1,4 @@
-import { RootInterval } from "./root-interval";
+import { RootInterval } from "./root-interval.js";
 /**
  * :::tip Heads up!
  * Simplified version of `allRootsCertified` - following are the changes:

@@ -1,8 +1,8 @@
 import { twoSum as twoSum_ } from "big-float-ts";
 import { EFTHorner as EFTHorner_ } from "./eft-horner.js";
-import { HornerSum as HornerSum_ } from "./horner-sum";
-import { HornerAbsSum as HornerAbsSum_ } from "./horner-abs-sum";
-import { γs as γs_ } from "./gammas";
+import { HornerSum as HornerSum_ } from "./horner-sum.js";
+import { HornerAbsSum as HornerAbsSum_ } from "./horner-abs-sum.js";
+import { γs as γs_ } from "./gammas.js";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const twoSum = twoSum_;
 const HornerSum = HornerSum_;

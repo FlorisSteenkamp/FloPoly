@@ -1,5 +1,5 @@
 import { evalCertified as evalCertified_ } from "../../evaluate/double/eval-certified.js";
-import { eHorner as eHorner_ } from "../../evaluate/expansion/e-horner";
+import { eHorner as eHorner_ } from "../../evaluate/expansion/e-horner.js";
 import { eEstimate as eEstimate_ } from 'big-float-ts';
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗

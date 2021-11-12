@@ -1,10 +1,9 @@
-
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
 import { 
     bGcdPrs, bIsRationalMultipleOf, bMultiply, bDifferentiate, bFromRoots
 } from '../../../src/index.js';
-import { bPrimitivePart } from '../../../src/factor/bigint/b-primitive-part';
+import { bPrimitivePart } from '../../../src/factor/bigint/b-primitive-part.js';
 
 
 describe('bGcdPrs', function() {

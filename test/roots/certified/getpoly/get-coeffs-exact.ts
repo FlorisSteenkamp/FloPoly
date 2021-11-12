@@ -3,8 +3,8 @@ import {
     twoProduct, scaleExpansion2, expansionProduct, fastExpansionSum, 
     eMultBy2 } from "big-float-ts";
 import { ddMultBy2, ddAddDd } from 'double-double';
-import { getImplicitExact } from "./get-implicit-exact";
-import { getXY } from "./get-xy";
+import { getImplicitExact } from "./get-implicit-exact.js";
+import { getXY } from "./get-xy.js";
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗

@@ -1,5 +1,5 @@
 import { scaleFloatsToInts } from "../../scale-to-int/scale-floats-to-ints.js";
-import { gcdInt } from "../../gcd/double/integer-gcd";
+import { gcdInt } from "../../gcd/double/integer-gcd.js";
 import { twoProduct, eLongDivide, eSign, eCompare } from "big-float-ts";
 /**
  * Returns true if either polynomial is an exact rational multiple of the other.

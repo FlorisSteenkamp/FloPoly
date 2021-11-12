@@ -1,9 +1,9 @@
 import { eDiv as eDiv_ } from "big-float-ts";
 import { eDegree as eDegree_ } from "../../basic/expansion/e-degree.js";
-import { eElevateDegree as eElevateDegree_ } from "./e-elevate-degree";
-import { eAdd as eAdd_ } from "../../basic/expansion/e-add";
-import { eMultiply as eMultiply_ } from "../../basic/expansion/e-multiply";
-import { eSubtract as eSubtract } from "../../basic/expansion/e-subtract";
+import { eElevateDegree as eElevateDegree_ } from "./e-elevate-degree.js";
+import { eAdd as eAdd_ } from "../../basic/expansion/e-add.js";
+import { eMultiply as eMultiply_ } from "../../basic/expansion/e-multiply.js";
+import { eSubtract as eSubtract } from "../../basic/expansion/e-subtract.js";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const eDiv = eDiv_;
 const eDegree = eDegree_;

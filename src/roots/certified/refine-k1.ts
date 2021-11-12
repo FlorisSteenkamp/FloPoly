@@ -1,9 +1,9 @@
 import { eToDd as eToDd_ } from "big-float-ts";
 import { twoSum as twoSum_ } from "big-float-ts";
 import { eChangeVariablesLinear as eChangeVariablesLinear_ } from "../../change-variables/expansion/e-change-variables-linear.js";
-import { allRootsCertified as allRootsCertified_ } from "./all-roots-certified";
-import { RootInterval } from "./root-interval";
-import { RootIntervalExp } from "./root-interval-exp";
+import { allRootsCertified as allRootsCertified_ } from "./all-roots-certified.js";
+import { RootInterval } from "./root-interval.js";
+import { RootIntervalExp } from "./root-interval-exp.js";
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗

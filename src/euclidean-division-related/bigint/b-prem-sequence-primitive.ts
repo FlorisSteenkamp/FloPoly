@@ -1,5 +1,5 @@
 import { bPdivTrivial as bPdivTrivial_ } from "./b-pdiv-trivial.js";
-import { bPrimitivePart as bGetPrimitivePart_ } from "../../factor/bigint/b-primitive-part";
+import { bPrimitivePart as bGetPrimitivePart_ } from "../../factor/bigint/b-primitive-part.js";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const bPdivTrivial = bPdivTrivial_;

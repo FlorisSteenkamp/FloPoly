@@ -1,8 +1,8 @@
 import { eAbs as eAbs_ } from "big-float-ts";
 import { eIntPow as eIntPow_ } from "big-float-ts";
 import { eDegree as eDegree_ } from "../../basic/expansion/e-degree.js";
-import { eMultiplyByConst } from "../../basic/expansion/e-multiply-by-const";
-import { ePdivInternal } from "./e-pdiv-internal";
+import { eMultiplyByConst } from "../../basic/expansion/e-multiply-by-const.js";
+import { ePdivInternal } from "./e-pdiv-internal.js";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const eDegree = eDegree_;
 const eAbs = eAbs_;

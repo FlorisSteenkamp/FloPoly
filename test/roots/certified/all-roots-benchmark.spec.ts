@@ -2,8 +2,8 @@ import { assert, expect } from 'chai';
 import { describe } from 'mocha';
 import { allRootsCertified, allRoots, toCasStr } from '../../../src/index.js';
 import { reduceSignificand } from 'big-float-ts';
-import { getCoeffs } from './getpoly/get-coeffs';
-import { getCoeffsExact } from './getpoly/get-coeffs-exact';
+import { getCoeffs } from './getpoly/get-coeffs.js';
+import { getCoeffsExact } from './getpoly/get-coeffs-exact.js';
 import { performance } from 'perf_hooks';
 
 

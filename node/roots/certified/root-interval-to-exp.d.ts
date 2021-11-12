@@ -1,5 +1,5 @@
 import { RootInterval } from "./root-interval.js";
-import { RootIntervalExp } from "./root-interval-exp";
+import { RootIntervalExp } from "./root-interval-exp.js";
 /**
  * Returns the result of converting a double precision root interval to a
  * double-double precision one

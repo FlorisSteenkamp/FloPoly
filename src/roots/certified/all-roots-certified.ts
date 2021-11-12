@@ -1,16 +1,16 @@
-import { ddDifferentiateWithError as ddDifferentiateWithError_ } from "../../calculus/double-double/dd-differentiate-with-err.js";
-import { eDifferentiate as eDifferentiate_ } from '../../calculus/expansion/e-differentiate';
-import { evalCertified as evalCertified_ } from "../../evaluate/double/eval-certified";
-import { eHorner as eHorner_ } from "../../evaluate/expansion/e-horner";
-import { transposePoly as transposePoly_ } from "./transpose-poly";
-import { evalAdaptive as evalAdaptive_ } from "./eval-adaptive";
-import { refineCertified as refineCertified_ } from "./refine-certified";
 import { eEstimate as eEstimate_, eSign as eSign_ } from "big-float-ts";
+import { ddDifferentiateWithError as ddDifferentiateWithError_ } from "../../calculus/double-double/dd-differentiate-with-err.js";
+import { eDifferentiate as eDifferentiate_ } from '../../calculus/expansion/e-differentiate.js';
+import { evalCertified as evalCertified_ } from "../../evaluate/double/eval-certified.js";
+import { eHorner as eHorner_ } from "../../evaluate/expansion/e-horner.js";
+import { transposePoly as transposePoly_ } from "./transpose-poly.js";
+import { evalAdaptive as evalAdaptive_ } from "./eval-adaptive.js";
+import { refineCertified as refineCertified_ } from "./refine-certified.js";
 import { negativeRootLowerBound_LMQ as negativeRootUpperBound_LMQ_ } from "../root-bounds/root-bounds-lmq.js";
-import { positiveRootUpperBound_LMQ as positiveRootUpperBound_LMQ_ } from "../root-bounds/root-bounds-lmq";
-import { hornerWithRunningError as hornerWithRunningError_ } from "../../evaluate/double/horner-with-running-error";
-import { RootInterval } from "./root-interval";
-//import { toCasStr } from "../../basic/to-cas-str";
+import { positiveRootUpperBound_LMQ as positiveRootUpperBound_LMQ_ } from "../root-bounds/root-bounds-lmq.js";
+import { hornerWithRunningError as hornerWithRunningError_ } from "../../evaluate/double/horner-with-running-error.js";
+import { RootInterval } from "./root-interval.js";
+
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const ddDifferentiateWithError = ddDifferentiateWithError_;

@@ -1,5 +1,5 @@
 import { flatRoots, flatRootsArr, flatCoefficients, flatCoefficientsArr } from "../double/random.js";
-import { scaleFloatsToBigints } from "../../scale-to-int/scale-floats-to-bigints";
+import { scaleFloatsToBigints } from "../../scale-to-int/scale-floats-to-bigints.js";
 
 
 /**

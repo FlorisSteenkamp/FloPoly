@@ -1,4 +1,3 @@
-
 import { assert, expect } from 'chai';
 //import { describe } from 'mocha';
 import 'mocha';
@@ -9,7 +8,7 @@ import {
     EFTHorner, eHorner, evalCertified, evalCertifiedInclError,
     evalK, multiply
 } from '../../../src/index.js'
-import { transposePoly } from '../../../src/roots/certified/transpose-poly';
+import { transposePoly } from '../../../src/roots/certified/transpose-poly.js';
 
 
 /*

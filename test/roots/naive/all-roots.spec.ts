@@ -1,4 +1,3 @@
-
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
 import { 
@@ -6,8 +5,7 @@ import {
 	flatCoefficientsArr, flatCoefficients, Horner, hornerWithRunningError, 
 	toCasStr, multiply
 } from '../../../src/index.js';
-import { rootAccurateEnough } from './root-accurate-enough';
-import {  } from '../../../node';
+import { rootAccurateEnough } from './root-accurate-enough.js';
 
 
 const negInf = Number.NEGATIVE_INFINITY;

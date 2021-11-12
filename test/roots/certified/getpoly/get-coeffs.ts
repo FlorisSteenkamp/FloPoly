@@ -1,6 +1,5 @@
-
-import { getImplicit } from "./get-implicit";
-import { getXY } from "./get-xy";
+import { getImplicit } from "./get-implicit.js";
+import { getXY } from "./get-xy.js";
 import { twoProduct, ddMultBy2, ddMultDouble2, ddMultDd, ddAddDd } from "double-double";
 
 

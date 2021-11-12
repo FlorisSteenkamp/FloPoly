@@ -34,7 +34,7 @@ import { eIsUnit } from './basic/expansion/e-is-unit.js';
 import { eMultiply } from './basic/expansion/e-multiply.js';
 import { eMultiplyByConst } from './basic/expansion/e-multiply-by-const.js';
 import { eNegate } from './basic/expansion/e-negate.js';
-import { eProduct } from "./basic/expansion/e-product.js";
+import { eProduct } from './basic/expansion/e-product.js';
 import { eRemoveLeadingZeros } from './basic/expansion/e-remove-leading-zeros.js';
 import { eSubtract } from './basic/expansion/e-subtract.js';
 import { bDifferentiate } from './calculus/bigint/b-differentiate.js';

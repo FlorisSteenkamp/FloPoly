@@ -1,4 +1,4 @@
-import { RootInterval } from "./root-interval";
+import { RootInterval } from "./root-interval.js";
 /**
  * Finds and returns all ordered *certified* root intervals (bar underflow /
  * overflow) of the given polynomial (with coefficients given in double-double

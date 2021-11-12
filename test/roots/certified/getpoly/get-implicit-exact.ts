@@ -1,10 +1,9 @@
-
 import { 
     twoProduct, expansionProduct, fastExpansionSum, scaleExpansion2, 
     eDiff, eNegativeOf, eMultBy2, eDivBy2 
 } from "big-float-ts";
 import { ddMultBy2, ddDiffDd, ddAddDd } from 'double-double';
-import { getXY } from "./get-xy";
+import { getXY } from "./get-xy.js";
 
 const tp  = twoProduct;
 const qm2 = ddMultBy2;

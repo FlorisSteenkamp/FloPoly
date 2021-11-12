@@ -1,7 +1,7 @@
-
 import { expect } from 'chai';
 import { describe } from 'mocha';
-import { bAbsCoeff } from '../../../src/index.js';
+// import { bAbsCoeff } from '../../../src/index.js';
+import { bAbsCoeff } from '../../../src/basic/bigint/b-abs-coeff.js';
 
 
 describe('bAbsCoeff', function() {

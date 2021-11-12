@@ -38,7 +38,7 @@ import { eIsUnit } from './basic/expansion/e-is-unit.js';
 import { eMultiply } from './basic/expansion/e-multiply.js';
 import { eMultiplyByConst } from './basic/expansion/e-multiply-by-const.js';
 import { eNegate } from './basic/expansion/e-negate.js';
-import { eProduct } from "./basic/expansion/e-product.js";
+import { eProduct } from './basic/expansion/e-product.js';
 import { eRemoveLeadingZeros } from './basic/expansion/e-remove-leading-zeros.js';
 import { eSubtract } from './basic/expansion/e-subtract.js';
 // calculus bigint
@@ -120,11 +120,11 @@ import { bGcdPrs } from './gcd/bigint/b-gcd-prs.js';
 import { bGcdInt } from './gcd/bigint/b-integer-gcd.js';
 import { bGcdInts } from './gcd/bigint/b-integer-gcd.js';
 // gcd double
-//import { gcdPrs } from './gcd/double/gcd-prs';
+//import { gcdPrs } from './gcd/double/gcd-prs.js';
 import { gcdInt } from './gcd/double/integer-gcd.js';
 import { gcdInts } from './gcd/double/integer-gcd.js';
 // gcd expansion
-//import { eGcdPrs } from './gcd/expansion/e-gcd-prs';
+//import { eGcdPrs } from './gcd/expansion/e-gcd-prs.js';
 import { eGcdInt } from './gcd/expansion/e-integer-gcd.js';
 import { eGcdInts } from './gcd/expansion/e-integer-gcd.js';
 // norm bigint

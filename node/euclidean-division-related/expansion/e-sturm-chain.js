@@ -1,6 +1,6 @@
 import { eDifferentiate as eDifferentiate_ } from '../../calculus/expansion/e-differentiate.js';
-import { ePremSequenceSubresultant as ePremSequenceSubresultant_ } from "./e-prem-sequence-subresultant";
-import { scaleFloatssToIntss as scaleFloatssToIntss_ } from '../../scale-to-int/scale-floatss-to-intss';
+import { ePremSequenceSubresultant as ePremSequenceSubresultant_ } from "./e-prem-sequence-subresultant.js";
+import { scaleFloatssToIntss as scaleFloatssToIntss_ } from '../../scale-to-int/scale-floatss-to-intss.js';
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const eDifferentiate = eDifferentiate_;
 const ePremSequenceSubresultant = ePremSequenceSubresultant_;

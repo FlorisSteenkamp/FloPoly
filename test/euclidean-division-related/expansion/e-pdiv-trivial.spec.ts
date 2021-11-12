@@ -1,7 +1,6 @@
-
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { ePdivTrivial } from '../../../src/euclidean-division-related/expansion/e-pdiv-trivial';
+import { ePdivTrivial } from '../../../src/euclidean-division-related/expansion/e-pdiv-trivial.js';
 
 
 describe('ePdivTrivial', function() {

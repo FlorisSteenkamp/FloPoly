@@ -1,7 +1,7 @@
 import { eSign as eSign_ } from "big-float-ts";
 import { eSturmChain as eSturmChain_ } from "../../../euclidean-division-related/expansion/e-sturm-chain.js";
-import { signChanges as signChanges_ } from "../double/sign-changes";
-import { eDegree as eDegree_ } from "../../../basic/expansion/e-degree";
+import { signChanges as signChanges_ } from "../double/sign-changes.js";
+import { eDegree as eDegree_ } from "../../../basic/expansion/e-degree.js";
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗

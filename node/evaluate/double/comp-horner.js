@@ -1,5 +1,5 @@
 import { EFTHorner as EFTHorner_ } from "./eft-horner.js";
-import { HornerSum as HornerSum_ } from "./horner-sum";
+import { HornerSum as HornerSum_ } from "./horner-sum.js";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const EFTHorner = EFTHorner_;
 const HornerSum = HornerSum_;

@@ -1,8 +1,8 @@
 import { EFTHorner as EFTHorner_ } from "./eft-horner.js";
-import { hornerWithRunningError as hornerWithRunningError_ } from "./horner-with-running-error";
-import { Horner as Horner_ } from "./horner";
-import { AbsHorner as AbsHorner_ } from "./abs-horner";
-import { γ as γ_ } from "../../error-analysis/gamma";
+import { hornerWithRunningError as hornerWithRunningError_ } from "./horner-with-running-error.js";
+import { Horner as Horner_ } from "./horner.js";
+import { AbsHorner as AbsHorner_ } from "./abs-horner.js";
+import { γ as γ_ } from "../../error-analysis/gamma.js";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const γ = γ_;
 const EFTHorner = EFTHorner_;

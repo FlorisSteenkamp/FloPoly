@@ -1,5 +1,5 @@
-import { RootInterval } from "./root-interval";
-import { RootIntervalExp } from "./root-interval-exp";
+import { RootInterval } from "./root-interval.js";
+import { RootIntervalExp } from "./root-interval-exp.js";
 /**
  * Returns once compensated root(s) (bar underflow / overflow) given a root
  * interval previously calculated using [[allRootsCertified]].

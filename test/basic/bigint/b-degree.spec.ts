@@ -1,4 +1,3 @@
-
 import { expect } from 'chai';
 import { describe } from 'mocha';
 import { bDegree } from '../../../src/index.js';

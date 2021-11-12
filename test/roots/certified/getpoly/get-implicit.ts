@@ -1,9 +1,8 @@
-
 import { 
     twoProduct, ddNegativeOf, ddMultBy2, 
     ddMultDouble2, ddMultDd, ddDiffDd, ddAddDd, ddDivBy2
 } from 'double-double';
-import { getXY } from './get-xy';
+import { getXY } from './get-xy.js';
 
 
 const abs = Math.abs;

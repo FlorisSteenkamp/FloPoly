@@ -1,6 +1,6 @@
 import { hornerWithRunningError as hornerWithRunningError_ } from "./horner-with-running-error.js";
-import { CompHornerK as CompHornerK_ } from "./comp-horner-k";
-import { compHornerWithRunningError as compHornerWithRunningError_ } from "./comp-horner-with-running-error";
+import { CompHornerK as CompHornerK_ } from "./comp-horner-k.js";
+import { compHornerWithRunningError as compHornerWithRunningError_ } from "./comp-horner-with-running-error.js";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const hornerWithRunningError = hornerWithRunningError_;
 const CompHornerK = CompHornerK_;

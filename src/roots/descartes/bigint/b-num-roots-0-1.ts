@@ -1,6 +1,6 @@
 import { bSturmChain as bSturmChain_ } from "../../../euclidean-division-related/bigint/b-sturm-chain.js";
-import { bSignChanges as bSignChanges_ } from "./b-sign-changes";
-import { bEvaluateAt1 as bEvaluateAt1_ } from "../../../evaluate/bigint/b-evaluate-at-1";
+import { bSignChanges as bSignChanges_ } from "./b-sign-changes.js";
+import { bEvaluateAt1 as bEvaluateAt1_ } from "../../../evaluate/bigint/b-evaluate-at-1.js";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const bSturmChain = bSturmChain_;

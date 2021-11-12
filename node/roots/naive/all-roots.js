@@ -1,9 +1,9 @@
 import { differentiate as differentiate_ } from "../../calculus/double/differentiate.js";
-import { Horner as Horner_ } from "../../evaluate/double/horner";
-import { brentPoly as brentPoly_ } from "./brent-poly";
-import { negativeRootLowerBound_LMQ as negativeRootUpperBound_LMQ_ } from "../root-bounds/root-bounds-lmq";
-import { positiveRootUpperBound_LMQ as positiveRootUpperBound_LMQ_ } from "../root-bounds/root-bounds-lmq";
-import { removeLeadingZeros as removeLeadingZeros_ } from "../../basic/double/remove-leading-zeros";
+import { Horner as Horner_ } from "../../evaluate/double/horner.js";
+import { brentPoly as brentPoly_ } from "./brent-poly.js";
+import { negativeRootLowerBound_LMQ as negativeRootUpperBound_LMQ_ } from "../root-bounds/root-bounds-lmq.js";
+import { positiveRootUpperBound_LMQ as positiveRootUpperBound_LMQ_ } from "../root-bounds/root-bounds-lmq.js";
+import { removeLeadingZeros as removeLeadingZeros_ } from "../../basic/double/remove-leading-zeros.js";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const differentiate = differentiate_;
 const Horner = Horner_;

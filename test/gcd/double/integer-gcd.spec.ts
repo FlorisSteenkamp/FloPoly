@@ -1,7 +1,6 @@
-
 import { expect } from 'chai';
 import { describe } from 'mocha';
-import { gcdIntBinary, gcdIntsTree } from '../../../src/gcd/double/integer-gcd';
+import { gcdIntBinary, gcdIntsTree } from '../../../src/gcd/double/integer-gcd.js';
 import { scaleFloatToInt, gcdInt, gcdInts } from '../../../src/index.js';
 import { performance } from 'perf_hooks';
 

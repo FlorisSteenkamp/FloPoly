@@ -1,5 +1,5 @@
 import { RootInterval } from "./root-interval.js";
-import { RootIntervalExp } from "./root-interval-exp";
+import { RootIntervalExp } from "./root-interval-exp.js";
 
 
 /**

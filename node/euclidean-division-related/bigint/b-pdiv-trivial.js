@@ -1,6 +1,6 @@
 import { bDegree as bDegree_ } from "../../basic/bigint/b-degree.js";
-import { bMultiplyByConst as bMultiplyByConst_ } from "../../basic/bigint/b-multiply-by-const";
-import { bPdivInternal as bPdivInternal_ } from './b-pdiv-internal';
+import { bMultiplyByConst as bMultiplyByConst_ } from "../../basic/bigint/b-multiply-by-const.js";
+import { bPdivInternal as bPdivInternal_ } from './b-pdiv-internal.js';
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const bDegree = bDegree_;
 const bMultiplyByConst = bMultiplyByConst_;

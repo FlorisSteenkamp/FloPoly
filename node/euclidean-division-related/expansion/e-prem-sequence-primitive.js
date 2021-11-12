@@ -1,5 +1,5 @@
 import { ePdivTrivial as ePdivTrivial_ } from "./e-pdiv-trivial.js";
-import { ePrimitivePart as eGetPrimitivePart_ } from "../../factor/expansion/e-primitive-part";
+import { ePrimitivePart as eGetPrimitivePart_ } from "../../factor/expansion/e-primitive-part.js";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const ePdivTrivial = ePdivTrivial_;
 const eGetPrimitivePart = eGetPrimitivePart_;

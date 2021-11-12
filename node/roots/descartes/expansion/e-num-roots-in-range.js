@@ -1,6 +1,6 @@
 import { eSturmChain as eSturmChain_ } from "../../../euclidean-division-related/expansion/e-sturm-chain.js";
-import { eeHorner as eeHorner_ } from "../../../evaluate/expansion/e-e-horner";
-import { eSignChanges as eSignChanges_ } from './e-sign-changes';
+import { eeHorner as eeHorner_ } from "../../../evaluate/expansion/e-e-horner.js";
+import { eSignChanges as eSignChanges_ } from './e-sign-changes.js';
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const eeHorner = eeHorner_;
 const eSturmChain = eSturmChain_;
