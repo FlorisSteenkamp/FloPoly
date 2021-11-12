@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bP2NormSquared = void 0;
 /**
  * Returns the `p-2 norm` squared, i.e. the square of the `Euclidean norm` of
  * the given array of bigints.
@@ -17,5 +14,5 @@ function bP2NormSquared(p) {
     }
     return s;
 }
-exports.bP2NormSquared = bP2NormSquared;
+export { bP2NormSquared };
 //# sourceMappingURL=b-p-2-norm-squared.js.map

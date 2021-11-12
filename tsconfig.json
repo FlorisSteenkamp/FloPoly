@@ -1,6 +1,5 @@
 {
     "compilerOptions": {
-        "charset": "utf8",
         "module": "es2020",
         "target": "es2020",
         "strict": true,

@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bGcdInts = exports.bGcdInt = void 0;
 /**
  * Computes and returns the greatest common divisor of two integers a and b,
  * using the [Euclidean Algorithm](https://en.wikipedia.org/wiki/Euclidean_algorithm).
@@ -26,7 +23,6 @@ function bGcdInt(a, b) {
     }
     return a;
 }
-exports.bGcdInt = bGcdInt;
 /**
  * Naively computes and returns the greatest common divisor of 2 or more
  * integers by taking each integer in turn and calculating the GCD of that
@@ -50,5 +46,38 @@ function bGcdInts(vals) {
     }
     return a;
 }
-exports.bGcdInts = bGcdInts;
+/**
+ * * ❗ don't use - too slow - use [[bGcdInts]] instead ❗
+ *
+ * Computes and returns the greatest common divisor of 2 or more integers by
+ * calculating GCDs rescursively using a tree (Divide and Conquer).
+ *
+ * * It turns out this method is *slower* than the naive method
+ */ /*
+function bGcdIntsTree(vals: bigint[]): bigint {
+   const vals_ = vals.slice();
+
+   // make array of numbers all positive
+   for (const i=0; i<vals_.length; i++) {
+       vals_[i] = vals_[i] < 0n ? -vals_[i] : vals_[i];
+   }
+   
+   // Divide and conquer
+   while (vals_.length > 1) {
+       const newVals = [];
+       const len = vals_.length;
+       for (const i=0; i<len-1; i += 2) {
+           newVals.push(bGcdInt(vals_[i], vals_[i+1]));
+       }
+       if (len % 2 !== 0) {
+           newVals.push(vals_[len-1]);
+       }
+
+       vals_ = newVals;
+   }
+   
+   return vals_[0];
+}
+*/
+export { bGcdInt, bGcdInts /*, bGcdIntsTree*/ };
 //# sourceMappingURL=b-integer-gcd.js.map

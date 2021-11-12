@@ -1,15 +1,12 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.ePdivTrivial = void 0;
-const big_float_ts_1 = require("big-float-ts");
-const big_float_ts_2 = require("big-float-ts");
-const e_degree_1 = require("../../basic/expansion/e-degree");
-const e_multiply_by_const_1 = require("../../basic/expansion/e-multiply-by-const");
-const e_pdiv_internal_1 = require("./e-pdiv-internal");
+import { eAbs as eAbs_ } from "big-float-ts";
+import { eIntPow as eIntPow_ } from "big-float-ts";
+import { eDegree as eDegree_ } from "../../basic/expansion/e-degree.js";
+import { eMultiplyByConst } from "../../basic/expansion/e-multiply-by-const";
+import { ePdivInternal } from "./e-pdiv-internal";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eDegree = e_degree_1.eDegree;
-const eAbs = big_float_ts_1.eAbs;
-const eIntPow = big_float_ts_2.eIntPow;
+const eDegree = eDegree_;
+const eAbs = eAbs_;
+const eIntPow = eIntPow_;
 /**
  * Performs a **trivial pseudo-division** and returns the `quotient` and `remainder`
  * of the pseudo division of `a/b` (a, b both being polynomials) in such a way
@@ -60,8 +57,8 @@ function ePdivTrivial(a, b, positiveMultiplier = false) {
     m = positiveMultiplier
         ? eAbs(m)
         : m;
-    const a_ = e_multiply_by_const_1.eMultiplyByConst(m, a);
-    return e_pdiv_internal_1.ePdivInternal(a_, b);
+    const a_ = eMultiplyByConst(m, a);
+    return ePdivInternal(a_, b);
 }
-exports.ePdivTrivial = ePdivTrivial;
+export { ePdivTrivial };
 //# sourceMappingURL=e-pdiv-trivial.js.map

@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.multiply = void 0;
-const remove_leading_zeros_1 = require("./remove-leading-zeros");
+import { removeLeadingZeros as removeLeadingZeros_ } from "./remove-leading-zeros.js";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const removeLeadingZeros = remove_leading_zeros_1.removeLeadingZeros;
+const removeLeadingZeros = removeLeadingZeros_;
 /**
  * Returns the result of multiplying 2 polynomials in double precision.
  *
@@ -38,5 +35,5 @@ function multiply(p1, p2) {
     }
     return removeLeadingZeros(r);
 }
-exports.multiply = multiply;
+export { multiply };
 //# sourceMappingURL=multiply.js.map

@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bAbsCoeff = void 0;
 /**
  * Returns the polynomial with all coeffients the absolute value of the given
  * polynomial.
@@ -19,5 +16,5 @@ function bAbsCoeff(p) {
     }
     return p_;
 }
-exports.bAbsCoeff = bAbsCoeff;
+export { bAbsCoeff };
 //# sourceMappingURL=b-abs-coeff.js.map

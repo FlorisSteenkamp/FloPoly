@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.toCasStr = void 0;
-const big_float_ts_1 = require("big-float-ts");
+import { eEstimate } from "big-float-ts";
 /** @internal */
 function isNumber(x) {
     return typeof x === 'number';
@@ -41,7 +38,7 @@ function toCasStr(p) {
     for (let i = 0; i < d + 1; i++) {
         const _v = p[i];
         const v = isShewchuk(_v)
-            ? big_float_ts_1.eEstimate(_v)
+            ? eEstimate(_v)
             : _v; // bigint or number
         const absV = isBigint(v)
             ? (_v < 0n ? -v : v)
@@ -60,7 +57,6 @@ function toCasStr(p) {
     }
     return str;
 }
-exports.toCasStr = toCasStr;
 /**
  * from https://stackoverflow.com/a/46545519/2010061
  *
@@ -88,4 +84,5 @@ function nonNegativeNumberToString(num) {
     }
     return numStr;
 }
+export { toCasStr };
 //# sourceMappingURL=to-cas-str.js.map

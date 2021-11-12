@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bAdd = void 0;
-const b_remove_leading_zeros_1 = require("./b-remove-leading-zeros");
+import { bRemoveLeadingZeros as bRemoveLeadingZeros_ } from "./b-remove-leading-zeros.js";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const bRemoveLeadingZeros = b_remove_leading_zeros_1.bRemoveLeadingZeros;
+const bRemoveLeadingZeros = bRemoveLeadingZeros_;
 /**
  * Returns the result of adding two polynomials with bigint coefficients.
  *
@@ -37,5 +34,5 @@ function bAdd(p1, p2) {
     // Ensure the result is a valid polynomial representation
     return bRemoveLeadingZeros(result);
 }
-exports.bAdd = bAdd;
+export { bAdd };
 //# sourceMappingURL=b-add.js.map

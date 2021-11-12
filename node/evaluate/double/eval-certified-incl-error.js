@@ -1,17 +1,14 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.evalCertifiedInclError = void 0;
-const eft_horner_1 = require("./eft-horner");
-const horner_with_running_error_1 = require("./horner-with-running-error");
-const horner_1 = require("./horner");
-const abs_horner_1 = require("./abs-horner");
-const gamma_1 = require("../../error-analysis/gamma");
+import { EFTHorner as EFTHorner_ } from "./eft-horner.js";
+import { hornerWithRunningError as hornerWithRunningError_ } from "./horner-with-running-error";
+import { Horner as Horner_ } from "./horner";
+import { AbsHorner as AbsHorner_ } from "./abs-horner";
+import { γ as γ_ } from "../../error-analysis/gamma";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const γ = gamma_1.γ;
-const EFTHorner = eft_horner_1.EFTHorner;
-const hornerWithRunningError = horner_with_running_error_1.hornerWithRunningError;
-const Horner = horner_1.Horner;
-const AbsHorner = abs_horner_1.AbsHorner;
+const γ = γ_;
+const EFTHorner = EFTHorner_;
+const hornerWithRunningError = hornerWithRunningError_;
+const Horner = Horner_;
+const AbsHorner = AbsHorner_;
 const γ1 = γ(1);
 const γ2 = γ(2);
 /**
@@ -85,5 +82,5 @@ function evalCertifiedInclError(p, x, pE = undefined, multiplier = 1) {
     // error is still too large to return the correct sign (if multiplier === 1)
     return { r̂: 0, e };
 }
-exports.evalCertifiedInclError = evalCertifiedInclError;
+export { evalCertifiedInclError };
 //# sourceMappingURL=eval-certified-incl-error.js.map

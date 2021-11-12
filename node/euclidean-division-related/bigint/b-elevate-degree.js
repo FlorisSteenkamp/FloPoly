@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bElevateDegree = void 0;
 /**
  * Returns the result of elevating the given polynomial by the given degree.
  *
@@ -16,5 +13,5 @@ function bElevateDegree(p, deg) {
     }
     return p_;
 }
-exports.bElevateDegree = bElevateDegree;
+export { bElevateDegree };
 //# sourceMappingURL=b-elevate-degree.js.map

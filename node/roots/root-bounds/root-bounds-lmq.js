@@ -1,13 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.negativeRootUpperBound_LMQ = exports.negativeRootLowerBound_LMQ = exports.positiveRootLowerBound_LMQ = exports.positiveRootUpperBound_LMQ = void 0;
-const negate_1 = require("../../basic/double/negate");
-const upper_to_lower_bound_1 = require("./upper-to-lower-bound");
-const positive_to_negative_bound_1 = require("./positive-to-negative-bound");
+import { negate as negate_ } from "../../basic/double/negate.js";
+import { upperToLowerBound as upperToLowerBound_ } from "./upper-to-lower-bound";
+import { positiveToNegativeBound as positiveToNegativeBound_ } from "./positive-to-negative-bound";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const negate = negate_1.negate;
-const upperToLowerBound = upper_to_lower_bound_1.upperToLowerBound;
-const positiveToNegativeBound = positive_to_negative_bound_1.positiveToNegativeBound;
+const negate = negate_;
+const upperToLowerBound = upperToLowerBound_;
+const positiveToNegativeBound = positiveToNegativeBound_;
 /**
  * Returns an upper bound for the positive real roots of the given polynomial.
  *
@@ -62,7 +59,6 @@ function positiveRootUpperBound_LMQ(p) {
     }
     return ub;
 }
-exports.positiveRootUpperBound_LMQ = positiveRootUpperBound_LMQ;
 /**
  * Returns a positive lower bound of the real roots of the given polynomial
  *
@@ -76,7 +72,6 @@ exports.positiveRootUpperBound_LMQ = positiveRootUpperBound_LMQ;
  * @doc
  */
 const positiveRootLowerBound_LMQ = upperToLowerBound(positiveRootUpperBound_LMQ);
-exports.positiveRootLowerBound_LMQ = positiveRootLowerBound_LMQ;
 /**
  * Returns a negative lower (further from zero) bound of the real roots of the
  * given polynomial.
@@ -91,7 +86,6 @@ exports.positiveRootLowerBound_LMQ = positiveRootLowerBound_LMQ;
  * @doc
  */
 const negativeRootLowerBound_LMQ = positiveToNegativeBound(positiveRootUpperBound_LMQ);
-exports.negativeRootLowerBound_LMQ = negativeRootLowerBound_LMQ;
 /**
  * Returns a negative upper (closer to zero) bound of the real roots of the
  * given polynomial.
@@ -106,5 +100,5 @@ exports.negativeRootLowerBound_LMQ = negativeRootLowerBound_LMQ;
  * @doc
  */
 const negativeRootUpperBound_LMQ = upperToLowerBound(negativeRootLowerBound_LMQ);
-exports.negativeRootUpperBound_LMQ = negativeRootUpperBound_LMQ;
+export { positiveRootUpperBound_LMQ, positiveRootLowerBound_LMQ, negativeRootLowerBound_LMQ, negativeRootUpperBound_LMQ };
 //# sourceMappingURL=root-bounds-lmq.js.map

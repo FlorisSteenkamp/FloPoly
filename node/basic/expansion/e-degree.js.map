@@ -1,1 +1,1 @@
-{"version":3,"file":"e-degree.js","sourceRoot":"","sources":["../../../src/basic/expansion/e-degree.ts"],"names":[],"mappings":";;;AAAA;;;;;;;;;;;;;;GAcG;AACH,SAAS,OAAO,CAAC,CAAa;IAC7B,OAAO,CAAC,CAAC,MAAM,GAAC,CAAC,CAAC;AACnB,CAAC;AAGQ,0BAAO"}
+{"version":3,"file":"e-degree.js","sourceRoot":"","sources":["../../../src/basic/expansion/e-degree.ts"],"names":[],"mappings":"AAAA;;;;;;;;;;;;;;GAcG;AACH,SAAS,OAAO,CAAC,CAAa;IAC7B,OAAO,CAAC,CAAC,MAAM,GAAC,CAAC,CAAC;AACnB,CAAC;AAGD,OAAO,EAAE,OAAO,EAAE,CAAA"}

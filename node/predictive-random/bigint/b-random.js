@@ -1,8 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bFlatCoefficientsArr = exports.bFlatCoefficients = exports.bFlatRootsArr = exports.bFlatRoots = void 0;
-const random_1 = require("../double/random");
-const scale_floats_to_bigints_1 = require("../../scale-to-int/scale-floats-to-bigints");
+import { flatRoots, flatRootsArr, flatCoefficients, flatCoefficientsArr } from "../double/random.js";
+import { scaleFloatsToBigints } from "../../scale-to-int/scale-floats-to-bigints";
 /**
  * Some seed value for the simple random number generator.
  *
@@ -30,10 +27,9 @@ const SEED = 123456789;
  * @doc
  */
 function bFlatRoots(d, a = 0, b = 1, seed = SEED, odds = 0) {
-    const res = random_1.flatRoots(d, a, b, seed, odds);
-    return { p: scale_floats_to_bigints_1.scaleFloatsToBigints(res.p), seed: res.seed };
+    const res = flatRoots(d, a, b, seed, odds);
+    return { p: scaleFloatsToBigints(res.p), seed: res.seed };
 }
-exports.bFlatRoots = bFlatRoots;
 /**
  * Generates and returns an array of polynomials with random **roots** (with
  * coefficients given densely as an array of bigints from highest to
@@ -56,9 +52,8 @@ exports.bFlatRoots = bFlatRoots;
  * @doc
  */
 function bFlatRootsArr(n, d, a = 0, b = 1, seed = SEED, odds = 0) {
-    return random_1.flatRootsArr(n, d, a, b, seed, odds).map(scale_floats_to_bigints_1.scaleFloatsToBigints);
+    return flatRootsArr(n, d, a, b, seed, odds).map(scaleFloatsToBigints);
 }
-exports.bFlatRootsArr = bFlatRootsArr;
 /**
  * Generates and returns a polynomial with random **coefficients**
  * (with coefficients given densely as an array of bigints from highest to
@@ -77,10 +72,9 @@ exports.bFlatRootsArr = bFlatRootsArr;
  * @doc
  */
 function bFlatCoefficients(d, a = 0, b = 1, seed = SEED) {
-    const res = random_1.flatCoefficients(d, a, b, seed);
-    return { p: scale_floats_to_bigints_1.scaleFloatsToBigints(res.p), seed: res.seed };
+    const res = flatCoefficients(d, a, b, seed);
+    return { p: scaleFloatsToBigints(res.p), seed: res.seed };
 }
-exports.bFlatCoefficients = bFlatCoefficients;
 /**
  * Generates and returns an array of polynomials with random **coefficients**
  * (with coefficients given densely as an array of bigints from highest to
@@ -100,7 +94,7 @@ exports.bFlatCoefficients = bFlatCoefficients;
  * @doc
  */
 function bFlatCoefficientsArr(n, d, a = 0, b = 1, seed = SEED, odds = 0) {
-    return random_1.flatCoefficientsArr(n, d, a, b, seed, odds).map(scale_floats_to_bigints_1.scaleFloatsToBigints);
+    return flatCoefficientsArr(n, d, a, b, seed, odds).map(scaleFloatsToBigints);
 }
-exports.bFlatCoefficientsArr = bFlatCoefficientsArr;
+export { bFlatRoots, bFlatRootsArr, bFlatCoefficients, bFlatCoefficientsArr };
 //# sourceMappingURL=b-random.js.map

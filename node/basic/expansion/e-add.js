@@ -1,11 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.eAdd = void 0;
-const e_remove_leading_zeros_1 = require("./e-remove-leading-zeros");
-const big_float_ts_1 = require("big-float-ts");
+import { eRemoveLeadingZeros as eRemoveLeadingZeros_ } from "./e-remove-leading-zeros.js";
+import { fastExpansionSum as fastExpansionSum_ } from "big-float-ts";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const fastExpansionSum = big_float_ts_1.fastExpansionSum;
-const eRemoveLeadingZeros = e_remove_leading_zeros_1.eRemoveLeadingZeros;
+const fastExpansionSum = fastExpansionSum_;
+const eRemoveLeadingZeros = eRemoveLeadingZeros_;
 /**
  * Returns the exact result (bar underflow / overflow) of adding two
  * polynomials with coefficients given as Shewchuk floating point expansions.
@@ -40,5 +37,5 @@ function eAdd(p1, p2) {
     // Ensure the result is a valid polynomial representation
     return eRemoveLeadingZeros(result);
 }
-exports.eAdd = eAdd;
+export { eAdd };
 //# sourceMappingURL=e-add.js.map

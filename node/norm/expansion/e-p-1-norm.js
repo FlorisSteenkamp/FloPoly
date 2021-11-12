@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.eP1Norm = void 0;
-const big_float_ts_1 = require("big-float-ts");
+import { eEstimate as eEstimate_ } from "big-float-ts";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eEstimate = big_float_ts_1.eEstimate;
+const eEstimate = eEstimate_;
 /**
  * Returns the `p-1 norm`, a.k.a. `Taxicab norm`, i.e. the sum of the absolute
  * values of the given array of Shewchuk expansions (with intermediate
@@ -23,5 +20,5 @@ function eP1Norm(p) {
     }
     return s;
 }
-exports.eP1Norm = eP1Norm;
+export { eP1Norm };
 //# sourceMappingURL=e-p-1-norm.js.map

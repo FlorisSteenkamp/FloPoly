@@ -1,13 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.eMultiply = void 0;
-const e_remove_leading_zeros_1 = require("./e-remove-leading-zeros");
-const big_float_ts_1 = require("big-float-ts");
-const big_float_ts_2 = require("big-float-ts");
+import { eRemoveLeadingZeros as eRemoveLeadingZeros_ } from "./e-remove-leading-zeros.js";
+import { expansionProduct as expansionProduct_ } from "big-float-ts";
+import { fastExpansionSum as fastExpansionSum_ } from "big-float-ts";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eRemoveLeadingZeros = e_remove_leading_zeros_1.eRemoveLeadingZeros;
-const expansionProduct = big_float_ts_1.expansionProduct;
-const fastExpansionSum = big_float_ts_2.fastExpansionSum;
+const eRemoveLeadingZeros = eRemoveLeadingZeros_;
+const expansionProduct = expansionProduct_;
+const fastExpansionSum = fastExpansionSum_;
 /**
  * Returns the exact result (bar underflow / overflow) of multiplying two
  * polynomials (with coefficients given as Shewchuk floating point expansions).
@@ -44,5 +41,5 @@ function eMultiply(a, b) {
     }
     return eRemoveLeadingZeros(result);
 }
-exports.eMultiply = eMultiply;
+export { eMultiply };
 //# sourceMappingURL=e-multiply.js.map

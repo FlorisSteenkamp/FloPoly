@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.predictiveRandom = exports.flatCoefficientsArr = exports.flatCoefficients = exports.flatRootsArr = exports.flatRoots = void 0;
-const from_roots_1 = require("../../roots/from-roots/double/from-roots");
+import { fromRoots } from '../../roots/from-roots/double/from-roots.js';
 /**
  * Arbitrary seed value for the simple random number generator.
  *
@@ -64,7 +61,6 @@ function createArrFunction(f) {
  * @doc
  */
 const flatRootsArr = createArrFunction(flatRoots);
-exports.flatRootsArr = flatRootsArr;
 /**
  * Generates and returns an array of polynomials with random **coefficients** (with coefficients
  * given densely as an array of double floating point numbers from highest to
@@ -90,7 +86,6 @@ exports.flatRootsArr = flatRootsArr;
  * @doc
  */
 const flatCoefficientsArr = createArrFunction(flatCoefficients);
-exports.flatCoefficientsArr = flatCoefficientsArr;
 /**
  * Returns a quasi-random number to be used as the next input to this function.
  *
@@ -104,7 +99,6 @@ function predictiveRandom(seed) {
     const a = 134775813;
     return (a * seed + 1) % RANGE;
 }
-exports.predictiveRandom = predictiveRandom;
 /**
  * Generates a random array of numbers picked from a bounded flat
  * distribution (i.e. a rectangular distribution) with specified odds of
@@ -179,10 +173,9 @@ function push(seed, values, x, odds) {
 function flatRoots(d, a = 0, b = 1, seed = SEED, odds = 0) {
     const randArr = randomArray(d, a, b, seed, odds);
     seed = randArr.seed;
-    const p = from_roots_1.fromRoots(randArr.vs);
+    const p = fromRoots(randArr.vs);
     return { p, seed };
 }
-exports.flatRoots = flatRoots;
 /**
  * Generates and returns an array of polynomials with random **coefficients** (with coefficients
  * given densely as an array of double floating point numbers from highest to
@@ -214,5 +207,5 @@ function flatCoefficients(d, a = -1, b = +1, seed = SEED) {
     const p = randArr.vs;
     return { p, seed };
 }
-exports.flatCoefficients = flatCoefficients;
+export { flatRoots, flatRootsArr, flatCoefficients, flatCoefficientsArr, predictiveRandom };
 //# sourceMappingURL=random.js.map

@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.eEvaluateAt0 = void 0;
 /**
  * Returns the constant term of the given polynomial.
  *
@@ -18,5 +15,5 @@ exports.eEvaluateAt0 = void 0;
 function eEvaluateAt0(p) {
     return p.length === 0 ? [0] : p[p.length - 1];
 }
-exports.eEvaluateAt0 = eEvaluateAt0;
+export { eEvaluateAt0 };
 //# sourceMappingURL=e-evaluate-at-0.js.map

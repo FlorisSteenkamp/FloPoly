@@ -1,13 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.ddDifferentiateWithError = void 0;
-const gamma_1 = require("../../error-analysis/gamma");
-const double_double_1 = require("double-double");
-const big_float_ts_1 = require("big-float-ts");
+import { γγ } from '../../error-analysis/gamma.js';
+import { ddMultDouble2 as ddMultDouble2_ } from "double-double";
+import { eEstimate as eEstimate_ } from "big-float-ts";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const ddMultDouble2 = double_double_1.ddMultDouble2;
-const eEstimate = big_float_ts_1.eEstimate;
-const γγ3 = gamma_1.γγ(3);
+const ddMultDouble2 = ddMultDouble2_;
+const eEstimate = eEstimate_;
+const γγ3 = γγ(3);
 /**
  * Returns the result (and resulting coefficient-wise error bound) of
  * differentiating the given polynomial (with coefficients given in
@@ -41,5 +38,5 @@ function ddDifferentiateWithError(pWithErr) {
     }
     return { p: dp, pE: dpE };
 }
-exports.ddDifferentiateWithError = ddDifferentiateWithError;
+export { ddDifferentiateWithError };
 //# sourceMappingURL=dd-differentiate-with-err.js.map

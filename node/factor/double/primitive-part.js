@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.primitivePart = void 0;
-const content_1 = require("./content");
+import { content as content_ } from "./content.js";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const getContent = content_1.content;
+const getContent = content_;
 /**
  * Returns the primitive part of the given polynomial.
  *
@@ -30,5 +27,5 @@ function primitivePart(p) {
     }
     return p_;
 }
-exports.primitivePart = primitivePart;
+export { primitivePart };
 //# sourceMappingURL=primitive-part.js.map

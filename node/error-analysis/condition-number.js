@@ -1,8 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.conditionNumber = void 0;
-const abs_coeff_1 = require("../basic/double/abs-coeff");
-const comp_horner_k_1 = require("../evaluate/double/comp-horner-k");
+import { absCoeff } from "../basic/double/abs-coeff.js";
+import { CompHornerK } from "../evaluate/double/comp-horner-k";
 /**
  * Returns an accurate estimate (K === 4 => double-double-double-double
  * precision) of the condition number of the given polynomial when evaluated at
@@ -17,11 +14,11 @@ const comp_horner_k_1 = require("../evaluate/double/comp-horner-k");
  * @doc
  */
 function conditionNumber(p, x) {
-    const pN = abs_coeff_1.absCoeff(p);
+    const pN = absCoeff(p);
     const pD = p;
-    const N = comp_horner_k_1.CompHornerK(pN, x, 4);
-    const D = Math.abs(comp_horner_k_1.CompHornerK(pD, x, 4));
+    const N = CompHornerK(pN, x, 4);
+    const D = Math.abs(CompHornerK(pD, x, 4));
     return Math.abs(N / D);
 }
-exports.conditionNumber = conditionNumber;
+export { conditionNumber };
 //# sourceMappingURL=condition-number.js.map

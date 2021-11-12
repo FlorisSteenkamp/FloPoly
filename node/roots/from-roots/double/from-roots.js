@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.fromRoots = void 0;
-const multiply_1 = require("../../../basic/double/multiply");
+import { multiply as multiply_ } from "../../../basic/double/multiply.js";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const multiply = multiply_1.multiply;
+const multiply = multiply_;
 /**
  * Constructs a polynomial from the given roots by multiplying out the
  * factors (x - root1)(x - root2) in double precision
@@ -38,5 +35,5 @@ function fromRoots(roots) {
     }
     return p;
 }
-exports.fromRoots = fromRoots;
+export { fromRoots };
 //# sourceMappingURL=from-roots.js.map

@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.eAbsCoeff = void 0;
-const big_float_ts_1 = require("big-float-ts");
+import { eAbs as eAbs_ } from "big-float-ts";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eAbs = big_float_ts_1.eAbs;
+const eAbs = eAbs_;
 /**
  * Returns the polynomial with all coeffients the absolute value of the given
  * polynomial.
@@ -21,5 +18,5 @@ function eAbsCoeff(p) {
     }
     return p_;
 }
-exports.eAbsCoeff = eAbsCoeff;
+export { eAbsCoeff };
 //# sourceMappingURL=e-abs-coeff.js.map

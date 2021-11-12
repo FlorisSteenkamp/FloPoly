@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bInvert = void 0;
 /**
  * Inverts the given polynomial by reversing the order of the coefficients,
  * i.e. p(x) -> x^deg(p) * p(1/x)
@@ -19,5 +16,5 @@ exports.bInvert = void 0;
 function bInvert(p) {
     return p.slice().reverse();
 }
-exports.bInvert = bInvert;
+export { bInvert };
 //# sourceMappingURL=b-invert.js.map

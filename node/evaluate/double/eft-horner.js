@@ -1,11 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.EFTHorner = void 0;
-const big_float_ts_1 = require("big-float-ts");
-const big_float_ts_2 = require("big-float-ts");
+import { twoProduct as twoProduct_ } from "big-float-ts";
+import { twoSum as twoSum_ } from "big-float-ts";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const twoSum = big_float_ts_2.twoSum;
-const twoProduct = big_float_ts_1.twoProduct;
+const twoSum = twoSum_;
+const twoProduct = twoProduct_;
 /**
  * Returns an EFT (error free transformation) for the Horner evaluation of a
  * polymial at a specified x. The result is returned as an object with
@@ -40,5 +37,7 @@ function EFTHorner(p, x) {
     }
     return { r̂, pπ, pσ };
 }
-exports.EFTHorner = EFTHorner;
+// inlined
+//const pπ: number[] = []; const pσ: number[] = []; const σ: number; const r̂ = p[0];	for (const i=1; i<p.length; i++) { const [π,pi] = twoProduct(r̂,x); [σ,r̂] = twoSum(pi, p[i]); pπ.push(π); pσ.push(σ); } return { r̂, pπ, pσ }
+export { EFTHorner };
 //# sourceMappingURL=eft-horner.js.map

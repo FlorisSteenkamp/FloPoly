@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bPInfNorm = void 0;
 /**
  * Returns the `p-infinity norm`, i.e. the maximum magnitude absolute value
  * within the given array of bigints / coefficients.
@@ -21,5 +18,5 @@ function bPInfNorm(p) {
     }
     return max;
 }
-exports.bPInfNorm = bPInfNorm;
+export { bPInfNorm };
 //# sourceMappingURL=b-p-inf-norm.js.map

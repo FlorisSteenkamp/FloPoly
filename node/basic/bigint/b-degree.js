@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bDegree = void 0;
 /**
  * Returns the degree of the given polynomial - the zero polynomial degree is
  * returned as -1 (and not -∞ as is conventional).
@@ -19,5 +16,5 @@ exports.bDegree = void 0;
 function bDegree(p) {
     return p.length - 1;
 }
-exports.bDegree = bDegree;
+export { bDegree };
 //# sourceMappingURL=b-degree.js.map

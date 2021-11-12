@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.rootIntervalToExp = void 0;
 /**
  * Returns the result of converting a double precision root interval to a
  * double-double precision one
@@ -16,5 +13,5 @@ function rootIntervalToExp(ri) {
         multiplicity: ri.multiplicity
     };
 }
-exports.rootIntervalToExp = rootIntervalToExp;
+export { rootIntervalToExp };
 //# sourceMappingURL=root-interval-to-exp.js.map

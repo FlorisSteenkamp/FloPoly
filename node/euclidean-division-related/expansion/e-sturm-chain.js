@@ -1,13 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.eSturmChain = void 0;
-const e_differentiate_1 = require("../../calculus/expansion/e-differentiate");
-const e_prem_sequence_subresultant_1 = require("./e-prem-sequence-subresultant");
-const scale_floatss_to_intss_1 = require("../../scale-to-int/scale-floatss-to-intss");
+import { eDifferentiate as eDifferentiate_ } from '../../calculus/expansion/e-differentiate.js';
+import { ePremSequenceSubresultant as ePremSequenceSubresultant_ } from "./e-prem-sequence-subresultant";
+import { scaleFloatssToIntss as scaleFloatssToIntss_ } from '../../scale-to-int/scale-floatss-to-intss';
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eDifferentiate = e_differentiate_1.eDifferentiate;
-const ePremSequenceSubresultant = e_prem_sequence_subresultant_1.ePremSequenceSubresultant;
-const scaleFloatssToIntss = scale_floatss_to_intss_1.scaleFloatssToIntss;
+const eDifferentiate = eDifferentiate_;
+const ePremSequenceSubresultant = ePremSequenceSubresultant_;
+const scaleFloatssToIntss = scaleFloatssToIntss_;
 /**
  * Returns the Sturm chain for the given polynomial using pseudo remainders.
  *
@@ -30,5 +27,5 @@ function eSturmChain(p) {
     const dp = eDifferentiate(p);
     return ePremSequenceSubresultant(p, dp, true);
 }
-exports.eSturmChain = eSturmChain;
+export { eSturmChain };
 //# sourceMappingURL=e-sturm-chain.js.map

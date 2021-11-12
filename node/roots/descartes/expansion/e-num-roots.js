@@ -1,15 +1,12 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.eNumRoots = void 0;
-const big_float_ts_1 = require("big-float-ts");
-const e_sturm_chain_1 = require("../../../euclidean-division-related/expansion/e-sturm-chain");
-const sign_changes_1 = require("../double/sign-changes");
-const e_degree_1 = require("../../../basic/expansion/e-degree");
+import { eSign as eSign_ } from "big-float-ts";
+import { eSturmChain as eSturmChain_ } from "../../../euclidean-division-related/expansion/e-sturm-chain.js";
+import { signChanges as signChanges_ } from "../double/sign-changes";
+import { eDegree as eDegree_ } from "../../../basic/expansion/e-degree";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const signChanges = sign_changes_1.signChanges;
-const eSign = big_float_ts_1.eSign;
-const eDegree = e_degree_1.eDegree;
-const eSturmChain = e_sturm_chain_1.eSturmChain;
+const signChanges = signChanges_;
+const eSign = eSign_;
+const eDegree = eDegree_;
+const eSturmChain = eSturmChain_;
 /**
  * Returns the *exact* number of *distinct* real roots in the interval (-∞,+∞)
  * of the given polynomial - subject to floating point underflow / overflow of
@@ -37,5 +34,5 @@ function eNumRoots(p) {
     const bs = ps.map(p => eSign(p[0]));
     return signChanges(as) - signChanges(bs);
 }
-exports.eNumRoots = eNumRoots;
+export { eNumRoots };
 //# sourceMappingURL=e-num-roots.js.map

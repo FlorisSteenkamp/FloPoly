@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.hornerWithRunningError = void 0;
 const abs = Math.abs;
 const u = Number.EPSILON / 2;
 /**
@@ -27,5 +24,7 @@ function hornerWithRunningError(p, x) {
     e = u * (2 * e - abs(r̂));
     return [r̂, e];
 }
-exports.hornerWithRunningError = hornerWithRunningError;
+// inlined (where r̂ => r, e => e1, p => p0)
+//let r = p0[0]; let e1 = Math.abs(r) / 2; for (let i=1; i<p0.length; i++) { r = r*x + p0[i]; e1 = Math.abs(x)*e1 + Math.abs(r); } e1 = Number.EPSILON * (2*e1 - Math.abs(r));
+export { hornerWithRunningError };
 //# sourceMappingURL=horner-with-running-error.js.map

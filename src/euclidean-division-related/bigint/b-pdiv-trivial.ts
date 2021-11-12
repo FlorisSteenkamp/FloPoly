@@ -1,4 +1,4 @@
-import { bDegree as bDegree_ } from "../../basic/bigint/b-degree.js";import { bDegree as bDegree_ } from "../../basic/bigint/b-degree.jsimport { bDegree as bDegree_ } from "../../basic/bigint/b-degree.js
+import { bDegree as bDegree_ } from "../../basic/bigint/b-degree.js";
 import { bMultiplyByConst as bMultiplyByConst_ } from "../../basic/bigint/b-multiply-by-const";
 import { bPdivInternal as bPdivInternal_ } from './b-pdiv-internal';
 

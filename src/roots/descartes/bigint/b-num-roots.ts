@@ -1,4 +1,4 @@
-import { bSturmChain as bSturmChain_ } from "../../../euclidean-division-related/bigint/b-sturm-chain.js";import { bSturmChain as bSturmChain_ } from "../../../euclidean-division-related/bigint/b-sturm-chain.jsimport { bSturmChain as bSturmChain_ } from "../../../euclidean-division-related/bigint/b-sturm-chain.js
+import { bSturmChain as bSturmChain_ } from "../../../euclidean-division-related/bigint/b-sturm-chain.js";
 import { bDegree as bDegree_ } from "../../../basic/bigint/b-degree";
 import { bSignChanges as bSignChanges_ } from "./b-sign-changes";
 

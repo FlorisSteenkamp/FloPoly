@@ -1,11 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.ddDeflate = void 0;
-const double_double_1 = require("double-double");
-const double_double_2 = require("double-double");
+import { ddMultDouble2 } from "double-double";
+import { ddAddDd } from "double-double";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const qmd = double_double_1.ddMultDouble2;
-const qaq = double_double_2.ddAddDd;
+const qmd = ddMultDouble2;
+const qaq = ddAddDd;
 /**
  * Deflates the given polynomial *approximately* by removing a factor (x - r),
  * where r is a root of the polynomial.
@@ -37,5 +34,5 @@ function ddDeflate(p, root) {
     }
     return bs;
 }
-exports.ddDeflate = ddDeflate;
+export { ddDeflate };
 //# sourceMappingURL=dd-deflate.js.map

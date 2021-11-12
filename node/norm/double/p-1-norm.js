@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.p1Norm = void 0;
 /**
  * Returns the `p-1 norm`, a.k.a. `Taxicab norm`, i.e. the sum of the absolute
  * values of the given array of numbers (with intermediate calculations done
@@ -20,5 +17,5 @@ function p1Norm(p) {
     }
     return s;
 }
-exports.p1Norm = p1Norm;
+export { p1Norm };
 //# sourceMappingURL=p-1-norm.js.map

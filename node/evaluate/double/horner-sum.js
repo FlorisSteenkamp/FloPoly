@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.HornerSum = void 0;
 /**
  * * helper function
  *
@@ -16,5 +13,5 @@ function HornerSum(p1, p2, a) {
     }
     return result;
 }
-exports.HornerSum = HornerSum;
+export { HornerSum };
 //# sourceMappingURL=horner-sum.js.map

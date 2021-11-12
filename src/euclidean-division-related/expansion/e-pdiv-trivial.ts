@@ -1,6 +1,6 @@
 import { eAbs as eAbs_ } from "big-float-ts";
 import { eIntPow as eIntPow_ } from "big-float-ts";
-import { eDegree as eDegree_ } from "../../basic/expansion/e-degree.js";import { eDegree as eDegree_ } from "../../basic/expansion/e-degree.jsimport { eDegree as eDegree_ } from "../../basic/expansion/e-degree.js
+import { eDegree as eDegree_ } from "../../basic/expansion/e-degree.js";
 import { eMultiplyByConst } from "../../basic/expansion/e-multiply-by-const";
 import { ePdivInternal } from "./e-pdiv-internal";
 

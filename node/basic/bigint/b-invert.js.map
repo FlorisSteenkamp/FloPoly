@@ -1,1 +1,1 @@
-{"version":3,"file":"b-invert.js","sourceRoot":"","sources":["../../../src/basic/bigint/b-invert.ts"],"names":[],"mappings":";;;AAAA;;;;;;;;;;;;;;GAcG;AACH,SAAS,OAAO,CAAC,CAAW;IAC3B,OAAO,CAAC,CAAC,KAAK,EAAE,CAAC,OAAO,EAAE,CAAC;AAC5B,CAAC;AAGQ,0BAAO"}
+{"version":3,"file":"b-invert.js","sourceRoot":"","sources":["../../../src/basic/bigint/b-invert.ts"],"names":[],"mappings":"AAAA;;;;;;;;;;;;;;GAcG;AACH,SAAS,OAAO,CAAC,CAAW;IAC3B,OAAO,CAAC,CAAC,KAAK,EAAE,CAAC,OAAO,EAAE,CAAC;AAC5B,CAAC;AAGD,OAAO,EAAE,OAAO,EAAE,CAAA"}

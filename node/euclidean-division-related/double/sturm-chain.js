@@ -1,11 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.sturmChain = void 0;
-const e_differentiate_1 = require("../../calculus/expansion/e-differentiate");
-const e_prem_sequence_subresultant_1 = require("../expansion/e-prem-sequence-subresultant");
+import { eDifferentiate as eDifferentiate_ } from '../../calculus/expansion/e-differentiate.js';
+import { ePremSequenceSubresultant as ePremSequenceSubresultant_ } from "../expansion/e-prem-sequence-subresultant";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eDifferentiate = e_differentiate_1.eDifferentiate;
-const ePremSequenceSubresultant = e_prem_sequence_subresultant_1.ePremSequenceSubresultant;
+const eDifferentiate = eDifferentiate_;
+const ePremSequenceSubresultant = ePremSequenceSubresultant_;
 /**
  * Returns the Sturm chain for the given polynomial using pseudo remainders
  * with the resulting polynomials given with coefficients as Shewchuk
@@ -36,5 +33,5 @@ function sturmChain(p) {
     const dp = eDifferentiate(p_);
     return ePremSequenceSubresultant(p_, dp, true);
 }
-exports.sturmChain = sturmChain;
+export { sturmChain };
 //# sourceMappingURL=sturm-chain.js.map

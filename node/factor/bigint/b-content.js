@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bContent = void 0;
-const b_integer_gcd_1 = require("../../gcd/bigint/b-integer-gcd");
+import { bGcdInts as bGcdInts_ } from "../../gcd/bigint/b-integer-gcd.js";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const bGcdInts = b_integer_gcd_1.bGcdInts;
+const bGcdInts = bGcdInts_;
 // for some reason the tests fails if not done like below likely because Node
 // and TypeScript and BigInt doesn't work perfectly together yet
 const b1 = 1n;
@@ -32,5 +29,5 @@ function bContent(p) {
     }
     return p[0] < 0n ? -bGcdInts(p) : bGcdInts(p);
 }
-exports.bContent = bContent;
+export { bContent };
 //# sourceMappingURL=b-content.js.map

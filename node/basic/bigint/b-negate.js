@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bNegate = void 0;
 /**
  * Returns the negative of the given polynomial (p -> -p).
  *
@@ -22,5 +19,5 @@ function bNegate(p) {
     }
     return p_;
 }
-exports.bNegate = bNegate;
+export { bNegate };
 //# sourceMappingURL=b-negate.js.map

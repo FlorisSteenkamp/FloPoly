@@ -1,13 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.numRootsInRange = void 0;
-const sturm_chain_1 = require("../../../euclidean-division-related/double/sturm-chain");
-const e_horner_1 = require("../../../evaluate/expansion/e-horner");
-const e_sign_changes_1 = require("../expansion/e-sign-changes");
+import { sturmChain as sturmChain_ } from "../../../euclidean-division-related/double/sturm-chain.js";
+import { eHorner as eHorner_ } from "../../../evaluate/expansion/e-horner";
+import { eSignChanges as eSignChanges_ } from '../expansion/e-sign-changes';
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const sturmChain = sturm_chain_1.sturmChain;
-const eHorner = e_horner_1.eHorner;
-const eSignChanges = e_sign_changes_1.eSignChanges;
+const sturmChain = sturmChain_;
+const eHorner = eHorner_;
+const eSignChanges = eSignChanges_;
 /**
  * Returns the *exact* number of *distinct* real roots in the open
  * interval (a,b) of the given polynomial - subject to floating point
@@ -36,5 +33,5 @@ function numRootsInRange(p, a, b) {
     const bs = ps.map(p => eHorner(p, b));
     return eSignChanges(as) - eSignChanges(bs);
 }
-exports.numRootsInRange = numRootsInRange;
+export { numRootsInRange };
 //# sourceMappingURL=num-roots-in-range.js.map

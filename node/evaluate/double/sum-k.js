@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.SumK = void 0;
-const vec_sum_1 = require("./vec-sum");
+import { vecSum as vecSum_ } from "./vec-sum.js";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const vecSum = vec_sum_1.vecSum;
+const vecSum = vecSum_;
 /**
  * * helper function - K compensated vector sum
  *
@@ -24,5 +21,5 @@ function SumK(p, K) {
     }
     return res;
 }
-exports.SumK = SumK;
+export { SumK };
 //# sourceMappingURL=sum-k.js.map

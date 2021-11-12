@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.eIsConstOrZero = void 0;
 /**
  * Returns true if the given polynomial (with coefficients given as Shewchuk
  * floating point expansions) is a constant or the zero polynomial.
@@ -14,5 +11,5 @@ exports.eIsConstOrZero = void 0;
 function eIsConstOrZero(p) {
     return p.length <= 1;
 }
-exports.eIsConstOrZero = eIsConstOrZero;
+export { eIsConstOrZero };
 //# sourceMappingURL=e-is-const-or-zero.js.map

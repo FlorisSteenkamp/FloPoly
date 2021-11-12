@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bMultiply = void 0;
 /**
  * Returns the result of multiplying 2 polynomials with bigint coefficients.
  *
@@ -36,5 +33,5 @@ function bMultiply(a, b) {
     }
     return r;
 }
-exports.bMultiply = bMultiply;
+export { bMultiply };
 //# sourceMappingURL=b-multiply.js.map

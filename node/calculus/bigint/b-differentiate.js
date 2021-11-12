@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bDifferentiate = void 0;
 /**
  * Returns the result of differentiating the given polynomial.
  *
@@ -23,5 +20,5 @@ function bDifferentiate(p) {
     }
     return r;
 }
-exports.bDifferentiate = bDifferentiate;
+export { bDifferentiate };
 //# sourceMappingURL=b-differentiate.js.map

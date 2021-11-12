@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bisection = void 0;
 const abs = Math.abs;
 const max = Math.max;
 /**
@@ -75,5 +72,5 @@ function bisection(f, a, b) {
         }
     }
 }
-exports.bisection = bisection;
+export { bisection };
 //# sourceMappingURL=bisection.js.map

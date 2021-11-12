@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.differentiate = void 0;
 /**
  * Returns the result of differentiating the given polynomial in double
  * precision.
@@ -24,5 +21,5 @@ function differentiate(p) {
     }
     return result;
 }
-exports.differentiate = differentiate;
+export { differentiate };
 //# sourceMappingURL=differentiate.js.map

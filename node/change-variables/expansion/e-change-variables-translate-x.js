@@ -1,13 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.eChangeVariablesTranslateX = void 0;
-const big_float_ts_1 = require("big-float-ts");
-const big_float_ts_2 = require("big-float-ts");
-const big_float_ts_3 = require("big-float-ts");
+import { expansionProduct as expansionProduct_ } from "big-float-ts";
+import { fastExpansionSum as fastExpansionSum_ } from "big-float-ts";
+import { scaleExpansion2 as scaleExpansion2_ } from "big-float-ts";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const expansionProduct = big_float_ts_1.expansionProduct;
-const fastExpansionSum = big_float_ts_2.fastExpansionSum;
-const scaleExpansion2 = big_float_ts_3.scaleExpansion2;
+const expansionProduct = expansionProduct_;
+const fastExpansionSum = fastExpansionSum_;
+const scaleExpansion2 = scaleExpansion2_;
 /**
  * Returns the exact result (bar undeflow / overflow) of performing a change of
  * variables of the form: p(x) <- p(x + b) on the given polynomial (with
@@ -53,5 +50,5 @@ function eChangeVariablesTranslateX(p, b) {
     }
     return res;
 }
-exports.eChangeVariablesTranslateX = eChangeVariablesTranslateX;
+export { eChangeVariablesTranslateX };
 //# sourceMappingURL=e-change-variables-translate-x.js.map

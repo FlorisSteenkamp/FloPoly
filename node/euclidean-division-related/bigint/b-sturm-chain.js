@@ -1,11 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bSturmChain = void 0;
-const b_differentiate_1 = require("../../calculus/bigint/b-differentiate");
-const b_prem_sequence_subresultant_1 = require("./b-prem-sequence-subresultant");
+import { bDifferentiate as bDifferentiate_ } from '../../calculus/bigint/b-differentiate.js';
+import { bPremSequenceSubresultant as bPremSequenceSubresultant_ } from "./b-prem-sequence-subresultant";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const bDifferentiate = b_differentiate_1.bDifferentiate;
-const bPremSequenceSubresultant = b_prem_sequence_subresultant_1.bPremSequenceSubresultant;
+const bDifferentiate = bDifferentiate_;
+const bPremSequenceSubresultant = bPremSequenceSubresultant_;
 /**
  * Returns the Sturm Chain for the given polynomial using pseudo remainders.
  *
@@ -27,5 +24,5 @@ function bSturmChain(p) {
     const dp = bDifferentiate(p);
     return bPremSequenceSubresultant(p, dp, true);
 }
-exports.bSturmChain = bSturmChain;
+export { bSturmChain };
 //# sourceMappingURL=b-sturm-chain.js.map

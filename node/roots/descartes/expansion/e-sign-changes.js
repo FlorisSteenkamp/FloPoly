@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.eSignChanges = void 0;
-const big_float_ts_1 = require("big-float-ts");
+import { eSign as eSign_ } from "big-float-ts";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eSign = big_float_ts_1.eSign;
+const eSign = eSign_;
 /**
  * Returns the number of sign changes in the polynomial coefficents when
  * ordered in descending order; zeros are ignored.
@@ -54,5 +51,5 @@ function eSignChanges(p) {
     }
     return result;
 }
-exports.eSignChanges = eSignChanges;
+export { eSignChanges };
 //# sourceMappingURL=e-sign-changes.js.map

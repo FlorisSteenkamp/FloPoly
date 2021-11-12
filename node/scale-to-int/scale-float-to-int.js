@@ -1,11 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.scaleFloatToInt = void 0;
-const big_float_ts_1 = require("big-float-ts");
-const big_float_ts_2 = require("big-float-ts");
+import { exponent as exponent_ } from "big-float-ts";
+import { bitLength as bitLength_ } from "big-float-ts";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const exponent = big_float_ts_1.exponent;
-const bitLength = big_float_ts_2.bitLength;
+const exponent = exponent_;
+const bitLength = bitLength_;
 /**
  * Returns the result of scaling the given float by a power of two such that
  * it becomes an integer (overflow not possible) - the smallest such integer is
@@ -23,5 +20,5 @@ function scaleFloatToInt(a) {
     }
     return a * 2 ** (-exponent(a) + bitLength(a) - 1);
 }
-exports.scaleFloatToInt = scaleFloatToInt;
+export { scaleFloatToInt };
 //# sourceMappingURL=scale-float-to-int.js.map

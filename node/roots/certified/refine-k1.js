@@ -1,15 +1,12 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.refineK1 = void 0;
-const big_float_ts_1 = require("big-float-ts");
-const big_float_ts_2 = require("big-float-ts");
-const e_change_variables_linear_1 = require("../../change-variables/expansion/e-change-variables-linear");
-const all_roots_certified_1 = require("./all-roots-certified");
+import { eToDd as eToDd_ } from "big-float-ts";
+import { twoSum as twoSum_ } from "big-float-ts";
+import { eChangeVariablesLinear as eChangeVariablesLinear_ } from "../../change-variables/expansion/e-change-variables-linear.js";
+import { allRootsCertified as allRootsCertified_ } from "./all-roots-certified";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eChangeVariablesLinear = e_change_variables_linear_1.eChangeVariablesLinear;
-const allRootsCertified = all_roots_certified_1.allRootsCertified;
-const eToDd = big_float_ts_1.eToDd;
-const twoSum = big_float_ts_2.twoSum;
+const eChangeVariablesLinear = eChangeVariablesLinear_;
+const allRootsCertified = allRootsCertified_;
+const eToDd = eToDd_;
+const twoSum = twoSum_;
 const eps = Number.EPSILON;
 /**
  * Returns once compensated root(s) (bar underflow / overflow) given a root
@@ -53,5 +50,5 @@ function refineK1(ri, p) {
     }
     return ris;
 }
-exports.refineK1 = refineK1;
+export { refineK1 };
 //# sourceMappingURL=refine-k1.js.map

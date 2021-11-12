@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.γγ = exports.γ = void 0;
 const u = Number.EPSILON / 2;
 const uu = u * u;
 /**
@@ -18,7 +15,6 @@ function γ(n) {
     const nu = n * u;
     return nu / (1 - nu);
 }
-exports.γ = γ;
 /**
  * The canonical, once compensated (implying double-double precision),
  * floating point error function.
@@ -35,5 +31,5 @@ function γγ(n) {
     const nuu = n * uu;
     return nuu / (1 - nuu);
 }
-exports.γγ = γγ;
+export { γ, γγ };
 //# sourceMappingURL=gamma.js.map

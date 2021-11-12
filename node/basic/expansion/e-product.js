@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.eProduct = void 0;
-const e_multiply_1 = require("./e-multiply");
+import { eMultiply } from "./e-multiply.js";
 /**
  * Returns the exact result (bar underflow / overflow) of the product of 0 or
  * more polynomials.
@@ -27,9 +24,9 @@ function eProduct(ps) {
     }
     let p = ps[0];
     for (let i = 1; i < ps.length; i++) {
-        p = e_multiply_1.eMultiply(p, ps[i]);
+        p = eMultiply(p, ps[i]);
     }
     return p;
 }
-exports.eProduct = eProduct;
+export { eProduct };
 //# sourceMappingURL=e-product.js.map

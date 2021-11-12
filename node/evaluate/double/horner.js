@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Horner = void 0;
 /**
  * Returns the result of evaluating a univariate polynomial using
  * Horner's method in double precision floating point arithmetic.
@@ -21,5 +18,7 @@ function Horner(p, x) {
     }
     return q;
 }
-exports.Horner = Horner;
+// inlined (with q => E, p => p0)
+//let E = p0[0]; for (let i=1; i<p0.length; i++) {E = E*x + p0[i]; }
+export { Horner };
 //# sourceMappingURL=horner.js.map

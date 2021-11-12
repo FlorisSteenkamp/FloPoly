@@ -1,13 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.CompHornerK = void 0;
-const sum_k_1 = require("./sum-k");
-const eft_horner_k_1 = require("./eft-horner-k");
-const horner_1 = require("./horner");
+import { SumK as SumK_ } from "./sum-k.js";
+import { EFTHornerK as EFTHornerK_ } from "./eft-horner-k";
+import { Horner as Horner_ } from "./horner";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const SumK = sum_k_1.SumK;
-const EFTHornerK = eft_horner_k_1.EFTHornerK;
-const Horner = horner_1.Horner;
+const SumK = SumK_;
+const EFTHornerK = EFTHornerK_;
+const Horner = Horner_;
 /**
  * Returns a result of evaluating a univariate polynomial using K times compensated
  * Horner's method.
@@ -41,5 +38,5 @@ function CompHornerK(p, x, K) {
     const r̄ = SumK(hs, K);
     return r̄;
 }
-exports.CompHornerK = CompHornerK;
+export { CompHornerK };
 //# sourceMappingURL=comp-horner-k.js.map

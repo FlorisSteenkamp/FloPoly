@@ -1,4 +1,4 @@
-import { bDifferentiate as bDifferentiate_ } from '../../calculus/bigint/b-differentiate.js';import { bDifferentiate as bDifferentiate_ } from '../../calculus/bigint/b-differentiate.js
+import { bDifferentiate as bDifferentiate_ } from '../../calculus/bigint/b-differentiate.js';
 import { bPremSequenceSubresultant as bPremSequenceSubresultant_ } from "./b-prem-sequence-subresultant";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗

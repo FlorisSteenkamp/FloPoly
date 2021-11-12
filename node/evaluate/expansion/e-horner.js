@@ -1,10 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.eHorner = void 0;
-const big_float_ts_1 = require("big-float-ts");
+import { fastExpansionSum, scaleExpansion } from "big-float-ts";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const fes = big_float_ts_1.fastExpansionSum;
-const sce = big_float_ts_1.scaleExpansion;
+const fes = fastExpansionSum;
+const sce = scaleExpansion;
 /**
  * Returns the exact result (bar underflow / overflow) of evaluating a
  * univariate polynomial using Horner's method - the result is returned as a
@@ -24,5 +21,5 @@ function eHorner(p, x) {
     }
     return q;
 }
-exports.eHorner = eHorner;
+export { eHorner };
 //# sourceMappingURL=e-horner.js.map

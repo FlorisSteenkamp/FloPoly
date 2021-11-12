@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.eInvert = void 0;
 /**
  * Inverts the given polynomial (with coefficients given as Shewchuk floating
  * point expansions) by reversing the order of the coefficients,
@@ -20,5 +17,5 @@ exports.eInvert = void 0;
 function eInvert(p) {
     return p.slice().reverse();
 }
-exports.eInvert = eInvert;
+export { eInvert };
 //# sourceMappingURL=e-invert.js.map

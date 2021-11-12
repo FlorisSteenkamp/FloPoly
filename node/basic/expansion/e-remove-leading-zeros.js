@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.eRemoveLeadingZeros = void 0;
-const big_float_ts_1 = require("big-float-ts");
+import { eSign as eSign_ } from "big-float-ts";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eSign = big_float_ts_1.eSign;
+const eSign = eSign_;
 /**
  * If the highest power coefficient of the given polynomial is 0 then
  * removeLeadingZeros can be called to remove all such highest terms so that
@@ -36,5 +33,5 @@ function eRemoveLeadingZeros(p) {
     }
     return p;
 }
-exports.eRemoveLeadingZeros = eRemoveLeadingZeros;
+export { eRemoveLeadingZeros };
 //# sourceMappingURL=e-remove-leading-zeros.js.map

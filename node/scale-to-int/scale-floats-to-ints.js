@@ -1,11 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.scaleFloatsToInts = void 0;
-const big_float_ts_1 = require("big-float-ts");
-const big_float_ts_2 = require("big-float-ts");
+import { exponent as exponent_ } from "big-float-ts";
+import { bitLength as bitLength_ } from "big-float-ts";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const exponent = big_float_ts_1.exponent;
-const bitLength = big_float_ts_2.bitLength;
+const exponent = exponent_;
+const bitLength = bitLength_;
 /**
  * Returns the result of scaling the given floats by the *same* power of two
  * such that all floats become integers (bar overflow).
@@ -31,5 +28,5 @@ function scaleFloatsToInts(as) {
     }
     return as.map(a => a * 2 ** e);
 }
-exports.scaleFloatsToInts = scaleFloatsToInts;
+export { scaleFloatsToInts };
 //# sourceMappingURL=scale-floats-to-ints.js.map

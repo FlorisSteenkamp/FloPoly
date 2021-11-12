@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bSignChanges = void 0;
 /**
  * Returns the number of sign changes in the polynomial coefficents when
  * ordered in descending order; zeros are ignored.
@@ -38,5 +35,5 @@ function bSignChanges(p) {
     }
     return result;
 }
-exports.bSignChanges = bSignChanges;
+export { bSignChanges };
 //# sourceMappingURL=b-sign-changes.js.map

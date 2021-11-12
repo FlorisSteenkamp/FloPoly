@@ -1,11 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.ePrimitivePart = void 0;
-const e_content_1 = require("./e-content");
-const big_float_ts_1 = require("big-float-ts");
+import { eContent as eContent_ } from "./e-content.js";
+import { eDiv as eDiv_ } from "big-float-ts";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eContent = e_content_1.eContent;
-const eDiv = big_float_ts_1.eDiv;
+const eContent = eContent_;
+const eDiv = eDiv_;
 /**
  * Returns the primitive part of the given polynomial.
  *
@@ -30,5 +27,5 @@ function ePrimitivePart(p) {
     }
     return p_;
 }
-exports.ePrimitivePart = ePrimitivePart;
+export { ePrimitivePart };
 //# sourceMappingURL=e-primitive-part.js.map

@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.premSequenceSubresultant = void 0;
-const e_prem_sequence_subresultant_1 = require("../expansion/e-prem-sequence-subresultant");
+import { ePremSequenceSubresultant as ePremSequenceSubresultant_ } from "../expansion/e-prem-sequence-subresultant.js";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const ePremSequenceSubresultant = e_prem_sequence_subresultant_1.ePremSequenceSubresultant;
+const ePremSequenceSubresultant = ePremSequenceSubresultant_;
 /**
  * Returns the subresultant pseudo remainder sequence of a/b with the resulting
  * polynomials given with coefficients as Shewchuk expansions.
@@ -30,5 +27,5 @@ const ePremSequenceSubresultant = e_prem_sequence_subresultant_1.ePremSequenceSu
 function premSequenceSubresultant(f, g, sturm = false) {
     return ePremSequenceSubresultant(f.map(c => [c]), g.map(c => [c]), sturm);
 }
-exports.premSequenceSubresultant = premSequenceSubresultant;
+export { premSequenceSubresultant };
 //# sourceMappingURL=prem-sequence-subresultant.js.map

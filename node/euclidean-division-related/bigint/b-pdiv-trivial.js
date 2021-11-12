@@ -1,13 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bPdivTrivial = void 0;
-const b_degree_1 = require("../../basic/bigint/b-degree");
-const b_multiply_by_const_1 = require("../../basic/bigint/b-multiply-by-const");
-const b_pdiv_internal_1 = require("./b-pdiv-internal");
+import { bDegree as bDegree_ } from "../../basic/bigint/b-degree.js";
+import { bMultiplyByConst as bMultiplyByConst_ } from "../../basic/bigint/b-multiply-by-const";
+import { bPdivInternal as bPdivInternal_ } from './b-pdiv-internal';
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const bDegree = b_degree_1.bDegree;
-const bMultiplyByConst = b_multiply_by_const_1.bMultiplyByConst;
-const bPdivInternal = b_pdiv_internal_1.bPdivInternal;
+const bDegree = bDegree_;
+const bMultiplyByConst = bMultiplyByConst_;
+const bPdivInternal = bPdivInternal_;
 const abs = (n) => n >= 0 ? n : -n;
 /**
  * Performs a **trivial pseudo-division** and returns the `quotient` and `remainder`
@@ -50,5 +47,5 @@ function bPdivTrivial(a, b, positiveMultiplier = false) {
     const a_ = bMultiplyByConst(m, a);
     return bPdivInternal(a_, b);
 }
-exports.bPdivTrivial = bPdivTrivial;
+export { bPdivTrivial };
 //# sourceMappingURL=b-pdiv-trivial.js.map

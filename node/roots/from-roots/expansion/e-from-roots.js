@@ -1,13 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.eFromRoots = void 0;
-const e_multiply_1 = require("../../../basic/expansion/e-multiply");
-const big_float_ts_1 = require("big-float-ts");
-const big_float_ts_2 = require("big-float-ts");
+import { eMultiply as eMultiply_ } from "../../../basic/expansion/e-multiply.js";
+import { eNegativeOf as eNegativeOf_ } from "big-float-ts";
+import { eToDd as eToDd_ } from "big-float-ts";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eMultiply = e_multiply_1.eMultiply;
-const eNegativeOf = big_float_ts_1.eNegativeOf;
-const eToDd = big_float_ts_2.eToDd;
+const eMultiply = eMultiply_;
+const eNegativeOf = eNegativeOf_;
+const eToDd = eToDd_;
 /**
  * Constructs a double-double precision polynomial from the given roots by
  * multiplying out the factors (x - root1)(x - root2) in infinite precision
@@ -34,5 +31,5 @@ function eFromRoots(roots) {
         getPExact
     };
 }
-exports.eFromRoots = eFromRoots;
+export { eFromRoots };
 //# sourceMappingURL=e-from-roots.js.map

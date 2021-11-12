@@ -1,4 +1,4 @@
-import { premSequenceSubresultant as premSequenceSubresultant_ } from "../../euclidean-division-related/double/prem-sequence-subresultant.js";import { premSequenceSubresultant as premSequenceSubresultant_ } from "../../euclidean-division-related/double/prem-sequence-subresultant.js
+import { premSequenceSubresultant as premSequenceSubresultant_ } from "../../euclidean-division-related/double/prem-sequence-subresultant.js";
 import { scaleFloatsToInts as scaleFloatsToInts_ } from "../../scale-to-int/scale-floats-to-ints";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗

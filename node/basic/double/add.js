@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.add = void 0;
-const remove_leading_zeros_1 = require("./remove-leading-zeros");
+import { removeLeadingZeros as removeLeadingZeros_ } from "./remove-leading-zeros.js";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const removeLeadingZeros = remove_leading_zeros_1.removeLeadingZeros;
+const removeLeadingZeros = removeLeadingZeros_;
 /**
  * Returns the result of adding two polynomials in double precision.
  *
@@ -37,5 +34,5 @@ function add(p1, p2) {
     // Ensure the result is a valid polynomial representation
     return removeLeadingZeros(result);
 }
-exports.add = add;
+export { add };
 //# sourceMappingURL=add.js.map

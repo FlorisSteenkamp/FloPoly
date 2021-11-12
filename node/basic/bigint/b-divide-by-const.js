@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bDivideByConst = void 0;
 /**
  * Divides (using **integer division**) a polynomial by a constant.
  *
@@ -19,5 +16,5 @@ function bDivideByConst(p, c) {
     }
     return r;
 }
-exports.bDivideByConst = bDivideByConst;
+export { bDivideByConst };
 //# sourceMappingURL=b-divide-by-const.js.map

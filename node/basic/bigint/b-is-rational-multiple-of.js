@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bIsRationalMultipleOf = void 0;
-const b_integer_gcd_1 = require("../../gcd/bigint/b-integer-gcd");
+import { bGcdInt } from "../../gcd/bigint/b-integer-gcd.js";
 /**
  * Returns true if either polynomial is an exact rational multiple of the other.
  *
@@ -27,7 +24,7 @@ function bIsRationalMultipleOf(a, b) {
     const lcA = a_[0];
     /** leading coefficient of b */
     const lcB = b_[0];
-    const gcd = b_integer_gcd_1.bGcdInt(lcA, lcB);
+    const gcd = bGcdInt(lcA, lcB);
     const A = lcA / gcd; // this division is exact
     const B = lcB / gcd; // this division is exact
     for (let i = 0; i < a_.length; i++) {
@@ -41,5 +38,5 @@ function bIsRationalMultipleOf(a, b) {
     }
     return true;
 }
-exports.bIsRationalMultipleOf = bIsRationalMultipleOf;
+export { bIsRationalMultipleOf };
 //# sourceMappingURL=b-is-rational-multiple-of.js.map

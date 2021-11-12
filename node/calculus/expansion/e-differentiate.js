@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.eDifferentiate = void 0;
-const big_float_ts_1 = require("big-float-ts");
+import { scaleExpansion as scaleExpansion_ } from "big-float-ts";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const scaleExpansion = big_float_ts_1.scaleExpansion;
+const scaleExpansion = scaleExpansion_;
 /**
  * Returns the exact result (bar underflow / overflow) of differentiating the
  * given polynomial (with Shewchuk expansion coefficients).
@@ -27,5 +24,5 @@ function eDifferentiate(p) {
     }
     return result;
 }
-exports.eDifferentiate = eDifferentiate;
+export { eDifferentiate };
 //# sourceMappingURL=e-differentiate.js.map

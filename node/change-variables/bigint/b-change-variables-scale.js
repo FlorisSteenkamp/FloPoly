@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bChangeVariablesScale = void 0;
 /**
  * Returns the result of performing a change of variables of the
  * form: p(x) <- p(ax).
@@ -50,5 +47,5 @@ function bChangeVariablesScale(p, a) {
     }
     return res;
 }
-exports.bChangeVariablesScale = bChangeVariablesScale;
+export { bChangeVariablesScale };
 //# sourceMappingURL=b-change-variables-scale.js.map

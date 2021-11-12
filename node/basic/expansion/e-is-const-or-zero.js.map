@@ -1,1 +1,1 @@
-{"version":3,"file":"e-is-const-or-zero.js","sourceRoot":"","sources":["../../../src/basic/expansion/e-is-const-or-zero.ts"],"names":[],"mappings":";;;AAAA;;;;;;;;;GASG;AACH,SAAS,cAAc,CAAC,CAAa;IACjC,OAAO,CAAC,CAAC,MAAM,IAAI,CAAC,CAAC;AACzB,CAAC;AAGQ,wCAAc"}
+{"version":3,"file":"e-is-const-or-zero.js","sourceRoot":"","sources":["../../../src/basic/expansion/e-is-const-or-zero.ts"],"names":[],"mappings":"AAAA;;;;;;;;;GASG;AACH,SAAS,cAAc,CAAC,CAAa;IACjC,OAAO,CAAC,CAAC,MAAM,IAAI,CAAC,CAAC;AACzB,CAAC;AAGD,OAAO,EAAE,cAAc,EAAE,CAAA"}

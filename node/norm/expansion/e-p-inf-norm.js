@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.ePInfNorm = void 0;
-const big_float_ts_1 = require("big-float-ts");
+import { eEstimate as eEstimate_ } from "big-float-ts";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eEstimate = big_float_ts_1.eEstimate;
+const eEstimate = eEstimate_;
 /**
  * Returns the `p-infinity norm`, i.e. the maximum magnitude absolute value
  * within the given array of numbers / coefficients (with intermediate
@@ -24,5 +21,5 @@ function ePInfNorm(p) {
     }
     return max;
 }
-exports.ePInfNorm = ePInfNorm;
+export { ePInfNorm };
 //# sourceMappingURL=e-p-inf-norm.js.map

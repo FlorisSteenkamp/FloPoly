@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.vecSum = void 0;
-const big_float_ts_1 = require("big-float-ts");
+import { twoSum as twoSum_ } from "big-float-ts";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const twoSum = big_float_ts_1.twoSum;
+const twoSum = twoSum_;
 /**
  * * helper function
  *
@@ -21,5 +18,5 @@ function vecSum(p_) {
     }
     return p;
 }
-exports.vecSum = vecSum;
+export { vecSum };
 //# sourceMappingURL=vec-sum.js.map

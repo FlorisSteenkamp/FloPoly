@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bP1Norm = void 0;
 /**
  * Returns the `p-1 norm`, a.k.a. `Taxicab norm`, i.e. the sum of the absolute
  * values of the given array of bigints.
@@ -20,5 +17,5 @@ function bP1Norm(p) {
     }
     return s;
 }
-exports.bP1Norm = bP1Norm;
+export { bP1Norm };
 //# sourceMappingURL=b-p-1-norm.js.map

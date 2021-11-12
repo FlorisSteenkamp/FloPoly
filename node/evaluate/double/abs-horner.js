@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.AbsHorner = void 0;
 const abs = Math.abs;
 /**
  * Returns the result of evaluating a univariate polynomial using
@@ -22,5 +19,7 @@ function AbsHorner(p, x) {
     }
     return q;
 }
-exports.AbsHorner = AbsHorner;
+// inlined (with q => e2, p => p0)
+//let e2 = abs(p0[0]); for (let i=1; i<p0.length; i++) { e2 = e2*x + abs(p0[i]); }
+export { AbsHorner };
 //# sourceMappingURL=abs-horner.js.map

@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.EFTHornerK = void 0;
-const eft_horner_1 = require("./eft-horner");
+import { EFTHorner as EFTHorner_ } from "./eft-horner.js";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const EFTHorner = eft_horner_1.EFTHorner;
+const EFTHorner = EFTHorner_;
 /**
  * @param p
  * @param x
@@ -23,5 +20,5 @@ function EFTHornerK(p, x, K) {
     }
     return { hs, ps: ps.slice(2 ** (K - 1)) };
 }
-exports.EFTHornerK = EFTHornerK;
+export { EFTHornerK };
 //# sourceMappingURL=eft-horner-k.js.map

@@ -1,13 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.eGcdInts = exports.eGcdInt = void 0;
-const big_float_ts_1 = require("big-float-ts");
-const big_float_ts_2 = require("big-float-ts");
-const big_float_ts_3 = require("big-float-ts");
+import { eAbs as eAbs_ } from 'big-float-ts';
+import { eSign as eSign_ } from 'big-float-ts';
+import { eRem as eRem_ } from 'big-float-ts';
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eAbs = big_float_ts_1.eAbs;
-const eSign = big_float_ts_2.eSign;
-const eRem = big_float_ts_3.eRem;
+const eAbs = eAbs_;
+const eSign = eSign_;
+const eRem = eRem_;
 /**
  * Computes the greatest common divisor of two integers a and b, using the
  * Euclidean Algorithm.
@@ -35,7 +32,6 @@ function eGcdInt(a, b) {
     }
     return a;
 }
-exports.eGcdInt = eGcdInt;
 /**
  * Naively computes and returns the greatest common divisor of 2 or more
  * integers by taking each integer in turn and calculating the GCD of that
@@ -58,5 +54,5 @@ function eGcdInts(vals) {
     }
     return a;
 }
-exports.eGcdInts = eGcdInts;
+export { eGcdInt, eGcdInts };
 //# sourceMappingURL=e-integer-gcd.js.map

@@ -1,4 +1,4 @@
-import { eSturmChain as eSturmChain_ } from "../../../euclidean-division-related/expansion/e-sturm-chain.js";import { eSturmChain as eSturmChain_ } from "../../../euclidean-division-related/expansion/e-sturm-chain.jsimport { eSturmChain as eSturmChain_ } from "../../../euclidean-division-related/expansion/e-sturm-chain.js
+import { eSturmChain as eSturmChain_ } from "../../../euclidean-division-related/expansion/e-sturm-chain.js"
 import { signChanges as signChanges_ } from "./sign-changes";
 import { eEvaluateAt1 as eEvaluateAt1_ } from "../../../evaluate/expansion/e-evaluate-at-1";
 import { eSign as eSign_ } from "big-float-ts";

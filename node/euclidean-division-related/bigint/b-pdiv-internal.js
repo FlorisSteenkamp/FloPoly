@@ -1,17 +1,14 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bPdivInternal = void 0;
-const b_degree_1 = require("../../basic/bigint/b-degree");
-const b_elevate_degree_1 = require("./b-elevate-degree");
-const b_add_1 = require("../../basic/bigint/b-add");
-const b_multiply_1 = require("../../basic/bigint/b-multiply");
-const b_subtract_1 = require("../../basic/bigint/b-subtract");
+import { bDegree as bDegree_ } from "../../basic/bigint/b-degree.js";
+import { bElevateDegree as bElevateDegree_ } from "./b-elevate-degree";
+import { bAdd as bAdd_ } from "../../basic/bigint/b-add";
+import { bMultiply as bMultiply_ } from "../../basic/bigint/b-multiply";
+import { bSubtract as bSubtract_ } from "../../basic/bigint/b-subtract";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const bDegree = b_degree_1.bDegree;
-const bElevateDegree = b_elevate_degree_1.bElevateDegree;
-const bAdd = b_add_1.bAdd;
-const bMultiply = b_multiply_1.bMultiply;
-const bSubtract = b_subtract_1.bSubtract;
+const bDegree = bDegree_;
+const bElevateDegree = bElevateDegree_;
+const bAdd = bAdd_;
+const bMultiply = bMultiply_;
+const bSubtract = bSubtract_;
 /**
  * Returns the `quotient` and `remainder` of the pseudo division of `a/b` (a, b
  * both being polynomials) naively, i.e. in such a way that all intermediate
@@ -53,5 +50,5 @@ function bPdivInternal(a, b) {
         r = bSubtract(r, bMultiply(s, b));
     }
 }
-exports.bPdivInternal = bPdivInternal;
+export { bPdivInternal };
 //# sourceMappingURL=b-pdiv-internal.js.map

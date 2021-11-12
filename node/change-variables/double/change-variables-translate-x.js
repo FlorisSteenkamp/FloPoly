@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.changeVariablesTranslateX = void 0;
 /**
  * Returns the result of performing a change of variables of the
  * form: p(x) <- p(x + b) in double precision.
@@ -49,5 +46,5 @@ function changeVariablesTranslateX(p, b) {
     }
     return res;
 }
-exports.changeVariablesTranslateX = changeVariablesTranslateX;
+export { changeVariablesTranslateX };
 //# sourceMappingURL=change-variables-translate-x.js.map

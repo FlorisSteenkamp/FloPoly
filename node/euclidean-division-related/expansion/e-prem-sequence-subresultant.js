@@ -1,21 +1,18 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.ePremSequenceSubresultant = void 0;
-const big_float_ts_1 = require("big-float-ts");
-const big_float_ts_2 = require("big-float-ts");
-const big_float_ts_3 = require("big-float-ts");
-const big_float_ts_4 = require("big-float-ts");
-const e_is_const_or_zero_1 = require("../../basic/expansion/e-is-const-or-zero");
-const e_degree_1 = require("../../basic/expansion/e-degree");
-const e_pdiv_trivial_1 = require("./e-pdiv-trivial");
+import { expansionProduct as expansionProduct_ } from "big-float-ts";
+import { eIntPow as eIntPow_ } from "big-float-ts";
+import { eDiv as eDiv_ } from "big-float-ts";
+import { eNegativeOf as eNegativeOf_ } from "big-float-ts";
+import { eIsConstOrZero as eIsConstOrZero_ } from "../../basic/expansion/e-is-const-or-zero.js";
+import { eDegree as eDegree_ } from "../../basic/expansion/e-degree";
+import { ePdivTrivial as ePdivTrivial_ } from "./e-pdiv-trivial";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const ePdivTrivial = e_pdiv_trivial_1.ePdivTrivial;
-const eIsConstOrZero = e_is_const_or_zero_1.eIsConstOrZero;
-const expansionProduct = big_float_ts_1.expansionProduct;
-const eIntPow = big_float_ts_2.eIntPow;
-const eDiv = big_float_ts_3.eDiv;
-const eNegativeOf = big_float_ts_4.eNegativeOf;
-const eDegree = e_degree_1.eDegree;
+const ePdivTrivial = ePdivTrivial_;
+const eIsConstOrZero = eIsConstOrZero_;
+const expansionProduct = expansionProduct_;
+const eIntPow = eIntPow_;
+const eDiv = eDiv_;
+const eNegativeOf = eNegativeOf_;
+const eDegree = eDegree_;
 /**
  * Returns the subresultant pseudo remainder sequence of a/b.
  *
@@ -79,5 +76,5 @@ function ePremSequenceSubresultant(f, g, sturm = false) {
         i++;
     }
 }
-exports.ePremSequenceSubresultant = ePremSequenceSubresultant;
+export { ePremSequenceSubresultant };
 //# sourceMappingURL=e-prem-sequence-subresultant.js.map

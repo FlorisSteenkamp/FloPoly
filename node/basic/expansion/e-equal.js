@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.eEqual = void 0;
-const big_float_ts_1 = require("big-float-ts");
+import { eCompare as eCompare_ } from "big-float-ts";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eCompare = big_float_ts_1.eCompare;
+const eCompare = eCompare_;
 /**
  * Returns true if two polynomials (with coefficients given as Shewchuk floating
  * point expansions) are exactly equal by comparing coefficients, false otherwise.
@@ -32,5 +29,5 @@ function eEqual(p1, p2) {
     }
     return true;
 }
-exports.eEqual = eEqual;
+export { eEqual };
 //# sourceMappingURL=e-equal.js.map

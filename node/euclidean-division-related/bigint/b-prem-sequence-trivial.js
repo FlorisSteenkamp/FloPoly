@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bPremSequenceTrivial = void 0;
-const b_pdiv_trivial_1 = require("./b-pdiv-trivial");
+import { bPdivTrivial as bPdivTrivial_ } from "./b-pdiv-trivial.js";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const bPdivTrivial = b_pdiv_trivial_1.bPdivTrivial;
+const bPdivTrivial = bPdivTrivial_;
 /**
  * ❗ DON'T USE - coefficients grow way too big, making it slow - use
  * [[bPremSequenceSubresultant]] instead. ❗
@@ -38,5 +35,5 @@ function bPremSequenceTrivial(f, g) {
         i++;
     }
 }
-exports.bPremSequenceTrivial = bPremSequenceTrivial;
+export { bPremSequenceTrivial };
 //# sourceMappingURL=b-prem-sequence-trivial.js.map

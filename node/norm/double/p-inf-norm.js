@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.pInfNorm = void 0;
 /**
  * Returns the `p-infinity norm`, i.e. the maximum magnitude absolute value
  * within the given array of numbers / coefficients (with intermediate
@@ -21,5 +18,5 @@ function pInfNorm(p) {
     }
     return max;
 }
-exports.pInfNorm = pInfNorm;
+export { pInfNorm };
 //# sourceMappingURL=p-inf-norm.js.map

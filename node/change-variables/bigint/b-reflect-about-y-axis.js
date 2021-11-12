@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bReflectAboutYAxis = void 0;
 /**
  * Returns the result of reflecting the given polynomial about the Y-axis, i.e.
  * perform the change of variables: p(x) <- p(-x).
@@ -29,5 +26,5 @@ function bReflectAboutYAxis(p) {
     }
     return result;
 }
-exports.bReflectAboutYAxis = bReflectAboutYAxis;
+export { bReflectAboutYAxis };
 //# sourceMappingURL=b-reflect-about-y-axis.js.map

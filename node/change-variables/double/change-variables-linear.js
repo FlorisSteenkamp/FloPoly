@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.changeVariablesLinear = void 0;
 /**
  * Returns the result of performing a change of variables of the
  * form: p(x) <- p(ax + b) in double precision.
@@ -52,5 +49,5 @@ function changeVariablesLinear(p, a, b) {
     }
     return res;
 }
-exports.changeVariablesLinear = changeVariablesLinear;
+export { changeVariablesLinear };
 //# sourceMappingURL=change-variables-linear.js.map

@@ -1,6 +1,6 @@
 import { eToDd as eToDd_ } from "big-float-ts";
 import { twoSum as twoSum_ } from "big-float-ts";
-import { eChangeVariablesLinear as eChangeVariablesLinear_ } from "../../change-variables/expansion/e-change-variables-linear.js";import { eChangeVariablesLinear as eChangeVariablesLinear_ } from "../../change-variables/expansion/e-change-variables-linear.jsimport { eChangeVariablesLinear as eChangeVariablesLinear_ } from "../../change-variables/expansion/e-change-variables-linear.jsimport { eChangeVariablesLinear as eChangeVariablesLinear_ } from "../../change-variables/expansion/e-change-variables-linear.js
+import { eChangeVariablesLinear as eChangeVariablesLinear_ } from "../../change-variables/expansion/e-change-variables-linear.js";
 import { allRootsCertified as allRootsCertified_ } from "./all-roots-certified";
 import { RootInterval } from "./root-interval";
 import { RootIntervalExp } from "./root-interval-exp";

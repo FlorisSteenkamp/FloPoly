@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bEqual = void 0;
 /**
  * Returns true if two polynomials are exactly equal by comparing coefficients,
  * false otherwise.
@@ -29,5 +26,5 @@ function bEqual(a, b) {
     }
     return true;
 }
-exports.bEqual = bEqual;
+export { bEqual };
 //# sourceMappingURL=b-equal.js.map

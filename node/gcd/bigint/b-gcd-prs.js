@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bGcdPrs = void 0;
-const b_prem_sequence_subresultant_1 = require("../../euclidean-division-related/bigint/b-prem-sequence-subresultant");
+import { bPremSequenceSubresultant as bPremSequenceSubresultant_ } from "../../euclidean-division-related/bigint/b-prem-sequence-subresultant.js";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const bPremSequenceSubresultant = b_prem_sequence_subresultant_1.bPremSequenceSubresultant;
+const bPremSequenceSubresultant = bPremSequenceSubresultant_;
 /**
  * :::tip Heads up!
  * Use the modular gcd algorithm, [[gcdModular]] (still to be implemented 😢), instead - it is faster.
@@ -32,5 +29,5 @@ function bGcdPrs(a, b) {
     const seq = bPremSequenceSubresultant(a, b, false);
     return seq[seq.length - 1];
 }
-exports.bGcdPrs = bGcdPrs;
+export { bGcdPrs };
 //# sourceMappingURL=b-gcd-prs.js.map

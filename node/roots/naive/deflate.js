@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.deflate = void 0;
 /**
  * Deflates the given polynomial *approximately* by removing a factor (x - r),
  * where r is a root of the polynomial.
@@ -32,5 +29,5 @@ function deflate(p, root) {
     }
     return bs;
 }
-exports.deflate = deflate;
+export { deflate };
 //# sourceMappingURL=deflate.js.map

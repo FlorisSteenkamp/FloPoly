@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.eReflectAboutYAxis = void 0;
-const big_float_ts_1 = require("big-float-ts");
+import { eNegativeOf as eNegativeOf_ } from "big-float-ts";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eNegativeOf = big_float_ts_1.eNegativeOf;
+const eNegativeOf = eNegativeOf_;
 /**
  * Returns the result of reflecting the given polynomial about the Y-axis, i.e.
  * perform the change of variables: p(x) <- p(-x).
@@ -31,5 +28,5 @@ function eReflectAboutYAxis(p) {
     }
     return result;
 }
-exports.eReflectAboutYAxis = eReflectAboutYAxis;
+export { eReflectAboutYAxis };
 //# sourceMappingURL=e-reflect-about-y-axis.js.map

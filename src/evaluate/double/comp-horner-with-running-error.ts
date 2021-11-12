@@ -1,5 +1,5 @@
 import { twoSum as twoSum_ } from "big-float-ts";
-import { EFTHorner as EFTHorner_ } from "./eft-horner.js";import { EFTHorner as EFTHorner_ } from "./eft-horner.jsimport { EFTHorner as EFTHorner_ } from "./eft-horner.jsimport { EFTHorner as EFTHorner_ } from "./eft-horner.js
+import { EFTHorner as EFTHorner_ } from "./eft-horner.js";
 import { HornerSum as HornerSum_ } from "./horner-sum";
 import { HornerAbsSum as HornerAbsSum_ } from "./horner-abs-sum";
 import { γs as γs_ } from "./gammas";

@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.rootMagnitudeUpperBound_fujiwara = void 0;
 /**
  * Returns an upper bound on the magnitude (absolute value) of the complex
  * roots of the given polynomial using the near-optimal Fujiwara bound.
@@ -35,5 +32,5 @@ function rootMagnitudeUpperBound_fujiwara(p) {
     bs.push((Math.abs(p[d] / 2 * an)) ** (1 / d));
     return 2 * Math.max(...bs);
 }
-exports.rootMagnitudeUpperBound_fujiwara = rootMagnitudeUpperBound_fujiwara;
+export { rootMagnitudeUpperBound_fujiwara };
 //# sourceMappingURL=root-magnitude-upper-bound-fujiwara.js.map

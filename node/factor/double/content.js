@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.content = void 0;
-const integer_gcd_1 = require("../../gcd/double/integer-gcd");
+import { gcdInts as gcdInts_ } from "../../gcd/double/integer-gcd.js";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const gcdInts = integer_gcd_1.gcdInts;
+const gcdInts = gcdInts_;
 /**
  * Returns cont(p), i.e. the content of the given polynomial defined as the
  * greatest common divisor of its coefficients.
@@ -31,5 +28,5 @@ function content(p) {
     }
     return Math.sign(p[0]) * gcdInts(p);
 }
-exports.content = content;
+export { content };
 //# sourceMappingURL=content.js.map

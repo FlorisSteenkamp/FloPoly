@@ -1,13 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.evalAdaptive = void 0;
-const eval_certified_1 = require("../../evaluate/double/eval-certified");
-const e_horner_1 = require("../../evaluate/expansion/e-horner");
-const big_float_ts_1 = require("big-float-ts");
+import { evalCertified as evalCertified_ } from "../../evaluate/double/eval-certified.js";
+import { eHorner as eHorner_ } from "../../evaluate/expansion/e-horner";
+import { eEstimate as eEstimate_ } from 'big-float-ts';
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const evalCertified = eval_certified_1.evalCertified;
-const eHorner = e_horner_1.eHorner;
-const eEstimate = big_float_ts_1.eEstimate;
+const evalCertified = evalCertified_;
+const eHorner = eHorner_;
+const eEstimate = eEstimate_;
 /**
  * Returns the result of evaluating the given polynomial (with double-double
  * precision coefficients) at the given value, where the coefficient-wise error
@@ -38,5 +35,5 @@ function evalAdaptive(p, pE, x, getPolyExact) {
     // condition number is too high - request higher precision
     return eEstimate(eHorner(getPolyExact(), x));
 }
-exports.evalAdaptive = evalAdaptive;
+export { evalAdaptive };
 //# sourceMappingURL=eval-adaptive.js.map

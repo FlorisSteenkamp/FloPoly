@@ -1,11 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.eSubtract = void 0;
-const big_float_ts_1 = require("big-float-ts");
-const e_remove_leading_zeros_1 = require("./e-remove-leading-zeros");
+import { eDiff as eDiff_ } from "big-float-ts";
+import { eRemoveLeadingZeros as eRemoveLeadingZeros_ } from "./e-remove-leading-zeros.js";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eDiff = big_float_ts_1.eDiff;
-const eRemoveLeadingZeros = e_remove_leading_zeros_1.eRemoveLeadingZeros;
+const eDiff = eDiff_;
+const eRemoveLeadingZeros = eRemoveLeadingZeros_;
 /**
  * Returns the exact result (bar underflow / overflow) of subtracting the
  * second polynomial from the first (both with coefficients given as Shewchuk
@@ -42,5 +39,5 @@ function eSubtract(p1, p2) {
     // Ensure the result is a valid polynomial representation
     return eRemoveLeadingZeros(result);
 }
-exports.eSubtract = eSubtract;
+export { eSubtract };
 //# sourceMappingURL=e-subtract.js.map

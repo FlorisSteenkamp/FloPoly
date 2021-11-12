@@ -1,8 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.brentPoly = void 0;
-const horner_1 = require("../../evaluate/double/horner");
-const Horner = horner_1.Horner;
+import { Horner as Horner_ } from '../../evaluate/double/horner.js';
+const Horner = Horner_;
 const eps = Number.EPSILON;
 const u = eps / 2;
 const abs = Math.abs;
@@ -144,5 +141,5 @@ function brentPoly(p, lb, ub, fa = Horner(p, lb), fb = Horner(p, ub)) {
         }
     }
 }
-exports.brentPoly = brentPoly;
+export { brentPoly };
 //# sourceMappingURL=brent-poly.js.map

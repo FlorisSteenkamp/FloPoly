@@ -1,13 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.refineCertified = void 0;
-const eval_certified_1 = require("../../evaluate/double/eval-certified");
-const e_horner_1 = require("../../evaluate/expansion/e-horner");
-const big_float_ts_1 = require("big-float-ts");
+import { evalCertified as evalCertified_ } from "../../evaluate/double/eval-certified.js";
+import { eHorner as eHorner_ } from "../../evaluate/expansion/e-horner";
+import { eEstimate as eEstimate_ } from 'big-float-ts';
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const evalCertified = eval_certified_1.evalCertified;
-const eHorner = e_horner_1.eHorner;
-const eEstimate = big_float_ts_1.eEstimate;
+const evalCertified = evalCertified_;
+const eHorner = eHorner_;
+const eEstimate = eEstimate_;
 const eps = Number.EPSILON;
 const abs = Math.abs;
 const max = Math.max;
@@ -190,5 +187,5 @@ function refineCertified(p, pE, lb, ub, fa, fb, getPolyExact, exact) {
         }
     }
 }
-exports.refineCertified = refineCertified;
+export { refineCertified };
 //# sourceMappingURL=refine-certified.js.map

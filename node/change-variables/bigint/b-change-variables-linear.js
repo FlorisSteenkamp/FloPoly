@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bChangeVariablesLinear = void 0;
 /**
  * Returns the result of performing a change of variables of the
  * form: p(x) <- p(ax + b).
@@ -52,5 +49,5 @@ function bChangeVariablesLinear(p, a, b) {
     }
     return res;
 }
-exports.bChangeVariablesLinear = bChangeVariablesLinear;
+export { bChangeVariablesLinear };
 //# sourceMappingURL=b-change-variables-linear.js.map

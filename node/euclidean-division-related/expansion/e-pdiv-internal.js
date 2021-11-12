@@ -1,19 +1,16 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.ePdivInternal = void 0;
-const big_float_ts_1 = require("big-float-ts");
-const e_degree_1 = require("../../basic/expansion/e-degree");
-const e_elevate_degree_1 = require("./e-elevate-degree");
-const e_add_1 = require("../../basic/expansion/e-add");
-const e_multiply_1 = require("../../basic/expansion/e-multiply");
-const e_subtract_1 = require("../../basic/expansion/e-subtract");
+import { eDiv as eDiv_ } from "big-float-ts";
+import { eDegree as eDegree_ } from "../../basic/expansion/e-degree.js";
+import { eElevateDegree as eElevateDegree_ } from "./e-elevate-degree";
+import { eAdd as eAdd_ } from "../../basic/expansion/e-add";
+import { eMultiply as eMultiply_ } from "../../basic/expansion/e-multiply";
+import { eSubtract as eSubtract } from "../../basic/expansion/e-subtract";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eDiv = big_float_ts_1.eDiv;
-const eDegree = e_degree_1.eDegree;
-const eElevateDegree = e_elevate_degree_1.eElevateDegree;
-const eAdd = e_add_1.eAdd;
-const eMultiply = e_multiply_1.eMultiply;
-const subtractExact = e_subtract_1.eSubtract;
+const eDiv = eDiv_;
+const eDegree = eDegree_;
+const eElevateDegree = eElevateDegree_;
+const eAdd = eAdd_;
+const eMultiply = eMultiply_;
+const subtractExact = eSubtract;
 /**
  * Returns the `quotient` and `remainder` of the pseudo division of `a/b` (a, b
  * both being polynomials) naively, i.e. in such a way that all intermediate
@@ -54,5 +51,5 @@ function ePdivInternal(a, b) {
         r = subtractExact(r, eMultiply(s, b));
     }
 }
-exports.ePdivInternal = ePdivInternal;
+export { ePdivInternal };
 //# sourceMappingURL=e-pdiv-internal.js.map

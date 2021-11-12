@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.eEvaluateAt1 = void 0;
-const big_float_ts_1 = require("big-float-ts");
+import { fastExpansionSum as fastExpansionSum_ } from "big-float-ts";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const fastExpansionSum = big_float_ts_1.fastExpansionSum;
+const fastExpansionSum = fastExpansionSum_;
 /**
  * Returns the exact result (bar underflow / overflow) of evaluating the given
  * polynomial at 1.
@@ -23,5 +20,5 @@ function eEvaluateAt1(p) {
     }
     return res;
 }
-exports.eEvaluateAt1 = eEvaluateAt1;
+export { eEvaluateAt1 };
 //# sourceMappingURL=e-evaluate-at-1.js.map

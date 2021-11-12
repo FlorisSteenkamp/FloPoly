@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.evaluateAt1 = void 0;
 /**
  * Returns the result of evaluating the given polynomial at 1 using double
  * precision for intermediate calculations.
@@ -20,5 +17,5 @@ function evaluateAt1(p) {
     }
     return res;
 }
-exports.evaluateAt1 = evaluateAt1;
+export { evaluateAt1 };
 //# sourceMappingURL=evaluate-at-1.js.map

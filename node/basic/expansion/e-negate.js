@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.eNegate = void 0;
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const big_float_ts_1 = require("big-float-ts");
-const eNegativeOf = big_float_ts_1.eNegativeOf;
+import { eNegativeOf as eNegativeOf_ } from "big-float-ts";
+const eNegativeOf = eNegativeOf_;
 /**
  * Returns the negative of the given polynomial (with coefficients given as
  * Shewchuk floating point expansions), i.e. (p -> -p).
@@ -26,5 +23,5 @@ function eNegate(p) {
     }
     return result;
 }
-exports.eNegate = eNegate;
+export { eNegate };
 //# sourceMappingURL=e-negate.js.map

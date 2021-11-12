@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.ddDifferentiate = void 0;
-const double_double_1 = require("double-double");
+import { ddMultDouble2 as ddMultDouble2_ } from "double-double";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const ddMultDouble2 = double_double_1.ddMultDouble2;
+const ddMultDouble2 = ddMultDouble2_;
 /**
  * Returns the result of differentiating the given polynomial (with coefficients
  * given in double-double precision) in double-double precision.
@@ -27,5 +24,5 @@ function ddDifferentiate(p) {
     }
     return result;
 }
-exports.ddDifferentiate = ddDifferentiate;
+export { ddDifferentiate };
 //# sourceMappingURL=dd-differentiate.js.map

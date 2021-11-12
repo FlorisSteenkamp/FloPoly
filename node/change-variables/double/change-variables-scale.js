@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.changeVariablesScale = void 0;
 /**
  * Returns the result of performing a change of variables of the
  * form: p(x) <- p(ax) in double precision.
@@ -50,5 +47,5 @@ function changeVariablesScale(p, a) {
     }
     return res;
 }
-exports.changeVariablesScale = changeVariablesScale;
+export { changeVariablesScale };
 //# sourceMappingURL=change-variables-scale.js.map

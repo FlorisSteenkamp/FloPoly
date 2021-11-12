@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.eIsUnit = void 0;
 /**
  * Returns true if the given polynomial (with coefficients given as Shewchuk
  * floating point expansions) is the unit polynomial, i.e. === 1.
@@ -14,5 +11,5 @@ exports.eIsUnit = void 0;
 function eIsUnit(p) {
     return p.length === 1 && p[0].length === 1 && p[0][0] === 1;
 }
-exports.eIsUnit = eIsUnit;
+export { eIsUnit };
 //# sourceMappingURL=e-is-unit.js.map

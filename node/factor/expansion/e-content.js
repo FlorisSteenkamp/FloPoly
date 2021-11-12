@@ -1,13 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.eContent = void 0;
-const e_integer_gcd_1 = require("../../gcd/expansion/e-integer-gcd");
-const big_float_ts_1 = require("big-float-ts");
-const big_float_ts_2 = require("big-float-ts");
+import { eGcdInts as eGcdInts_ } from "../../gcd/expansion/e-integer-gcd.js";
+import { eSign as eSign_ } from "big-float-ts";
+import { eNegativeOf as eNegativeOf_ } from "big-float-ts";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eGcdInts = e_integer_gcd_1.eGcdInts;
-const eSign = big_float_ts_1.eSign;
-const eNegativeOf = big_float_ts_2.eNegativeOf;
+const eGcdInts = eGcdInts_;
+const eSign = eSign_;
+const eNegativeOf = eNegativeOf_;
 /**
  * Returns cont(p), i.e. the content of the given polynomial defined as the
  * greatest common divisor of its coefficients.
@@ -33,5 +30,5 @@ function eContent(p) {
     }
     return eSign(p[0]) < 0 ? eNegativeOf(eGcdInts(p)) : eGcdInts(p);
 }
-exports.eContent = eContent;
+export { eContent };
 //# sourceMappingURL=e-content.js.map

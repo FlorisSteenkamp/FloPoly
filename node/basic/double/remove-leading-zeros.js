@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.removeLeadingZeros = void 0;
 /**
  * If the highest power coefficient of the given polynomial is 0 then
  * removeLeadingZeros can be called to remove all such highest terms so that
@@ -29,5 +26,5 @@ function removeLeadingZeros(p) {
     }
     return p;
 }
-exports.removeLeadingZeros = removeLeadingZeros;
+export { removeLeadingZeros };
 //# sourceMappingURL=remove-leading-zeros.js.map

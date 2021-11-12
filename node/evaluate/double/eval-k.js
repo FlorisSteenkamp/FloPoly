@@ -1,13 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.evalK4 = exports.evalK2 = exports.evalK = void 0;
-const horner_with_running_error_1 = require("./horner-with-running-error");
-const comp_horner_k_1 = require("./comp-horner-k");
-const comp_horner_with_running_error_1 = require("./comp-horner-with-running-error");
+import { hornerWithRunningError as hornerWithRunningError_ } from "./horner-with-running-error.js";
+import { CompHornerK as CompHornerK_ } from "./comp-horner-k";
+import { compHornerWithRunningError as compHornerWithRunningError_ } from "./comp-horner-with-running-error";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const hornerWithRunningError = horner_with_running_error_1.hornerWithRunningError;
-const CompHornerK = comp_horner_k_1.CompHornerK;
-const compHornerWithRunningError = comp_horner_with_running_error_1.compHornerWithRunningError;
+const hornerWithRunningError = hornerWithRunningError_;
+const CompHornerK = CompHornerK_;
+const compHornerWithRunningError = compHornerWithRunningError_;
 /**
  * Returns the result of evaluating the given polynomial at `x` such that at least
  * the sign bit is correct *up to 3-times compensated evaluation (K = 4)*, i.e.
@@ -38,7 +35,6 @@ function evalK(p, x) {
     }
     return r̂;
 }
-exports.evalK = evalK;
 function evalK2(p, x) {
     const [r̂, e] = compHornerWithRunningError(p, x);
     if (Math.abs(r̂) - e < 0) {
@@ -46,12 +42,11 @@ function evalK2(p, x) {
     }
     return r̂;
 }
-exports.evalK2 = evalK2;
 // inlined
 //[r̂, e] = compHornerWithRunningError(p, x); if (Math.abs(r̂) - e < 0) { return evalK4(p, x); } return { r̂, level: 2 }
 function evalK4(p, x) {
     const r̂ = CompHornerK(p, x, 4);
     return r̂;
 }
-exports.evalK4 = evalK4;
+export { evalK, evalK2, evalK4 };
 //# sourceMappingURL=eval-k.js.map

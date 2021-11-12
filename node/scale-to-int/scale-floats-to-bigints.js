@@ -1,11 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.scaleFloatsToBigints = void 0;
-const big_float_ts_1 = require("big-float-ts");
-const big_float_ts_2 = require("big-float-ts");
+import { exponent as exponent_ } from "big-float-ts";
+import { bitLength as bitLength_ } from "big-float-ts";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const exponent = big_float_ts_1.exponent;
-const bitLength = big_float_ts_2.bitLength;
+const exponent = exponent_;
+const bitLength = bitLength_;
 const b0 = 0n; // so tests are not tripped up - awaiting better support
 /**
  * Returns the result of scaling the given array of floats by the *same* power
@@ -47,5 +44,5 @@ function scaleFloatsToBigints(as) {
     // overflow / underflow cannot occur
     return as.map(a => BigInt(a * 2 ** e));
 }
-exports.scaleFloatsToBigints = scaleFloatsToBigints;
+export { scaleFloatsToBigints };
 //# sourceMappingURL=scale-floats-to-bigints.js.map

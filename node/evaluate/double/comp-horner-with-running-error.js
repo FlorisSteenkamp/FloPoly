@@ -1,17 +1,14 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.compHornerWithRunningError = void 0;
-const big_float_ts_1 = require("big-float-ts");
-const eft_horner_1 = require("./eft-horner");
-const horner_sum_1 = require("./horner-sum");
-const horner_abs_sum_1 = require("./horner-abs-sum");
-const gammas_1 = require("./gammas");
+import { twoSum as twoSum_ } from "big-float-ts";
+import { EFTHorner as EFTHorner_ } from "./eft-horner.js";
+import { HornerSum as HornerSum_ } from "./horner-sum";
+import { HornerAbsSum as HornerAbsSum_ } from "./horner-abs-sum";
+import { γs as γs_ } from "./gammas";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const twoSum = big_float_ts_1.twoSum;
-const EFTHorner = eft_horner_1.EFTHorner;
-const HornerSum = horner_sum_1.HornerSum;
-const HornerAbsSum = horner_abs_sum_1.HornerAbsSum;
-const γs = gammas_1.γs;
+const twoSum = twoSum_;
+const EFTHorner = EFTHorner_;
+const HornerSum = HornerSum_;
+const HornerAbsSum = HornerAbsSum_;
+const γs = γs_;
 const u = Number.EPSILON / 2;
 /**
  * Returns the result of evaluating a univariate polynomial using once compensated
@@ -48,5 +45,5 @@ function compHornerWithRunningError(p, x) {
     const β̂ = (α̂ + Math.abs(e)) / (1 - 2 * u);
     return [r̄, β̂];
 }
-exports.compHornerWithRunningError = compHornerWithRunningError;
+export { compHornerWithRunningError };
 //# sourceMappingURL=comp-horner-with-running-error.js.map

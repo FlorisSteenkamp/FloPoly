@@ -1,4 +1,4 @@
-import { absCoeff } from "../basic/double/abs-coeff.js";import { absCoeff } from "../basic/double/abs-coeff.js
+import { absCoeff } from "../basic/double/abs-coeff.js";
 import { CompHornerK } from "../evaluate/double/comp-horner-k";
 
 

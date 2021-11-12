@@ -1,11 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.eMultiplyByConst = void 0;
-const big_float_ts_1 = require("big-float-ts");
-const big_float_ts_2 = require("big-float-ts");
+import { eSign as eSign_ } from "big-float-ts";
+import { expansionProduct as expansionProduct_ } from "big-float-ts";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eSign = big_float_ts_1.eSign;
-const expansionProduct = big_float_ts_2.expansionProduct;
+const eSign = eSign_;
+const expansionProduct = expansionProduct_;
 /**
  * Returns the exact result (bar underflow / overflow) of multiplying a
  * polynomial (with coefficients given as Shewchuk floating point expansions)
@@ -34,5 +31,5 @@ function eMultiplyByConst(c, p) {
     }
     return result;
 }
-exports.eMultiplyByConst = eMultiplyByConst;
+export { eMultiplyByConst };
 //# sourceMappingURL=e-multiply-by-const.js.map

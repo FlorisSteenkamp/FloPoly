@@ -1,13 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bNumRootsInRange = void 0;
-const b_sturm_chain_1 = require("../../../euclidean-division-related/bigint/b-sturm-chain");
-const b_horner_1 = require("../../../evaluate/bigint/b-horner");
-const b_sign_changes_1 = require("./b-sign-changes");
+import { bSturmChain as bSturmChain_ } from "../../../euclidean-division-related/bigint/b-sturm-chain.js";
+import { bHorner as bHorner_ } from "../../../evaluate/bigint/b-horner";
+import { bSignChanges as bSignChanges_ } from "./b-sign-changes";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const bSturmChain = b_sturm_chain_1.bSturmChain;
-const bHorner = b_horner_1.bHorner;
-const bSignChanges = b_sign_changes_1.bSignChanges;
+const bSturmChain = bSturmChain_;
+const bHorner = bHorner_;
+const bSignChanges = bSignChanges_;
 /**
  * Returns the *exact* number of *distinct* real roots in the open
  * interval (a,b) of the given polynomial.
@@ -35,5 +32,5 @@ function bNumRootsInRange(p, a, b) {
     const bs = ps.map(p => bHorner(p, b));
     return bSignChanges(as) - bSignChanges(bs);
 }
-exports.bNumRootsInRange = bNumRootsInRange;
+export { bNumRootsInRange };
 //# sourceMappingURL=b-num-roots-in-range.js.map

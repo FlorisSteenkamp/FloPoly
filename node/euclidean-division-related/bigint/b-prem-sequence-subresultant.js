@@ -1,11 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bPremSequenceSubresultant = void 0;
-const b_degree_1 = require("../../basic/bigint/b-degree");
-const b_pdiv_trivial_1 = require("./b-pdiv-trivial");
+import { bDegree as bDegree_ } from "../../basic/bigint/b-degree.js";
+import { bPdivTrivial as bPdivTrivial_ } from "./b-pdiv-trivial";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const bDegree = b_degree_1.bDegree;
-const bPdivTrivial = b_pdiv_trivial_1.bPdivTrivial;
+const bDegree = bDegree_;
+const bPdivTrivial = bPdivTrivial_;
 /**
  * Returns the subresultant pseudo remainder sequence of a/b.
  *
@@ -57,5 +54,5 @@ function bPremSequenceSubresultant(f, g, sturm = false) {
         i++;
     }
 }
-exports.bPremSequenceSubresultant = bPremSequenceSubresultant;
+export { bPremSequenceSubresultant };
 //# sourceMappingURL=b-prem-sequence-subresultant.js.map

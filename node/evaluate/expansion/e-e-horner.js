@@ -1,11 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.eeHorner = void 0;
-const big_float_ts_1 = require("big-float-ts");
-const big_float_ts_2 = require("big-float-ts");
+import { fastExpansionSum as fastExpansionSum_ } from "big-float-ts";
+import { expansionProduct as expansionProduct_ } from "big-float-ts";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const fastExpansionSum = big_float_ts_1.fastExpansionSum;
-const expansionProduct = big_float_ts_2.expansionProduct;
+const fastExpansionSum = fastExpansionSum_;
+const expansionProduct = expansionProduct_;
 /**
  * Returns the exact result (bar underflow / overflow) of evaluating a
  * univariate polynomial at a point given as a Shewchuk expansion using
@@ -25,5 +22,5 @@ function eeHorner(p, x) {
     }
     return result;
 }
-exports.eeHorner = eeHorner;
+export { eeHorner };
 //# sourceMappingURL=e-e-horner.js.map

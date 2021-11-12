@@ -1,31 +1,28 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.allRootsCertified = void 0;
-const dd_differentiate_with_err_1 = require("../../calculus/double-double/dd-differentiate-with-err");
-const e_differentiate_1 = require("../../calculus/expansion/e-differentiate");
-const eval_certified_1 = require("../../evaluate/double/eval-certified");
-const e_horner_1 = require("../../evaluate/expansion/e-horner");
-const transpose_poly_1 = require("./transpose-poly");
-const eval_adaptive_1 = require("./eval-adaptive");
-const refine_certified_1 = require("./refine-certified");
-const big_float_ts_1 = require("big-float-ts");
-const root_bounds_lmq_1 = require("../root-bounds/root-bounds-lmq");
-const root_bounds_lmq_2 = require("../root-bounds/root-bounds-lmq");
-const horner_with_running_error_1 = require("../../evaluate/double/horner-with-running-error");
+import { ddDifferentiateWithError as ddDifferentiateWithError_ } from "../../calculus/double-double/dd-differentiate-with-err.js";
+import { eDifferentiate as eDifferentiate_ } from '../../calculus/expansion/e-differentiate';
+import { evalCertified as evalCertified_ } from "../../evaluate/double/eval-certified";
+import { eHorner as eHorner_ } from "../../evaluate/expansion/e-horner";
+import { transposePoly as transposePoly_ } from "./transpose-poly";
+import { evalAdaptive as evalAdaptive_ } from "./eval-adaptive";
+import { refineCertified as refineCertified_ } from "./refine-certified";
+import { eEstimate as eEstimate_, eSign as eSign_ } from "big-float-ts";
+import { negativeRootLowerBound_LMQ as negativeRootUpperBound_LMQ_ } from "../root-bounds/root-bounds-lmq.js";
+import { positiveRootUpperBound_LMQ as positiveRootUpperBound_LMQ_ } from "../root-bounds/root-bounds-lmq";
+import { hornerWithRunningError as hornerWithRunningError_ } from "../../evaluate/double/horner-with-running-error";
 //import { toCasStr } from "../../basic/to-cas-str";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const ddDifferentiateWithError = dd_differentiate_with_err_1.ddDifferentiateWithError;
-const evalCertified = eval_certified_1.evalCertified;
-const eHorner = e_horner_1.eHorner;
-const transposePoly = transpose_poly_1.transposePoly;
-const evalAdaptive = eval_adaptive_1.evalAdaptive;
-const refineCertified = refine_certified_1.refineCertified;
-const negativeRootUpperBound_LMQ = root_bounds_lmq_1.negativeRootLowerBound_LMQ;
-const positiveRootUpperBound_LMQ = root_bounds_lmq_2.positiveRootUpperBound_LMQ;
-const eDifferentiate = e_differentiate_1.eDifferentiate;
-const eEstimate = big_float_ts_1.eEstimate;
-const hornerWithRunningError = horner_with_running_error_1.hornerWithRunningError;
-const eSign = big_float_ts_1.eSign;
+const ddDifferentiateWithError = ddDifferentiateWithError_;
+const evalCertified = evalCertified_;
+const eHorner = eHorner_;
+const transposePoly = transposePoly_;
+const evalAdaptive = evalAdaptive_;
+const refineCertified = refineCertified_;
+const negativeRootUpperBound_LMQ = negativeRootUpperBound_LMQ_;
+const positiveRootUpperBound_LMQ = positiveRootUpperBound_LMQ_;
+const eDifferentiate = eDifferentiate_;
+const eEstimate = eEstimate_;
+const hornerWithRunningError = hornerWithRunningError_;
+const eSign = eSign_;
 const max = Math.max;
 const min = Math.min;
 const abs = Math.abs;
@@ -420,7 +417,6 @@ function allRootsCertified(p, lb = 0, ub = 1, pE, getPExact, returnUndefinedForZ
         }
     }
 }
-exports.allRootsCertified = allRootsCertified;
 function joinRoots(rs) {
     const newRs = [];
     const r = rs[0];
@@ -444,11 +440,5 @@ function joinRoots(rs) {
     newRs.push(curR);
     return newRs;
 }
-////////////////////////////////////////////////////////////////////////////////////
-// const t1 = allRootsCertified([],0,1,[],()=>[], true);        // RootInterval[] | undefined
-// const t2 = allRootsCertified([],0,1,[],()=>[], false);       // RootInterval[]
-// const t3 = allRootsCertified([],0,1,[],()=>[], undefined);   // RootInterval[]
-// const t4 = allRootsCertified([],0,1,[],()=>[], );            // RootInterval[]
-// const t5 = allRootsCertified([],0,1,[],()=>[]  );            // RootInterval[]
-////////////////////////////////////////////////////////////////////////////////////
+export { allRootsCertified };
 //# sourceMappingURL=all-roots-certified.js.map

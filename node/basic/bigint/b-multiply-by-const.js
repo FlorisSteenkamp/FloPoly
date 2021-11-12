@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bMultiplyByConst = void 0;
 /**
  * Returns the result of multiplies a polynomial (with bigint coefficients) by
  * a constant.
@@ -23,5 +20,5 @@ function bMultiplyByConst(c, p) {
     }
     return r;
 }
-exports.bMultiplyByConst = bMultiplyByConst;
+export { bMultiplyByConst };
 //# sourceMappingURL=b-multiply-by-const.js.map

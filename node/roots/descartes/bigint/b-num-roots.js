@@ -1,13 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bNumRoots = void 0;
-const b_sturm_chain_1 = require("../../../euclidean-division-related/bigint/b-sturm-chain");
-const b_degree_1 = require("../../../basic/bigint/b-degree");
-const b_sign_changes_1 = require("./b-sign-changes");
+import { bSturmChain as bSturmChain_ } from "../../../euclidean-division-related/bigint/b-sturm-chain.js";
+import { bDegree as bDegree_ } from "../../../basic/bigint/b-degree";
+import { bSignChanges as bSignChanges_ } from "./b-sign-changes";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const bSturmChain = b_sturm_chain_1.bSturmChain;
-const bDegree = b_degree_1.bDegree;
-const bSignChanges = b_sign_changes_1.bSignChanges;
+const bSturmChain = bSturmChain_;
+const bDegree = bDegree_;
+const bSignChanges = bSignChanges_;
 /**
  * Returns the *exact* number of *distinct* real roots in the interval (-∞,+∞)
  * of the given polynomial.
@@ -34,5 +31,5 @@ function bNumRoots(p) {
     const bs = ps.map(p => p[0]);
     return bSignChanges(as) - bSignChanges(bs);
 }
-exports.bNumRoots = bNumRoots;
+export { bNumRoots };
 //# sourceMappingURL=b-num-roots.js.map

@@ -1,19 +1,16 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.allRoots = void 0;
-const differentiate_1 = require("../../calculus/double/differentiate");
-const horner_1 = require("../../evaluate/double/horner");
-const brent_poly_1 = require("./brent-poly");
-const root_bounds_lmq_1 = require("../root-bounds/root-bounds-lmq");
-const root_bounds_lmq_2 = require("../root-bounds/root-bounds-lmq");
-const remove_leading_zeros_1 = require("../../basic/double/remove-leading-zeros");
+import { differentiate as differentiate_ } from "../../calculus/double/differentiate.js";
+import { Horner as Horner_ } from "../../evaluate/double/horner";
+import { brentPoly as brentPoly_ } from "./brent-poly";
+import { negativeRootLowerBound_LMQ as negativeRootUpperBound_LMQ_ } from "../root-bounds/root-bounds-lmq";
+import { positiveRootUpperBound_LMQ as positiveRootUpperBound_LMQ_ } from "../root-bounds/root-bounds-lmq";
+import { removeLeadingZeros as removeLeadingZeros_ } from "../../basic/double/remove-leading-zeros";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const differentiate = differentiate_1.differentiate;
-const Horner = horner_1.Horner;
-const brentPoly = brent_poly_1.brentPoly;
-const negativeRootUpperBound_LMQ = root_bounds_lmq_1.negativeRootLowerBound_LMQ;
-const positiveRootUpperBound_LMQ = root_bounds_lmq_2.positiveRootUpperBound_LMQ;
-const removeLeadingZeros = remove_leading_zeros_1.removeLeadingZeros;
+const differentiate = differentiate_;
+const Horner = Horner_;
+const brentPoly = brentPoly_;
+const negativeRootUpperBound_LMQ = negativeRootUpperBound_LMQ_;
+const positiveRootUpperBound_LMQ = positiveRootUpperBound_LMQ_;
+const removeLeadingZeros = removeLeadingZeros_;
 /**
  * Find and return all roots of the given polynomial in the given interval.
  *
@@ -137,5 +134,5 @@ function allRoots(p, lb = Number.NEGATIVE_INFINITY, ub = Number.POSITIVE_INFINIT
     }
     return is;
 }
-exports.allRoots = allRoots;
+export { allRoots };
 //# sourceMappingURL=all-roots.js.map

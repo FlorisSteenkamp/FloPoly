@@ -1,11 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bPremSequencePrimitive = void 0;
-const b_pdiv_trivial_1 = require("./b-pdiv-trivial");
-const b_primitive_part_1 = require("../../factor/bigint/b-primitive-part");
+import { bPdivTrivial as bPdivTrivial_ } from "./b-pdiv-trivial.js";
+import { bPrimitivePart as bGetPrimitivePart_ } from "../../factor/bigint/b-primitive-part";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const bPdivTrivial = b_pdiv_trivial_1.bPdivTrivial;
-const bGetPrimitivePart = b_primitive_part_1.bPrimitivePart;
+const bPdivTrivial = bPdivTrivial_;
+const bGetPrimitivePart = bGetPrimitivePart_;
 /**
  * Returns the primitive pseudo remainder sequence of a/b.
  *
@@ -38,5 +35,5 @@ function bPremSequencePrimitive(f, g) {
         i++;
     }
 }
-exports.bPremSequencePrimitive = bPremSequencePrimitive;
+export { bPremSequencePrimitive };
 //# sourceMappingURL=b-prem-sequence-primitive.js.map

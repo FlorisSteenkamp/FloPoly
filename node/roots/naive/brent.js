@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.brent = void 0;
 const eps = Number.EPSILON;
 const abs = Math.abs;
 const max = Math.max;
@@ -136,5 +133,5 @@ function brent(f, lb, ub) {
         }
     }
 }
-exports.brent = brent;
+export { brent };
 //# sourceMappingURL=brent.js.map

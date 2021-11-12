@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.transposePoly = void 0;
 /**
  * Transposes the given polynomial (given with multi-precision coefficients)
  * into multiple polynomials with each consecutive polynomial 'adjusting'
@@ -23,5 +20,5 @@ function transposePoly(p) {
     }
     return p_;
 }
-exports.transposePoly = transposePoly;
+export { transposePoly };
 //# sourceMappingURL=transpose-poly.js.map

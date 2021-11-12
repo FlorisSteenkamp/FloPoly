@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.bHorner = void 0;
 /**
  * Returns the result of evaluating (at an integer value) a univariate
  * polynomial with bigint coefficients using Horner's method.
@@ -21,5 +18,5 @@ function bHorner(p, x) {
     }
     return q;
 }
-exports.bHorner = bHorner;
+export { bHorner };
 //# sourceMappingURL=b-horner.js.map

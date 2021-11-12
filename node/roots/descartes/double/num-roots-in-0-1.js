@@ -1,15 +1,12 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.numRootsIn01 = void 0;
-const e_sturm_chain_1 = require("../../../euclidean-division-related/expansion/e-sturm-chain");
-const sign_changes_1 = require("./sign-changes");
-const e_evaluate_at_1_1 = require("../../../evaluate/expansion/e-evaluate-at-1");
-const big_float_ts_1 = require("big-float-ts");
+import { eSturmChain as eSturmChain_ } from "../../../euclidean-division-related/expansion/e-sturm-chain.js";
+import { signChanges as signChanges_ } from "./sign-changes";
+import { eEvaluateAt1 as eEvaluateAt1_ } from "../../../evaluate/expansion/e-evaluate-at-1";
+import { eSign as eSign_ } from "big-float-ts";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eEvaluateAt1 = e_evaluate_at_1_1.eEvaluateAt1;
-const eSturmChain = e_sturm_chain_1.eSturmChain;
-const signChanges = sign_changes_1.signChanges;
-const eSign = big_float_ts_1.eSign;
+const eEvaluateAt1 = eEvaluateAt1_;
+const eSturmChain = eSturmChain_;
+const signChanges = signChanges_;
+const eSign = eSign_;
 /**
  * Returns the *exact* number of *distinct* real roots in the open
  * interval (0,1) of the given polynomial - subject to floating point
@@ -28,5 +25,5 @@ function numRootsIn01(p) {
     const bs = ps.map(p_ => eSign(eEvaluateAt1(p_))); // evaluate at 1
     return signChanges(as) - signChanges(bs);
 }
-exports.numRootsIn01 = numRootsIn01;
+export { numRootsIn01 };
 //# sourceMappingURL=num-roots-in-0-1.js.map

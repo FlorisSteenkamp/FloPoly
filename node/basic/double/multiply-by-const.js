@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.multiplyByConst = void 0;
-const remove_leading_zeros_1 = require("./remove-leading-zeros");
+import { removeLeadingZeros as removeLeadingZeros_ } from "./remove-leading-zeros.js";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const removeLeadingZeros = remove_leading_zeros_1.removeLeadingZeros;
+const removeLeadingZeros = removeLeadingZeros_;
 /**
  * Returns the result of multiplies a polynomial by a constant in double
  * precision.
@@ -32,5 +29,5 @@ function multiplyByConst(c, p) {
     // We *have* to clip due to possible floating point underflow
     return removeLeadingZeros(p_);
 }
-exports.multiplyByConst = multiplyByConst;
+export { multiplyByConst };
 //# sourceMappingURL=multiply-by-const.js.map
