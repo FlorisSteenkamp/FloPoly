@@ -106,6 +106,7 @@ __webpack_require__.d(__webpack_exports__, {
   "ddDeflate": () => (/* reexport */ ddDeflate),
   "ddDifferentiate": () => (/* reexport */ ddDifferentiate),
   "ddDifferentiateWithError": () => (/* reexport */ ddDifferentiateWithError),
+  "ddIntegrate": () => (/* reexport */ ddIntegrate),
   "deflate": () => (/* reexport */ deflate),
   "degree": () => (/* reexport */ degree),
   "differentiate": () => (/* reexport */ differentiate),
@@ -163,6 +164,7 @@ __webpack_require__.d(__webpack_exports__, {
   "gcdInt": () => (/* reexport */ gcdInt),
   "gcdInts": () => (/* reexport */ gcdInts),
   "hornerWithRunningError": () => (/* reexport */ hornerWithRunningError),
+  "integrate": () => (/* reexport */ integrate),
   "invert": () => (/* reexport */ invert),
   "isRationalMultipleOf": () => (/* reexport */ isRationalMultipleOf),
   "mid": () => (/* reexport */ mid),
@@ -3731,6 +3733,33 @@ function differentiate(p) {
 }
 
 
+;// CONCATENATED MODULE: ./src/calculus/double/integrate.ts
+/**
+ * Returns the result of integrating the given polynomial in double precision.
+ *
+ * @param p a polynomial with coefficients given densely as an array of double
+ * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`
+ * represents the polynomial `5x^2 - 3x`
+ * @param c the constant of intergration
+ *
+ * @example
+ * ```typescript
+ * integrate([3, 2, 1]); //=> [1, 1, 1, c]
+ * ```
+ *
+ * @doc
+ */
+function integrate(p, c) {
+    const result = [];
+    const d = p.length - 1;
+    for (let i = 0; i < d + 1; i++) {
+        result.push(p[i] / (d + 1 - i));
+    }
+    result.push(c);
+    return result;
+}
+
+
 ;// CONCATENATED MODULE: ./node_modules/double-double/node/double-double/binary/dd-diff-dd.js
 /**
  * Returns the result of subtracting the second given double-double-precision
@@ -5143,6 +5172,36 @@ function ddDifferentiateWithError(pWithErr) {
         deg * pE[i] + Math.abs($c) * extraErr);
     }
     return { p: dp, pE: dpE };
+}
+
+
+;// CONCATENATED MODULE: ./src/calculus/double-double/dd-integrate.ts
+
+/**
+ * Returns the result of integrating the given polynomial in double-double
+ * precision.
+ *
+ * @param p a polynomial with coefficients given densely as an array of
+ * double-double precision floating point numbers from highest to lowest
+ * power, e.g. `[[0,5],[0,-3],[0,0]]`
+ * represents the polynomial `5x^2 - 3x`
+ * @param c the constant of intergration
+ *
+ * @example
+ * ```typescript
+ * integrate([[0,3], [0,2], [0,1]]); //=> [[0,1], [0,1], [0,1], [0,c]]
+ * ```
+ *
+ * @doc
+ */
+function ddIntegrate(p, c) {
+    const result = [];
+    const d = p.length - 1;
+    for (let i = 0; i < d + 1; i++) {
+        result.push(node_ddDivDouble(p[i], (d + 1 - i)));
+    }
+    result.push(c);
+    return result;
 }
 
 
@@ -10429,7 +10488,9 @@ function scaleFloatssToBigintss(ass) {
 
 // calculus double
 
+
 // calculus double-double
+
 
 
 // calculus expansion
@@ -10630,9 +10691,11 @@ const src_operators = {
     bDifferentiate: bDifferentiate,
     // calculus double
     differentiate: differentiate,
+    integrate: integrate,
     // calculus double-double
     ddDifferentiate: ddDifferentiate,
     ddDifferentiateWithError: ddDifferentiateWithError,
+    ddIntegrate: ddIntegrate,
     // calculus expansion
     eDifferentiate: eDifferentiate,
     // change variables bigint

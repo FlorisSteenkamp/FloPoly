@@ -45,9 +45,11 @@ import { eSubtract } from './basic/expansion/e-subtract.js';
 import { bDifferentiate } from './calculus/bigint/b-differentiate.js';
 // calculus double
 import { differentiate } from './calculus/double/differentiate.js';
+import { integrate } from './calculus/double/integrate.js';
 // calculus double-double
 import { ddDifferentiate } from './calculus/double-double/dd-differentiate.js';
 import { ddDifferentiateWithError } from './calculus/double-double/dd-differentiate-with-err.js';
+import { ddIntegrate } from './calculus/double-double/dd-integrate.js';
 // calculus expansion
 import { eDifferentiate } from './calculus/expansion/e-differentiate.js';
 // change variables bigint
@@ -246,9 +248,11 @@ const operators = {
     bDifferentiate,
     // calculus double
     differentiate,
+    integrate,
     // calculus double-double
     ddDifferentiate,
     ddDifferentiateWithError,
+    ddIntegrate,
     // calculus expansion
     eDifferentiate,
     // change variables bigint
@@ -413,9 +417,9 @@ eAbsCoeff, eAdd, eDegree, eEqual, eInvert, eIsConstOrZero, eIsRationalMultipleOf
 // calculus bigint
 bDifferentiate, 
 // calculus double
-differentiate, 
+differentiate, integrate, 
 // calculus double-double
-ddDifferentiate, ddDifferentiateWithError, 
+ddDifferentiate, ddDifferentiateWithError, ddIntegrate, 
 // calculus expansion
 eDifferentiate, 
 // change variables bigint

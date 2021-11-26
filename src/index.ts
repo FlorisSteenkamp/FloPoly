@@ -50,10 +50,12 @@ import { bDifferentiate } from './calculus/bigint/b-differentiate.js';
 
 // calculus double
 import { differentiate } from './calculus/double/differentiate.js';
+import { integrate } from './calculus/double/integrate.js';
 
 // calculus double-double
 import { ddDifferentiate } from './calculus/double-double/dd-differentiate.js';
 import { ddDifferentiateWithError } from './calculus/double-double/dd-differentiate-with-err.js';
+import { ddIntegrate } from './calculus/double-double/dd-integrate.js';
 
 // calculus expansion
 import { eDifferentiate } from './calculus/expansion/e-differentiate.js';
@@ -291,10 +293,12 @@ const operators = {
 
 	// calculus double
 	differentiate,
+	integrate,
 
 	// calculus double-double
 	ddDifferentiate,
 	ddDifferentiateWithError,
+	ddIntegrate,
 
 	// calculus expansion
 	eDifferentiate,
@@ -534,10 +538,12 @@ export {
 
 	// calculus double
 	differentiate,
+	integrate,
 
 	// calculus double-double
 	ddDifferentiate,
 	ddDifferentiateWithError,
+	ddIntegrate,
 
 	// calculus expansion
 	eDifferentiate,

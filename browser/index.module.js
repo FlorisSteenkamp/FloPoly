@@ -90,6 +90,7 @@ __webpack_require__.d(__webpack_exports__, {
   "aF": () => (/* reexport */ ddDeflate),
   "Xz": () => (/* reexport */ ddDifferentiate),
   "sF": () => (/* reexport */ ddDifferentiateWithError),
+  "sG": () => (/* reexport */ ddIntegrate),
   "Wt": () => (/* reexport */ deflate),
   "U8": () => (/* reexport */ degree),
   "YC": () => (/* reexport */ differentiate),
@@ -147,6 +148,7 @@ __webpack_require__.d(__webpack_exports__, {
   "a8": () => (/* reexport */ gcdInt),
   "JK": () => (/* reexport */ gcdInts),
   "xD": () => (/* reexport */ hornerWithRunningError),
+  "lF": () => (/* reexport */ integrate),
   "U_": () => (/* reexport */ invert),
   "IP": () => (/* reexport */ isRationalMultipleOf),
   "Pi": () => (/* reexport */ mid),
@@ -3715,6 +3717,33 @@ function differentiate(p) {
 }
 
 
+;// CONCATENATED MODULE: ./src/calculus/double/integrate.ts
+/**
+ * Returns the result of integrating the given polynomial in double precision.
+ *
+ * @param p a polynomial with coefficients given densely as an array of double
+ * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`
+ * represents the polynomial `5x^2 - 3x`
+ * @param c the constant of intergration
+ *
+ * @example
+ * ```typescript
+ * integrate([3, 2, 1]); //=> [1, 1, 1, c]
+ * ```
+ *
+ * @doc
+ */
+function integrate(p, c) {
+    const result = [];
+    const d = p.length - 1;
+    for (let i = 0; i < d + 1; i++) {
+        result.push(p[i] / (d + 1 - i));
+    }
+    result.push(c);
+    return result;
+}
+
+
 ;// CONCATENATED MODULE: ./node_modules/double-double/node/double-double/binary/dd-diff-dd.js
 /**
  * Returns the result of subtracting the second given double-double-precision
@@ -5127,6 +5156,36 @@ function ddDifferentiateWithError(pWithErr) {
         deg * pE[i] + Math.abs($c) * extraErr);
     }
     return { p: dp, pE: dpE };
+}
+
+
+;// CONCATENATED MODULE: ./src/calculus/double-double/dd-integrate.ts
+
+/**
+ * Returns the result of integrating the given polynomial in double-double
+ * precision.
+ *
+ * @param p a polynomial with coefficients given densely as an array of
+ * double-double precision floating point numbers from highest to lowest
+ * power, e.g. `[[0,5],[0,-3],[0,0]]`
+ * represents the polynomial `5x^2 - 3x`
+ * @param c the constant of intergration
+ *
+ * @example
+ * ```typescript
+ * integrate([[0,3], [0,2], [0,1]]); //=> [[0,1], [0,1], [0,1], [0,c]]
+ * ```
+ *
+ * @doc
+ */
+function ddIntegrate(p, c) {
+    const result = [];
+    const d = p.length - 1;
+    for (let i = 0; i < d + 1; i++) {
+        result.push(node_ddDivDouble(p[i], (d + 1 - i)));
+    }
+    result.push(c);
+    return result;
 }
 
 
@@ -10413,7 +10472,9 @@ function scaleFloatssToBigintss(ass) {
 
 // calculus double
 
+
 // calculus double-double
+
 
 
 // calculus expansion
@@ -10614,9 +10675,11 @@ const src_operators = {
     bDifferentiate: bDifferentiate,
     // calculus double
     differentiate: differentiate,
+    integrate: integrate,
     // calculus double-double
     ddDifferentiate: ddDifferentiate,
     ddDifferentiateWithError: ddDifferentiateWithError,
+    ddIntegrate: ddIntegrate,
     // calculus expansion
     eDifferentiate: eDifferentiate,
     // change variables bigint
@@ -10837,6 +10900,7 @@ var __webpack_exports__createRootExact = __webpack_exports__.UC;
 var __webpack_exports__ddDeflate = __webpack_exports__.aF;
 var __webpack_exports__ddDifferentiate = __webpack_exports__.Xz;
 var __webpack_exports__ddDifferentiateWithError = __webpack_exports__.sF;
+var __webpack_exports__ddIntegrate = __webpack_exports__.sG;
 var __webpack_exports__deflate = __webpack_exports__.Wt;
 var __webpack_exports__degree = __webpack_exports__.U8;
 var __webpack_exports__differentiate = __webpack_exports__.YC;
@@ -10894,6 +10958,7 @@ var __webpack_exports__fromRoots = __webpack_exports__.Ht;
 var __webpack_exports__gcdInt = __webpack_exports__.a8;
 var __webpack_exports__gcdInts = __webpack_exports__.JK;
 var __webpack_exports__hornerWithRunningError = __webpack_exports__.xD;
+var __webpack_exports__integrate = __webpack_exports__.lF;
 var __webpack_exports__invert = __webpack_exports__.U_;
 var __webpack_exports__isRationalMultipleOf = __webpack_exports__.IP;
 var __webpack_exports__mid = __webpack_exports__.Pi;
@@ -10933,4 +10998,4 @@ var __webpack_exports__subtract = __webpack_exports__.$X;
 var __webpack_exports__toCasStr = __webpack_exports__.yd;
 var __webpack_exports___ = __webpack_exports__.H8;
 var __webpack_exports___ = __webpack_exports__.Uv;
-export { __webpack_exports__AbsHorner as AbsHorner, __webpack_exports__CompHornerK as CompHornerK, __webpack_exports__EFTHorner as EFTHorner, __webpack_exports__Horner as Horner, __webpack_exports__absCoeff as absCoeff, __webpack_exports__add as add, __webpack_exports__allRoots as allRoots, __webpack_exports__allRootsCertified as allRootsCertified, __webpack_exports__allRootsCertifiedSimplified as allRootsCertifiedSimplified, __webpack_exports__bAbsCoeff as bAbsCoeff, __webpack_exports__bAdd as bAdd, __webpack_exports__bChangeVariablesLinear as bChangeVariablesLinear, __webpack_exports__bChangeVariablesScale as bChangeVariablesScale, __webpack_exports__bChangeVariablesTranslateX as bChangeVariablesTranslateX, __webpack_exports__bContent as bContent, __webpack_exports__bDegree as bDegree, __webpack_exports__bDifferentiate as bDifferentiate, __webpack_exports__bDivideByConst as bDivideByConst, __webpack_exports__bEqual as bEqual, __webpack_exports__bEvaluateAt0 as bEvaluateAt0, __webpack_exports__bEvaluateAt1 as bEvaluateAt1, __webpack_exports__bFlatCoefficients as bFlatCoefficients, __webpack_exports__bFlatCoefficientsArr as bFlatCoefficientsArr, __webpack_exports__bFlatRoots as bFlatRoots, __webpack_exports__bFlatRootsArr as bFlatRootsArr, __webpack_exports__bFromRoots as bFromRoots, __webpack_exports__bGcdInt as bGcdInt, __webpack_exports__bGcdInts as bGcdInts, __webpack_exports__bGcdPrs as bGcdPrs, __webpack_exports__bHorner as bHorner, __webpack_exports__bInvert as bInvert, __webpack_exports__bIsRationalMultipleOf as bIsRationalMultipleOf, __webpack_exports__bMultiply as bMultiply, __webpack_exports__bMultiplyByConst as bMultiplyByConst, __webpack_exports__bNegate as bNegate, __webpack_exports__bNumRoots as bNumRoots, __webpack_exports__bNumRootsIn01 as bNumRootsIn01, __webpack_exports__bNumRootsInRange as bNumRootsInRange, __webpack_exports__bP1Norm as bP1Norm, __webpack_exports__bP2NormSquared as bP2NormSquared, __webpack_exports__bPInfNorm as bPInfNorm, __webpack_exports__bPdivTrivial as bPdivTrivial, __webpack_exports__bPremSequencePrimitive as bPremSequencePrimitive, __webpack_exports__bPremSequenceSubresultant as bPremSequenceSubresultant, __webpack_exports__bPremSequenceTrivial as bPremSequenceTrivial, __webpack_exports__bPrimitivePart as bPrimitivePart, __webpack_exports__bReflectAboutYAxis as bReflectAboutYAxis, __webpack_exports__bRemoveLeadingZeros as bRemoveLeadingZeros, __webpack_exports__bSignChanges as bSignChanges, __webpack_exports__bSturmChain as bSturmChain, __webpack_exports__bSubtract as bSubtract, __webpack_exports__bisection as bisection, __webpack_exports__brent as brent, __webpack_exports__brentPoly as brentPoly, __webpack_exports__changeVariablesLinear as changeVariablesLinear, __webpack_exports__changeVariablesScale as changeVariablesScale, __webpack_exports__changeVariablesTranslateX as changeVariablesTranslateX, __webpack_exports__compHorner as compHorner, __webpack_exports__compHornerIsFaithful as compHornerIsFaithful, __webpack_exports__compHornerWithRunningError as compHornerWithRunningError, __webpack_exports__conditionNumber as conditionNumber, __webpack_exports__content as content, __webpack_exports__createRootExact as createRootExact, __webpack_exports__ddDeflate as ddDeflate, __webpack_exports__ddDifferentiate as ddDifferentiate, __webpack_exports__ddDifferentiateWithError as ddDifferentiateWithError, __webpack_exports__deflate as deflate, __webpack_exports__degree as degree, __webpack_exports__differentiate as differentiate, __webpack_exports__divideByConst as divideByConst, __webpack_exports__eAbsCoeff as eAbsCoeff, __webpack_exports__eAdd as eAdd, __webpack_exports__eChangeVariablesLinear as eChangeVariablesLinear, __webpack_exports__eChangeVariablesScale as eChangeVariablesScale, __webpack_exports__eChangeVariablesTranslateX as eChangeVariablesTranslateX, __webpack_exports__eContent as eContent, __webpack_exports__eDegree as eDegree, __webpack_exports__eDifferentiate as eDifferentiate, __webpack_exports__eEqual as eEqual, __webpack_exports__eEvaluateAt0 as eEvaluateAt0, __webpack_exports__eEvaluateAt1 as eEvaluateAt1, __webpack_exports__eFromRoots as eFromRoots, __webpack_exports__eGcdInt as eGcdInt, __webpack_exports__eGcdInts as eGcdInts, __webpack_exports__eHorner as eHorner, __webpack_exports__eInvert as eInvert, __webpack_exports__eIsConstOrZero as eIsConstOrZero, __webpack_exports__eIsRationalMultipleOf as eIsRationalMultipleOf, __webpack_exports__eIsUnit as eIsUnit, __webpack_exports__eMultiply as eMultiply, __webpack_exports__eMultiplyByConst as eMultiplyByConst, __webpack_exports__eNegate as eNegate, __webpack_exports__eNumRoots as eNumRoots, __webpack_exports__eNumRootsIn01 as eNumRootsIn01, __webpack_exports__eNumRootsInRange as eNumRootsInRange, __webpack_exports__eP1Norm as eP1Norm, __webpack_exports__eP2Norm as eP2Norm, __webpack_exports__ePInfNorm as ePInfNorm, __webpack_exports__ePdivTrivial as ePdivTrivial, __webpack_exports__ePremSequencePrimitive as ePremSequencePrimitive, __webpack_exports__ePremSequenceSubresultant as ePremSequenceSubresultant, __webpack_exports__ePrimitivePart as ePrimitivePart, __webpack_exports__eProduct as eProduct, __webpack_exports__eReflectAboutYAxis as eReflectAboutYAxis, __webpack_exports__eRemoveLeadingZeros as eRemoveLeadingZeros, __webpack_exports__eSignChanges as eSignChanges, __webpack_exports__eSturmChain as eSturmChain, __webpack_exports__eSubtract as eSubtract, __webpack_exports__eeHorner as eeHorner, __webpack_exports__equal as equal, __webpack_exports__evalCertified as evalCertified, __webpack_exports__evalCertifiedInclError as evalCertifiedInclError, __webpack_exports__evalK as evalK, __webpack_exports__evaluateAt0 as evaluateAt0, __webpack_exports__evaluateAt1 as evaluateAt1, __webpack_exports__flatCoefficients as flatCoefficients, __webpack_exports__flatCoefficientsArr as flatCoefficientsArr, __webpack_exports__flatRoots as flatRoots, __webpack_exports__flatRootsArr as flatRootsArr, __webpack_exports__fromRoots as fromRoots, __webpack_exports__gcdInt as gcdInt, __webpack_exports__gcdInts as gcdInts, __webpack_exports__hornerWithRunningError as hornerWithRunningError, __webpack_exports__invert as invert, __webpack_exports__isRationalMultipleOf as isRationalMultipleOf, __webpack_exports__mid as mid, __webpack_exports__multiply as multiply, __webpack_exports__multiplyByConst as multiplyByConst, __webpack_exports__negate as negate, __webpack_exports__negativeRootLowerBound_LMQ as negativeRootLowerBound_LMQ, __webpack_exports__negativeRootUpperBound_LMQ as negativeRootUpperBound_LMQ, __webpack_exports__numRoots as numRoots, __webpack_exports__numRootsIn01 as numRootsIn01, __webpack_exports__numRootsInRange as numRootsInRange, __webpack_exports__operators as operators, __webpack_exports__p1Norm as p1Norm, __webpack_exports__p2Norm as p2Norm, __webpack_exports__pInfNorm as pInfNorm, __webpack_exports__positiveRootLowerBound_LMQ as positiveRootLowerBound_LMQ, __webpack_exports__positiveRootUpperBound_LMQ as positiveRootUpperBound_LMQ, __webpack_exports__predictiveRandom as predictiveRandom, __webpack_exports__premSequenceSubresultant as premSequenceSubresultant, __webpack_exports__primitivePart as primitivePart, __webpack_exports__quadraticRoots as quadraticRoots, __webpack_exports__refineK1 as refineK1, __webpack_exports__reflectAboutYAxis as reflectAboutYAxis, __webpack_exports__removeLeadingZeros as removeLeadingZeros, __webpack_exports__rootIntervalToExp as rootIntervalToExp, __webpack_exports__rootMagnitudeUpperBound_fujiwara as rootMagnitudeUpperBound_fujiwara, __webpack_exports__rootMagnitudeUpperBound_rouche as rootMagnitudeUpperBound_rouche, __webpack_exports__scaleFloatToBigint as scaleFloatToBigint, __webpack_exports__scaleFloatToInt as scaleFloatToInt, __webpack_exports__scaleFloatsToBigints as scaleFloatsToBigints, __webpack_exports__scaleFloatsToInts as scaleFloatsToInts, __webpack_exports__scaleFloatssToBigintss as scaleFloatssToBigintss, __webpack_exports__scaleFloatssToIntss as scaleFloatssToIntss, __webpack_exports__signChanges as signChanges, __webpack_exports__sturmChain as sturmChain, __webpack_exports__subtract as subtract, __webpack_exports__toCasStr as toCasStr, __webpack_exports___ as γ, __webpack_exports___ as γγ };
+export { __webpack_exports__AbsHorner as AbsHorner, __webpack_exports__CompHornerK as CompHornerK, __webpack_exports__EFTHorner as EFTHorner, __webpack_exports__Horner as Horner, __webpack_exports__absCoeff as absCoeff, __webpack_exports__add as add, __webpack_exports__allRoots as allRoots, __webpack_exports__allRootsCertified as allRootsCertified, __webpack_exports__allRootsCertifiedSimplified as allRootsCertifiedSimplified, __webpack_exports__bAbsCoeff as bAbsCoeff, __webpack_exports__bAdd as bAdd, __webpack_exports__bChangeVariablesLinear as bChangeVariablesLinear, __webpack_exports__bChangeVariablesScale as bChangeVariablesScale, __webpack_exports__bChangeVariablesTranslateX as bChangeVariablesTranslateX, __webpack_exports__bContent as bContent, __webpack_exports__bDegree as bDegree, __webpack_exports__bDifferentiate as bDifferentiate, __webpack_exports__bDivideByConst as bDivideByConst, __webpack_exports__bEqual as bEqual, __webpack_exports__bEvaluateAt0 as bEvaluateAt0, __webpack_exports__bEvaluateAt1 as bEvaluateAt1, __webpack_exports__bFlatCoefficients as bFlatCoefficients, __webpack_exports__bFlatCoefficientsArr as bFlatCoefficientsArr, __webpack_exports__bFlatRoots as bFlatRoots, __webpack_exports__bFlatRootsArr as bFlatRootsArr, __webpack_exports__bFromRoots as bFromRoots, __webpack_exports__bGcdInt as bGcdInt, __webpack_exports__bGcdInts as bGcdInts, __webpack_exports__bGcdPrs as bGcdPrs, __webpack_exports__bHorner as bHorner, __webpack_exports__bInvert as bInvert, __webpack_exports__bIsRationalMultipleOf as bIsRationalMultipleOf, __webpack_exports__bMultiply as bMultiply, __webpack_exports__bMultiplyByConst as bMultiplyByConst, __webpack_exports__bNegate as bNegate, __webpack_exports__bNumRoots as bNumRoots, __webpack_exports__bNumRootsIn01 as bNumRootsIn01, __webpack_exports__bNumRootsInRange as bNumRootsInRange, __webpack_exports__bP1Norm as bP1Norm, __webpack_exports__bP2NormSquared as bP2NormSquared, __webpack_exports__bPInfNorm as bPInfNorm, __webpack_exports__bPdivTrivial as bPdivTrivial, __webpack_exports__bPremSequencePrimitive as bPremSequencePrimitive, __webpack_exports__bPremSequenceSubresultant as bPremSequenceSubresultant, __webpack_exports__bPremSequenceTrivial as bPremSequenceTrivial, __webpack_exports__bPrimitivePart as bPrimitivePart, __webpack_exports__bReflectAboutYAxis as bReflectAboutYAxis, __webpack_exports__bRemoveLeadingZeros as bRemoveLeadingZeros, __webpack_exports__bSignChanges as bSignChanges, __webpack_exports__bSturmChain as bSturmChain, __webpack_exports__bSubtract as bSubtract, __webpack_exports__bisection as bisection, __webpack_exports__brent as brent, __webpack_exports__brentPoly as brentPoly, __webpack_exports__changeVariablesLinear as changeVariablesLinear, __webpack_exports__changeVariablesScale as changeVariablesScale, __webpack_exports__changeVariablesTranslateX as changeVariablesTranslateX, __webpack_exports__compHorner as compHorner, __webpack_exports__compHornerIsFaithful as compHornerIsFaithful, __webpack_exports__compHornerWithRunningError as compHornerWithRunningError, __webpack_exports__conditionNumber as conditionNumber, __webpack_exports__content as content, __webpack_exports__createRootExact as createRootExact, __webpack_exports__ddDeflate as ddDeflate, __webpack_exports__ddDifferentiate as ddDifferentiate, __webpack_exports__ddDifferentiateWithError as ddDifferentiateWithError, __webpack_exports__ddIntegrate as ddIntegrate, __webpack_exports__deflate as deflate, __webpack_exports__degree as degree, __webpack_exports__differentiate as differentiate, __webpack_exports__divideByConst as divideByConst, __webpack_exports__eAbsCoeff as eAbsCoeff, __webpack_exports__eAdd as eAdd, __webpack_exports__eChangeVariablesLinear as eChangeVariablesLinear, __webpack_exports__eChangeVariablesScale as eChangeVariablesScale, __webpack_exports__eChangeVariablesTranslateX as eChangeVariablesTranslateX, __webpack_exports__eContent as eContent, __webpack_exports__eDegree as eDegree, __webpack_exports__eDifferentiate as eDifferentiate, __webpack_exports__eEqual as eEqual, __webpack_exports__eEvaluateAt0 as eEvaluateAt0, __webpack_exports__eEvaluateAt1 as eEvaluateAt1, __webpack_exports__eFromRoots as eFromRoots, __webpack_exports__eGcdInt as eGcdInt, __webpack_exports__eGcdInts as eGcdInts, __webpack_exports__eHorner as eHorner, __webpack_exports__eInvert as eInvert, __webpack_exports__eIsConstOrZero as eIsConstOrZero, __webpack_exports__eIsRationalMultipleOf as eIsRationalMultipleOf, __webpack_exports__eIsUnit as eIsUnit, __webpack_exports__eMultiply as eMultiply, __webpack_exports__eMultiplyByConst as eMultiplyByConst, __webpack_exports__eNegate as eNegate, __webpack_exports__eNumRoots as eNumRoots, __webpack_exports__eNumRootsIn01 as eNumRootsIn01, __webpack_exports__eNumRootsInRange as eNumRootsInRange, __webpack_exports__eP1Norm as eP1Norm, __webpack_exports__eP2Norm as eP2Norm, __webpack_exports__ePInfNorm as ePInfNorm, __webpack_exports__ePdivTrivial as ePdivTrivial, __webpack_exports__ePremSequencePrimitive as ePremSequencePrimitive, __webpack_exports__ePremSequenceSubresultant as ePremSequenceSubresultant, __webpack_exports__ePrimitivePart as ePrimitivePart, __webpack_exports__eProduct as eProduct, __webpack_exports__eReflectAboutYAxis as eReflectAboutYAxis, __webpack_exports__eRemoveLeadingZeros as eRemoveLeadingZeros, __webpack_exports__eSignChanges as eSignChanges, __webpack_exports__eSturmChain as eSturmChain, __webpack_exports__eSubtract as eSubtract, __webpack_exports__eeHorner as eeHorner, __webpack_exports__equal as equal, __webpack_exports__evalCertified as evalCertified, __webpack_exports__evalCertifiedInclError as evalCertifiedInclError, __webpack_exports__evalK as evalK, __webpack_exports__evaluateAt0 as evaluateAt0, __webpack_exports__evaluateAt1 as evaluateAt1, __webpack_exports__flatCoefficients as flatCoefficients, __webpack_exports__flatCoefficientsArr as flatCoefficientsArr, __webpack_exports__flatRoots as flatRoots, __webpack_exports__flatRootsArr as flatRootsArr, __webpack_exports__fromRoots as fromRoots, __webpack_exports__gcdInt as gcdInt, __webpack_exports__gcdInts as gcdInts, __webpack_exports__hornerWithRunningError as hornerWithRunningError, __webpack_exports__integrate as integrate, __webpack_exports__invert as invert, __webpack_exports__isRationalMultipleOf as isRationalMultipleOf, __webpack_exports__mid as mid, __webpack_exports__multiply as multiply, __webpack_exports__multiplyByConst as multiplyByConst, __webpack_exports__negate as negate, __webpack_exports__negativeRootLowerBound_LMQ as negativeRootLowerBound_LMQ, __webpack_exports__negativeRootUpperBound_LMQ as negativeRootUpperBound_LMQ, __webpack_exports__numRoots as numRoots, __webpack_exports__numRootsIn01 as numRootsIn01, __webpack_exports__numRootsInRange as numRootsInRange, __webpack_exports__operators as operators, __webpack_exports__p1Norm as p1Norm, __webpack_exports__p2Norm as p2Norm, __webpack_exports__pInfNorm as pInfNorm, __webpack_exports__positiveRootLowerBound_LMQ as positiveRootLowerBound_LMQ, __webpack_exports__positiveRootUpperBound_LMQ as positiveRootUpperBound_LMQ, __webpack_exports__predictiveRandom as predictiveRandom, __webpack_exports__premSequenceSubresultant as premSequenceSubresultant, __webpack_exports__primitivePart as primitivePart, __webpack_exports__quadraticRoots as quadraticRoots, __webpack_exports__refineK1 as refineK1, __webpack_exports__reflectAboutYAxis as reflectAboutYAxis, __webpack_exports__removeLeadingZeros as removeLeadingZeros, __webpack_exports__rootIntervalToExp as rootIntervalToExp, __webpack_exports__rootMagnitudeUpperBound_fujiwara as rootMagnitudeUpperBound_fujiwara, __webpack_exports__rootMagnitudeUpperBound_rouche as rootMagnitudeUpperBound_rouche, __webpack_exports__scaleFloatToBigint as scaleFloatToBigint, __webpack_exports__scaleFloatToInt as scaleFloatToInt, __webpack_exports__scaleFloatsToBigints as scaleFloatsToBigints, __webpack_exports__scaleFloatsToInts as scaleFloatsToInts, __webpack_exports__scaleFloatssToBigintss as scaleFloatssToBigintss, __webpack_exports__scaleFloatssToIntss as scaleFloatssToIntss, __webpack_exports__signChanges as signChanges, __webpack_exports__sturmChain as sturmChain, __webpack_exports__subtract as subtract, __webpack_exports__toCasStr as toCasStr, __webpack_exports___ as γ, __webpack_exports___ as γγ };
