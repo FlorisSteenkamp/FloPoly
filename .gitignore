@@ -16,3 +16,5 @@ doc-test.ts
 doc-test2.ts
 doc-test3.ts
 coverage/
+experiments/
+lab/

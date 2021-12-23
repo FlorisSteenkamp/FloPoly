@@ -1,4 +1,3 @@
-
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
 import { allRootsCertifiedSimplified } from '../../../src/index.js';
@@ -6,6 +5,27 @@ import { allRootsCertifiedSimplified } from '../../../src/index.js';
 
 describe('allRootsCertifiedSimplified - find all roots within an interval of a polynomial such that all roots are guaranteed to be captured in some interval', 
 function() {
+   it('should not return the correct roots by removing leading trailing zeros (i.e. zero roots)', 
+	function() {
+		let p: number[] = [0,-9,5,0];
+		let roots = allRootsCertifiedSimplified(p);
+		assert(roots.length === 2);
+      
+      expect(roots).to.eql([ 
+         { 
+            tS: -2.22044604925031e-16,
+            tE: 2.9582283945787943e-31,
+            multiplicity: 1 
+         },
+         { 
+            tS: 0.5555555555555554,
+            tE: 0.5555555555555556,
+            multiplicity: 1 
+         } 
+      ]);
+	});
+
+   
 	it('should find roots correctly',
 	function() {
 		const p = [

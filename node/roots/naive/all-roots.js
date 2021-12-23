@@ -46,17 +46,11 @@ const removeLeadingZeros = removeLeadingZeros_;
  * @doc
  */
 function allRoots(p, lb = Number.NEGATIVE_INFINITY, ub = Number.POSITIVE_INFINITY) {
+    p = removeLeadingZeros(p);
     // return an empty array for a constant or the zero polynomial
     if (p.length <= 1) {
         return [];
     }
-    if (lb === Number.NEGATIVE_INFINITY) {
-        lb = negativeRootUpperBound_LMQ(p);
-    }
-    if (ub === Number.POSITIVE_INFINITY) {
-        ub = positiveRootUpperBound_LMQ(p);
-    }
-    p = removeLeadingZeros(p);
     //---- count and remove roots at zero
     let numZerosAtZero = 0;
     while (p[p.length - 1] === 0) {
@@ -64,6 +58,12 @@ function allRoots(p, lb = Number.NEGATIVE_INFINITY, ub = Number.POSITIVE_INFINIT
         numZerosAtZero++;
     }
     //------------------------
+    if (lb === Number.NEGATIVE_INFINITY) {
+        lb = negativeRootUpperBound_LMQ(p);
+    }
+    if (ub === Number.POSITIVE_INFINITY) {
+        ub = positiveRootUpperBound_LMQ(p);
+    }
     // Get all derivatives, i.e. 
     // ps === [p, dp, ddp, ..., constant]
     //        [0,  1,   2, ..., deg     ]

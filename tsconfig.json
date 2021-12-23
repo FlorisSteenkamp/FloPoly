@@ -13,7 +13,6 @@
         "src/index.ts"
     ],
     "exclude": [
-        "node_modules",
-        "**/other"
+        "node_modules"
     ]
 }

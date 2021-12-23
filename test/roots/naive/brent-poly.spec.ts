@@ -1,7 +1,7 @@
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
 import { brentPoly, fromRoots, Horner } from '../../../src/index.js';
-import { rootAccurateEnough } from './root-accurate-enough.js';
+import { rootAccurateEnough } from '../../helpers/root-accurate-enough.js';
 
 
 const eps = Number.EPSILON;

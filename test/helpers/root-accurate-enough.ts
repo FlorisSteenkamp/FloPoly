@@ -1,5 +1,4 @@
-
-import { hornerWithRunningError } from '../../../src/index.js';
+import { hornerWithRunningError } from '../../src/index.js';
 
 
 const abs = Math.abs;

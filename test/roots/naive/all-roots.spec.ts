@@ -5,7 +5,7 @@ import {
 	flatCoefficientsArr, flatCoefficients, Horner, hornerWithRunningError, 
 	toCasStr, multiply
 } from '../../../src/index.js';
-import { rootAccurateEnough } from './root-accurate-enough.js';
+import { rootAccurateEnough } from '../../helpers/root-accurate-enough.js';
 
 
 const negInf = Number.NEGATIVE_INFINITY;
@@ -14,6 +14,24 @@ const abs = Math.abs;
 
 
 describe('allRoots', function() {
+	it('should not return the correct roots by removing trailing zeros (i.e. zero roots)', 
+	function() {
+		let p: number[] = [0,-9,5,0];
+		let roots = allRoots(p);
+		assert(roots.length === 2);
+		expect(roots[0]).to.eql(0);
+		expect(roots[1]).to.eql(5/9);
+	});
+
+	it('should not return the correct roots by removing leading zeros', 
+	function() {
+		let p: number[] = [0,-9,5];
+		let roots = allRoots(p);
+		assert(roots.length === 1);
+		expect(roots[0]).to.eql(5/9);
+	});
+
+	
 	it('should not return roots for the zero or a constant polynomial', 
 	function() {
 		let p1: number[] = [];
@@ -167,6 +185,7 @@ describe('allRoots', function() {
 	with reproducable random roots (in a flat distribution from -10 to 
 	10) of order 3,4,7,12,15, and 20 that only have real roots`, 
 	function() {
+		this.timeout(5000);
 		const N = 100;
 		const orders = [3,4,7,12,15,20];
 		let pss = [
@@ -228,6 +247,7 @@ describe('allRoots', function() {
 	it(`should not miss a near triple or higher odd degree root for hundreds
 		of predictable random polynomials designed to have these kinds of roots`, 
 	function() {
+		this.timeout(10000);
 		const N = 1000;
 		const orders = [3,7,19];
 		const near = 1;
@@ -268,6 +288,7 @@ describe('allRoots', function() {
 	it(`should not miss a triple or higher odd degree root for hundreds
 		of predictable random polynomials`, 
 	function() {
+		this.timeout(10000);
 		const N = 1000;
 		const orders = [3,7,19];
 	
