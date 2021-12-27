@@ -56,11 +56,6 @@ function allRoots(
 
 	p = removeLeadingZeros(p);
 
-	// return an empty array for a constant or the zero polynomial
-	if (p.length <= 1) {
-		return [];
-	}
-
 	//---- count and remove roots at zero
 	let numZerosAtZero = 0;
 	while (p[p.length-1] === 0) {
@@ -68,6 +63,15 @@ function allRoots(
 		numZerosAtZero++;
 	}
 	//------------------------
+
+	// return an empty array for a constant or the zero polynomial
+	if (p.length <= 1) {
+		const roots = [];
+		for (let j=0; j<numZerosAtZero; j++) {
+			roots.push(0);
+		}
+		return roots;
+	}
 	
 	if (lb === Number.NEGATIVE_INFINITY) {
 		lb = negativeRootUpperBound_LMQ(p);

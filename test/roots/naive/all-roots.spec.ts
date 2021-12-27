@@ -14,6 +14,20 @@ const abs = Math.abs;
 
 
 describe('allRoots', function() {
+	it('should not return the correct roots by removing leading and trailing zeros (i.e. zero roots) (special cases)', 
+	function() {
+		let p: number[] = [0,0,0,0];
+		let roots = allRoots(p);
+		assert(roots.length === 0);
+	});
+	it('should not return the correct roots by removing trailing zeros (i.e. zero roots)', 
+	function() {
+		let p: number[] = [0,-6,0];
+		let roots = allRoots(p);
+		assert(roots.length === 1);
+		expect(roots[0]).to.eql(0);
+	});
+
 	it('should not return the correct roots by removing trailing zeros (i.e. zero roots)', 
 	function() {
 		let p: number[] = [0,-9,5,0];
@@ -31,15 +45,17 @@ describe('allRoots', function() {
 		expect(roots[0]).to.eql(5/9);
 	});
 
-	
 	it('should not return roots for the zero or a constant polynomial', 
 	function() {
 		let p1: number[] = [];
-		let p2 = [3];		
+		let p2 = [3];
+		let p3 = [0,0];
 		let roots1 = allRoots(p1);
 		let roots2 = allRoots(p2);
+		let roots3 = allRoots(p3);
 		assert(roots1.length === 0);
 		assert(roots2.length === 0);
+		assert(roots3.length === 0);
 	});
 
 

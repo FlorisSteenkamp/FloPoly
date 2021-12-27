@@ -9852,10 +9852,6 @@ const all_roots_removeLeadingZeros = removeLeadingZeros;
  */
 function allRoots(p, lb = Number.NEGATIVE_INFINITY, ub = Number.POSITIVE_INFINITY) {
     p = all_roots_removeLeadingZeros(p);
-    // return an empty array for a constant or the zero polynomial
-    if (p.length <= 1) {
-        return [];
-    }
     //---- count and remove roots at zero
     let numZerosAtZero = 0;
     while (p[p.length - 1] === 0) {
@@ -9863,6 +9859,14 @@ function allRoots(p, lb = Number.NEGATIVE_INFINITY, ub = Number.POSITIVE_INFINIT
         numZerosAtZero++;
     }
     //------------------------
+    // return an empty array for a constant or the zero polynomial
+    if (p.length <= 1) {
+        const roots = [];
+        for (let j = 0; j < numZerosAtZero; j++) {
+            roots.push(0);
+        }
+        return roots;
+    }
     if (lb === Number.NEGATIVE_INFINITY) {
         lb = all_roots_negativeRootUpperBound_LMQ(p);
     }
