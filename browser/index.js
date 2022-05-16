@@ -4529,7 +4529,7 @@ function basic_two_sum_twoSum(a, b) {
  * Truncates a floating point value's significand and returns the result.
  * Similar to split, but with the ability to specify the number of bits to keep.
  *
- * Theorem 17 (Veltkamp-Dekker): Let a be a p-bit floating-point number, where
+ * **Theorem 17 (Veltkamp-Dekker)**: Let a be a p-bit floating-point number, where
  * p >= 3. Choose a splitting point s such that p/2 <= s <= p-1. Then the
  * following algorithm will produce a (p-s)-bit value a_hi and a
  * nonoverlapping (s-1)-bit value a_lo such that abs(a_hi) >= abs(a_lo) and
@@ -9072,6 +9072,13 @@ function refineK1(ri, p) {
     const tS = ri.tS;
     // scale is exact by the precondition put on `RootInterval`
     const δ = ri.tE - tS;
+    if (δ === 0) {
+        return [{
+                tS: [0, tS],
+                tE: [0, tS],
+                multiplicity: ri.multiplicity
+            }];
+    }
     // Translate the polynomial such that the root is within δ from 0, then
     // scale it such that the roots stay <= 1, i.e. is in [0,1]
     const pExactK1 = refine_k1_eChangeVariablesLinear(p, δ, tS);

@@ -28,6 +28,13 @@ function refineK1(ri, p) {
     const tS = ri.tS;
     // scale is exact by the precondition put on `RootInterval`
     const δ = ri.tE - tS;
+    if (δ === 0) {
+        return [{
+                tS: [0, tS],
+                tE: [0, tS],
+                multiplicity: ri.multiplicity
+            }];
+    }
     // Translate the polynomial such that the root is within δ from 0, then
     // scale it such that the roots stay <= 1, i.e. is in [0,1]
     const pExactK1 = eChangeVariablesLinear(p, δ, tS);

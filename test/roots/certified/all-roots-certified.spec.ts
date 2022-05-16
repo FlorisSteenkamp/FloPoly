@@ -1,7 +1,10 @@
 import { assert, expect } from 'chai';
 import { describe } from 'mocha';
-import { allRootsCertified, RootInterval, allRoots, eMultiply, eProduct } from '../../../src/index.js';
+import { allRootsCertified, RootInterval, allRoots, eMultiply, eProduct, eHorner } from '../../../src/index.js';
 import { twoSum, eToDd } from 'big-float-ts';
+import { γγ } from '../../../src/error-analysis/gamma.js'
+
+const γγ3 = γγ(3);
 
 
 describe('allRootsCertified - find all roots within an interval of a polynomial with multi-precision coefficients such that all roots are guaranteed to be captured in some interval', 
@@ -318,6 +321,31 @@ function() {
 				{ tS: 3.9439999999999995, tE: 3.9439999999999995, multiplicity: 1 }
 		]);
 	});
+	/*
+	it('should find roots correctly of some polynomials (some special cases 4)',
+	function() {
+		let _p = [];
+
+		const m = 16;
+		const polyDd = [
+			[0,m*0],
+			[0,m*-9],
+			[0,m*9],
+			[0,m*-1.6875]
+		];
+		const polyE = [m*0, m*18, m*9, m*0];
+
+		const polyExact = [[m*0],[m*-9],[m*9],[0,m*-1.6875]];
+		const getPolyExact = (): number[][] => { return polyExact; };
+
+		const polyE_ = polyE.map(c => γγ3*c);
+
+		const ris1 = allRootsCertified(polyDd, 0, 1, polyE , getPolyExact, true);
+		const ris2 = allRootsCertified(polyDd, 0, 1, polyE_, getPolyExact, true);
+
+		eHorner(polyExact,0.75);//?
+	});
+	*/
 });
 
 
