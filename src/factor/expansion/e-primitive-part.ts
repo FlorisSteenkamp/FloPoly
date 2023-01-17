@@ -23,9 +23,9 @@ const eDiv = eDiv_;
  * @doc
  */
 function ePrimitivePart(p: number[][]): number[][] {
-    let c = eContent(p);
+    const c = eContent(p);
 
-    let p_: number[][] = [];
+    const p_: number[][] = [];
 
     for (let i=0; i<p.length; i++) {
         p_.push(eDiv(p[i], c, 0));

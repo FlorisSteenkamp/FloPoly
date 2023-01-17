@@ -20,8 +20,8 @@ const eDiv = eDiv_;
  * @doc
  */
 function ePrimitivePart(p) {
-    let c = eContent(p);
-    let p_ = [];
+    const c = eContent(p);
+    const p_ = [];
     for (let i = 0; i < p.length; i++) {
         p_.push(eDiv(p[i], c, 0));
     }

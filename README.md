@@ -56,18 +56,13 @@ npm install flo-poly
 This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c)
 and can be used in `Node.js` (or in a browser when bundled using e.g. Webpack).
 
-Additionally, self-contained `ECMAScript Module` (ESM) files `index.module.js` and
-`index.module.min.js` in the `./browser` folder is provided.
-
-Or, if you need a legacy browser script there is also `index.js`
-and `index.min.js` in the `./browser` folder. Either script exposes a global 
-variable called `FloPoly`.
+Additionally, self-contained `ECMAScript Module` (ESM) files `index.js` and
+`index.min.js` in the `./browser` folder is provided.
 
 # Usage
 
 ### Node.js
 ```JavaScript
-// @filename: `test.mjs` (or `test.js` if { "type": "module" } is specified in your package.json)
 import { allRoots } from 'flo-poly';
 
 // some polynomial with double precision coefficients, i.e. x^6 - 21x^5 + 175x^4 - 735x^3 + 1624x^2 - 1764 + 720
@@ -81,7 +76,9 @@ if (roots.length === 6) {
 }
 ```
 
-### Browsers - ESM - (Chrome 61+, Safari 11+, Firefox 60+, Opera 48+, Edge 16+, ~~Internet Explorer~~)
+### Browsers - directly, without a bundler, using the pre-bundled minified .js file
+
+Please note that no tree shaking will take place in this case.
 
 ```html
 <!doctype html>
@@ -89,35 +86,8 @@ if (roots.length === 6) {
 <html lang="en">
 <head>
     <script type="module">
-        import { allRoots } from "./node_modules/flo-poly/browser/index.module.min.js";
+        import { allRoots } from "./node_modules/flo-poly/browser/index.min.js";
 
-        // some polynomial with double precision coefficients, i.e. x^6 - 21x^5 + 175x^4 - 735x^3 + 1624x^2 - 1764 + 720
-        const p = [1, -21, 175, -735, 1624, -1764, 720];  
-        const roots = allRoots(p);
-
-        if (roots.length === 6) {
-            console.log('success! 😁');  // we should get to here!
-        } else {
-            console.log('failure! 😥');  // ...and not here
-        }
-    </script>
-</head>
-
-<body>Check the console.</body>
-
-</html>
-```
-
-### Browsers (older) - Legacy Scripts
-
-```html
-<!doctype html>
-
-<html lang="en">
-<head>
-    <script src="./node_modules/flo-poly/browser/index.min.js"></script>
-    <script>
-        const { allRoots } = FloPoly;
         // some polynomial with double precision coefficients, i.e. x^6 - 21x^5 + 175x^4 - 735x^3 + 1624x^2 - 1764 + 720
         const p = [1, -21, 175, -735, 1624, -1764, 720];  
         const roots = allRoots(p);

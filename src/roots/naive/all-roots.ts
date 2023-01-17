@@ -145,7 +145,7 @@ function allRoots(
 		// at this point the existing intervals, `is`, are sorted
 		// find the insertion spot and insert the zero roots to keep the roots
 		// sorted
-		let isWithZeroRoots: number[] = [];
+		const isWithZeroRoots: number[] = [];
 		let zerosInserted = false;
 		for (let i=0; i<is.length; i++) {
 			if (!zerosInserted && is[i] >= 0) {

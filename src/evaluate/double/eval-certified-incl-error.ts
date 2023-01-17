@@ -80,7 +80,9 @@ function evalCertifiedInclError(
     }
 
     // error is too large - do a more precise evaluation
-    let { r̂, pπ, pσ } = EFTHorner(p[0],x);
+    const EFTHorner_ = EFTHorner(p[0],x);
+    const { pπ, pσ } = EFTHorner_;
+    let { r̂ } = EFTHorner_;
     const [C1,c1] = hornerWithRunningError(pπ, x);
     const [C2,c2] = hornerWithRunningError(pσ, x);
     const [C3,c3] = hornerWithRunningError(p[1], x);

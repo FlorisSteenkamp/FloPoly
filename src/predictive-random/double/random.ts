@@ -36,8 +36,8 @@ function createArrFunction(
             d: number, 
             a?: number, 
             b?: number, 
-            seed: number = SEED, 
-            odds: number = 0) {
+            seed = SEED, 
+            odds = 0) {
                 
 		const res: number[][] = [];
 		for (let i=0; i<n; i++) {
@@ -145,7 +145,7 @@ function randomArray(
         a: number, 
         b: number, 
         seed: number, 
-        odds: number = 0): { vs: number[], seed: number } {
+        odds = 0): { vs: number[], seed: number } {
 
 	let vs: number[] = [];
 	for (let i=0; i<n; i++) {
@@ -212,10 +212,10 @@ function push(seed: number, values: number[], x: number, odds: number): number {
  */
 function flatRoots(
         d: number, 
-        a: number = 0,
-        b: number = 1,
-        seed: number = SEED, 
-        odds: number = 0): { p: number[], seed: number } {
+        a = 0,
+        b = 1,
+        seed = SEED, 
+        odds = 0): { p: number[], seed: number } {
 
 	const randArr = randomArray(d, a, b, seed, odds);
 	seed = randArr.seed;

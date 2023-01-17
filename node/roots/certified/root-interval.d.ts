@@ -7,7 +7,7 @@
  *
  * @doc
  */
-declare type RootInterval = {
+type RootInterval = {
     /** the minimum possible root value */
     tS: number;
     /** the maximum possible root value */

@@ -32,10 +32,10 @@ const SEED = 123456789;
  */
 function bFlatRoots(
         d: number,
-        a: number = 0, 
-        b: number = 1, 
-        seed: number = SEED, 
-        odds: number = 0): { p: bigint[], seed: number; } {
+        a = 0, 
+        b = 1, 
+        seed = SEED, 
+        odds = 0): { p: bigint[], seed: number; } {
 
     const res = flatRoots(d,a,b,seed,odds);
 
@@ -67,10 +67,10 @@ function bFlatRoots(
 function bFlatRootsArr(
         n: number, 
         d: number,
-        a: number = 0, 
-        b: number = 1, 
-        seed: number = SEED, 
-        odds: number = 0): bigint[][] {
+        a = 0, 
+        b = 1, 
+        seed = SEED, 
+        odds = 0): bigint[][] {
 
     return flatRootsArr(n,d,a,b,seed,odds).map(scaleFloatsToBigints);
 }
@@ -95,9 +95,9 @@ function bFlatRootsArr(
  */
 function bFlatCoefficients(
         d: number,
-        a: number = 0, 
-        b: number = 1, 
-        seed: number = SEED): { p: bigint[], seed: number; } {
+        a = 0, 
+        b = 1, 
+        seed = SEED): { p: bigint[], seed: number; } {
 
     const res = flatCoefficients(d,a,b,seed);
 
@@ -126,10 +126,10 @@ function bFlatCoefficients(
 function bFlatCoefficientsArr(
         n: number, 
         d: number,
-        a: number = 0, 
-        b: number = 1, 
-        seed: number = SEED, 
-        odds: number = 0): bigint[][] {
+        a = 0, 
+        b = 1, 
+        seed = SEED, 
+        odds = 0): bigint[][] {
 
     return flatCoefficientsArr(n,d,a,b,seed,odds).map(scaleFloatsToBigints);
 }

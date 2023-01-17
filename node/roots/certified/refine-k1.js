@@ -48,7 +48,7 @@ function refineK1(ri, p) {
     // return `undefined`
     const risLo = allRootsCertified(pDdK1, 0, 1, errBoundK1, getPExactK1);
     const ris = [];
-    for (let riLo of risLo) {
+    for (const riLo of risLo) {
         ris.push({
             tS: twoSum(tS, riLo.tS * δ),
             tE: twoSum(tS, riLo.tE * δ),
