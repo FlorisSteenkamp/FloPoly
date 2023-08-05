@@ -220,7 +220,9 @@ import { bisection } from './roots/naive/bisection.js';
 import { brent } from './roots/naive/brent.js';
 import { brentPoly } from './roots/naive/brent-poly.js';
 import { ddDeflate } from './roots/naive/dd-deflate.js';
+import { ddDeflateWithRunningError } from './roots/certified/dd-deflate-with-running-error.js';
 import { deflate } from './roots/naive/deflate.js';
+import { eDeflate } from './roots/naive/e-deflate.js';
 import { quadraticRoots } from './roots/naive/quadratic-roots.js';
 
 // roots root bounds
@@ -446,7 +448,9 @@ const operators = {
 	brent,
 	brentPoly,
 	ddDeflate,
+	ddDeflateWithRunningError,
 	deflate,
+	eDeflate,
 	quadraticRoots,
 
 	// roots root bounds
@@ -693,7 +697,9 @@ export {
 	brent,
 	brentPoly,
 	ddDeflate,
+	ddDeflateWithRunningError,
 	deflate,
+	eDeflate,
 	quadraticRoots,
 
 	// roots root bounds

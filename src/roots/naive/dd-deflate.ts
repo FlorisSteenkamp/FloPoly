@@ -34,6 +34,7 @@ function ddDeflate(p: number[][], root: number): number[][] {
 	const bs = [p[0]];
 	for (let i=1; i<d; i++) {
 		bs.push(
+			// p[i] + root*bs[i-1]
 			qaq(p[i],qmd(root,bs[i-1]))
 		);
 	}

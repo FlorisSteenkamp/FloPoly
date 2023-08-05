@@ -30,7 +30,9 @@ function ddDeflate(p, root) {
     const d = p.length - 1;
     const bs = [p[0]];
     for (let i = 1; i < d; i++) {
-        bs.push(qaq(p[i], qmd(root, bs[i - 1])));
+        bs.push(
+        // p[i] + root*bs[i-1]
+        qaq(p[i], qmd(root, bs[i - 1])));
     }
     return bs;
 }

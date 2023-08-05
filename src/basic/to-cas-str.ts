@@ -50,8 +50,8 @@ function toCasStr(p: number[] | number[][] | bigint[]): string {
             ? eEstimate(_v) 
             : _v;  // bigint or number
 
-        const absV = isBigint(v) 
-            ? (_v < 0n ? -v : v)
+        const absV = isBigint(v)
+            ? (v < 0n ? -v : v)
             : Math.abs(v);
 
         let cStr = nonNegativeNumberToString(absV);

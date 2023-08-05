@@ -184,6 +184,7 @@ import { bisection } from './roots/naive/bisection.js';
 import { brent } from './roots/naive/brent.js';
 import { brentPoly } from './roots/naive/brent-poly.js';
 import { ddDeflate } from './roots/naive/dd-deflate.js';
+import { ddDeflateWithRunningError } from './roots/certified/dd-deflate-with-running-error.js';
 import { deflate } from './roots/naive/deflate.js';
 import { quadraticRoots } from './roots/naive/quadratic-roots.js';
 // roots root bounds
@@ -375,6 +376,7 @@ const operators = {
     brent,
     brentPoly,
     ddDeflate,
+    ddDeflateWithRunningError,
     deflate,
     quadraticRoots,
     // roots root bounds
@@ -469,7 +471,7 @@ eNumRoots, eNumRootsIn01, eNumRootsInRange, eSignChanges,
 // roots from roots
 bFromRoots, fromRoots, eFromRoots, 
 // roots naive
-allRoots, bisection, brent, brentPoly, ddDeflate, deflate, quadraticRoots, 
+allRoots, bisection, brent, brentPoly, ddDeflate, ddDeflateWithRunningError, deflate, quadraticRoots, 
 // roots root bounds
 positiveRootUpperBound_LMQ, positiveRootLowerBound_LMQ, negativeRootLowerBound_LMQ, negativeRootUpperBound_LMQ, rootMagnitudeUpperBound_fujiwara, rootMagnitudeUpperBound_rouche, 
 // scale to int
