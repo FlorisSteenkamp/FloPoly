@@ -6900,13 +6900,14 @@ const qmd = node_ddMultDouble2;
  * @doc
  */
 function ddHorner(p, x) {
-    let q = [0];
+    let q = [0, 0];
     for (let i = 0; i < p.length; i++) {
         // q = p[i] + x*q;
         q = qaq(p[i], qmd(x, q));
     }
     return q;
 }
+ddHorner([[0, 1], [0, 1], [0, -2], [0, 3]], 0.25); //?
 
 
 ;// CONCATENATED MODULE: ./src/factor/double/content.ts
