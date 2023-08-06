@@ -90,6 +90,7 @@ import { eeHorner } from './evaluate/expansion/e-e-horner.js';
 import { eEvaluateAt0 } from './evaluate/expansion/e-evaluate-at-0.js';
 import { eEvaluateAt1 } from './evaluate/expansion/e-evaluate-at-1.js';
 import { eHorner } from './evaluate/expansion/e-horner.js';
+import { ddHorner } from './evaluate/double-double/dd-horner.js';
 import { bContent } from './factor/bigint/b-content.js';
 import { bPrimitivePart } from './factor/bigint/b-primitive-part.js';
 import { content } from './factor/double/content.js';
@@ -151,6 +152,7 @@ import { brentPoly } from './roots/naive/brent-poly.js';
 import { ddDeflate } from './roots/naive/dd-deflate.js';
 import { ddDeflateWithRunningError } from './roots/certified/dd-deflate-with-running-error.js';
 import { deflate } from './roots/naive/deflate.js';
+import { eDeflate } from './roots/naive/e-deflate.js';
 import { quadraticRoots } from './roots/naive/quadratic-roots.js';
 import { positiveRootUpperBound_LMQ } from './roots/root-bounds/root-bounds-lmq.js';
 import { positiveRootLowerBound_LMQ } from './roots/root-bounds/root-bounds-lmq.js';
@@ -257,6 +259,7 @@ declare const operators: {
     eEvaluateAt0: typeof eEvaluateAt0;
     eEvaluateAt1: typeof eEvaluateAt1;
     eHorner: typeof eHorner;
+    ddHorner: typeof ddHorner;
     bContent: typeof bContent;
     bPrimitivePart: typeof bPrimitivePart;
     content: typeof content;
@@ -309,6 +312,7 @@ declare const operators: {
     ddDeflate: typeof ddDeflate;
     ddDeflateWithRunningError: typeof ddDeflateWithRunningError;
     deflate: typeof deflate;
+    eDeflate: typeof eDeflate;
     quadraticRoots: typeof quadraticRoots;
     positiveRootUpperBound_LMQ: typeof positiveRootUpperBound_LMQ;
     positiveRootLowerBound_LMQ: (p: number[]) => number;
@@ -331,4 +335,4 @@ declare const operators: {
     eGcdInts: typeof eGcdInts;
 };
 export { operators };
-export { toCasStr, bAbsCoeff, bAdd, bDegree, bDivideByConst, bEqual, bInvert, bIsRationalMultipleOf, bMultiply, bMultiplyByConst, bNegate, bRemoveLeadingZeros, bSubtract, absCoeff, add, degree, divideByConst, equal, invert, isRationalMultipleOf, multiply, multiplyByConst, negate, removeLeadingZeros, subtract, eAbsCoeff, eAdd, eDegree, eEqual, eInvert, eIsConstOrZero, eIsRationalMultipleOf, eIsUnit, eMultiply, eMultiplyByConst, eNegate, eProduct, eRemoveLeadingZeros, eSubtract, bDifferentiate, differentiate, integrate, ddDifferentiate, ddDifferentiateWithError, ddIntegrate, eDifferentiate, bChangeVariablesLinear, bChangeVariablesScale, bChangeVariablesTranslateX, bReflectAboutYAxis, changeVariablesLinear, changeVariablesScale, changeVariablesTranslateX, reflectAboutYAxis, eChangeVariablesLinear, eChangeVariablesScale, eChangeVariablesTranslateX, eReflectAboutYAxis, conditionNumber, γ, γγ, bPdivTrivial, bPremSequencePrimitive, bPremSequenceSubresultant, bPremSequenceTrivial, bSturmChain, premSequenceSubresultant, sturmChain, ePdivTrivial, ePremSequencePrimitive, ePremSequenceSubresultant, eSturmChain, bHorner, bEvaluateAt0, bEvaluateAt1, AbsHorner, compHorner, compHornerIsFaithful, CompHornerK, compHornerWithRunningError, EFTHorner, evalCertified, evalCertifiedInclError, evalK, evaluateAt0, evaluateAt1, Horner, hornerWithRunningError, eeHorner, eEvaluateAt0, eEvaluateAt1, eHorner, bContent, bPrimitivePart, content, primitivePart, eContent, ePrimitivePart, bP1Norm, bP2NormSquared, bPInfNorm, p1Norm, p2Norm, pInfNorm, eP1Norm, eP2Norm, ePInfNorm, flatRoots, flatRootsArr, flatCoefficients, flatCoefficientsArr, predictiveRandom, bFlatRoots, bFlatRootsArr, bFlatCoefficients, bFlatCoefficientsArr, allRootsCertified, allRootsCertifiedSimplified, refineK1, RootInterval, mid, createRootExact, RootIntervalExp, rootIntervalToExp, bNumRoots, bNumRootsIn01, bNumRootsInRange, bSignChanges, numRoots, numRootsIn01, numRootsInRange, signChanges, eNumRoots, eNumRootsIn01, eNumRootsInRange, eSignChanges, bFromRoots, fromRoots, eFromRoots, allRoots, bisection, brent, brentPoly, ddDeflate, ddDeflateWithRunningError, deflate, quadraticRoots, positiveRootUpperBound_LMQ, positiveRootLowerBound_LMQ, negativeRootLowerBound_LMQ, negativeRootUpperBound_LMQ, rootMagnitudeUpperBound_fujiwara, rootMagnitudeUpperBound_rouche, scaleFloatToInt, scaleFloatsToInts, scaleFloatssToIntss, scaleFloatToBigint, scaleFloatsToBigints, scaleFloatssToBigintss, bGcdPrs, bGcdInt, bGcdInts, gcdInt, gcdInts, eGcdInt, eGcdInts };
+export { toCasStr, bAbsCoeff, bAdd, bDegree, bDivideByConst, bEqual, bInvert, bIsRationalMultipleOf, bMultiply, bMultiplyByConst, bNegate, bRemoveLeadingZeros, bSubtract, absCoeff, add, degree, divideByConst, equal, invert, isRationalMultipleOf, multiply, multiplyByConst, negate, removeLeadingZeros, subtract, eAbsCoeff, eAdd, eDegree, eEqual, eInvert, eIsConstOrZero, eIsRationalMultipleOf, eIsUnit, eMultiply, eMultiplyByConst, eNegate, eProduct, eRemoveLeadingZeros, eSubtract, bDifferentiate, differentiate, integrate, ddDifferentiate, ddDifferentiateWithError, ddIntegrate, eDifferentiate, bChangeVariablesLinear, bChangeVariablesScale, bChangeVariablesTranslateX, bReflectAboutYAxis, changeVariablesLinear, changeVariablesScale, changeVariablesTranslateX, reflectAboutYAxis, eChangeVariablesLinear, eChangeVariablesScale, eChangeVariablesTranslateX, eReflectAboutYAxis, conditionNumber, γ, γγ, bPdivTrivial, bPremSequencePrimitive, bPremSequenceSubresultant, bPremSequenceTrivial, bSturmChain, premSequenceSubresultant, sturmChain, ePdivTrivial, ePremSequencePrimitive, ePremSequenceSubresultant, eSturmChain, bHorner, bEvaluateAt0, bEvaluateAt1, AbsHorner, compHorner, compHornerIsFaithful, CompHornerK, compHornerWithRunningError, EFTHorner, evalCertified, evalCertifiedInclError, evalK, evaluateAt0, evaluateAt1, Horner, hornerWithRunningError, eeHorner, eEvaluateAt0, eEvaluateAt1, eHorner, ddHorner, bContent, bPrimitivePart, content, primitivePart, eContent, ePrimitivePart, bP1Norm, bP2NormSquared, bPInfNorm, p1Norm, p2Norm, pInfNorm, eP1Norm, eP2Norm, ePInfNorm, flatRoots, flatRootsArr, flatCoefficients, flatCoefficientsArr, predictiveRandom, bFlatRoots, bFlatRootsArr, bFlatCoefficients, bFlatCoefficientsArr, allRootsCertified, allRootsCertifiedSimplified, refineK1, RootInterval, mid, createRootExact, RootIntervalExp, rootIntervalToExp, bNumRoots, bNumRootsIn01, bNumRootsInRange, bSignChanges, numRoots, numRootsIn01, numRootsInRange, signChanges, eNumRoots, eNumRootsIn01, eNumRootsInRange, eSignChanges, bFromRoots, fromRoots, eFromRoots, allRoots, bisection, brent, brentPoly, ddDeflate, ddDeflateWithRunningError, deflate, eDeflate, quadraticRoots, positiveRootUpperBound_LMQ, positiveRootLowerBound_LMQ, negativeRootLowerBound_LMQ, negativeRootUpperBound_LMQ, rootMagnitudeUpperBound_fujiwara, rootMagnitudeUpperBound_rouche, scaleFloatToInt, scaleFloatsToInts, scaleFloatssToIntss, scaleFloatToBigint, scaleFloatsToBigints, scaleFloatssToBigintss, bGcdPrs, bGcdInt, bGcdInts, gcdInt, gcdInts, eGcdInt, eGcdInts };

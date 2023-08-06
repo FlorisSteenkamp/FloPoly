@@ -24,170 +24,173 @@ var __webpack_exports__ = {};
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "oM": () => (/* reexport */ AbsHorner),
-  "Pg": () => (/* reexport */ CompHornerK),
-  "rH": () => (/* reexport */ EFTHorner),
-  "E2": () => (/* reexport */ Horner),
-  "UR": () => (/* reexport */ absCoeff),
-  "IH": () => (/* reexport */ add),
-  "Tr": () => (/* reexport */ allRoots),
-  "oH": () => (/* reexport */ allRootsCertified),
-  "Dy": () => (/* reexport */ allRootsCertifiedSimplified),
-  "l2": () => (/* reexport */ bAbsCoeff),
-  "Ve": () => (/* reexport */ bAdd),
-  "IU": () => (/* reexport */ bChangeVariablesLinear),
-  "KL": () => (/* reexport */ bChangeVariablesScale),
-  "Ew": () => (/* reexport */ bChangeVariablesTranslateX),
-  "KG": () => (/* reexport */ bContent),
-  "gM": () => (/* reexport */ bDegree),
-  "dv": () => (/* reexport */ bDifferentiate),
-  "bu": () => (/* reexport */ bDivideByConst),
-  "Zv": () => (/* reexport */ bEqual),
-  "OP": () => (/* reexport */ bEvaluateAt0),
-  "KI": () => (/* reexport */ bEvaluateAt1),
-  "dA": () => (/* reexport */ bFlatCoefficients),
-  "CR": () => (/* reexport */ bFlatCoefficientsArr),
-  "ds": () => (/* reexport */ bFlatRoots),
-  "OA": () => (/* reexport */ bFlatRootsArr),
-  "eg": () => (/* reexport */ bFromRoots),
-  "DC": () => (/* reexport */ bGcdInt),
-  "SG": () => (/* reexport */ bGcdInts),
-  "zY": () => (/* reexport */ bGcdPrs),
-  "LD": () => (/* reexport */ bHorner),
-  "$v": () => (/* reexport */ bInvert),
-  "$l": () => (/* reexport */ bIsRationalMultipleOf),
-  "c1": () => (/* reexport */ bMultiply),
-  "Sl": () => (/* reexport */ bMultiplyByConst),
-  "db": () => (/* reexport */ bNegate),
-  "pD": () => (/* reexport */ bNumRoots),
-  "Ak": () => (/* reexport */ bNumRootsIn01),
-  "i6": () => (/* reexport */ bNumRootsInRange),
-  "jV": () => (/* reexport */ bP1Norm),
-  "Dc": () => (/* reexport */ bP2NormSquared),
-  "hg": () => (/* reexport */ bPInfNorm),
-  "ib": () => (/* reexport */ bPdivTrivial),
-  "aP": () => (/* reexport */ bPremSequencePrimitive),
-  "YF": () => (/* reexport */ bPremSequenceSubresultant),
-  "tK": () => (/* reexport */ bPremSequenceTrivial),
-  "dI": () => (/* reexport */ bPrimitivePart),
-  "i7": () => (/* reexport */ bReflectAboutYAxis),
-  "iK": () => (/* reexport */ bRemoveLeadingZeros),
-  "j5": () => (/* reexport */ bSignChanges),
-  "K": () => (/* reexport */ bSturmChain),
-  "J9": () => (/* reexport */ bSubtract),
-  "HH": () => (/* reexport */ bisection),
-  "YQ": () => (/* reexport */ brent),
-  "u1": () => (/* reexport */ brentPoly),
-  "uO": () => (/* reexport */ changeVariablesLinear),
-  "ef": () => (/* reexport */ changeVariablesScale),
-  "K0": () => (/* reexport */ changeVariablesTranslateX),
-  "YT": () => (/* reexport */ compHorner),
-  "fy": () => (/* reexport */ compHornerIsFaithful),
-  "rP": () => (/* reexport */ compHornerWithRunningError),
-  "$k": () => (/* reexport */ conditionNumber),
-  "kQ": () => (/* reexport */ content),
-  "UC": () => (/* reexport */ createRootExact),
-  "aF": () => (/* reexport */ ddDeflate),
-  "Xz": () => (/* reexport */ ddDifferentiate),
-  "sF": () => (/* reexport */ ddDifferentiateWithError),
-  "sG": () => (/* reexport */ ddIntegrate),
-  "Wt": () => (/* reexport */ deflate),
-  "U8": () => (/* reexport */ degree),
-  "YC": () => (/* reexport */ differentiate),
-  "FV": () => (/* reexport */ divideByConst),
-  "ZX": () => (/* reexport */ eAbsCoeff),
-  "_L": () => (/* reexport */ eAdd),
-  "_n": () => (/* reexport */ eChangeVariablesLinear),
-  "FI": () => (/* reexport */ eChangeVariablesScale),
-  "rm": () => (/* reexport */ eChangeVariablesTranslateX),
-  "QO": () => (/* reexport */ eContent),
-  "wY": () => (/* reexport */ eDegree),
-  "YV": () => (/* reexport */ eDifferentiate),
-  "qW": () => (/* reexport */ eEqual),
-  "u3": () => (/* reexport */ eEvaluateAt0),
-  "Fg": () => (/* reexport */ eEvaluateAt1),
-  "g7": () => (/* reexport */ eFromRoots),
-  "gX": () => (/* reexport */ eGcdInt),
-  "Oh": () => (/* reexport */ eGcdInts),
-  "dY": () => (/* reexport */ eHorner),
-  "vD": () => (/* reexport */ eInvert),
-  "MY": () => (/* reexport */ eIsConstOrZero),
-  "BW": () => (/* reexport */ eIsRationalMultipleOf),
-  "_4": () => (/* reexport */ eIsUnit),
-  "d2": () => (/* reexport */ eMultiply),
-  "md": () => (/* reexport */ eMultiplyByConst),
-  "zC": () => (/* reexport */ eNegate),
-  "mq": () => (/* reexport */ eNumRoots),
-  "th": () => (/* reexport */ eNumRootsIn01),
-  "y1": () => (/* reexport */ eNumRootsInRange),
-  "Xh": () => (/* reexport */ eP1Norm),
-  "Ws": () => (/* reexport */ eP2Norm),
-  "ww": () => (/* reexport */ ePInfNorm),
-  "HA": () => (/* reexport */ ePdivTrivial),
-  "b9": () => (/* reexport */ ePremSequencePrimitive),
-  "_V": () => (/* reexport */ ePremSequenceSubresultant),
-  "kP": () => (/* reexport */ ePrimitivePart),
-  "Fp": () => (/* reexport */ eProduct),
-  "QU": () => (/* reexport */ eReflectAboutYAxis),
-  "XN": () => (/* reexport */ eRemoveLeadingZeros),
-  "t": () => (/* reexport */ eSignChanges),
-  "_u": () => (/* reexport */ eSturmChain),
-  "x1": () => (/* reexport */ eSubtract),
-  "ZW": () => (/* reexport */ eeHorner),
-  "Dg": () => (/* reexport */ equal),
-  "f6": () => (/* reexport */ evalCertified),
-  "Kj": () => (/* reexport */ evalCertifiedInclError),
-  "Of": () => (/* reexport */ evalK),
-  "Th": () => (/* reexport */ evaluateAt0),
-  "M9": () => (/* reexport */ evaluateAt1),
-  "sd": () => (/* reexport */ flatCoefficients),
-  "b1": () => (/* reexport */ flatCoefficientsArr),
-  "m4": () => (/* reexport */ flatRoots),
-  "rL": () => (/* reexport */ flatRootsArr),
-  "Ht": () => (/* reexport */ fromRoots),
-  "a8": () => (/* reexport */ gcdInt),
-  "JK": () => (/* reexport */ gcdInts),
-  "xD": () => (/* reexport */ hornerWithRunningError),
-  "lF": () => (/* reexport */ integrate),
-  "U_": () => (/* reexport */ invert),
-  "IP": () => (/* reexport */ isRationalMultipleOf),
-  "Pi": () => (/* reexport */ mid),
-  "Jp": () => (/* reexport */ multiply),
-  "$d": () => (/* reexport */ multiplyByConst),
-  "tk": () => (/* reexport */ negate),
-  "$3": () => (/* reexport */ negativeRootLowerBound_LMQ),
-  "kT": () => (/* reexport */ negativeRootUpperBound_LMQ),
-  "lV": () => (/* reexport */ numRoots),
-  "$6": () => (/* reexport */ numRootsIn01),
-  "XP": () => (/* reexport */ numRootsInRange),
-  "Gn": () => (/* binding */ src_operators),
-  "fk": () => (/* reexport */ p1Norm),
-  "P5": () => (/* reexport */ p2Norm),
-  "Yz": () => (/* reexport */ pInfNorm),
-  "Fw": () => (/* reexport */ positiveRootLowerBound_LMQ),
-  "FW": () => (/* reexport */ positiveRootUpperBound_LMQ),
-  "Hq": () => (/* reexport */ predictiveRandom),
-  "A_": () => (/* reexport */ premSequenceSubresultant),
-  "$5": () => (/* reexport */ primitivePart),
-  "GD": () => (/* reexport */ quadraticRoots),
-  "X_": () => (/* reexport */ refineK1),
-  "NF": () => (/* reexport */ reflectAboutYAxis),
-  "Qo": () => (/* reexport */ removeLeadingZeros),
-  "WM": () => (/* reexport */ rootIntervalToExp),
-  "Dk": () => (/* reexport */ rootMagnitudeUpperBound_fujiwara),
-  "T9": () => (/* reexport */ rootMagnitudeUpperBound_rouche),
-  "GG": () => (/* reexport */ scaleFloatToBigint),
-  "we": () => (/* reexport */ scaleFloatToInt),
-  "D9": () => (/* reexport */ scaleFloatsToBigints),
-  "yM": () => (/* reexport */ scaleFloatsToInts),
-  "Bz": () => (/* reexport */ scaleFloatssToBigintss),
-  "Rm": () => (/* reexport */ scaleFloatssToIntss),
-  "bN": () => (/* reexport */ signChanges),
-  "SW": () => (/* reexport */ sturmChain),
-  "$X": () => (/* reexport */ subtract),
-  "yd": () => (/* reexport */ toCasStr),
-  "H8": () => (/* reexport */ γ),
-  "Uv": () => (/* reexport */ γγ)
+  oM: () => (/* reexport */ AbsHorner),
+  Pg: () => (/* reexport */ CompHornerK),
+  rH: () => (/* reexport */ EFTHorner),
+  E2: () => (/* reexport */ Horner),
+  UR: () => (/* reexport */ absCoeff),
+  IH: () => (/* reexport */ add),
+  Tr: () => (/* reexport */ allRoots),
+  oH: () => (/* reexport */ allRootsCertified),
+  Dy: () => (/* reexport */ allRootsCertifiedSimplified),
+  l2: () => (/* reexport */ bAbsCoeff),
+  Ve: () => (/* reexport */ bAdd),
+  IU: () => (/* reexport */ bChangeVariablesLinear),
+  KL: () => (/* reexport */ bChangeVariablesScale),
+  Ew: () => (/* reexport */ bChangeVariablesTranslateX),
+  KG: () => (/* reexport */ bContent),
+  gM: () => (/* reexport */ bDegree),
+  dv: () => (/* reexport */ bDifferentiate),
+  bu: () => (/* reexport */ bDivideByConst),
+  Zv: () => (/* reexport */ bEqual),
+  OP: () => (/* reexport */ bEvaluateAt0),
+  KI: () => (/* reexport */ bEvaluateAt1),
+  dA: () => (/* reexport */ bFlatCoefficients),
+  CR: () => (/* reexport */ bFlatCoefficientsArr),
+  ds: () => (/* reexport */ bFlatRoots),
+  OA: () => (/* reexport */ bFlatRootsArr),
+  eg: () => (/* reexport */ bFromRoots),
+  DC: () => (/* reexport */ bGcdInt),
+  SG: () => (/* reexport */ bGcdInts),
+  zY: () => (/* reexport */ bGcdPrs),
+  LD: () => (/* reexport */ bHorner),
+  $v: () => (/* reexport */ bInvert),
+  $l: () => (/* reexport */ bIsRationalMultipleOf),
+  c1: () => (/* reexport */ bMultiply),
+  Sl: () => (/* reexport */ bMultiplyByConst),
+  db: () => (/* reexport */ bNegate),
+  pD: () => (/* reexport */ bNumRoots),
+  Ak: () => (/* reexport */ bNumRootsIn01),
+  i6: () => (/* reexport */ bNumRootsInRange),
+  jV: () => (/* reexport */ bP1Norm),
+  Dc: () => (/* reexport */ bP2NormSquared),
+  hg: () => (/* reexport */ bPInfNorm),
+  ib: () => (/* reexport */ bPdivTrivial),
+  aP: () => (/* reexport */ bPremSequencePrimitive),
+  YF: () => (/* reexport */ bPremSequenceSubresultant),
+  tK: () => (/* reexport */ bPremSequenceTrivial),
+  dI: () => (/* reexport */ bPrimitivePart),
+  i7: () => (/* reexport */ bReflectAboutYAxis),
+  iK: () => (/* reexport */ bRemoveLeadingZeros),
+  j5: () => (/* reexport */ bSignChanges),
+  K: () => (/* reexport */ bSturmChain),
+  J9: () => (/* reexport */ bSubtract),
+  HH: () => (/* reexport */ bisection),
+  YQ: () => (/* reexport */ brent),
+  u1: () => (/* reexport */ brentPoly),
+  uO: () => (/* reexport */ changeVariablesLinear),
+  ef: () => (/* reexport */ changeVariablesScale),
+  K0: () => (/* reexport */ changeVariablesTranslateX),
+  YT: () => (/* reexport */ compHorner),
+  fy: () => (/* reexport */ compHornerIsFaithful),
+  rP: () => (/* reexport */ compHornerWithRunningError),
+  $k: () => (/* reexport */ conditionNumber),
+  kQ: () => (/* reexport */ content),
+  UC: () => (/* reexport */ createRootExact),
+  aF: () => (/* reexport */ ddDeflate),
+  _l: () => (/* reexport */ ddDeflateWithRunningError),
+  Xz: () => (/* reexport */ ddDifferentiate),
+  sF: () => (/* reexport */ ddDifferentiateWithError),
+  Fq: () => (/* reexport */ ddHorner),
+  sG: () => (/* reexport */ ddIntegrate),
+  Wt: () => (/* reexport */ deflate),
+  U8: () => (/* reexport */ degree),
+  YC: () => (/* reexport */ differentiate),
+  FV: () => (/* reexport */ divideByConst),
+  ZX: () => (/* reexport */ eAbsCoeff),
+  _L: () => (/* reexport */ eAdd),
+  _n: () => (/* reexport */ eChangeVariablesLinear),
+  FI: () => (/* reexport */ eChangeVariablesScale),
+  rm: () => (/* reexport */ eChangeVariablesTranslateX),
+  QO: () => (/* reexport */ eContent),
+  m_: () => (/* reexport */ eDeflate),
+  wY: () => (/* reexport */ eDegree),
+  YV: () => (/* reexport */ eDifferentiate),
+  qW: () => (/* reexport */ eEqual),
+  u3: () => (/* reexport */ eEvaluateAt0),
+  Fg: () => (/* reexport */ eEvaluateAt1),
+  g7: () => (/* reexport */ eFromRoots),
+  gX: () => (/* reexport */ eGcdInt),
+  Oh: () => (/* reexport */ eGcdInts),
+  dY: () => (/* reexport */ eHorner),
+  vD: () => (/* reexport */ eInvert),
+  MY: () => (/* reexport */ eIsConstOrZero),
+  BW: () => (/* reexport */ eIsRationalMultipleOf),
+  _4: () => (/* reexport */ eIsUnit),
+  d2: () => (/* reexport */ eMultiply),
+  md: () => (/* reexport */ eMultiplyByConst),
+  zC: () => (/* reexport */ eNegate),
+  mq: () => (/* reexport */ eNumRoots),
+  th: () => (/* reexport */ eNumRootsIn01),
+  y1: () => (/* reexport */ eNumRootsInRange),
+  Xh: () => (/* reexport */ eP1Norm),
+  Ws: () => (/* reexport */ eP2Norm),
+  ww: () => (/* reexport */ ePInfNorm),
+  HA: () => (/* reexport */ ePdivTrivial),
+  b9: () => (/* reexport */ ePremSequencePrimitive),
+  _V: () => (/* reexport */ ePremSequenceSubresultant),
+  kP: () => (/* reexport */ ePrimitivePart),
+  Fp: () => (/* reexport */ eProduct),
+  QU: () => (/* reexport */ eReflectAboutYAxis),
+  XN: () => (/* reexport */ eRemoveLeadingZeros),
+  t: () => (/* reexport */ eSignChanges),
+  _u: () => (/* reexport */ eSturmChain),
+  x1: () => (/* reexport */ eSubtract),
+  ZW: () => (/* reexport */ eeHorner),
+  Dg: () => (/* reexport */ equal),
+  f6: () => (/* reexport */ evalCertified),
+  Kj: () => (/* reexport */ evalCertifiedInclError),
+  Of: () => (/* reexport */ evalK),
+  Th: () => (/* reexport */ evaluateAt0),
+  M9: () => (/* reexport */ evaluateAt1),
+  sd: () => (/* reexport */ flatCoefficients),
+  b1: () => (/* reexport */ flatCoefficientsArr),
+  m4: () => (/* reexport */ flatRoots),
+  rL: () => (/* reexport */ flatRootsArr),
+  Ht: () => (/* reexport */ fromRoots),
+  a8: () => (/* reexport */ gcdInt),
+  JK: () => (/* reexport */ gcdInts),
+  xD: () => (/* reexport */ hornerWithRunningError),
+  lF: () => (/* reexport */ integrate),
+  U_: () => (/* reexport */ invert),
+  IP: () => (/* reexport */ isRationalMultipleOf),
+  Pi: () => (/* reexport */ mid),
+  Jp: () => (/* reexport */ multiply),
+  $d: () => (/* reexport */ multiplyByConst),
+  tk: () => (/* reexport */ negate),
+  $3: () => (/* reexport */ negativeRootLowerBound_LMQ),
+  kT: () => (/* reexport */ negativeRootUpperBound_LMQ),
+  lV: () => (/* reexport */ numRoots),
+  $6: () => (/* reexport */ numRootsIn01),
+  XP: () => (/* reexport */ numRootsInRange),
+  Gn: () => (/* binding */ src_operators),
+  fk: () => (/* reexport */ p1Norm),
+  P5: () => (/* reexport */ p2Norm),
+  Yz: () => (/* reexport */ pInfNorm),
+  Fw: () => (/* reexport */ positiveRootLowerBound_LMQ),
+  FW: () => (/* reexport */ positiveRootUpperBound_LMQ),
+  Hq: () => (/* reexport */ predictiveRandom),
+  A_: () => (/* reexport */ premSequenceSubresultant),
+  $5: () => (/* reexport */ primitivePart),
+  GD: () => (/* reexport */ quadraticRoots),
+  X_: () => (/* reexport */ refineK1),
+  NF: () => (/* reexport */ reflectAboutYAxis),
+  Qo: () => (/* reexport */ removeLeadingZeros),
+  WM: () => (/* reexport */ rootIntervalToExp),
+  Dk: () => (/* reexport */ rootMagnitudeUpperBound_fujiwara),
+  T9: () => (/* reexport */ rootMagnitudeUpperBound_rouche),
+  GG: () => (/* reexport */ scaleFloatToBigint),
+  we: () => (/* reexport */ scaleFloatToInt),
+  D9: () => (/* reexport */ scaleFloatsToBigints),
+  yM: () => (/* reexport */ scaleFloatsToInts),
+  Bz: () => (/* reexport */ scaleFloatssToBigintss),
+  Rm: () => (/* reexport */ scaleFloatssToIntss),
+  bN: () => (/* reexport */ signChanges),
+  SW: () => (/* reexport */ sturmChain),
+  $X: () => (/* reexport */ subtract),
+  yd: () => (/* reexport */ toCasStr),
+  H8: () => (/* reexport */ γ),
+  Uv: () => (/* reexport */ γγ)
 });
 
 ;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-expansion/e-estimate.js
@@ -258,7 +261,7 @@ function toCasStr(p) {
             ? eEstimate(_v)
             : _v; // bigint or number
         const absV = isBigint(v)
-            ? (_v < 0n ? -v : v)
+            ? (v < 0n ? -v : v)
             : Math.abs(v);
         let cStr = nonNegativeNumberToString(absV);
         cStr = (v >= 0 ? ' + ' : ' - ') + cStr;
@@ -936,6 +939,33 @@ function doubleToOctets(number) {
 }
 
 //# sourceMappingURL=double-to-octets.js.map
+;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-representation/double-to-binary-string.js
+// Modified from https://github.com/bartaz/ieee754-visualization/
+// under the MIT license
+// Copyright 2013 Bartek Szopka (original author)
+
+function doubleToBinaryString(number) {
+    return octetsToBinaryString(doubleToOctets(number));
+}
+/**
+ * @param octets The 8 bytes composing a double (msb first)
+ */
+function octetsToBinaryString(octets) {
+    return octets
+        .map(int8ToBinaryString)
+        .join('');
+}
+/**
+ * intToBinaryString(8) -> "00001000"
+ */
+function int8ToBinaryString(i) {
+    let iStr = i.toString(2);
+    for (; iStr.length < 8; iStr = "0" + iStr)
+        ;
+    return iStr;
+}
+
+//# sourceMappingURL=double-to-binary-string.js.map
 ;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-representation/parse-double.js
 // Modified from https://github.com/bartaz/ieee754-visualization/
 // under the MIT license
@@ -3701,22 +3731,22 @@ function double_to_octets_doubleToOctets(number) {
 
 /** @internal */
 function double_to_binary_string_doubleToBinaryString(number) {
-    return octetsToBinaryString(double_to_octets_doubleToOctets(number));
+    return double_to_binary_string_octetsToBinaryString(double_to_octets_doubleToOctets(number));
 }
 /**
  * @param octets The 8 bytes composing a double (msb first)
  * @internal
  */
-function octetsToBinaryString(octets) {
+function double_to_binary_string_octetsToBinaryString(octets) {
     return octets
-        .map(int8ToBinaryString)
+        .map(double_to_binary_string_int8ToBinaryString)
         .join('');
 }
 /**
  * intToBinaryString(8) -> "00001000"
  * @internal
  */
-function int8ToBinaryString(i) {
+function double_to_binary_string_int8ToBinaryString(i) {
     let iStr = i.toString(2);
     for (; iStr.length < 8; iStr = "0" + iStr)
         ;
@@ -6845,7 +6875,35 @@ const sce = scaleExpansion;
 function eHorner(p, x) {
     let q = [0];
     for (let i = 0; i < p.length; i++) {
+        // q = p[i] + x*q;
         q = fes(p[i], sce(q, x));
+    }
+    return q;
+}
+
+
+;// CONCATENATED MODULE: ./src/evaluate/double-double/dd-horner.ts
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const qaq = node_ddAddDd;
+const qmd = node_ddMultDouble2;
+/**
+ * Returns the exact result (bar underflow / overflow) of evaluating a
+ * univariate polynomial using Horner's method - the result is returned as a
+ * Shewchuk expansion.
+ *
+ * @param p a polynomial with coefficients given densely as an array of
+ * Shewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]`
+ * represents the polynomial `5x^2 - 3x`
+ * @param x the value at which to evaluate the polynomial
+ *
+ * @doc
+ */
+function ddHorner(p, x) {
+    let q = [0];
+    for (let i = 0; i < p.length; i++) {
+        // q = p[i] + x*q;
+        q = qaq(p[i], qmd(x, q));
     }
     return q;
 }
@@ -9556,8 +9614,8 @@ function brent(f, lb, ub) {
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const qmd = node_ddMultDouble2;
-const qaq = node_ddAddDd;
+const dd_deflate_qmd = node_ddMultDouble2;
+const dd_deflate_qaq = node_ddAddDd;
 /**
  * Deflates the given polynomial *approximately* by removing a factor (x - r),
  * where r is a root of the polynomial.
@@ -9585,9 +9643,73 @@ function ddDeflate(p, root) {
     const d = p.length - 1;
     const bs = [p[0]];
     for (let i = 1; i < d; i++) {
-        bs.push(qaq(p[i], qmd(root, bs[i - 1])));
+        bs.push(
+        // p[i] + root*bs[i-1]
+        dd_deflate_qaq(p[i], dd_deflate_qmd(root, bs[i - 1])));
     }
     return bs;
+}
+
+
+;// CONCATENATED MODULE: ./src/roots/certified/dd-deflate-with-running-error.ts
+
+
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const dd_deflate_with_running_error_qmd = node_ddMultDouble2;
+const dd_deflate_with_running_error_qaq = node_ddAddDd;
+const { abs: dd_deflate_with_running_error_abs } = Math;
+const dd_deflate_with_running_error_3 = γγ(3);
+/**
+ * Returns a deflated version of the given polynomial *approximately* by
+ * removing a factor (x - t). Also returns an coefficient-wise absolute error
+ * bound.
+ *
+ * @param p a polynomial with coefficients given densely as an array of
+ * double-double precision floating point numbers from highest to lowest power,
+ * e.g. `[[0,5],[0,-3],[0,0]]` represents the polynomial `5x^2 - 3x`
+ * @param pE the coefficient-wise absolute error of the input polynomial that
+ * still need to be multiplied by γγ3, i.e. it is `γγ3` times too big.
+ * @param t an evaluation point of the polynomial.
+ *
+ * @doc
+ */
+function ddDeflateWithRunningError(p, pE, t) {
+    //--------------------------------------------------------------------------
+    // `var` -> a variable
+    // `$var` -> the double precision approximation to `var`
+    // `_var` -> the absolute value of $var (a prefix underscore on a variable means absolute value)
+    // `var_` -> the error in var (a postfix underscore means error bound but should still be multiplied by 3*γ²)
+    // `_var_` -> means both absolute value and absolute error bound
+    // recall: `a*b`, where both `a` and `b` have errors |a| and |b| we get for the
+    //   * error bound of (a*b) === a_|b| + |a|b_ + |a*b|   (when either of a and b is double)
+    //   * error bound of (a*b) === a_|b| + |a|b_ + 2|a*b|  (when both a and b is double-double)
+    //   * error bound of (a+b) === a_ + b_ + |a+b|         (when a and/or b is double or double-double)
+    // * the returned errors need to be multiplied by 3γ² to get the true error
+    // * can use either `$var` or `var[var.length-1]` (the approx value) in error calculations
+    //   due to multiplication by 3*γ² and not 3*u²
+    //--------------------------------------------------------------------------
+    const d = p.length - 1;
+    const bs = [p[0]]; // coefficients
+    let b_ = pE[0]; // running error
+    const bEs = [b_]; // coefficient-wise error bound
+    for (let i = 1; i < d; i++) {
+        // p[i] + t*bs[i-1];
+        const a = bs[i - 1];
+        const $m = t * a[1];
+        const _t = dd_deflate_with_running_error_abs(t);
+        const m_ = _t * b_ + dd_deflate_with_running_error_abs($m);
+        const pi = p[i];
+        const p_ = pE[i];
+        b_ = p_ + m_ + dd_deflate_with_running_error_abs(pi[1] + $m);
+        const b = dd_deflate_with_running_error_qaq(pi, dd_deflate_with_running_error_qmd(t, a));
+        bs.push(b);
+        bEs.push(b_);
+    }
+    return {
+        coeffs: bs,
+        errBound: bEs.map(e => dd_deflate_with_running_error_3 * e)
+    };
 }
 
 
@@ -9620,6 +9742,607 @@ function deflate(p, root) {
     const bs = [p[0]];
     for (let i = 1; i < d; i++) {
         bs.push(p[i] + root * bs[i - 1]);
+    }
+    return bs;
+}
+
+
+;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/basic/fast-two-diff.js
+/**
+ * Returns the difference and exact error of subtracting two floating point
+ * numbers.
+ * Uses an EFT (error-free transformation), i.e. a-b === x+y exactly.
+ * The returned result is a non-overlapping expansion (smallest value first!).
+ *
+ * Precondition: abs(a) >= abs(b) - A fast test that can be used is
+ * (a > b) === (a > -b)
+ *
+ * See https://people.eecs.berkeley.edu/~jrs/papers/robustr.pdf
+ */
+function fast_two_diff_fastTwoDiff(a, b) {
+    const x = a - b;
+    const y = (a - x) - b;
+    return [y, x];
+}
+
+//# sourceMappingURL=fast-two-diff.js.map
+;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/basic/fast-two-sum.js
+/**
+ * Returns the sum and exact error of adding two floating point numbers.
+ * Uses an EFT (error-free transformation), i.e. a+b === x+y exactly.
+ * The returned sum is a non-overlapping expansion (smallest value first!).
+ *
+ * Precondition: abs(a) >= abs(b) - A fast test that can be used is
+ * (a > b) === (a > -b)
+ *
+ * See https://people.eecs.berkeley.edu/~jrs/papers/robustr.pdf
+ */
+function basic_fast_two_sum_fastTwoSum(a, b) {
+    const x = a + b;
+    return [b - (x - a), x];
+}
+// inlined
+//const R = a + b; const r = b - (R - a); return [r, R];
+
+//# sourceMappingURL=fast-two-sum.js.map
+;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-expansion/e-mult-by-2.js
+/**
+ * Returns the result of multiplying a floating point expansion by 2.
+ * * **error free**
+ * * see [Shewchuk](https://people.eecs.berkeley.edu/~jrs/papers/robustr.pdf)
+ *
+ * @param e a floating point expansion
+ */
+function eMultBy2(e) {
+    const e_ = [];
+    for (let i = 0; i < e.length; i++) {
+        e_.push(2 * e[i]);
+    }
+    return e_;
+}
+
+//# sourceMappingURL=e-mult-by-2.js.map
+;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-expansion/e-mult-by-neg-2.js
+/**
+ * Multiply a floating point expansion by -2.
+ * * **error free**
+ * * see [Shewchuk](https://people.eecs.berkeley.edu/~jrs/papers/robustr.pdf)
+ *
+ * @param e a floating point expansion
+ */
+function eMultByNeg2(e) {
+    const e_ = [];
+    for (let i = 0; i < e.length; i++) {
+        e_.push(-2 * e[i]);
+    }
+    return e_;
+}
+
+//# sourceMappingURL=e-mult-by-neg-2.js.map
+;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-expansion/e-div-by-2.js
+/**
+ * Returns the result of dividing a floating point expansion by 2.
+ * * **error free**
+ *
+ * * see [Shewchuk](https://people.eecs.berkeley.edu/~jrs/papers/robustr.pdf)
+ *
+ * @param e a floating point expansion
+ */
+function eDivBy2(e) {
+    const e_ = [];
+    for (let i = 0; i < e.length; i++) {
+        e_.push(0.5 * e[i]);
+    }
+    return e_;
+}
+
+//# sourceMappingURL=e-div-by-2.js.map
+;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/basic/split.js
+/**
+ * === Math.ceil(p/2) where p is the # of significand bits in a double === 53.
+ */
+const basic_split_f = 134217729; // 2**27 + 1;
+/**
+ * Returns the result of splitting a double into 2 26-bit doubles.
+ *
+ * Theorem 17 (Veltkamp-Dekker): Let a be a p-bit floating-point number, where
+ * p >= 3. Choose a splitting point s such that p/2 <= s <= p-1. Then the
+ * following algorithm will produce a (p-s)-bit value a_hi and a
+ * nonoverlapping (s-1)-bit value a_lo such that abs(a_hi) >= abs(a_lo) and
+ * a = a_hi + a_lo.
+ *
+ * see e.g. [Shewchuk](https://people.eecs.berkeley.edu/~jrs/papers/robustr.pdf)
+ * @param a A double floating point number
+ */
+function split_split(a) {
+    const c = basic_split_f * a;
+    const a_h = c - (c - a);
+    const a_l = a - a_h;
+    return [a_h, a_l];
+}
+// inlined - input a, output a_h, a_l
+// const c = f * a; const a_h = c - (c - a); const a_l = a - a_h; return [a_h, a_l];
+
+//# sourceMappingURL=split.js.map
+;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/basic/two-diff.js
+/**
+ * Returns the exact result of subtracting b from a (as a floating point
+ * expansion).
+ * @param a
+ * @param b
+ */
+function two_diff_twoDiff(a, b) {
+    const x = a - b;
+    const bvirt = a - x;
+    const y = (a - (x + bvirt)) + (bvirt - b);
+    return [y, x];
+}
+
+//# sourceMappingURL=two-diff.js.map
+;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-representation/is-bit-aligned.js
+
+
+/**
+ * Returns true if the given number is bit-aligned in the sense that its a
+ * multiple of a given power of 2, say e, and such that the number, say a,
+ * conforms to: a/2^e < 2^(l-e), where l is the max allowed bit length.
+ * This essentially means the numbers act somewhat like fixed-point numbers
+ * which can drastically speed up some geometric algorithms and also reduce
+ * their complexity.
+ *
+ * Visually:
+ * These numbers (a,b and c) are bit aligned with e === 3 and max
+ * bitlength === 6:
+ *    a -> 00|101100|000
+ *    b -> 00|000100|000
+ *    c -> 00|110111|000
+ * These are not
+ *    a -> 01|101100|000
+ *    b -> 00|000100|000
+ * These are not
+ *    a -> 00|101100|000
+ *    b -> 00|000100|100
+ * These are not
+ *    a -> 00|101100|100
+ *    b -> 00|000100|100
+ * @param as An array of numbers to check
+ * @param maxBitLength The max allowed bitlength
+ * @param gridSpacingExponent The grid spacing === 1^gridSpacingExponent
+ */
+function is_bit_aligned_isBitAligned(a, maxBitLength, gridSpacingExponent) {
+    if (a === 0) {
+        return true;
+    }
+    const e = exponent(a);
+    const maxSetBit = getHighestSetBit(a) - 52 + e;
+    const minSetBit = getLowestSetBit(a) - 52 + e;
+    const minBitBigEnough = minSetBit >= gridSpacingExponent;
+    const maxBitSmallEnough = maxSetBit <= maxBitLength - 1 + gridSpacingExponent;
+    return minBitBigEnough && maxBitSmallEnough;
+}
+
+//# sourceMappingURL=is-bit-aligned.js.map
+;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-representation/lsb-exponent.js
+
+
+/**
+ * Returns the true exponent of the lsb that is set of the given number or
+ * NaN if a === 0 or +-inf or NaN.
+ * @param a An array of numbers to check
+ */
+function lsb_exponent_lsbExponent(a) {
+    if (a === 0 || !Number.isFinite(a)) {
+        return NaN;
+    }
+    const e = exponent(a);
+    return getLowestSetBit(a) - 52 + e;
+}
+
+//# sourceMappingURL=lsb-exponent.js.map
+;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-expansion/e-calculate.js
+
+
+
+
+
+
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
+const e_calculate_mult = expansionProduct;
+const e_calculate_tp = two_product_twoProduct;
+const e_calculate_multByDouble = scaleExpansion;
+const e_calculate_ts = two_sum_twoSum;
+const e_calculate_addDouble = growExpansion;
+const e_calculate_add = fastExpansionSum;
+const e_calculate_compress = (/* unused pure expression or super */ null && (eCompress));
+/**
+ * Return the result of summing an array of terms, each term being an array of
+ * floating point expansions to be multiplied together.
+ *
+ * * The result is exact in the form of a non-overlapping floating point
+ * expansion.
+ * * see [Shewchuk](https://people.eecs.berkeley.edu/~jrs/papers/robustr.pdf)
+ *
+ * @param terms An array of terms to be summed; A term consists of an
+ * array of floating point expansions to be multiplied together.
+ */
+// The terms parameter were chosen to always be expansions in order to keep the 
+// function monomorhic, but whether it's really worth it I am not sure.
+function eCalculate(terms) {
+    let total = [0];
+    for (let i = 0; i < terms.length; i++) {
+        const term = terms[i];
+        let product = term[0];
+        for (let j = 1; j < term.length; j++) {
+            const multiplicant = term[j];
+            if (multiplicant.length == 1) {
+                if (product.length === 1) {
+                    product = e_calculate_tp(product[0], multiplicant[0]);
+                }
+                else {
+                    product = e_calculate_multByDouble(product, multiplicant[0]);
+                }
+            }
+            else if (product.length === 1) {
+                product = e_calculate_multByDouble(multiplicant, product[0]);
+            }
+            else {
+                product = e_calculate_mult(multiplicant, product);
+            }
+        }
+        // add
+        if (product.length === 1) {
+            if (total.length === 1) {
+                total = e_calculate_ts(total[0], product[0]);
+            }
+            else {
+                total = e_calculate_addDouble(total, product[0]);
+            }
+        }
+        else {
+            if (total.length === 1) {
+                total = e_calculate_addDouble(product, total[0]);
+            }
+            else {
+                total = e_calculate_add(total, product);
+            }
+        }
+    }
+    //return compress(total);
+    return total;
+}
+
+//# sourceMappingURL=e-calculate.js.map
+;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/geometric-primitives/orient2d.js
+
+
+
+
+
+
+const ccwerrboundA = 3.330669073875472e-16;
+const ccwerrboundB = 2.220446049250315e-16;
+const ccwerrboundC = 1.109335647967049e-31;
+const resulterrbound = 3.330669073875471e-16;
+/**
+ * * Ported from [Shewchuk](http://docs.ros.org/kinetic/api/asr_approx_mvbb/html/Predicates_8cpp_source.html)
+ * * see also https://people.eecs.berkeley.edu/~jrs/papers/robustr.pdf
+ *
+ * * Adaptive exact 2d orientation test.
+ *
+ * * Robust.
+ *
+ * Return a positive value if the points pa, pb, and pc occur in
+ * counterclockwise order; a negative value if they occur in clockwise order;
+ * and zero if they are collinear.  The result is also a rough approximation of
+ * twice the signed area of the triangle defined by the three points.
+ *
+ * The result returned is the determinant of a matrix. This determinant is
+ * computed adaptively, in the sense that exact arithmetic is used only to the
+ * degree it is needed to ensure that the returned value has the correct sign.
+ * Hence, orient2d() is usually quite fast, but will run more slowly when the
+ * input points are collinear or nearly so.
+ */
+function orient2d(A, B, C) {
+    const detleft = (A[0] - C[0]) * (B[1] - C[1]);
+    const detright = (A[1] - C[1]) * (B[0] - C[0]);
+    const det = detleft - detright;
+    let detsum;
+    if (detleft > 0) {
+        if (detright <= 0) {
+            // Anti-clockwise
+            return det;
+        }
+        else {
+            detsum = detleft + detright;
+        }
+    }
+    else if (detleft < 0) {
+        if (detright >= 0) {
+            // Clockwise
+            return det;
+        }
+        else {
+            detsum = -detleft - detright;
+        }
+    }
+    else {
+        // Anti-clockwise, clockwise or straight
+        return det;
+    }
+    if (Math.abs(det) >= ccwerrboundA * detsum) {
+        // Anti-clockwise or clockwise
+        return det;
+    }
+    return orient2dAdapt(A, B, C, detsum);
+}
+function orient2dAdapt(A, B, C, detsum) {
+    const acx = A[0] - C[0];
+    const bcx = B[0] - C[0];
+    const acy = A[1] - C[1];
+    const bcy = B[1] - C[1];
+    const b = eDiff(two_product_twoProduct(acx, bcy), two_product_twoProduct(acy, bcx));
+    let det = eEstimate(b);
+    if (Math.abs(det) >= ccwerrboundB * detsum) {
+        // Anti-clockwise or clockwise
+        return det;
+    }
+    const acxtail = two_diff_twoDiff(A[0], C[0])[0];
+    const bcxtail = two_diff_twoDiff(B[0], C[0])[0];
+    const acytail = two_diff_twoDiff(A[1], C[1])[0];
+    const bcytail = two_diff_twoDiff(B[1], C[1])[0];
+    if (acxtail === 0 && acytail === 0 &&
+        bcxtail === 0 && bcytail === 0) {
+        // Straight
+        return det;
+    }
+    const errbound = ccwerrboundC * detsum + resulterrbound * Math.abs(det);
+    det += (acx * bcytail + bcy * acxtail) - (acy * bcxtail + bcx * acytail);
+    if (Math.abs(det) >= errbound) {
+        return det;
+    }
+    const a = eDiff(two_product_twoProduct(acxtail, bcy), two_product_twoProduct(acytail, bcx));
+    const c = fastExpansionSum(b, a);
+    const d = eDiff(two_product_twoProduct(acx, bcytail), two_product_twoProduct(acy, bcxtail));
+    const e = fastExpansionSum(c, d);
+    const f = eDiff(two_product_twoProduct(acxtail, bcytail), two_product_twoProduct(acytail, bcxtail));
+    let D = fastExpansionSum(e, f);
+    D = e_compress_eCompress(D);
+    return D[D.length - 1];
+}
+
+//# sourceMappingURL=orient2d.js.map
+;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-expansion/is-overlapping.js
+
+
+/**
+ * Returns true if a and b overlaps, false otherwise.
+ *
+ * Two floating-point values x and y are nonoverlapping if the least significant
+ * nonzero bit of x is more significant than the most significant nonzero bit of
+ * y.
+ *
+ * * see [Shewchuk](https://people.eecs.berkeley.edu/~jrs/papers/robustr.pdf)
+ *
+ * Implemented for testing purposes.
+ * @param a a double
+ * @param b another double
+ */
+function isOverlapping(a, b) {
+    return !isNonOverlapping(a, b);
+}
+/**
+ * Returns true if a and b does not overlap, false otherwise.
+ *
+ * Two floating-point values x and y are nonoverlapping if the least significant
+ * nonzero bit of x is more significant than the most significant nonzero bit of
+ * y.
+ *
+ * * see [Shewchuk](https://people.eecs.berkeley.edu/~jrs/papers/robustr.pdf)
+ *
+ * Implemented for testing purposes.
+ *
+ * @param a A double
+ * @param b Another double
+ */
+function isNonOverlapping(a, b) {
+    if (a === 0 || b === 0) {
+        return true;
+    }
+    if (Math.abs(b) > Math.abs(a)) {
+        [a, b] = [b, a];
+    }
+    // At this point abs(a) > abs(b)
+    const l = getLowestSetBit(a);
+    const h = getHighestSetBit(b);
+    const shift = exponent(a) - exponent(b);
+    return (l + shift) > h;
+}
+/**
+ * Returns true if all components of the given floating point expansion is
+ * non-overlapping, false otherwise.
+ *
+ * * see [Shewchuk](https://people.eecs.berkeley.edu/~jrs/papers/robustr.pdf)
+ *
+ * @param e a double floating point expansion
+ */
+function isNonOverlappingAll(e) {
+    for (let i = 1; i < e.length; i++) {
+        if (isOverlapping(e[i - 1], e[i])) {
+            return false;
+        }
+    }
+    return true;
+}
+
+//# sourceMappingURL=is-overlapping.js.map
+;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-expansion/is-adjacent.js
+
+/**
+ * Returns true if x and y are adjacent, false otherwise.
+ *
+ * * see [Shewchuk](https://people.eecs.berkeley.edu/~jrs/papers/robustr.pdf)
+ * for details
+ *
+ * @param x a double floating point number
+ * @param y another double floating point number
+ */
+function isAdjacent(x, y) {
+    return isOverlapping(x, y) ||
+        isOverlapping(x, 2 * y) ||
+        isOverlapping(2 * x, y);
+}
+
+//# sourceMappingURL=is-adjacent.js.map
+;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-expansion/e-is-integer.js
+
+function eIsInteger(a) {
+    a = e_compress_eCompress(a);
+    for (let i = 0; i < a.length; i++) {
+        if (a[i] % 1 !== 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+//# sourceMappingURL=e-is-integer.js.map
+;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/index.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Aliases for some functions which names were not changed due to them being
+// used extensively in the literature with a particular recognizable name
+const node_eAdd = fastExpansionSum;
+const eAddDouble = growExpansion;
+const eMult = expansionProduct;
+const eMultDouble1 = scaleExpansion;
+const eMultDouble2 = scaleExpansion2;
+const node_operators = {
+    //---- basic ----//
+    fastTwoDiff: fast_two_diff_fastTwoDiff,
+    fastTwoSum: basic_fast_two_sum_fastTwoSum,
+    split: split_split,
+    twoDiff: two_diff_twoDiff,
+    twoProduct: two_product_twoProduct,
+    twoSum: two_sum_twoSum,
+    reduceSignificand: reduce_significand_reduceSignificand,
+    //---- double floating point expansions ----//
+    fastExpansionSum: fastExpansionSum, eAdd: node_eAdd,
+    growExpansion: growExpansion, eAddDouble,
+    expansionProduct: expansionProduct, eMult,
+    scaleExpansion: scaleExpansion, eMultDouble1,
+    scaleExpansion2: scaleExpansion2, eMultDouble2,
+    eDiv: eDiv,
+    eLongDivide: eLongDivide,
+    eIntDiv: eIntDiv,
+    eRem: eRem,
+    eCompress: e_compress_eCompress,
+    eEstimate: eEstimate,
+    eDiff: eDiff,
+    eNegativeOf: eNegativeOf,
+    eMultBy2: eMultBy2,
+    eMultByNeg2: eMultByNeg2,
+    eDivBy2: eDivBy2,
+    eSign: e_sign_eSign,
+    eCompare: eCompare,
+    eAbs: eAbs,
+    eToBitlength: eToBitlength,
+    eIntPow: eIntPow,
+    eCalculate: eCalculate,
+    eSum: eSum,
+    eProduct: e_product_eProduct,
+    eToDd: eToDd,
+    //---- double floating point representation ----//
+    parseDouble: parseDouble,
+    parseDoubleDetailed: parseDoubleDetailed,
+    isBitAligned: is_bit_aligned_isBitAligned,
+    msbExponent: msb_exponent_msbExponent,
+    lsbExponent: lsb_exponent_lsbExponent,
+    bitLength: bitLength,
+    expBitLength: expBitLength,
+    doubleToBinaryString: doubleToBinaryString,
+    doubleToOctets: doubleToOctets,
+    getHighestSetBit: getHighestSetBit,
+    getLowestSetBit: getLowestSetBit,
+    exponent: exponent,
+    significand: significand,
+    //---- geometric primitives
+    orient2d: orient2d,
+    //---- others
+    isAdjacent: isAdjacent,
+    isNonOverlappingAll: isNonOverlappingAll,
+    eIsInteger: eIsInteger
+};
+
+
+//# sourceMappingURL=index.js.map
+;// CONCATENATED MODULE: ./src/roots/naive/e-deflate.ts
+
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const emd = eMultDouble2;
+const eae = node_eAdd;
+/**
+ * Deflates the given polynomial exactly by removing a factor (x - r).
+ *
+ * @param p a polynomial with coefficients given densely as an array of
+ * floating point expansions from highest to lowest power,
+ * e.g. `[[5],[-3],[0]]` represents the polynomial `5x^2 - 3x`
+ * @param t an evaluation point of the polynomial (typically a root).
+ *
+ * @doc
+ */
+function eDeflate(p, t) {
+    const d = p.length - 1;
+    const bs = [p[0]];
+    for (let i = 1; i < d; i++) {
+        bs.push(
+        // p[i] + root*bs[i-1]
+        eae(p[i], emd(t, bs[i - 1])));
     }
     return bs;
 }
@@ -9947,6 +10670,7 @@ function scaleFloatssToBigintss(ass) {
 
 
 
+
 // factor bigint
 
 
@@ -10018,6 +10742,8 @@ function scaleFloatssToBigintss(ass) {
 
 
 // roots naive
+
+
 
 
 
@@ -10150,6 +10876,7 @@ const src_operators = {
     eEvaluateAt0: eEvaluateAt0,
     eEvaluateAt1: eEvaluateAt1,
     eHorner: eHorner,
+    ddHorner: ddHorner,
     // factor bigint
     bContent: bContent,
     bPrimitivePart: bPrimitivePart,
@@ -10214,7 +10941,9 @@ const src_operators = {
     brent: brent,
     brentPoly: brentPoly,
     ddDeflate: ddDeflate,
+    ddDeflateWithRunningError: ddDeflateWithRunningError,
     deflate: deflate,
+    eDeflate: eDeflate,
     quadraticRoots: quadraticRoots,
     // roots root bounds
     positiveRootUpperBound_LMQ: positiveRootUpperBound_LMQ,
@@ -10310,8 +11039,10 @@ var __webpack_exports__conditionNumber = __webpack_exports__.$k;
 var __webpack_exports__content = __webpack_exports__.kQ;
 var __webpack_exports__createRootExact = __webpack_exports__.UC;
 var __webpack_exports__ddDeflate = __webpack_exports__.aF;
+var __webpack_exports__ddDeflateWithRunningError = __webpack_exports__._l;
 var __webpack_exports__ddDifferentiate = __webpack_exports__.Xz;
 var __webpack_exports__ddDifferentiateWithError = __webpack_exports__.sF;
+var __webpack_exports__ddHorner = __webpack_exports__.Fq;
 var __webpack_exports__ddIntegrate = __webpack_exports__.sG;
 var __webpack_exports__deflate = __webpack_exports__.Wt;
 var __webpack_exports__degree = __webpack_exports__.U8;
@@ -10323,6 +11054,7 @@ var __webpack_exports__eChangeVariablesLinear = __webpack_exports__._n;
 var __webpack_exports__eChangeVariablesScale = __webpack_exports__.FI;
 var __webpack_exports__eChangeVariablesTranslateX = __webpack_exports__.rm;
 var __webpack_exports__eContent = __webpack_exports__.QO;
+var __webpack_exports__eDeflate = __webpack_exports__.m_;
 var __webpack_exports__eDegree = __webpack_exports__.wY;
 var __webpack_exports__eDifferentiate = __webpack_exports__.YV;
 var __webpack_exports__eEqual = __webpack_exports__.qW;
@@ -10410,4 +11142,4 @@ var __webpack_exports__subtract = __webpack_exports__.$X;
 var __webpack_exports__toCasStr = __webpack_exports__.yd;
 var __webpack_exports___ = __webpack_exports__.H8;
 var __webpack_exports___ = __webpack_exports__.Uv;
-export { __webpack_exports__AbsHorner as AbsHorner, __webpack_exports__CompHornerK as CompHornerK, __webpack_exports__EFTHorner as EFTHorner, __webpack_exports__Horner as Horner, __webpack_exports__absCoeff as absCoeff, __webpack_exports__add as add, __webpack_exports__allRoots as allRoots, __webpack_exports__allRootsCertified as allRootsCertified, __webpack_exports__allRootsCertifiedSimplified as allRootsCertifiedSimplified, __webpack_exports__bAbsCoeff as bAbsCoeff, __webpack_exports__bAdd as bAdd, __webpack_exports__bChangeVariablesLinear as bChangeVariablesLinear, __webpack_exports__bChangeVariablesScale as bChangeVariablesScale, __webpack_exports__bChangeVariablesTranslateX as bChangeVariablesTranslateX, __webpack_exports__bContent as bContent, __webpack_exports__bDegree as bDegree, __webpack_exports__bDifferentiate as bDifferentiate, __webpack_exports__bDivideByConst as bDivideByConst, __webpack_exports__bEqual as bEqual, __webpack_exports__bEvaluateAt0 as bEvaluateAt0, __webpack_exports__bEvaluateAt1 as bEvaluateAt1, __webpack_exports__bFlatCoefficients as bFlatCoefficients, __webpack_exports__bFlatCoefficientsArr as bFlatCoefficientsArr, __webpack_exports__bFlatRoots as bFlatRoots, __webpack_exports__bFlatRootsArr as bFlatRootsArr, __webpack_exports__bFromRoots as bFromRoots, __webpack_exports__bGcdInt as bGcdInt, __webpack_exports__bGcdInts as bGcdInts, __webpack_exports__bGcdPrs as bGcdPrs, __webpack_exports__bHorner as bHorner, __webpack_exports__bInvert as bInvert, __webpack_exports__bIsRationalMultipleOf as bIsRationalMultipleOf, __webpack_exports__bMultiply as bMultiply, __webpack_exports__bMultiplyByConst as bMultiplyByConst, __webpack_exports__bNegate as bNegate, __webpack_exports__bNumRoots as bNumRoots, __webpack_exports__bNumRootsIn01 as bNumRootsIn01, __webpack_exports__bNumRootsInRange as bNumRootsInRange, __webpack_exports__bP1Norm as bP1Norm, __webpack_exports__bP2NormSquared as bP2NormSquared, __webpack_exports__bPInfNorm as bPInfNorm, __webpack_exports__bPdivTrivial as bPdivTrivial, __webpack_exports__bPremSequencePrimitive as bPremSequencePrimitive, __webpack_exports__bPremSequenceSubresultant as bPremSequenceSubresultant, __webpack_exports__bPremSequenceTrivial as bPremSequenceTrivial, __webpack_exports__bPrimitivePart as bPrimitivePart, __webpack_exports__bReflectAboutYAxis as bReflectAboutYAxis, __webpack_exports__bRemoveLeadingZeros as bRemoveLeadingZeros, __webpack_exports__bSignChanges as bSignChanges, __webpack_exports__bSturmChain as bSturmChain, __webpack_exports__bSubtract as bSubtract, __webpack_exports__bisection as bisection, __webpack_exports__brent as brent, __webpack_exports__brentPoly as brentPoly, __webpack_exports__changeVariablesLinear as changeVariablesLinear, __webpack_exports__changeVariablesScale as changeVariablesScale, __webpack_exports__changeVariablesTranslateX as changeVariablesTranslateX, __webpack_exports__compHorner as compHorner, __webpack_exports__compHornerIsFaithful as compHornerIsFaithful, __webpack_exports__compHornerWithRunningError as compHornerWithRunningError, __webpack_exports__conditionNumber as conditionNumber, __webpack_exports__content as content, __webpack_exports__createRootExact as createRootExact, __webpack_exports__ddDeflate as ddDeflate, __webpack_exports__ddDifferentiate as ddDifferentiate, __webpack_exports__ddDifferentiateWithError as ddDifferentiateWithError, __webpack_exports__ddIntegrate as ddIntegrate, __webpack_exports__deflate as deflate, __webpack_exports__degree as degree, __webpack_exports__differentiate as differentiate, __webpack_exports__divideByConst as divideByConst, __webpack_exports__eAbsCoeff as eAbsCoeff, __webpack_exports__eAdd as eAdd, __webpack_exports__eChangeVariablesLinear as eChangeVariablesLinear, __webpack_exports__eChangeVariablesScale as eChangeVariablesScale, __webpack_exports__eChangeVariablesTranslateX as eChangeVariablesTranslateX, __webpack_exports__eContent as eContent, __webpack_exports__eDegree as eDegree, __webpack_exports__eDifferentiate as eDifferentiate, __webpack_exports__eEqual as eEqual, __webpack_exports__eEvaluateAt0 as eEvaluateAt0, __webpack_exports__eEvaluateAt1 as eEvaluateAt1, __webpack_exports__eFromRoots as eFromRoots, __webpack_exports__eGcdInt as eGcdInt, __webpack_exports__eGcdInts as eGcdInts, __webpack_exports__eHorner as eHorner, __webpack_exports__eInvert as eInvert, __webpack_exports__eIsConstOrZero as eIsConstOrZero, __webpack_exports__eIsRationalMultipleOf as eIsRationalMultipleOf, __webpack_exports__eIsUnit as eIsUnit, __webpack_exports__eMultiply as eMultiply, __webpack_exports__eMultiplyByConst as eMultiplyByConst, __webpack_exports__eNegate as eNegate, __webpack_exports__eNumRoots as eNumRoots, __webpack_exports__eNumRootsIn01 as eNumRootsIn01, __webpack_exports__eNumRootsInRange as eNumRootsInRange, __webpack_exports__eP1Norm as eP1Norm, __webpack_exports__eP2Norm as eP2Norm, __webpack_exports__ePInfNorm as ePInfNorm, __webpack_exports__ePdivTrivial as ePdivTrivial, __webpack_exports__ePremSequencePrimitive as ePremSequencePrimitive, __webpack_exports__ePremSequenceSubresultant as ePremSequenceSubresultant, __webpack_exports__ePrimitivePart as ePrimitivePart, __webpack_exports__eProduct as eProduct, __webpack_exports__eReflectAboutYAxis as eReflectAboutYAxis, __webpack_exports__eRemoveLeadingZeros as eRemoveLeadingZeros, __webpack_exports__eSignChanges as eSignChanges, __webpack_exports__eSturmChain as eSturmChain, __webpack_exports__eSubtract as eSubtract, __webpack_exports__eeHorner as eeHorner, __webpack_exports__equal as equal, __webpack_exports__evalCertified as evalCertified, __webpack_exports__evalCertifiedInclError as evalCertifiedInclError, __webpack_exports__evalK as evalK, __webpack_exports__evaluateAt0 as evaluateAt0, __webpack_exports__evaluateAt1 as evaluateAt1, __webpack_exports__flatCoefficients as flatCoefficients, __webpack_exports__flatCoefficientsArr as flatCoefficientsArr, __webpack_exports__flatRoots as flatRoots, __webpack_exports__flatRootsArr as flatRootsArr, __webpack_exports__fromRoots as fromRoots, __webpack_exports__gcdInt as gcdInt, __webpack_exports__gcdInts as gcdInts, __webpack_exports__hornerWithRunningError as hornerWithRunningError, __webpack_exports__integrate as integrate, __webpack_exports__invert as invert, __webpack_exports__isRationalMultipleOf as isRationalMultipleOf, __webpack_exports__mid as mid, __webpack_exports__multiply as multiply, __webpack_exports__multiplyByConst as multiplyByConst, __webpack_exports__negate as negate, __webpack_exports__negativeRootLowerBound_LMQ as negativeRootLowerBound_LMQ, __webpack_exports__negativeRootUpperBound_LMQ as negativeRootUpperBound_LMQ, __webpack_exports__numRoots as numRoots, __webpack_exports__numRootsIn01 as numRootsIn01, __webpack_exports__numRootsInRange as numRootsInRange, __webpack_exports__operators as operators, __webpack_exports__p1Norm as p1Norm, __webpack_exports__p2Norm as p2Norm, __webpack_exports__pInfNorm as pInfNorm, __webpack_exports__positiveRootLowerBound_LMQ as positiveRootLowerBound_LMQ, __webpack_exports__positiveRootUpperBound_LMQ as positiveRootUpperBound_LMQ, __webpack_exports__predictiveRandom as predictiveRandom, __webpack_exports__premSequenceSubresultant as premSequenceSubresultant, __webpack_exports__primitivePart as primitivePart, __webpack_exports__quadraticRoots as quadraticRoots, __webpack_exports__refineK1 as refineK1, __webpack_exports__reflectAboutYAxis as reflectAboutYAxis, __webpack_exports__removeLeadingZeros as removeLeadingZeros, __webpack_exports__rootIntervalToExp as rootIntervalToExp, __webpack_exports__rootMagnitudeUpperBound_fujiwara as rootMagnitudeUpperBound_fujiwara, __webpack_exports__rootMagnitudeUpperBound_rouche as rootMagnitudeUpperBound_rouche, __webpack_exports__scaleFloatToBigint as scaleFloatToBigint, __webpack_exports__scaleFloatToInt as scaleFloatToInt, __webpack_exports__scaleFloatsToBigints as scaleFloatsToBigints, __webpack_exports__scaleFloatsToInts as scaleFloatsToInts, __webpack_exports__scaleFloatssToBigintss as scaleFloatssToBigintss, __webpack_exports__scaleFloatssToIntss as scaleFloatssToIntss, __webpack_exports__signChanges as signChanges, __webpack_exports__sturmChain as sturmChain, __webpack_exports__subtract as subtract, __webpack_exports__toCasStr as toCasStr, __webpack_exports___ as γ, __webpack_exports___ as γγ };
+export { __webpack_exports__AbsHorner as AbsHorner, __webpack_exports__CompHornerK as CompHornerK, __webpack_exports__EFTHorner as EFTHorner, __webpack_exports__Horner as Horner, __webpack_exports__absCoeff as absCoeff, __webpack_exports__add as add, __webpack_exports__allRoots as allRoots, __webpack_exports__allRootsCertified as allRootsCertified, __webpack_exports__allRootsCertifiedSimplified as allRootsCertifiedSimplified, __webpack_exports__bAbsCoeff as bAbsCoeff, __webpack_exports__bAdd as bAdd, __webpack_exports__bChangeVariablesLinear as bChangeVariablesLinear, __webpack_exports__bChangeVariablesScale as bChangeVariablesScale, __webpack_exports__bChangeVariablesTranslateX as bChangeVariablesTranslateX, __webpack_exports__bContent as bContent, __webpack_exports__bDegree as bDegree, __webpack_exports__bDifferentiate as bDifferentiate, __webpack_exports__bDivideByConst as bDivideByConst, __webpack_exports__bEqual as bEqual, __webpack_exports__bEvaluateAt0 as bEvaluateAt0, __webpack_exports__bEvaluateAt1 as bEvaluateAt1, __webpack_exports__bFlatCoefficients as bFlatCoefficients, __webpack_exports__bFlatCoefficientsArr as bFlatCoefficientsArr, __webpack_exports__bFlatRoots as bFlatRoots, __webpack_exports__bFlatRootsArr as bFlatRootsArr, __webpack_exports__bFromRoots as bFromRoots, __webpack_exports__bGcdInt as bGcdInt, __webpack_exports__bGcdInts as bGcdInts, __webpack_exports__bGcdPrs as bGcdPrs, __webpack_exports__bHorner as bHorner, __webpack_exports__bInvert as bInvert, __webpack_exports__bIsRationalMultipleOf as bIsRationalMultipleOf, __webpack_exports__bMultiply as bMultiply, __webpack_exports__bMultiplyByConst as bMultiplyByConst, __webpack_exports__bNegate as bNegate, __webpack_exports__bNumRoots as bNumRoots, __webpack_exports__bNumRootsIn01 as bNumRootsIn01, __webpack_exports__bNumRootsInRange as bNumRootsInRange, __webpack_exports__bP1Norm as bP1Norm, __webpack_exports__bP2NormSquared as bP2NormSquared, __webpack_exports__bPInfNorm as bPInfNorm, __webpack_exports__bPdivTrivial as bPdivTrivial, __webpack_exports__bPremSequencePrimitive as bPremSequencePrimitive, __webpack_exports__bPremSequenceSubresultant as bPremSequenceSubresultant, __webpack_exports__bPremSequenceTrivial as bPremSequenceTrivial, __webpack_exports__bPrimitivePart as bPrimitivePart, __webpack_exports__bReflectAboutYAxis as bReflectAboutYAxis, __webpack_exports__bRemoveLeadingZeros as bRemoveLeadingZeros, __webpack_exports__bSignChanges as bSignChanges, __webpack_exports__bSturmChain as bSturmChain, __webpack_exports__bSubtract as bSubtract, __webpack_exports__bisection as bisection, __webpack_exports__brent as brent, __webpack_exports__brentPoly as brentPoly, __webpack_exports__changeVariablesLinear as changeVariablesLinear, __webpack_exports__changeVariablesScale as changeVariablesScale, __webpack_exports__changeVariablesTranslateX as changeVariablesTranslateX, __webpack_exports__compHorner as compHorner, __webpack_exports__compHornerIsFaithful as compHornerIsFaithful, __webpack_exports__compHornerWithRunningError as compHornerWithRunningError, __webpack_exports__conditionNumber as conditionNumber, __webpack_exports__content as content, __webpack_exports__createRootExact as createRootExact, __webpack_exports__ddDeflate as ddDeflate, __webpack_exports__ddDeflateWithRunningError as ddDeflateWithRunningError, __webpack_exports__ddDifferentiate as ddDifferentiate, __webpack_exports__ddDifferentiateWithError as ddDifferentiateWithError, __webpack_exports__ddHorner as ddHorner, __webpack_exports__ddIntegrate as ddIntegrate, __webpack_exports__deflate as deflate, __webpack_exports__degree as degree, __webpack_exports__differentiate as differentiate, __webpack_exports__divideByConst as divideByConst, __webpack_exports__eAbsCoeff as eAbsCoeff, __webpack_exports__eAdd as eAdd, __webpack_exports__eChangeVariablesLinear as eChangeVariablesLinear, __webpack_exports__eChangeVariablesScale as eChangeVariablesScale, __webpack_exports__eChangeVariablesTranslateX as eChangeVariablesTranslateX, __webpack_exports__eContent as eContent, __webpack_exports__eDeflate as eDeflate, __webpack_exports__eDegree as eDegree, __webpack_exports__eDifferentiate as eDifferentiate, __webpack_exports__eEqual as eEqual, __webpack_exports__eEvaluateAt0 as eEvaluateAt0, __webpack_exports__eEvaluateAt1 as eEvaluateAt1, __webpack_exports__eFromRoots as eFromRoots, __webpack_exports__eGcdInt as eGcdInt, __webpack_exports__eGcdInts as eGcdInts, __webpack_exports__eHorner as eHorner, __webpack_exports__eInvert as eInvert, __webpack_exports__eIsConstOrZero as eIsConstOrZero, __webpack_exports__eIsRationalMultipleOf as eIsRationalMultipleOf, __webpack_exports__eIsUnit as eIsUnit, __webpack_exports__eMultiply as eMultiply, __webpack_exports__eMultiplyByConst as eMultiplyByConst, __webpack_exports__eNegate as eNegate, __webpack_exports__eNumRoots as eNumRoots, __webpack_exports__eNumRootsIn01 as eNumRootsIn01, __webpack_exports__eNumRootsInRange as eNumRootsInRange, __webpack_exports__eP1Norm as eP1Norm, __webpack_exports__eP2Norm as eP2Norm, __webpack_exports__ePInfNorm as ePInfNorm, __webpack_exports__ePdivTrivial as ePdivTrivial, __webpack_exports__ePremSequencePrimitive as ePremSequencePrimitive, __webpack_exports__ePremSequenceSubresultant as ePremSequenceSubresultant, __webpack_exports__ePrimitivePart as ePrimitivePart, __webpack_exports__eProduct as eProduct, __webpack_exports__eReflectAboutYAxis as eReflectAboutYAxis, __webpack_exports__eRemoveLeadingZeros as eRemoveLeadingZeros, __webpack_exports__eSignChanges as eSignChanges, __webpack_exports__eSturmChain as eSturmChain, __webpack_exports__eSubtract as eSubtract, __webpack_exports__eeHorner as eeHorner, __webpack_exports__equal as equal, __webpack_exports__evalCertified as evalCertified, __webpack_exports__evalCertifiedInclError as evalCertifiedInclError, __webpack_exports__evalK as evalK, __webpack_exports__evaluateAt0 as evaluateAt0, __webpack_exports__evaluateAt1 as evaluateAt1, __webpack_exports__flatCoefficients as flatCoefficients, __webpack_exports__flatCoefficientsArr as flatCoefficientsArr, __webpack_exports__flatRoots as flatRoots, __webpack_exports__flatRootsArr as flatRootsArr, __webpack_exports__fromRoots as fromRoots, __webpack_exports__gcdInt as gcdInt, __webpack_exports__gcdInts as gcdInts, __webpack_exports__hornerWithRunningError as hornerWithRunningError, __webpack_exports__integrate as integrate, __webpack_exports__invert as invert, __webpack_exports__isRationalMultipleOf as isRationalMultipleOf, __webpack_exports__mid as mid, __webpack_exports__multiply as multiply, __webpack_exports__multiplyByConst as multiplyByConst, __webpack_exports__negate as negate, __webpack_exports__negativeRootLowerBound_LMQ as negativeRootLowerBound_LMQ, __webpack_exports__negativeRootUpperBound_LMQ as negativeRootUpperBound_LMQ, __webpack_exports__numRoots as numRoots, __webpack_exports__numRootsIn01 as numRootsIn01, __webpack_exports__numRootsInRange as numRootsInRange, __webpack_exports__operators as operators, __webpack_exports__p1Norm as p1Norm, __webpack_exports__p2Norm as p2Norm, __webpack_exports__pInfNorm as pInfNorm, __webpack_exports__positiveRootLowerBound_LMQ as positiveRootLowerBound_LMQ, __webpack_exports__positiveRootUpperBound_LMQ as positiveRootUpperBound_LMQ, __webpack_exports__predictiveRandom as predictiveRandom, __webpack_exports__premSequenceSubresultant as premSequenceSubresultant, __webpack_exports__primitivePart as primitivePart, __webpack_exports__quadraticRoots as quadraticRoots, __webpack_exports__refineK1 as refineK1, __webpack_exports__reflectAboutYAxis as reflectAboutYAxis, __webpack_exports__removeLeadingZeros as removeLeadingZeros, __webpack_exports__rootIntervalToExp as rootIntervalToExp, __webpack_exports__rootMagnitudeUpperBound_fujiwara as rootMagnitudeUpperBound_fujiwara, __webpack_exports__rootMagnitudeUpperBound_rouche as rootMagnitudeUpperBound_rouche, __webpack_exports__scaleFloatToBigint as scaleFloatToBigint, __webpack_exports__scaleFloatToInt as scaleFloatToInt, __webpack_exports__scaleFloatsToBigints as scaleFloatsToBigints, __webpack_exports__scaleFloatsToInts as scaleFloatsToInts, __webpack_exports__scaleFloatssToBigintss as scaleFloatssToBigintss, __webpack_exports__scaleFloatssToIntss as scaleFloatssToIntss, __webpack_exports__signChanges as signChanges, __webpack_exports__sturmChain as sturmChain, __webpack_exports__subtract as subtract, __webpack_exports__toCasStr as toCasStr, __webpack_exports___ as γ, __webpack_exports___ as γγ };

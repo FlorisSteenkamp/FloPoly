@@ -25,7 +25,7 @@
  *
  * @doc
  */
-declare const flatRootsArr: (n: number, d: number, a?: number | undefined, b?: number | undefined, seed?: number | undefined, odds?: number | undefined) => number[][];
+declare const flatRootsArr: (n: number, d: number, a?: number, b?: number, seed?: number, odds?: number) => number[][];
 /**
  * Generates and returns an array of polynomials with random **coefficients** (with coefficients
  * given densely as an array of double floating point numbers from highest to
@@ -50,7 +50,7 @@ declare const flatRootsArr: (n: number, d: number, a?: number | undefined, b?: n
  *
  * @doc
  */
-declare const flatCoefficientsArr: (n: number, d: number, a?: number | undefined, b?: number | undefined, seed?: number | undefined, odds?: number | undefined) => number[][];
+declare const flatCoefficientsArr: (n: number, d: number, a?: number, b?: number, seed?: number, odds?: number) => number[][];
 /**
  * Returns a quasi-random number to be used as the next input to this function.
  *

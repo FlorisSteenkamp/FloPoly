@@ -1,8 +1,8 @@
-import { fastExpansionSum, scaleExpansion } from "big-float-ts";
+import { ddMultDouble2, ddAddDd } from "double-double";
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const fes = fastExpansionSum;
-const sce = scaleExpansion;
+const qaq = ddAddDd;
+const qmd = ddMultDouble2;
 
 
 /** 
@@ -17,16 +17,16 @@ const sce = scaleExpansion;
  * 
  * @doc
  */
-function eHorner(p: number[][], x: number): number[] {
+function ddHorner(p: number[][], x: number): number[] {
 	let q = [0];
 
 	for (let i=0; i<p.length; i++) {
 		// q = p[i] + x*q;
-		q = fes(p[i], sce(q,x));
+		q = qaq(p[i], qmd(x,q));
 	}
 	
 	return q;
 }
 
 
-export { eHorner }
+export { ddHorner }

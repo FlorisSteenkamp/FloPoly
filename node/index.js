@@ -108,6 +108,7 @@ import { eeHorner } from './evaluate/expansion/e-e-horner.js';
 import { eEvaluateAt0 } from './evaluate/expansion/e-evaluate-at-0.js';
 import { eEvaluateAt1 } from './evaluate/expansion/e-evaluate-at-1.js';
 import { eHorner } from './evaluate/expansion/e-horner.js';
+import { ddHorner } from './evaluate/double-double/dd-horner.js';
 // factor bigint
 import { bContent } from './factor/bigint/b-content.js';
 import { bPrimitivePart } from './factor/bigint/b-primitive-part.js';
@@ -186,6 +187,7 @@ import { brentPoly } from './roots/naive/brent-poly.js';
 import { ddDeflate } from './roots/naive/dd-deflate.js';
 import { ddDeflateWithRunningError } from './roots/certified/dd-deflate-with-running-error.js';
 import { deflate } from './roots/naive/deflate.js';
+import { eDeflate } from './roots/naive/e-deflate.js';
 import { quadraticRoots } from './roots/naive/quadratic-roots.js';
 // roots root bounds
 import { positiveRootUpperBound_LMQ } from './roots/root-bounds/root-bounds-lmq.js';
@@ -312,6 +314,7 @@ const operators = {
     eEvaluateAt0,
     eEvaluateAt1,
     eHorner,
+    ddHorner,
     // factor bigint
     bContent,
     bPrimitivePart,
@@ -378,6 +381,7 @@ const operators = {
     ddDeflate,
     ddDeflateWithRunningError,
     deflate,
+    eDeflate,
     quadraticRoots,
     // roots root bounds
     positiveRootUpperBound_LMQ,
@@ -443,7 +447,7 @@ bHorner, bEvaluateAt0, bEvaluateAt1,
 // evaluate double
 AbsHorner, compHorner, compHornerIsFaithful, CompHornerK, compHornerWithRunningError, EFTHorner, evalCertified, evalCertifiedInclError, evalK, evaluateAt0, evaluateAt1, Horner, hornerWithRunningError, 
 // evaluate expansion
-eeHorner, eEvaluateAt0, eEvaluateAt1, eHorner, 
+eeHorner, eEvaluateAt0, eEvaluateAt1, eHorner, ddHorner, 
 // factor bigint
 bContent, bPrimitivePart, 
 // factor double
@@ -471,7 +475,7 @@ eNumRoots, eNumRootsIn01, eNumRootsInRange, eSignChanges,
 // roots from roots
 bFromRoots, fromRoots, eFromRoots, 
 // roots naive
-allRoots, bisection, brent, brentPoly, ddDeflate, ddDeflateWithRunningError, deflate, quadraticRoots, 
+allRoots, bisection, brent, brentPoly, ddDeflate, ddDeflateWithRunningError, deflate, eDeflate, quadraticRoots, 
 // roots root bounds
 positiveRootUpperBound_LMQ, positiveRootLowerBound_LMQ, negativeRootLowerBound_LMQ, negativeRootUpperBound_LMQ, rootMagnitudeUpperBound_fujiwara, rootMagnitudeUpperBound_rouche, 
 // scale to int

@@ -125,6 +125,7 @@ import { eeHorner } from './evaluate/expansion/e-e-horner.js';
 import { eEvaluateAt0 } from './evaluate/expansion/e-evaluate-at-0.js';
 import { eEvaluateAt1 } from './evaluate/expansion/e-evaluate-at-1.js';
 import { eHorner } from './evaluate/expansion/e-horner.js';
+import { ddHorner } from './evaluate/double-double/dd-horner.js';
 
 // factor bigint
 import { bContent } from './factor/bigint/b-content.js';
@@ -370,6 +371,7 @@ const operators = {
 	eEvaluateAt0,
 	eEvaluateAt1,
 	eHorner,
+	ddHorner,
 
 	// factor bigint
 	bContent,
@@ -617,6 +619,7 @@ export {
 	eEvaluateAt0,
 	eEvaluateAt1,
 	eHorner,
+	ddHorner,
 
 	// factor bigint
 	bContent,

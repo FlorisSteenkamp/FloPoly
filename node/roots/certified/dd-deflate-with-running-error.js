@@ -1,37 +1,26 @@
 import { ddMultDouble2 } from "double-double";
 import { ddAddDd } from "double-double";
-import { γγ } from '../../error-analysis/gamma';
+import { γγ } from '../../error-analysis/gamma.js';
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const qmd = ddMultDouble2;
 const qaq = ddAddDd;
 const { abs } = Math;
 const γγ3 = γγ(3);
 /**
- * Deflates the given polynomial *approximately* by removing a factor (x - r),
- * where r is a root of the polynomial.
- *
- * * **non-exact:** the deflation is done in double-double precision
+ * Returns a deflated version of the given polynomial *approximately* by
+ * removing a factor (x - t). Also returns an coefficient-wise absolute error
+ * bound.
  *
  * @param p a polynomial with coefficients given densely as an array of
  * double-double precision floating point numbers from highest to lowest power,
  * e.g. `[[0,5],[0,-3],[0,0]]` represents the polynomial `5x^2 - 3x`
- * @param pE the coefficient-wise absolute error of the input polynomial
+ * @param pE the coefficient-wise absolute error of the input polynomial that
+ * still need to be multiplied by γγ3, i.e. it is `γγ3` times too big.
  * @param t an evaluation point of the polynomial.
- *
- * @example
- * ```typescript
- * // The polynomial x^3 - 5x^2 + 8x - 4 has a root at 1 and a double root at 2
- * ddDeflate([[0,1], [0,-5], [0,8], [0,-4]], [0,2]); //=> [[0,1], [0,-3], [0,2]]
- * ddDeflate([[0,1], [0,-3], [0,2], [0,2]);          //=> [[0,1], [0,-1]]
- * ddDeflate([[0,1], [0,-1]], [0,1]);                //=> [[0,1]]
- * ```
  *
  * @doc
  */
 function ddDeflateWithRunningError(p, pE, t) {
-    const d = p.length - 1;
-    const bs = [p[0]];
-    const bEs = [pE[0]];
     //--------------------------------------------------------------------------
     // `var` -> a variable
     // `$var` -> the double precision approximation to `var`
@@ -46,25 +35,26 @@ function ddDeflateWithRunningError(p, pE, t) {
     // * can use either `$var` or `var[var.length-1]` (the approx value) in error calculations
     //   due to multiplication by 3*γ² and not 3*u²
     //--------------------------------------------------------------------------
-    let b_ = 0; // running error
+    const d = p.length - 1;
+    const bs = [p[0]]; // coefficients
+    let b_ = pE[0]; // running error
+    const bEs = [b_]; // coefficient-wise error bound
     for (let i = 1; i < d; i++) {
-        const $b = bs[i - 1][1]; // double-precision version - roundoff error <= 1 ulp
-        const $m = t * $b; // double precision calculation
-        const _m = abs($m);
+        // p[i] + t*bs[i-1];
+        const a = bs[i - 1];
+        const $m = t * a[1];
         const _t = abs(t);
-        const m_ = _t * b_ + _m; // error
-        const m = qmd(t, bs[i - 1]);
-        const $p = p[i][1];
-        const _p = abs($p);
+        const m_ = _t * b_ + abs($m);
+        const pi = p[i];
         const p_ = pE[i];
-        b_ = p_ + m_ + _p + _m; //?
-        const r = qaq(p[i], m);
-        bs.push(r);
+        b_ = p_ + m_ + abs(pi[1] + $m);
+        const b = qaq(pi, qmd(t, a));
+        bs.push(b);
         bEs.push(b_);
     }
     return {
         coeffs: bs,
-        errBound: bEs //.map(bE => γγ3*bE)
+        errBound: bEs.map(e => γγ3 * e)
     };
 }
 export { ddDeflateWithRunningError };

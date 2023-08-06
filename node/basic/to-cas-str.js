@@ -41,7 +41,7 @@ function toCasStr(p) {
             ? eEstimate(_v)
             : _v; // bigint or number
         const absV = isBigint(v)
-            ? (_v < 0n ? -v : v)
+            ? (v < 0n ? -v : v)
             : Math.abs(v);
         let cStr = nonNegativeNumberToString(absV);
         cStr = (v >= 0 ? ' + ' : ' - ') + cStr;
