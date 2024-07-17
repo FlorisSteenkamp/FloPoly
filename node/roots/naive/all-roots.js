@@ -134,6 +134,12 @@ function allRoots(p, lb = Number.NEGATIVE_INFINITY, ub = Number.POSITIVE_INFINIT
             }
             isWithZeroRoots.push(is[i]);
         }
+        if (!zerosInserted) {
+            // push the zero roots
+            for (let j = 0; j < numZerosAtZero; j++) {
+                isWithZeroRoots.push(0);
+            }
+        }
         return isWithZeroRoots;
     }
     return is;
