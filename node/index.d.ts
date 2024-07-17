@@ -276,9 +276,9 @@ declare const operators: {
     eP2Norm: typeof eP2Norm;
     ePInfNorm: typeof ePInfNorm;
     flatRoots: typeof flatRoots;
-    flatRootsArr: (n: number, d: number, a?: number | undefined, b?: number | undefined, seed?: number | undefined, odds?: number | undefined) => number[][];
+    flatRootsArr: (n: number, d: number, a?: number, b?: number, seed?: number, odds?: number) => number[][];
     flatCoefficients: typeof flatCoefficients;
-    flatCoefficientsArr: (n: number, d: number, a?: number | undefined, b?: number | undefined, seed?: number | undefined, odds?: number | undefined) => number[][];
+    flatCoefficientsArr: (n: number, d: number, a?: number, b?: number, seed?: number, odds?: number) => number[][];
     predictiveRandom: typeof predictiveRandom;
     bFlatRoots: typeof bFlatRoots;
     bFlatRootsArr: typeof bFlatRootsArr;

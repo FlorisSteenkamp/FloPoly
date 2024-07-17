@@ -24,173 +24,173 @@ var __webpack_exports__ = {};
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  oM: () => (/* reexport */ AbsHorner),
-  Pg: () => (/* reexport */ CompHornerK),
-  rH: () => (/* reexport */ EFTHorner),
-  E2: () => (/* reexport */ Horner),
-  UR: () => (/* reexport */ absCoeff),
-  IH: () => (/* reexport */ add),
-  Tr: () => (/* reexport */ allRoots),
-  oH: () => (/* reexport */ allRootsCertified),
-  Dy: () => (/* reexport */ allRootsCertifiedSimplified),
-  l2: () => (/* reexport */ bAbsCoeff),
-  Ve: () => (/* reexport */ bAdd),
-  IU: () => (/* reexport */ bChangeVariablesLinear),
-  KL: () => (/* reexport */ bChangeVariablesScale),
-  Ew: () => (/* reexport */ bChangeVariablesTranslateX),
-  KG: () => (/* reexport */ bContent),
-  gM: () => (/* reexport */ bDegree),
-  dv: () => (/* reexport */ bDifferentiate),
-  bu: () => (/* reexport */ bDivideByConst),
-  Zv: () => (/* reexport */ bEqual),
-  OP: () => (/* reexport */ bEvaluateAt0),
-  KI: () => (/* reexport */ bEvaluateAt1),
-  dA: () => (/* reexport */ bFlatCoefficients),
-  CR: () => (/* reexport */ bFlatCoefficientsArr),
-  ds: () => (/* reexport */ bFlatRoots),
-  OA: () => (/* reexport */ bFlatRootsArr),
-  eg: () => (/* reexport */ bFromRoots),
-  DC: () => (/* reexport */ bGcdInt),
-  SG: () => (/* reexport */ bGcdInts),
-  zY: () => (/* reexport */ bGcdPrs),
-  LD: () => (/* reexport */ bHorner),
-  $v: () => (/* reexport */ bInvert),
-  $l: () => (/* reexport */ bIsRationalMultipleOf),
-  c1: () => (/* reexport */ bMultiply),
-  Sl: () => (/* reexport */ bMultiplyByConst),
-  db: () => (/* reexport */ bNegate),
-  pD: () => (/* reexport */ bNumRoots),
-  Ak: () => (/* reexport */ bNumRootsIn01),
-  i6: () => (/* reexport */ bNumRootsInRange),
-  jV: () => (/* reexport */ bP1Norm),
-  Dc: () => (/* reexport */ bP2NormSquared),
-  hg: () => (/* reexport */ bPInfNorm),
-  ib: () => (/* reexport */ bPdivTrivial),
-  aP: () => (/* reexport */ bPremSequencePrimitive),
-  YF: () => (/* reexport */ bPremSequenceSubresultant),
-  tK: () => (/* reexport */ bPremSequenceTrivial),
-  dI: () => (/* reexport */ bPrimitivePart),
-  i7: () => (/* reexport */ bReflectAboutYAxis),
-  iK: () => (/* reexport */ bRemoveLeadingZeros),
-  j5: () => (/* reexport */ bSignChanges),
-  K: () => (/* reexport */ bSturmChain),
-  J9: () => (/* reexport */ bSubtract),
-  HH: () => (/* reexport */ bisection),
-  YQ: () => (/* reexport */ brent),
-  u1: () => (/* reexport */ brentPoly),
-  uO: () => (/* reexport */ changeVariablesLinear),
-  ef: () => (/* reexport */ changeVariablesScale),
-  K0: () => (/* reexport */ changeVariablesTranslateX),
-  YT: () => (/* reexport */ compHorner),
-  fy: () => (/* reexport */ compHornerIsFaithful),
-  rP: () => (/* reexport */ compHornerWithRunningError),
-  $k: () => (/* reexport */ conditionNumber),
-  kQ: () => (/* reexport */ content),
-  UC: () => (/* reexport */ createRootExact),
-  aF: () => (/* reexport */ ddDeflate),
-  _l: () => (/* reexport */ ddDeflateWithRunningError),
-  Xz: () => (/* reexport */ ddDifferentiate),
-  sF: () => (/* reexport */ ddDifferentiateWithError),
-  Fq: () => (/* reexport */ ddHorner),
-  sG: () => (/* reexport */ ddIntegrate),
-  Wt: () => (/* reexport */ deflate),
-  U8: () => (/* reexport */ degree),
-  YC: () => (/* reexport */ differentiate),
-  FV: () => (/* reexport */ divideByConst),
-  ZX: () => (/* reexport */ eAbsCoeff),
-  _L: () => (/* reexport */ eAdd),
-  _n: () => (/* reexport */ eChangeVariablesLinear),
-  FI: () => (/* reexport */ eChangeVariablesScale),
-  rm: () => (/* reexport */ eChangeVariablesTranslateX),
-  QO: () => (/* reexport */ eContent),
-  m_: () => (/* reexport */ eDeflate),
-  wY: () => (/* reexport */ eDegree),
-  YV: () => (/* reexport */ eDifferentiate),
-  qW: () => (/* reexport */ eEqual),
-  u3: () => (/* reexport */ eEvaluateAt0),
-  Fg: () => (/* reexport */ eEvaluateAt1),
-  g7: () => (/* reexport */ eFromRoots),
-  gX: () => (/* reexport */ eGcdInt),
-  Oh: () => (/* reexport */ eGcdInts),
-  dY: () => (/* reexport */ eHorner),
-  vD: () => (/* reexport */ eInvert),
-  MY: () => (/* reexport */ eIsConstOrZero),
-  BW: () => (/* reexport */ eIsRationalMultipleOf),
-  _4: () => (/* reexport */ eIsUnit),
-  d2: () => (/* reexport */ eMultiply),
-  md: () => (/* reexport */ eMultiplyByConst),
-  zC: () => (/* reexport */ eNegate),
-  mq: () => (/* reexport */ eNumRoots),
-  th: () => (/* reexport */ eNumRootsIn01),
-  y1: () => (/* reexport */ eNumRootsInRange),
-  Xh: () => (/* reexport */ eP1Norm),
-  Ws: () => (/* reexport */ eP2Norm),
-  ww: () => (/* reexport */ ePInfNorm),
-  HA: () => (/* reexport */ ePdivTrivial),
-  b9: () => (/* reexport */ ePremSequencePrimitive),
-  _V: () => (/* reexport */ ePremSequenceSubresultant),
-  kP: () => (/* reexport */ ePrimitivePart),
-  Fp: () => (/* reexport */ eProduct),
-  QU: () => (/* reexport */ eReflectAboutYAxis),
-  XN: () => (/* reexport */ eRemoveLeadingZeros),
-  t: () => (/* reexport */ eSignChanges),
-  _u: () => (/* reexport */ eSturmChain),
-  x1: () => (/* reexport */ eSubtract),
-  ZW: () => (/* reexport */ eeHorner),
-  Dg: () => (/* reexport */ equal),
-  f6: () => (/* reexport */ evalCertified),
-  Kj: () => (/* reexport */ evalCertifiedInclError),
-  Of: () => (/* reexport */ evalK),
-  Th: () => (/* reexport */ evaluateAt0),
-  M9: () => (/* reexport */ evaluateAt1),
-  sd: () => (/* reexport */ flatCoefficients),
-  b1: () => (/* reexport */ flatCoefficientsArr),
-  m4: () => (/* reexport */ flatRoots),
-  rL: () => (/* reexport */ flatRootsArr),
-  Ht: () => (/* reexport */ fromRoots),
-  a8: () => (/* reexport */ gcdInt),
-  JK: () => (/* reexport */ gcdInts),
-  xD: () => (/* reexport */ hornerWithRunningError),
-  lF: () => (/* reexport */ integrate),
-  U_: () => (/* reexport */ invert),
-  IP: () => (/* reexport */ isRationalMultipleOf),
-  Pi: () => (/* reexport */ mid),
-  Jp: () => (/* reexport */ multiply),
-  $d: () => (/* reexport */ multiplyByConst),
-  tk: () => (/* reexport */ negate),
-  $3: () => (/* reexport */ negativeRootLowerBound_LMQ),
-  kT: () => (/* reexport */ negativeRootUpperBound_LMQ),
-  lV: () => (/* reexport */ numRoots),
-  $6: () => (/* reexport */ numRootsIn01),
-  XP: () => (/* reexport */ numRootsInRange),
-  Gn: () => (/* binding */ src_operators),
-  fk: () => (/* reexport */ p1Norm),
-  P5: () => (/* reexport */ p2Norm),
-  Yz: () => (/* reexport */ pInfNorm),
-  Fw: () => (/* reexport */ positiveRootLowerBound_LMQ),
-  FW: () => (/* reexport */ positiveRootUpperBound_LMQ),
-  Hq: () => (/* reexport */ predictiveRandom),
-  A_: () => (/* reexport */ premSequenceSubresultant),
-  $5: () => (/* reexport */ primitivePart),
-  GD: () => (/* reexport */ quadraticRoots),
-  X_: () => (/* reexport */ refineK1),
-  NF: () => (/* reexport */ reflectAboutYAxis),
-  Qo: () => (/* reexport */ removeLeadingZeros),
-  WM: () => (/* reexport */ rootIntervalToExp),
-  Dk: () => (/* reexport */ rootMagnitudeUpperBound_fujiwara),
-  T9: () => (/* reexport */ rootMagnitudeUpperBound_rouche),
-  GG: () => (/* reexport */ scaleFloatToBigint),
-  we: () => (/* reexport */ scaleFloatToInt),
-  D9: () => (/* reexport */ scaleFloatsToBigints),
-  yM: () => (/* reexport */ scaleFloatsToInts),
-  Bz: () => (/* reexport */ scaleFloatssToBigintss),
-  Rm: () => (/* reexport */ scaleFloatssToIntss),
-  bN: () => (/* reexport */ signChanges),
-  SW: () => (/* reexport */ sturmChain),
-  $X: () => (/* reexport */ subtract),
-  yd: () => (/* reexport */ toCasStr),
-  H8: () => (/* reexport */ γ),
-  Uv: () => (/* reexport */ γγ)
+  j1: () => (/* reexport */ AbsHorner),
+  tw: () => (/* reexport */ CompHornerK),
+  MT: () => (/* reexport */ EFTHorner),
+  xf: () => (/* reexport */ Horner),
+  WU: () => (/* reexport */ absCoeff),
+  WQ: () => (/* reexport */ add),
+  zr: () => (/* reexport */ allRoots),
+  qr: () => (/* reexport */ allRootsCertified),
+  Yp: () => (/* reexport */ allRootsCertifiedSimplified),
+  CS: () => (/* reexport */ bAbsCoeff),
+  KC: () => (/* reexport */ bAdd),
+  fs: () => (/* reexport */ bChangeVariablesLinear),
+  mw: () => (/* reexport */ bChangeVariablesScale),
+  Mp: () => (/* reexport */ bChangeVariablesTranslateX),
+  oC: () => (/* reexport */ bContent),
+  dK: () => (/* reexport */ bDegree),
+  $Y: () => (/* reexport */ bDifferentiate),
+  Id: () => (/* reexport */ bDivideByConst),
+  jM: () => (/* reexport */ bEqual),
+  x: () => (/* reexport */ bEvaluateAt0),
+  EO: () => (/* reexport */ bEvaluateAt1),
+  ao: () => (/* reexport */ bFlatCoefficients),
+  Fz: () => (/* reexport */ bFlatCoefficientsArr),
+  l$: () => (/* reexport */ bFlatRoots),
+  _T: () => (/* reexport */ bFlatRootsArr),
+  OD: () => (/* reexport */ bFromRoots),
+  qj: () => (/* reexport */ bGcdInt),
+  T6: () => (/* reexport */ bGcdInts),
+  a: () => (/* reexport */ bGcdPrs),
+  t7: () => (/* reexport */ bHorner),
+  Tr: () => (/* reexport */ bInvert),
+  gG: () => (/* reexport */ bIsRationalMultipleOf),
+  Tt: () => (/* reexport */ bMultiply),
+  h1: () => (/* reexport */ bMultiplyByConst),
+  Rz: () => (/* reexport */ bNegate),
+  eS: () => (/* reexport */ bNumRoots),
+  Ed: () => (/* reexport */ bNumRootsIn01),
+  WG: () => (/* reexport */ bNumRootsInRange),
+  _m: () => (/* reexport */ bP1Norm),
+  wQ: () => (/* reexport */ bP2NormSquared),
+  QT: () => (/* reexport */ bPInfNorm),
+  lt: () => (/* reexport */ bPdivTrivial),
+  dc: () => (/* reexport */ bPremSequencePrimitive),
+  m2: () => (/* reexport */ bPremSequenceSubresultant),
+  bH: () => (/* reexport */ bPremSequenceTrivial),
+  f8: () => (/* reexport */ bPrimitivePart),
+  dz: () => (/* reexport */ bReflectAboutYAxis),
+  gz: () => (/* reexport */ bRemoveLeadingZeros),
+  nZ: () => (/* reexport */ bSignChanges),
+  TX: () => (/* reexport */ bSturmChain),
+  xc: () => (/* reexport */ bSubtract),
+  Zr: () => (/* reexport */ bisection),
+  SJ: () => (/* reexport */ brent),
+  GM: () => (/* reexport */ brentPoly),
+  ZD: () => (/* reexport */ changeVariablesLinear),
+  i8: () => (/* reexport */ changeVariablesScale),
+  WW: () => (/* reexport */ changeVariablesTranslateX),
+  _8: () => (/* reexport */ compHorner),
+  r4: () => (/* reexport */ compHornerIsFaithful),
+  pp: () => (/* reexport */ compHornerWithRunningError),
+  J9: () => (/* reexport */ conditionNumber),
+  Qs: () => (/* reexport */ content),
+  ik: () => (/* reexport */ createRootExact),
+  c9: () => (/* reexport */ ddDeflate),
+  dl: () => (/* reexport */ ddDeflateWithRunningError),
+  Rj: () => (/* reexport */ ddDifferentiate),
+  JD: () => (/* reexport */ ddDifferentiateWithError),
+  wI: () => (/* reexport */ ddHorner),
+  lS: () => (/* reexport */ ddIntegrate),
+  Kc: () => (/* reexport */ deflate),
+  No: () => (/* reexport */ degree),
+  Lk: () => (/* reexport */ differentiate),
+  sB: () => (/* reexport */ divideByConst),
+  XP: () => (/* reexport */ eAbsCoeff),
+  DI: () => (/* reexport */ eAdd),
+  io: () => (/* reexport */ eChangeVariablesLinear),
+  D7: () => (/* reexport */ eChangeVariablesScale),
+  hN: () => (/* reexport */ eChangeVariablesTranslateX),
+  lg: () => (/* reexport */ eContent),
+  D_: () => (/* reexport */ eDeflate),
+  s9: () => (/* reexport */ eDegree),
+  CY: () => (/* reexport */ eDifferentiate),
+  Ir: () => (/* reexport */ eEqual),
+  _B: () => (/* reexport */ eEvaluateAt0),
+  fV: () => (/* reexport */ eEvaluateAt1),
+  vL: () => (/* reexport */ eFromRoots),
+  Bb: () => (/* reexport */ eGcdInt),
+  p6: () => (/* reexport */ eGcdInts),
+  o: () => (/* reexport */ eHorner),
+  SG: () => (/* reexport */ eInvert),
+  SA: () => (/* reexport */ eIsConstOrZero),
+  Z3: () => (/* reexport */ eIsRationalMultipleOf),
+  ip: () => (/* reexport */ eIsUnit),
+  cn: () => (/* reexport */ eMultiply),
+  YR: () => (/* reexport */ eMultiplyByConst),
+  OP: () => (/* reexport */ eNegate),
+  zx: () => (/* reexport */ eNumRoots),
+  Bw: () => (/* reexport */ eNumRootsIn01),
+  tF: () => (/* reexport */ eNumRootsInRange),
+  RO: () => (/* reexport */ eP1Norm),
+  wd: () => (/* reexport */ eP2Norm),
+  Ns: () => (/* reexport */ ePInfNorm),
+  sv: () => (/* reexport */ ePdivTrivial),
+  wC: () => (/* reexport */ ePremSequencePrimitive),
+  f5: () => (/* reexport */ ePremSequenceSubresultant),
+  An: () => (/* reexport */ ePrimitivePart),
+  Ff: () => (/* reexport */ eProduct),
+  kR: () => (/* reexport */ eReflectAboutYAxis),
+  Fs: () => (/* reexport */ eRemoveLeadingZeros),
+  aZ: () => (/* reexport */ eSignChanges),
+  Ss: () => (/* reexport */ eSturmChain),
+  Su: () => (/* reexport */ eSubtract),
+  xE: () => (/* reexport */ eeHorner),
+  LC: () => (/* reexport */ equal),
+  Uv: () => (/* reexport */ evalCertified),
+  oi: () => (/* reexport */ evalCertifiedInclError),
+  Uz: () => (/* reexport */ evalK),
+  d_: () => (/* reexport */ evaluateAt0),
+  kM: () => (/* reexport */ evaluateAt1),
+  c7: () => (/* reexport */ flatCoefficients),
+  jQ: () => (/* reexport */ flatCoefficientsArr),
+  PI: () => (/* reexport */ flatRoots),
+  mP: () => (/* reexport */ flatRootsArr),
+  qb: () => (/* reexport */ fromRoots),
+  _Z: () => (/* reexport */ gcdInt),
+  tX: () => (/* reexport */ gcdInts),
+  OG: () => (/* reexport */ hornerWithRunningError),
+  UZ: () => (/* reexport */ integrate),
+  B8: () => (/* reexport */ invert),
+  cg: () => (/* reexport */ isRationalMultipleOf),
+  jz: () => (/* reexport */ mid),
+  lw: () => (/* reexport */ multiply),
+  RF: () => (/* reexport */ multiplyByConst),
+  ze: () => (/* reexport */ negate),
+  A3: () => (/* reexport */ negativeRootLowerBound_LMQ),
+  hP: () => (/* reexport */ negativeRootUpperBound_LMQ),
+  yU: () => (/* reexport */ numRoots),
+  S_: () => (/* reexport */ numRootsIn01),
+  El: () => (/* reexport */ numRootsInRange),
+  II: () => (/* binding */ src_operators),
+  I3: () => (/* reexport */ p1Norm),
+  bD: () => (/* reexport */ p2Norm),
+  iW: () => (/* reexport */ pInfNorm),
+  Bc: () => (/* reexport */ positiveRootLowerBound_LMQ),
+  FL: () => (/* reexport */ positiveRootUpperBound_LMQ),
+  fK: () => (/* reexport */ predictiveRandom),
+  ec: () => (/* reexport */ premSequenceSubresultant),
+  Rt: () => (/* reexport */ primitivePart),
+  _j: () => (/* reexport */ quadraticRoots),
+  yO: () => (/* reexport */ refineK1),
+  n6: () => (/* reexport */ reflectAboutYAxis),
+  wb: () => (/* reexport */ removeLeadingZeros),
+  Pb: () => (/* reexport */ rootIntervalToExp),
+  Bv: () => (/* reexport */ rootMagnitudeUpperBound_fujiwara),
+  Wh: () => (/* reexport */ rootMagnitudeUpperBound_rouche),
+  jY: () => (/* reexport */ scaleFloatToBigint),
+  jJ: () => (/* reexport */ scaleFloatToInt),
+  F4: () => (/* reexport */ scaleFloatsToBigints),
+  hy: () => (/* reexport */ scaleFloatsToInts),
+  je: () => (/* reexport */ scaleFloatssToBigintss),
+  vv: () => (/* reexport */ scaleFloatssToIntss),
+  CW: () => (/* reexport */ signChanges),
+  fT: () => (/* reexport */ sturmChain),
+  Re: () => (/* reexport */ subtract),
+  ew: () => (/* reexport */ toCasStr),
+  e7: () => (/* reexport */ γ),
+  ZH: () => (/* reexport */ γγ)
 });
 
 ;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-expansion/e-estimate.js
@@ -3179,9 +3179,7 @@ const dd_mult_dd_f = 2 ** 27 + 1;
  * @param y another double-double precision floating point number
  */
 function ddMultDd(x, y) {
-    //const xl = x[0];
     const xh = x[1];
-    //const yl = y[0];
     const yh = y[1];
     //const [cl1,ch] = twoProduct(xh,yh);
     const ch = xh * yh;
@@ -4079,7 +4077,830 @@ function divWithErr(n, d, nE, dE) {
 }
 
 //# sourceMappingURL=div-with-err.js.map
+;// CONCATENATED MODULE: ./node_modules/double-double/node/str-to-dd/get-zeros-str.js
+/**
+ * Returns a string having the given number of zeros.
+ *
+ * @internal
+ */
+function getZerosStr(n) {
+    return new Array(n + 1).join('0');
+}
+
+//# sourceMappingURL=get-zeros-str.js.map
+;// CONCATENATED MODULE: ./node_modules/double-double/node/str-to-dd/mult-str-by-pow-of-10.js
+
+/**
+ * * string must not contain an `'e'`, e.g. `'1e-10'` is not allowed
+ *
+ * @internal
+ */
+function multStrByPowOf10(s, pow) {
+    if (pow === 0 || Number(s) === 0) {
+        return s;
+    }
+    const negative = s.indexOf('-') !== -1;
+    const negativeStr = negative ? '-' : '';
+    if (negative) {
+        s = s.slice(1);
+    }
+    if (s.startsWith('+')) {
+        s = s.slice(1);
+    }
+    const idx = s.indexOf('.');
+    if (pow > 0) {
+        // shift dot right
+        if (idx === -1) {
+            const zeros = getZerosStr(pow);
+            return negativeStr + s + zeros;
+        }
+        const [bef, aft] = s.split('.'); //?
+        if (aft.length < pow) {
+            return negativeStr + bef + aft + getZerosStr(pow - aft.length);
+        }
+        else {
+            const aftP1 = aft.substring(0, pow); //?
+            const aftP2 = aft.substring(pow);
+            return negativeStr + bef + aftP1 + (aftP2 ? '.' + aftP2 : '');
+        }
+    }
+    // shift dot left
+    pow = -pow;
+    let bef = '';
+    let aft = '';
+    if (idx === -1) {
+        bef = s;
+    }
+    else {
+        [bef, aft] = s.split('.');
+    }
+    if (bef.length === pow) {
+        return negativeStr + '0.' + bef + aft;
+    }
+    else if (bef.length > pow) {
+        const l = bef.length - pow; //?
+        const befP1 = bef.substring(0, l); //?
+        const befP2 = bef.substring(l); //?
+        return negativeStr + befP1 + '.' + befP2 + aft;
+    }
+    else {
+        const l = pow - bef.length; //?
+        const zeros = getZerosStr(l) || '0';
+        return negativeStr + '0.' + zeros + bef + aft;
+    }
+}
+
+//# sourceMappingURL=mult-str-by-pow-of-10.js.map
+;// CONCATENATED MODULE: ./node_modules/double-double/node/dd-to-str/dd-to-str.js
+
+const { floor, max, round, log2, log10, ceil } = Math;
+const LOG2_10 = log2(1024) / log10(1024);
+/**
+ * Converts the given double-double precision value to a string and returns the
+ * result.
+ *
+ * * there will always be enough decimal digits returned but some could be
+ * extraneous.
+ *
+ * @param dd
+ */
+function ddToStr(dd) {
+    let [l, h] = dd;
+    let negative = false;
+    if (h < 0) {
+        h = -h;
+        l = -l;
+        negative = true;
+    }
+    if (h === 0) {
+        return '0';
+    }
+    const scale2 = max(0, -floor(log2(h)) + 3 * 53);
+    if (scale2 === 0) {
+        const llb = BigInt(round(l));
+        const hhb = BigInt(round(h));
+        const str = (llb + hhb).toString();
+        return negative ? '-' + str : str;
+    }
+    const scale2b = BigInt(scale2);
+    const scale10 = ceil(scale2 / LOG2_10);
+    const scale10b = BigInt(scale10);
+    const ll = l * (2 ** scale2);
+    const hh = h * (2 ** scale2);
+    const llb = BigInt(round(ll));
+    const hhb = BigInt(round(hh));
+    const b = (llb + hhb) * (10n ** scale10b);
+    const bb = b / (2n ** (scale2b));
+    let bStr = bb.toString();
+    let str = multStrByPowOf10(bStr, -scale10);
+    str = removeExtraneousZeros(str);
+    return negative ? '-' + str : str;
+}
+function removeExtraneousZeros(str) {
+    const idx = str.indexOf('.');
+    if (idx === -1) {
+        return str;
+    }
+    let i = 0;
+    let c = 0;
+    while (i < str.length) {
+        if (str[str.length - 1 - i] === '0') {
+            c++;
+        }
+        else {
+            break;
+        }
+        i++;
+    }
+    if (c > 0) {
+        str = str.slice(0, str.length - c);
+    }
+    if (str.endsWith('.')) {
+        str = str.slice(0, str.length - 1);
+    }
+    return str;
+}
+
+//# sourceMappingURL=dd-to-str.js.map
+;// CONCATENATED MODULE: ./node_modules/double-double/node/str-to-dd/get-num-leading-zeros-after-point.js
+/**
+ * Returns the number of leading zeros (plus 1) after the decimal point or `0`
+ * if the number is >= 1 or equal to zero.
+ *
+ * * the number string must be positive
+ * * the number string must not start with a `+` sign
+ * * the number string must must be a simple decimal expansion, e.g. no `e-8`
+ * at the end
+ *
+ * Examples:
+ * `getNumLeadingZeros(0.1)    // => 0`
+ * `getNumLeadingZeros(0.001)  // => 2`
+ * `getNumLeadingZeros(3.001)  // => 0`
+ * `getNumLeadingZeros(13)     // => 0`
+ * `getNumLeadingZeros(0)      // => 0
+ *
+ * @param str
+ *
+ * @internal
+ */
+function getNumLeadingZerosAfterPoint(str) {
+    if (!str.startsWith('0.')) {
+        return 0;
+    }
+    if (Number(str) === 0) {
+        return 0;
+    }
+    let numLeadingZeros = 1;
+    for (let i = 0; i < str.length; i++) {
+        if (str[i + 2] === '0') {
+            numLeadingZeros++;
+        }
+        else {
+            break;
+        }
+    }
+    return numLeadingZeros;
+}
+
+//# sourceMappingURL=get-num-leading-zeros-after-point.js.map
+;// CONCATENATED MODULE: ./node_modules/double-double/node/str-to-dd/set-0-from-to.js
+/**
+ *
+ * @param str
+ * @param from
+ * @param to
+ *
+ * @internal
+ */
+function set0FromTo(str, from, to) {
+    // TODO - this function is currently slow since it replaces one zero at a time.
+    const pointAt = str.indexOf('.');
+    let i = from + (pointAt !== -1 && pointAt < from ? 1 : 0);
+    let j = i;
+    to = to || str.length;
+    while (i < to) {
+        if (str[j] === '.') {
+            j++;
+            continue;
+        }
+        str = set0At(str, j);
+        i++;
+        j++;
+    }
+    return str;
+}
+/**
+ * @internal
+ */
+function set0At(str, idx) {
+    if (idx > str.length - 1) {
+        return str;
+    }
+    ;
+    return str.substring(0, idx) + '0' + str.substring(idx + 1);
+}
+
+//# sourceMappingURL=set-0-from-to.js.map
+;// CONCATENATED MODULE: ./node_modules/double-double/node/str-to-dd/num-significant-digits.js
+/**
+ * The number of significant digits per nibble.
+ *
+ * Since we use 3 nibbles there are 3*15 significant decimal figures looked at
+ * to convert a string to a double-double.
+ */
+const d = 15;
+
+//# sourceMappingURL=num-significant-digits.js.map
+;// CONCATENATED MODULE: ./node_modules/double-double/node/str-to-dd/get-parts.js
+
+
+
+/**
+ * Returns the following parts of the number string as an object:
+ * * `Z`
+ * * `seH` -> the exact high part string if interpreted as a real number
+ * * `seL` -> the exact low part string if interpreted as a real number
+ * * `seC` -> the exact correction part string if interpreted as a real number;
+ * this is used for correctly rounding the lsb; interestingly ECMASCRIPT only
+ * checks up to 20 significant figures for rounding purposes (we check 45)
+ *
+ * @param str
+ *
+ * @internal
+ */
+function getParts(str) {
+    if (str.startsWith('+')) {
+        str = str.slice(1);
+    }
+    let pointAt = str.indexOf('.');
+    if (pointAt === -1) {
+        str += '.0';
+    }
+    pointAt = str.indexOf('.');
+    const Z = getNumLeadingZerosAfterPoint(str);
+    // Lengthen string to `3*d` significant figures
+    if (str.length < 3 * d + 1) {
+        const zeros = new Array(3 * d + 2 - str.length).join('0');
+        str += zeros;
+    }
+    // Shorten string to `3*d` significant figures
+    str = str.slice(0, 3 * d + (pointAt >= 3 * d ? 0 : 1) + Z);
+    if (pointAt >= 3 * d) {
+        // Take care of numbers > 10**(3*d)
+        const zeros = new Array(pointAt - 3 * d + 1).join('0');
+        str += zeros;
+    }
+    let seH = set0FromTo(str, d + Z);
+    let seL = set0FromTo(str, 0, d + Z);
+    seL = set0FromTo(seL, 2 * d + Z);
+    let seC = set0FromTo(str, 0, 2 * d + Z);
+    return { Z, seH, seL, seC };
+}
+
+//# sourceMappingURL=get-parts.js.map
+;// CONCATENATED MODULE: ./node_modules/double-double/node/str-to-dd/add-1-ulp.js
+const { EPSILON: add_1_ulp_eps } = Number;
+const add_1_ulp_u = add_1_ulp_eps / 2;
+const es = (add_1_ulp_eps ** 2) / 2;
+const ups = add_1_ulp_u + es;
+/**
+ * Add one unit in the last place (ulp) to the given number.
+ *
+ * * subnormal numbers (and 0) are returned unaltered
+ *
+ * @internal
+ */
+function add1Ulp(n) {
+    return n > 0 ? n + n * ups : n - n * ups;
+}
+
+//# sourceMappingURL=add-1-ulp.js.map
+;// CONCATENATED MODULE: ./node_modules/double-double/node/str-to-dd/get-num-leading-zeros.js
+/**
+ * Returns the number of leading extraneous zeros before the decimal point.
+ *
+ * @param str
+ *
+ * @internal
+ */
+function getNumLeadingZeros(str) {
+    if (Number(str) === 0) {
+        return 0;
+    }
+    if (str.startsWith('0.')) {
+        return 0;
+    }
+    let numLeadingZeros = 0;
+    let i = 0;
+    for (; i < str.length; i++) {
+        if (str[i] === '0') {
+            numLeadingZeros++;
+        }
+        else {
+            break;
+        }
+    }
+    if (str[i] === '.') {
+        return 0;
+    }
+    return numLeadingZeros;
+}
+
+//# sourceMappingURL=get-num-leading-zeros.js.map
+;// CONCATENATED MODULE: ./node_modules/double-double/node/str-to-dd/get-num-leading-zeros-before-point.js
+/**
+ * Returns the number of leading zeros before the decimal point.
+ *
+ * @param str
+ *
+ * @internal
+ */
+function getNumLeadingZerosBeforePoint(str) {
+    if (str.startsWith('0.')) {
+        return 0;
+    }
+    if (Number(str) === 0) {
+        return 0;
+    }
+    const idx = str.indexOf('.');
+    return idx === -1 ? str.length : idx;
+}
+
+//# sourceMappingURL=get-num-leading-zeros-before-point.js.map
+;// CONCATENATED MODULE: ./node_modules/double-double/node/str-to-dd/extract-exp.js
+function extractExp(s) {
+    const idx = s.indexOf('e');
+    let exp = 0;
+    if (idx !== -1) {
+        exp = Number(s.slice(idx + 1));
+        s = s.slice(0, idx);
+    }
+    return { s, exp };
+}
+
+//# sourceMappingURL=extract-exp.js.map
+;// CONCATENATED MODULE: ./node_modules/double-double/node/str-to-dd/normalize-str.js
+
+
+
+
+/**
+ *
+ * @param s
+ *
+ * @internal
+ */
+function normalizeStr(s) {
+    if (Number(s) === 0) {
+        return { str: '0', exp: 0, negative: false };
+    }
+    const negative = s.startsWith('-');
+    if (negative) {
+        s = s.slice(1);
+    }
+    let exp = 0;
+    ({ s, exp } = extractExp(s));
+    let str;
+    const z = getNumLeadingZerosAfterPoint(s);
+    if (z > 0) {
+        s = s.slice(z + 1);
+        str = s[0] + '.' + s.slice(1);
+        exp = exp - z;
+    }
+    else {
+        const Z = getNumLeadingZerosBeforePoint(s);
+        s = s.split('').filter(s => s !== '.').join('');
+        str = s[0] + '.' + s.slice(1);
+        exp = exp + Z - 1;
+    }
+    str = str.slice(0, 3 * d + 1);
+    if (str.length < 3 * d + 1) {
+        const zeros = new Array(3 * d + 1 - str.length).join('0');
+        str += zeros;
+    }
+    return { str, exp, negative };
+}
+
+//# sourceMappingURL=normalize-str.js.map
+;// CONCATENATED MODULE: ./node_modules/double-double/node/str-to-dd/get-power-of-10.js
+
+
+
+/**
+ *
+ * @param a
+ * @param b
+ *
+ * @internal
+ */
+function ddMultD(a, b) {
+    return ddMultDouble1(b, a);
+}
+/**
+ *
+ * @param pow
+ *
+ * @internal
+ */
+function getPowerOf10(pow) {
+    // `10**21` (possibly `10**22`) is the max power of 10 that is exact in double
+    // precision
+    // we multiply in pairs to minimize error, e.g.
+    const m = pow % 21;
+    const d = (pow - m) / 21;
+    const x = 10 ** m;
+    if (d === 0) {
+        return [0, x]; // exact
+    }
+    const a = 10 ** 21;
+    const ax = basic_two_product_twoProduct(a, x);
+    const aa = basic_two_product_twoProduct(a, a);
+    const aax = ddMultD(aa, x);
+    const a4 = ddMultDd(aa, aa);
+    const aaax = ddMultDd(aa, ax);
+    const a8 = ddMultDd(a4, a4);
+    const a4x = ddMultD(a4, x);
+    const a4ax = ddMultDd(a4, ax);
+    const a4aax = ddMultDd(a4, aax);
+    const a4aaax = ddMultDd(a4, aaax);
+    if (d === 1) {
+        return ax;
+    }
+    if (d === 2) {
+        return aax;
+    }
+    if (d === 3) {
+        return aaax;
+    }
+    if (d === 4) {
+        return a4x;
+    }
+    if (d === 5) {
+        return a4ax;
+    }
+    if (d === 6) {
+        return a4aax;
+    }
+    if (d === 7) {
+        return a4aaax;
+    }
+    if (d === 8) {
+        return ddMultD(a8, x);
+    }
+    if (d === 9) {
+        return ddMultDd(a8, ax);
+    }
+    if (d === 10) {
+        return ddMultDd(a8, aax);
+    }
+    if (d === 11) {
+        return ddMultDd(a8, aaax);
+    }
+    if (d === 12) {
+        return ddMultDd(a8, a4x);
+    }
+    if (d === 13) {
+        return ddMultDd(a8, a4ax);
+    }
+    if (d === 14) {
+        return ddMultDd(a8, a4aax);
+    }
+    if (d === 15) {
+        return ddMultDd(a8, a4aaax);
+    }
+    throw new Error('`exp` must be between 0 and 308; This is a bug');
+}
+
+//# sourceMappingURL=get-power-of-10.js.map
+;// CONCATENATED MODULE: ./node_modules/double-double/node/str-to-dd/str-to-dd.js
+
+
+
+
+
+
+
+
+
+
+
+
+const { abs } = Math;
+// How to print floating-point numbers accurately (behind a paywall)
+// https://dl.acm.org/doi/10.1145/989393.989431
+// Chromium implementation at https://chromium.googlesource.com/v8/v8/+/refs/heads/main/src/base/numbers/strtod.cc
+// that converts a string to a double.
+/**
+ * Converts the given decimal string to a double-double and returns the result.
+ *
+ * * accurate to within `1` ulp^2
+ *
+ * @param str a string to convert to double-double precision
+ *
+ * Examples:
+ * ```
+ * strToDd('3.14159265358979323846264338327950')  //=> [1.2246467991473535e-16, 3.141592653589793]
+ * strToDd('6.0221408e+23')  //=> [-2097152, 6.0221408e+23]
+ * ```
+ */
+function strToDd(str) {
+    const { str: s, exp, negative } = normalizeStr(str);
+    if (negative) {
+        str = str.slice(1);
+    }
+    // get exact low, high and correction string parts
+    let { Z, seH: eH, seL: eL, seC: eC } = getParts(s);
+    // adding 1 ulp ensures the string significant digits are correct up to a point
+    const H = add1Ulp(Number(eH));
+    const _sHC = H.toFixed(3 * d);
+    const sHC = set0FromTo(_sHC, 0, d + Z);
+    // get exact high correction low and high string parts
+    let { Z: Z2, seH: seHCH, seL: seHCL } = getParts(sHC);
+    const HCH = add1Ulp(Number(seHCH));
+    const sHCH = HCH.toFixed(3 * d);
+    const sHCL = set0FromTo(sHCH, Z2, d + Z2 + 1);
+    // get exact low correction string part
+    let L = add1Ulp(Number(eL));
+    const lZ1 = getNumLeadingZeros(eL);
+    let sLC = L.toFixed(3 * d);
+    sLC = set0FromTo(sLC, d + Z - lZ1, 2 * d + Z + 1 - lZ1);
+    const HCL = Number(sHCL);
+    const LC = Number(sLC);
+    const C = Number(eC);
+    const HCHL = Number(seHCL);
+    // (correction         ) - (low    ) + (high)
+    // (HCL - LC + C - HCHL) - (HCH + L) + (H   )
+    const rL = ddAddDd(basic_two_sum_twoSum(HCL, -LC), basic_two_sum_twoSum(C, -HCHL)); // correction term
+    const rHL = ddAddDouble(basic_two_sum_twoSum(L, -HCH), H);
+    let r = ddAddDd(rHL, rL);
+    // get accurate power of 10
+    const exp10 = getPowerOf10(abs(exp));
+    r = exp === 0
+        ? r
+        : exp < 0
+            ? ddDivDd(r, exp10)
+            : ddMultDd(r, exp10);
+    const q = (add1Ulp(r[1]) - r[1]);
+    // remove extraneous bits (not strictly necessary)
+    r[0] = r[0] + q / 2 - q / 2;
+    r = negative ? r.map(r => -r) : [r[0], r[1]];
+    return r;
+}
+
+//# sourceMappingURL=str-to-dd.js.map
+;// CONCATENATED MODULE: ./node_modules/double-double/node/constants.js
+// import { strToDd } from "./str-to-dd/str-to-dd.js";
+const PIDd = [1.2246467991473535e-16, 3.141592653589793];
+const eDd = (/* unused pure expression or super */ null && ([1.4456468917292502e-16, 2.718281828459045]));
+const ln2Dd = (/* unused pure expression or super */ null && ([2.3190468138463e-17, 0.6931471805599453]));
+const eulerDd = (/* unused pure expression or super */ null && ([-4.942915152430649e-18, 0.5772156649015329]));
+// strToDd('0.5772156649015328606065120900824024310421593359399235988057672348');//?
+
+//# sourceMappingURL=constants.js.map
+;// CONCATENATED MODULE: ./node_modules/double-double/node/double-double/binary/dd-gt.js
+/**
+ * Returns `true` if `x1 > x2`, `false` otherwise.
+ *
+ * @param x1 a double-double precision floating point number
+ * @param x2 a double-double precision floating point number
+ */
+function ddGt(x1, x2) {
+    if (x1[1] > x2[1]) {
+        return true;
+    }
+    if (x1[1] < x2[1]) {
+        return false;
+    }
+    if (x1[0] > x2[0]) {
+        return true;
+    }
+    return false;
+}
+
+//# sourceMappingURL=dd-gt.js.map
+;// CONCATENATED MODULE: ./node_modules/double-double/node/double-double/unary/dd-sin.js
+
+
+
+
+
+
+
+
+
+const { trunc } = Math;
+// See https://gist.github.com/publik-void/067f7f2fef32dbe5c27d6e215f824c91#sin-abs-error-minimized-degree-33
+// Maximum relative error: 1.64002557798425265331386526431095701e-39
+// Maximum absolute error: 7.80601195686311420504782780641951757e-41
+const a0 = [0, 1];
+const a1 = strToDd('-0.166666666666666666666666666666666667');
+const a2 = strToDd('0.00833333333333333333333333333333333069');
+const a3 = strToDd('-0.000198412698412698412698412698412671319');
+const a4 = strToDd('2.75573192239858906525573192223995808e-6');
+const a5 = strToDd('-2.50521083854417187750521077962123682e-8');
+const a6 = strToDd('1.60590438368216145993922289621550506e-10');
+const a7 = strToDd('-7.64716373181981647587481187300831335e-13');
+const a8 = strToDd('2.81145725434552075980975905006999319e-15');
+const a9 = strToDd('-8.22063524662432650297086257962703293e-18');
+const aa = strToDd('1.95729410633890026175367390152305383e-20');
+const ab = strToDd('-3.86817017051340241224838720319634797e-23');
+const ac = strToDd('6.44695023999222092772271073593727141e-26');
+const ad = strToDd('-9.1836779606017064087088551595474321e-29');
+const ae = strToDd('1.13078207057779775850779192271873238e-31');
+const af = strToDd('1.19290046424220296937971101373203567e-34');
+const PIDd_2 = ddDivDouble(PIDd, 2);
+const PIDd2 = ddMultDouble1(2, PIDd);
+/**
+ * Returns the sine of x.
+ *
+ * @param θ a double-double precision floating point number
+ *
+ * @example
+ * ```
+ * import { PIDd } from 'double-double';
+ * import { ddDivDouble } from 'double-double';
+ *
+ * ddSin(ddDivDouble(PIDd,6));  //=> [0,0.5]
+ * ```
+ */
+function ddSin(θ) {
+    let negate = θ[1] < 0;
+    if (negate) {
+        θ = [-θ[0], -θ[1]];
+    }
+    if (ddGt(θ, PIDd)) {
+        const _c = ddDivDd(θ, PIDd2);
+        const c = trunc(_c[1] + _c[0]);
+        θ = ddDiffDd(θ, ddMultDouble1(c, PIDd2));
+    }
+    if (ddGt(θ, PIDd)) {
+        // between 𝜋 and 2𝜋
+        θ = ddDiffDd(θ, PIDd);
+        negate = !negate;
+    }
+    if (ddGt(θ, PIDd_2)) {
+        // between 𝜋/2 and 𝜋
+        θ = ddDiffDd(PIDd, θ);
+    }
+    const x1 = θ;
+    const x2 = ddMultDd(θ, θ);
+    const r = ddMultDd(x1, (ddAddDd(a0, ddMultDd(x2, (ddAddDd(a1, ddMultDd(x2, (ddAddDd(a2, ddMultDd(x2, (ddAddDd(a3, ddMultDd(x2, (ddAddDd(a4, ddMultDd(x2, (ddAddDd(a5, ddMultDd(x2, (ddAddDd(a6, ddMultDd(x2, (ddAddDd(a7, ddMultDd(x2, (ddAddDd(a8, ddMultDd(x2, (ddAddDd(a9, ddMultDd(x2, (ddAddDd(aa, ddMultDd(x2, (ddAddDd(ab, ddMultDd(x2, (ddAddDd(ac, ddMultDd(x2, (ddAddDd(ad, ddMultDd(x2, (ddDiffDd(ae, ddMultDd(x2, af))))))))))))))))))))))))))))))))))))))))))))));
+    return negate ? [-r[0], -r[1]] : r;
+}
+
+//# sourceMappingURL=dd-sin.js.map
+;// CONCATENATED MODULE: ./node_modules/double-double/node/double-double/unary/dd-cos.js
+
+
+
+
+// See https://gist.github.com/publik-void/067f7f2fef32dbe5c27d6e215f824c91#sin-abs-error-minimized-degree-33
+// Maximum relative error: 1.64002557798425265331386526431095701e-39
+// Maximum absolute error: 7.80601195686311420504782780641951757e-41
+const dd_cos_PIDd_2 = ddDivDouble(PIDd, 2);
+/**
+ * Returns the cosine of x.
+ *
+ * @param θ a double-double precision floating point number
+ *
+ * @example
+ * ```
+ * import { PIDd } from 'double-double';
+ * import { ddDivDouble } from 'double-double';
+ *
+ * ddCos(ddDivDouble(PIDd,6));  //=> [5.017542110902477e-17, 0.8660254037844386]
+ * ```
+ */
+function ddCos(θ) {
+    const x_ = ddAddDd(θ, dd_cos_PIDd_2);
+    return ddSin(x_);
+}
+
+//# sourceMappingURL=dd-cos.js.map
+;// CONCATENATED MODULE: ./node_modules/double-double/node/double-double/binary/dd-eq.js
+/**
+ * Returns `true` if `x1 === x2`, `false` otherwise.
+ *
+ * @param x1 a double-double precision floating point number
+ * @param x2 a double-double precision floating point number
+ */
+function ddEq(x1, x2) {
+    return x1[0] === x2[0] && x1[1] === x2[1];
+}
+
+//# sourceMappingURL=dd-eq.js.map
+;// CONCATENATED MODULE: ./node_modules/double-double/node/double-double/binary/dd-gte.js
+/**
+ * Returns `true` if `x1 >= x2`, `false` otherwise.
+ *
+ * @param x1 a double-double precision floating point number
+ * @param x2 a double-double precision floating point number
+ */
+function ddGte(x1, x2) {
+    if (x1[1] > x2[1]) {
+        return true;
+    }
+    if (x1[1] < x2[1]) {
+        return false;
+    }
+    if (x1[0] >= x2[0]) {
+        return true;
+    }
+    return false;
+}
+
+//# sourceMappingURL=dd-gte.js.map
+;// CONCATENATED MODULE: ./node_modules/double-double/node/double-double/binary/dd-lt.js
+/**
+ * Returns `true` if `x1 < x2`, `false` otherwise.
+ *
+ * @param x1 a double-double precision floating point number
+ * @param x2 a double-double precision floating point number
+ */
+function ddLt(x1, x2) {
+    if (x1[1] < x2[1]) {
+        return true;
+    }
+    if (x1[1] > x2[1]) {
+        return false;
+    }
+    if (x1[0] < x2[0]) {
+        return true;
+    }
+    return false;
+}
+
+//# sourceMappingURL=dd-lt.js.map
+;// CONCATENATED MODULE: ./node_modules/double-double/node/double-double/binary/dd-lte.js
+/**
+ * Returns `true` if `x1 <= x2`, `false` otherwise.
+ *
+ * @param x1 a double-double precision floating point number
+ * @param x2 a double-double precision floating point number
+ */
+function ddLte(x1, x2) {
+    if (x1[1] < x2[1]) {
+        return true;
+    }
+    if (x1[1] > x2[1]) {
+        return false;
+    }
+    if (x1[0] <= x2[0]) {
+        return true;
+    }
+    return false;
+}
+
+//# sourceMappingURL=dd-lte.js.map
+;// CONCATENATED MODULE: ./node_modules/double-double/node/double-mixed-double-double/dd-diff-double.js
+/**
+ * Returns the result of subtracting the second given double-precision
+ * floating point number from the first double-double precision float.
+ *
+ * * relative error bound: 3u^2 + 13u^3, i.e. fl(a-b) = (a-b)(1+ϵ),
+ * where ϵ <= 3u^2 + 13u^3, u = 0.5 * Number.EPSILON
+ * * the error bound is not sharp - the worst case that could be found by the
+ * authors were 2.25u^2
+ *
+ * ALGORITHM 6 of https://hal.archives-ouvertes.fr/hal-01351529v3/document
+ * @param x a double-double precision floating point number
+ * @param y a double precision floating point number
+ */
+function ddDiffDouble(x, y) {
+    const xl = x[0];
+    const xh = x[1];
+    //const [sl,sh] = twoSum(xh,yh);
+    const sh = xh - y;
+    const _1 = sh - xh;
+    const sl = (xh - (sh - _1)) + (-y - _1);
+    //const [tl,th] = twoSum(xl,yl);
+    const th = xl;
+    const _2 = th - xl;
+    const tl = (xl - (th - _2)) - _2;
+    const c = sl + th;
+    //const [vl,vh] = fastTwoSum(sh,c)
+    const vh = sh + c;
+    const vl = c - (vh - sh);
+    const w = tl + vl;
+    //const [zl,zh] = fastTwoSum(vh,w)
+    const zh = vh + w;
+    const zl = w - (zh - vh);
+    return [zl, zh];
+}
+
+//# sourceMappingURL=dd-diff-double.js.map
 ;// CONCATENATED MODULE: ./node_modules/double-double/node/index.js
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4169,6 +4990,16 @@ const node_doubleToOctets = double_to_octets_doubleToOctets;
 const node_getHighestSetBit = get_max_set_bit_getHighestSetBit;
 const node_ddDivDdWithError = ddDivDdWithError;
 const node_divWithErr = divWithErr;
+const node_ddToStr = ddToStr;
+const node_strToDd = strToDd;
+const node_ddSin = ddSin;
+const node_ddCos = ddCos;
+const node_ddEq = ddEq;
+const node_ddGt = ddGt;
+const node_ddGte = ddGte;
+const node_ddLt = ddLt;
+const node_ddLte = ddLte;
+const node_ddDiffDouble = ddDiffDouble;
 const operators = {
     //---- basic ----//
     fastTwoDiff: node_fastTwoDiff,
@@ -4203,6 +5034,14 @@ const operators = {
     ddMultByNeg4: node_ddMultByNeg4,
     ddMin: node_ddMin,
     ddMax: node_ddMax,
+    ddSin: node_ddSin,
+    ddCos: node_ddCos,
+    ddEq: node_ddEq,
+    ddGt: node_ddGt,
+    ddGte: node_ddGte,
+    ddLt: node_ddLt,
+    ddLte: node_ddLte,
+    ddDiffDouble: node_ddDiffDouble,
     //---- double-double precision error propagation - with error bound on input parameters
     ddDivDdWithError: node_ddDivDdWithError,
     //---- double precision error propagation - with error bound on input parameters
@@ -4220,10 +5059,18 @@ const operators = {
     getHighestSetBit: node_getHighestSetBit,
     getLowestSetBit: node_getLowestSetBit,
     exponent: node_exponent,
-    significand: node_significand
+    significand: node_significand,
+    ddToStr: node_ddToStr,
+    strToDd: node_strToDd
 };
 
 
+node_ddEq;
+node_ddGt;
+node_ddGte;
+node_ddLt;
+node_ddLte;
+node_ddDiffDouble;
 //# sourceMappingURL=index.js.map
 ;// CONCATENATED MODULE: ./src/calculus/double-double/dd-differentiate.ts
 
@@ -4761,7 +5608,7 @@ function reflectAboutYAxis(p) {
     }
     const result = p.slice();
     for (let i = 0; i < d + 1; i++) {
-        if (i % 2) {
+        if (i % 2 === (d - 1) % 2) {
             result[i] = -result[i];
         }
     }
@@ -5269,7 +6116,7 @@ function bPdivInternal(a, b) {
 const b_pdiv_trivial_bDegree = bDegree;
 const b_pdiv_trivial_bMultiplyByConst = bMultiplyByConst;
 const b_pdiv_trivial_bPdivInternal = bPdivInternal;
-const abs = (n) => n >= 0 ? n : -n;
+const b_pdiv_trivial_abs = (n) => n >= 0 ? n : -n;
 /**
  * Performs a **trivial pseudo-division** and returns the `quotient` and `remainder`
  * of the pseudo division of `a/b` (a, b both being polynomials) in such a way
@@ -5306,7 +6153,7 @@ function bPdivTrivial(a, b, positiveMultiplier = false) {
     }
     let m = b[0] ** BigInt(d);
     m = positiveMultiplier
-        ? abs(m)
+        ? b_pdiv_trivial_abs(m)
         : m;
     const a_ = b_pdiv_trivial_bMultiplyByConst(m, a);
     return b_pdiv_trivial_bPdivInternal(a_, b);
@@ -7688,7 +8535,7 @@ const refine_certified_eHorner = eHorner;
 const refine_certified_eEstimate = eEstimate;
 const refine_certified_eps = Number.EPSILON;
 const refine_certified_abs = Math.abs;
-const max = Math.max;
+const refine_certified_max = Math.max;
 /**
  * Returns a refined root given a root bracketed in the interval (a,b) of the
  * given polynomial using Brent's Method - modified slightly to allow for
@@ -7754,7 +8601,7 @@ function refineCertified(p, pE, lb, ub, fa, fb, getPolyExact, exact) {
         //let δ = 2 * eps * max(1,abs(b));
         //let δ = 2 * u * max(1,abs(b));
         let δ;
-        const mm = max(refine_certified_abs(a), refine_certified_abs(b));
+        const mm = refine_certified_max(refine_certified_abs(a), refine_certified_abs(b));
         if (mm <= 1) {
             δ = refine_certified_eps;
         }
@@ -10976,171 +11823,171 @@ const src_operators = {
 
 
 
-var __webpack_exports__AbsHorner = __webpack_exports__.oM;
-var __webpack_exports__CompHornerK = __webpack_exports__.Pg;
-var __webpack_exports__EFTHorner = __webpack_exports__.rH;
-var __webpack_exports__Horner = __webpack_exports__.E2;
-var __webpack_exports__absCoeff = __webpack_exports__.UR;
-var __webpack_exports__add = __webpack_exports__.IH;
-var __webpack_exports__allRoots = __webpack_exports__.Tr;
-var __webpack_exports__allRootsCertified = __webpack_exports__.oH;
-var __webpack_exports__allRootsCertifiedSimplified = __webpack_exports__.Dy;
-var __webpack_exports__bAbsCoeff = __webpack_exports__.l2;
-var __webpack_exports__bAdd = __webpack_exports__.Ve;
-var __webpack_exports__bChangeVariablesLinear = __webpack_exports__.IU;
-var __webpack_exports__bChangeVariablesScale = __webpack_exports__.KL;
-var __webpack_exports__bChangeVariablesTranslateX = __webpack_exports__.Ew;
-var __webpack_exports__bContent = __webpack_exports__.KG;
-var __webpack_exports__bDegree = __webpack_exports__.gM;
-var __webpack_exports__bDifferentiate = __webpack_exports__.dv;
-var __webpack_exports__bDivideByConst = __webpack_exports__.bu;
-var __webpack_exports__bEqual = __webpack_exports__.Zv;
-var __webpack_exports__bEvaluateAt0 = __webpack_exports__.OP;
-var __webpack_exports__bEvaluateAt1 = __webpack_exports__.KI;
-var __webpack_exports__bFlatCoefficients = __webpack_exports__.dA;
-var __webpack_exports__bFlatCoefficientsArr = __webpack_exports__.CR;
-var __webpack_exports__bFlatRoots = __webpack_exports__.ds;
-var __webpack_exports__bFlatRootsArr = __webpack_exports__.OA;
-var __webpack_exports__bFromRoots = __webpack_exports__.eg;
-var __webpack_exports__bGcdInt = __webpack_exports__.DC;
-var __webpack_exports__bGcdInts = __webpack_exports__.SG;
-var __webpack_exports__bGcdPrs = __webpack_exports__.zY;
-var __webpack_exports__bHorner = __webpack_exports__.LD;
-var __webpack_exports__bInvert = __webpack_exports__.$v;
-var __webpack_exports__bIsRationalMultipleOf = __webpack_exports__.$l;
-var __webpack_exports__bMultiply = __webpack_exports__.c1;
-var __webpack_exports__bMultiplyByConst = __webpack_exports__.Sl;
-var __webpack_exports__bNegate = __webpack_exports__.db;
-var __webpack_exports__bNumRoots = __webpack_exports__.pD;
-var __webpack_exports__bNumRootsIn01 = __webpack_exports__.Ak;
-var __webpack_exports__bNumRootsInRange = __webpack_exports__.i6;
-var __webpack_exports__bP1Norm = __webpack_exports__.jV;
-var __webpack_exports__bP2NormSquared = __webpack_exports__.Dc;
-var __webpack_exports__bPInfNorm = __webpack_exports__.hg;
-var __webpack_exports__bPdivTrivial = __webpack_exports__.ib;
-var __webpack_exports__bPremSequencePrimitive = __webpack_exports__.aP;
-var __webpack_exports__bPremSequenceSubresultant = __webpack_exports__.YF;
-var __webpack_exports__bPremSequenceTrivial = __webpack_exports__.tK;
-var __webpack_exports__bPrimitivePart = __webpack_exports__.dI;
-var __webpack_exports__bReflectAboutYAxis = __webpack_exports__.i7;
-var __webpack_exports__bRemoveLeadingZeros = __webpack_exports__.iK;
-var __webpack_exports__bSignChanges = __webpack_exports__.j5;
-var __webpack_exports__bSturmChain = __webpack_exports__.K;
-var __webpack_exports__bSubtract = __webpack_exports__.J9;
-var __webpack_exports__bisection = __webpack_exports__.HH;
-var __webpack_exports__brent = __webpack_exports__.YQ;
-var __webpack_exports__brentPoly = __webpack_exports__.u1;
-var __webpack_exports__changeVariablesLinear = __webpack_exports__.uO;
-var __webpack_exports__changeVariablesScale = __webpack_exports__.ef;
-var __webpack_exports__changeVariablesTranslateX = __webpack_exports__.K0;
-var __webpack_exports__compHorner = __webpack_exports__.YT;
-var __webpack_exports__compHornerIsFaithful = __webpack_exports__.fy;
-var __webpack_exports__compHornerWithRunningError = __webpack_exports__.rP;
-var __webpack_exports__conditionNumber = __webpack_exports__.$k;
-var __webpack_exports__content = __webpack_exports__.kQ;
-var __webpack_exports__createRootExact = __webpack_exports__.UC;
-var __webpack_exports__ddDeflate = __webpack_exports__.aF;
-var __webpack_exports__ddDeflateWithRunningError = __webpack_exports__._l;
-var __webpack_exports__ddDifferentiate = __webpack_exports__.Xz;
-var __webpack_exports__ddDifferentiateWithError = __webpack_exports__.sF;
-var __webpack_exports__ddHorner = __webpack_exports__.Fq;
-var __webpack_exports__ddIntegrate = __webpack_exports__.sG;
-var __webpack_exports__deflate = __webpack_exports__.Wt;
-var __webpack_exports__degree = __webpack_exports__.U8;
-var __webpack_exports__differentiate = __webpack_exports__.YC;
-var __webpack_exports__divideByConst = __webpack_exports__.FV;
-var __webpack_exports__eAbsCoeff = __webpack_exports__.ZX;
-var __webpack_exports__eAdd = __webpack_exports__._L;
-var __webpack_exports__eChangeVariablesLinear = __webpack_exports__._n;
-var __webpack_exports__eChangeVariablesScale = __webpack_exports__.FI;
-var __webpack_exports__eChangeVariablesTranslateX = __webpack_exports__.rm;
-var __webpack_exports__eContent = __webpack_exports__.QO;
-var __webpack_exports__eDeflate = __webpack_exports__.m_;
-var __webpack_exports__eDegree = __webpack_exports__.wY;
-var __webpack_exports__eDifferentiate = __webpack_exports__.YV;
-var __webpack_exports__eEqual = __webpack_exports__.qW;
-var __webpack_exports__eEvaluateAt0 = __webpack_exports__.u3;
-var __webpack_exports__eEvaluateAt1 = __webpack_exports__.Fg;
-var __webpack_exports__eFromRoots = __webpack_exports__.g7;
-var __webpack_exports__eGcdInt = __webpack_exports__.gX;
-var __webpack_exports__eGcdInts = __webpack_exports__.Oh;
-var __webpack_exports__eHorner = __webpack_exports__.dY;
-var __webpack_exports__eInvert = __webpack_exports__.vD;
-var __webpack_exports__eIsConstOrZero = __webpack_exports__.MY;
-var __webpack_exports__eIsRationalMultipleOf = __webpack_exports__.BW;
-var __webpack_exports__eIsUnit = __webpack_exports__._4;
-var __webpack_exports__eMultiply = __webpack_exports__.d2;
-var __webpack_exports__eMultiplyByConst = __webpack_exports__.md;
-var __webpack_exports__eNegate = __webpack_exports__.zC;
-var __webpack_exports__eNumRoots = __webpack_exports__.mq;
-var __webpack_exports__eNumRootsIn01 = __webpack_exports__.th;
-var __webpack_exports__eNumRootsInRange = __webpack_exports__.y1;
-var __webpack_exports__eP1Norm = __webpack_exports__.Xh;
-var __webpack_exports__eP2Norm = __webpack_exports__.Ws;
-var __webpack_exports__ePInfNorm = __webpack_exports__.ww;
-var __webpack_exports__ePdivTrivial = __webpack_exports__.HA;
-var __webpack_exports__ePremSequencePrimitive = __webpack_exports__.b9;
-var __webpack_exports__ePremSequenceSubresultant = __webpack_exports__._V;
-var __webpack_exports__ePrimitivePart = __webpack_exports__.kP;
-var __webpack_exports__eProduct = __webpack_exports__.Fp;
-var __webpack_exports__eReflectAboutYAxis = __webpack_exports__.QU;
-var __webpack_exports__eRemoveLeadingZeros = __webpack_exports__.XN;
-var __webpack_exports__eSignChanges = __webpack_exports__.t;
-var __webpack_exports__eSturmChain = __webpack_exports__._u;
-var __webpack_exports__eSubtract = __webpack_exports__.x1;
-var __webpack_exports__eeHorner = __webpack_exports__.ZW;
-var __webpack_exports__equal = __webpack_exports__.Dg;
-var __webpack_exports__evalCertified = __webpack_exports__.f6;
-var __webpack_exports__evalCertifiedInclError = __webpack_exports__.Kj;
-var __webpack_exports__evalK = __webpack_exports__.Of;
-var __webpack_exports__evaluateAt0 = __webpack_exports__.Th;
-var __webpack_exports__evaluateAt1 = __webpack_exports__.M9;
-var __webpack_exports__flatCoefficients = __webpack_exports__.sd;
-var __webpack_exports__flatCoefficientsArr = __webpack_exports__.b1;
-var __webpack_exports__flatRoots = __webpack_exports__.m4;
-var __webpack_exports__flatRootsArr = __webpack_exports__.rL;
-var __webpack_exports__fromRoots = __webpack_exports__.Ht;
-var __webpack_exports__gcdInt = __webpack_exports__.a8;
-var __webpack_exports__gcdInts = __webpack_exports__.JK;
-var __webpack_exports__hornerWithRunningError = __webpack_exports__.xD;
-var __webpack_exports__integrate = __webpack_exports__.lF;
-var __webpack_exports__invert = __webpack_exports__.U_;
-var __webpack_exports__isRationalMultipleOf = __webpack_exports__.IP;
-var __webpack_exports__mid = __webpack_exports__.Pi;
-var __webpack_exports__multiply = __webpack_exports__.Jp;
-var __webpack_exports__multiplyByConst = __webpack_exports__.$d;
-var __webpack_exports__negate = __webpack_exports__.tk;
-var __webpack_exports__negativeRootLowerBound_LMQ = __webpack_exports__.$3;
-var __webpack_exports__negativeRootUpperBound_LMQ = __webpack_exports__.kT;
-var __webpack_exports__numRoots = __webpack_exports__.lV;
-var __webpack_exports__numRootsIn01 = __webpack_exports__.$6;
-var __webpack_exports__numRootsInRange = __webpack_exports__.XP;
-var __webpack_exports__operators = __webpack_exports__.Gn;
-var __webpack_exports__p1Norm = __webpack_exports__.fk;
-var __webpack_exports__p2Norm = __webpack_exports__.P5;
-var __webpack_exports__pInfNorm = __webpack_exports__.Yz;
-var __webpack_exports__positiveRootLowerBound_LMQ = __webpack_exports__.Fw;
-var __webpack_exports__positiveRootUpperBound_LMQ = __webpack_exports__.FW;
-var __webpack_exports__predictiveRandom = __webpack_exports__.Hq;
-var __webpack_exports__premSequenceSubresultant = __webpack_exports__.A_;
-var __webpack_exports__primitivePart = __webpack_exports__.$5;
-var __webpack_exports__quadraticRoots = __webpack_exports__.GD;
-var __webpack_exports__refineK1 = __webpack_exports__.X_;
-var __webpack_exports__reflectAboutYAxis = __webpack_exports__.NF;
-var __webpack_exports__removeLeadingZeros = __webpack_exports__.Qo;
-var __webpack_exports__rootIntervalToExp = __webpack_exports__.WM;
-var __webpack_exports__rootMagnitudeUpperBound_fujiwara = __webpack_exports__.Dk;
-var __webpack_exports__rootMagnitudeUpperBound_rouche = __webpack_exports__.T9;
-var __webpack_exports__scaleFloatToBigint = __webpack_exports__.GG;
-var __webpack_exports__scaleFloatToInt = __webpack_exports__.we;
-var __webpack_exports__scaleFloatsToBigints = __webpack_exports__.D9;
-var __webpack_exports__scaleFloatsToInts = __webpack_exports__.yM;
-var __webpack_exports__scaleFloatssToBigintss = __webpack_exports__.Bz;
-var __webpack_exports__scaleFloatssToIntss = __webpack_exports__.Rm;
-var __webpack_exports__signChanges = __webpack_exports__.bN;
-var __webpack_exports__sturmChain = __webpack_exports__.SW;
-var __webpack_exports__subtract = __webpack_exports__.$X;
-var __webpack_exports__toCasStr = __webpack_exports__.yd;
-var __webpack_exports___ = __webpack_exports__.H8;
-var __webpack_exports___ = __webpack_exports__.Uv;
+var __webpack_exports__AbsHorner = __webpack_exports__.j1;
+var __webpack_exports__CompHornerK = __webpack_exports__.tw;
+var __webpack_exports__EFTHorner = __webpack_exports__.MT;
+var __webpack_exports__Horner = __webpack_exports__.xf;
+var __webpack_exports__absCoeff = __webpack_exports__.WU;
+var __webpack_exports__add = __webpack_exports__.WQ;
+var __webpack_exports__allRoots = __webpack_exports__.zr;
+var __webpack_exports__allRootsCertified = __webpack_exports__.qr;
+var __webpack_exports__allRootsCertifiedSimplified = __webpack_exports__.Yp;
+var __webpack_exports__bAbsCoeff = __webpack_exports__.CS;
+var __webpack_exports__bAdd = __webpack_exports__.KC;
+var __webpack_exports__bChangeVariablesLinear = __webpack_exports__.fs;
+var __webpack_exports__bChangeVariablesScale = __webpack_exports__.mw;
+var __webpack_exports__bChangeVariablesTranslateX = __webpack_exports__.Mp;
+var __webpack_exports__bContent = __webpack_exports__.oC;
+var __webpack_exports__bDegree = __webpack_exports__.dK;
+var __webpack_exports__bDifferentiate = __webpack_exports__.$Y;
+var __webpack_exports__bDivideByConst = __webpack_exports__.Id;
+var __webpack_exports__bEqual = __webpack_exports__.jM;
+var __webpack_exports__bEvaluateAt0 = __webpack_exports__.x;
+var __webpack_exports__bEvaluateAt1 = __webpack_exports__.EO;
+var __webpack_exports__bFlatCoefficients = __webpack_exports__.ao;
+var __webpack_exports__bFlatCoefficientsArr = __webpack_exports__.Fz;
+var __webpack_exports__bFlatRoots = __webpack_exports__.l$;
+var __webpack_exports__bFlatRootsArr = __webpack_exports__._T;
+var __webpack_exports__bFromRoots = __webpack_exports__.OD;
+var __webpack_exports__bGcdInt = __webpack_exports__.qj;
+var __webpack_exports__bGcdInts = __webpack_exports__.T6;
+var __webpack_exports__bGcdPrs = __webpack_exports__.a;
+var __webpack_exports__bHorner = __webpack_exports__.t7;
+var __webpack_exports__bInvert = __webpack_exports__.Tr;
+var __webpack_exports__bIsRationalMultipleOf = __webpack_exports__.gG;
+var __webpack_exports__bMultiply = __webpack_exports__.Tt;
+var __webpack_exports__bMultiplyByConst = __webpack_exports__.h1;
+var __webpack_exports__bNegate = __webpack_exports__.Rz;
+var __webpack_exports__bNumRoots = __webpack_exports__.eS;
+var __webpack_exports__bNumRootsIn01 = __webpack_exports__.Ed;
+var __webpack_exports__bNumRootsInRange = __webpack_exports__.WG;
+var __webpack_exports__bP1Norm = __webpack_exports__._m;
+var __webpack_exports__bP2NormSquared = __webpack_exports__.wQ;
+var __webpack_exports__bPInfNorm = __webpack_exports__.QT;
+var __webpack_exports__bPdivTrivial = __webpack_exports__.lt;
+var __webpack_exports__bPremSequencePrimitive = __webpack_exports__.dc;
+var __webpack_exports__bPremSequenceSubresultant = __webpack_exports__.m2;
+var __webpack_exports__bPremSequenceTrivial = __webpack_exports__.bH;
+var __webpack_exports__bPrimitivePart = __webpack_exports__.f8;
+var __webpack_exports__bReflectAboutYAxis = __webpack_exports__.dz;
+var __webpack_exports__bRemoveLeadingZeros = __webpack_exports__.gz;
+var __webpack_exports__bSignChanges = __webpack_exports__.nZ;
+var __webpack_exports__bSturmChain = __webpack_exports__.TX;
+var __webpack_exports__bSubtract = __webpack_exports__.xc;
+var __webpack_exports__bisection = __webpack_exports__.Zr;
+var __webpack_exports__brent = __webpack_exports__.SJ;
+var __webpack_exports__brentPoly = __webpack_exports__.GM;
+var __webpack_exports__changeVariablesLinear = __webpack_exports__.ZD;
+var __webpack_exports__changeVariablesScale = __webpack_exports__.i8;
+var __webpack_exports__changeVariablesTranslateX = __webpack_exports__.WW;
+var __webpack_exports__compHorner = __webpack_exports__._8;
+var __webpack_exports__compHornerIsFaithful = __webpack_exports__.r4;
+var __webpack_exports__compHornerWithRunningError = __webpack_exports__.pp;
+var __webpack_exports__conditionNumber = __webpack_exports__.J9;
+var __webpack_exports__content = __webpack_exports__.Qs;
+var __webpack_exports__createRootExact = __webpack_exports__.ik;
+var __webpack_exports__ddDeflate = __webpack_exports__.c9;
+var __webpack_exports__ddDeflateWithRunningError = __webpack_exports__.dl;
+var __webpack_exports__ddDifferentiate = __webpack_exports__.Rj;
+var __webpack_exports__ddDifferentiateWithError = __webpack_exports__.JD;
+var __webpack_exports__ddHorner = __webpack_exports__.wI;
+var __webpack_exports__ddIntegrate = __webpack_exports__.lS;
+var __webpack_exports__deflate = __webpack_exports__.Kc;
+var __webpack_exports__degree = __webpack_exports__.No;
+var __webpack_exports__differentiate = __webpack_exports__.Lk;
+var __webpack_exports__divideByConst = __webpack_exports__.sB;
+var __webpack_exports__eAbsCoeff = __webpack_exports__.XP;
+var __webpack_exports__eAdd = __webpack_exports__.DI;
+var __webpack_exports__eChangeVariablesLinear = __webpack_exports__.io;
+var __webpack_exports__eChangeVariablesScale = __webpack_exports__.D7;
+var __webpack_exports__eChangeVariablesTranslateX = __webpack_exports__.hN;
+var __webpack_exports__eContent = __webpack_exports__.lg;
+var __webpack_exports__eDeflate = __webpack_exports__.D_;
+var __webpack_exports__eDegree = __webpack_exports__.s9;
+var __webpack_exports__eDifferentiate = __webpack_exports__.CY;
+var __webpack_exports__eEqual = __webpack_exports__.Ir;
+var __webpack_exports__eEvaluateAt0 = __webpack_exports__._B;
+var __webpack_exports__eEvaluateAt1 = __webpack_exports__.fV;
+var __webpack_exports__eFromRoots = __webpack_exports__.vL;
+var __webpack_exports__eGcdInt = __webpack_exports__.Bb;
+var __webpack_exports__eGcdInts = __webpack_exports__.p6;
+var __webpack_exports__eHorner = __webpack_exports__.o;
+var __webpack_exports__eInvert = __webpack_exports__.SG;
+var __webpack_exports__eIsConstOrZero = __webpack_exports__.SA;
+var __webpack_exports__eIsRationalMultipleOf = __webpack_exports__.Z3;
+var __webpack_exports__eIsUnit = __webpack_exports__.ip;
+var __webpack_exports__eMultiply = __webpack_exports__.cn;
+var __webpack_exports__eMultiplyByConst = __webpack_exports__.YR;
+var __webpack_exports__eNegate = __webpack_exports__.OP;
+var __webpack_exports__eNumRoots = __webpack_exports__.zx;
+var __webpack_exports__eNumRootsIn01 = __webpack_exports__.Bw;
+var __webpack_exports__eNumRootsInRange = __webpack_exports__.tF;
+var __webpack_exports__eP1Norm = __webpack_exports__.RO;
+var __webpack_exports__eP2Norm = __webpack_exports__.wd;
+var __webpack_exports__ePInfNorm = __webpack_exports__.Ns;
+var __webpack_exports__ePdivTrivial = __webpack_exports__.sv;
+var __webpack_exports__ePremSequencePrimitive = __webpack_exports__.wC;
+var __webpack_exports__ePremSequenceSubresultant = __webpack_exports__.f5;
+var __webpack_exports__ePrimitivePart = __webpack_exports__.An;
+var __webpack_exports__eProduct = __webpack_exports__.Ff;
+var __webpack_exports__eReflectAboutYAxis = __webpack_exports__.kR;
+var __webpack_exports__eRemoveLeadingZeros = __webpack_exports__.Fs;
+var __webpack_exports__eSignChanges = __webpack_exports__.aZ;
+var __webpack_exports__eSturmChain = __webpack_exports__.Ss;
+var __webpack_exports__eSubtract = __webpack_exports__.Su;
+var __webpack_exports__eeHorner = __webpack_exports__.xE;
+var __webpack_exports__equal = __webpack_exports__.LC;
+var __webpack_exports__evalCertified = __webpack_exports__.Uv;
+var __webpack_exports__evalCertifiedInclError = __webpack_exports__.oi;
+var __webpack_exports__evalK = __webpack_exports__.Uz;
+var __webpack_exports__evaluateAt0 = __webpack_exports__.d_;
+var __webpack_exports__evaluateAt1 = __webpack_exports__.kM;
+var __webpack_exports__flatCoefficients = __webpack_exports__.c7;
+var __webpack_exports__flatCoefficientsArr = __webpack_exports__.jQ;
+var __webpack_exports__flatRoots = __webpack_exports__.PI;
+var __webpack_exports__flatRootsArr = __webpack_exports__.mP;
+var __webpack_exports__fromRoots = __webpack_exports__.qb;
+var __webpack_exports__gcdInt = __webpack_exports__._Z;
+var __webpack_exports__gcdInts = __webpack_exports__.tX;
+var __webpack_exports__hornerWithRunningError = __webpack_exports__.OG;
+var __webpack_exports__integrate = __webpack_exports__.UZ;
+var __webpack_exports__invert = __webpack_exports__.B8;
+var __webpack_exports__isRationalMultipleOf = __webpack_exports__.cg;
+var __webpack_exports__mid = __webpack_exports__.jz;
+var __webpack_exports__multiply = __webpack_exports__.lw;
+var __webpack_exports__multiplyByConst = __webpack_exports__.RF;
+var __webpack_exports__negate = __webpack_exports__.ze;
+var __webpack_exports__negativeRootLowerBound_LMQ = __webpack_exports__.A3;
+var __webpack_exports__negativeRootUpperBound_LMQ = __webpack_exports__.hP;
+var __webpack_exports__numRoots = __webpack_exports__.yU;
+var __webpack_exports__numRootsIn01 = __webpack_exports__.S_;
+var __webpack_exports__numRootsInRange = __webpack_exports__.El;
+var __webpack_exports__operators = __webpack_exports__.II;
+var __webpack_exports__p1Norm = __webpack_exports__.I3;
+var __webpack_exports__p2Norm = __webpack_exports__.bD;
+var __webpack_exports__pInfNorm = __webpack_exports__.iW;
+var __webpack_exports__positiveRootLowerBound_LMQ = __webpack_exports__.Bc;
+var __webpack_exports__positiveRootUpperBound_LMQ = __webpack_exports__.FL;
+var __webpack_exports__predictiveRandom = __webpack_exports__.fK;
+var __webpack_exports__premSequenceSubresultant = __webpack_exports__.ec;
+var __webpack_exports__primitivePart = __webpack_exports__.Rt;
+var __webpack_exports__quadraticRoots = __webpack_exports__._j;
+var __webpack_exports__refineK1 = __webpack_exports__.yO;
+var __webpack_exports__reflectAboutYAxis = __webpack_exports__.n6;
+var __webpack_exports__removeLeadingZeros = __webpack_exports__.wb;
+var __webpack_exports__rootIntervalToExp = __webpack_exports__.Pb;
+var __webpack_exports__rootMagnitudeUpperBound_fujiwara = __webpack_exports__.Bv;
+var __webpack_exports__rootMagnitudeUpperBound_rouche = __webpack_exports__.Wh;
+var __webpack_exports__scaleFloatToBigint = __webpack_exports__.jY;
+var __webpack_exports__scaleFloatToInt = __webpack_exports__.jJ;
+var __webpack_exports__scaleFloatsToBigints = __webpack_exports__.F4;
+var __webpack_exports__scaleFloatsToInts = __webpack_exports__.hy;
+var __webpack_exports__scaleFloatssToBigintss = __webpack_exports__.je;
+var __webpack_exports__scaleFloatssToIntss = __webpack_exports__.vv;
+var __webpack_exports__signChanges = __webpack_exports__.CW;
+var __webpack_exports__sturmChain = __webpack_exports__.fT;
+var __webpack_exports__subtract = __webpack_exports__.Re;
+var __webpack_exports__toCasStr = __webpack_exports__.ew;
+var __webpack_exports___ = __webpack_exports__.e7;
+var __webpack_exports___ = __webpack_exports__.ZH;
 export { __webpack_exports__AbsHorner as AbsHorner, __webpack_exports__CompHornerK as CompHornerK, __webpack_exports__EFTHorner as EFTHorner, __webpack_exports__Horner as Horner, __webpack_exports__absCoeff as absCoeff, __webpack_exports__add as add, __webpack_exports__allRoots as allRoots, __webpack_exports__allRootsCertified as allRootsCertified, __webpack_exports__allRootsCertifiedSimplified as allRootsCertifiedSimplified, __webpack_exports__bAbsCoeff as bAbsCoeff, __webpack_exports__bAdd as bAdd, __webpack_exports__bChangeVariablesLinear as bChangeVariablesLinear, __webpack_exports__bChangeVariablesScale as bChangeVariablesScale, __webpack_exports__bChangeVariablesTranslateX as bChangeVariablesTranslateX, __webpack_exports__bContent as bContent, __webpack_exports__bDegree as bDegree, __webpack_exports__bDifferentiate as bDifferentiate, __webpack_exports__bDivideByConst as bDivideByConst, __webpack_exports__bEqual as bEqual, __webpack_exports__bEvaluateAt0 as bEvaluateAt0, __webpack_exports__bEvaluateAt1 as bEvaluateAt1, __webpack_exports__bFlatCoefficients as bFlatCoefficients, __webpack_exports__bFlatCoefficientsArr as bFlatCoefficientsArr, __webpack_exports__bFlatRoots as bFlatRoots, __webpack_exports__bFlatRootsArr as bFlatRootsArr, __webpack_exports__bFromRoots as bFromRoots, __webpack_exports__bGcdInt as bGcdInt, __webpack_exports__bGcdInts as bGcdInts, __webpack_exports__bGcdPrs as bGcdPrs, __webpack_exports__bHorner as bHorner, __webpack_exports__bInvert as bInvert, __webpack_exports__bIsRationalMultipleOf as bIsRationalMultipleOf, __webpack_exports__bMultiply as bMultiply, __webpack_exports__bMultiplyByConst as bMultiplyByConst, __webpack_exports__bNegate as bNegate, __webpack_exports__bNumRoots as bNumRoots, __webpack_exports__bNumRootsIn01 as bNumRootsIn01, __webpack_exports__bNumRootsInRange as bNumRootsInRange, __webpack_exports__bP1Norm as bP1Norm, __webpack_exports__bP2NormSquared as bP2NormSquared, __webpack_exports__bPInfNorm as bPInfNorm, __webpack_exports__bPdivTrivial as bPdivTrivial, __webpack_exports__bPremSequencePrimitive as bPremSequencePrimitive, __webpack_exports__bPremSequenceSubresultant as bPremSequenceSubresultant, __webpack_exports__bPremSequenceTrivial as bPremSequenceTrivial, __webpack_exports__bPrimitivePart as bPrimitivePart, __webpack_exports__bReflectAboutYAxis as bReflectAboutYAxis, __webpack_exports__bRemoveLeadingZeros as bRemoveLeadingZeros, __webpack_exports__bSignChanges as bSignChanges, __webpack_exports__bSturmChain as bSturmChain, __webpack_exports__bSubtract as bSubtract, __webpack_exports__bisection as bisection, __webpack_exports__brent as brent, __webpack_exports__brentPoly as brentPoly, __webpack_exports__changeVariablesLinear as changeVariablesLinear, __webpack_exports__changeVariablesScale as changeVariablesScale, __webpack_exports__changeVariablesTranslateX as changeVariablesTranslateX, __webpack_exports__compHorner as compHorner, __webpack_exports__compHornerIsFaithful as compHornerIsFaithful, __webpack_exports__compHornerWithRunningError as compHornerWithRunningError, __webpack_exports__conditionNumber as conditionNumber, __webpack_exports__content as content, __webpack_exports__createRootExact as createRootExact, __webpack_exports__ddDeflate as ddDeflate, __webpack_exports__ddDeflateWithRunningError as ddDeflateWithRunningError, __webpack_exports__ddDifferentiate as ddDifferentiate, __webpack_exports__ddDifferentiateWithError as ddDifferentiateWithError, __webpack_exports__ddHorner as ddHorner, __webpack_exports__ddIntegrate as ddIntegrate, __webpack_exports__deflate as deflate, __webpack_exports__degree as degree, __webpack_exports__differentiate as differentiate, __webpack_exports__divideByConst as divideByConst, __webpack_exports__eAbsCoeff as eAbsCoeff, __webpack_exports__eAdd as eAdd, __webpack_exports__eChangeVariablesLinear as eChangeVariablesLinear, __webpack_exports__eChangeVariablesScale as eChangeVariablesScale, __webpack_exports__eChangeVariablesTranslateX as eChangeVariablesTranslateX, __webpack_exports__eContent as eContent, __webpack_exports__eDeflate as eDeflate, __webpack_exports__eDegree as eDegree, __webpack_exports__eDifferentiate as eDifferentiate, __webpack_exports__eEqual as eEqual, __webpack_exports__eEvaluateAt0 as eEvaluateAt0, __webpack_exports__eEvaluateAt1 as eEvaluateAt1, __webpack_exports__eFromRoots as eFromRoots, __webpack_exports__eGcdInt as eGcdInt, __webpack_exports__eGcdInts as eGcdInts, __webpack_exports__eHorner as eHorner, __webpack_exports__eInvert as eInvert, __webpack_exports__eIsConstOrZero as eIsConstOrZero, __webpack_exports__eIsRationalMultipleOf as eIsRationalMultipleOf, __webpack_exports__eIsUnit as eIsUnit, __webpack_exports__eMultiply as eMultiply, __webpack_exports__eMultiplyByConst as eMultiplyByConst, __webpack_exports__eNegate as eNegate, __webpack_exports__eNumRoots as eNumRoots, __webpack_exports__eNumRootsIn01 as eNumRootsIn01, __webpack_exports__eNumRootsInRange as eNumRootsInRange, __webpack_exports__eP1Norm as eP1Norm, __webpack_exports__eP2Norm as eP2Norm, __webpack_exports__ePInfNorm as ePInfNorm, __webpack_exports__ePdivTrivial as ePdivTrivial, __webpack_exports__ePremSequencePrimitive as ePremSequencePrimitive, __webpack_exports__ePremSequenceSubresultant as ePremSequenceSubresultant, __webpack_exports__ePrimitivePart as ePrimitivePart, __webpack_exports__eProduct as eProduct, __webpack_exports__eReflectAboutYAxis as eReflectAboutYAxis, __webpack_exports__eRemoveLeadingZeros as eRemoveLeadingZeros, __webpack_exports__eSignChanges as eSignChanges, __webpack_exports__eSturmChain as eSturmChain, __webpack_exports__eSubtract as eSubtract, __webpack_exports__eeHorner as eeHorner, __webpack_exports__equal as equal, __webpack_exports__evalCertified as evalCertified, __webpack_exports__evalCertifiedInclError as evalCertifiedInclError, __webpack_exports__evalK as evalK, __webpack_exports__evaluateAt0 as evaluateAt0, __webpack_exports__evaluateAt1 as evaluateAt1, __webpack_exports__flatCoefficients as flatCoefficients, __webpack_exports__flatCoefficientsArr as flatCoefficientsArr, __webpack_exports__flatRoots as flatRoots, __webpack_exports__flatRootsArr as flatRootsArr, __webpack_exports__fromRoots as fromRoots, __webpack_exports__gcdInt as gcdInt, __webpack_exports__gcdInts as gcdInts, __webpack_exports__hornerWithRunningError as hornerWithRunningError, __webpack_exports__integrate as integrate, __webpack_exports__invert as invert, __webpack_exports__isRationalMultipleOf as isRationalMultipleOf, __webpack_exports__mid as mid, __webpack_exports__multiply as multiply, __webpack_exports__multiplyByConst as multiplyByConst, __webpack_exports__negate as negate, __webpack_exports__negativeRootLowerBound_LMQ as negativeRootLowerBound_LMQ, __webpack_exports__negativeRootUpperBound_LMQ as negativeRootUpperBound_LMQ, __webpack_exports__numRoots as numRoots, __webpack_exports__numRootsIn01 as numRootsIn01, __webpack_exports__numRootsInRange as numRootsInRange, __webpack_exports__operators as operators, __webpack_exports__p1Norm as p1Norm, __webpack_exports__p2Norm as p2Norm, __webpack_exports__pInfNorm as pInfNorm, __webpack_exports__positiveRootLowerBound_LMQ as positiveRootLowerBound_LMQ, __webpack_exports__positiveRootUpperBound_LMQ as positiveRootUpperBound_LMQ, __webpack_exports__predictiveRandom as predictiveRandom, __webpack_exports__premSequenceSubresultant as premSequenceSubresultant, __webpack_exports__primitivePart as primitivePart, __webpack_exports__quadraticRoots as quadraticRoots, __webpack_exports__refineK1 as refineK1, __webpack_exports__reflectAboutYAxis as reflectAboutYAxis, __webpack_exports__removeLeadingZeros as removeLeadingZeros, __webpack_exports__rootIntervalToExp as rootIntervalToExp, __webpack_exports__rootMagnitudeUpperBound_fujiwara as rootMagnitudeUpperBound_fujiwara, __webpack_exports__rootMagnitudeUpperBound_rouche as rootMagnitudeUpperBound_rouche, __webpack_exports__scaleFloatToBigint as scaleFloatToBigint, __webpack_exports__scaleFloatToInt as scaleFloatToInt, __webpack_exports__scaleFloatsToBigints as scaleFloatsToBigints, __webpack_exports__scaleFloatsToInts as scaleFloatsToInts, __webpack_exports__scaleFloatssToBigintss as scaleFloatssToBigintss, __webpack_exports__scaleFloatssToIntss as scaleFloatssToIntss, __webpack_exports__signChanges as signChanges, __webpack_exports__sturmChain as sturmChain, __webpack_exports__subtract as subtract, __webpack_exports__toCasStr as toCasStr, __webpack_exports___ as γ, __webpack_exports___ as γγ };

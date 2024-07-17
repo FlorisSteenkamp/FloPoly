@@ -20,8 +20,8 @@ function reflectAboutYAxis(p: number[]): number[] {
 
 	const result = p.slice();
 	for (let i=0; i<d+1; i++) {
-		if (i % 2) {
-			result[i] = -result[i]; 
+		if (i % 2 === (d - 1) % 2) {
+			result[i] = -result[i];
 		}
 	}
 	

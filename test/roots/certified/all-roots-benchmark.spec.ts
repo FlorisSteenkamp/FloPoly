@@ -43,7 +43,7 @@ function test(log: boolean) {
     }
 
     // create intersection polynomials from the generated cubic beziers
-    const polys = [];
+    const polys: { coeffs: number[][]; coeffsD: number[]; errBound: number[]; getPExact: () => number[][]; }[] = [];
     const timeStartA = performance.now();
     {
         for (let i=0; i<n; i++) {
