@@ -2,7 +2,7 @@
     "name": "flo-poly",
     "sideEffects": false,
     "description": "A practical, root-focused JavaScript polynomial utility library.",
-    "version": "6.0.9",
+    "version": "6.0.10",
     "author": {
         "name": "Floris Steenkamp"
     },
