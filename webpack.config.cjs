@@ -7,7 +7,11 @@ const config_Basic = {
     mode: 'production',
     entry: './src/index.ts',
     resolve: {
-        extensions: [ '.tsx', '.ts', '.js', '.d.ts'],
+        extensions: [
+            '.js', '.mjs', '.cjs', 
+            '.jsx', '.cjsx', '.mjsx',
+            '.tsx', '.ts', '.d.ts'
+        ],
         extensionAlias: {
             ".js": [".js", ".ts"],
             ".cjs": [".cjs", ".cts"],
@@ -19,10 +23,9 @@ const config_Basic = {
             {
                 test: /\.tsx?$/,
                 loader: 'ts-loader',
-                options: {
-                    silent: true
-                },
-                exclude: /node_modules/
+                options: { silent: true },
+                exclude: /node_modules/,
+                sideEffects: false
             }
         ]
     },
