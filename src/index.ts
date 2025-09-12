@@ -29,6 +29,18 @@ export { negate } from './basic/double/negate.js';
 export { removeLeadingZeros } from './basic/double/remove-leading-zeros.js';
 export { subtract } from './basic/double/subtract.js';
 
+// basic double-double
+export { ddAbsCoeff } from './basic/double-double/dd-abs-coeff.js';
+export { ddAdd } from './basic/double-double/dd-add.js';
+export { ddDegree } from './basic/double-double/dd-degree.js';
+export { ddDivideByConst } from './basic/double-double/dd-divide-by-const.js';
+export { ddMultiply } from './basic/double-double/dd-multiply.js';
+export { ddMultiplyByConst } from './basic/double-double/dd-multiply-by-const.js';
+export { ddNegate } from './basic/double-double/dd-negate.js';
+export { ddRemoveLeadingZeros } from './basic/double-double/dd-remove-leading-zeros.js';
+export { ddSubtract } from './basic/double-double/dd-subtract.js';
+
+
 // basic expansion
 export { eAbsCoeff } from './basic/expansion/e-abs-coeff.js';
 export { eAdd } from './basic/expansion/e-add.js';
@@ -186,10 +198,10 @@ export { bFlatCoefficientsArr } from './predictive-random/bigint/b-random.js';
 export { allRootsCertified } from './roots/certified/all-roots-certified.js';
 export { allRootsCertifiedSimplified } from './roots/certified/all-roots-certified-simplified.js';
 export { refineK1 } from './roots/certified/refine-k1.js';
-export { RootInterval } from './roots/certified/root-interval.js';
+export type { RootInterval } from './roots/certified/root-interval.js';
 export { mid } from './roots/certified/root-interval.js';
 export { createRootExact } from './roots/certified/root-interval.js';
-export { RootIntervalExp } from './roots/certified/root-interval-exp.js';
+export type { RootIntervalExp } from './roots/certified/root-interval-exp.js';
 export { rootIntervalToExp } from './roots/certified/root-interval-to-exp.js';
 
 // roots descartes bigint

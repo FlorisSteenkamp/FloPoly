@@ -46,4 +46,5 @@ function mid(ri: RootInterval): number {
 }
 
 
-export { RootInterval, createRootExact, mid }
+export type { RootInterval }
+export { createRootExact, mid }

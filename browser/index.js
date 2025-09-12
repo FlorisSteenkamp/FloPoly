@@ -22,177 +22,7 @@
 /************************************************************************/
 var __webpack_exports__ = {};
 
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  j1: () => (/* reexport */ AbsHorner),
-  tw: () => (/* reexport */ CompHornerK),
-  MT: () => (/* reexport */ EFTHorner),
-  xf: () => (/* reexport */ Horner),
-  WU: () => (/* reexport */ absCoeff),
-  WQ: () => (/* reexport */ add),
-  zr: () => (/* reexport */ allRoots),
-  qr: () => (/* reexport */ allRootsCertified),
-  Yp: () => (/* reexport */ allRootsCertifiedSimplified),
-  CS: () => (/* reexport */ bAbsCoeff),
-  KC: () => (/* reexport */ bAdd),
-  fs: () => (/* reexport */ bChangeVariablesLinear),
-  mw: () => (/* reexport */ bChangeVariablesScale),
-  Mp: () => (/* reexport */ bChangeVariablesTranslateX),
-  oC: () => (/* reexport */ bContent),
-  dK: () => (/* reexport */ bDegree),
-  $Y: () => (/* reexport */ bDifferentiate),
-  Id: () => (/* reexport */ bDivideByConst),
-  jM: () => (/* reexport */ bEqual),
-  x: () => (/* reexport */ bEvaluateAt0),
-  EO: () => (/* reexport */ bEvaluateAt1),
-  ao: () => (/* reexport */ bFlatCoefficients),
-  Fz: () => (/* reexport */ bFlatCoefficientsArr),
-  l$: () => (/* reexport */ bFlatRoots),
-  _T: () => (/* reexport */ bFlatRootsArr),
-  OD: () => (/* reexport */ bFromRoots),
-  qj: () => (/* reexport */ bGcdInt),
-  T6: () => (/* reexport */ bGcdInts),
-  a: () => (/* reexport */ bGcdPrs),
-  t7: () => (/* reexport */ bHorner),
-  Tr: () => (/* reexport */ bInvert),
-  gG: () => (/* reexport */ bIsRationalMultipleOf),
-  Tt: () => (/* reexport */ bMultiply),
-  h1: () => (/* reexport */ bMultiplyByConst),
-  Rz: () => (/* reexport */ bNegate),
-  eS: () => (/* reexport */ bNumRoots),
-  Ed: () => (/* reexport */ bNumRootsIn01),
-  WG: () => (/* reexport */ bNumRootsInRange),
-  _m: () => (/* reexport */ bP1Norm),
-  wQ: () => (/* reexport */ bP2NormSquared),
-  QT: () => (/* reexport */ bPInfNorm),
-  lt: () => (/* reexport */ bPdivTrivial),
-  dc: () => (/* reexport */ bPremSequencePrimitive),
-  m2: () => (/* reexport */ bPremSequenceSubresultant),
-  bH: () => (/* reexport */ bPremSequenceTrivial),
-  f8: () => (/* reexport */ bPrimitivePart),
-  dz: () => (/* reexport */ bReflectAboutYAxis),
-  gz: () => (/* reexport */ bRemoveLeadingZeros),
-  nZ: () => (/* reexport */ bSignChanges),
-  TX: () => (/* reexport */ bSturmChain),
-  xc: () => (/* reexport */ bSubtract),
-  Zr: () => (/* reexport */ bisection),
-  SJ: () => (/* reexport */ brent),
-  GM: () => (/* reexport */ brentPoly),
-  ZD: () => (/* reexport */ changeVariablesLinear),
-  i8: () => (/* reexport */ changeVariablesScale),
-  WW: () => (/* reexport */ changeVariablesTranslateX),
-  _8: () => (/* reexport */ compHorner),
-  r4: () => (/* reexport */ compHornerIsFaithful),
-  pp: () => (/* reexport */ compHornerWithRunningError),
-  J9: () => (/* reexport */ conditionNumber),
-  Qs: () => (/* reexport */ content),
-  ik: () => (/* reexport */ createRootExact),
-  c9: () => (/* reexport */ ddDeflate),
-  dl: () => (/* reexport */ ddDeflateWithRunningError),
-  Rj: () => (/* reexport */ ddDifferentiate),
-  JD: () => (/* reexport */ ddDifferentiateWithError),
-  wI: () => (/* reexport */ ddHorner),
-  lS: () => (/* reexport */ ddIntegrate),
-  Kc: () => (/* reexport */ deflate),
-  No: () => (/* reexport */ degree),
-  Lk: () => (/* reexport */ differentiate),
-  sB: () => (/* reexport */ divideByConst),
-  XP: () => (/* reexport */ eAbsCoeff),
-  DI: () => (/* reexport */ eAdd),
-  io: () => (/* reexport */ eChangeVariablesLinear),
-  D7: () => (/* reexport */ eChangeVariablesScale),
-  hN: () => (/* reexport */ eChangeVariablesTranslateX),
-  lg: () => (/* reexport */ eContent),
-  D_: () => (/* reexport */ eDeflate),
-  s9: () => (/* reexport */ eDegree),
-  CY: () => (/* reexport */ eDifferentiate),
-  Ir: () => (/* reexport */ eEqual),
-  _B: () => (/* reexport */ eEvaluateAt0),
-  fV: () => (/* reexport */ eEvaluateAt1),
-  vL: () => (/* reexport */ eFromRoots),
-  Bb: () => (/* reexport */ eGcdInt),
-  p6: () => (/* reexport */ eGcdInts),
-  o: () => (/* reexport */ eHorner),
-  SG: () => (/* reexport */ eInvert),
-  SA: () => (/* reexport */ eIsConstOrZero),
-  Z3: () => (/* reexport */ eIsRationalMultipleOf),
-  ip: () => (/* reexport */ eIsUnit),
-  cn: () => (/* reexport */ eMultiply),
-  YR: () => (/* reexport */ eMultiplyByConst),
-  OP: () => (/* reexport */ eNegate),
-  zx: () => (/* reexport */ eNumRoots),
-  Bw: () => (/* reexport */ eNumRootsIn01),
-  tF: () => (/* reexport */ eNumRootsInRange),
-  RO: () => (/* reexport */ eP1Norm),
-  wd: () => (/* reexport */ eP2Norm),
-  Ns: () => (/* reexport */ ePInfNorm),
-  sv: () => (/* reexport */ ePdivTrivial),
-  wC: () => (/* reexport */ ePremSequencePrimitive),
-  f5: () => (/* reexport */ ePremSequenceSubresultant),
-  An: () => (/* reexport */ ePrimitivePart),
-  Ff: () => (/* reexport */ eProduct),
-  kR: () => (/* reexport */ eReflectAboutYAxis),
-  Fs: () => (/* reexport */ eRemoveLeadingZeros),
-  aZ: () => (/* reexport */ eSignChanges),
-  Ss: () => (/* reexport */ eSturmChain),
-  Su: () => (/* reexport */ eSubtract),
-  xE: () => (/* reexport */ eeHorner),
-  LC: () => (/* reexport */ equal),
-  Uv: () => (/* reexport */ evalCertified),
-  oi: () => (/* reexport */ evalCertifiedInclError),
-  Uz: () => (/* reexport */ evalK),
-  d_: () => (/* reexport */ evaluateAt0),
-  kM: () => (/* reexport */ evaluateAt1),
-  c7: () => (/* reexport */ flatCoefficients),
-  jQ: () => (/* reexport */ flatCoefficientsArr),
-  PI: () => (/* reexport */ flatRoots),
-  mP: () => (/* reexport */ flatRootsArr),
-  qb: () => (/* reexport */ fromRoots),
-  _Z: () => (/* reexport */ gcdInt),
-  tX: () => (/* reexport */ gcdInts),
-  OG: () => (/* reexport */ hornerWithRunningError),
-  UZ: () => (/* reexport */ integrate),
-  B8: () => (/* reexport */ invert),
-  cg: () => (/* reexport */ isRationalMultipleOf),
-  jz: () => (/* reexport */ mid),
-  lw: () => (/* reexport */ multiply),
-  RF: () => (/* reexport */ multiplyByConst),
-  ze: () => (/* reexport */ negate),
-  A3: () => (/* reexport */ negativeRootLowerBound_LMQ),
-  hP: () => (/* reexport */ negativeRootUpperBound_LMQ),
-  yU: () => (/* reexport */ numRoots),
-  S_: () => (/* reexport */ numRootsIn01),
-  El: () => (/* reexport */ numRootsInRange),
-  I3: () => (/* reexport */ p1Norm),
-  bD: () => (/* reexport */ p2Norm),
-  iW: () => (/* reexport */ pInfNorm),
-  Bc: () => (/* reexport */ positiveRootLowerBound_LMQ),
-  FL: () => (/* reexport */ positiveRootUpperBound_LMQ),
-  fK: () => (/* reexport */ predictiveRandom),
-  ec: () => (/* reexport */ premSequenceSubresultant),
-  Rt: () => (/* reexport */ primitivePart),
-  _j: () => (/* reexport */ quadraticRoots),
-  yO: () => (/* reexport */ refineK1),
-  n6: () => (/* reexport */ reflectAboutYAxis),
-  wb: () => (/* reexport */ removeLeadingZeros),
-  Pb: () => (/* reexport */ rootIntervalToExp),
-  Bv: () => (/* reexport */ rootMagnitudeUpperBound_fujiwara),
-  Wh: () => (/* reexport */ rootMagnitudeUpperBound_rouche),
-  jY: () => (/* reexport */ scaleFloatToBigint),
-  jJ: () => (/* reexport */ scaleFloatToInt),
-  F4: () => (/* reexport */ scaleFloatsToBigints),
-  hy: () => (/* reexport */ scaleFloatsToInts),
-  je: () => (/* reexport */ scaleFloatssToBigintss),
-  vv: () => (/* reexport */ scaleFloatssToIntss),
-  CW: () => (/* reexport */ signChanges),
-  fT: () => (/* reexport */ sturmChain),
-  Re: () => (/* reexport */ subtract),
-  ew: () => (/* reexport */ toCasStr),
-  e7: () => (/* reexport */ γ),
-  ZH: () => (/* reexport */ γγ)
-});
-
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-expansion/e-estimate.js
+;// ./node_modules/big-float-ts/node/double-expansion/e-estimate.js
 /**
  * Returns the result of the given floating point expansion rounded to a double
  * floating point number.
@@ -216,7 +46,7 @@ function eEstimate(e) {
 }
 
 //# sourceMappingURL=e-estimate.js.map
-;// CONCATENATED MODULE: ./src/basic/to-cas-str.ts
+;// ./src/basic/to-cas-str.ts
 
 /** @internal */
 function isNumber(x) {
@@ -305,7 +135,7 @@ function nonNegativeNumberToString(num) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/bigint/b-abs-coeff.ts
+;// ./src/basic/bigint/b-abs-coeff.ts
 /**
  * Returns the polynomial with all coeffients the absolute value of the given
  * polynomial.
@@ -326,7 +156,7 @@ function bAbsCoeff(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/bigint/b-remove-leading-zeros.ts
+;// ./src/basic/bigint/b-remove-leading-zeros.ts
 /**
  * If the highest power coefficient of the given polynomial is 0 then
  * removeLeadingZeros can be called to remove all such highest terms so that
@@ -351,7 +181,7 @@ function bRemoveLeadingZeros(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/bigint/b-add.ts
+;// ./src/basic/bigint/b-add.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const b_add_bRemoveLeadingZeros = bRemoveLeadingZeros;
@@ -390,7 +220,7 @@ function bAdd(p1, p2) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/bigint/b-degree.ts
+;// ./src/basic/bigint/b-degree.ts
 /**
  * Returns the degree of the given polynomial - the zero polynomial degree is
  * returned as -1 (and not -∞ as is conventional).
@@ -411,7 +241,7 @@ function bDegree(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/bigint/b-divide-by-const.ts
+;// ./src/basic/bigint/b-divide-by-const.ts
 /**
  * Divides (using **integer division**) a polynomial by a constant.
  *
@@ -432,7 +262,7 @@ function bDivideByConst(p, c) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/bigint/b-equal.ts
+;// ./src/basic/bigint/b-equal.ts
 /**
  * Returns true if two polynomials are exactly equal by comparing coefficients,
  * false otherwise.
@@ -463,7 +293,7 @@ function bEqual(a, b) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/bigint/b-invert.ts
+;// ./src/basic/bigint/b-invert.ts
 /**
  * Inverts the given polynomial by reversing the order of the coefficients,
  * i.e. p(x) -> x^deg(p) * p(1/x)
@@ -484,7 +314,7 @@ function bInvert(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/gcd/bigint/b-integer-gcd.ts
+;// ./src/gcd/bigint/b-integer-gcd.ts
 /**
  * Computes and returns the greatest common divisor of two integers a and b,
  * using the [Euclidean Algorithm](https://en.wikipedia.org/wiki/Euclidean_algorithm).
@@ -568,7 +398,7 @@ function bGcdIntsTree(vals: bigint[]): bigint {
 */
 
 
-;// CONCATENATED MODULE: ./src/basic/bigint/b-is-rational-multiple-of.ts
+;// ./src/basic/bigint/b-is-rational-multiple-of.ts
 
 /**
  * Returns true if either polynomial is an exact rational multiple of the other.
@@ -611,7 +441,7 @@ function bIsRationalMultipleOf(a, b) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/bigint/b-multiply.ts
+;// ./src/basic/bigint/b-multiply.ts
 /**
  * Returns the result of multiplying 2 polynomials with bigint coefficients.
  *
@@ -649,7 +479,7 @@ function bMultiply(a, b) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/bigint/b-multiply-by-const.ts
+;// ./src/basic/bigint/b-multiply-by-const.ts
 /**
  * Returns the result of multiplies a polynomial (with bigint coefficients) by
  * a constant.
@@ -674,7 +504,7 @@ function bMultiplyByConst(c, p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/bigint/b-negate.ts
+;// ./src/basic/bigint/b-negate.ts
 /**
  * Returns the negative of the given polynomial (p -> -p).
  *
@@ -698,7 +528,7 @@ function bNegate(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/bigint/b-subtract.ts
+;// ./src/basic/bigint/b-subtract.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const b_subtract_bRemoveLeadingZeros = bRemoveLeadingZeros;
@@ -739,7 +569,7 @@ function bSubtract(a, b) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/double/abs-coeff.ts
+;// ./src/basic/double/abs-coeff.ts
 /**
  * Returns the polynomial with all coeffients the absolute value of the given
  * polynomial.
@@ -759,7 +589,7 @@ function absCoeff(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/double/remove-leading-zeros.ts
+;// ./src/basic/double/remove-leading-zeros.ts
 /**
  * If the highest power coefficient of the given polynomial is 0 then
  * removeLeadingZeros can be called to remove all such highest terms so that
@@ -790,7 +620,7 @@ function removeLeadingZeros(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/double/add.ts
+;// ./src/basic/double/add.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const add_removeLeadingZeros = removeLeadingZeros;
@@ -829,7 +659,7 @@ function add(p1, p2) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/double/degree.ts
+;// ./src/basic/double/degree.ts
 /**
  * Returns the degree of the given polynomial - the zero polynomial degree is
  * returned as -1 (and not -∞ as is conventional).
@@ -850,7 +680,7 @@ function degree(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/double/divide-by-const.ts
+;// ./src/basic/double/divide-by-const.ts
 /**
  * Divides a polynomial by a constant in double precision.
  *
@@ -871,7 +701,7 @@ function divideByConst(p, c) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/double/equal.ts
+;// ./src/basic/double/equal.ts
 /**
  * Returns true if two polynomials are exactly equal by comparing coefficients,
  * false otherwise.
@@ -901,7 +731,7 @@ function equal(p1, p2) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/double/invert.ts
+;// ./src/basic/double/invert.ts
 /**
  * Inverts the given polynomial by reversing the order of the coefficients,
  * i.e. p(x) -> x^deg(p) * p(1/x)
@@ -922,7 +752,7 @@ function invert(p) {
 }
 
 
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-representation/double-to-octets.js
+;// ./node_modules/big-float-ts/node/double-representation/double-to-octets.js
 // Modified from https://github.com/bartaz/ieee754-visualization/
 // under the MIT license
 // Copyright 2013 Bartek Szopka (original author)
@@ -938,7 +768,7 @@ function doubleToOctets(number) {
 }
 
 //# sourceMappingURL=double-to-octets.js.map
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-representation/parse-double.js
+;// ./node_modules/big-float-ts/node/double-representation/parse-double.js
 // Modified from https://github.com/bartaz/ieee754-visualization/
 // under the MIT license
 // Copyright 2013 Bartek Szopka (original author)
@@ -993,7 +823,7 @@ function parseDoubleDetailed(x) {
 }
 
 //# sourceMappingURL=parse-double.js.map
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-representation/exponent.js
+;// ./node_modules/big-float-ts/node/double-representation/exponent.js
 
 /**
  * Returns the normalized exponent of the given number.
@@ -1004,7 +834,7 @@ function exponent(a) {
 }
 
 //# sourceMappingURL=exponent.js.map
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-representation/significand.js
+;// ./node_modules/big-float-ts/node/double-representation/significand.js
 
 /**
  * Return the significand of the given double with the hidden bit added (in case
@@ -1016,7 +846,7 @@ function significand(a) {
 }
 
 //# sourceMappingURL=significand.js.map
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-representation/get-max-set-bit.js
+;// ./node_modules/big-float-ts/node/double-representation/get-max-set-bit.js
 
 /**
  * Returns the lowest set bit of the given value in [1, (2**31)-1],
@@ -1093,7 +923,7 @@ function getHighestSetBit(a) {
 }
 
 //# sourceMappingURL=get-max-set-bit.js.map
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-expansion/e-compress.js
+;// ./node_modules/big-float-ts/node/double-expansion/e-compress.js
 /**
  * Returns the result of compressing the given floating point expansion.
  *
@@ -1147,7 +977,7 @@ function e_compress_eCompress(e) {
 }
 
 //# sourceMappingURL=e-compress.js.map
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-expansion/e-sign.js
+;// ./node_modules/big-float-ts/node/double-expansion/e-sign.js
 /**
  * Returns the sign of the given expansion such that a negative value means a
  * negative sign and a positive value means a positive sign, 0 meaning 0 of
@@ -1165,7 +995,7 @@ function eSign(e) {
 }
 
 //# sourceMappingURL=e-sign.js.map
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-representation/bit-length.js
+;// ./node_modules/big-float-ts/node/double-representation/bit-length.js
 
 
 
@@ -1198,7 +1028,7 @@ function expBitLength(a) {
 }
 
 //# sourceMappingURL=bit-length.js.map
-;// CONCATENATED MODULE: ./src/scale-to-int/scale-floats-to-ints.ts
+;// ./src/scale-to-int/scale-floats-to-ints.ts
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -1231,7 +1061,7 @@ function scaleFloatsToInts(as) {
 }
 
 
-;// CONCATENATED MODULE: ./src/gcd/double/integer-gcd.ts
+;// ./src/gcd/double/integer-gcd.ts
 /**
  * Computes the greatest common divisor of two integers a and b, using the
  * Euclidean Algorithm.
@@ -1361,7 +1191,7 @@ function gcdIntsTree(vals) {
 
 //export { gcdInt, gcdInts }
 
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/basic/two-product.js
+;// ./node_modules/big-float-ts/node/basic/two-product.js
 const f = 134217729; // 2**27 + 1;
 /**
  * Returns the exact result of multiplying two doubles.
@@ -1397,7 +1227,7 @@ function two_product_twoProduct(a, b) {
 }
 
 //# sourceMappingURL=two-product.js.map
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-expansion/e-negative-of.js
+;// ./node_modules/big-float-ts/node/double-expansion/e-negative-of.js
 /**
  * Returns the negative of the given floating point expansion.
  * * see [Shewchuk](https://people.eecs.berkeley.edu/~jrs/papers/robustr.pdf)
@@ -1414,7 +1244,7 @@ function eNegativeOf(e) {
 }
 
 //# sourceMappingURL=e-negative-of.js.map
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-expansion/fast-expansion-sum.js
+;// ./node_modules/big-float-ts/node/double-expansion/fast-expansion-sum.js
 // import { eCompress } from "./e-compress.js";
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
 // const compress = eCompress;
@@ -1559,7 +1389,7 @@ function merge(e, f) {
 }
 
 //# sourceMappingURL=fast-expansion-sum.js.map
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-expansion/grow-expansion.js
+;// ./node_modules/big-float-ts/node/double-expansion/grow-expansion.js
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
 const compress = (/* unused pure expression or super */ null && (eCompress));
@@ -1606,7 +1436,7 @@ function growExpansion(e, b) {
 }
 
 //# sourceMappingURL=grow-expansion.js.map
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/basic/two-sum.js
+;// ./node_modules/big-float-ts/node/basic/two-sum.js
 /**
  * Returns the exact result of adding two doubles.
  *
@@ -1628,7 +1458,7 @@ function two_sum_twoSum(a, b) {
 //const R = a + b; const _ = R - a; const r = (a - (R - _)) + (b - _); return [r,R]
 
 //# sourceMappingURL=two-sum.js.map
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-expansion/e-sum.js
+;// ./node_modules/big-float-ts/node/double-expansion/e-sum.js
 
 
 
@@ -1675,7 +1505,7 @@ function eSum(terms) {
 }
 
 //# sourceMappingURL=e-sum.js.map
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-expansion/scale-expansion.js
+;// ./node_modules/big-float-ts/node/double-expansion/scale-expansion.js
 
 
 
@@ -1846,7 +1676,7 @@ function scaleExpansion2(b, e) {
 }
 
 //# sourceMappingURL=scale-expansion.js.map
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-expansion/e-diff.js
+;// ./node_modules/big-float-ts/node/double-expansion/e-diff.js
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
@@ -1866,7 +1696,7 @@ function eDiff(e, f) {
 }
 
 //# sourceMappingURL=e-diff.js.map
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-expansion/e-long-divide.js
+;// ./node_modules/big-float-ts/node/double-expansion/e-long-divide.js
 
 
 
@@ -1982,7 +1812,7 @@ function eLongDivide(N, D) {
 }
 
 //# sourceMappingURL=e-long-divide.js.map
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-expansion/e-compare.js
+;// ./node_modules/big-float-ts/node/double-expansion/e-compare.js
 
 
 /**
@@ -2003,7 +1833,7 @@ function eCompare(a, b) {
 }
 
 //# sourceMappingURL=e-compare.js.map
-;// CONCATENATED MODULE: ./src/basic/double/is-rational-multiple-of.ts
+;// ./src/basic/double/is-rational-multiple-of.ts
 
 
 
@@ -2050,7 +1880,7 @@ function isRationalMultipleOf(a, b) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/double/multiply.ts
+;// ./src/basic/double/multiply.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const multiply_removeLeadingZeros = removeLeadingZeros;
@@ -2065,6 +1895,7 @@ const multiply_removeLeadingZeros = removeLeadingZeros;
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`
  * represents the polynomial `5x^2 - 3x`
  * @param p2 another polynomial.
+ *
  * @example
  * ```typescript
  * multiply([1,2,3], [2,5,3,5]); //=> [2, 9, 19, 26, 19, 15]
@@ -2090,7 +1921,7 @@ function multiply(p1, p2) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/double/multiply-by-const.ts
+;// ./src/basic/double/multiply-by-const.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const multiply_by_const_removeLeadingZeros = removeLeadingZeros;
@@ -2124,7 +1955,7 @@ function multiplyByConst(c, p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/double/negate.ts
+;// ./src/basic/double/negate.ts
 /**
  * Returns the negative of the given polynomial (p -> -p).
  *
@@ -2147,7 +1978,7 @@ function negate(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/double/subtract.ts
+;// ./src/basic/double/subtract.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const subtract_removeLeadingZeros = removeLeadingZeros;
@@ -2188,7 +2019,422 @@ function subtract(p1, p2) {
 }
 
 
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-expansion/e-abs.js
+;// ./node_modules/double-double/node/double-double/unary/dd-abs.js
+/**
+ * Returns the absolute value of the given double-double precision floating
+ * point number.
+ * @param f a double-double precision floating point number
+ */
+function ddAbs(f) {
+    const Q = f[1];
+    return (Q < 0) ? [-f[0], -Q] : f;
+}
+
+//# sourceMappingURL=dd-abs.js.map
+;// ./src/basic/double-double/dd-abs-coeff.ts
+
+/**
+ * Returns the polynomial with all coeffients the absolute value of the given
+ * polynomial.
+ *
+ * @param p a polynomial with coefficients given densely as an array of double-double
+ * floating point numbers from highest to lowest power
+ *
+ * @doc
+ */
+function ddAbsCoeff(p) {
+    const p_ = [];
+    for (let i = 0; i < p.length; i++) {
+        p_.push(ddAbs(p[i]));
+    }
+    return p_;
+}
+
+
+;// ./node_modules/double-double/node/double-double/binary/dd-add-dd.js
+/**
+ * Returns the result of adding two double-double-precision floating point
+ * numbers.
+ *
+ * * relative error bound: 3u^2 + 13u^3, i.e. fl(a+b) = (a+b)(1+ϵ),
+ * where ϵ <= 3u^2 + 13u^3, u = 0.5 * Number.EPSILON
+ * * the error bound is not sharp - the worst case that could be found by the
+ * authors were 2.25u^2
+ *
+ * ALGORITHM 6 of https://hal.archives-ouvertes.fr/hal-01351529v3/document
+ * @param x a double-double precision floating point number
+ * @param y another double-double precision floating point number
+ */
+function ddAddDd(x, y) {
+    const xl = x[0];
+    const xh = x[1];
+    const yl = y[0];
+    const yh = y[1];
+    //const [sl,sh] = twoSum(xh,yh);
+    const sh = xh + yh;
+    const _1 = sh - xh;
+    const sl = (xh - (sh - _1)) + (yh - _1);
+    //const [tl,th] = twoSum(xl,yl);
+    const th = xl + yl;
+    const _2 = th - xl;
+    const tl = (xl - (th - _2)) + (yl - _2);
+    const c = sl + th;
+    //const [vl,vh] = fastTwoSum(sh,c)
+    const vh = sh + c;
+    const vl = c - (vh - sh);
+    const w = tl + vl;
+    //const [zl,zh] = fastTwoSum(vh,w)
+    const zh = vh + w;
+    const zl = w - (zh - vh);
+    return [zl, zh];
+}
+
+//# sourceMappingURL=dd-add-dd.js.map
+;// ./src/basic/double-double/dd-remove-leading-zeros.ts
+/**
+ * If the highest power coefficient of the given polynomial is 0 then
+ * `ddRemoveLeadingZeros` can be called to remove all such highest terms so that
+ * the returned array is a valid presentation of a polynomial.
+ *
+ * @param p a polynomial whose leading zeros should be removed
+ *
+ * @doc
+ */
+function ddRemoveLeadingZeros(p) {
+    let lzCount = 0;
+    for (let i = 0; i <= p.length - 1; i++) {
+        if (p[i][1] !== 0) {
+            break;
+        }
+        lzCount++;
+    }
+    if (lzCount !== 0) {
+        p = p.slice(lzCount);
+    }
+    return p;
+}
+
+
+;// ./src/basic/double-double/dd-add.ts
+
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const dd_add_ddRemoveLeadingZeros = ddRemoveLeadingZeros;
+/**
+ * Returns the result of adding two polynomials in double-double precision.
+ *
+ * @param p1 a polynomial with coefficients given densely as an array of double-double
+ * floating point numbers from highest to lowest power
+ * @param p2 another polynomial
+ *
+ * @doc
+ */
+function ddAdd(p1, p2) {
+    // Initialize result array  
+    const d1 = p1.length - 1;
+    const d2 = p2.length - 1;
+    const Δd = d1 - d2;
+    const Δd1 = Δd < 0 ? +Δd : 0;
+    const Δd2 = Δd > 0 ? -Δd : 0;
+    const d = Math.max(d1, d2);
+    // Add coefficients
+    const result = [];
+    for (let i = 0; i < d + 1; i++) {
+        const c1 = p1[i + Δd1] || [0, 0];
+        const c2 = p2[i + Δd2] || [0, 0];
+        result.push(ddAddDd(c1, c2));
+    }
+    // Ensure the result is a valid polynomial representation
+    return dd_add_ddRemoveLeadingZeros(result);
+}
+
+// Quokka tests
+// ddAdd([[0,1],[0,2],[0,3]],[[0,3],[0,4]]);  /*?*/  //=> [1,5,7]
+
+;// ./src/basic/double-double/dd-degree.ts
+/**
+ * Returns the degree of the given polynomial - the zero polynomial degree is
+ * returned as -1 (and not -∞ as is conventional).
+ *
+ * @param p a polynomial with coefficients given densely as an array of double-double
+ * floating point numbers from highest to lowest power
+ *
+ * @doc
+ */
+function ddDegree(p) {
+    return p.length - 1;
+}
+
+
+;// ./node_modules/double-double/node/double-double/binary/dd-div-dd.js
+/** @internal */
+const dd_div_dd_f = 134217729; // 2**27 + 1;
+/**
+ * Returns the result of dividing two double-double-precision floating point
+ * numbers, i.e. returns x/y.
+ *
+ * * relative error bound: 15u^2 + 56u^3, i.e. fl(a/b) = (a/b)(1+ϵ),
+ * where ϵ <= 15u^2 + 56u^3, u = 0.5 * Number.EPSILON
+ * * the largest error found was 8.465u^2
+ *
+ * * ALGORITHM 17 of https://hal.archives-ouvertes.fr/hal-01351529v3/document
+ * @param x a double-double precision floating point number
+ * @param y another double-double precision floating point number
+ */
+function ddDivDd(x, y) {
+    const xl = x[0];
+    const xh = x[1];
+    const yl = y[0];
+    const yh = y[1];
+    const th = xh / yh;
+    // approximation to th*(yh + yl) using Algorithm 7
+    //const [rl,rh] = ddMultDouble1(th,[yl,yh]);  
+    const ch = yh * th;
+    const c = dd_div_dd_f * yh;
+    const ah = c - (c - yh);
+    const al = yh - ah;
+    const d = dd_div_dd_f * th;
+    const bh = d - (d - th);
+    const bl = th - bh;
+    const cl1 = (al * bl) - ((ch - (ah * bh)) - (al * bh) - (ah * bl));
+    const cl2 = yl * th;
+    const th_ = ch + cl2;
+    const tl1 = cl2 - (th_ - ch);
+    const tl2 = tl1 + cl1;
+    const rh = th_ + tl2;
+    const rl = tl2 - (rh - th_);
+    const πh = xh - rh; // exact operation
+    const δl = xl - rl;
+    const δ = πh + δl;
+    const tl = δ / yh;
+    //return fastTwoSum(th,tl);
+    const xx = th + tl;
+    return [tl - (xx - th), xx];
+}
+
+//# sourceMappingURL=dd-div-dd.js.map
+;// ./src/basic/double-double/dd-divide-by-const.ts
+
+/**
+ * Divides a polynomial by a constant in double-double precision.
+ *
+ * @param p a polynomial with coefficients given densely as an array of double
+ * floating point numbers from highest to lowest power
+ * @param c a constant in double-doulbe precision
+ *
+ * @doc
+ */
+function ddDivideByConst(p, c) {
+    const d = p.length;
+    const r = [];
+    for (let i = 0; i < d; i++) {
+        r.push(ddDivDd(p[i], c));
+    }
+    return r;
+}
+
+
+;// ./node_modules/double-double/node/double-double/binary/dd-mult-dd.js
+/** @internal */
+const dd_mult_dd_f = 2 ** 27 + 1;
+/**
+ * Returns the product of two double-double-precision floating point numbers.
+ *
+ * * relative error bound: 7u^2, i.e. fl(a+b) = (a+b)(1+ϵ),
+ * where ϵ <= 7u^2, u = 0.5 * Number.EPSILON
+ * the error bound is not sharp - the worst case that could be found by the
+ * authors were 5u^2
+ *
+ * * ALGORITHM 10 of https://hal.archives-ouvertes.fr/hal-01351529v3/document
+ * @param x a double-double precision floating point number
+ * @param y another double-double precision floating point number
+ */
+function ddMultDd(x, y) {
+    const xh = x[1];
+    const yh = y[1];
+    //const [cl1,ch] = twoProduct(xh,yh);
+    const ch = xh * yh;
+    const c = dd_mult_dd_f * xh;
+    const ah = c - (c - xh);
+    const al = xh - ah;
+    const d = dd_mult_dd_f * yh;
+    const bh = d - (d - yh);
+    const bl = yh - bh;
+    const cl1 = (al * bl) - ((ch - (ah * bh)) - (al * bh) - (ah * bl));
+    //return fastTwoSum(ch,cl1 + (xh*yl + xl*yh));
+    const b = cl1 + (xh * y[0] + x[0] * yh);
+    const xx = ch + b;
+    return [b - (xx - ch), xx];
+}
+
+//# sourceMappingURL=dd-mult-dd.js.map
+;// ./src/basic/double-double/dd-multiply.ts
+
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const dd_multiply_ddRemoveLeadingZeros = ddRemoveLeadingZeros;
+const qmq = ddMultDd;
+const qaq = ddAddDd;
+/**
+ * Returns the result of multiplying 2 double-double precision coefficient
+ * polynomials.
+ *
+ * * see [polynomial arithmetic](https://en.wikipedia.org/wiki/Polynomial_arithmetic)
+ * * see [polynomial multiplication](https://en.wikipedia.org/wiki/Discrete_Fourier_transform#Polynomial_multiplication)
+ * * see [polynomial multiplication](http://web.cs.iastate.edu/~cs577/handouts/polymultiply.pdf)
+ *
+ * @param p1 a polynomial with coefficients given densely as an array of double-double
+ * floating point numbers from highest to lowest power
+ * @param p2 another polynomial.
+ *
+ * @doc
+ */
+function ddMultiply(p1, p2) {
+    const d1 = p1.length - 1;
+    const d2 = p2.length - 1;
+    // if either or both is the zero polynomial
+    if (d1 < 0 || d2 < 0) {
+        return [];
+    }
+    const d = d1 + d2;
+    const r = new Array(d + 1).fill([0, 0]);
+    for (let i = 0; i < d1 + 1; i++) {
+        for (let j = 0; j < d2 + 1; j++) {
+            // r[d-(i+j)] += (p1[d1-i] * p2[d2-j]);
+            r[d - (i + j)] = qaq(r[d - (i + j)], qmq(p1[d1 - i], p2[d2 - j]));
+        }
+    }
+    return dd_multiply_ddRemoveLeadingZeros(r);
+}
+
+// Quokka tests
+// ddMultiply([[0,1],[0,2],[0,3]], [[0,2],[0,5],[0,3],[0,5]]); /*?*/  //=> [2, 9, 19, 26, 19, 15]
+
+;// ./src/basic/double-double/dd-multiply-by-const.ts
+
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const dd_multiply_by_const_ddRemoveLeadingZeros = ddRemoveLeadingZeros;
+/**
+ * Returns the result of multiplies a polynomial by a constant in double-double
+ * precision.
+ *
+ * @param c a constant in double-double precision
+ * @param p a polynomial with coefficients given densely as an array of double-double
+ * floating point numbers from highest to lowest power
+ *
+ * @doc
+ */
+function ddMultiplyByConst(c, p) {
+    if (c[1] === 0) {
+        return [[0, 0]];
+    }
+    const d = p.length;
+    const p_ = [];
+    for (let i = 0; i < d; i++) {
+        p_.push(ddMultDd(c, p[i]));
+    }
+    // We *have* to clip due to possible floating point underflow
+    return dd_multiply_by_const_ddRemoveLeadingZeros(p_);
+}
+
+// Quokka tests
+// ddMultiplyByConst([0,0.25], [[0,3],[0,2],[0,1]]);  /*?*/ //=> [0.75, 0.5, 0.25]
+
+;// ./src/basic/double-double/dd-negate.ts
+/**
+ * Returns the negative of the given polynomial (p -> -p).
+ *
+ * @param p a polynomial with coefficients given densely as an array of double-dboule
+ * floating point numbers from highest to lowest power
+ *
+ * @doc
+ */
+function ddNegate(p) {
+    const p_ = [];
+    for (let i = 0; i < p.length; i++) {
+        p_.push([-p[i][0], -p[i][1]]);
+    }
+    return p_;
+}
+
+
+;// ./node_modules/double-double/node/double-double/binary/dd-diff-dd.js
+/**
+ * Returns the result of subtracting the second given double-double-precision
+ * floating point number from the first.
+ *
+ * * relative error bound: 3u^2 + 13u^3, i.e. fl(a-b) = (a-b)(1+ϵ),
+ * where ϵ <= 3u^2 + 13u^3, u = 0.5 * Number.EPSILON
+ * * the error bound is not sharp - the worst case that could be found by the
+ * authors were 2.25u^2
+ *
+ * ALGORITHM 6 of https://hal.archives-ouvertes.fr/hal-01351529v3/document
+ * @param x a double-double precision floating point number
+ * @param y another double-double precision floating point number
+ */
+function ddDiffDd(x, y) {
+    const xl = x[0];
+    const xh = x[1];
+    const yl = y[0];
+    const yh = y[1];
+    //const [sl,sh] = twoSum(xh,yh);
+    const sh = xh - yh;
+    const _1 = sh - xh;
+    const sl = (xh - (sh - _1)) + (-yh - _1);
+    //const [tl,th] = twoSum(xl,yl);
+    const th = xl - yl;
+    const _2 = th - xl;
+    const tl = (xl - (th - _2)) + (-yl - _2);
+    const c = sl + th;
+    //const [vl,vh] = fastTwoSum(sh,c)
+    const vh = sh + c;
+    const vl = c - (vh - sh);
+    const w = tl + vl;
+    //const [zl,zh] = fastTwoSum(vh,w)
+    const zh = vh + w;
+    const zl = w - (zh - vh);
+    return [zl, zh];
+}
+
+//# sourceMappingURL=dd-diff-dd.js.map
+;// ./src/basic/double-double/dd-subtract.ts
+
+
+// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
+const dd_subtract_ddRemoveLeadingZeros = ddRemoveLeadingZeros;
+/**
+ * Returns the result of subtracting the second polynomial from the first in
+ * double-double precision; (p1 - p2).
+ *
+ * @param p1 minuend; the polynomial from which will be subtracted; a polynomial
+ * with coefficients given densely as an array of double-double floating point numbers
+ * from highest to lowest power
+ * @param p2 subtrahend; the polynomial that will be subtracted
+ *
+ * @doc
+ */
+function ddSubtract(p1, p2) {
+    // Initialize result array  
+    const d1 = p1.length - 1;
+    const d2 = p2.length - 1;
+    const Δd = d1 - d2;
+    const Δd1 = Δd < 0 ? +Δd : 0;
+    const Δd2 = Δd > 0 ? -Δd : 0;
+    const d = Math.max(d1, d2);
+    // Add coefficients
+    const result = [];
+    for (let i = 0; i < d + 1; i++) {
+        const c1 = p1[i + Δd1] || [0, 0];
+        const c2 = p2[i + Δd2] || [0, 0];
+        result.push(ddDiffDd(c1, c2));
+    }
+    // Ensure the result is a valid polynomial representation
+    return dd_subtract_ddRemoveLeadingZeros(result);
+}
+
+
+;// ./node_modules/big-float-ts/node/double-expansion/e-abs.js
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
 const e_abs_negativeOf = eNegativeOf;
@@ -2207,7 +2453,7 @@ function eAbs(e) {
 }
 
 //# sourceMappingURL=e-abs.js.map
-;// CONCATENATED MODULE: ./src/basic/expansion/e-abs-coeff.ts
+;// ./src/basic/expansion/e-abs-coeff.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const e_abs_coeff_eAbs = eAbs;
@@ -2230,7 +2476,7 @@ function eAbsCoeff(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/expansion/e-remove-leading-zeros.ts
+;// ./src/basic/expansion/e-remove-leading-zeros.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const e_remove_leading_zeros_eSign = eSign;
@@ -2268,7 +2514,7 @@ function eRemoveLeadingZeros(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/expansion/e-add.ts
+;// ./src/basic/expansion/e-add.ts
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -2310,7 +2556,7 @@ function eAdd(p1, p2) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/expansion/e-degree.ts
+;// ./src/basic/expansion/e-degree.ts
 /**
  * Returns the degree of the given polynomial - the zero polynomial degree is
  * returned as -1 (and not -∞ as is conventional).
@@ -2331,7 +2577,7 @@ function eDegree(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/expansion/e-equal.ts
+;// ./src/basic/expansion/e-equal.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const e_equal_eCompare = eCompare;
@@ -2365,7 +2611,7 @@ function eEqual(p1, p2) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/expansion/e-invert.ts
+;// ./src/basic/expansion/e-invert.ts
 /**
  * Inverts the given polynomial (with coefficients given as Shewchuk floating
  * point expansions) by reversing the order of the coefficients,
@@ -2387,7 +2633,7 @@ function eInvert(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/expansion/e-is-const-or-zero.ts
+;// ./src/basic/expansion/e-is-const-or-zero.ts
 /**
  * Returns true if the given polynomial (with coefficients given as Shewchuk
  * floating point expansions) is a constant or the zero polynomial.
@@ -2403,7 +2649,7 @@ function eIsConstOrZero(p) {
 }
 
 
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-expansion/e-int-div.js
+;// ./node_modules/big-float-ts/node/double-expansion/e-int-div.js
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
 const e_int_div_eLongDivide = eLongDivide;
@@ -2417,7 +2663,7 @@ function eIntDiv(a, b) {
 }
 
 //# sourceMappingURL=e-int-div.js.map
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-expansion/expansion-product.js
+;// ./node_modules/big-float-ts/node/double-expansion/expansion-product.js
 
 
 
@@ -2452,7 +2698,7 @@ function expansionProduct(e, f) {
 }
 
 //# sourceMappingURL=expansion-product.js.map
-;// CONCATENATED MODULE: ./src/scale-to-int/scale-floatss-to-intss.ts
+;// ./src/scale-to-int/scale-floatss-to-intss.ts
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -2489,7 +2735,7 @@ function scaleFloatssToIntss(ass) {
 }
 
 
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-expansion/e-rem.js
+;// ./node_modules/big-float-ts/node/double-expansion/e-rem.js
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
 const e_rem_eLongDivide = eLongDivide;
@@ -2503,7 +2749,7 @@ function eRem(a, b) {
 }
 
 //# sourceMappingURL=e-rem.js.map
-;// CONCATENATED MODULE: ./src/gcd/expansion/e-integer-gcd.ts
+;// ./src/gcd/expansion/e-integer-gcd.ts
 
 
 
@@ -2562,7 +2808,7 @@ function eGcdInts(vals) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/expansion/e-is-rational-multiple-of.ts
+;// ./src/basic/expansion/e-is-rational-multiple-of.ts
 
 
 
@@ -2609,7 +2855,7 @@ function eIsRationalMultipleOf(a, b) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/expansion/e-is-unit.ts
+;// ./src/basic/expansion/e-is-unit.ts
 /**
  * Returns true if the given polynomial (with coefficients given as Shewchuk
  * floating point expansions) is the unit polynomial, i.e. === 1.
@@ -2625,7 +2871,7 @@ function eIsUnit(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/expansion/e-multiply.ts
+;// ./src/basic/expansion/e-multiply.ts
 
 
 
@@ -2671,7 +2917,7 @@ function eMultiply(a, b) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/expansion/e-multiply-by-const.ts
+;// ./src/basic/expansion/e-multiply-by-const.ts
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -2707,7 +2953,7 @@ function eMultiplyByConst(c, p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/expansion/e-negate.ts
+;// ./src/basic/expansion/e-negate.ts
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 
 const e_negate_eNegativeOf = eNegativeOf;
@@ -2735,7 +2981,7 @@ function eNegate(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/expansion/e-product.ts
+;// ./src/basic/expansion/e-product.ts
 
 /**
  * Returns the exact result (bar underflow / overflow) of the product of 0 or
@@ -2768,7 +3014,7 @@ function eProduct(ps) {
 }
 
 
-;// CONCATENATED MODULE: ./src/basic/expansion/e-subtract.ts
+;// ./src/basic/expansion/e-subtract.ts
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -2812,7 +3058,7 @@ function eSubtract(p1, p2) {
 }
 
 
-;// CONCATENATED MODULE: ./src/calculus/bigint/b-differentiate.ts
+;// ./src/calculus/bigint/b-differentiate.ts
 /**
  * Returns the result of differentiating the given polynomial.
  *
@@ -2837,7 +3083,7 @@ function bDifferentiate(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/calculus/double/differentiate.ts
+;// ./src/calculus/double/differentiate.ts
 /**
  * Returns the result of differentiating the given polynomial in double
  * precision.
@@ -2863,7 +3109,7 @@ function differentiate(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/calculus/double/integrate.ts
+;// ./src/calculus/double/integrate.ts
 /**
  * Returns the result of integrating the given polynomial in double precision.
  *
@@ -2890,7 +3136,7 @@ function integrate(p, c) {
 }
 
 
-;// CONCATENATED MODULE: ./node_modules/double-double/node/double-mixed-double-double/dd-mult-double.js
+;// ./node_modules/double-double/node/double-mixed-double-double/dd-mult-double.js
 /** @internal */
 const dd_mult_double_f = 134217729; // 2**27 + 1;
 /**
@@ -2964,7 +3210,7 @@ function ddMultDouble2(y, x) {
 }
 
 //# sourceMappingURL=dd-mult-double.js.map
-;// CONCATENATED MODULE: ./src/calculus/double-double/dd-differentiate.ts
+;// ./src/calculus/double-double/dd-differentiate.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const dd_differentiate_ddMultDouble2 = ddMultDouble2;
@@ -2993,7 +3239,7 @@ function ddDifferentiate(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/error-analysis/gamma.ts
+;// ./src/error-analysis/gamma.ts
 const u = Number.EPSILON / 2;
 const uu = u * u;
 /**
@@ -3029,7 +3275,7 @@ function γγ(n) {
 }
 
 
-;// CONCATENATED MODULE: ./src/calculus/double-double/dd-differentiate-with-err.ts
+;// ./src/calculus/double-double/dd-differentiate-with-err.ts
 
 
 
@@ -3072,7 +3318,7 @@ function ddDifferentiateWithError(pWithErr) {
 }
 
 
-;// CONCATENATED MODULE: ./node_modules/double-double/node/double-mixed-double-double/dd-div-double.js
+;// ./node_modules/double-double/node/double-mixed-double-double/dd-div-double.js
 /** @internal */
 const dd_div_double_f = 134217729; // 2**27 + 1;
 /**
@@ -3110,7 +3356,7 @@ function ddDivDouble(x, y) {
 }
 
 //# sourceMappingURL=dd-div-double.js.map
-;// CONCATENATED MODULE: ./src/calculus/double-double/dd-integrate.ts
+;// ./src/calculus/double-double/dd-integrate.ts
 
 /**
  * Returns the result of integrating the given polynomial in double-double
@@ -3140,7 +3386,7 @@ function ddIntegrate(p, c) {
 }
 
 
-;// CONCATENATED MODULE: ./src/calculus/expansion/e-differentiate.ts
+;// ./src/calculus/expansion/e-differentiate.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const e_differentiate_scaleExpansion = scaleExpansion;
@@ -3169,7 +3415,7 @@ function eDifferentiate(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/change-variables/bigint/b-change-variables-linear.ts
+;// ./src/change-variables/bigint/b-change-variables-linear.ts
 /**
  * Returns the result of performing a change of variables of the
  * form: p(x) <- p(ax + b).
@@ -3223,7 +3469,7 @@ function bChangeVariablesLinear(p, a, b) {
 }
 
 
-;// CONCATENATED MODULE: ./src/change-variables/bigint/b-change-variables-scale.ts
+;// ./src/change-variables/bigint/b-change-variables-scale.ts
 /**
  * Returns the result of performing a change of variables of the
  * form: p(x) <- p(ax).
@@ -3275,7 +3521,7 @@ function bChangeVariablesScale(p, a) {
 }
 
 
-;// CONCATENATED MODULE: ./src/change-variables/bigint/b-change-variables-translate-x.ts
+;// ./src/change-variables/bigint/b-change-variables-translate-x.ts
 /**
  * Returns the result of performing a change of variables of the
  * form: p(x) <- p(x + b).
@@ -3327,7 +3573,7 @@ function bChangeVariablesTranslateX(p, b) {
 }
 
 
-;// CONCATENATED MODULE: ./src/change-variables/bigint/b-reflect-about-y-axis.ts
+;// ./src/change-variables/bigint/b-reflect-about-y-axis.ts
 /**
  * Returns the result of reflecting the given polynomial about the Y-axis, i.e.
  * perform the change of variables: p(x) <- p(-x).
@@ -3358,7 +3604,7 @@ function bReflectAboutYAxis(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/change-variables/double/change-variables-linear.ts
+;// ./src/change-variables/double/change-variables-linear.ts
 /**
  * Returns the result of performing a change of variables of the
  * form: p(x) <- p(ax + b) in double precision.
@@ -3412,7 +3658,7 @@ function changeVariablesLinear(p, a, b) {
 }
 
 
-;// CONCATENATED MODULE: ./src/change-variables/double/change-variables-scale.ts
+;// ./src/change-variables/double/change-variables-scale.ts
 /**
  * Returns the result of performing a change of variables of the
  * form: p(x) <- p(ax) in double precision.
@@ -3464,7 +3710,7 @@ function changeVariablesScale(p, a) {
 }
 
 
-;// CONCATENATED MODULE: ./src/change-variables/double/change-variables-translate-x.ts
+;// ./src/change-variables/double/change-variables-translate-x.ts
 /**
  * Returns the result of performing a change of variables of the
  * form: p(x) <- p(x + b) in double precision.
@@ -3515,7 +3761,7 @@ function changeVariablesTranslateX(p, b) {
 }
 
 
-;// CONCATENATED MODULE: ./src/change-variables/double/reflect-about-y-axis.ts
+;// ./src/change-variables/double/reflect-about-y-axis.ts
 /**
  * Returns the result of reflecting the given polynomial about the Y-axis, i.e.
  * perform the change of variables: p(x) <- p(-x).
@@ -3546,7 +3792,7 @@ function reflectAboutYAxis(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/change-variables/expansion/e-change-variables-linear.ts
+;// ./src/change-variables/expansion/e-change-variables-linear.ts
 
 
 
@@ -3607,7 +3853,7 @@ function eChangeVariablesLinear(p, a, b) {
 }
 
 
-;// CONCATENATED MODULE: ./src/change-variables/expansion/e-change-variables-scale.ts
+;// ./src/change-variables/expansion/e-change-variables-scale.ts
 
 
 
@@ -3666,7 +3912,7 @@ function eChangeVariablesScale(p, a) {
 }
 
 
-;// CONCATENATED MODULE: ./src/change-variables/expansion/e-change-variables-translate-x.ts
+;// ./src/change-variables/expansion/e-change-variables-translate-x.ts
 
 
 
@@ -3721,7 +3967,7 @@ function eChangeVariablesTranslateX(p, b) {
 }
 
 
-;// CONCATENATED MODULE: ./src/change-variables/expansion/e-reflect-about-y-axis.ts
+;// ./src/change-variables/expansion/e-reflect-about-y-axis.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const e_reflect_about_y_axis_eNegativeOf = eNegativeOf;
@@ -3754,7 +4000,7 @@ function eReflectAboutYAxis(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/evaluate/double/vec-sum.ts
+;// ./src/evaluate/double/vec-sum.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const vec_sum_twoSum = two_sum_twoSum;
@@ -3777,7 +4023,7 @@ function vecSum(p_) {
 }
 
 
-;// CONCATENATED MODULE: ./src/evaluate/double/sum-k.ts
+;// ./src/evaluate/double/sum-k.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const sum_k_vecSum = vecSum;
@@ -3803,7 +4049,7 @@ function SumK(p, K) {
 }
 
 
-;// CONCATENATED MODULE: ./src/evaluate/double/eft-horner.ts
+;// ./src/evaluate/double/eft-horner.ts
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -3847,7 +4093,7 @@ function EFTHorner(p, x) {
 //const pπ: number[] = []; const pσ: number[] = []; const σ: number; const r̂ = p[0];	for (const i=1; i<p.length; i++) { const [π,pi] = twoProduct(r̂,x); [σ,r̂] = twoSum(pi, p[i]); pπ.push(π); pσ.push(σ); } return { r̂, pπ, pσ }
 
 
-;// CONCATENATED MODULE: ./src/evaluate/double/eft-horner-k.ts
+;// ./src/evaluate/double/eft-horner-k.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const eft_horner_k_EFTHorner = EFTHorner;
@@ -3872,7 +4118,7 @@ function EFTHornerK(p, x, K) {
 }
 
 
-;// CONCATENATED MODULE: ./src/evaluate/double/horner.ts
+;// ./src/evaluate/double/horner.ts
 /**
  * Returns the result of evaluating a univariate polynomial using
  * Horner's method in double precision floating point arithmetic.
@@ -3897,7 +4143,7 @@ function Horner(p, x) {
 //let E = p0[0]; for (let i=1; i<p0.length; i++) {E = E*x + p0[i]; }
 
 
-;// CONCATENATED MODULE: ./src/evaluate/double/comp-horner-k.ts
+;// ./src/evaluate/double/comp-horner-k.ts
 
 
 
@@ -3940,7 +4186,7 @@ function CompHornerK(p, x, K) {
 }
 
 
-;// CONCATENATED MODULE: ./src/error-analysis/condition-number.ts
+;// ./src/error-analysis/condition-number.ts
 
 
 /**
@@ -3965,7 +4211,7 @@ function conditionNumber(p, x) {
 }
 
 
-;// CONCATENATED MODULE: ./src/euclidean-division-related/bigint/b-elevate-degree.ts
+;// ./src/euclidean-division-related/bigint/b-elevate-degree.ts
 /**
  * Returns the result of elevating the given polynomial by the given degree.
  *
@@ -3983,7 +4229,7 @@ function bElevateDegree(p, deg) {
 }
 
 
-;// CONCATENATED MODULE: ./src/euclidean-division-related/bigint/b-pdiv-internal.ts
+;// ./src/euclidean-division-related/bigint/b-pdiv-internal.ts
 
 
 
@@ -4038,7 +4284,7 @@ function bPdivInternal(a, b) {
 }
 
 
-;// CONCATENATED MODULE: ./src/euclidean-division-related/bigint/b-pdiv-trivial.ts
+;// ./src/euclidean-division-related/bigint/b-pdiv-trivial.ts
 
 
 
@@ -4090,7 +4336,7 @@ function bPdivTrivial(a, b, positiveMultiplier = false) {
 }
 
 
-;// CONCATENATED MODULE: ./src/factor/bigint/b-content.ts
+;// ./src/factor/bigint/b-content.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const b_content_bGcdInts = bGcdInts;
@@ -4124,7 +4370,7 @@ function bContent(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/factor/bigint/b-primitive-part.ts
+;// ./src/factor/bigint/b-primitive-part.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const b_primitive_part_bContent = bContent;
@@ -4154,7 +4400,7 @@ function bPrimitivePart(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/euclidean-division-related/bigint/b-prem-sequence-primitive.ts
+;// ./src/euclidean-division-related/bigint/b-prem-sequence-primitive.ts
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -4194,7 +4440,7 @@ function bPremSequencePrimitive(f, g) {
 }
 
 
-;// CONCATENATED MODULE: ./src/euclidean-division-related/bigint/b-prem-sequence-subresultant.ts
+;// ./src/euclidean-division-related/bigint/b-prem-sequence-subresultant.ts
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -4253,7 +4499,7 @@ function bPremSequenceSubresultant(f, g, sturm = false) {
 }
 
 
-;// CONCATENATED MODULE: ./src/euclidean-division-related/bigint/b-prem-sequence-trivial.ts
+;// ./src/euclidean-division-related/bigint/b-prem-sequence-trivial.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const b_prem_sequence_trivial_bPdivTrivial = bPdivTrivial;
@@ -4293,7 +4539,7 @@ function bPremSequenceTrivial(f, g) {
 }
 
 
-;// CONCATENATED MODULE: ./src/euclidean-division-related/bigint/b-sturm-chain.ts
+;// ./src/euclidean-division-related/bigint/b-sturm-chain.ts
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -4322,7 +4568,7 @@ function bSturmChain(p) {
 }
 
 
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-expansion/e-product.js
+;// ./node_modules/big-float-ts/node/double-expansion/e-product.js
 
 
 
@@ -4367,7 +4613,7 @@ function e_product_eProduct(term) {
 }
 
 //# sourceMappingURL=e-product.js.map
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-expansion/e-int-pow.js
+;// ./node_modules/big-float-ts/node/double-expansion/e-int-pow.js
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
@@ -4398,7 +4644,7 @@ function eIntPow(a, p) {
 }
 
 //# sourceMappingURL=e-int-pow.js.map
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-representation/msb-exponent.js
+;// ./node_modules/big-float-ts/node/double-representation/msb-exponent.js
 
 
 /**
@@ -4416,7 +4662,7 @@ function msbExponent(a) {
 }
 
 //# sourceMappingURL=msb-exponent.js.map
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/basic/reduce-significand.js
+;// ./node_modules/big-float-ts/node/basic/reduce-significand.js
 /**
  * Truncates a floating point value's significand and returns the result.
  * Similar to split, but with the ability to specify the number of bits to keep.
@@ -4441,7 +4687,7 @@ function reduceSignificand(a, bits) {
 }
 
 //# sourceMappingURL=reduce-significand.js.map
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-expansion/e-to-bitlength.js
+;// ./node_modules/big-float-ts/node/double-expansion/e-to-bitlength.js
 
 
 
@@ -4481,7 +4727,7 @@ function eToBitlength(a, l) {
 }
 
 //# sourceMappingURL=e-to-bitlength.js.map
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-expansion/e-div.js
+;// ./node_modules/big-float-ts/node/double-expansion/e-div.js
 
 
 
@@ -4554,7 +4800,7 @@ function eDiv(N, D, expansionLength) {
 }
 
 //# sourceMappingURL=e-div.js.map
-;// CONCATENATED MODULE: ./src/euclidean-division-related/expansion/e-elevate-degree.ts
+;// ./src/euclidean-division-related/expansion/e-elevate-degree.ts
 /**
  * Returns the result of elevating the given polynomial by the given degree.
  *
@@ -4572,7 +4818,7 @@ function eElevateDegree(p, deg) {
 }
 
 
-;// CONCATENATED MODULE: ./src/euclidean-division-related/expansion/e-pdiv-internal.ts
+;// ./src/euclidean-division-related/expansion/e-pdiv-internal.ts
 
 
 
@@ -4628,7 +4874,7 @@ function ePdivInternal(a, b) {
 }
 
 
-;// CONCATENATED MODULE: ./src/euclidean-division-related/expansion/e-pdiv-trivial.ts
+;// ./src/euclidean-division-related/expansion/e-pdiv-trivial.ts
 
 
 
@@ -4693,7 +4939,7 @@ function ePdivTrivial(a, b, positiveMultiplier = false) {
 }
 
 
-;// CONCATENATED MODULE: ./src/euclidean-division-related/expansion/e-prem-sequence-subresultant.ts
+;// ./src/euclidean-division-related/expansion/e-prem-sequence-subresultant.ts
 
 
 
@@ -4774,7 +5020,7 @@ function ePremSequenceSubresultant(f, g, sturm = false) {
 }
 
 
-;// CONCATENATED MODULE: ./src/euclidean-division-related/double/prem-sequence-subresultant.ts
+;// ./src/euclidean-division-related/double/prem-sequence-subresultant.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const prem_sequence_subresultant_ePremSequenceSubresultant = ePremSequenceSubresultant;
@@ -4806,7 +5052,7 @@ function premSequenceSubresultant(f, g, sturm = false) {
 }
 
 
-;// CONCATENATED MODULE: ./src/euclidean-division-related/double/sturm-chain.ts
+;// ./src/euclidean-division-related/double/sturm-chain.ts
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -4844,7 +5090,7 @@ function sturmChain(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/factor/expansion/e-content.ts
+;// ./src/factor/expansion/e-content.ts
 
 
 
@@ -4879,7 +5125,7 @@ function eContent(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/factor/expansion/e-primitive-part.ts
+;// ./src/factor/expansion/e-primitive-part.ts
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -4911,7 +5157,7 @@ function ePrimitivePart(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/euclidean-division-related/expansion/e-prem-sequence-primitive.ts
+;// ./src/euclidean-division-related/expansion/e-prem-sequence-primitive.ts
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -4951,7 +5197,7 @@ function ePremSequencePrimitive(f, g) {
 }
 
 
-;// CONCATENATED MODULE: ./src/euclidean-division-related/expansion/e-sturm-chain.ts
+;// ./src/euclidean-division-related/expansion/e-sturm-chain.ts
 
 
 
@@ -4983,7 +5229,7 @@ function eSturmChain(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/evaluate/bigint/b-horner.ts
+;// ./src/evaluate/bigint/b-horner.ts
 /**
  * Returns the result of evaluating (at an integer value) a univariate
  * polynomial with bigint coefficients using Horner's method.
@@ -5006,7 +5252,7 @@ function bHorner(p, x) {
 }
 
 
-;// CONCATENATED MODULE: ./src/evaluate/bigint/b-evaluate-at-0.ts
+;// ./src/evaluate/bigint/b-evaluate-at-0.ts
 /**
  * Returns the constant term of the given polynomial.
  *
@@ -5026,7 +5272,7 @@ function bEvaluateAt0(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/evaluate/bigint/b-evaluate-at-1.ts
+;// ./src/evaluate/bigint/b-evaluate-at-1.ts
 /**
  * Returns the exact result of evaluating the given polynomial at 1.
  *
@@ -5047,7 +5293,7 @@ function bEvaluateAt1(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/evaluate/double/abs-horner.ts
+;// ./src/evaluate/double/abs-horner.ts
 const abs_horner_abs = Math.abs;
 /**
  * Returns the result of evaluating a univariate polynomial using
@@ -5073,7 +5319,7 @@ function AbsHorner(p, x) {
 //let e2 = abs(p0[0]); for (let i=1; i<p0.length; i++) { e2 = e2*x + abs(p0[i]); }
 
 
-;// CONCATENATED MODULE: ./src/evaluate/double/horner-sum.ts
+;// ./src/evaluate/double/horner-sum.ts
 /**
  * * helper function
  *
@@ -5091,7 +5337,7 @@ function HornerSum(p1, p2, a) {
 }
 
 
-;// CONCATENATED MODULE: ./src/evaluate/double/comp-horner.ts
+;// ./src/evaluate/double/comp-horner.ts
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -5123,7 +5369,7 @@ function compHorner(p, x) {
 }
 
 
-;// CONCATENATED MODULE: ./src/evaluate/double/horner-abs-sum.ts
+;// ./src/evaluate/double/horner-abs-sum.ts
 /**
  * @param p1
  * @param p2
@@ -5140,7 +5386,7 @@ function HornerAbsSum(p1, p2, x) {
 }
 
 
-;// CONCATENATED MODULE: ./src/evaluate/double/gammas.ts
+;// ./src/evaluate/double/gammas.ts
 const gammas_u = Number.EPSILON / 2;
 // cache standard error bound units
 const _γs = [];
@@ -5150,7 +5396,7 @@ function γs(n) {
 }
 
 
-;// CONCATENATED MODULE: ./src/evaluate/double/comp-horner-is-faithful.ts
+;// ./src/evaluate/double/comp-horner-is-faithful.ts
 
 
 
@@ -5199,7 +5445,7 @@ function compHornerIsFaithful(p, x) {
 }
 
 
-;// CONCATENATED MODULE: ./src/evaluate/double/comp-horner-with-running-error.ts
+;// ./src/evaluate/double/comp-horner-with-running-error.ts
 
 
 
@@ -5249,7 +5495,7 @@ function compHornerWithRunningError(p, x) {
 }
 
 
-;// CONCATENATED MODULE: ./src/evaluate/double/horner-with-running-error.ts
+;// ./src/evaluate/double/horner-with-running-error.ts
 const horner_with_running_error_abs = Math.abs;
 const horner_with_running_error_u = Number.EPSILON / 2;
 /**
@@ -5280,7 +5526,7 @@ function hornerWithRunningError(p, x) {
 //let r = p0[0]; let e1 = Math.abs(r) / 2; for (let i=1; i<p0.length; i++) { r = r*x + p0[i]; e1 = Math.abs(x)*e1 + Math.abs(r); } e1 = Number.EPSILON * (2*e1 - Math.abs(r));
 
 
-;// CONCATENATED MODULE: ./src/evaluate/double/eval-certified.ts
+;// ./src/evaluate/double/eval-certified.ts
 
 
 
@@ -5376,7 +5622,7 @@ function evalCertified(p, x, pE = undefined, multiplier = 1) {
 }
 
 
-;// CONCATENATED MODULE: ./src/evaluate/double/eval-certified-incl-error.ts
+;// ./src/evaluate/double/eval-certified-incl-error.ts
 
 
 
@@ -5465,7 +5711,7 @@ function evalCertifiedInclError(p, x, pE = undefined, multiplier = 1) {
 }
 
 
-;// CONCATENATED MODULE: ./src/evaluate/double/eval-k.ts
+;// ./src/evaluate/double/eval-k.ts
 
 
 
@@ -5518,7 +5764,7 @@ function evalK4(p, x) {
 }
 
 
-;// CONCATENATED MODULE: ./src/evaluate/double/evaluate-at-0.ts
+;// ./src/evaluate/double/evaluate-at-0.ts
 /**
  * Returns the constant term of the given polynomial.
  *
@@ -5538,7 +5784,7 @@ function evaluateAt0(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/evaluate/double/evaluate-at-1.ts
+;// ./src/evaluate/double/evaluate-at-1.ts
 /**
  * Returns the result of evaluating the given polynomial at 1 using double
  * precision for intermediate calculations.
@@ -5560,7 +5806,7 @@ function evaluateAt1(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/evaluate/expansion/e-e-horner.ts
+;// ./src/evaluate/expansion/e-e-horner.ts
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -5587,7 +5833,7 @@ function eeHorner(p, x) {
 }
 
 
-;// CONCATENATED MODULE: ./src/evaluate/expansion/e-evaluate-at-0.ts
+;// ./src/evaluate/expansion/e-evaluate-at-0.ts
 /**
  * Returns the constant term of the given polynomial.
  *
@@ -5607,7 +5853,7 @@ function eEvaluateAt0(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/evaluate/expansion/e-evaluate-at-1.ts
+;// ./src/evaluate/expansion/e-evaluate-at-1.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const e_evaluate_at_1_fastExpansionSum = fastExpansionSum;
@@ -5632,7 +5878,7 @@ function eEvaluateAt1(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/evaluate/expansion/e-horner.ts
+;// ./src/evaluate/expansion/e-horner.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const fes = fastExpansionSum;
@@ -5659,49 +5905,10 @@ function eHorner(p, x) {
 }
 
 
-;// CONCATENATED MODULE: ./node_modules/double-double/node/double-double/binary/dd-add-dd.js
-/**
- * Returns the result of adding two double-double-precision floating point
- * numbers.
- *
- * * relative error bound: 3u^2 + 13u^3, i.e. fl(a+b) = (a+b)(1+ϵ),
- * where ϵ <= 3u^2 + 13u^3, u = 0.5 * Number.EPSILON
- * * the error bound is not sharp - the worst case that could be found by the
- * authors were 2.25u^2
- *
- * ALGORITHM 6 of https://hal.archives-ouvertes.fr/hal-01351529v3/document
- * @param x a double-double precision floating point number
- * @param y another double-double precision floating point number
- */
-function ddAddDd(x, y) {
-    const xl = x[0];
-    const xh = x[1];
-    const yl = y[0];
-    const yh = y[1];
-    //const [sl,sh] = twoSum(xh,yh);
-    const sh = xh + yh;
-    const _1 = sh - xh;
-    const sl = (xh - (sh - _1)) + (yh - _1);
-    //const [tl,th] = twoSum(xl,yl);
-    const th = xl + yl;
-    const _2 = th - xl;
-    const tl = (xl - (th - _2)) + (yl - _2);
-    const c = sl + th;
-    //const [vl,vh] = fastTwoSum(sh,c)
-    const vh = sh + c;
-    const vl = c - (vh - sh);
-    const w = tl + vl;
-    //const [zl,zh] = fastTwoSum(vh,w)
-    const zh = vh + w;
-    const zl = w - (zh - vh);
-    return [zl, zh];
-}
-
-//# sourceMappingURL=dd-add-dd.js.map
-;// CONCATENATED MODULE: ./src/evaluate/double-double/dd-horner.ts
+;// ./src/evaluate/double-double/dd-horner.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const qaq = ddAddDd;
+const dd_horner_qaq = ddAddDd;
 const qmd = ddMultDouble2;
 /**
  * Returns the exact result (bar underflow / overflow) of evaluating a
@@ -5719,14 +5926,15 @@ function ddHorner(p, x) {
     let q = [0, 0];
     for (let i = 0; i < p.length; i++) {
         // q = p[i] + x*q;
-        q = qaq(p[i], qmd(x, q));
+        q = dd_horner_qaq(p[i], qmd(x, q));
     }
     return q;
 }
-ddHorner([[0, 1], [0, 1], [0, -2], [0, 3]], 0.25); //?
 
+// Quokka tests
+// ddHorner([[0,1],[0,1],[0,-2],[0,3]], 0.25); //?
 
-;// CONCATENATED MODULE: ./src/factor/double/content.ts
+;// ./src/factor/double/content.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const content_gcdInts = gcdInts;
@@ -5759,7 +5967,7 @@ function content(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/factor/double/primitive-part.ts
+;// ./src/factor/double/primitive-part.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const getContent = content;
@@ -5791,7 +5999,7 @@ function primitivePart(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/gcd/bigint/b-gcd-prs.ts
+;// ./src/gcd/bigint/b-gcd-prs.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const b_gcd_prs_bPremSequenceSubresultant = bPremSequenceSubresultant;
@@ -5825,7 +6033,7 @@ function bGcdPrs(a, b) {
 }
 
 
-;// CONCATENATED MODULE: ./src/norm/bigint/b-p-1-norm.ts
+;// ./src/norm/bigint/b-p-1-norm.ts
 /**
  * Returns the `p-1 norm`, a.k.a. `Taxicab norm`, i.e. the sum of the absolute
  * values of the given array of bigints.
@@ -5847,7 +6055,7 @@ function bP1Norm(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/norm/bigint/b-p-2-norm-squared.ts
+;// ./src/norm/bigint/b-p-2-norm-squared.ts
 /**
  * Returns the `p-2 norm` squared, i.e. the square of the `Euclidean norm` of
  * the given array of bigints.
@@ -5866,7 +6074,7 @@ function bP2NormSquared(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/norm/bigint/b-p-inf-norm.ts
+;// ./src/norm/bigint/b-p-inf-norm.ts
 /**
  * Returns the `p-infinity norm`, i.e. the maximum magnitude absolute value
  * within the given array of bigints / coefficients.
@@ -5889,7 +6097,7 @@ function bPInfNorm(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/norm/double/p-1-norm.ts
+;// ./src/norm/double/p-1-norm.ts
 /**
  * Returns the `p-1 norm`, a.k.a. `Taxicab norm`, i.e. the sum of the absolute
  * values of the given array of numbers (with intermediate calculations done
@@ -5911,7 +6119,7 @@ function p1Norm(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/norm/double/p-2-norm.ts
+;// ./src/norm/double/p-2-norm.ts
 /**
  * Returns the `p-2 norm`, i.e. `Euclidean norm` of the given array of numbers
  * (with intermediate calculations done in double precision).
@@ -5930,7 +6138,7 @@ function p2Norm(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/norm/double/p-inf-norm.ts
+;// ./src/norm/double/p-inf-norm.ts
 /**
  * Returns the `p-infinity norm`, i.e. the maximum magnitude absolute value
  * within the given array of numbers / coefficients (with intermediate
@@ -5953,7 +6161,7 @@ function pInfNorm(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/norm/expansion/e-p-1-norm.ts
+;// ./src/norm/expansion/e-p-1-norm.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const e_p_1_norm_eEstimate = eEstimate;
@@ -5978,7 +6186,7 @@ function eP1Norm(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/norm/expansion/e-p-2-norm.ts
+;// ./src/norm/expansion/e-p-2-norm.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const e_p_2_norm_eEstimate = eEstimate;
@@ -6001,7 +6209,7 @@ function eP2Norm(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/norm/expansion/e-p-inf-norm.ts
+;// ./src/norm/expansion/e-p-inf-norm.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const e_p_inf_norm_eEstimate = eEstimate;
@@ -6027,7 +6235,7 @@ function ePInfNorm(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/from-roots/double/from-roots.ts
+;// ./src/roots/from-roots/double/from-roots.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const from_roots_multiply = multiply;
@@ -6067,7 +6275,7 @@ function fromRoots(roots) {
 }
 
 
-;// CONCATENATED MODULE: ./src/predictive-random/double/random.ts
+;// ./src/predictive-random/double/random.ts
 
 /**
  * Arbitrary seed value for the simple random number generator.
@@ -6279,7 +6487,7 @@ function flatCoefficients(d, a = -1, b = +1, seed = SEED) {
 }
 
 
-;// CONCATENATED MODULE: ./src/scale-to-int/scale-floats-to-bigints.ts
+;// ./src/scale-to-int/scale-floats-to-bigints.ts
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -6328,7 +6536,7 @@ function scaleFloatsToBigints(as) {
 }
 
 
-;// CONCATENATED MODULE: ./src/predictive-random/bigint/b-random.ts
+;// ./src/predictive-random/bigint/b-random.ts
 
 
 /**
@@ -6429,7 +6637,7 @@ function bFlatCoefficientsArr(n, d, a = 0, b = 1, seed = b_random_SEED, odds = 0
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/certified/transpose-poly.ts
+;// ./src/roots/certified/transpose-poly.ts
 /**
  * Transposes the given polynomial (given with multi-precision coefficients)
  * into multiple polynomials with each consecutive polynomial 'adjusting'
@@ -6454,7 +6662,7 @@ function transposePoly(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/certified/eval-adaptive.ts
+;// ./src/roots/certified/eval-adaptive.ts
 
 
 
@@ -6494,7 +6702,7 @@ function evalAdaptive(p, pE, x, getPolyExact) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/certified/refine-certified.ts
+;// ./src/roots/certified/refine-certified.ts
 
 
 
@@ -6686,7 +6894,7 @@ function refineCertified(p, pE, lb, ub, fa, fb, getPolyExact, exact) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/root-bounds/upper-to-lower-bound.ts
+;// ./src/roots/root-bounds/upper-to-lower-bound.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const upper_to_lower_bound_invert = invert;
@@ -6705,7 +6913,7 @@ function upperToLowerBound(positiveUpperBoundFunction) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/root-bounds/positive-to-negative-bound.ts
+;// ./src/roots/root-bounds/positive-to-negative-bound.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const positive_to_negative_bound_reflectAboutYAxis = reflectAboutYAxis;
@@ -6724,7 +6932,7 @@ function positiveToNegativeBound(positiveBoundFunction) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/root-bounds/root-bounds-lmq.ts
+;// ./src/roots/root-bounds/root-bounds-lmq.ts
 
 
 
@@ -6829,7 +7037,7 @@ const negativeRootLowerBound_LMQ = root_bounds_lmq_positiveToNegativeBound(posit
 const negativeRootUpperBound_LMQ = root_bounds_lmq_upperToLowerBound(negativeRootLowerBound_LMQ);
 
 
-;// CONCATENATED MODULE: ./src/roots/certified/all-roots-certified.ts
+;// ./src/roots/certified/all-roots-certified.ts
 
 
 
@@ -7273,14 +7481,14 @@ function joinRoots(rs) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/certified/all-roots-certified-simplified.ts
+;// ./src/roots/certified/all-roots-certified-simplified.ts
 
 function allRootsCertifiedSimplified(p, lb = Number.NEGATIVE_INFINITY, ub = Number.POSITIVE_INFINITY, returnUndefinedForZeroPoly) {
     return allRootsCertified(p.map(c => [0, c]), lb, ub, undefined, undefined, returnUndefinedForZeroPoly);
 }
 
 
-;// CONCATENATED MODULE: ./node_modules/big-float-ts/node/double-expansion/e-to-double-double.js
+;// ./node_modules/big-float-ts/node/double-expansion/e-to-double-double.js
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
 const e_to_double_double_compress = e_compress_eCompress;
@@ -7301,7 +7509,7 @@ function eToDd(e) {
 }
 
 //# sourceMappingURL=e-to-double-double.js.map
-;// CONCATENATED MODULE: ./src/roots/certified/refine-k1.ts
+;// ./src/roots/certified/refine-k1.ts
 
 
 
@@ -7363,7 +7571,7 @@ function refineK1(ri, p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/certified/root-interval.ts
+;// ./src/roots/certified/root-interval.ts
 /**
  * Simple function that creates and returns an exact root (with a bracketing
  * interval width of 0 and multiplicity 1)
@@ -7388,7 +7596,7 @@ function mid(ri) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/certified/root-interval-to-exp.ts
+;// ./src/roots/certified/root-interval-to-exp.ts
 /**
  * Returns the result of converting a double precision root interval to a
  * double-double precision one
@@ -7406,7 +7614,7 @@ function rootIntervalToExp(ri) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/descartes/bigint/b-sign-changes.ts
+;// ./src/roots/descartes/bigint/b-sign-changes.ts
 /**
  * Returns the number of sign changes in the polynomial coefficents when
  * ordered in descending order; zeros are ignored.
@@ -7446,7 +7654,7 @@ function bSignChanges(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/descartes/bigint/b-num-roots.ts
+;// ./src/roots/descartes/bigint/b-num-roots.ts
 
 
 
@@ -7482,7 +7690,7 @@ function bNumRoots(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/descartes/bigint/b-num-roots-0-1.ts
+;// ./src/roots/descartes/bigint/b-num-roots-0-1.ts
 
 
 
@@ -7508,7 +7716,7 @@ function bNumRootsIn01(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/descartes/bigint/b-num-roots-in-range.ts
+;// ./src/roots/descartes/bigint/b-num-roots-in-range.ts
 
 
 
@@ -7545,7 +7753,7 @@ function bNumRootsInRange(p, a, b) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/descartes/double/sign-changes.ts
+;// ./src/roots/descartes/double/sign-changes.ts
 /**
  * Returns the number of sign changes in the polynomial coefficents when
  * ordered in descending order; zeros are ignored.
@@ -7585,7 +7793,7 @@ function signChanges(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/descartes/double/num-roots.ts
+;// ./src/roots/descartes/double/num-roots.ts
 
 
 
@@ -7625,7 +7833,7 @@ function numRoots(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/descartes/double/num-roots-in-0-1.ts
+;// ./src/roots/descartes/double/num-roots-in-0-1.ts
 
 
 
@@ -7655,7 +7863,7 @@ function numRootsIn01(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/descartes/expansion/e-sign-changes.ts
+;// ./src/roots/descartes/expansion/e-sign-changes.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const e_sign_changes_eSign = eSign;
@@ -7711,7 +7919,7 @@ function eSignChanges(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/descartes/double/num-roots-in-range.ts
+;// ./src/roots/descartes/double/num-roots-in-range.ts
 
 
 
@@ -7749,7 +7957,7 @@ function numRootsInRange(p, a, b) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/descartes/expansion/e-num-roots.ts
+;// ./src/roots/descartes/expansion/e-num-roots.ts
 
 
 
@@ -7788,7 +7996,7 @@ function eNumRoots(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/descartes/expansion/e-num-roots-0-1.ts
+;// ./src/roots/descartes/expansion/e-num-roots-0-1.ts
 
 
 
@@ -7817,7 +8025,7 @@ function eNumRootsIn01(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/descartes/expansion/e-num-roots-in-range.ts
+;// ./src/roots/descartes/expansion/e-num-roots-in-range.ts
 
 
 
@@ -7859,7 +8067,7 @@ function eNumRootsInRange(p, a, b) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/from-roots/bigint/b-from-roots.ts
+;// ./src/roots/from-roots/bigint/b-from-roots.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const b_from_roots_bMultiply = bMultiply;
@@ -7887,7 +8095,7 @@ function bFromRoots(roots) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/from-roots/expansion/e-from-roots.ts
+;// ./src/roots/from-roots/expansion/e-from-roots.ts
 
 
 
@@ -7923,7 +8131,7 @@ function eFromRoots(roots) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/naive/brent-poly.ts
+;// ./src/roots/naive/brent-poly.ts
 
 const brent_poly_Horner = Horner;
 const brent_poly_eps = Number.EPSILON;
@@ -8069,7 +8277,7 @@ function brentPoly(p, lb, ub, fa = brent_poly_Horner(p, lb), fb = brent_poly_Hor
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/naive/all-roots.ts
+;// ./src/roots/naive/all-roots.ts
 
 
 
@@ -8218,7 +8426,7 @@ function allRoots(p, lb = Number.NEGATIVE_INFINITY, ub = Number.POSITIVE_INFINIT
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/naive/bisection.ts
+;// ./src/roots/naive/bisection.ts
 const bisection_abs = Math.abs;
 const bisection_max = Math.max;
 /**
@@ -8295,7 +8503,7 @@ function bisection(f, a, b) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/naive/brent.ts
+;// ./src/roots/naive/brent.ts
 const brent_eps = Number.EPSILON;
 const brent_abs = Math.abs;
 const brent_max = Math.max;
@@ -8433,7 +8641,7 @@ function brent(f, lb, ub) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/naive/dd-deflate.ts
+;// ./src/roots/naive/dd-deflate.ts
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -8474,7 +8682,7 @@ function ddDeflate(p, root) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/certified/dd-deflate-with-running-error.ts
+;// ./src/roots/certified/dd-deflate-with-running-error.ts
 
 
 
@@ -8536,7 +8744,7 @@ function ddDeflateWithRunningError(p, pE, t) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/naive/deflate.ts
+;// ./src/roots/naive/deflate.ts
 /**
  * Deflates the given polynomial *approximately* by removing a factor (x - r),
  * where r is a root of the polynomial.
@@ -8570,7 +8778,7 @@ function deflate(p, root) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/naive/e-deflate.ts
+;// ./src/roots/naive/e-deflate.ts
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -8598,7 +8806,7 @@ function eDeflate(p, t) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/naive/quadratic-roots.ts
+;// ./src/roots/naive/quadratic-roots.ts
 /**
  * Floating-point-stably calculates and returns the ordered quadratic roots of
  * the given quadratic polynomial.
@@ -8646,7 +8854,7 @@ function quadraticRoots(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/root-bounds/root-magnitude-upper-bound-fujiwara.ts
+;// ./src/roots/root-bounds/root-magnitude-upper-bound-fujiwara.ts
 /**
  * Returns an upper bound on the magnitude (absolute value) of the complex
  * roots of the given polynomial using the near-optimal Fujiwara bound.
@@ -8683,7 +8891,7 @@ function rootMagnitudeUpperBound_fujiwara(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/roots/root-bounds/root-magnitude-upper-bound-rouche.ts
+;// ./src/roots/root-bounds/root-magnitude-upper-bound-rouche.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
 const root_magnitude_upper_bound_rouche_pInfNorm = pInfNorm;
@@ -8708,7 +8916,7 @@ function rootMagnitudeUpperBound_rouche(p) {
 }
 
 
-;// CONCATENATED MODULE: ./src/scale-to-int/scale-float-to-int.ts
+;// ./src/scale-to-int/scale-float-to-int.ts
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -8733,7 +8941,7 @@ function scaleFloatToInt(a) {
 }
 
 
-;// CONCATENATED MODULE: ./src/scale-to-int/scale-float-to-bigint.ts
+;// ./src/scale-to-int/scale-float-to-bigint.ts
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -8756,7 +8964,7 @@ function scaleFloatToBigint(a) {
 }
 
 
-;// CONCATENATED MODULE: ./src/scale-to-int/scale-floatss-to-bigintss.ts
+;// ./src/scale-to-int/scale-floatss-to-bigintss.ts
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
@@ -8809,7 +9017,7 @@ function scaleFloatssToBigintss(ass) {
 }
 
 
-;// CONCATENATED MODULE: ./src/index.ts
+;// ./src/index.ts
 // basic
 
 // basic bigint
@@ -8829,6 +9037,16 @@ function scaleFloatssToBigintss(ass) {
 
 
 
+
+
+
+
+
+
+
+
+
+// basic double-double
 
 
 
@@ -9016,170 +9234,4 @@ function scaleFloatssToBigintss(ass) {
 
 
 
-var __webpack_exports__AbsHorner = __webpack_exports__.j1;
-var __webpack_exports__CompHornerK = __webpack_exports__.tw;
-var __webpack_exports__EFTHorner = __webpack_exports__.MT;
-var __webpack_exports__Horner = __webpack_exports__.xf;
-var __webpack_exports__absCoeff = __webpack_exports__.WU;
-var __webpack_exports__add = __webpack_exports__.WQ;
-var __webpack_exports__allRoots = __webpack_exports__.zr;
-var __webpack_exports__allRootsCertified = __webpack_exports__.qr;
-var __webpack_exports__allRootsCertifiedSimplified = __webpack_exports__.Yp;
-var __webpack_exports__bAbsCoeff = __webpack_exports__.CS;
-var __webpack_exports__bAdd = __webpack_exports__.KC;
-var __webpack_exports__bChangeVariablesLinear = __webpack_exports__.fs;
-var __webpack_exports__bChangeVariablesScale = __webpack_exports__.mw;
-var __webpack_exports__bChangeVariablesTranslateX = __webpack_exports__.Mp;
-var __webpack_exports__bContent = __webpack_exports__.oC;
-var __webpack_exports__bDegree = __webpack_exports__.dK;
-var __webpack_exports__bDifferentiate = __webpack_exports__.$Y;
-var __webpack_exports__bDivideByConst = __webpack_exports__.Id;
-var __webpack_exports__bEqual = __webpack_exports__.jM;
-var __webpack_exports__bEvaluateAt0 = __webpack_exports__.x;
-var __webpack_exports__bEvaluateAt1 = __webpack_exports__.EO;
-var __webpack_exports__bFlatCoefficients = __webpack_exports__.ao;
-var __webpack_exports__bFlatCoefficientsArr = __webpack_exports__.Fz;
-var __webpack_exports__bFlatRoots = __webpack_exports__.l$;
-var __webpack_exports__bFlatRootsArr = __webpack_exports__._T;
-var __webpack_exports__bFromRoots = __webpack_exports__.OD;
-var __webpack_exports__bGcdInt = __webpack_exports__.qj;
-var __webpack_exports__bGcdInts = __webpack_exports__.T6;
-var __webpack_exports__bGcdPrs = __webpack_exports__.a;
-var __webpack_exports__bHorner = __webpack_exports__.t7;
-var __webpack_exports__bInvert = __webpack_exports__.Tr;
-var __webpack_exports__bIsRationalMultipleOf = __webpack_exports__.gG;
-var __webpack_exports__bMultiply = __webpack_exports__.Tt;
-var __webpack_exports__bMultiplyByConst = __webpack_exports__.h1;
-var __webpack_exports__bNegate = __webpack_exports__.Rz;
-var __webpack_exports__bNumRoots = __webpack_exports__.eS;
-var __webpack_exports__bNumRootsIn01 = __webpack_exports__.Ed;
-var __webpack_exports__bNumRootsInRange = __webpack_exports__.WG;
-var __webpack_exports__bP1Norm = __webpack_exports__._m;
-var __webpack_exports__bP2NormSquared = __webpack_exports__.wQ;
-var __webpack_exports__bPInfNorm = __webpack_exports__.QT;
-var __webpack_exports__bPdivTrivial = __webpack_exports__.lt;
-var __webpack_exports__bPremSequencePrimitive = __webpack_exports__.dc;
-var __webpack_exports__bPremSequenceSubresultant = __webpack_exports__.m2;
-var __webpack_exports__bPremSequenceTrivial = __webpack_exports__.bH;
-var __webpack_exports__bPrimitivePart = __webpack_exports__.f8;
-var __webpack_exports__bReflectAboutYAxis = __webpack_exports__.dz;
-var __webpack_exports__bRemoveLeadingZeros = __webpack_exports__.gz;
-var __webpack_exports__bSignChanges = __webpack_exports__.nZ;
-var __webpack_exports__bSturmChain = __webpack_exports__.TX;
-var __webpack_exports__bSubtract = __webpack_exports__.xc;
-var __webpack_exports__bisection = __webpack_exports__.Zr;
-var __webpack_exports__brent = __webpack_exports__.SJ;
-var __webpack_exports__brentPoly = __webpack_exports__.GM;
-var __webpack_exports__changeVariablesLinear = __webpack_exports__.ZD;
-var __webpack_exports__changeVariablesScale = __webpack_exports__.i8;
-var __webpack_exports__changeVariablesTranslateX = __webpack_exports__.WW;
-var __webpack_exports__compHorner = __webpack_exports__._8;
-var __webpack_exports__compHornerIsFaithful = __webpack_exports__.r4;
-var __webpack_exports__compHornerWithRunningError = __webpack_exports__.pp;
-var __webpack_exports__conditionNumber = __webpack_exports__.J9;
-var __webpack_exports__content = __webpack_exports__.Qs;
-var __webpack_exports__createRootExact = __webpack_exports__.ik;
-var __webpack_exports__ddDeflate = __webpack_exports__.c9;
-var __webpack_exports__ddDeflateWithRunningError = __webpack_exports__.dl;
-var __webpack_exports__ddDifferentiate = __webpack_exports__.Rj;
-var __webpack_exports__ddDifferentiateWithError = __webpack_exports__.JD;
-var __webpack_exports__ddHorner = __webpack_exports__.wI;
-var __webpack_exports__ddIntegrate = __webpack_exports__.lS;
-var __webpack_exports__deflate = __webpack_exports__.Kc;
-var __webpack_exports__degree = __webpack_exports__.No;
-var __webpack_exports__differentiate = __webpack_exports__.Lk;
-var __webpack_exports__divideByConst = __webpack_exports__.sB;
-var __webpack_exports__eAbsCoeff = __webpack_exports__.XP;
-var __webpack_exports__eAdd = __webpack_exports__.DI;
-var __webpack_exports__eChangeVariablesLinear = __webpack_exports__.io;
-var __webpack_exports__eChangeVariablesScale = __webpack_exports__.D7;
-var __webpack_exports__eChangeVariablesTranslateX = __webpack_exports__.hN;
-var __webpack_exports__eContent = __webpack_exports__.lg;
-var __webpack_exports__eDeflate = __webpack_exports__.D_;
-var __webpack_exports__eDegree = __webpack_exports__.s9;
-var __webpack_exports__eDifferentiate = __webpack_exports__.CY;
-var __webpack_exports__eEqual = __webpack_exports__.Ir;
-var __webpack_exports__eEvaluateAt0 = __webpack_exports__._B;
-var __webpack_exports__eEvaluateAt1 = __webpack_exports__.fV;
-var __webpack_exports__eFromRoots = __webpack_exports__.vL;
-var __webpack_exports__eGcdInt = __webpack_exports__.Bb;
-var __webpack_exports__eGcdInts = __webpack_exports__.p6;
-var __webpack_exports__eHorner = __webpack_exports__.o;
-var __webpack_exports__eInvert = __webpack_exports__.SG;
-var __webpack_exports__eIsConstOrZero = __webpack_exports__.SA;
-var __webpack_exports__eIsRationalMultipleOf = __webpack_exports__.Z3;
-var __webpack_exports__eIsUnit = __webpack_exports__.ip;
-var __webpack_exports__eMultiply = __webpack_exports__.cn;
-var __webpack_exports__eMultiplyByConst = __webpack_exports__.YR;
-var __webpack_exports__eNegate = __webpack_exports__.OP;
-var __webpack_exports__eNumRoots = __webpack_exports__.zx;
-var __webpack_exports__eNumRootsIn01 = __webpack_exports__.Bw;
-var __webpack_exports__eNumRootsInRange = __webpack_exports__.tF;
-var __webpack_exports__eP1Norm = __webpack_exports__.RO;
-var __webpack_exports__eP2Norm = __webpack_exports__.wd;
-var __webpack_exports__ePInfNorm = __webpack_exports__.Ns;
-var __webpack_exports__ePdivTrivial = __webpack_exports__.sv;
-var __webpack_exports__ePremSequencePrimitive = __webpack_exports__.wC;
-var __webpack_exports__ePremSequenceSubresultant = __webpack_exports__.f5;
-var __webpack_exports__ePrimitivePart = __webpack_exports__.An;
-var __webpack_exports__eProduct = __webpack_exports__.Ff;
-var __webpack_exports__eReflectAboutYAxis = __webpack_exports__.kR;
-var __webpack_exports__eRemoveLeadingZeros = __webpack_exports__.Fs;
-var __webpack_exports__eSignChanges = __webpack_exports__.aZ;
-var __webpack_exports__eSturmChain = __webpack_exports__.Ss;
-var __webpack_exports__eSubtract = __webpack_exports__.Su;
-var __webpack_exports__eeHorner = __webpack_exports__.xE;
-var __webpack_exports__equal = __webpack_exports__.LC;
-var __webpack_exports__evalCertified = __webpack_exports__.Uv;
-var __webpack_exports__evalCertifiedInclError = __webpack_exports__.oi;
-var __webpack_exports__evalK = __webpack_exports__.Uz;
-var __webpack_exports__evaluateAt0 = __webpack_exports__.d_;
-var __webpack_exports__evaluateAt1 = __webpack_exports__.kM;
-var __webpack_exports__flatCoefficients = __webpack_exports__.c7;
-var __webpack_exports__flatCoefficientsArr = __webpack_exports__.jQ;
-var __webpack_exports__flatRoots = __webpack_exports__.PI;
-var __webpack_exports__flatRootsArr = __webpack_exports__.mP;
-var __webpack_exports__fromRoots = __webpack_exports__.qb;
-var __webpack_exports__gcdInt = __webpack_exports__._Z;
-var __webpack_exports__gcdInts = __webpack_exports__.tX;
-var __webpack_exports__hornerWithRunningError = __webpack_exports__.OG;
-var __webpack_exports__integrate = __webpack_exports__.UZ;
-var __webpack_exports__invert = __webpack_exports__.B8;
-var __webpack_exports__isRationalMultipleOf = __webpack_exports__.cg;
-var __webpack_exports__mid = __webpack_exports__.jz;
-var __webpack_exports__multiply = __webpack_exports__.lw;
-var __webpack_exports__multiplyByConst = __webpack_exports__.RF;
-var __webpack_exports__negate = __webpack_exports__.ze;
-var __webpack_exports__negativeRootLowerBound_LMQ = __webpack_exports__.A3;
-var __webpack_exports__negativeRootUpperBound_LMQ = __webpack_exports__.hP;
-var __webpack_exports__numRoots = __webpack_exports__.yU;
-var __webpack_exports__numRootsIn01 = __webpack_exports__.S_;
-var __webpack_exports__numRootsInRange = __webpack_exports__.El;
-var __webpack_exports__p1Norm = __webpack_exports__.I3;
-var __webpack_exports__p2Norm = __webpack_exports__.bD;
-var __webpack_exports__pInfNorm = __webpack_exports__.iW;
-var __webpack_exports__positiveRootLowerBound_LMQ = __webpack_exports__.Bc;
-var __webpack_exports__positiveRootUpperBound_LMQ = __webpack_exports__.FL;
-var __webpack_exports__predictiveRandom = __webpack_exports__.fK;
-var __webpack_exports__premSequenceSubresultant = __webpack_exports__.ec;
-var __webpack_exports__primitivePart = __webpack_exports__.Rt;
-var __webpack_exports__quadraticRoots = __webpack_exports__._j;
-var __webpack_exports__refineK1 = __webpack_exports__.yO;
-var __webpack_exports__reflectAboutYAxis = __webpack_exports__.n6;
-var __webpack_exports__removeLeadingZeros = __webpack_exports__.wb;
-var __webpack_exports__rootIntervalToExp = __webpack_exports__.Pb;
-var __webpack_exports__rootMagnitudeUpperBound_fujiwara = __webpack_exports__.Bv;
-var __webpack_exports__rootMagnitudeUpperBound_rouche = __webpack_exports__.Wh;
-var __webpack_exports__scaleFloatToBigint = __webpack_exports__.jY;
-var __webpack_exports__scaleFloatToInt = __webpack_exports__.jJ;
-var __webpack_exports__scaleFloatsToBigints = __webpack_exports__.F4;
-var __webpack_exports__scaleFloatsToInts = __webpack_exports__.hy;
-var __webpack_exports__scaleFloatssToBigintss = __webpack_exports__.je;
-var __webpack_exports__scaleFloatssToIntss = __webpack_exports__.vv;
-var __webpack_exports__signChanges = __webpack_exports__.CW;
-var __webpack_exports__sturmChain = __webpack_exports__.fT;
-var __webpack_exports__subtract = __webpack_exports__.Re;
-var __webpack_exports__toCasStr = __webpack_exports__.ew;
-var __webpack_exports___ = __webpack_exports__.e7;
-var __webpack_exports___ = __webpack_exports__.ZH;
-export { __webpack_exports__AbsHorner as AbsHorner, __webpack_exports__CompHornerK as CompHornerK, __webpack_exports__EFTHorner as EFTHorner, __webpack_exports__Horner as Horner, __webpack_exports__absCoeff as absCoeff, __webpack_exports__add as add, __webpack_exports__allRoots as allRoots, __webpack_exports__allRootsCertified as allRootsCertified, __webpack_exports__allRootsCertifiedSimplified as allRootsCertifiedSimplified, __webpack_exports__bAbsCoeff as bAbsCoeff, __webpack_exports__bAdd as bAdd, __webpack_exports__bChangeVariablesLinear as bChangeVariablesLinear, __webpack_exports__bChangeVariablesScale as bChangeVariablesScale, __webpack_exports__bChangeVariablesTranslateX as bChangeVariablesTranslateX, __webpack_exports__bContent as bContent, __webpack_exports__bDegree as bDegree, __webpack_exports__bDifferentiate as bDifferentiate, __webpack_exports__bDivideByConst as bDivideByConst, __webpack_exports__bEqual as bEqual, __webpack_exports__bEvaluateAt0 as bEvaluateAt0, __webpack_exports__bEvaluateAt1 as bEvaluateAt1, __webpack_exports__bFlatCoefficients as bFlatCoefficients, __webpack_exports__bFlatCoefficientsArr as bFlatCoefficientsArr, __webpack_exports__bFlatRoots as bFlatRoots, __webpack_exports__bFlatRootsArr as bFlatRootsArr, __webpack_exports__bFromRoots as bFromRoots, __webpack_exports__bGcdInt as bGcdInt, __webpack_exports__bGcdInts as bGcdInts, __webpack_exports__bGcdPrs as bGcdPrs, __webpack_exports__bHorner as bHorner, __webpack_exports__bInvert as bInvert, __webpack_exports__bIsRationalMultipleOf as bIsRationalMultipleOf, __webpack_exports__bMultiply as bMultiply, __webpack_exports__bMultiplyByConst as bMultiplyByConst, __webpack_exports__bNegate as bNegate, __webpack_exports__bNumRoots as bNumRoots, __webpack_exports__bNumRootsIn01 as bNumRootsIn01, __webpack_exports__bNumRootsInRange as bNumRootsInRange, __webpack_exports__bP1Norm as bP1Norm, __webpack_exports__bP2NormSquared as bP2NormSquared, __webpack_exports__bPInfNorm as bPInfNorm, __webpack_exports__bPdivTrivial as bPdivTrivial, __webpack_exports__bPremSequencePrimitive as bPremSequencePrimitive, __webpack_exports__bPremSequenceSubresultant as bPremSequenceSubresultant, __webpack_exports__bPremSequenceTrivial as bPremSequenceTrivial, __webpack_exports__bPrimitivePart as bPrimitivePart, __webpack_exports__bReflectAboutYAxis as bReflectAboutYAxis, __webpack_exports__bRemoveLeadingZeros as bRemoveLeadingZeros, __webpack_exports__bSignChanges as bSignChanges, __webpack_exports__bSturmChain as bSturmChain, __webpack_exports__bSubtract as bSubtract, __webpack_exports__bisection as bisection, __webpack_exports__brent as brent, __webpack_exports__brentPoly as brentPoly, __webpack_exports__changeVariablesLinear as changeVariablesLinear, __webpack_exports__changeVariablesScale as changeVariablesScale, __webpack_exports__changeVariablesTranslateX as changeVariablesTranslateX, __webpack_exports__compHorner as compHorner, __webpack_exports__compHornerIsFaithful as compHornerIsFaithful, __webpack_exports__compHornerWithRunningError as compHornerWithRunningError, __webpack_exports__conditionNumber as conditionNumber, __webpack_exports__content as content, __webpack_exports__createRootExact as createRootExact, __webpack_exports__ddDeflate as ddDeflate, __webpack_exports__ddDeflateWithRunningError as ddDeflateWithRunningError, __webpack_exports__ddDifferentiate as ddDifferentiate, __webpack_exports__ddDifferentiateWithError as ddDifferentiateWithError, __webpack_exports__ddHorner as ddHorner, __webpack_exports__ddIntegrate as ddIntegrate, __webpack_exports__deflate as deflate, __webpack_exports__degree as degree, __webpack_exports__differentiate as differentiate, __webpack_exports__divideByConst as divideByConst, __webpack_exports__eAbsCoeff as eAbsCoeff, __webpack_exports__eAdd as eAdd, __webpack_exports__eChangeVariablesLinear as eChangeVariablesLinear, __webpack_exports__eChangeVariablesScale as eChangeVariablesScale, __webpack_exports__eChangeVariablesTranslateX as eChangeVariablesTranslateX, __webpack_exports__eContent as eContent, __webpack_exports__eDeflate as eDeflate, __webpack_exports__eDegree as eDegree, __webpack_exports__eDifferentiate as eDifferentiate, __webpack_exports__eEqual as eEqual, __webpack_exports__eEvaluateAt0 as eEvaluateAt0, __webpack_exports__eEvaluateAt1 as eEvaluateAt1, __webpack_exports__eFromRoots as eFromRoots, __webpack_exports__eGcdInt as eGcdInt, __webpack_exports__eGcdInts as eGcdInts, __webpack_exports__eHorner as eHorner, __webpack_exports__eInvert as eInvert, __webpack_exports__eIsConstOrZero as eIsConstOrZero, __webpack_exports__eIsRationalMultipleOf as eIsRationalMultipleOf, __webpack_exports__eIsUnit as eIsUnit, __webpack_exports__eMultiply as eMultiply, __webpack_exports__eMultiplyByConst as eMultiplyByConst, __webpack_exports__eNegate as eNegate, __webpack_exports__eNumRoots as eNumRoots, __webpack_exports__eNumRootsIn01 as eNumRootsIn01, __webpack_exports__eNumRootsInRange as eNumRootsInRange, __webpack_exports__eP1Norm as eP1Norm, __webpack_exports__eP2Norm as eP2Norm, __webpack_exports__ePInfNorm as ePInfNorm, __webpack_exports__ePdivTrivial as ePdivTrivial, __webpack_exports__ePremSequencePrimitive as ePremSequencePrimitive, __webpack_exports__ePremSequenceSubresultant as ePremSequenceSubresultant, __webpack_exports__ePrimitivePart as ePrimitivePart, __webpack_exports__eProduct as eProduct, __webpack_exports__eReflectAboutYAxis as eReflectAboutYAxis, __webpack_exports__eRemoveLeadingZeros as eRemoveLeadingZeros, __webpack_exports__eSignChanges as eSignChanges, __webpack_exports__eSturmChain as eSturmChain, __webpack_exports__eSubtract as eSubtract, __webpack_exports__eeHorner as eeHorner, __webpack_exports__equal as equal, __webpack_exports__evalCertified as evalCertified, __webpack_exports__evalCertifiedInclError as evalCertifiedInclError, __webpack_exports__evalK as evalK, __webpack_exports__evaluateAt0 as evaluateAt0, __webpack_exports__evaluateAt1 as evaluateAt1, __webpack_exports__flatCoefficients as flatCoefficients, __webpack_exports__flatCoefficientsArr as flatCoefficientsArr, __webpack_exports__flatRoots as flatRoots, __webpack_exports__flatRootsArr as flatRootsArr, __webpack_exports__fromRoots as fromRoots, __webpack_exports__gcdInt as gcdInt, __webpack_exports__gcdInts as gcdInts, __webpack_exports__hornerWithRunningError as hornerWithRunningError, __webpack_exports__integrate as integrate, __webpack_exports__invert as invert, __webpack_exports__isRationalMultipleOf as isRationalMultipleOf, __webpack_exports__mid as mid, __webpack_exports__multiply as multiply, __webpack_exports__multiplyByConst as multiplyByConst, __webpack_exports__negate as negate, __webpack_exports__negativeRootLowerBound_LMQ as negativeRootLowerBound_LMQ, __webpack_exports__negativeRootUpperBound_LMQ as negativeRootUpperBound_LMQ, __webpack_exports__numRoots as numRoots, __webpack_exports__numRootsIn01 as numRootsIn01, __webpack_exports__numRootsInRange as numRootsInRange, __webpack_exports__p1Norm as p1Norm, __webpack_exports__p2Norm as p2Norm, __webpack_exports__pInfNorm as pInfNorm, __webpack_exports__positiveRootLowerBound_LMQ as positiveRootLowerBound_LMQ, __webpack_exports__positiveRootUpperBound_LMQ as positiveRootUpperBound_LMQ, __webpack_exports__predictiveRandom as predictiveRandom, __webpack_exports__premSequenceSubresultant as premSequenceSubresultant, __webpack_exports__primitivePart as primitivePart, __webpack_exports__quadraticRoots as quadraticRoots, __webpack_exports__refineK1 as refineK1, __webpack_exports__reflectAboutYAxis as reflectAboutYAxis, __webpack_exports__removeLeadingZeros as removeLeadingZeros, __webpack_exports__rootIntervalToExp as rootIntervalToExp, __webpack_exports__rootMagnitudeUpperBound_fujiwara as rootMagnitudeUpperBound_fujiwara, __webpack_exports__rootMagnitudeUpperBound_rouche as rootMagnitudeUpperBound_rouche, __webpack_exports__scaleFloatToBigint as scaleFloatToBigint, __webpack_exports__scaleFloatToInt as scaleFloatToInt, __webpack_exports__scaleFloatsToBigints as scaleFloatsToBigints, __webpack_exports__scaleFloatsToInts as scaleFloatsToInts, __webpack_exports__scaleFloatssToBigintss as scaleFloatssToBigintss, __webpack_exports__scaleFloatssToIntss as scaleFloatssToIntss, __webpack_exports__signChanges as signChanges, __webpack_exports__sturmChain as sturmChain, __webpack_exports__subtract as subtract, __webpack_exports__toCasStr as toCasStr, __webpack_exports___ as γ, __webpack_exports___ as γγ };
+export { AbsHorner, CompHornerK, EFTHorner, Horner, absCoeff, add, allRoots, allRootsCertified, allRootsCertifiedSimplified, bAbsCoeff, bAdd, bChangeVariablesLinear, bChangeVariablesScale, bChangeVariablesTranslateX, bContent, bDegree, bDifferentiate, bDivideByConst, bEqual, bEvaluateAt0, bEvaluateAt1, bFlatCoefficients, bFlatCoefficientsArr, bFlatRoots, bFlatRootsArr, bFromRoots, bGcdInt, bGcdInts, bGcdPrs, bHorner, bInvert, bIsRationalMultipleOf, bMultiply, bMultiplyByConst, bNegate, bNumRoots, bNumRootsIn01, bNumRootsInRange, bP1Norm, bP2NormSquared, bPInfNorm, bPdivTrivial, bPremSequencePrimitive, bPremSequenceSubresultant, bPremSequenceTrivial, bPrimitivePart, bReflectAboutYAxis, bRemoveLeadingZeros, bSignChanges, bSturmChain, bSubtract, bisection, brent, brentPoly, changeVariablesLinear, changeVariablesScale, changeVariablesTranslateX, compHorner, compHornerIsFaithful, compHornerWithRunningError, conditionNumber, content, createRootExact, ddAbsCoeff, ddAdd, ddDeflate, ddDeflateWithRunningError, ddDegree, ddDifferentiate, ddDifferentiateWithError, ddDivideByConst, ddHorner, ddIntegrate, ddMultiply, ddMultiplyByConst, ddNegate, ddRemoveLeadingZeros, ddSubtract, deflate, degree, differentiate, divideByConst, eAbsCoeff, eAdd, eChangeVariablesLinear, eChangeVariablesScale, eChangeVariablesTranslateX, eContent, eDeflate, eDegree, eDifferentiate, eEqual, eEvaluateAt0, eEvaluateAt1, eFromRoots, eGcdInt, eGcdInts, eHorner, eInvert, eIsConstOrZero, eIsRationalMultipleOf, eIsUnit, eMultiply, eMultiplyByConst, eNegate, eNumRoots, eNumRootsIn01, eNumRootsInRange, eP1Norm, eP2Norm, ePInfNorm, ePdivTrivial, ePremSequencePrimitive, ePremSequenceSubresultant, ePrimitivePart, eProduct, eReflectAboutYAxis, eRemoveLeadingZeros, eSignChanges, eSturmChain, eSubtract, eeHorner, equal, evalCertified, evalCertifiedInclError, evalK, evaluateAt0, evaluateAt1, flatCoefficients, flatCoefficientsArr, flatRoots, flatRootsArr, fromRoots, gcdInt, gcdInts, hornerWithRunningError, integrate, invert, isRationalMultipleOf, mid, multiply, multiplyByConst, negate, negativeRootLowerBound_LMQ, negativeRootUpperBound_LMQ, numRoots, numRootsIn01, numRootsInRange, p1Norm, p2Norm, pInfNorm, positiveRootLowerBound_LMQ, positiveRootUpperBound_LMQ, predictiveRandom, premSequenceSubresultant, primitivePart, quadraticRoots, refineK1, reflectAboutYAxis, removeLeadingZeros, rootIntervalToExp, rootMagnitudeUpperBound_fujiwara, rootMagnitudeUpperBound_rouche, scaleFloatToBigint, scaleFloatToInt, scaleFloatsToBigints, scaleFloatsToInts, scaleFloatssToBigintss, scaleFloatssToIntss, signChanges, sturmChain, subtract, toCasStr, γ, γγ };

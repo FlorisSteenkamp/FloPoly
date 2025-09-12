@@ -9,6 +9,7 @@
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`
  * represents the polynomial `5x^2 - 3x`
  * @param p2 another polynomial.
+ *
  * @example
  * ```typescript
  * multiply([1,2,3], [2,5,3,5]); //=> [2, 9, 19, 26, 19, 15]

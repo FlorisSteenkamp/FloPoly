@@ -36,4 +36,5 @@ declare function createRootExact(t: number): RootInterval;
  * @doc
  */
 declare function mid(ri: RootInterval): number;
-export { RootInterval, createRootExact, mid };
+export type { RootInterval };
+export { createRootExact, mid };

@@ -28,8 +28,10 @@ function ddHorner(p: number[][], x: number): number[] {
 	return q;
 }
 
-ddHorner([[0,1],[0,1],[0,-2],[0,3]], 0.25); //?
-
-
 
 export { ddHorner }
+
+
+// Quokka tests
+
+// ddHorner([[0,1],[0,1],[0,-2],[0,3]], 0.25); //?

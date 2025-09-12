@@ -15,6 +15,7 @@ const removeLeadingZeros = removeLeadingZeros_;
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]` 
  * represents the polynomial `5x^2 - 3x`
  * @param p2 another polynomial.
+ * 
  * @example
  * ```typescript
  * multiply([1,2,3], [2,5,3,5]); //=> [2, 9, 19, 26, 19, 15]
@@ -35,7 +36,7 @@ function multiply(p1: number[], p2: number[]): number[] {
 	const r = new Array(d+1).fill(0);
 	for (let i=0; i<d1+1; i++) {
 		for (let j=0; j<d2+1; j++) {
-			r[d-(i+j)] += (p1[d1-i] * p2[d2-j]); 				
+			r[d-(i+j)] += (p1[d1-i] * p2[d2-j]);
 		}
 	}
 
