@@ -20,7 +20,6 @@
 /******/ })();
 /******/ 
 /************************************************************************/
-var __webpack_exports__ = {};
 
 ;// ./node_modules/big-float-ts/node/double-expansion/e-estimate.js
 /**
@@ -769,6 +768,7 @@ function doubleToOctets(number) {
 
 //# sourceMappingURL=double-to-octets.js.map
 ;// ./node_modules/big-float-ts/node/double-representation/parse-double.js
+/* unused harmony import specifier */ var doubleToBinaryString;
 // Modified from https://github.com/bartaz/ieee754-visualization/
 // under the MIT license
 // Copyright 2013 Bartek Szopka (original author)
@@ -785,7 +785,7 @@ function parseDouble(x) {
     const p0 = parts[0];
     const p1 = parts[1];
     const sign = p0 >> 7;
-    const exponent_ = ((p0 & 127) << 4) + ((p1 & 0b11110000) >> 4);
+    const exponent_ = ((p0 & 0b0111_1111) << 4) + ((p1 & 0b11110000) >> 4);
     //---- Check for negative / positive zero / denormalized numbers.
     const hiddenMsb = exponent_ === 0 ? 0 : 16;
     // Note: exponent === 0 => 0 or denormalized number (a.k.a. subnormal number).
@@ -794,7 +794,7 @@ function parseDouble(x) {
         : exponent_ - 1023;
     //---- Break up the significand into bytes
     const significand = parts.slice(1);
-    significand[0] = (p1 & 15) + hiddenMsb;
+    significand[0] = (p1 & 0b0000_1111) + hiddenMsb;
     return {
         sign,
         exponent,
@@ -940,7 +940,7 @@ function getHighestSetBit(a) {
  * magnitude. If h != 0, none of the h_i will be zero. Furthermore, the largest
  * component h_n approximates h with an error smaller than ulp(h_n).
  */
-function e_compress_eCompress(e) {
+function eCompress(e) {
     //return e;
     const e_ = e.slice();
     const m = e_.length;
@@ -1018,7 +1018,7 @@ function bitLength(a) {
  * @param a A double precision floating point expansion
  */
 function expBitLength(a) {
-    const a_ = e_compress_eCompress(a);
+    const a_ = eCompress(a);
     if (eSign(a_) === 0) {
         return 0;
     }
@@ -1208,7 +1208,7 @@ const f = 134217729; // 2**27 + 1;
  * @param a A double
  * @param b Another double
  */
-function two_product_twoProduct(a, b) {
+function twoProduct(a, b) {
     const x = a * b;
     //const [ah, al] = split(a);
     const c = f * a;
@@ -1390,9 +1390,10 @@ function merge(e, f) {
 
 //# sourceMappingURL=fast-expansion-sum.js.map
 ;// ./node_modules/big-float-ts/node/double-expansion/grow-expansion.js
+/* unused harmony import specifier */ var grow_expansion_eCompress;
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
-const compress = (/* unused pure expression or super */ null && (eCompress));
+const compress = (/* unused pure expression or super */ null && (grow_expansion_eCompress));
 /**
  * Returns the result of adding a double to an expansion.
  *
@@ -1449,7 +1450,7 @@ function growExpansion(e, b) {
  *
  * See https://people.eecs.berkeley.edu/~jrs/papers/robustr.pdf
  */
-function two_sum_twoSum(a, b) {
+function twoSum(a, b) {
     const x = a + b;
     const bv = x - a;
     return [(a - (x - bv)) + (b - bv), x];
@@ -1463,7 +1464,7 @@ function two_sum_twoSum(a, b) {
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
-const ts = two_sum_twoSum;
+const ts = twoSum;
 const addDouble = growExpansion;
 const e_sum_add = fastExpansionSum;
 /**
@@ -1506,16 +1507,20 @@ function eSum(terms) {
 
 //# sourceMappingURL=e-sum.js.map
 ;// ./node_modules/big-float-ts/node/double-expansion/scale-expansion.js
+/* unused harmony import specifier */ var scale_expansion_twoProduct;
+/* unused harmony import specifier */ var scale_expansion_twoSum;
+/* unused harmony import specifier */ var fastTwoSum;
+/* unused harmony import specifier */ var scale_expansion_eCompress;
 
 
 
 
 const scale_expansion_f = 134217729; // 2**27 + 1;
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
-const tp = (/* unused pure expression or super */ null && (twoProduct));
-const scale_expansion_ts = (/* unused pure expression or super */ null && (twoSum));
+const tp = (/* unused pure expression or super */ null && (scale_expansion_twoProduct));
+const scale_expansion_ts = (/* unused pure expression or super */ null && (scale_expansion_twoSum));
 const fts = (/* unused pure expression or super */ null && (fastTwoSum));
-const scale_expansion_compress = (/* unused pure expression or super */ null && (eCompress));
+const scale_expansion_compress = (/* unused pure expression or super */ null && (scale_expansion_eCompress));
 /**
  * Returns the result of multiplying an expansion by a double.
  *
@@ -1707,7 +1712,7 @@ function eDiff(e, f) {
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
 const e_long_divide_eNegativeOf = eNegativeOf;
 const e_long_divide_fastExpansionSum = fastExpansionSum;
-const e_long_divide_eCompress = e_compress_eCompress;
+const e_long_divide_eCompress = eCompress;
 const e_long_divide_growExpansion = growExpansion;
 const e_long_divide_eSum = eSum;
 const e_long_divide_scaleExpansion = scaleExpansion;
@@ -1867,7 +1872,7 @@ function isRationalMultipleOf(a, b) {
     const A = lcA / gcd; // this division is exact
     const B = lcB / gcd; // this division is exact
     for (let i = 0; i < a_.length; i++) {
-        const Ab = two_product_twoProduct(A, b_[i]);
+        const Ab = twoProduct(A, b_[i]);
         const { div, rem } = eLongDivide(Ab, [B]);
         if (eSign(rem) !== 0) {
             return false;
@@ -2664,13 +2669,14 @@ function eIntDiv(a, b) {
 
 //# sourceMappingURL=e-int-div.js.map
 ;// ./node_modules/big-float-ts/node/double-expansion/expansion-product.js
+/* unused harmony import specifier */ var expansion_product_eCompress;
 
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
 const multByDouble = scaleExpansion;
 const expansion_product_add = fastExpansionSum;
-const expansion_product_compress = (/* unused pure expression or super */ null && (eCompress));
+const expansion_product_compress = (/* unused pure expression or super */ null && (expansion_product_eCompress));
 /**
  * Returns the product of two double floating point expansions.
  *
@@ -4003,7 +4009,7 @@ function eReflectAboutYAxis(p) {
 ;// ./src/evaluate/double/vec-sum.ts
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const vec_sum_twoSum = two_sum_twoSum;
+const vec_sum_twoSum = twoSum;
 /**
  * * helper function
  *
@@ -4053,8 +4059,8 @@ function SumK(p, K) {
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eft_horner_twoSum = two_sum_twoSum;
-const eft_horner_twoProduct = two_product_twoProduct;
+const eft_horner_twoSum = twoSum;
+const eft_horner_twoProduct = twoProduct;
 /**
  * Returns an EFT (error free transformation) for the Horner evaluation of a
  * polymial at a specified x. The result is returned as an object with
@@ -4575,9 +4581,9 @@ function bSturmChain(p) {
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
 const mult = expansionProduct;
-const e_product_tp = two_product_twoProduct;
+const e_product_tp = twoProduct;
 const e_product_multByDouble = scaleExpansion;
-const e_product_compress = e_compress_eCompress;
+const e_product_compress = eCompress;
 /**
  * Return the result of multiplying together an array of floating point
  * expansions.
@@ -4694,7 +4700,7 @@ function reduceSignificand(a, bits) {
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
 const e_to_bitlength_sign = eSign;
-const e_to_bitlength_compress = e_compress_eCompress;
+const e_to_bitlength_compress = eCompress;
 /**
  * Returns a floating point expansion accurate to the given number of bits.
  * Extraneous bits are discarded.
@@ -5403,7 +5409,7 @@ function γs(n) {
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const comp_horner_is_faithful_twoSum = two_sum_twoSum;
+const comp_horner_is_faithful_twoSum = twoSum;
 const comp_horner_is_faithful_HornerSum = HornerSum;
 const comp_horner_is_faithful_EFTHorner = EFTHorner;
 const comp_horner_is_faithful_HornerAbsSum = HornerAbsSum;
@@ -5452,7 +5458,7 @@ function compHornerIsFaithful(p, x) {
 
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const comp_horner_with_running_error_twoSum = two_sum_twoSum;
+const comp_horner_with_running_error_twoSum = twoSum;
 const comp_horner_with_running_error_EFTHorner = EFTHorner;
 const comp_horner_with_running_error_HornerSum = HornerSum;
 const comp_horner_with_running_error_HornerAbsSum = HornerAbsSum;
@@ -7491,7 +7497,7 @@ function allRootsCertifiedSimplified(p, lb = Number.NEGATIVE_INFINITY, ub = Numb
 ;// ./node_modules/big-float-ts/node/double-expansion/e-to-double-double.js
 
 // We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
-const e_to_double_double_compress = e_compress_eCompress;
+const e_to_double_double_compress = eCompress;
 /**
  * Returns the result of converting a floating point expansion to a
  * double-double precision floating point number.
@@ -7518,7 +7524,7 @@ function eToDd(e) {
 const refine_k1_eChangeVariablesLinear = eChangeVariablesLinear;
 const refine_k1_allRootsCertified = allRootsCertified;
 const refine_k1_eToDd = eToDd;
-const refine_k1_twoSum = two_sum_twoSum;
+const refine_k1_twoSum = twoSum;
 const refine_k1_eps = Number.EPSILON;
 /**
  * Returns once compensated root(s) (bar underflow / overflow) given a root
