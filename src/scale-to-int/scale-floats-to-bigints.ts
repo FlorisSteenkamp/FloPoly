@@ -1,12 +1,5 @@
-import { exponent as exponent_, eIsInteger } from "big-float-ts";
-import { bitLength as bitLength_ } from "big-float-ts";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const exponent = exponent_;
-const bitLength = bitLength_;
-
-
-const b0 = 0n;  // so tests are not tripped up - awaiting better support
+import { exponent } from "big-float-ts";
+import { bitLength } from "big-float-ts";
 
 
 /**
@@ -39,7 +32,7 @@ function scaleFloatsToBigints(as: number[]): bigint[] {
     if (e > 0) {
         return as.map(a => {
             if (a === 0) { 
-                return b0; 
+                return 0n; 
             }
             const scalePower = -exponent(a) + bitLength(a) - 1;
             // we first scale `a` to an integer without overflow and then

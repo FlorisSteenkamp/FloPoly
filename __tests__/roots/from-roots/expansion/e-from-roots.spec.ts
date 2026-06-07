@@ -1,7 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { eEqual, eFromRoots } from '../../../../src/index.js';
+import { eEqual } from '../../../../src/basic/expansion/e-equal.js';
+import { eFromRoots } from '../../../../src/roots/from-roots/expansion/e-from-roots.js';
 
 
 describe('eFromRoots', function() {

@@ -1,7 +1,6 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { premSequenceSubresultant } from '../../../src/index.js';
+import { premSequenceSubresultant } from '../../../src/euclidean-division-related/double/prem-sequence-subresultant.js';
 
 
 describe('premSequenceSubresultant', function() {
@@ -12,7 +11,7 @@ describe('premSequenceSubresultant', function() {
             let a = [1, 0, 1, 0, -3, -3, 8, 2, -5];
             let b = [3, 0, 5, 0, -4, -9, 21];
             let seq = premSequenceSubresultant(a,b);
-            expect(seq).to.eql([
+            expect(seq).toEqual([
                 [[1], [0], [1], [0], [-3], [-3], [8], [2], [-5]],
                 [[3], [0], [5], [0], [-4], [-9], [21]],
                 [[15], [-0], [-3], [-0], [9]],

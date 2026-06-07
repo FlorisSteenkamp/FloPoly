@@ -17,41 +17,41 @@
  * @doc
  */
 function changeVariablesTranslateX(
-		p: number[], 
-		b: number): number[] {
+        p: number[], 
+        b: number): number[] {
 
-	// We let the coefficients of p(x + b) be denoted by d_i in the code below. 
-	// d_i is calculated as d = T*c, where c are the original coefficients.
-	 
-	const d = p.length-1;
+    // We let the coefficients of p(x + b) be denoted by d_i in the code below. 
+    // d_i is calculated as d = T*c, where c are the original coefficients.
+     
+    const d = p.length-1;
 
-	if (d < 0) { return []; }
-	
-	// Initialize a zero matrix
-	const t: number[][] = [];
-	for (let i=0; i<d+1; i++) {
-		t.push(new Array(d+1).fill(0));
-	}
+    if (d < 0) { return []; }
+    
+    // Initialize a zero matrix
+    const t: number[][] = [];
+    for (let i=0; i<d+1; i++) {
+        t.push(new Array(d+1).fill(0));
+    }
 
-	// Calculate the triangular matrix T
-	t[0][0] = 1;
-	for (let j=1; j<=d; j++) {
-		t[0][j] = b*t[0][j-1];
-		for (let i=1; i<=j; i++) {
-			t[i][j] = b*t[i][j-1] + t[i-1][j-1];
-		}
-	}
-	
-	// Multiply
-	const res: number[] = new Array(d+1).fill(0);
-	for (let i=0; i<=d; i++) {
-		res[d-i] = 0;
-		for (let j=i; j<=d; j++) {
-			res[d-i] += t[i][j] * p[d-j];
-		}
-	}
-	
-	return res;
+    // Calculate the triangular matrix T
+    t[0][0] = 1;
+    for (let j=1; j<=d; j++) {
+        t[0][j] = b*t[0][j-1];
+        for (let i=1; i<=j; i++) {
+            t[i][j] = b*t[i][j-1] + t[i-1][j-1];
+        }
+    }
+    
+    // Multiply
+    const res: number[] = new Array(d+1).fill(0);
+    for (let i=0; i<=d; i++) {
+        res[d-i] = 0;
+        for (let j=i; j<=d; j++) {
+            res[d-i] += t[i][j] * p[d-j];
+        }
+    }
+    
+    return res;
 }
 
 

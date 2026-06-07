@@ -15,12 +15,12 @@ const abs = Math.abs;
  * @doc
  */
 function AbsHorner(p: number[], x: number): number {
-	let q = 0;
-	for (let i=0; i<p.length; i++) {
-		q = q*x + abs(p[i]);
-	}
-		
-	return q;
+    let q = 0;
+    for (let i=0; i<p.length; i++) {
+        q = q*x + abs(p[i]);
+    }
+        
+    return q;
 }
 // inlined (with q => e2, p => p0)
 //let e2 = abs(p0[0]); for (let i=1; i<p0.length; i++) { e2 = e2*x + abs(p0[i]); }

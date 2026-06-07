@@ -13,12 +13,12 @@
  * @doc
  */
 function bNegate(p: bigint[]): bigint[] {
-	const p_: bigint[] = [];
-	for (let i=0; i<p.length; i++) {
-		p_.push(-p[i]);
-	}
+    const p_: bigint[] = [];
+    for (let i=0; i<p.length; i++) {
+        p_.push(-p[i]);
+    }
 
-	return p_;
+    return p_;
 }
 
 

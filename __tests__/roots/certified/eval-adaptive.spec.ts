@@ -1,8 +1,9 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
 import { evalAdaptive } from '../../../src/roots/certified/eval-adaptive.js';
-import { eMultiply, eDifferentiate, Horner } from '../../../src/index.js';
+import { eMultiply } from '../../../src/basic/expansion/e-multiply.js';
+import { eDifferentiate } from '../../../src/calculus/expansion/e-differentiate.js';
+import { Horner } from '../../../src/evaluate/double/horner.js';
 import { eToDd, eEstimate } from 'big-float-ts';
 import { transposePoly } from '../../../src/roots/certified/transpose-poly.js';
 
@@ -38,7 +39,7 @@ function() {
             const V1 = evalAdaptive(p_, pE, 1, getPolyExact);
             //const V2 = Horner(p.map(c => eEstimate(c)), 1);
 
-            assert(V1 === 0);
+            expect(V1 === 0).toBeTruthy();
 		}
 	});
 });

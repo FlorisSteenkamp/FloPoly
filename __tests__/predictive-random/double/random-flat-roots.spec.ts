@@ -1,7 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { equal, flatRoots } from '../../../src/index.js';
+import { equal } from '../../../src/basic/double/equal.js';
+import { flatRoots } from '../../../src/predictive-random/double/random.js';
 
 
 describe('random.flatRoots', function() {
@@ -10,15 +10,15 @@ describe('random.flatRoots', function() {
 		let res: { p: number[], seed: number };
 		
 		res = flatRoots(3,0,10); 
-		assert(equal(res.p, [1, -17.27247918024659, 97.33487287168995, -179.34094494147305]));
-		expect(res.seed).to.equal(939629312);
+		expect(equal(res.p, [1, -17.27247918024659, 97.33487287168995, -179.34094494147305])).toBeTruthy();
+		expect(res.seed).toEqual(939629312);
 		
 		res = flatRoots(3,0,10); 
-		assert(equal(res.p, [1, -17.27247918024659, 97.33487287168995, -179.34094494147305]));
-		expect(res.seed).to.equal(939629312);
+		expect(equal(res.p, [1, -17.27247918024659, 97.33487287168995, -179.34094494147305])).toBeTruthy();
+		expect(res.seed).toEqual(939629312);
 		
 		res = flatRoots(3); // Uses defaults for range
-		assert(equal(res.p, [1, -1.7272479180246592, 0.9733487287168996, -0.17934094494147307]));
-		expect(res.seed).to.equal(939629312);
+		expect(equal(res.p, [1, -1.7272479180246592, 0.9733487287168996, -0.17934094494147307])).toBeTruthy();
+		expect(res.seed).toEqual(939629312);
 	});
 });

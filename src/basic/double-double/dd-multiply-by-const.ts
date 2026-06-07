@@ -1,9 +1,5 @@
 import { ddMultDd } from "double-double";
-import { ddRemoveLeadingZeros as ddRemoveLeadingZeros_ } from "./dd-remove-leading-zeros.js";
-
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const ddRemoveLeadingZeros = ddRemoveLeadingZeros_;
+import { ddRemoveLeadingZeros } from "./dd-remove-leading-zeros.js";
 
 
 /** 
@@ -17,16 +13,16 @@ const ddRemoveLeadingZeros = ddRemoveLeadingZeros_;
  * @doc
  */
 function ddMultiplyByConst(c: number[], p: number[][]): number[][] {
-	if (c[1] === 0) { return [[0,0]]; }
-	
-	const d = p.length;
-	const p_: number[][] = [];
-	for (let i=0; i<d; i++) {
-		p_.push(ddMultDd(c,p[i]));
-	}
-	
-	// We *have* to clip due to possible floating point underflow
-	return ddRemoveLeadingZeros(p_);
+    if (c[1] === 0) { return [[0,0]]; }
+    
+    const d = p.length;
+    const p_: number[][] = [];
+    for (let i=0; i<d; i++) {
+        p_.push(ddMultDd(c,p[i]));
+    }
+    
+    // We *have* to clip due to possible floating point underflow
+    return ddRemoveLeadingZeros(p_);
 }
 
 

@@ -1,7 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { numRootsIn01, multiply } from '../../../../src/index.js';
+import { numRootsIn01 } from '../../../../src/roots/descartes/double/num-roots-in-0-1.js';
+import { multiply } from '../../../../src/basic/double/multiply.js';
 
 
 describe('numRootsIn01', function() {
@@ -9,20 +9,20 @@ describe('numRootsIn01', function() {
 	function() {
 		{
 			let p = [1, 1, -64, 236, -240];
-			expect(numRootsIn01(p)).to.equal(0);
+			expect(numRootsIn01(p)).toEqual(0);
         }
         
         {
 			let p = [1, 0, 1, 0, -3, -3, 8, 2, -5];
-			expect(numRootsIn01(p)).to.equal(1);
+			expect(numRootsIn01(p)).toEqual(1);
 		}
 		{
 			let p = [-1, 0, 1, 0, -3, -3, 8, 2, -5];
-			expect(numRootsIn01(p)).to.equal(0);
+			expect(numRootsIn01(p)).toEqual(0);
 		}
 		{
 			let p = [-1, 0, -1, 0, +3, -3, 8, 2, -5];
-			expect(numRootsIn01(p)).to.equal(1);
+			expect(numRootsIn01(p)).toEqual(1);
 		}
 		
 		// overflow destroys `numRootsIn01` below ):
@@ -36,7 +36,7 @@ describe('numRootsIn01', function() {
 			let p5 = multiply(p1, p2);
 			let p6 = multiply(p3, p4);
 			let p7 = multiply(p5, p6);
-			expect(numRootsIn01(p7)).to.equal(8);
+			expect(numRootsIn01(p7)).toEqual(8);
 		}
 		{
 			let k = -0.001;
@@ -47,7 +47,7 @@ describe('numRootsIn01', function() {
 			let p5 = multiply(p1, p2);
 			let p6 = multiply(p3, p4);
 			let p7 = multiply(p5, p6);
-			expect(numRootsIn01(p7)).to.equal(8);
+			expect(numRootsIn01(p7)).toEqual(8);
 		}
 		*/
 	});

@@ -1,7 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { bEqual, bReflectAboutYAxis } from '../../../src/index.js';
+import { bEqual } from '../../../src/basic/bigint/b-equal.js';
+import { bReflectAboutYAxis } from '../../../src/change-variables/bigint/b-reflect-about-y-axis.js';
 
 
 describe('bReflectAboutYAxis', function() {
@@ -9,7 +9,7 @@ describe('bReflectAboutYAxis', function() {
 	function() {
 		let p1: bigint[] = [];
 		let p2 = [5n,4n,3n,2n,1n];
-		assert(bEqual(bReflectAboutYAxis(p1), []));
-		assert(bEqual(bReflectAboutYAxis(p2), [5n,-4n,3n,-2n,1n]));
+		expect(bEqual(bReflectAboutYAxis(p1), [])).toBeTruthy();
+		expect(bEqual(bReflectAboutYAxis(p2), [5n,-4n,3n,-2n,1n])).toBeTruthy();
 	});
 });

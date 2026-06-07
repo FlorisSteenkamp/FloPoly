@@ -1,7 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { eEqual, eChangeVariablesTranslateX } from '../../../src/index.js';
+import { eEqual } from '../../../src/basic/expansion/e-equal.js';
+import { eChangeVariablesTranslateX } from '../../../src/change-variables/expansion/e-change-variables-translate-x.js';
 
 
 describe('eChangeVariablesTranslateX', function() {
@@ -9,7 +9,7 @@ describe('eChangeVariablesTranslateX', function() {
 	function() {
 		let p1: number[][] = [];
 		let p2 = [[1],[2],[7]];
-		assert(eEqual(eChangeVariablesTranslateX(p1, 3), []));
-		assert(eEqual(eChangeVariablesTranslateX(p2, 3), [[1],[8],[22]]));
+		expect(eEqual(eChangeVariablesTranslateX(p1, 3), [])).toBeTruthy();
+		expect(eEqual(eChangeVariablesTranslateX(p2, 3), [[1],[8],[22]])).toBeTruthy();
 	});
 });

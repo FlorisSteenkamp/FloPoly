@@ -1,15 +1,8 @@
-import { twoSum as twoSum_ } from "big-float-ts";
-import { EFTHorner as EFTHorner_ } from "./eft-horner.js";
-import { HornerSum as HornerSum_ } from "./horner-sum.js";
-import { HornerAbsSum as HornerAbsSum_ } from "./horner-abs-sum.js";
-import { γs as γs_ } from "./gammas.js";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const twoSum = twoSum_;
-const HornerSum = HornerSum_;
-const EFTHorner = EFTHorner_;
-const HornerAbsSum = HornerAbsSum_;
-const γs = γs_;
+import { twoSum } from "big-float-ts";
+import { EFTHorner } from "./eft-horner.js";
+import { HornerSum } from "./horner-sum.js";
+import { HornerAbsSum } from "./horner-abs-sum.js";
+import { γs } from "./gammas.js";
 
 
 const u = Number.EPSILON;
@@ -36,23 +29,23 @@ const u = Number.EPSILON;
  * @doc
  */
 function compHornerIsFaithful(
-		p: number[], x: number): { isFaithful: boolean; errBound: number; r̄: number } {
+        p: number[], x: number): { isFaithful: boolean; errBound: number; r̄: number } {
 
-	const n = p.length-1;
-	
-	const { r̂, pπ, pσ } = EFTHorner(p,x);
-	const ĉ = HornerSum(pπ, pσ, x);
-	const [e, r̄] = twoSum(r̂, ĉ);
+    const n = p.length-1;
+    
+    const { r̂, pπ, pσ } = EFTHorner(p,x);
+    const ĉ = HornerSum(pπ, pσ, x);
+    const [e, r̄] = twoSum(r̂, ĉ);
 
-	const b̂ = HornerAbsSum(pπ, pσ, Math.abs(x));
-	const α̂  = (γs(2*n - 1) * b̂) / ((1 - 2*(n+1) * u));
-	const β̂  = (α̂ + Math.abs(e)) / (1 - 2*u);
+    const b̂ = HornerAbsSum(pπ, pσ, Math.abs(x));
+    const α̂  = (γs(2*n - 1) * b̂) / ((1 - 2*(n+1) * u));
+    const β̂  = (α̂ + Math.abs(e)) / (1 - 2*u);
 
-	return { 
-		isFaithful: α̂  < (u/2) * Math.abs(r̄),
-		errBound: β̂,
-		r̄
-	};
+    return { 
+        isFaithful: α̂  < (u/2) * Math.abs(r̄),
+        errBound: β̂,
+        r̄
+    };
 }
 
 

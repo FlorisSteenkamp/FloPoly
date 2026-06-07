@@ -1,13 +1,10 @@
-import { eNegativeOf as eNegativeOf_ } from "big-float-ts";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eNegativeOf = eNegativeOf_;
+import { eNegativeOf } from "big-float-ts";
 
 
 /**
  * Returns the result of reflecting the given polynomial about the Y-axis, i.e. 
  * perform the change of variables: p(x) <- p(-x).
- * @param p a polynomial with coefficients given densely as an array of Shewchuk
+ * @param p a polynomial with coefficients given densely as an array of Schewchuk
  * floating point expansions from highest to lowest power, e.g. `[[5],[-3],[0]]`
  * represents the polynomial `5x^2 - 3x`
  * 
@@ -19,18 +16,18 @@ const eNegativeOf = eNegativeOf_;
  * @doc
  */
 function eReflectAboutYAxis(p: number[][]): number[][] {
-	const d = p.length-1;
+    const d = p.length-1;
 
-	if (d < 0) { return []; }
+    if (d < 0) { return []; }
 
-	const result = p.slice();
-	for (let i=0; i<d+1; i++) {
-		if (i % 2) {
-			result[i] = eNegativeOf(result[i]); 
-		}
-	}
-	
-	return result;
+    const result = p.slice();
+    for (let i=0; i<d+1; i++) {
+        if (i % 2) {
+            result[i] = eNegativeOf(result[i]); 
+        }
+    }
+    
+    return result;
 }
 
 

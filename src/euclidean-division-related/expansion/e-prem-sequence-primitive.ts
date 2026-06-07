@@ -1,9 +1,5 @@
-import { ePdivTrivial as ePdivTrivial_ } from "./e-pdiv-trivial.js";
-import { ePrimitivePart as eGetPrimitivePart_ } from "../../factor/expansion/e-primitive-part.js";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const ePdivTrivial = ePdivTrivial_;
-const eGetPrimitivePart = eGetPrimitivePart_;
+import { ePdivTrivial } from "./e-pdiv-trivial.js";
+import { ePrimitivePart } from "../../factor/expansion/e-primitive-part.js";
 
 
 /**
@@ -14,7 +10,7 @@ const eGetPrimitivePart = eGetPrimitivePart_;
 * * see [Primitive Pseudo-remainder sequences](https://en.wikipedia.org/wiki/Polynomial_greatest_common_divisor#Primitive_pseudo-remainder_sequence)
  * 
  * @param f the polynomial a in the formula a = bq + r; the polynomial is given
- * with coefficients as a dense array of Shewchuk expansions from highest to 
+ * with coefficients as a dense array of Schewchuk expansions from highest to 
  * lowest power, e.g. `[[5],[-3],[0]]` represents the  polynomial `5x^2 - 3x`
  * @param g the polynomial b in the formula a = bq + r;
  * 
@@ -28,7 +24,7 @@ function ePremSequencePrimitive(
     let i = 1;
     while (true) {
         let r_ = ePdivTrivial(r[i-1], r[i]).r;
-        r_ = eGetPrimitivePart(r_);
+        r_ = ePrimitivePart(r_);
 
         if (r_.length === 0) { 
             return r; 

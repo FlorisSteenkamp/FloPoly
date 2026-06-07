@@ -1,9 +1,5 @@
-import { premSequenceSubresultant as premSequenceSubresultant_ } from "../../euclidean-division-related/double/prem-sequence-subresultant.js";
-import { scaleFloatsToInts as scaleFloatsToInts_ } from "../../scale-to-int/scale-floats-to-ints.js";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const premSequenceSubresultant = premSequenceSubresultant_;
-const scaleFloatsToInts = scaleFloatsToInts_;
+import { premSequenceSubresultant } from "../../euclidean-division-related/double/prem-sequence-subresultant.js";
+import { scaleFloatsToInts } from "../../scale-to-int/scale-floats-to-ints.js";
 
 
 // ❗❗❗❗❗❗
@@ -21,7 +17,7 @@ const scaleFloatsToInts = scaleFloatsToInts_;
  * Returns the GCD (Greatest Common Divisor) of the two given polynomials using 
  * Pseudo Remainder Sequences (PRSs) (bar overflow). The returned GCD is a
  * polynomial with coefficients given densely as an array of
- * Shewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
+ * Schewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
  * represents the polynomial `5x^2 - 3x`.
  * 
  * * if the polynomial coefficients are too large overflow can occur at

@@ -1,7 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { bEqual, bFlatRootsArr } from '../../../src/index.js';
+import { bEqual } from '../../../src/basic/bigint/b-equal.js';
+import { bFlatRootsArr } from '../../../src/predictive-random/bigint/b-random.js';
 
 
 describe('random.bFlatRootsArr', function() {
@@ -22,38 +22,38 @@ describe('random.bFlatRootsArr', function() {
 		];
 
 		res = bFlatRootsArr(2,3,0,10);
-		assert(bEqual(res[0], expected1));
-		assert(bEqual(res[1], expected2));
+		expect(bEqual(res[0], expected1)).toBeTruthy();
+		expect(bEqual(res[1], expected2)).toBeTruthy();
 		
 		res = bFlatRootsArr(2,3,0,10);
-		assert(bEqual(res[0], expected1));
-		assert(bEqual(res[1], expected2));
+		expect(bEqual(res[0], expected1)).toBeTruthy();
+		expect(bEqual(res[1], expected2)).toBeTruthy();
 		
 		res = bFlatRootsArr(2,3,0,10,undefined,0.5);
-		assert(bEqual(res[0], [
+		expect(bEqual(res[0], [
 			70368744177664n,
 			-1147846125158400n,
 			6241173987296867n,
 			-11311694104276030n
-		]));
-		assert(bEqual(res[1], [
+		])).toBeTruthy();
+		expect(bEqual(res[1], [
 			17592186044416n,
 			-438096279633920n,
 			3614633864148519n,
 			-9870509246382590n
-		]));
+		])).toBeTruthy();
 
-		res = bFlatRootsArr(2,3);assert(bEqual(res[0], [
+		res = bFlatRootsArr(2,3);expect(bEqual(res[0], [
 			18014398509481984n,
 			-31115332319969280n,
 			17534291887803900n,
 			-3230719251242763n
-		]));
-		assert(bEqual(res[1], [
+		])).toBeTruthy();
+		expect(bEqual(res[1], [
 			72057594037927936n,
 			-107617780060127232n,
 			41522838714393344n,
 			-1045839113667277n
-		]));
+		])).toBeTruthy();
 	});
 });

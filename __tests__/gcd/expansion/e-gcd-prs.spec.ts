@@ -1,7 +1,7 @@
+import { describe, expect, it, test } from '@jest/globals';
 
+test.skip('gcdPrs', () => {});
 /*
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
 import { eEstimate } from 'big-float-ts';
 import { 
     eGcdPrs, eMultiplyByConst, eIsRationalMultipleOf,
@@ -17,25 +17,25 @@ describe('eGcdPrs', function() {
             let b = [[4], [-2]];
             let gcd = eGcdPrs(a,b);
             //console.log(gcd);
-            assert(eIsRationalMultipleOf(
+            expect(eIsRationalMultipleOf(
                 gcd, 
                 [[1]]
-            ));
+            )).toBeTruthy();
         }
         {
             let a = [[1e10], [1e5]];
             let b = [[1e10], [1e5]];
             let gcd = eGcdPrs(a,b);
             //console.log(gcd);
-            assert(eIsRationalMultipleOf(
+            expect(eIsRationalMultipleOf(
                 gcd, 
                 [[10_000_000_000], [100_000]]
-            ));
+            )).toBeTruthy();
 
-            assert(eIsRationalMultipleOf(
+            expect(eIsRationalMultipleOf(
                 gcd, 
                 [[100_000], [1]]
-            ));
+            )).toBeTruthy();
         }
 
         {
@@ -43,10 +43,10 @@ describe('eGcdPrs', function() {
             let b = [[1], [-3]];
             let gcd = eGcdPrs(a,b);
             //console.log(gcd);
-            assert(eIsRationalMultipleOf(
+            expect(eIsRationalMultipleOf(
                 gcd,
                 [[-5]]
-            ));
+            )).toBeTruthy();
         }
         
         {
@@ -54,10 +54,10 @@ describe('eGcdPrs', function() {
             let b = [[1], [+8], [12], [+17], [6]];
             let gcd = eGcdPrs(a,b);
             //console.log(gcd);
-            assert(eIsRationalMultipleOf(
+            expect(eIsRationalMultipleOf(
                 gcd,
                 [[1], [1], [2]]
-            ));
+            )).toBeTruthy();
         }
 
         /*
@@ -73,7 +73,7 @@ describe('eGcdPrs', function() {
 			let p6 = eMultiply(p3, p4);
             let p7 = eMultiply(p5, p6);
             let gcd = eGcdPrs(p7,eDifferentiate(p7));
-            assert(gcd.length === 1)
+            expect(gcd.length === 1).toBeTruthy()
         }
 
         {
@@ -127,7 +127,7 @@ describe('eGcdPrs', function() {
             //console.log(gcd);
             console.log(gcd.map(eEstimate));
 
-            //assert(gcd.length === 1)
+            //expect(gcd.length === 1).toBeTruthy()
         }
         *//*
 	});

@@ -1,7 +1,6 @@
+import { describe, expect, it } from '@jest/globals';
 // import type { RootInterval } from '../../../src/index.js';
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { mid } from '../../../src/index.js';
+import { mid } from '../../../src/roots/certified/root-interval.js';
 
 
 describe('mid',
@@ -15,7 +14,7 @@ function() {
 			let r = mid(ri);
 
             // this test is really just for completeness' sake
-            expect(r).to.eql(1.5);
+            expect(r).toEqual(1.5);
 		}
 	});
 });

@@ -1,7 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { eSignChanges, toCasStr } from '../../../../src/index.js';
+import { eSignChanges } from '../../../../src/roots/descartes/expansion/e-sign-changes.js';
+import { toCasStr } from '../../../../src/basic/to-cas-str.js';
 
 
 describe('eSignChanges', function() {
@@ -11,15 +11,9 @@ describe('eSignChanges', function() {
 		let p2: number[][] = [];
 		
 		let r1 = eSignChanges(p1);
-		expect(r1).to.equal(
-			3, 
-			`sign changes of ${toCasStr(p1)} must equal 3 but equals ${r1}`
-		);
+		expect(r1).toEqual(3);
 
 		let r2 = eSignChanges(p2);
-		expect(eSignChanges(p2)).to.equal(
-			0,
-			`sign changes of ${toCasStr(p2)} must equal 0 but equals ${r2}`
-		);
+		expect(eSignChanges(p2)).toEqual(0);
 	});
 });

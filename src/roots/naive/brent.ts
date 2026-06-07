@@ -43,7 +43,7 @@ const max = Math.max;
  * @doc
  */
 function brent(
-		f: (n: number) => number,
+        f: (n: number) => number,
         lb: number, 
         ub: number): number {
 
@@ -51,10 +51,10 @@ function brent(
 
     //---- Make local copies of a and b.
     let a = lb;
-	let b = ub;
-	
-	let fa = f(a);
-	let fb = f(b);
+    let b = ub;
+    
+    let fa = f(a);
+    let fb = f(b);
 
     let c = a;
     let fc = fa;

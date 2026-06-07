@@ -1,7 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { eEqual, eIsUnit } from '../../../src/index.js';
+import { eEqual } from '../../../src/basic/expansion/e-equal.js';
+import { eIsUnit } from '../../../src/basic/expansion/e-is-unit.js';
 
 
 describe('eIsUnit', function() {
@@ -10,8 +10,8 @@ describe('eIsUnit', function() {
 		let p1: number[][] = [];
 		let p2 = [[1]];
 		let p3 = [[4],[3],[2],[1]];
-		assert(!eIsUnit(p1));
-		assert( eIsUnit(p2));
-		assert(!eIsUnit(p3));
+		expect(!eIsUnit(p1)).toBeTruthy();
+		expect(eIsUnit(p2)).toBeTruthy();
+		expect(!eIsUnit(p3)).toBeTruthy();
 	});
 });

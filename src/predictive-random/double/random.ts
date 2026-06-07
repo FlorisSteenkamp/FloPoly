@@ -31,7 +31,7 @@ function createArrFunction(
         f: (d: number, a?: number, b?: number, seed?: number, odds?: number) => { p: number[], seed: number }): 
         (n: number, d: number, a?: number, b?: number, seed?: number, odds?: number) => number[][] {
 
-	return function(
+    return function(
             n: number, 
             d: number, 
             a?: number, 
@@ -39,17 +39,17 @@ function createArrFunction(
             seed = SEED, 
             odds = 0) {
                 
-		const res: number[][] = [];
-		for (let i=0; i<n; i++) {
-			const v = f(d, a, b, seed, odds);
-			const p = v.p;
-			seed = v.seed;
-			
-			res.push(p);
-		}
-		
-		return res;
-	}
+        const res: number[][] = [];
+        for (let i=0; i<n; i++) {
+            const v = f(d, a, b, seed, odds);
+            const p = v.p;
+            seed = v.seed;
+            
+            res.push(p);
+        }
+        
+        return res;
+    }
 }
 
 
@@ -108,7 +108,7 @@ const flatRootsArr = createArrFunction(flatRoots);
  * @doc
  */
 const flatCoefficientsArr = createArrFunction(flatCoefficients);
-	
+    
 
 /**
  * Returns a quasi-random number to be used as the next input to this function.
@@ -120,9 +120,9 @@ const flatCoefficientsArr = createArrFunction(flatCoefficients);
  * @internal
  */
 function predictiveRandom(seed: number): number {
-	const a = 134775813;
-	
-	return (a * seed + 1) % RANGE;
+    const a = 134775813;
+    
+    return (a * seed + 1) % RANGE;
 }
 
 
@@ -147,15 +147,15 @@ function randomArray(
         seed: number, 
         odds = 0): { vs: number[], seed: number } {
 
-	let vs: number[] = [];
-	for (let i=0; i<n; i++) {
-		seed = predictiveRandom(seed);
-		const v = ((seed/RANGE) * (b-a)) + a;
-		seed = push(seed, vs, v, odds);
-	}
+    let vs: number[] = [];
+    for (let i=0; i<n; i++) {
+        seed = predictiveRandom(seed);
+        const v = ((seed/RANGE) * (b-a)) + a;
+        seed = push(seed, vs, v, odds);
+    }
     vs = vs.slice(0,n);
 
-	return { vs, seed };
+    return { vs, seed };
 }
 
 
@@ -171,14 +171,14 @@ function randomArray(
  * @internal
  */ 
 function push(seed: number, values: number[], x: number, odds: number): number {
-	seed = predictiveRandom(seed); 
-		
-	values.push(x);
-	if ((seed/RANGE) < odds) {
-		seed = push(seed, values, x, odds);
-	}
-	
-	return seed;
+    seed = predictiveRandom(seed); 
+        
+    values.push(x);
+    if ((seed/RANGE) < odds) {
+        seed = push(seed, values, x, odds);
+    }
+    
+    return seed;
 }
 
 
@@ -217,12 +217,12 @@ function flatRoots(
         seed = SEED, 
         odds = 0): { p: number[], seed: number } {
 
-	const randArr = randomArray(d, a, b, seed, odds);
-	seed = randArr.seed;
+    const randArr = randomArray(d, a, b, seed, odds);
+    seed = randArr.seed;
 
-	const p = fromRoots(randArr.vs);
+    const p = fromRoots(randArr.vs);
 
-	return { p, seed };
+    return { p, seed };
 }
 
 
@@ -257,19 +257,19 @@ function flatCoefficients(
         b = +1, 
         seed = SEED): { p: number[], seed: number } {
 
-	const randArr = randomArray(d, a, b, seed);
-	seed = randArr.seed;
-	
-	const p = randArr.vs;
-	
-	return { p, seed };
+    const randArr = randomArray(d, a, b, seed);
+    seed = randArr.seed;
+    
+    const p = randArr.vs;
+    
+    return { p, seed };
 }
 
 
 export {
-	flatRoots,
+    flatRoots,
     flatRootsArr,
     flatCoefficients,
-	flatCoefficientsArr,
-	predictiveRandom
+    flatCoefficientsArr,
+    predictiveRandom
 }

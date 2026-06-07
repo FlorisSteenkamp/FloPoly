@@ -1,19 +1,12 @@
-import { exponent as exponent_ } from "big-float-ts";
-import { bitLength as bitLength_ } from "big-float-ts";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const exponent = exponent_;
-const bitLength = bitLength_;
-
-
-const b0 = 0n;  // so tests are not tripped up - awaiting better support
+import { exponent } from "big-float-ts";
+import { bitLength } from "big-float-ts";
 
 
 /**
  * Returns the result of scaling the given array of array of floats by the 
  * *same* power of two such that all floats become bigints.
  * 
- * * can be used to scale polynomials (with coefficients given as Shewchuk 
+ * * can be used to scale polynomials (with coefficients given as Schewchuk 
  * expansions)
  * 
  * @param ass an array of an array of double precision floating point numbers
@@ -41,8 +34,8 @@ function scaleFloatssToBigintss(ass: number[][]): bigint[][] {
 
     if (e > 0) {
         return ass.map(as => as.map(a => {
-            if (a === 0) { 
-                return b0;
+            if (a === 0) {
+                return 0n;
             }
             
             const scalePower = -exponent(a) + bitLength(a) - 1;

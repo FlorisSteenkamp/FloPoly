@@ -1,7 +1,6 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { pInfNorm } from '../../../src/index.js';
+import { pInfNorm } from '../../../src/norm/double/p-inf-norm.js';
 
 
 describe('pInfNorm', function() {
@@ -11,9 +10,9 @@ describe('pInfNorm', function() {
 		let p1 = [1e-10,-1e-12,1];
 		let p2 = [-1e-3,1e-12,1e-10];
 		let p3 = [-1e-3,1e-1,1e-10];
-		expect(pInfNorm(p0)).to.equal(0);
-		expect(pInfNorm(p1)).to.equal(1);
-		expect(pInfNorm(p2)).to.equal(1e-3);
-		expect(pInfNorm(p3)).to.equal(1e-1);
+		expect(pInfNorm(p0)).toEqual(0);
+		expect(pInfNorm(p1)).toEqual(1);
+		expect(pInfNorm(p2)).toEqual(1e-3);
+		expect(pInfNorm(p3)).toEqual(1e-1);
 	});
 });

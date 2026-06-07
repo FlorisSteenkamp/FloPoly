@@ -1,11 +1,6 @@
-import { bSturmChain as bSturmChain_ } from "../../../euclidean-division-related/bigint/b-sturm-chain.js";
-import { bHorner as bHorner_ } from "../../../evaluate/bigint/b-horner.js";
-import { bSignChanges as bSignChanges_ } from "./b-sign-changes.js";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const bSturmChain = bSturmChain_;
-const bHorner = bHorner_;
-const bSignChanges = bSignChanges_;
+import { bSturmChain } from "../../../euclidean-division-related/bigint/b-sturm-chain.js";
+import { bHorner } from "../../../evaluate/bigint/b-horner.js";
+import { bSignChanges } from "./b-sign-changes.js";
 
 
 /** 
@@ -30,15 +25,15 @@ const bSignChanges = bSignChanges_;
  * @doc
  */ 
 function bNumRootsInRange(
-		p: bigint[], 
-		a: bigint, 
-		b: bigint): number {
+        p: bigint[], 
+        a: bigint, 
+        b: bigint): number {
 
-	const ps = bSturmChain(p);
-	const as = ps.map(p => bHorner(p,a));
-	const bs = ps.map(p => bHorner(p,b));
-	
-	return bSignChanges(as) - bSignChanges(bs);
+    const ps = bSturmChain(p);
+    const as = ps.map(p => bHorner(p,a));
+    const bs = ps.map(p => bHorner(p,b));
+    
+    return bSignChanges(as) - bSignChanges(bs);
 }
 
 

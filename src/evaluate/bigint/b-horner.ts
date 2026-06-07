@@ -12,12 +12,12 @@
  * @doc
  */
 function bHorner(p: bigint[], x: bigint): bigint {
-	let q = 0n; 
-	for (let i=0; i<p.length; i++) {
-		q = q*x + p[i];
-	}
-		
-	return q;
+    let q = 0n; 
+    for (let i=0; i<p.length; i++) {
+        q = q*x + p[i];
+    }
+        
+    return q;
 }
 
 

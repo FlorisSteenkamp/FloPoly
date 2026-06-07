@@ -17,16 +17,16 @@
         p: number[], 
         c: number): number[] {
 
-	const result: number[] = [];
-	
-	const d = p.length - 1;
-	for (let i=0; i<d+1; i++) {
-		result.push(p[i]/(d+1-i));
-	}
+    const result: number[] = [];
+    
+    const d = p.length - 1;
+    for (let i=0; i<d+1; i++) {
+        result.push(p[i]/(d+1-i));
+    }
 
     result.push(c);
-	
-	return result;
+    
+    return result;
 }
 
 

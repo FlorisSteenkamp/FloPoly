@@ -1,7 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { bEqual, bFlatCoefficientsArr } from '../../../src/index.js';
+import { bEqual } from '../../../src/basic/bigint/b-equal.js';
+import { bFlatCoefficientsArr } from '../../../src/predictive-random/bigint/b-random.js';
 
 
 describe('random.bFlatCoefficientsArr', function() {
@@ -13,19 +13,19 @@ describe('random.bFlatCoefficientsArr', function() {
 		
 		res = bFlatCoefficientsArr(2,3,-2,2);
 		
-		assert(bEqual(res[0], expected1), `res[0]: ${res[0]}, expected: ${expected1}`);
-		assert(bEqual(res[1], expected2), `res[1]: ${res[1]}, expected: ${expected2}`);
+		expect(bEqual(res[0], expected1)).toBeTruthy();
+		expect(bEqual(res[1], expected2)).toBeTruthy();
 		
 		res = bFlatCoefficientsArr(2,3,-2,2);
-		assert(bEqual(res[0], expected1), `res[0]: ${res[0]}, expected: ${expected1}`);
-		assert(bEqual(res[1], expected2), `res[1]: ${res[1]}, expected: ${expected2}`);
+		expect(bEqual(res[0], expected1)).toBeTruthy();
+		expect(bEqual(res[1], expected2)).toBeTruthy();
 
 		let expected3 = [
 			[291912365n, 241123040n, 394273760n, 410943712n, 14521824n],
   			[11760919n, 15009599n, 5934375n, 4776143n, 15289399n]
 		];
 		res = bFlatCoefficientsArr(2,5);
-		assert(bEqual(res[0], expected3[0]), `res[0]: ${res[0]}, expected: ${expected3[0]}`);
-		assert(bEqual(res[1], expected3[1]), `res[1]: ${res[1]}, expected: ${expected3[1]}`);
+		expect(bEqual(res[0], expected3[0])).toBeTruthy();
+		expect(bEqual(res[1], expected3[1])).toBeTruthy();
 	});
 });

@@ -14,20 +14,20 @@
  * @doc
  */
 function bReflectAboutYAxis(
-		p: bigint[]): bigint[] {
-			
-	const d = p.length-1;
+        p: bigint[]): bigint[] {
+            
+    const d = p.length-1;
 
-	if (d < 0) { return []; }
+    if (d < 0) { return []; }
 
-	const result = p.slice();
-	for (let i=0; i<d+1; i++) {
-		if (i % 2) {
-			result[i] = -result[i]; 
-		}
-	}
-	
-	return result;
+    const result = p.slice();
+    for (let i=0; i<d+1; i++) {
+        if (i % 2) {
+            result[i] = -result[i]; 
+        }
+    }
+    
+    return result;
 }
 
 

@@ -1,7 +1,6 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { positiveRootUpperBound_LMQ } from '../../../src/index.js';
+import { positiveRootUpperBound_LMQ } from '../../../src/roots/root-bounds/root-bounds-lmq.js';
 
 
 describe('positiveRootUpperBound_LMQ', function() {
@@ -22,12 +21,12 @@ describe('positiveRootUpperBound_LMQ', function() {
 			186244810780170260000, -51090942171709440000
 		];
 		// real roots at about -2.397918624065303 and 2.8793785310848383
-		expect(positiveRootUpperBound_LMQ(p1)).to.equal(4.015534272870436);
+		expect(positiveRootUpperBound_LMQ(p1)).toEqual(4.015534272870436);
 		// real roots everywhere
-		expect(positiveRootUpperBound_LMQ(p2)).to.equal(0);
+		expect(positiveRootUpperBound_LMQ(p2)).toEqual(0);
 		// real roots nowhere
-		expect(positiveRootUpperBound_LMQ(p3)).to.equal(0);
+		expect(positiveRootUpperBound_LMQ(p3)).toEqual(0);
 		// real roots at 1,2,...,21
-		expect(positiveRootUpperBound_LMQ(p4)).to.equal(462);
+		expect(positiveRootUpperBound_LMQ(p4)).toEqual(462);
 	});
 });

@@ -1,6 +1,7 @@
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { bisection, fromRoots, Horner } from '../../../src/index.js';
+import { describe, expect, it } from '@jest/globals';
+import { bisection } from '../../../src/roots/naive/bisection.js';
+import { fromRoots } from '../../../src/roots/from-roots/double/from-roots.js';
+import { Horner } from '../../../src/evaluate/double/horner.js';
 import { rootAccurateEnough } from '../../helpers/root-accurate-enough.js';
 
 
@@ -16,35 +17,17 @@ describe('bisection', function() {
         let r2 = bisection(f,2.2,3.1); //=> 3ish
 		let r3 = bisection(f,-20,1); //=> -10ish
 
-        assert(
-			rootAccurateEnough(p, r1),
-			`r1 should be refined to accurately enough`
-		);
-        assert(
-			rootAccurateEnough(p, r2),
-			`r2 should be refined to accurately enough`
-		);
-        assert(
-			rootAccurateEnough(p, r3),
-			`r3 should be refined to accurately enough`
-		);
+        expect(rootAccurateEnough(p, r1)).toBeTruthy();
+        expect(rootAccurateEnough(p, r2)).toBeTruthy();
+        expect(rootAccurateEnough(p, r3)).toBeTruthy();
 
 		// reversed versions
 		let r1r = bisection(f,3.8,2.2); //=> 3ish
 		let r2r = bisection(f,3.1,2.2); //=> 3ish
 		let r3r = bisection(f,1,-20); //=> -10ish
-		assert(
-			rootAccurateEnough(p, r1r),
-			`r1r should be refined to accurately enough`
-		);
-        assert(
-			rootAccurateEnough(p, r2r),
-			`r2r should be refined to accurately enough`
-		);
-        assert(
-			rootAccurateEnough(p, r3r),
-			`r3r should be refined to accurately enough`
-		);
+		expect(rootAccurateEnough(p, r1r)).toBeTruthy();
+        expect(rootAccurateEnough(p, r2r)).toBeTruthy();
+        expect(rootAccurateEnough(p, r3r)).toBeTruthy();
     });
     
 	it('should throw a relevant exception if the root is not bracketed',
@@ -53,14 +36,10 @@ describe('bisection', function() {
 		let p = fromRoots(roots);  //=> [1, 1, -64, 236, -240]
 		let f = (t: number) => Horner(p,t);
 		expect(
-			() => bisection(f,2.2,2.3)).to.throw(Error, 'Root not bracketed',
-			`No error thrown even though root is not bracketed, p: ${p}, bracket: [2.2,2.3], roots: ${roots}`
-		);
+			() => bisection(f,2.2,2.3)).toThrow('Root not bracketed');
 
 		expect(
-			() => bisection(f,2.2,2.2)).to.throw(Error, 'Root not bracketed',
-			`No error thrown even though root is not bracketed, p: ${p}, bracket: [2.2,2.2], roots: ${roots}`
-		);
+			() => bisection(f,2.2,2.2)).toThrow('Root not bracketed');
 	});
 
 	
@@ -70,9 +49,9 @@ describe('bisection', function() {
 		let p = fromRoots(roots);  //=> [1, 1, -64, 236, -240]
 		let f = (t: number) => Horner(p,t);
 		let r1 = bisection(f,3,3);
-		expect(r1).to.eql(3);
+		expect(r1).toEqual(3);
 		let r2 = bisection(f,-10,-10);
-		expect(r2).to.eql(-10);
+		expect(r2).toEqual(-10);
 	});
 
 
@@ -82,8 +61,8 @@ describe('bisection', function() {
 		let p = fromRoots(roots);  //=> [1, 1, -64, 236, -240]
 		let f = (t: number) => Horner(p,t);
 		let r1 = bisection(f,3,3.5);
-		expect(r1).to.eql(3);
+		expect(r1).toEqual(3);
 		let r2 = bisection(f,-20,-10);
-		expect(r2).to.eql(-10);
+		expect(r2).toEqual(-10);
 	});
 });

@@ -11,13 +11,13 @@ import { ddDivDd } from "double-double";
  * @doc
  */
 function ddDivideByConst(p: number[][], c: number[]): number[][] {
-	const d = p.length;
-	const r: number[][] = [];
-	for (let i=0; i<d; i++) {
-		r.push(ddDivDd(p[i],c));
-	}
-	
-	return r;
+    const d = p.length;
+    const r: number[][] = [];
+    for (let i=0; i<d; i++) {
+        r.push(ddDivDd(p[i],c));
+    }
+    
+    return r;
 }
 
 

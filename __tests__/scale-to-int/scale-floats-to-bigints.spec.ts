@@ -1,8 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { expect } from 'chai';
-import { describe } from 'mocha';
 
-import { scaleFloatsToBigints } from '../../src/index.js';
+import { scaleFloatsToBigints } from '../../src/scale-to-int/scale-floats-to-bigints.js';
 
 
 describe('scaleFloatsToBigints', function() {
@@ -10,7 +9,7 @@ describe('scaleFloatsToBigints', function() {
 	function() {
 		let p = [0.000000000000000001, 324345345345341.1, 2, 3];
 		let res = scaleFloatsToBigints(p);
-		expect(res).to.eql([
+		expect(res).toEqual([
 			1298074214633707n,
       		421024329429252125037909724959982329298589581312n,
       		2596148429267413814265248164610048n,
@@ -19,7 +18,7 @@ describe('scaleFloatsToBigints', function() {
 
 		let p3 = [0, 2];
 		let res3 = scaleFloatsToBigints(p3);
-		expect(res3).to.eql([
+		expect(res3).toEqual([
 			0n, 1n
 		]);
 
@@ -36,7 +35,7 @@ describe('scaleFloatsToBigints', function() {
 		]
 		let res4 = scaleFloatsToBigints(p4);
 		//console.log(res4);
-		expect(res4).to.eql([
+		expect(res4).toEqual([
 			 18446744073709551616n,
 			-56815971747025420288n,
 			 67314013799373529088n,
@@ -52,7 +51,7 @@ describe('scaleFloatsToBigints', function() {
 		// the trivial case
 		let p5 = [3, 7];
 		let res5 = scaleFloatsToBigints(p5);
-		expect(res5).to.eql([
+		expect(res5).toEqual([
 			3n, 7n
 		]);
 	});

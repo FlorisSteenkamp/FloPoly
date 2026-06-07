@@ -1,7 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { equal, changeVariablesLinear } from '../../../src/index.js';
+import { equal } from '../../../src/basic/double/equal.js';
+import { changeVariablesLinear } from '../../../src/change-variables/double/change-variables-linear.js';
 
 
 describe('changeVariablesLinear', function() {
@@ -9,7 +9,7 @@ describe('changeVariablesLinear', function() {
 	function() {
 		let p1: number[] = [];
 		let p2 = [1,2,7];
-		assert(equal(changeVariablesLinear(p1, 3, 4), []));
-		assert(equal(changeVariablesLinear(p2, 3, 4), [9,30,31]));
+		expect(equal(changeVariablesLinear(p1, 3, 4), [])).toBeTruthy();
+		expect(equal(changeVariablesLinear(p2, 3, 4), [9,30,31])).toBeTruthy();
 	});
 });

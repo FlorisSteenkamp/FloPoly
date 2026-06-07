@@ -1,7 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { Horner, hornerWithRunningError } from '../../../src/index.js';
+import { Horner } from '../../../src/evaluate/double/horner.js';
+import { hornerWithRunningError } from '../../../src/evaluate/double/horner-with-running-error.js';
 
 // see also the file: e-e-horner.spec.ts
 
@@ -16,9 +16,9 @@ describe('Horner', function() {
         let p12_ = hornerWithRunningError(p1,1.002);
         let p22_ = hornerWithRunningError(p2,1212);
         
-		expect(p11_).to.eql([252.91000000000003, 2.4393931319366407e-13]);
-		expect(p21_).to.eql([75.4889344, 6.298927033299153e-14]);
-		expect(p12_).to.eql([21.749657257644827, 6.821482641739818e-15]);
-		expect(p22_).to.eql([317491919306866370, 422.92591894871236]);
+		expect(p11_).toEqual([252.91000000000003, 2.4393931319366407e-13]);
+		expect(p21_).toEqual([75.4889344, 6.298927033299153e-14]);
+		expect(p12_).toEqual([21.749657257644827, 6.821482641739818e-15]);
+		expect(p22_).toEqual([317491919306866370, 422.92591894871236]);
 	});
 });

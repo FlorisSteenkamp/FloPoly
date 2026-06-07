@@ -1,9 +1,5 @@
-import { bDifferentiate as bDifferentiate_ } from '../../calculus/bigint/b-differentiate.js';
-import { bPremSequenceSubresultant as bPremSequenceSubresultant_ } from "./b-prem-sequence-subresultant.js";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const bDifferentiate = bDifferentiate_;
-const bPremSequenceSubresultant = bPremSequenceSubresultant_;
+import { bDifferentiate } from '../../calculus/bigint/b-differentiate.js';
+import { bPremSequenceSubresultant } from "./b-prem-sequence-subresultant.js";
 
 
 /** 
@@ -24,9 +20,9 @@ const bPremSequenceSubresultant = bPremSequenceSubresultant_;
  * @doc
  */
 function bSturmChain(p: bigint[]): bigint[][] {
-	const dp = bDifferentiate(p);
+    const dp = bDifferentiate(p);
 
-	return bPremSequenceSubresultant(p, dp, true);
+    return bPremSequenceSubresultant(p, dp, true);
 }
 
 

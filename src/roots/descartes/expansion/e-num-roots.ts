@@ -1,14 +1,7 @@
-import { eSign as eSign_ } from "big-float-ts";
-import { eSturmChain as eSturmChain_ } from "../../../euclidean-division-related/expansion/e-sturm-chain.js";
-import { signChanges as signChanges_ } from "../double/sign-changes.js";
-import { eDegree as eDegree_ } from "../../../basic/expansion/e-degree.js";
-
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const signChanges = signChanges_;
-const eSign = eSign_;
-const eDegree = eDegree_;
-const eSturmChain = eSturmChain_;
+import { eSign } from "big-float-ts";
+import { eSturmChain } from "../../../euclidean-division-related/expansion/e-sturm-chain.js";
+import { signChanges } from "../double/sign-changes.js";
+import { eDegree } from "../../../basic/expansion/e-degree.js";
 
 
 /**
@@ -21,7 +14,7 @@ const eSturmChain = eSturmChain_;
  * of distinct real roots of P".
  * 
  * @param p a polynomial with coefficients given densely as an array of
- * Shewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
+ * Schewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
  * represents the polynomial `5x^2 - 3x`
  * 
  * @example
@@ -33,11 +26,11 @@ const eSturmChain = eSturmChain_;
  * @doc
  */
 function eNumRoots(p: number[][]): number {
-	const ps = eSturmChain(p);
-	const as = ps.map(p => eDegree(p) % 2 === 0 ? eSign(p[0]) : -eSign(p[0]));
-	const bs = ps.map(p => eSign(p[0]));
-	
-	return signChanges(as) - signChanges(bs);
+    const ps = eSturmChain(p);
+    const as = ps.map(p => eDegree(p) % 2 === 0 ? eSign(p[0]) : -eSign(p[0]));
+    const bs = ps.map(p => eSign(p[0]));
+    
+    return signChanges(as) - signChanges(bs);
 }
 
 

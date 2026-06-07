@@ -1,15 +1,10 @@
-import { EFTHorner as EFTHorner_ } from "./eft-horner.js";
-import { hornerWithRunningError as hornerWithRunningError_ } from "./horner-with-running-error.js";
-import { Horner as Horner_ } from "./horner.js";
-import { AbsHorner as AbsHorner_ } from "./abs-horner.js";
-import { γ as γ_ } from "../../error-analysis/gamma.js";
+import { EFTHorner } from "./eft-horner.js";
+import { hornerWithRunningError } from "./horner-with-running-error.js";
+import { Horner } from "./horner.js";
+import { AbsHorner } from "./abs-horner.js";
+import { γ } from "../../error-analysis/gamma.js";
 
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const γ = γ_;
-const EFTHorner = EFTHorner_;
-const hornerWithRunningError = hornerWithRunningError_;
-const Horner = Horner_;
-const AbsHorner = AbsHorner_;
+
 const γ1 = γ(1);
 const γ2 = γ(2);
 

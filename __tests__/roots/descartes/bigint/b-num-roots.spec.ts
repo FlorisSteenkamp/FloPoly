@@ -1,7 +1,6 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { bNumRoots } from '../../../../src/index.js';
+import { bNumRoots } from '../../../../src/roots/descartes/bigint/b-num-roots.js';
 
 
 describe('bNumRoots', function() {
@@ -9,7 +8,7 @@ describe('bNumRoots', function() {
 	function() {
 		{
 			let p = [1, 1, -64, 236, -240].map(BigInt);;
-			expect(bNumRoots(p)).to.equal(4);
+			expect(bNumRoots(p)).toEqual(4);
 		}
 	});
 });

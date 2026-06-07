@@ -1,7 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { eEqual, ddDifferentiate } from '../../../src/index.js';
+import { eEqual } from '../../../src/basic/expansion/e-equal.js';
+import { ddDifferentiate } from '../../../src/calculus/double-double/dd-differentiate.js';
 
 
 describe('ddDifferentiate', function() {
@@ -10,8 +10,8 @@ describe('ddDifferentiate', function() {
 		let p1: number[][] = [];
 		let p2 = [[0,1]];
 		let p3 = [[0,5], [0,4], [0,3], [0,2], [0,1]];
-		assert(eEqual(ddDifferentiate(p1), []));
-		assert(eEqual(ddDifferentiate(p2), []));
-		assert(eEqual(ddDifferentiate(p3), [[0,20], [0,12], [0,6], [0,2]]));
+		expect(eEqual(ddDifferentiate(p1), [])).toBeTruthy();
+		expect(eEqual(ddDifferentiate(p2), [])).toBeTruthy();
+		expect(eEqual(ddDifferentiate(p3), [[0,20], [0,12], [0,6], [0,2]])).toBeTruthy();
 	});
 });

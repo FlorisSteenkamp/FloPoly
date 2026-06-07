@@ -14,7 +14,7 @@
  * @doc
  */
 function bInvert(p: bigint[]): bigint[] {
-	return p.slice().reverse();
+    return p.slice().reverse();
 }
 
 

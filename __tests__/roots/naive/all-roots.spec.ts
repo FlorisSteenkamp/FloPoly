@@ -1,10 +1,9 @@
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { 
-	allRoots, fromRoots, flatRootsArr, 
-	flatCoefficientsArr, flatCoefficients, Horner, hornerWithRunningError, 
-	toCasStr, multiply
-} from '../../../src/index.js';
+import { describe, expect, it } from '@jest/globals';
+import { allRoots } from '../../../src/roots/naive/all-roots.js';
+import { fromRoots } from '../../../src/roots/from-roots/double/from-roots.js';
+import { flatRootsArr, flatCoefficientsArr, flatCoefficients } from '../../../src/predictive-random/double/random.js';
+import { toCasStr } from '../../../src/basic/to-cas-str.js';
+import { multiply } from '../../../src/basic/double/multiply.js';
 import { rootAccurateEnough } from '../../helpers/root-accurate-enough.js';
 
 
@@ -18,39 +17,39 @@ describe('allRoots', function() {
 	function() {
 		let p: number[] = [1,2,0];
 		let roots = allRoots(p);
-		expect(roots.length).to.eql(2);
-		expect(roots[0]).to.eql(-2);
-		expect(roots[1]).to.eql(0);
+		expect(roots.length).toEqual(2);
+		expect(roots[0]).toEqual(-2);
+		expect(roots[1]).toEqual(0);
 	});
 	it('should return the correct roots by removing leading and trailing zeros (i.e. zero roots) (special cases)', 
 	function() {
 		let p: number[] = [0,0,0,0];
 		let roots = allRoots(p);
-		assert(roots.length === 0);
+		expect(roots.length === 0).toBeTruthy();
 	});
 	it('should return the correct roots by removing trailing zeros (i.e. zero roots)', 
 	function() {
 		let p: number[] = [0,-6,0];
 		let roots = allRoots(p);
-		assert(roots.length === 1);
-		expect(roots[0]).to.eql(0);
+		expect(roots.length === 1).toBeTruthy();
+		expect(roots[0]).toEqual(0);
 	});
 
 	it('should return the correct roots by removing trailing zeros (i.e. zero roots)', 
 	function() {
 		let p: number[] = [0,-9,5,0];
 		let roots = allRoots(p);
-		assert(roots.length === 2);
-		expect(roots[0]).to.eql(0);
-		expect(roots[1]).to.eql(5/9);
+		expect(roots.length === 2).toBeTruthy();
+		expect(roots[0]).toEqual(0);
+		expect(roots[1]).toEqual(5/9);
 	});
 
 	it('should return the correct roots by removing leading zeros', 
 	function() {
 		let p: number[] = [0,-9,5];
 		let roots = allRoots(p);
-		assert(roots.length === 1);
-		expect(roots[0]).to.eql(5/9);
+		expect(roots.length === 1).toBeTruthy();
+		expect(roots[0]).toEqual(5/9);
 	});
 
 	it('should  return roots for the zero or a constant polynomial', 
@@ -61,9 +60,9 @@ describe('allRoots', function() {
 		let roots1 = allRoots(p1);
 		let roots2 = allRoots(p2);
 		let roots3 = allRoots(p3);
-		assert(roots1.length === 0);
-		assert(roots2.length === 0);
-		assert(roots3.length === 0);
+		expect(roots1.length === 0).toBeTruthy();
+		expect(roots2.length === 0).toBeTruthy();
+		expect(roots3.length === 0).toBeTruthy();
 	});
 
 
@@ -76,7 +75,7 @@ describe('allRoots', function() {
 
 		let roots = allRoots(p);
 		
-		expect(roots).to.eql([-1,0,0,0,1]);
+		expect(roots).toEqual([-1,0,0,0,1]);
 	});
 
 
@@ -91,7 +90,7 @@ describe('allRoots', function() {
 		
 		//console.log(roots);
 		//console.log(toCasStr(p));
-		expect(roots).to.eql([1, 1.0700000000000023]);
+		expect(roots).toEqual([1, 1.0700000000000023]);
 	});
 
 
@@ -106,7 +105,7 @@ describe('allRoots', function() {
 		
 		//console.log(roots);
 		//console.log(toCasStr(p));
-		expect(roots).to.eql([0, 0, 1]);
+		expect(roots).toEqual([0, 0, 1]);
 	});
 
 
@@ -115,11 +114,8 @@ describe('allRoots', function() {
 		let p = [1, 0.7, -0.28, 0.02];
 		// roots at -1, 0.1, 0.2
 		let roots = allRoots(p, negInf, 0);
-		assert(
-			roots.length === 1 &&
-			numsWithin(roots, negInf, 0), 
-			'Roots not correct - roots: [' + roots + '] - should be [-1]'
-		);
+		expect(roots.length === 1 &&
+			numsWithin(roots, negInf, 0)).toBeTruthy();
 	});
 	
 	
@@ -128,11 +124,8 @@ describe('allRoots', function() {
 		let p = [1, 0.7, -0.28, 0.02];
 		// roots at -1, 0.1, 0.2
 		let roots = allRoots(p, 0, posInf);
-		assert(
-			roots.length === 2 &&
-			numsWithin(roots, 0, posInf), 
-			'Roots not correct - roots: [' + roots + '] - should be [0.1,0.2]'
-		);
+		expect(roots.length === 2 &&
+			numsWithin(roots, 0, posInf)).toBeTruthy();
 	});
 	
 	it('should not return roots that doesn\'t fall in the given closed range', 
@@ -140,35 +133,29 @@ describe('allRoots', function() {
 		let p = [1, 0.7, -0.28, 0.02];
 		// roots at -1, 0.1, 0.2
 		let roots = allRoots(p,0,2);
-		assert(
-			roots.length === 2 &&
-			numsWithin(roots, 0, 2), 
-			'Roots not correct - roots: [' + roots + '] - should be [0.1, 0.2]'
-		);
+		expect(roots.length === 2 &&
+			numsWithin(roots, 0, 2)).toBeTruthy();
 	});
 	
 	it('should return no roots for a zero polynomial', 
 	function() {
 		let p: number[] = [];
 		let roots = allRoots(p);
-		expect(roots).to.be.an('array').that.is.empty;
+		expect(roots).toEqual([]);
 	});
 	
 	it('should return no roots for a non-zero constant polynomial', 
 	function() {
 		let p = [2.2];
 		let roots = allRoots(p);
-		expect(roots).to.be.an('array').that.is.empty;
+		expect(roots).toEqual([]);
 	});
 	
 	it('should calculate some simple linear polynomial roots accurately', 
 	function() {
 		let p = [0.1,2.2];
 		let roots = allRoots(p);
-		assert(
-			rootsAccurateEnough(p,[-22]), 
-			'Roots not correct (1)'
-		);
+		expect(rootsAccurateEnough(p,[-22])).toBeTruthy();
 	});
 	
 	it('should calculate some simple quadratic roots accurately', 
@@ -176,16 +163,16 @@ describe('allRoots', function() {
 		{
 			let p = [1,-3,2];
 			let roots = allRoots(p);
-			assert(roots[0] === 1);
-			assert(roots[1] === 2);
+			expect(roots[0] === 1).toBeTruthy();
+			expect(roots[1] === 2).toBeTruthy();
 		}
 		
 		{
 			let p = [1, -1.1, 0.3];
 			let roots = allRoots(p);
 
-			assert(roots[0] === 0.49999999999999944);
-			assert(roots[1] === 0.6000000000000005);
+			expect(roots[0] === 0.49999999999999944).toBeTruthy();
+			expect(roots[1] === 0.6000000000000005).toBeTruthy();
 		}
 	});
 	
@@ -193,15 +180,8 @@ describe('allRoots', function() {
 	function() {
 		let p = [1, 0.7, -0.28, 0.02];
 		let roots = allRoots(p);
-		assert(
-			roots.length === 3,
-			`Root count wrong (2); p: [${p}], p: ${toCasStr(p)}, roots: [${roots}]`
-		);
-		assert(
-			//rootsAccurateEnough(p,[-1, 0.1, 0.2]), 
-			rootsAccurateEnough(p,roots),
-			`Roots not correct (2); p: [${p}], p: ${toCasStr(p)}, roots: [${roots}]`
-		);
+		expect(roots.length === 3).toBeTruthy();
+		expect(rootsAccurateEnough(p,roots)).toBeTruthy();
 	});
 	
 	it(
@@ -209,7 +189,6 @@ describe('allRoots', function() {
 	with reproducable random roots (in a flat distribution from -10 to 
 	10) of order 3,4,7,12,15, and 20 that only have real roots`, 
 	function() {
-		this.timeout(5000);
 		const N = 100;
 		const orders = [3,4,7,12,15,20];
 		let pss = [
@@ -226,15 +205,9 @@ describe('allRoots', function() {
 				let p = pss[i][j];
 				let roots = allRoots(p);
 
-				assert.equal(
-					p.length-1, orders[i],
-					`Root count wrong (3); p: [${p}], p: ${toCasStr(p)}, roots: [${roots}]`
-				);
+				expect(p.length-1).toEqual(orders[i]);
 				let rootsAccurateEnough_ = rootsAccurateEnough(p,roots);
-				assert(
-					rootsAccurateEnough_, 
-					`Roots not correct (3); p: [${p}], p: ${toCasStr(p)}, roots: [${roots}]`
-				);
+				expect(rootsAccurateEnough_).toBeTruthy();
 			}
 		}
 	});
@@ -258,11 +231,8 @@ describe('allRoots', function() {
 			for (let j=0; j<pss[i].length; j++) {
 				let p = pss[i][j];
 				let roots = allRoots(p);
-				//assert.equal(p.length-1, orders[i]);
-				assert(
-					rootsAccurateEnough(p,roots), 
-					`Roots not correct (4); p: [${p}], p: ${toCasStr(p)}, roots: [${roots}]`
-				);
+				//expect(p.length-1).toEqual(orders[i]);
+				expect(rootsAccurateEnough(p,roots)).toBeTruthy();
 			}
 		}
 	});
@@ -271,7 +241,6 @@ describe('allRoots', function() {
 	it(`should not miss a near triple or higher odd degree root for hundreds
 		of predictable random polynomials designed to have these kinds of roots`, 
 	function() {
-		this.timeout(10000);
 		const N = 1000;
 		const orders = [3,7,19];
 		const near = 1;
@@ -296,14 +265,8 @@ describe('allRoots', function() {
 				let p = ps[i];
 				let roots = allRoots(p);
 				//console.log(roots, fs[i])
-				assert(
-					roots.length >= 1,
-					`Root count wrong (5); p: [${p}], p: ${toCasStr(p)}, roots: [${roots}]`
-				);
-				assert(
-					rootsAccurateEnough(p,roots), 
-					`Roots not correct (5); p: [${p}], p: ${toCasStr(p)}, roots: [${roots}]`
-				);
+				expect(roots.length >= 1).toBeTruthy();
+				expect(rootsAccurateEnough(p,roots)).toBeTruthy();
 			}
 		}
 	});
@@ -312,7 +275,6 @@ describe('allRoots', function() {
 	it(`should not miss a triple or higher odd degree root for hundreds
 		of predictable random polynomials`, 
 	function() {
-		this.timeout(10000);
 		const N = 1000;
 		const orders = [3,7,19];
 	
@@ -340,14 +302,8 @@ describe('allRoots', function() {
 				let roots = allRoots(p);
 				//console.log(roots[0], fs[i][0])
 				//console.log(roots[0])
-				assert(
-					roots.length >= 1,
-					`Root count wrong (6); p: [${p}], p: ${toCasStr(p)}, roots: [${roots}]`
-				);
-				assert(
-					rootsAccurateEnough(p,roots), 
-					`Roots not correct (6); p: [${p}], p: ${toCasStr(p)}, roots: [${roots}]`
-				);
+				expect(roots.length >= 1).toBeTruthy();
+				expect(rootsAccurateEnough(p,roots)).toBeTruthy();
 			}
 		}
 	});

@@ -1,7 +1,6 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { expect } from 'chai';
-import { describe } from 'mocha';
-import { absCoeff } from '../../../src/index.js';
+import { absCoeff } from '../../../src/basic/double/abs-coeff.js';
 
 
 describe('absCoeff', function() {
@@ -10,8 +9,8 @@ describe('absCoeff', function() {
 		let p1: number[] = [];
 		let p2 = [-2,3];
 		let p3 = [-3,-2,-1];
-		expect(absCoeff(p1)).to.eql([]);
-		expect(absCoeff(p2)).to.eql([2,3]);
-		expect(absCoeff(p3)).to.eql([3,2,1]);
+		expect(absCoeff(p1)).toEqual([]);
+		expect(absCoeff(p2)).toEqual([2,3]);
+		expect(absCoeff(p3)).toEqual([3,2,1]);
 	});
 });

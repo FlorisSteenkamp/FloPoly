@@ -1,5 +1,4 @@
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
+import { describe, expect, it } from '@jest/globals';
 import { ePdivTrivial } from '../../../src/euclidean-division-related/expansion/e-pdiv-trivial.js';
 
 
@@ -21,58 +20,40 @@ describe('ePdivTrivial', function() {
             {
                 let r = ePdivTrivial(ps[0], ps[2]);
                 let expected: { q: number[][]; r: number[][] } = { q: [[1],[1]], r: [] };
-                expect(r).to.deep.equal(
-                    expected,
-                    `result: ${r}, expected: ${expected}`
-                );
+                expect(r).toEqual(expected);
             }
             {
                 let r = ePdivTrivial(ps[2], ps[0]);
                 let expected: { q: number[][]; r: number[][] } = { q: [], r: ps[2] };
-                expect(r).to.deep.equal(
-                    expected,
-                    `result: ${r}, expected: ${expected}`
-                );
+                expect(r).toEqual(expected);
             }
 
 
             {
                 let r = ePdivTrivial(ps[0], ps[4]);
                 let expected: { q: number[][]; r: number[][] } = { q: [[1],[6]], r: [] };
-                expect(r).to.deep.equal(
-                    expected,
-                    `result: ${r}, expected: ${expected}`
-                );
+                expect(r).toEqual(expected);
             }
 
 
             {
                 let r = ePdivTrivial(ps[1], ps[3]);
                 let expected: { q: number[][]; r: number[][] } = { q: [[1],[1]], r: [] };
-                expect(r).to.deep.equal(
-                    expected,
-                    `result: ${r}, expected: ${expected}`
-                );
+                expect(r).toEqual(expected);
             }
 
 
             {
                 let r = ePdivTrivial(ps[1], ps[4]);
                 let expected: { q: number[][]; r: number[][] } = { q: [[1],[-6]], r: [] };
-                expect(r).to.deep.equal(
-                    expected,
-                    `result: ${r}, expected: ${expected}`
-                );
+                expect(r).toEqual(expected);
             }
 
 
             {
                 let r = ePdivTrivial(ps[2], ps[5]);
                 let expected: { q: number[][]; r: number[][] } = { q: [], r: ps[2] };
-                expect(r).to.deep.equal(
-                    expected,
-                    `result: ${r}, expected: ${expected}`
-                );
+                expect(r).toEqual(expected);
             }
 
 
@@ -80,22 +61,22 @@ describe('ePdivTrivial', function() {
             {
                 let r = ePdivTrivial(ps[6], ps[7], false);
                 let expected: { q: number[][]; r: number[][] } = { q: [[-1]], r: [[-12]] };
-                expect(r).to.deep.equal(expected, `result: ${r}, expected: ${expected}`);
+                expect(r).toEqual(expected);
             }
             {
                 let r = ePdivTrivial(ps[7], ps[6], false);
                 let expected: { q: number[][]; r: number[][] } = { q: [[-1]], r: [[12]] };
-                expect(r).to.deep.equal(expected, `result: ${r}, expected: ${expected}`);
+                expect(r).toEqual(expected);
             }
             {
                 let r = ePdivTrivial(ps[6], ps[7], true);
                 let expected: { q: number[][]; r: number[][] } = { q: [[1]], r: [[12]] };
-                expect(r).to.deep.equal(expected, `result: ${r}, expected: ${expected}`);
+                expect(r).toEqual(expected);
             }
             {
                 let r = ePdivTrivial(ps[7], ps[6], true);
                 let expected: { q: number[][]; r: number[][] } = { q: [[1]], r: [[-12]] };
-                expect(r).to.deep.equal(expected, `result: ${r}, expected: ${expected}`);
+                expect(r).toEqual(expected);
             }
         }
 
@@ -107,7 +88,7 @@ describe('ePdivTrivial', function() {
 
             {
                 let r = ePdivTrivial(ps[0], ps[1]);
-                expect(r).to.deep.equal({ q: [[9],[0],[-6]], r: [[-15],[0],[3],[0],[-9]] });
+                expect(r).toEqual({ q: [[9],[0],[-6]], r: [[-15],[0],[3],[0],[-9]] });
             }
         }
 
@@ -115,7 +96,7 @@ describe('ePdivTrivial', function() {
             let a = [[1], [-2], [0], [-4]];
             let b = [[1], [-3]];
             
-            expect(ePdivTrivial(a,b,false)).to.eql(
+            expect(ePdivTrivial(a,b,false)).toEqual(
                 { q: [[1],[1],[3]], r: [[5]] }
             );
         }
@@ -124,7 +105,7 @@ describe('ePdivTrivial', function() {
             let a = [[1e10], [1e5]];
             let b = [[1e10], [1e5]];
             
-            expect(ePdivTrivial(a,b,false)).to.eql(
+            expect(ePdivTrivial(a,b,false)).toEqual(
                 { q: [[10000000000]], r: [] }
             );
         }
@@ -132,7 +113,7 @@ describe('ePdivTrivial', function() {
             let a = [[1], [-3]];
             let b = [[5]];
             
-            expect(ePdivTrivial(a,b,false)).to.eql(
+            expect(ePdivTrivial(a,b,false)).toEqual(
                 { q: [[5],[-15]], r: [] }
             );
         }

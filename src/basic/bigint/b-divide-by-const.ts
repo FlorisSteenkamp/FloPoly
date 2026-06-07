@@ -9,13 +9,13 @@
  * @doc
  */
 function bDivideByConst(p: bigint[], c: bigint): bigint[] {
-	const d = p.length;
-	const r: bigint[] = [];
-	for (let i=0; i<d; i++) {
-		r.push(p[i] / c);
-	}
-	
-	return r;
+    const d = p.length;
+    const r: bigint[] = [];
+    for (let i=0; i<d; i++) {
+        r.push(p[i] / c);
+    }
+    
+    return r;
 }
 
 

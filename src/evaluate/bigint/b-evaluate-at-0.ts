@@ -13,7 +13,7 @@
  * @doc
  */
 function bEvaluateAt0(p: bigint[]): bigint {
-	return p.length === 0 ? 0n : p[p.length-1];
+    return p.length === 0 ? 0n : p[p.length-1];
 }
 
 

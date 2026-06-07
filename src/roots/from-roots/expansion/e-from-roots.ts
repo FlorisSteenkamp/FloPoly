@@ -1,11 +1,6 @@
-import { eMultiply as eMultiply_ } from "../../../basic/expansion/e-multiply.js";
-import { eNegativeOf as eNegativeOf_ } from "big-float-ts";
-import { eToDd as eToDd_ } from "big-float-ts";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eMultiply = eMultiply_;
-const eNegativeOf = eNegativeOf_;
-const eToDd = eToDd_;
+import { eMultiply } from "../../../basic/expansion/e-multiply.js";
+import { eNegativeOf } from "big-float-ts";
+import { eToDd } from "big-float-ts";
 
 
 /**
@@ -22,26 +17,26 @@ const eToDd = eToDd_;
  * @doc
  */
 function eFromRoots(
-		roots: number[][]): {
-			pDd: number[][],
-			pE: number[],
-			getPExact: () => number[][]
-		} {
+        roots: number[][]): {
+            pDd: number[][],
+            pE: number[],
+            getPExact: () => number[][]
+        } {
 
-	let p = [[1]];
-	for (let i=0; i<roots.length; i++) {
-		p = eMultiply(p, [[1], eNegativeOf(roots[i])]);
-	}
-	
-	const pE = p.map(c => Math.abs(c[c.length-1]*Number.EPSILON));
+    let p = [[1]];
+    for (let i=0; i<roots.length; i++) {
+        p = eMultiply(p, [[1], eNegativeOf(roots[i])]);
+    }
+    
+    const pE = p.map(c => Math.abs(c[c.length-1]*Number.EPSILON));
 
-	const getPExact = () => p;
+    const getPExact = () => p;
 
-	return {
-		pDd: p.map(eToDd),
-		pE,
-		getPExact
-	}
+    return {
+        pDd: p.map(eToDd),
+        pE,
+        getPExact
+    }
 }
 
 

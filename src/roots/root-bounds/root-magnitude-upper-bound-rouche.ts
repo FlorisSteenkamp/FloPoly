@@ -1,7 +1,4 @@
-import { pInfNorm as pInfNorm_ } from "../../norm/double/p-inf-norm.js";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const pInfNorm = pInfNorm_;
+import { pInfNorm } from "../../norm/double/p-inf-norm.js";
 
 
 /**
@@ -19,7 +16,7 @@ const pInfNorm = pInfNorm_;
  */
 function rootMagnitudeUpperBound_rouche(p: number[]): number {
     if (p.length <= 1) {
-		return 0;
+        return 0;
     }
     
     return 1 + (pInfNorm(p.slice(1)) / p[0]);

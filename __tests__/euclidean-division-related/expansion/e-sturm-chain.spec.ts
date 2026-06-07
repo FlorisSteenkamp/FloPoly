@@ -1,6 +1,6 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { eSturmChain } from '../../../src/index.js';
+import { eSturmChain } from '../../../src/euclidean-division-related/expansion/e-sturm-chain.js';
 
 
 describe('eSturmChain', function() {
@@ -11,7 +11,7 @@ describe('eSturmChain', function() {
             // a = x^8 + x^6 - 3x^4 - 3x^3 + 8x^2 + 2x - 5
             let a = [[1], [0], [1], [0], [-3], [-3], [8], [2], [-5]];
             let seq = eSturmChain(a);
-            expect(seq).to.eql([
+            expect(seq).toEqual([
                 [[1],[0],[1],[0],[-3],[-3],[8],[2],[-5]],
                 [[8],[0],[6],[0],[-12],[-9],[16],[2]],
                 [[-16],[-0],[96],[120],[-384],[-112],[320]],

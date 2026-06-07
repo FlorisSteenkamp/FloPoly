@@ -20,21 +20,21 @@
  * @doc
  */
 function rootMagnitudeUpperBound_fujiwara(p: number[]): number {
-	if (p.length <= 1) {
-		return 0;
-	}
+    if (p.length <= 1) {
+        return 0;
+    }
 
-	const d = p.length-1;
-	
-	const an = p[0];
-	const bs = [];
-	
-	for (let i=1; i<d; i++) {
-		bs.push( (Math.abs(p[i] / an))**(1/i) );
-	}
-	bs.push( (Math.abs(p[d] / 2*an))**(1/d) );
-	
-	return 2*Math.max(...bs);
+    const d = p.length-1;
+    
+    const an = p[0];
+    const bs = [];
+    
+    for (let i=1; i<d; i++) {
+        bs.push( (Math.abs(p[i] / an))**(1/i) );
+    }
+    bs.push( (Math.abs(p[d] / 2*an))**(1/d) );
+    
+    return 2*Math.max(...bs);
 }
 
 

@@ -1,7 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { bEqual, bFlatCoefficients } from '../../../src/index.js';
+import { bEqual } from '../../../src/basic/bigint/b-equal.js';
+import { bFlatCoefficients } from '../../../src/predictive-random/bigint/b-random.js';
 
 
 describe('random.bFlatCoefficients', function() {
@@ -10,15 +10,15 @@ describe('random.bFlatCoefficients', function() {
 		let res: { p: bigint[]; seed: number; };
 		
 		res = bFlatCoefficients(3,-5,5); 
-		assert(bEqual(res.p, [117384545n, -136562080n, 629191520n]));
-		assert(res.seed === 939629312);
+		expect(bEqual(res.p, [117384545n, -136562080n, 629191520n])).toBeTruthy();
+		expect(res.seed === 939629312).toBeTruthy();
 		
 		res = bFlatCoefficients(3,-5,5); 
-		assert(bEqual(res.p, [117384545n, -136562080n, 629191520n]));
-		assert(res.seed === 939629312);
+		expect(bEqual(res.p, [117384545n, -136562080n, 629191520n])).toBeTruthy();
+		expect(res.seed === 939629312).toBeTruthy();
 		
 		res = bFlatCoefficients(3); // Uses default range 
-		assert(bEqual(res.p, [291912365n, 241123040n, 394273760n]));
-		assert(res.seed === 939629312);
+		expect(bEqual(res.p, [291912365n, 241123040n, 394273760n])).toBeTruthy();
+		expect(res.seed === 939629312).toBeTruthy();
 	});
 });

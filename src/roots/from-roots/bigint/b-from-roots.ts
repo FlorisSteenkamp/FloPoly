@@ -1,7 +1,4 @@
-import { bMultiply as bMultiply_ } from "../../../basic/bigint/b-multiply.js";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const bMultiply = bMultiply_;
+import { bMultiply } from "../../../basic/bigint/b-multiply.js";
 
 
 /**
@@ -20,12 +17,12 @@ const bMultiply = bMultiply_;
  * @doc
  */
 function bFromRoots(roots: bigint[]): bigint[] {
-	let p = [1n]; 
-	for (let i=0; i<roots.length; i++) {
-		p = bMultiply(p, [1n,-roots[i]]);
-	}
-	
-	return p;
+    let p = [1n]; 
+    for (let i=0; i<roots.length; i++) {
+        p = bMultiply(p, [1n,-roots[i]]);
+    }
+    
+    return p;
 }
 
 

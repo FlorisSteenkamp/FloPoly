@@ -1,10 +1,5 @@
-import { ddRemoveLeadingZeros as ddRemoveLeadingZeros_ } from "./dd-remove-leading-zeros.js";
-import { ddMultDd, ddAddDd } from "double-double";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const ddRemoveLeadingZeros = ddRemoveLeadingZeros_;
-const qmq = ddMultDd;
-const qaq = ddAddDd;
+import { ddRemoveLeadingZeros } from "./dd-remove-leading-zeros.js";
+import { ddMultDd as qmq, ddAddDd as qaq } from "double-double";
 
 
 /**
@@ -22,24 +17,24 @@ const qaq = ddAddDd;
  * @doc
  */
 function ddMultiply(p1: number[][], p2: number[][]): number[][] {
-	const d1 = p1.length-1;
-	const d2 = p2.length-1;
+    const d1 = p1.length-1;
+    const d2 = p2.length-1;
 
-	// if either or both is the zero polynomial
-	if (d1 < 0 || d2 < 0) { 
-		return [];
-	}
+    // if either or both is the zero polynomial
+    if (d1 < 0 || d2 < 0) { 
+        return [];
+    }
 
-	const d = d1+d2;
-	const r: number[][] = new Array(d+1).fill([0,0]);
-	for (let i=0; i<d1+1; i++) {
-		for (let j=0; j<d2+1; j++) {
-			// r[d-(i+j)] += (p1[d1-i] * p2[d2-j]);
-			r[d-(i+j)] = qaq(r[d-(i+j)], qmq(p1[d1-i], p2[d2-j]));
-		}
-	}
+    const d = d1+d2;
+    const r: number[][] = new Array(d+1).fill([0,0]);
+    for (let i=0; i<d1+1; i++) {
+        for (let j=0; j<d2+1; j++) {
+            // r[d-(i+j)] += (p1[d1-i] * p2[d2-j]);
+            r[d-(i+j)] = qaq(r[d-(i+j)], qmq(p1[d1-i], p2[d2-j]));
+        }
+    }
 
-	return ddRemoveLeadingZeros(r);
+    return ddRemoveLeadingZeros(r);
 }
 
 

@@ -1,7 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { eEqual, eDifferentiate } from '../../../src/index.js';
+import { eEqual } from '../../../src/basic/expansion/e-equal.js';
+import { eDifferentiate } from '../../../src/calculus/expansion/e-differentiate.js';
 
 
 describe('eDifferentiate', function() {
@@ -10,8 +10,8 @@ describe('eDifferentiate', function() {
 		let p1: number[][] = [];
 		let p2 = [[1]];
 		let p3 = [[5], [4], [3], [2], [1]];
-		assert(eEqual(eDifferentiate(p1), []));
-		assert(eEqual(eDifferentiate(p2), []));
-		assert(eEqual(eDifferentiate(p3), [[20], [12], [6], [2]]));
+		expect(eEqual(eDifferentiate(p1), [])).toBeTruthy();
+		expect(eEqual(eDifferentiate(p2), [])).toBeTruthy();
+		expect(eEqual(eDifferentiate(p3), [[20], [12], [6], [2]])).toBeTruthy();
 	});
 });

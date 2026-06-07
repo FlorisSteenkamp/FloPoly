@@ -1,9 +1,5 @@
-import { eMultDouble2 } from "big-float-ts";
-import { eAdd } from "big-float-ts";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const emd = eMultDouble2;
-const eae = eAdd;
+import { eMultDouble2 as emd } from "big-float-ts";
+import { eAdd as eae } from "big-float-ts";
 
 
 /**
@@ -17,16 +13,16 @@ const eae = eAdd;
  * @doc
  */
 function eDeflate(p: number[][], t: number): number[][] {
-	const d = p.length-1;
-	const bs = [p[0]];
-	for (let i=1; i<d; i++) {
-		bs.push(
-			// p[i] + root*bs[i-1]
-			eae(p[i],emd(t,bs[i-1]))
-		);
-	}
+    const d = p.length-1;
+    const bs = [p[0]];
+    for (let i=1; i<d; i++) {
+        bs.push(
+            // p[i] + root*bs[i-1]
+            eae(p[i],emd(t,bs[i-1]))
+        );
+    }
 
-	return bs;
+    return bs;
 }
 
 

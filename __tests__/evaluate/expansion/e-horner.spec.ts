@@ -1,7 +1,6 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { eHorner } from '../../../src/index.js';
+import { eHorner } from '../../../src/evaluate/expansion/e-horner.js';
 
 // see also the file: e-e-horner.spec.ts
 
@@ -16,12 +15,12 @@ describe('eHorner', function() {
         let p12_ = eHorner(p1,1.002);
         let p22_ = eHorner(p2,1212);
 
-		expect(p11_).to.eql([
+		expect(p11_).toEqual([
             -1.942890293094024e-16, 
             8.881784197001252e-15, 
             252.91 
         ]);
-		expect(p21_).to.eql([
+		expect(p21_).toEqual([
             4.495487958736633e-97,
             -9.363352709384397e-97,
             4.870583160859408e-81,
@@ -33,7 +32,7 @@ describe('eHorner', function() {
             1.947661942836024e-15,
             75.48893440000002
         ]);
-		expect(p12_).to.eql([
+		expect(p12_).toEqual([
             -6.166475531702373e-99,
             -4.389071582523936e-98,
             -9.3596170035852e-83,
@@ -44,7 +43,7 @@ describe('eHorner', function() {
             -1.7763568394002505e-15,
             21.749657257644827
         ]);
-		expect(p22_).to.eql([
+		expect(p22_).toEqual([
             7.224281858557887, 
             317491919306866300 
         ]);

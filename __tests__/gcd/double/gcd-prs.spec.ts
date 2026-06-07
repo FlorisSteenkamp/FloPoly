@@ -1,7 +1,8 @@
+import { describe, expect, it, test } from '@jest/globals';
+
+test.skip('gcdPrs', () => {});
 
 /*
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
 import { 
     gcdPrs, multiplyByConst, eIsRationalMultipleOf, multiply, 
     differentiate
@@ -16,10 +17,10 @@ describe('gcdPrs', function() {
             let b = [4, -2];
             let gcd = gcdPrs(a,b);
             //console.log(gcd);
-            assert(eIsRationalMultipleOf(
+            expect(eIsRationalMultipleOf(
                 gcd, 
                 [[1]]
-            ));
+            )).toBeTruthy();
         }
         
         {
@@ -27,15 +28,15 @@ describe('gcdPrs', function() {
             let b = [1e10, 1e5];
             let gcd = gcdPrs(a,b);
             //console.log(gcd);
-            assert(eIsRationalMultipleOf(
+            expect(eIsRationalMultipleOf(
                 gcd, 
                 [[10_000_000_000], [100_000]]
-            ));
+            )).toBeTruthy();
 
-            assert(eIsRationalMultipleOf(
+            expect(eIsRationalMultipleOf(
                 gcd, 
                 [[100_000], [1]]
-            ));
+            )).toBeTruthy();
         }
 
         {
@@ -43,10 +44,10 @@ describe('gcdPrs', function() {
             let b = [1, -3];
             let gcd = gcdPrs(a,b);
             //console.log(gcd);
-            assert(eIsRationalMultipleOf(
+            expect(eIsRationalMultipleOf(
                 gcd,
                 [[1]]
-            ));
+            )).toBeTruthy();
         }
 
         {
@@ -54,10 +55,10 @@ describe('gcdPrs', function() {
             let b = [1, +8, 12, +17, 6];
             let gcd = gcdPrs(a,b);
             //console.log(gcd);
-            assert(eIsRationalMultipleOf(
+            expect(eIsRationalMultipleOf(
                 gcd,
                 [[1], [1], [2]]
-            ));
+            )).toBeTruthy();
         }
 
         /*

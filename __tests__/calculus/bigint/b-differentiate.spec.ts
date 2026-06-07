@@ -1,7 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { bEqual, bDifferentiate } from '../../../src/index.js';
+import { bEqual } from '../../../src/basic/bigint/b-equal.js';
+import { bDifferentiate } from '../../../src/calculus/bigint/b-differentiate.js';
 
 
 describe('bDifferentiate', function() {
@@ -10,8 +10,8 @@ describe('bDifferentiate', function() {
 		let p1: bigint[] = [];
 		let p2 = [1n];
 		let p3 = [5n, 4n, 3n, 2n, 1n];
-		assert(bEqual(bDifferentiate(p1), []));
-		assert(bEqual(bDifferentiate(p2), []));
-		assert(bEqual(bDifferentiate(p3), [20n, 12n, 6n, 2n]));
+		expect(bEqual(bDifferentiate(p1), [])).toBeTruthy();
+		expect(bEqual(bDifferentiate(p2), [])).toBeTruthy();
+		expect(bEqual(bDifferentiate(p3), [20n, 12n, 6n, 2n])).toBeTruthy();
 	});
 });

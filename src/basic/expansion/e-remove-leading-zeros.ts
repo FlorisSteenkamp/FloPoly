@@ -1,7 +1,4 @@
-import { eSign as eSign_ } from "big-float-ts";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eSign = eSign_;
+import { eSign } from "big-float-ts";
 
 
 /**
@@ -11,7 +8,7 @@ const eSign = eSign_;
  * 
  * @internal
  * 
- * @param p a polynomial with coefficients given densely as an array of Shewchuk
+ * @param p a polynomial with coefficients given densely as an array of Schewchuk
  * floating point expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
  * represents the polynomial `5x^2 - 3x`
  * 
@@ -24,19 +21,19 @@ const eSign = eSign_;
  * @doc
  */
 function eRemoveLeadingZeros(p: number[][]): number[][] {
-	let lzCount = 0;
-	for (let i=0; i<=p.length-1; i++) {
-		if (eSign(p[i]) !== 0) {
-			break;
-		}
-		lzCount++;
-	}
+    let lzCount = 0;
+    for (let i=0; i<=p.length-1; i++) {
+        if (eSign(p[i]) !== 0) {
+            break;
+        }
+        lzCount++;
+    }
 
-	if (lzCount !== 0) { 
-		p = p.slice(lzCount);
-	}
+    if (lzCount !== 0) { 
+        p = p.slice(lzCount);
+    }
 
-	return p;
+    return p;
 }
 
 

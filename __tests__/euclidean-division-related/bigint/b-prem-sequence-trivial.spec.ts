@@ -1,7 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { bPremSequenceTrivial, bMultiply } from '../../../src/index.js';
+import { bPremSequenceTrivial } from '../../../src/euclidean-division-related/bigint/b-prem-sequence-trivial.js';
+import { bMultiply } from '../../../src/basic/bigint/b-multiply.js';
 
 
 describe('bPremSequenceTrivial', function() {
@@ -15,7 +15,7 @@ describe('bPremSequenceTrivial', function() {
 
             {
                 let r = bPremSequenceTrivial(ps[0], ps[1]);
-                expect(r).to.deep.equal([
+                expect(r).toEqual([
                     [1n, 0n, 1n, 0n, -3n, -3n, 8n, 2n, -5n],
                     [3n, 0n, 5n, 0n, -4n, -9n, 21n],
                     [-15n, 0n, 3n, 0n, -9n],
@@ -34,7 +34,7 @@ describe('bPremSequenceTrivial', function() {
 
             let r = bPremSequenceTrivial(p, p2);
 
-            expect(r).to.deep.equal([
+            expect(r).toEqual([
                 [6n, -1n, 2n, 45n, -382n, -530n, 260n],
                 [3n, 4n, -2n]
             ]);

@@ -9,19 +9,19 @@
  * @doc
  */
 function ddRemoveLeadingZeros(p: number[][]): number[][] {
-	let lzCount = 0;
-	for (let i=0; i<=p.length-1; i++) {
-		if (p[i][1] !== 0) {
-			break;
-		}
-		lzCount++;
-	}
+    let lzCount = 0;
+    for (let i=0; i<=p.length-1; i++) {
+        if (p[i][1] !== 0) {
+            break;
+        }
+        lzCount++;
+    }
 
-	if (lzCount !== 0) { 
-		p = p.slice(lzCount);
-	}
+    if (lzCount !== 0) { 
+        p = p.slice(lzCount);
+    }
 
-	return p;
+    return p;
 }
 
 

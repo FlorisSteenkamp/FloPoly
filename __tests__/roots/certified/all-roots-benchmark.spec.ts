@@ -1,6 +1,7 @@
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { allRootsCertified, allRoots, toCasStr } from '../../../src/index.js';
+import { describe, expect, it } from '@jest/globals';
+import { allRootsCertified } from '../../../src/roots/certified/all-roots-certified.js';
+import { allRoots } from '../../../src/roots/naive/all-roots.js';
+import { toCasStr } from '../../../src/basic/to-cas-str.js';
 import { reduceSignificand } from 'big-float-ts';
 import { getCoeffs } from './getpoly/get-coeffs.js';
 import { getCoeffsExact } from './getpoly/get-coeffs-exact.js';

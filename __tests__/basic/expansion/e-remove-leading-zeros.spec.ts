@@ -1,7 +1,6 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { expect } from 'chai';
-import { describe } from 'mocha';
-import { eRemoveLeadingZeros } from '../../../src/index.js';
+import { eRemoveLeadingZeros } from '../../../src/basic/expansion/e-remove-leading-zeros.js';
 
 
 describe('eRemoveLeadingZeros', function() {
@@ -12,9 +11,9 @@ describe('eRemoveLeadingZeros', function() {
 		let p3: number[][] = [];
 		let p4 = [[0],[0],[0],[0]];
 		
-		expect(eRemoveLeadingZeros(p1)).to.eql([[1e-10], [1e-5]]); 
-		expect(eRemoveLeadingZeros(p2)).to.eql([[1e-10], [1e-1]]);
-		expect(eRemoveLeadingZeros(p3)).to.eql([]);
-		expect(eRemoveLeadingZeros(p4)).to.eql([]);
+		expect(eRemoveLeadingZeros(p1)).toEqual([[1e-10], [1e-5]]); 
+		expect(eRemoveLeadingZeros(p2)).toEqual([[1e-10], [1e-1]]);
+		expect(eRemoveLeadingZeros(p3)).toEqual([]);
+		expect(eRemoveLeadingZeros(p4)).toEqual([]);
 	});
 });

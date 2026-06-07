@@ -1,7 +1,6 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { bHorner } from '../../../src/index.js';
+import { bHorner } from '../../../src/evaluate/bigint/b-horner.js';
 
 
 describe('bHorner', function() {
@@ -11,9 +10,9 @@ describe('bHorner', function() {
 		let p1 = [5n,-4n,3n,-2n,1n];
 		let p2: bigint[] = [];
 		
-        assert(bHorner(p1,3n) === 319n);
-        assert(bHorner(p1,-3n) === 547n);
-		assert(bHorner(p2,2n) === 0n);
-		assert(bHorner(p1,-20n) === 833241n);
+        expect(bHorner(p1,3n) === 319n).toBeTruthy();
+        expect(bHorner(p1,-3n) === 547n).toBeTruthy();
+		expect(bHorner(p2,2n) === 0n).toBeTruthy();
+		expect(bHorner(p1,-20n) === 833241n).toBeTruthy();
 	});
 });

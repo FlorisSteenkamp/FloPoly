@@ -1,4 +1,4 @@
-import { hornerWithRunningError } from '../../src/index.js';
+import { hornerWithRunningError } from '../../src/evaluate/double/horner-with-running-error.js';
 
 
 const abs = Math.abs;

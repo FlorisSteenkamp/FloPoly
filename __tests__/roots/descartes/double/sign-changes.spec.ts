@@ -1,7 +1,6 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { signChanges } from '../../../../src/index.js';
+import { signChanges } from '../../../../src/roots/descartes/double/sign-changes.js';
 
 
 describe('signChanges', function() {
@@ -10,7 +9,7 @@ describe('signChanges', function() {
 		let p1 = [1,2,-3,0,0,3,-1];
 		let p2: number[] = [];
 		
-		expect(signChanges(p1)).to.equal(3);
-		expect(signChanges(p2)).to.equal(0);
+		expect(signChanges(p1)).toEqual(3);
+		expect(signChanges(p2)).toEqual(0);
 	});
 });

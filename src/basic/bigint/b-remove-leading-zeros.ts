@@ -7,20 +7,20 @@
  * @doc
  */
 function bRemoveLeadingZeros(p: bigint[]): bigint[] {
-	// @ts-nocheck
-	let lzCount = 0;
-	for (let i=0; i<=p.length-1; i++) {
-		if (p[i] !== 0n) {
-			break;
-		}
-		lzCount++;
-	}
+    // @ts-nocheck
+    let lzCount = 0;
+    for (let i=0; i<=p.length-1; i++) {
+        if (p[i] !== 0n) {
+            break;
+        }
+        lzCount++;
+    }
 
-	if (lzCount !== 0) { 
-		p = p.slice(lzCount);
-	}
+    if (lzCount !== 0) { 
+        p = p.slice(lzCount);
+    }
 
-	return p;
+    return p;
 }
 
 

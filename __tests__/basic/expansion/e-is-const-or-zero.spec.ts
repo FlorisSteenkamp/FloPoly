@@ -1,7 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { eEqual, eIsConstOrZero } from '../../../src/index.js';
+import { eEqual } from '../../../src/basic/expansion/e-equal.js';
+import { eIsConstOrZero } from '../../../src/basic/expansion/e-is-const-or-zero.js';
 
 
 describe('eIsConstOrZero', function() {
@@ -11,9 +11,9 @@ describe('eIsConstOrZero', function() {
 		let p2 = [[1]];
 		let p3 = [[0.000000000000000000001, 3]];
 		let p4 = [[4],[3],[2],[1]];
-		assert( eIsConstOrZero(p1));
-		assert( eIsConstOrZero(p2));
-		assert( eIsConstOrZero(p3));
-		assert(!eIsConstOrZero(p4));
+		expect(eIsConstOrZero(p1)).toBeTruthy();
+		expect(eIsConstOrZero(p2)).toBeTruthy();
+		expect(eIsConstOrZero(p3)).toBeTruthy();
+		expect(!eIsConstOrZero(p4)).toBeTruthy();
 	});
 });

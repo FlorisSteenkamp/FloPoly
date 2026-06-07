@@ -1,15 +1,8 @@
-import { bDegree as bDegree_ } from "../../basic/bigint/b-degree.js";
-import { bElevateDegree as bElevateDegree_ } from "./b-elevate-degree.js";
-import { bAdd as bAdd_ } from "../../basic/bigint/b-add.js";
-import { bMultiply as bMultiply_ } from "../../basic/bigint/b-multiply.js";
-import { bSubtract as bSubtract_ } from "../../basic/bigint/b-subtract.js";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const bDegree = bDegree_;
-const bElevateDegree = bElevateDegree_;
-const bAdd = bAdd_;
-const bMultiply = bMultiply_;
-const bSubtract = bSubtract_;
+import { bDegree } from "../../basic/bigint/b-degree.js";
+import { bElevateDegree } from "./b-elevate-degree.js";
+import { bAdd } from "../../basic/bigint/b-add.js";
+import { bMultiply } from "../../basic/bigint/b-multiply.js";
+import { bSubtract } from "../../basic/bigint/b-subtract.js";
 
 
 /**

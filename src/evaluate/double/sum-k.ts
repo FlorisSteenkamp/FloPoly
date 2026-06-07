@@ -1,7 +1,4 @@
-import { vecSum as vecSum_ } from "./vec-sum.js";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const vecSum = vecSum_;
+import { vecSum } from "./vec-sum.js";
 
 
 /**
@@ -15,16 +12,16 @@ const vecSum = vecSum_;
  * @internal
  */
 function SumK(p: number[], K: number): number {
-	for (let i=1; i<K; i++) {
-		p = vecSum(p);
-	}
+    for (let i=1; i<K; i++) {
+        p = vecSum(p);
+    }
 
-	let res = p[0];
-	for (let i=1; i<p.length; i++) {
-		res += p[i];
-	}
+    let res = p[0];
+    for (let i=1; i<p.length; i++) {
+        res += p[i];
+    }
 
-	return res;
+    return res;
 }
 
 

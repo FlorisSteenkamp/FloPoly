@@ -1,7 +1,9 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { allRootsCertified, refineK1, eHorner, eeHorner } from '../../../src/index.js';
+import { allRootsCertified } from '../../../src/roots/certified/all-roots-certified.js';
+import { refineK1 } from '../../../src/roots/certified/refine-k1.js';
+import { eHorner } from '../../../src/evaluate/expansion/e-horner.js';
+import { eeHorner } from '../../../src/evaluate/expansion/e-e-horner.js';
 import { eEstimate } from 'big-float-ts';
 
 
@@ -108,8 +110,8 @@ function() {
             let C0L = Math.abs(eEstimate(eHorner(p,t0_ - 2*Number.EPSILON)));
             let C0  = Math.abs(eEstimate(eHorner(p,t0_)));
             let C0R = Math.abs(eEstimate(eHorner(p,t0_ + 2*Number.EPSILON)));
-            assert(C0L > C0);
-            assert(C0R > C0);
+            expect(C0L > C0).toBeTruthy();
+            expect(C0R > C0).toBeTruthy();
             
             let tS = t0[0].tS.slice();
             let tSL = [tS[0] - 2*Number.EPSILON**2, tS[1]];
@@ -121,8 +123,8 @@ function() {
             let C1SL = Math.abs(eEstimate(eeHorner(p,tSL)));
             let C1S  = Math.abs(eEstimate(eeHorner(p,tS)));
             let C1SR = Math.abs(eEstimate(eeHorner(p,tSR)));
-            assert(C1SL > C1S);
-            assert(C1SR > C1S);
+            expect(C1SL > C1S).toBeTruthy();
+            expect(C1SR > C1S).toBeTruthy();
 
             let tE = t0[0].tE.slice();
             let tEL = [tE[0] - 2*Number.EPSILON**2, tE[1]];
@@ -134,8 +136,8 @@ function() {
             let C1EL = Math.abs(eEstimate(eeHorner(p,tEL)));
             let C1E  = Math.abs(eEstimate(eeHorner(p,tE)));
             let C1ER = Math.abs(eEstimate(eeHorner(p,tER)));
-            assert(C1EL > C1E);
-            assert(C1ER > C1E);
+            expect(C1EL > C1E).toBeTruthy();
+            expect(C1ER > C1E).toBeTruthy();
 		}
 	});
 });

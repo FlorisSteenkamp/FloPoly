@@ -12,12 +12,12 @@
  * @doc
  */
 function negate(p: number[]): number[] {
-	const p_: number[] = [];
-	for (let i=0; i<p.length; i++) {
-		p_.push(-p[i]);
-	}
+    const p_: number[] = [];
+    for (let i=0; i<p.length; i++) {
+        p_.push(-p[i]);
+    }
 
-	return p_;
+    return p_;
 }
 
 

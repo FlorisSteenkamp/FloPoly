@@ -1,7 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { ePremSequenceSubresultant, multiply } from '../../../src/index.js';
+import { ePremSequenceSubresultant } from '../../../src/euclidean-division-related/expansion/e-prem-sequence-subresultant.js';
+import { multiply } from '../../../src/basic/double/multiply.js';
 
 
 describe('ePremSequenceSubresultant', function() {
@@ -12,7 +12,7 @@ describe('ePremSequenceSubresultant', function() {
             let a = [[1], [0], [1], [0], [-3], [-3], [8], [2], [-5]];
             let b = [[3], [0], [5], [0], [-4], [-9], [21]];
             let seq = ePremSequenceSubresultant(a,b,false);
-            expect(seq).to.eql([
+            expect(seq).toEqual([
                 [[1], [0], [1], [0], [-3], [-3], [8], [2], [-5]],
                 [[3], [0], [5], [0], [-4], [-9], [21]],
                 [[15], [-0], [-3], [-0], [9]],
@@ -29,7 +29,7 @@ describe('ePremSequenceSubresultant', function() {
 
             let r = ePremSequenceSubresultant(p.map(c => [c]), p2.map(c => [c]));
 
-            expect(r).to.deep.equal([
+            expect(r).toEqual([
                 [[6], [-1], [2], [45], [-382], [-530], [260]],
                 [[3], [4], [-2]]
             ]);

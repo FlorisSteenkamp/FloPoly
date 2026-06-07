@@ -1,7 +1,10 @@
+import { describe, expect, it } from '@jest/globals';
 // import type { RootInterval } from '../../../src/index.js';
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { allRootsCertified, allRoots, eMultiply, eProduct, eHorner } from '../../../src/index.js';
+import { allRootsCertified } from '../../../src/roots/certified/all-roots-certified.js';
+import { allRoots } from '../../../src/roots/naive/all-roots.js';
+import { eMultiply } from '../../../src/basic/expansion/e-multiply.js';
+import { eProduct } from '../../../src/basic/expansion/e-product.js';
+import { eHorner } from '../../../src/evaluate/expansion/e-horner.js';
 import { twoSum, eToDd } from 'big-float-ts';
 import { γγ } from '../../../src/error-analysis/gamma.js'
 
@@ -46,8 +49,8 @@ function() {
 		let p2 = [[3]];		
 		let roots1 = allRootsCertified(p1, undefined, undefined, undefined, undefined, true);
 		let roots2 = allRootsCertified(p2, undefined, undefined, undefined, undefined, true);
-		assert(roots1 === undefined);
-		assert(roots2 && roots2.length === 0);
+		expect(roots1 === undefined).toBeTruthy();
+		expect(roots2 && roots2.length === 0).toBeTruthy();
 	});
 	it('should not return roots for the zero or a constant polynomial and `undefined` when appropriate - part 2',
 	function() {
@@ -55,7 +58,7 @@ function() {
 		let pE: number[] = [1,1,1];
 		let getPExact = () => [[0],[0],[0]];
 		let roots = allRootsCertified(p, 0, 1, pE, getPExact, true);
-		assert(roots === undefined);
+		expect(roots === undefined).toBeTruthy();
 	});
 	it('should not return roots for the zero or a constant polynomial and `undefined` when appropriate - part 3',
 	function() {
@@ -63,7 +66,7 @@ function() {
 		let pE: number[] = [0,0,0,1];
 		let getPExact = () => [[0],[0],[0],[1e-10]];
 		let roots = allRootsCertified(p, 0, 1, pE, getPExact, true);
-		assert(roots && roots.length === 0);
+		expect(roots && roots.length === 0).toBeTruthy();
 	});
 	it('should not return roots for the zero or a constant polynomial and `undefined` when appropriate - part 4',
 	function() {
@@ -71,7 +74,7 @@ function() {
 		let pE: number[] = [1,1,1,1,1];
 		let getPExact = () => [[0],[0],[0],[0],[1e-10]];
 		let roots = allRootsCertified(p, 0, 1, pE, getPExact, true);
-		assert(roots && roots.length === 0);
+		expect(roots && roots.length === 0).toBeTruthy();
 	});
 	it('should not return roots for the zero or a constant polynomial and `undefined` when appropriate - part 5',
 	function() {
@@ -79,7 +82,7 @@ function() {
 		let pE: number[] = [1,1,1,1,1];
 		let getPExact = () => [[0],[0],[0],[0],[0]];
 		let roots = allRootsCertified(p, 0, 1, pE, getPExact, true);
-		assert(roots === undefined);
+		expect(roots === undefined).toBeTruthy();
 	});
 
 	it('should not return roots for the zero or a constant polynomial and `undefined` when appropriate - part 5',
@@ -89,7 +92,7 @@ function() {
 		//let getPExact = () => [[0],[0],[0.99999999],[0],[-0.50001]];
 		let getPExact = () => [[0],[0],[1],[0],[-0.5]];
 		let roots = allRootsCertified(p, 0, 1, pE, getPExact, true);
-		assert(roots && roots.length === 1);
+		expect(roots && roots.length === 1).toBeTruthy();
 	});
 
 	it('should not return roots for the zero or a constant polynomial', 
@@ -98,8 +101,8 @@ function() {
 		let p2 = [[3]];		
 		let roots1 = allRootsCertified(p1);
 		let roots2 = allRootsCertified(p2);
-		assert(roots1.length === 0);
-		assert(roots2.length === 0);
+		expect(roots1.length === 0).toBeTruthy();
+		expect(roots2.length === 0).toBeTruthy();
 	});
 	it('should find roots correctly of basic polynomials (with infinite range)',
 	function() {
@@ -109,7 +112,7 @@ function() {
 			const ts = allRootsCertified(p, Number.NEGATIVE_INFINITY, Number.POSITIVE_INFINITY, pE, getPExact);
 			
 			// double root at 0
-			assert(isThereRootAt(0, 2, ts));
+			expect(isThereRootAt(0, 2, ts)).toBeTruthy();
 		}
 		{
 			// p = x^2 - 1
@@ -117,8 +120,8 @@ function() {
 			const ts = allRootsCertified(p, Number.NEGATIVE_INFINITY, Number.POSITIVE_INFINITY, pE, getPExact);
 
 			// simple root at -1 and +1
-			assert(isThereRootAt(-1, 1, ts));
-			assert(isThereRootAt(+1, 1, ts));
+			expect(isThereRootAt(-1, 1, ts)).toBeTruthy();
+			expect(isThereRootAt(+1, 1, ts)).toBeTruthy();
 		}
 	});
 
@@ -181,9 +184,9 @@ function() {
 		// 	{ tS: 1.3255582424034447, tE: 1.3255582424034453, multiplicity: 1 }
 		// ]
 
-		assert(isThereRootAt(0.3361742829036019, 1, ts));
-		assert(isThereRootAt(0.6260997031130032, 1, ts));
-		assert(isThereRootAt(1.3255582424034449, 1, ts));
+		expect(isThereRootAt(0.3361742829036019, 1, ts)).toBeTruthy();
+		expect(isThereRootAt(0.6260997031130032, 1, ts)).toBeTruthy();
+		expect(isThereRootAt(1.3255582424034449, 1, ts)).toBeTruthy();
 
 		//const tsf = allRoots(pD, lb, ub);
 	});
@@ -217,9 +220,9 @@ function() {
 		// 	{ tS: 1.3255582424034447, tE: 1.3255582424034453, multiplicity: 1 }
 		// ]
 
-		//assert(isThereRootAt(0.3361742829036019, 1, ts));
-		//assert(isThereRootAt(0.6260997031130032, 1, ts));
-		//assert(isThereRootAt(1.3255582424034449, 1, ts));
+		//expect(isThereRootAt(0.3361742829036019, 1, ts)).toBeTruthy();
+		//expect(isThereRootAt(0.6260997031130032, 1, ts)).toBeTruthy();
+		//expect(isThereRootAt(1.3255582424034449, 1, ts)).toBeTruthy();
 
 		//const tsf = allRoots(pD, lb, ub);
 	});
@@ -248,7 +251,7 @@ function() {
 		const ts2 = allRootsCertified(p, lb2, ub2, pE);
 		
 	
-		expect(ts0).to.eql([
+		expect(ts0).toEqual([
 			{ tS: 3.3999999999999955, tE: 3.3999999999999964, multiplicity: 1 },
 			{ tS: 3.4, tE: 3.400000000000001, multiplicity: 2 },
 			{ tS: 3.4000000000000035, tE: 3.4000000000000044, multiplicity: 1 },
@@ -256,14 +259,14 @@ function() {
 			{ tS: 3.9439999999999995, tE: 3.9440000000000004, multiplicity: 1 }
 		]);
 
-		expect(ts1).to.eql([
+		expect(ts1).toEqual([
 			{ tS: 3.4, tE: 3.400000000000001, multiplicity: 2 },
 			{ tS: 3.4000000000000035, tE: 3.4000000000000044, multiplicity: 1 },
 			{ tS: 3.603999999999999, tE: 3.604, multiplicity: 1 },
 			{ tS: 3.9439999999999995, tE: 3.9440000000000004, multiplicity: 1 }
 		]);
 
-		expect(ts2).to.eql([
+		expect(ts2).toEqual([
 			{ tS: 3.3999999999999955, tE: 3.3999999999999964, multiplicity: 1 },
 			{ tS: 3.4, tE: 3.4000000000000017, multiplicity: 2 }
 		]);
@@ -289,7 +292,7 @@ function() {
 		function f() { return _p; }
 		const ts = allRootsCertified(pDd, lb0, ub0, pE, f);
 
-		expect(ts).to.eql([
+		expect(ts).toEqual([
 			{ tS: -0.6040000000000002, tE: -0.6039999999999998, multiplicity: 1 },
 			{ tS: 3.3999999999999986, tE: 3.4000000000000004, multiplicity: 2 },  
 			{ tS: 3.9439999999999995, tE: 3.9439999999999995, multiplicity: 1 }
@@ -316,7 +319,7 @@ function() {
 		function f() { return _p; }
 		const ts = allRootsCertified(pDd, lb0, ub0, pE, f);
 
-		expect(ts).to.eql([
+		expect(ts).toEqual([
 			{ tS: -0.6040000000000001, tE: -0.6039999999999999, multiplicity: 1 },
 			{ tS: 3.4, tE: 3.400000000000001, multiplicity: 4 },
 				{ tS: 3.9439999999999995, tE: 3.9439999999999995, multiplicity: 1 }

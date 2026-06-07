@@ -1,6 +1,5 @@
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { bEqual } from '../../../src/index.js';
+import { describe, expect, it } from '@jest/globals';
+import { bEqual } from '../../../src/basic/bigint/b-equal.js';
 
 
 describe('bEqual', function() {
@@ -13,10 +12,10 @@ describe('bEqual', function() {
 		let p5: bigint[] = [];
 		let p6: bigint[] = [];
 		
-		assert( bEqual(p1,p2)); 
-		assert(!bEqual(p1,p3));
-		assert(!bEqual(p3,p4));
-		assert( bEqual(p5,p6));
-		assert(!bEqual(p1,p6));
+		expect(bEqual(p1,p2)).toBeTruthy(); 
+		expect(!bEqual(p1,p3)).toBeTruthy();
+		expect(!bEqual(p3,p4)).toBeTruthy();
+		expect(bEqual(p5,p6)).toBeTruthy();
+		expect(!bEqual(p1,p6)).toBeTruthy();
 	});
 });

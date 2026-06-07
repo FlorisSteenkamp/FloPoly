@@ -20,36 +20,36 @@
  * @doc
  */
 function quadraticRoots(p: number[]): number[] {
-	const [a,b,c] = p;
-	
-	const _D = b*b - 4*a*c;
-	
-	if (_D < 0) {
-		// No real roots;
-		return []; 
-	}
-	
-	if (_D === 0) {
-		return [-b / (2*a)];
-	}
-	
-	const D = Math.sqrt(_D);
-	
-	if (b >= 0) {
-		const root1 = (-b - D) / (2*a);
-		const root2 = (2*c) / (-b - D);
+    const [a,b,c] = p;
+    
+    const _D = b*b - 4*a*c;
+    
+    if (_D < 0) {
+        // No real roots;
+        return []; 
+    }
+    
+    if (_D === 0) {
+        return [-b / (2*a)];
+    }
+    
+    const D = Math.sqrt(_D);
+    
+    if (b >= 0) {
+        const root1 = (-b - D) / (2*a);
+        const root2 = (2*c) / (-b - D);
 
-		return root1 < root2
-			? [root1, root2]
-			: [root2, root1];
-	}
+        return root1 < root2
+            ? [root1, root2]
+            : [root2, root1];
+    }
 
-	const root1 = (2*c) / (-b + D);
-	const root2 = (-b + D) / (2*a);
+    const root1 = (2*c) / (-b + D);
+    const root2 = (-b + D) / (2*a);
 
-	return root1 < root2
-		? [root1, root2]
-		: [root2, root1];
+    return root1 < root2
+        ? [root1, root2]
+        : [root2, root1];
 }
 
 

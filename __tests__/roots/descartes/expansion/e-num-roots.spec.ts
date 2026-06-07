@@ -1,7 +1,6 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { eNumRoots } from '../../../../src/index.js';
+import { eNumRoots } from '../../../../src/roots/descartes/expansion/e-num-roots.js';
 
 
 describe('eNumRoots', function() {
@@ -9,7 +8,7 @@ describe('eNumRoots', function() {
 	function() {
 		{
 			let p = [1, 1, -64, 236, -240].map(x => [x]);
-			expect(eNumRoots(p)).to.equal(4);
+			expect(eNumRoots(p)).toEqual(4);
 		}
 	});
 });

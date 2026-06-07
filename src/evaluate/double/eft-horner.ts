@@ -1,9 +1,5 @@
-import { twoProduct as twoProduct_ } from "big-float-ts";
-import { twoSum as twoSum_ } from "big-float-ts";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const twoSum = twoSum_;
-const twoProduct = twoProduct_;
+import { twoProduct } from "big-float-ts";
+import { twoSum } from "big-float-ts";
 
 
 /**
@@ -26,26 +22,26 @@ const twoProduct = twoProduct_;
  * @doc
  */
 function EFTHorner(
-		p: number[], x: number): { r̂: number, pπ: number[], pσ: number[] } {
+        p: number[], x: number): { r̂: number, pπ: number[], pσ: number[] } {
 
-	const pπ: number[] = []; // A polynomial containing part of the error
-	const pσ: number[] = []; // Another polynomial containing part of the error
-	let σ: number;
-	
-	let r̂ = p[0];
-	for (let i=1; i<p.length; i++) {
-		const [π,pi] = twoProduct(r̂,x);
-		[σ,r̂] = twoSum(pi, p[i]);
-		// inlined
-		//r̂ = pi + p[i]; const bv = r̂ - pi; σ = (pi - (x-bv)) + (p[i]-bv);
-		pπ.push(π);
-		pσ.push(σ);
-	}
+    const pπ: number[] = []; // A polynomial containing part of the error
+    const pσ: number[] = []; // Another polynomial containing part of the error
+    let σ: number;
+    
+    let r̂ = p[0];
+    for (let i=1; i<p.length; i++) {
+        const [π,pi] = twoProduct(r̂,x);
+        [σ,r̂] = twoSum(pi, p[i]);
+        // inlined
+        //r̂ = pi + p[i]; const bv = r̂ - pi; σ = (pi - (x-bv)) + (p[i]-bv);
+        pπ.push(π);
+        pσ.push(σ);
+    }
 
-	return { r̂, pπ, pσ }
+    return { r̂, pπ, pσ }
 }
 // inlined
-//const pπ: number[] = []; const pσ: number[] = []; const σ: number; const r̂ = p[0];	for (const i=1; i<p.length; i++) { const [π,pi] = twoProduct(r̂,x); [σ,r̂] = twoSum(pi, p[i]); pπ.push(π); pσ.push(σ); } return { r̂, pπ, pσ }
+//const pπ: number[] = []; const pσ: number[] = []; const σ: number; const r̂ = p[0];    for (const i=1; i<p.length; i++) { const [π,pi] = twoProduct(r̂,x); [σ,r̂] = twoSum(pi, p[i]); pπ.push(π); pσ.push(σ); } return { r̂, pπ, pσ }
 
 
 export { EFTHorner }

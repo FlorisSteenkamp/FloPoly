@@ -1,7 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { equal, differentiate } from '../../../src/index.js';
+import { equal } from '../../../src/basic/double/equal.js';
+import { differentiate } from '../../../src/calculus/double/differentiate.js';
 
 
 describe('differentiate', function() {
@@ -10,8 +10,8 @@ describe('differentiate', function() {
 		let p1: number[] = [];
 		let p2 = [1];
 		let p3 = [5, 4, 3, 2, 1];
-		assert(equal(differentiate(p1), []));
-		assert(equal(differentiate(p2), []));
-		assert(equal(differentiate(p3), [20, 12, 6, 2]));
+		expect(equal(differentiate(p1), [])).toBeTruthy();
+		expect(equal(differentiate(p2), [])).toBeTruthy();
+		expect(equal(differentiate(p3), [20, 12, 6, 2])).toBeTruthy();
 	});
 });

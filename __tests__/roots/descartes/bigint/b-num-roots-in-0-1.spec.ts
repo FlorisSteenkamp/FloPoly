@@ -1,7 +1,9 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { bNumRootsIn01, toCasStr, multiply, scaleFloatsToBigints } from '../../../../src/index.js';
+import { bNumRootsIn01 } from '../../../../src/roots/descartes/bigint/b-num-roots-0-1.js';
+import { toCasStr } from '../../../../src/basic/to-cas-str.js';
+import { multiply } from '../../../../src/basic/double/multiply.js';
+import { scaleFloatsToBigints } from '../../../../src/scale-to-int/scale-floats-to-bigints.js';
 
 
 describe('bNumRootsIn01', function() {
@@ -10,31 +12,23 @@ describe('bNumRootsIn01', function() {
 		{
 			let p = [1, 1, -64, 236, -240].map(BigInt);
 			expect(
-				bNumRootsIn01(p)).to.equal(0,
-				`p: ${toCasStr(p)}`
-			);
+				bNumRootsIn01(p)).toEqual(0);
         }
         
         {
 			let p = [1, 0, 1, 0, -3, -3, 8, 2, -5].map(BigInt);
 			expect(
-				bNumRootsIn01(p)).to.equal(1,
-				`p: ${toCasStr(p)}`
-			);
+				bNumRootsIn01(p)).toEqual(1);
 		}
 		{
 			let p = [-1, 0, 1, 0, -3, -3, 8, 2, -5].map(BigInt);
 			expect(
-				bNumRootsIn01(p)).to.equal(0,
-				`p: ${toCasStr(p)}`
-			);
+				bNumRootsIn01(p)).toEqual(0);
 		}
 		{
 			let p = [-1, 0, -1, 0, +3, -3, 8, 2, -5].map(BigInt);
 			expect(
-				bNumRootsIn01(p)).to.equal(1,
-				`p: ${toCasStr(p)}`
-			);
+				bNumRootsIn01(p)).toEqual(1);
         }
         
         {
@@ -48,9 +42,7 @@ describe('bNumRootsIn01', function() {
 			//console.log(p7)
 			let p8 = scaleFloatsToBigints(p7);
 			expect(
-				bNumRootsIn01(p8)).to.equal(8,
-				`p: ${toCasStr(p8)}`
-			);
+				bNumRootsIn01(p8)).toEqual(8);
 		}
 		{
 			let k = -0.001;
@@ -62,9 +54,7 @@ describe('bNumRootsIn01', function() {
 			let p6 = multiply(p3, p4);
 			let p7 = scaleFloatsToBigints(multiply(p5, p6));
 			expect(
-				bNumRootsIn01(p7)).to.equal(8,
-				`p: ${toCasStr(p7)}`
-			);
+				bNumRootsIn01(p7)).toEqual(8);
 		}
 	});
 });

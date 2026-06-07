@@ -1,17 +1,9 @@
-import { eDiv as eDiv_ } from "big-float-ts";
-import { eDegree as eDegree_ } from "../../basic/expansion/e-degree.js";
-import { eElevateDegree as eElevateDegree_ } from "./e-elevate-degree.js";
-import { eAdd as eAdd_ } from "../../basic/expansion/e-add.js";
-import { eMultiply as eMultiply_ } from "../../basic/expansion/e-multiply.js";
-import { eSubtract as eSubtract } from "../../basic/expansion/e-subtract.js";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eDiv = eDiv_;
-const eDegree = eDegree_;
-const eElevateDegree = eElevateDegree_;
-const eAdd = eAdd_;
-const eMultiply = eMultiply_;
-const subtractExact = eSubtract;
+import { eDiv } from "big-float-ts";
+import { eDegree } from "../../basic/expansion/e-degree.js";
+import { eElevateDegree } from "./e-elevate-degree.js";
+import { eAdd } from "../../basic/expansion/e-add.js";
+import { eMultiply } from "../../basic/expansion/e-multiply.js";
+import { eSubtract } from "../../basic/expansion/e-subtract.js";
 
 
 /**
@@ -56,7 +48,7 @@ function ePdivInternal(
         let s = [eDiv(r[0], c, 0)];
         s = eElevateDegree(s, deg);
         q = eAdd(q, s);
-        r = subtractExact(r, eMultiply(s, b));
+        r = eSubtract(r, eMultiply(s, b));
     }
 }
 

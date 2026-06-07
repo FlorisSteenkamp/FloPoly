@@ -1,7 +1,4 @@
-import { bContent as bContent_ } from "./b-content.js";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const bContent = bContent_;
+import { bContent } from "./b-content.js";
 
 
 /**

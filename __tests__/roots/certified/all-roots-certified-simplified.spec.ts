@@ -1,6 +1,5 @@
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { allRootsCertifiedSimplified } from '../../../src/index.js';
+import { describe, expect, it } from '@jest/globals';
+import { allRootsCertifiedSimplified } from '../../../src/roots/certified/all-roots-certified-simplified.js';
 
 
 describe('allRootsCertifiedSimplified - find all roots within an interval of a polynomial such that all roots are guaranteed to be captured in some interval', 
@@ -9,9 +8,9 @@ function() {
 	function() {
 		let p: number[] = [0,-9,5,0];
 		let roots = allRootsCertifiedSimplified(p);
-		assert(roots.length === 2);
+		expect(roots.length === 2).toBeTruthy();
       
-      expect(roots).to.eql([ 
+      expect(roots).toEqual([ 
          { 
             tS: -2.22044604925031e-16,
             tE: 2.9582283945787943e-31,
@@ -47,7 +46,7 @@ function() {
         //    81.82713958224285*x^4 + 13.96128683321424*x^3 + 7.3963444329341455*x^2 - 
         //    1.50733058206533*x - 0.0015147128834111722
         const roots = allRootsCertifiedSimplified(p);
-        expect(roots).to.eql([
+        expect(roots).toEqual([
            { tS: -13.222221, tE: -13.222220999999996, multiplicity: 1 },
            { tS: -1.3498348570000003, tE: -1.3498348569999998, multiplicity: 1 },
            { tS: -0.4444777699999987, tE: -0.4444777699999985, multiplicity: 1 },

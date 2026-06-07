@@ -1,7 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { eMultiply, eNumRootsIn01 } from '../../../../src/index.js';
+import { eMultiply } from '../../../../src/basic/expansion/e-multiply.js';
+import { eNumRootsIn01 } from '../../../../src/roots/descartes/expansion/e-num-roots-0-1.js';
 
 
 describe('eNumRootsIn01', function() {
@@ -9,20 +9,20 @@ describe('eNumRootsIn01', function() {
 	function() {
 		{
 			let p = [1, 1, -64, 236, -240].map(x => [x]);
-			expect(eNumRootsIn01(p)).to.equal(0);
+			expect(eNumRootsIn01(p)).toEqual(0);
         }
         
         {
 			let p = [[1], [0], [1], [0], [-3], [-3], [8], [2], [-5]];
-			expect(eNumRootsIn01(p)).to.equal(1);
+			expect(eNumRootsIn01(p)).toEqual(1);
 		}
 		{
 			let p = [[-1], [0], [1], [0], [-3], [-3], [8], [2], [-5]];
-			expect(eNumRootsIn01(p)).to.equal(0);
+			expect(eNumRootsIn01(p)).toEqual(0);
 		}
 		{
 			let p = [[-1], [0], [-1], [0], [+3], [-3], [8], [2], [-5]];
-			expect(eNumRootsIn01(p)).to.equal(1);
+			expect(eNumRootsIn01(p)).toEqual(1);
         }
 		
 		// overflow destroys `eNumRootsIn01` below ):
@@ -36,7 +36,7 @@ describe('eNumRootsIn01', function() {
 			let p5 = eMultiply(p1, p2);
 			let p6 = eMultiply(p3, p4);
 			let p7 = eMultiply(p5, p6);
-			expect(eNumRootsIn01(p7)).to.equal(8);
+			expect(eNumRootsIn01(p7)).toEqual(8);
 		}
 		{
 			let k = -0.001;
@@ -47,7 +47,7 @@ describe('eNumRootsIn01', function() {
 			let p5 = eMultiply(p1, p2);
 			let p6 = eMultiply(p3, p4);
 			let p7 = eMultiply(p5, p6);
-			expect(eNumRootsIn01(p7)).to.equal(8);
+			expect(eNumRootsIn01(p7)).toEqual(8);
 		}
 		*/
 	});

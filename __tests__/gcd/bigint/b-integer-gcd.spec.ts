@@ -1,7 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { expect } from 'chai';
-import { describe } from 'mocha';
-import { bGcdInt, bGcdInts, scaleFloatToInt } from '../../../src/index.js';
+import { bGcdInt, bGcdInts } from '../../../src/gcd/bigint/b-integer-gcd.js';
+import { scaleFloatToInt } from '../../../src/scale-to-int/scale-float-to-int.js';
 import { performance } from 'perf_hooks';
 
 
@@ -19,11 +19,11 @@ describe('integer gcd', function() {
         for (let val of vals1) {
             {
                 let r = bGcdInt(...val);
-                expect(r).to.equal(21n);
+                expect(r).toEqual(21n);
             }
             {
                 let r = bGcdInts(val);
-                expect(r).to.equal(21n);
+                expect(r).toEqual(21n);
             }
         }
 
@@ -37,7 +37,7 @@ describe('integer gcd', function() {
         for (let val of vals2) {
             {
                 let r = bGcdInts(val);
-                expect(r).to.equal(7n);
+                expect(r).toEqual(7n);
             }
         }
 
@@ -69,8 +69,8 @@ describe('integer gcd', function() {
             let b = 464n; 
             let r1 = bGcdInt(a,b);
             let r2 = bGcdInt(b,a);
-            expect(r1).to.equal(b);
-            expect(r2).to.equal(b);
+            expect(r1).toEqual(b);
+            expect(r2).toEqual(b);
         }
 	});
 });

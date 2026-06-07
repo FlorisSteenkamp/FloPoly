@@ -1,7 +1,6 @@
-import { expect, assert } from 'chai';
-import { describe } from 'mocha';
+import { describe, expect, it } from '@jest/globals';
 
-import { scaleFloatToBigint } from '../../src/index.js';
+import { scaleFloatToBigint } from '../../src/scale-to-int/scale-float-to-bigint.js';
 
 
 describe('scaleFloatToBigint', function() {
@@ -9,10 +8,10 @@ describe('scaleFloatToBigint', function() {
 	function() {
 		let p = 0.000000000000000004;
 		let res = scaleFloatToBigint(p);
-		assert(res === 1298074214633707n, `scaleFloatToBigint(${p}) should equal 1298074214633707n, but is ${res}`);
+		expect(res === 1298074214633707n).toBeTruthy();
 
 		let p2 = 0;
 		let res2 = scaleFloatToBigint(p2);
-		assert(res2 === 0n, `scaleFloatToBigint(${p}) should equal ${0}, but is ${res2}`);
+		expect(res2 === 0n).toBeTruthy();
 	});
 });

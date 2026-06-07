@@ -1,7 +1,5 @@
-
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { negativeRootLowerBound_LMQ } from '../../../src/index.js';
+import { describe, expect, it } from '@jest/globals';
+import { negativeRootLowerBound_LMQ } from '../../../src/roots/root-bounds/root-bounds-lmq.js';
 
 
 describe('negativeRootLowerBound_LMQ', function() {
@@ -11,10 +9,10 @@ describe('negativeRootLowerBound_LMQ', function() {
 		let p2: number[] = [];
 		let p3 = [3];
 		// real roots at about -2.397918624065303 and 2.8793785310848383
-		expect(negativeRootLowerBound_LMQ(p1)).to.equal(-4.015534272870436);
+		expect(negativeRootLowerBound_LMQ(p1)).toEqual(-4.015534272870436);
 		// real roots everywhere
-		expect(negativeRootLowerBound_LMQ(p2)).to.equal(0);
+		expect(negativeRootLowerBound_LMQ(p2) === 0).toBe(true);
 		// real roots nowhere
-		expect(negativeRootLowerBound_LMQ(p3)).to.equal(0);
+		expect(negativeRootLowerBound_LMQ(p3) === 0).toBe(true);
 	});
 });

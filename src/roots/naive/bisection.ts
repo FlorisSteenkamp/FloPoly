@@ -33,54 +33,54 @@ const max = Math.max;
  * @doc
  */
 function bisection(f: (n: number) => number, a: number, b: number): number {
-	if (b < a) {
-		[a,b] = [b,a]; // Swap a and b 
-	}
-
-	const fa = f(a);
-	const fb = f(b);
-
-	if (a === b) {
-		if (fa !== 0) {
-			// Root is not bracketed - this is a precondition.
-			throw new Error('Root not bracketed'); 
-		}
-
-		// the root is already found.
-		return a; 
-	}  
-	
-	if (fa === 0) { 
-		return a; 
-	} 
-    if (fb === 0) { 
-		return b; 
-	}
-    
-	if (fa*fb > 0) {
-    	// Root is not bracketed - this is a precondition.
-		throw new Error('Root not bracketed'); 
+    if (b < a) {
+        [a,b] = [b,a]; // Swap a and b 
     }
-	
-	while (true) {
-		const c = a + (b-a)/2; // Take midpoint
-		const fc = f(c);
-		
-		if (fc === 0) { 
-			return c; 
-		}
-		
-		if (fa*fc < 0) {
-			b = c;
-		} else {
-			a = c;
-		}
-		
-	    const δ = 2 * Number.EPSILON * max(1,abs(a),abs(b));
-		if (Math.abs(a - b) <= δ) {
-	    	return b; 
-	    }
-	}
+
+    const fa = f(a);
+    const fb = f(b);
+
+    if (a === b) {
+        if (fa !== 0) {
+            // Root is not bracketed - this is a precondition.
+            throw new Error('Root not bracketed'); 
+        }
+
+        // the root is already found.
+        return a; 
+    }  
+    
+    if (fa === 0) { 
+        return a; 
+    } 
+    if (fb === 0) { 
+        return b; 
+    }
+    
+    if (fa*fb > 0) {
+        // Root is not bracketed - this is a precondition.
+        throw new Error('Root not bracketed'); 
+    }
+    
+    while (true) {
+        const c = a + (b-a)/2; // Take midpoint
+        const fc = f(c);
+        
+        if (fc === 0) { 
+            return c; 
+        }
+        
+        if (fa*fc < 0) {
+            b = c;
+        } else {
+            a = c;
+        }
+        
+        const δ = 2 * Number.EPSILON * max(1,abs(a),abs(b));
+        if (Math.abs(a - b) <= δ) {
+            return b; 
+        }
+    }
 }
 
 

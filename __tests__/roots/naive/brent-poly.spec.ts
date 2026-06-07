@@ -1,6 +1,7 @@
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { brentPoly, fromRoots, Horner } from '../../../src/index.js';
+import { describe, expect, it } from '@jest/globals';
+import { brentPoly } from '../../../src/roots/naive/brent-poly.js';
+import { fromRoots } from '../../../src/roots/from-roots/double/from-roots.js';
+import { Horner } from '../../../src/evaluate/double/horner.js';
 import { rootAccurateEnough } from '../../helpers/root-accurate-enough.js';
 
 
@@ -15,17 +16,8 @@ describe('brentPoly', function() {
         let r2 = brentPoly(p,2.2,3.1); //=> 3ish
         let r3 = brentPoly(p,-20,1); //=> -10ish
 
-        assert(
-			rootAccurateEnough(p, r1),
-			`r1 should be refined to accurately enough`
-		);
-        assert(
-			rootAccurateEnough(p, r2),
-			`r2 should be refined to accurately enough`
-		);
-        assert(
-			rootAccurateEnough(p, r3),
-			`r3 should be refined to accurately enough`
-		);
+        expect(rootAccurateEnough(p, r1)).toBeTruthy();
+        expect(rootAccurateEnough(p, r2)).toBeTruthy();
+        expect(rootAccurateEnough(p, r3)).toBeTruthy();
 	});
 });

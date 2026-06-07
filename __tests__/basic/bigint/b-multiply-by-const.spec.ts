@@ -1,7 +1,6 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { bMultiplyByConst } from '../../../src/index.js';
+import { bMultiplyByConst } from '../../../src/basic/bigint/b-multiply-by-const.js';
 
 
 describe('bMultiplyByConst', function() {
@@ -9,14 +8,14 @@ describe('bMultiplyByConst', function() {
 	function() {
 		let p1: bigint[] = [];
 		let p2 = [1n,2n,3n,4n];
-		expect(bMultiplyByConst(2n,p1)).to.eql([]);
-		expect(bMultiplyByConst(2n,p2)).to.eql([2n,4n,6n,8n]);
+		expect(bMultiplyByConst(2n,p1)).toEqual([]);
+		expect(bMultiplyByConst(2n,p2)).toEqual([2n,4n,6n,8n]);
 	});
 	
 	
 	it('should return the zero polynomial if the polynomial was multiplied by 0', 
 	function() {
 		let p1 = [1n,2n,3n,4n];
-		expect(bMultiplyByConst(0n,p1)).to.eql([]);
+		expect(bMultiplyByConst(0n,p1)).toEqual([]);
 	});
 });

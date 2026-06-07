@@ -9,13 +9,13 @@
  * @doc
  */
 function divideByConst(p: number[], c: number): number[] {
-	const d = p.length;
-	const r: number[] = [];
-	for (let i=0; i<d; i++) {
-		r.push(p[i] / c);
-	}
-	
-	return r;
+    const d = p.length;
+    const r: number[] = [];
+    for (let i=0; i<d; i++) {
+        r.push(p[i] / c);
+    }
+    
+    return r;
 }
 
 

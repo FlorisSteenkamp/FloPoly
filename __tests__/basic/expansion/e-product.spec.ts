@@ -1,7 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { eEqual, eProduct } from '../../../src/index.js';
+import { eEqual } from '../../../src/basic/expansion/e-equal.js';
+import { eProduct } from '../../../src/basic/expansion/e-product.js';
 
 
 describe('eProduct', function() {
@@ -11,9 +11,9 @@ describe('eProduct', function() {
 		let p2: number[][] = [];
 		let p3 = [[1],[2],[3]];
 		let p4 = [[4],[4],[5],[6],[7]];
-		assert(eEqual(eProduct([]), [[1]]));
-		assert(eEqual(eProduct([p1,p3]), [[2],[4],[6]]));
-		assert(eEqual(eProduct([p2,p3]), []));
-		assert(eEqual(eProduct([p3,p4]), [[4], [12], [25], [28], [34], [32], [21]]));
+		expect(eEqual(eProduct([]), [[1]])).toBeTruthy();
+		expect(eEqual(eProduct([p1,p3]), [[2],[4],[6]])).toBeTruthy();
+		expect(eEqual(eProduct([p2,p3]), [])).toBeTruthy();
+		expect(eEqual(eProduct([p3,p4]), [[4], [12], [25], [28], [34], [32], [21]])).toBeTruthy();
 	});
 });

@@ -14,7 +14,7 @@
  * @doc
  */
 function bDegree(p: bigint[]): number {
-	return p.length-1;
+    return p.length-1;
 }
 
 

@@ -1,7 +1,4 @@
-import { content as content_ } from "./content.js";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const getContent = content_;
+import { content } from "./content.js";
 
 
 /**
@@ -23,7 +20,7 @@ const getContent = content_;
  * @doc
  */
 function primitivePart(p: number[]): number[] {
-    const c = getContent(p);
+    const c = content(p);
 
     const p_: number[] = [];
 

@@ -7,7 +7,7 @@ const _γs: number[] = [];
 
 /** @internal */
 function γs(n: number): number {
-	return _γs[n] || ((1 + u) * (n*u / (1 - n*u)));
+    return _γs[n] || ((1 + u) * (n*u / (1 - n*u)));
 }
 
 

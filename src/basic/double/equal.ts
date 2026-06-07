@@ -15,17 +15,17 @@
  * @doc
  */
 function equal(p1: number[], p2: number[]): boolean {
-	if (p1.length !== p2.length) { 
-		return false; 
-	}
+    if (p1.length !== p2.length) { 
+        return false; 
+    }
 
-	for (let i=0; i<p1.length; i++) {
-		if (p1[i] !== p2[i]) { 
-			return false; 
-		}
-	}
+    for (let i=0; i<p1.length; i++) {
+        if (p1[i] !== p2[i]) { 
+            return false; 
+        }
+    }
 
-	return true;
+    return true;
 }
 
 

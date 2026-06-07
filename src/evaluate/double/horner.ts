@@ -12,12 +12,12 @@
  * @doc
  */
 function Horner(p: number[], x: number): number {
-	let q = 0; 
-	for (let i=0; i<p.length; i++) {
-		q = q*x + p[i];
-	}
-		
-	return q;
+    let q = 0; 
+    for (let i=0; i<p.length; i++) {
+        q = q*x + p[i];
+    }
+        
+    return q;
 }
 // inlined (with q => E, p => p0)
 //let E = p0[0]; for (let i=1; i<p0.length; i++) {E = E*x + p0[i]; }

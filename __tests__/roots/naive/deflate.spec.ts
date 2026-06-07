@@ -1,7 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert } from 'chai';
-import { describe } from 'mocha';
-import { equal, deflate } from '../../../src/index.js';
+import { equal } from '../../../src/basic/double/equal.js';
+import { deflate } from '../../../src/roots/naive/deflate.js';
 
 
 describe('deflate', function() {
@@ -13,8 +13,8 @@ describe('deflate', function() {
 		let r2 = 2;
 		let p3 = [1, -1];
 		let r3 = 1;
-		assert(equal(deflate(p1, r1), [1, -3, 2]));   
-		assert(equal(deflate(p2, r2), [1,-1]));
-		assert(equal(deflate(p3, r3), [1]));
+		expect(equal(deflate(p1, r1), [1, -3, 2])).toBeTruthy();   
+		expect(equal(deflate(p2, r2), [1,-1])).toBeTruthy();
+		expect(equal(deflate(p3, r3), [1])).toBeTruthy();
 	});
 });

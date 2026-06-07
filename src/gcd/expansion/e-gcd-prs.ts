@@ -1,9 +1,5 @@
-import { ePremSequenceSubresultant as ePremSequenceSubresultant_ } from "../../euclidean-division-related/expansion/e-prem-sequence-subresultant.js";
-import { scaleFloatssToIntss as scaleFloatssToIntss_ } from "../../scale-to-int/scale-floatss-to-intss.js";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const ePremSequenceSubresultant = ePremSequenceSubresultant_;
-const scaleFloatssToIntss = scaleFloatssToIntss_;
+import { ePremSequenceSubresultant } from "../../euclidean-division-related/expansion/e-prem-sequence-subresultant.js";
+import { scaleFloatssToIntss } from "../../scale-to-int/scale-floatss-to-intss.js";
 
 
 // ❗❗❗❗❗❗
@@ -25,7 +21,7 @@ const scaleFloatssToIntss = scaleFloatssToIntss_;
  * intermediate coefficient calculations
  * 
  * @param a a polynomial with coefficients given densely as an array of
- * Shewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
+ * Schewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
  * represents the polynomial `5x^2 - 3x`
  * @param b another polynomial
  * 

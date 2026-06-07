@@ -1,6 +1,4 @@
-import { expect } from 'chai';
-import { describe } from 'mocha';
-// import { bAbsCoeff } from '../../../src/index.js';
+import { describe, expect, it } from '@jest/globals';
 import { bAbsCoeff } from '../../../src/basic/bigint/b-abs-coeff.js';
 
 
@@ -10,8 +8,8 @@ describe('bAbsCoeff', function() {
 		let p1: bigint[] = [];
 		let p2 = [-2n,3n];
 		let p3 = [-3n,-2n,-1n];
-		expect(bAbsCoeff(p1)).to.eql([]);
-		expect(bAbsCoeff(p2)).to.eql([2n,3n]);
-		expect(bAbsCoeff(p3)).to.eql([3n,2n,1n]);
+		expect(bAbsCoeff(p1)).toEqual([]);
+		expect(bAbsCoeff(p2)).toEqual([2n,3n]);
+		expect(bAbsCoeff(p3)).toEqual([3n,2n,1n]);
 	});
 });

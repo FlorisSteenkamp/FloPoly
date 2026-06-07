@@ -22,15 +22,15 @@
  * @doc
  */
 function deflate(p: number[], root: number): number[] {
-	const d = p.length-1;
-	const bs = [p[0]];
-	for (let i=1; i<d; i++) {
-		bs.push(
-			p[i] + root*bs[i-1]
-		);
-	}
+    const d = p.length-1;
+    const bs = [p[0]];
+    for (let i=1; i<d; i++) {
+        bs.push(
+            p[i] + root*bs[i-1]
+        );
+    }
 
-	return bs;
+    return bs;
 }
 
 

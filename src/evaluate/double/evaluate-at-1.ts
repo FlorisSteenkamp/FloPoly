@@ -11,12 +11,12 @@
  * @doc
  */
 function evaluateAt1(p: number[]): number {
-	let res = 0;
-	for (let i=0; i<p.length; i++) {
-		res += p[i];
-	}
+    let res = 0;
+    for (let i=0; i<p.length; i++) {
+        res += p[i];
+    }
 
-	return res;
+    return res;
 }
 
 

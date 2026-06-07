@@ -1,11 +1,6 @@
-import { negate as negate_ } from "../../basic/double/negate.js";
-import { upperToLowerBound as upperToLowerBound_ } from "./upper-to-lower-bound.js";
-import { positiveToNegativeBound as positiveToNegativeBound_ } from "./positive-to-negative-bound.js";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const negate = negate_;
-const upperToLowerBound = upperToLowerBound_;
-const positiveToNegativeBound = positiveToNegativeBound_;
+import { negate } from "../../basic/double/negate.js";
+import { upperToLowerBound } from "./upper-to-lower-bound.js";
+import { positiveToNegativeBound } from "./positive-to-negative-bound.js";
 
 
 /**
@@ -28,43 +23,43 @@ const positiveToNegativeBound = positiveToNegativeBound_;
  * @doc
  */
 function positiveRootUpperBound_LMQ(p: number[]): number {
-	const deg = p.length-1;
-	if (deg < 1) { 
-		return 0; 
-	}
-	
-	if (p[0] < 0) { p = negate(p); }
-	
-	const timesUsed = [];
-	for (let i=0; i<deg; i++) {
-		timesUsed.push(1);
-	}
-	
-	let ub = 0;
-	
-	for (let m=0; m<=deg; m++) {
-		if (p[m] >= 0) { continue; }
-		
-		let tempub = Number.POSITIVE_INFINITY;
-		let any = false;
-		
-		for (let k=0; k<m; k++) {
-			if (p[k] <= 0) { continue; }
+    const deg = p.length-1;
+    if (deg < 1) { 
+        return 0; 
+    }
+    
+    if (p[0] < 0) { p = negate(p); }
+    
+    const timesUsed = [];
+    for (let i=0; i<deg; i++) {
+        timesUsed.push(1);
+    }
+    
+    let ub = 0;
+    
+    for (let m=0; m<=deg; m++) {
+        if (p[m] >= 0) { continue; }
+        
+        let tempub = Number.POSITIVE_INFINITY;
+        let any = false;
+        
+        for (let k=0; k<m; k++) {
+            if (p[k] <= 0) { continue; }
 
-			const temp = (-p[m] / (p[k] / 2**timesUsed[k]))**(1/(m-k));
-			
-			timesUsed[k]++;
-			
-			if (tempub > temp) { tempub = temp; }
-			
-			any = true;
-		}
-		
-		if (any && ub < tempub)  
-			ub = tempub;
-	}
-	
-	return ub;
+            const temp = (-p[m] / (p[k] / 2**timesUsed[k]))**(1/(m-k));
+            
+            timesUsed[k]++;
+            
+            if (tempub > temp) { tempub = temp; }
+            
+            any = true;
+        }
+        
+        if (any && ub < tempub)  
+            ub = tempub;
+    }
+    
+    return ub;
 }
 
 
@@ -115,8 +110,8 @@ const negativeRootLowerBound_LMQ = positiveToNegativeBound(positiveRootUpperBoun
 const negativeRootUpperBound_LMQ = upperToLowerBound(negativeRootLowerBound_LMQ);
 
 export { 
-	positiveRootUpperBound_LMQ,
-	positiveRootLowerBound_LMQ,
-	negativeRootLowerBound_LMQ,
-	negativeRootUpperBound_LMQ
+    positiveRootUpperBound_LMQ,
+    positiveRootLowerBound_LMQ,
+    negativeRootLowerBound_LMQ,
+    negativeRootUpperBound_LMQ
 }

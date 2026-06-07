@@ -1,10 +1,7 @@
-import { ddMultDouble2 as ddMultDouble2_ } from "double-double";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const ddMultDouble2 = ddMultDouble2_;
+import { ddMultDouble2 } from "double-double";
 
 
-/**  
+/**
  * Returns the result of differentiating the given polynomial (with coefficients 
  * given in double-double precision) in double-double precision.
  * 
@@ -20,14 +17,14 @@ const ddMultDouble2 = ddMultDouble2_;
  * @doc
  */
 function ddDifferentiate(p: number[][]): number[][] {
-	const result: number[][] = [];
-	
-	const d = p.length - 1;
-	for (let i=0; i<d; i++) {
-		result.push(ddMultDouble2((d-i), p[i]));
-	}
-	
-	return result;
+    const result: number[][] = [];
+    
+    const d = p.length - 1;
+    for (let i=0; i<d; i++) {
+        result.push(ddMultDouble2((d-i), p[i]));
+    }
+    
+    return result;
 }
 
 

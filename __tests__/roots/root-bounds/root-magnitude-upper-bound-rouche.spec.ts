@@ -1,7 +1,6 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { rootMagnitudeUpperBound_rouche } from '../../../src/index.js';
+import { rootMagnitudeUpperBound_rouche } from '../../../src/roots/root-bounds/root-magnitude-upper-bound-rouche.js';
 
 
 describe('rootMagnitudeUpperBound_rouche', function() {
@@ -11,11 +10,11 @@ describe('rootMagnitudeUpperBound_rouche', function() {
 		let p2: number[] = [];
 		let p3 = [3];
 		// real roots at about -2.397918624065303 and 2.8793785310848383
-		expect(rootMagnitudeUpperBound_rouche(p1)).to.equal(66);
+		expect(rootMagnitudeUpperBound_rouche(p1)).toEqual(66);
 		// real roots everywhere
-		expect(rootMagnitudeUpperBound_rouche(p2)).to.equal(0);
+		expect(rootMagnitudeUpperBound_rouche(p2)).toEqual(0);
 		// real roots nowhere
-		expect(rootMagnitudeUpperBound_rouche(p3)).to.equal(0);
+		expect(rootMagnitudeUpperBound_rouche(p3)).toEqual(0);
 
 		
 	});

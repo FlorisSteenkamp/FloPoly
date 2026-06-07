@@ -8,20 +8,20 @@ function bGcdInt(a: bigint, b: bigint): bigint {
     a = a < 0n ? -a : a;
     b = b < 0n ? -b : b;
 
-	// The below 2 commented lines represent Euclid's original algorithm.
+    // The below 2 commented lines represent Euclid's original algorithm.
     //if (a === b) { return a; }
-	//return a > b ? gcdInt(a - b, b) : gcdInt(a, b - a);
-	
-	if (a === 0n) { return b; }
-	if (b === 0n) { return a; }
+    //return a > b ? gcdInt(a - b, b) : gcdInt(a, b - a);
+    
+    if (a === 0n) { return b; }
+    if (b === 0n) { return a; }
 
-	while (b !== 0n) {
-		const t = b;
-		b = a % b;
-		a = t;
-	}
+    while (b !== 0n) {
+        const t = b;
+        b = a % b;
+        a = t;
+    }
 
-	return a;
+    return a;
 }
 
 
@@ -36,20 +36,20 @@ function bGcdInt(a: bigint, b: bigint): bigint {
  * @doc
  */
 function bGcdInts(vals: bigint[]): bigint {
-	const vals_ = vals.slice();
+    const vals_ = vals.slice();
     const len = vals_.length;
 
     // make array of numbers all positive
-	for (let i=0; i<len; i++) { 
-		vals_[i] = vals_[i] < 0n ? -vals_[i] : vals_[i]; 
-	}
-    
-	let a = vals_[0];
-	for (let i=1; i<len; i++) {
-		a = bGcdInt(a, vals_[i]);
+    for (let i=0; i<len; i++) { 
+        vals_[i] = vals_[i] < 0n ? -vals_[i] : vals_[i]; 
     }
     
-	return a;
+    let a = vals_[0];
+    for (let i=1; i<len; i++) {
+        a = bGcdInt(a, vals_[i]);
+    }
+    
+    return a;
 } 
 
 
@@ -62,28 +62,28 @@ function bGcdInts(vals: bigint[]): bigint {
  * * It turns out this method is *slower* than the naive method
  *//*
 function bGcdIntsTree(vals: bigint[]): bigint {
-	const vals_ = vals.slice();
+    const vals_ = vals.slice();
 
     // make array of numbers all positive
-	for (const i=0; i<vals_.length; i++) { 
-		vals_[i] = vals_[i] < 0n ? -vals_[i] : vals_[i]; 
-	}
-	
-	// Divide and conquer
-	while (vals_.length > 1) {
-		const newVals = [];
-		const len = vals_.length;
-		for (const i=0; i<len-1; i += 2) {
-			newVals.push(bGcdInt(vals_[i], vals_[i+1]));
-		}
-		if (len % 2 !== 0) {
-			newVals.push(vals_[len-1]);
-		}
-
-		vals_ = newVals;
-	}
+    for (const i=0; i<vals_.length; i++) { 
+        vals_[i] = vals_[i] < 0n ? -vals_[i] : vals_[i]; 
+    }
     
-	return vals_[0];
+    // Divide and conquer
+    while (vals_.length > 1) {
+        const newVals = [];
+        const len = vals_.length;
+        for (const i=0; i<len-1; i += 2) {
+            newVals.push(bGcdInt(vals_[i], vals_[i+1]));
+        }
+        if (len % 2 !== 0) {
+            newVals.push(vals_[len-1]);
+        }
+
+        vals_ = newVals;
+    }
+    
+    return vals_[0];
 } 
 */
 

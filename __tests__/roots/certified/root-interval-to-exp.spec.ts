@@ -1,7 +1,6 @@
+import { describe, expect, it } from '@jest/globals';
 // import { RootInterval, RootIntervalExp } from '../../../src/index.js';
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { rootIntervalToExp } from '../../../src/index.js';
+import { rootIntervalToExp } from '../../../src/roots/certified/root-interval-to-exp.js';
 
 
 describe('rootIntervalToExp',
@@ -20,7 +19,7 @@ function() {
             // let r: RootIntervalExp = rootIntervalToExp(ri);
             let r: any = rootIntervalToExp(ri);
 
-            expect(r).to.eql({
+            expect(r).toEqual({
                 tS: [0, 0.9],
                 tE: [0, 0.9 + Number.EPSILON],
                 multiplicity: 3

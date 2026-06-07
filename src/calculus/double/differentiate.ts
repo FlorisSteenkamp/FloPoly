@@ -14,14 +14,14 @@
  * @doc
  */
 function differentiate(p: number[]): number[] {
-	const result: number[] = [];
-	
-	const d = p.length - 1;
-	for (let i=0; i<d; i++) {
-		result.push((d-i) * p[i]);
-	}
-	
-	return result;
+    const result: number[] = [];
+    
+    const d = p.length - 1;
+    for (let i=0; i<d; i++) {
+        result.push((d-i) * p[i]);
+    }
+    
+    return result;
 }
 
 

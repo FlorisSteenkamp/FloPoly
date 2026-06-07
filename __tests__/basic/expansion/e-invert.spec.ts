@@ -1,7 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { eEqual, eInvert } from '../../../src/index.js';
+import { eEqual } from '../../../src/basic/expansion/e-equal.js';
+import { eInvert } from '../../../src/basic/expansion/e-invert.js';
 
 
 describe('eInvert', function() {
@@ -10,8 +10,8 @@ describe('eInvert', function() {
 		let p1: number[][] = [];
 		let p2 = [[1]];
 		let p3 = [[4],[3],[2],[1]];
-		assert(eEqual(eInvert(p1), []));
-		assert(eEqual(eInvert(p2), [[1]]));
-		assert(eEqual(eInvert(p3), [[1],[2],[3],[4]]));
+		expect(eEqual(eInvert(p1), [])).toBeTruthy();
+		expect(eEqual(eInvert(p2), [[1]])).toBeTruthy();
+		expect(eEqual(eInvert(p3), [[1],[2],[3],[4]])).toBeTruthy();
 	});
 });

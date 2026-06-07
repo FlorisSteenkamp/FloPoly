@@ -14,7 +14,7 @@
  * @doc
  */
 function invert(p: number[]): number[] {
-	return p.slice().reverse();
+    return p.slice().reverse();
 }
 
 

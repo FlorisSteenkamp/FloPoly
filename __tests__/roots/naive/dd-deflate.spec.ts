@@ -1,7 +1,9 @@
+import { describe, expect, it } from '@jest/globals';
 import { eCompress, eToDd } from 'big-float-ts';
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { eEqual, ddDeflate, toCasStr, allRoots } from '../../../src/index.js';
+import { eEqual } from '../../../src/basic/expansion/e-equal.js';
+import { ddDeflate } from '../../../src/roots/naive/dd-deflate.js';
+import { toCasStr } from '../../../src/basic/to-cas-str.js';
+import { allRoots } from '../../../src/roots/naive/all-roots.js';
 
 
 describe('ddDeflate', function() {
@@ -11,17 +13,17 @@ describe('ddDeflate', function() {
 		{
 			const p = [[0,1], [0,-5], [0,8], [0,-4]];
 			const r = 2;
-			assert(eEqual(ddDeflate(p, r), [[0,1], [0,-3], [0,2]]));   
+			expect(eEqual(ddDeflate(p, r), [[0,1], [0,-3], [0,2]])).toBeTruthy();   
 		}
 		{
 			const p = [[0,1], [0,-3], [0,2]];
 			const r = 2;
-			assert(eEqual(ddDeflate(p, r), [[0,1],[0,-1]]));
+			expect(eEqual(ddDeflate(p, r), [[0,1],[0,-1]])).toBeTruthy();
 		}
 		{
 			const p = [[0,1], [0,-1]];
 			const r = 1;
-			assert(eEqual(ddDeflate(p, r), [[0,1]]));
+			expect(eEqual(ddDeflate(p, r), [[0,1]])).toBeTruthy();
 		}
 		*/
 		{
@@ -43,7 +45,7 @@ describe('ddDeflate', function() {
 				[0, 2569036284],
 				[4.979665391147137e-8, -2017846090.225074],
 				[1.5161276678554714e-8, 555651797.6430036]
-			])).to.be.true;
+			])).toBe(true);
 		}
 	});
 });

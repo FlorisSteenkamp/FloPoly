@@ -10,12 +10,12 @@
  * @doc
  */
 function bEvaluateAt1(p: bigint[]): bigint {
-	let res = 0n;
-	for (let i=0; i<p.length; i++) {
-		res += p[i];
-	}
+    let res = 0n;
+    for (let i=0; i<p.length; i++) {
+        res += p[i];
+    }
 
-	return res;
+    return res;
 }
 
 

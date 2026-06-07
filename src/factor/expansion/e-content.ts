@@ -1,11 +1,6 @@
-import { eGcdInts as eGcdInts_ } from "../../gcd/expansion/e-integer-gcd.js";
-import { eSign as eSign_ } from "big-float-ts";
-import { eNegativeOf as eNegativeOf_ } from "big-float-ts";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eGcdInts = eGcdInts_;
-const eSign = eSign_;
-const eNegativeOf = eNegativeOf_;
+import { eGcdInts } from "../../gcd/expansion/e-integer-gcd.js";
+import { eSign } from "big-float-ts";
+import { eNegativeOf } from "big-float-ts";
 
 
 /**
@@ -21,7 +16,7 @@ const eNegativeOf = eNegativeOf_;
  * content of `p` and `2x² - x - 1` is its primitive part.
  * 
  * @param p a polynomial with coefficients given densely as an array of
- * Shewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
+ * Schewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
  * represents the polynomial `5x^2 - 3x`
  * 
  * @doc

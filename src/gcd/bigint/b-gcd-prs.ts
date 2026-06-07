@@ -1,7 +1,4 @@
-import { bPremSequenceSubresultant as bPremSequenceSubresultant_ } from "../../euclidean-division-related/bigint/b-prem-sequence-subresultant.js";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const bPremSequenceSubresultant = bPremSequenceSubresultant_;
+import { bPremSequenceSubresultant } from "../../euclidean-division-related/bigint/b-prem-sequence-subresultant.js";
 
 
 /**

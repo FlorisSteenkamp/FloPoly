@@ -1,7 +1,4 @@
-import { gcdInts as gcdInts_ } from "../../gcd/double/integer-gcd.js"
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const gcdInts = gcdInts_;
+import { gcdInts } from "../../gcd/double/integer-gcd.js"
 
 
 /**

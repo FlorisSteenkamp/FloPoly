@@ -1,11 +1,6 @@
-import { evalCertified as evalCertified_ } from "../../evaluate/double/eval-certified.js";
-import { eHorner as eHorner_ } from "../../evaluate/expansion/e-horner.js";
-import { eEstimate as eEstimate_ } from 'big-float-ts';
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const evalCertified = evalCertified_;
-const eHorner = eHorner_;
-const eEstimate = eEstimate_;
+import { evalCertified } from "../../evaluate/double/eval-certified.js";
+import { eHorner } from "../../evaluate/expansion/e-horner.js";
+import { eEstimate } from 'big-float-ts';
 
 
 /**
@@ -37,7 +32,9 @@ function evalAdaptive(
         getPolyExact: () => number[][]): number {
 
     const r = evalCertified(p, x, pE, 4);
-    if (r !== 0) { return r; }
+    if (r !== 0) {
+        return r;
+    }
 
     // condition number is too high - request higher precision
 

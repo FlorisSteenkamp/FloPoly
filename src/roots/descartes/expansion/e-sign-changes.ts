@@ -1,7 +1,4 @@
-import { eSign as eSign_ } from "big-float-ts";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eSign = eSign_;
+import { eSign } from "big-float-ts";
 
 
 /** 
@@ -27,7 +24,7 @@ const eSign = eSign_;
  * 
  * * see [Descartes' rule of signs](https://en.wikipedia.org/wiki/Descartes%27_rule_of_signs)
  * 
- * @param p a polynomial with coefficients given densely as an array of Shewchuk
+ * @param p a polynomial with coefficients given densely as an array of Schewchuk
  * floating point expansions from highest to lowest power, e.g. `[[5],[-3],[0]]`
  * represents the polynomial `5x^2 - 3x`
  * 
@@ -39,22 +36,22 @@ const eSign = eSign_;
  * @doc
  */
 function eSignChanges(p: number[][]): number {
-	const d = p.length-1;
+    const d = p.length-1;
 
-	if (d < 1) { return 0; }
+    if (d < 1) { return 0; }
 
-	let result = 0;
-	let prevSign = Math.sign(eSign(p[0]));
-	for (let i=1; i<d+1; i++) {
-		const sign_ = Math.sign(eSign(p[i]));
-		
-		if (sign_ !== prevSign && sign_ !== 0) {
-			result++;
-			prevSign = sign_;
-		}
-	}
-	
-	return result;
+    let result = 0;
+    let prevSign = Math.sign(eSign(p[0]));
+    for (let i=1; i<d+1; i++) {
+        const sign_ = Math.sign(eSign(p[i]));
+        
+        if (sign_ !== prevSign && sign_ !== 0) {
+            result++;
+            prevSign = sign_;
+        }
+    }
+    
+    return result;
 }
 
 

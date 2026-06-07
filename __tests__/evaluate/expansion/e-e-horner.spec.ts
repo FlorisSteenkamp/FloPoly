@@ -1,13 +1,18 @@
-import { assert, expect } from 'chai';
-//import { describe } from 'mocha';
-import 'mocha';
+import { describe, expect, it } from '@jest/globals';
 import { eEstimate, twoSum, eSum } from 'big-float-ts';
-import { 
-	eeHorner, compHorner, compHornerIsFaithful, Horner, 
-    CompHornerK, conditionNumber, compHornerWithRunningError,
-    EFTHorner, eHorner, evalCertified, evalCertifiedInclError,
-    evalK, multiply
-} from '../../../src/index.js'
+import { eeHorner } from '../../../src/evaluate/expansion/e-e-horner.js';
+import { compHorner } from '../../../src/evaluate/double/comp-horner.js';
+import { compHornerIsFaithful } from '../../../src/evaluate/double/comp-horner-is-faithful.js';
+import { Horner } from '../../../src/evaluate/double/horner.js';
+import { CompHornerK } from '../../../src/evaluate/double/comp-horner-k.js';
+import { conditionNumber } from '../../../src/error-analysis/condition-number.js';
+import { compHornerWithRunningError } from '../../../src/evaluate/double/comp-horner-with-running-error.js';
+import { EFTHorner } from '../../../src/evaluate/double/eft-horner.js';
+import { eHorner } from '../../../src/evaluate/expansion/e-horner.js';
+import { evalCertified } from '../../../src/evaluate/double/eval-certified.js';
+import { evalCertifiedInclError } from '../../../src/evaluate/double/eval-certified-incl-error.js';
+import { evalK } from '../../../src/evaluate/double/eval-k.js';
+import { multiply } from '../../../src/basic/double/multiply.js';
 import { transposePoly } from '../../../src/roots/certified/transpose-poly.js';
 
 
@@ -101,21 +106,21 @@ describe('eeHorner', function() {
 
 
         // expect an extremely high condition number
-        expect(cn).above(90_000_000_000_000_000_000);
+        expect(cn).toBeGreaterThan(90_000_000_000_000_000_000);
         
         let exactValue = -6.686513196320162e-21;  // up to one ulps only obviously
         let Horner_ = Horner(p_, c);
         let HornerRelativeError = Math.abs((exactValue - Horner_) / exactValue);  //=> 1557.61711123055
         // expect Horner to not be accurate - all bits including sign bit is wrong
-        assert(HornerRelativeError > 10);
+        expect(HornerRelativeError > 10).toBeTruthy();
 
         let compHorner_ = compHorner(p_, c);
         let compHornerRelativeError = Math.abs((exactValue - compHorner_) / exactValue); //=> 9.079759577036585e-14
         // expect compHorner to be several trillion times more acccurate
-        assert(HornerRelativeError / compHornerRelativeError > 1e12);
+        expect(HornerRelativeError / compHornerRelativeError > 1e12).toBeTruthy();
 
         // don't expect this evaluation to be faithful
-        expect(unfaithfulHorner).to.eql({ 
+        expect(unfaithfulHorner).toEqual({ 
             isFaithful: false, 
             errBound: 2.785314415593918e-32, 
             'r̄': -6.6865131963207694e-21 
@@ -124,9 +129,9 @@ describe('eeHorner', function() {
 
         let faithfulHorner = compHornerIsFaithful(p_, c * 1.00001);
         // expect an evaluation slightly away from the root to be very likely faithful
-        assert(faithfulHorner.isFaithful);
+        expect(faithfulHorner.isFaithful).toBeTruthy();
 
-        expect(compHornerWithRunningError(p_, c)).to.eql( [
+        expect(compHornerWithRunningError(p_, c)).toEqual( [
             -6.6865131963207694e-21,  // result
             2.785314415593911e-32     // error bound - thus not faithful in this case
         ]);
@@ -135,13 +140,13 @@ describe('eeHorner', function() {
         let compHornerK_ = CompHornerK(p_, c, 2);
         let compHornerKRelativeError = Math.abs((exactValue - compHornerK_) / exactValue); //=> 1.9689689293449847e-14
         // expect compHornerK to be several trillion times more acccurate (similiar to compHorner)
-        assert(HornerRelativeError / compHornerKRelativeError > 1e12);
+        expect(HornerRelativeError / compHornerKRelativeError > 1e12).toBeTruthy();
 
         // exact to last ulp
-        expect(eEstimate(eeHorner(p, [c]))).to.eql(exactValue);
+        expect(eEstimate(eeHorner(p, [c]))).toEqual(exactValue);
 
         // totally exact as a Shewchuk expansion
-        expect(eeHorner(p, [c])).to.eql([
+        expect(eeHorner(p, [c])).toEqual([
             8.091831733644689e-136,
             2.094485622400387e-119,
             4.1470589674758764e-103,
@@ -158,7 +163,7 @@ describe('eeHorner', function() {
         let rπ = eHorner(pπ.map(c => [c]), c);
         let rσ = eHorner(pσ.map(c => [c]), c);
         let r = eEstimate(eSum([[r̂ ], rπ, rσ]));
-        expect(r).to.eql(exactValue);
+        expect(r).toEqual(exactValue);
 
         // map to double-double precision 
         let ddP = p_.map(x => twoSum(x*2**-50,x));
@@ -169,24 +174,24 @@ describe('eeHorner', function() {
 
         // we are too close to the root to decide the sign
         let certA = evalCertified(ddP_, c, pE);
-        assert(certA === 0);
+        expect(certA === 0).toBeTruthy();
 
         // we are not too close to the root to decide the sign
         let certB = evalCertified(ddP_, c+0.00001, pE);
-        assert(certB !== 0);
+        expect(certB !== 0).toBeTruthy();
 
 
         // we are too close to the root to decide the sign
         let certEA = evalCertifiedInclError(ddP_, c, pE);
         let certEA_ = evalCertified(ddP_, c, pE);
-        expect(certEA).to.eql({ r̂: 0, e: 1.0944460238556618e-15 });
-        expect(certEA_).to.eql(certEA.r̂);
+        expect(certEA).toEqual({ r̂: 0, e: 1.0944460238556618e-15 });
+        expect(certEA_).toEqual(certEA.r̂);
 
         // we are not too close to the root to decide the sign
         let certEB = evalCertifiedInclError(ddP_, c+0.00001, pE);
         let certEB_ = evalCertified(ddP_, c+0.00001, pE);
-        expect(certEB).to.eql({ r̂: 3.9180861780702125e-8, e: 1.3056137644801344e-15 });
-        expect(certEB_).to.eql(certEB.r̂);
+        expect(certEB).toEqual({ r̂: 3.9180861780702125e-8, e: 1.3056137644801344e-15 });
+        expect(certEB_).toEqual(certEB.r̂);
 
         {
             // pE needs to be reduced a bit for this test
@@ -195,16 +200,16 @@ describe('eeHorner', function() {
             // we are too close to the root to decide the value to within some multiple of the error
             let certEC = evalCertifiedInclError(ddP_, c+0.000000000001, pE, 64);
             let certEC_ = evalCertified(ddP_, c+0.000000000001, pE, 64);
-            expect(certEC).to.eql({ r̂: 3.9189495492975434e-15, e: 5.09641621577133e-25 });
-            expect(certEC_).to.eql(certEC.r̂);
+            expect(certEC).toEqual({ r̂: 3.9189495492975434e-15, e: 5.09641621577133e-25 });
+            expect(certEC_).toEqual(certEC.r̂);
         }
 
 
         // no error polynomial => assumed zero polynomial
         let certED = evalCertifiedInclError(ddP_, c);
         let certED_ = evalCertified(ddP_, c);
-        expect(certED).to.eql({ r̂: -6.6865131963207694e-21, e: 3.212160411083628e-32 });
-        expect(certED_).to.eql(certED.r̂);
+        expect(certED).toEqual({ r̂: -6.6865131963207694e-21, e: 3.212160411083628e-32 });
+        expect(certED_).toEqual(certED.r̂);
 
 
         // ----------------
@@ -214,11 +219,11 @@ describe('eeHorner', function() {
         let evalK_A = evalK(p_, c);
         // expect the result to be quite close to the exact result
         // this is the K2 path
-        expect(evalK_A).to.eql(-6.6865131963207694e-21);
+        expect(evalK_A).toEqual(-6.6865131963207694e-21);
 
         let evalK_B = evalK(p_, c + 0.000001);
         // this is the K1 path
-        expect(evalK_B).to.eql(3.918947256986716e-9);
+        expect(evalK_B).toEqual(3.918947256986716e-9);
         
 
         // below is how p_2 was created - triple root at 1835, single at 1000 and 1834
@@ -246,7 +251,7 @@ describe('eeHorner', function() {
 
         let evalK_C = evalK(p_2, c2);
         // this is the K4 path, i.e. double-double-double-double precision
-        expect(evalK_C).to.eql(-4.208343244307185e-31);
+        expect(evalK_C).toEqual(-4.208343244307185e-31);
 	});
 });
 

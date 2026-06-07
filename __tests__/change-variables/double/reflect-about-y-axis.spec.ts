@@ -1,5 +1,4 @@
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
+import { describe, expect, it } from '@jest/globals';
 import { reflectAboutYAxis } from '../../../src/change-variables/double/reflect-about-y-axis.js';
 import { equal } from '../../../src/basic/double/equal.js';
 
@@ -9,23 +8,23 @@ describe('reflectAboutYAxis', function() {
 	function() {
 		{
 			const p: number[] = [];
-			assert(equal(reflectAboutYAxis(p), []));
+			expect(equal(reflectAboutYAxis(p), [])).toBeTruthy();
 		}
 		{
 			const p: number[] = [1];
-			assert(equal(reflectAboutYAxis(p), [1]));
+			expect(equal(reflectAboutYAxis(p), [1])).toBeTruthy();
 		}
 		{
 			const p: number[] = [2,1];
-			assert(equal(reflectAboutYAxis(p), [-2,1]));
+			expect(equal(reflectAboutYAxis(p), [-2,1])).toBeTruthy();
 		}
 		{
 			const p = [5,4,3,2,1];
-			assert(equal(reflectAboutYAxis(p), [5,-4,3,-2,1]));
+			expect(equal(reflectAboutYAxis(p), [5,-4,3,-2,1])).toBeTruthy();
 		}
 		{
 			const p = [4,3,2,1];
-			assert(equal(reflectAboutYAxis(p), [-4,3,-2,1]));
+			expect(equal(reflectAboutYAxis(p), [-4,3,-2,1])).toBeTruthy();
 		}
 	});
 });

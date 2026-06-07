@@ -1,11 +1,6 @@
-import { sturmChain as sturmChain_ } from "../../../euclidean-division-related/double/sturm-chain.js";
-import { eHorner as eHorner_ } from "../../../evaluate/expansion/e-horner.js";
-import { eSignChanges as eSignChanges_ } from '../expansion/e-sign-changes.js';
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const sturmChain = sturmChain_;
-const eHorner = eHorner_;
-const eSignChanges = eSignChanges_;
+import { sturmChain } from "../../../euclidean-division-related/double/sturm-chain.js";
+import { eHorner } from "../../../evaluate/expansion/e-horner.js";
+import { eSignChanges } from '../expansion/e-sign-changes.js';
 
 
 /** 
@@ -31,13 +26,13 @@ const eSignChanges = eSignChanges_;
  * @doc
  */ 
 function numRootsInRange(
-		p: number[], a: number, b: number): number {
+        p: number[], a: number, b: number): number {
 
-	const ps = sturmChain(p);
-	const as = ps.map(p => eHorner(p,a));
-	const bs = ps.map(p => eHorner(p,b));
-	
-	return eSignChanges(as) - eSignChanges(bs);
+    const ps = sturmChain(p);
+    const as = ps.map(p => eHorner(p,a));
+    const bs = ps.map(p => eHorner(p,b));
+    
+    return eSignChanges(as) - eSignChanges(bs);
 }
 
 

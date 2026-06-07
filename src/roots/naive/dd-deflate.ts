@@ -1,9 +1,5 @@
-import { ddMultDouble2 } from "double-double";
-import { ddAddDd } from "double-double";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const qmd = ddMultDouble2;
-const qaq = ddAddDd;
+import { ddMultDouble2 as qmd } from "double-double";
+import { ddAddDd as qaq } from "double-double";
 
 
 /**
@@ -30,16 +26,16 @@ const qaq = ddAddDd;
  * @doc
  */
 function ddDeflate(p: number[][], root: number): number[][] {
-	const d = p.length-1;
-	const bs = [p[0]];
-	for (let i=1; i<d; i++) {
-		bs.push(
-			// p[i] + root*bs[i-1]
-			qaq(p[i],qmd(root,bs[i-1]))
-		);
-	}
+    const d = p.length-1;
+    const bs = [p[0]];
+    for (let i=1; i<d; i++) {
+        bs.push(
+            // p[i] + root*bs[i-1]
+            qaq(p[i],qmd(root,bs[i-1]))
+        );
+    }
 
-	return bs;
+    return bs;
 }
 
 

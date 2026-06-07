@@ -1,12 +1,6 @@
-import { eSturmChain as eSturmChain_ } from "../../../euclidean-division-related/expansion/e-sturm-chain.js";
-import { eeHorner as eeHorner_ } from "../../../evaluate/expansion/e-e-horner.js";
-import { eSignChanges as eSignChanges_ } from './e-sign-changes.js';
-
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eeHorner = eeHorner_;
-const eSturmChain = eSturmChain_;
-const eSignChanges = eSignChanges_;
+import { eSturmChain } from "../../../euclidean-division-related/expansion/e-sturm-chain.js";
+import { eeHorner } from "../../../evaluate/expansion/e-e-horner.js";
+import { eSignChanges } from './e-sign-changes.js';
 
 
 /**
@@ -19,9 +13,9 @@ const eSignChanges = eSignChanges_;
  * distinct real roots of P".
  * 
  * @param p a polynomial with coefficients given densely as an array of
- * Shewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
+ * Schewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
  * represents the polynomial `5x^2 - 3x`
- * @param a a lower bound given as a Shewchuk expansion
+ * @param a a lower bound given as a Schewchuk expansion
  * @param b an upper bound
  * 
  * @example
@@ -36,15 +30,15 @@ const eSignChanges = eSignChanges_;
  * @doc
  */
 function eNumRootsInRange(
-		p: number[][], 
-		a: number[], 
-		b: number[]): number {
+        p: number[][], 
+        a: number[], 
+        b: number[]): number {
 
-	const ps = eSturmChain(p);
-	const as = ps.map(p => eeHorner(p,a));
-	const bs = ps.map(p => eeHorner(p,b));
-	
-	return eSignChanges(as) - eSignChanges(bs);
+    const ps = eSturmChain(p);
+    const as = ps.map(p => eeHorner(p,a));
+    const bs = ps.map(p => eeHorner(p,b));
+    
+    return eSignChanges(as) - eSignChanges(bs);
 }
 
 

@@ -10,15 +10,15 @@
  * @doc
  */
 function bMultiplyByConst(c: bigint, p: bigint[]): bigint[] {
-	if (c === 0n) { return []; }
-	
-	const d = p.length;
-	const r: bigint[] = [];
-	for (let i=0; i<d; i++) {
-		r.push(c*p[i]);
-	}
+    if (c === 0n) { return []; }
+    
+    const d = p.length;
+    const r: bigint[] = [];
+    for (let i=0; i<d; i++) {
+        r.push(c*p[i]);
+    }
 
-	return r;
+    return r;
 }
 
 

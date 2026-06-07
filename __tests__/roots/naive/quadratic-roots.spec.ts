@@ -1,17 +1,17 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { equal, quadraticRoots } from '../../../src/index.js';
+import { equal } from '../../../src/basic/double/equal.js';
+import { quadraticRoots } from '../../../src/roots/naive/quadratic-roots.js';
 
 
 describe('quadraticRoots', function() {
 	it('should correctly calculate the quadratic roots of some 2nd order polynomials', 
 	function() {
-		assert(equal(quadraticRoots([1, -3, 2]), [1,2])); 
-		assert(equal(quadraticRoots([1, 0, -1]), [-1,1]));
-		assert(equal(quadraticRoots([1, 6, 8]), [-4,-2]));
-		assert(equal(quadraticRoots([1, 0, 0]), [0]));
-		assert(equal(quadraticRoots([1,-20,100]), [10]));
-		assert(equal(quadraticRoots([1,-20,101]), []));
+		expect(equal(quadraticRoots([1, -3, 2]), [1,2])).toBeTruthy(); 
+		expect(equal(quadraticRoots([1, 0, -1]), [-1,1])).toBeTruthy();
+		expect(equal(quadraticRoots([1, 6, 8]), [-4,-2])).toBeTruthy();
+		expect(equal(quadraticRoots([1, 0, 0]), [0])).toBeTruthy();
+		expect(equal(quadraticRoots([1,-20,100]), [10])).toBeTruthy();
+		expect(equal(quadraticRoots([1,-20,101]), [])).toBeTruthy();
 	});
 });

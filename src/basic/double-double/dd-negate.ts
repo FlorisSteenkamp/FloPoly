@@ -7,12 +7,12 @@
  * @doc
  */
 function ddNegate(p: number[][]): number[][] {
-	const p_: number[][] = [];
-	for (let i=0; i<p.length; i++) {
-		p_.push([-p[i][0], -p[i][1]]);
-	}
+    const p_: number[][] = [];
+    for (let i=0; i<p.length; i++) {
+        p_.push([-p[i][0], -p[i][1]]);
+    }
 
-	return p_;
+    return p_;
 }
 
 

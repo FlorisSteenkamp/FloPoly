@@ -1,8 +1,5 @@
-
-import { expect } from 'chai';
-import { describe } from 'mocha';
-import { scaleFloatToInt, eGcdInt, eGcdInts } from '../../../src/index.js';
-import { performance } from 'perf_hooks';
+import { describe, expect, it } from '@jest/globals';
+import { eGcdInt, eGcdInts } from '../../../src/gcd/expansion/e-integer-gcd.js';
 
 
 describe('integer gcd', function() {
@@ -22,11 +19,11 @@ describe('integer gcd', function() {
         for (let val of vals1) {
             {
                 let r = eGcdInt(...val);
-                expect(r).to.eql([21]);
+                expect(r).toEqual([21]);
             }
             {
                 let r = eGcdInts(val);
-                expect(r).to.eql([21]);
+                expect(r).toEqual([21]);
             }
         }
 
@@ -40,7 +37,7 @@ describe('integer gcd', function() {
         for (let val of vals2) {
             {
                 let r = eGcdInts(val);
-                expect(r).to.eql([7]);
+                expect(r).toEqual([7]);
             }
         }
 
@@ -49,8 +46,8 @@ describe('integer gcd', function() {
             let b = [464];
             let r1 = eGcdInt(a,b);
             let r2 = eGcdInt(b,a);
-            expect(r1).to.deep.equal(b);
-            expect(r2).to.deep.equal(b);
+            expect(r1).toEqual(b);
+            expect(r2).toEqual(b);
         }
 	});
 });

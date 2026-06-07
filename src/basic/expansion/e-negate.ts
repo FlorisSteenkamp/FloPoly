@@ -1,13 +1,11 @@
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-import { eNegativeOf as eNegativeOf_ } from "big-float-ts";
-const eNegativeOf = eNegativeOf_;
+import { eNegativeOf } from "big-float-ts";
 
 
 /**
  * Returns the negative of the given polynomial (with coefficients given as 
- * Shewchuk floating point expansions), i.e. (p -> -p).
+ * Schewchuk floating point expansions), i.e. (p -> -p).
  * 
- * @param p a polynomial with coefficients given densely as an array of Shewchuk
+ * @param p a polynomial with coefficients given densely as an array of Schewchuk
  * floating point expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
  * represents the polynomial `5x^2 - 3x`
  * 
@@ -19,11 +17,11 @@ const eNegativeOf = eNegativeOf_;
  * @doc
  */
 function eNegate(p: number[][]): number[][] {
-	const result: number[][] = [];
-	for (let i=0; i<p.length; i++) {
-		result.push(eNegativeOf(p[i]))
-	}
-	return result;
+    const result: number[][] = [];
+    for (let i=0; i<p.length; i++) {
+        result.push(eNegativeOf(p[i]))
+    }
+    return result;
 }
 
 

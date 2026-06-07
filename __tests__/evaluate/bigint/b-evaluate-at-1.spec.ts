@@ -1,7 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { bEvaluateAt1, bHorner } from '../../../src/index.js';
+import { bEvaluateAt1 } from '../../../src/evaluate/bigint/b-evaluate-at-1.js';
+import { bHorner } from '../../../src/evaluate/bigint/b-horner.js';
 
 
 describe('evaluateAt1', function() {
@@ -16,8 +16,8 @@ describe('evaluateAt1', function() {
         let p1$ = bHorner(p1,1n);
         let p2$ = bHorner(p2,1n);
 
-		expect(p1_).to.equal(p1$);
-        expect(p2_).to.equal(p2$);
-        expect(bEvaluateAt1(p3)).to.equal(0n);
+		expect(p1_).toEqual(p1$);
+        expect(p2_).toEqual(p2$);
+        expect(bEvaluateAt1(p3)).toEqual(0n);
 	});
 });

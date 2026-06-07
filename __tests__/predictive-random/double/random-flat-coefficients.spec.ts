@@ -1,7 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { equal, flatCoefficients } from '../../../src/index.js';
+import { equal } from '../../../src/basic/double/equal.js';
+import { flatCoefficients } from '../../../src/predictive-random/double/random.js';
 
 
 describe('random.flatCoefficients', function() {
@@ -13,17 +13,17 @@ describe('random.flatCoefficients', function() {
 		
 		res = flatCoefficients(3,-5,5);
 		expected = [0.437291506677866, -0.5087333917617798, 2.3439210653305054];
-		assert(equal(res.p, expected), `res.p: ${res.p}, expected: ${expected}`);
-		assert(res.seed === 939629312, `res.seed: ${res.seed}, expectedSeed: ${expectedSeed}`);
+		expect(equal(res.p, expected)).toBeTruthy();
+		expect(res.seed === 939629312).toBeTruthy();
 		
 		res = flatCoefficients(3,-5,5); 
 		expected = [0.437291506677866, -0.5087333917617798, 2.3439210653305054];
-		assert(equal(res.p, expected), `res.p: ${res.p}, expected: ${expected}`);
-		assert(res.seed === 939629312, `res.seed: ${res.seed}, expectedSeed: ${expectedSeed}`);
+		expect(equal(res.p, expected)).toBeTruthy();
+		expect(res.seed === 939629312).toBeTruthy();
 		
 		res = flatCoefficients(3); // Uses default range 
 		expected = [0.0874583013355732, -0.10174667835235596, 0.4687842130661011];
-		assert(equal(res.p, expected), `res.p: ${res.p}, expected: ${expected}`);
-		assert(res.seed === 939629312, `res.seed: ${res.seed}, expectedSeed: ${expectedSeed}`);
+		expect(equal(res.p, expected)).toBeTruthy();
+		expect(res.seed === 939629312).toBeTruthy();
 	});
 });

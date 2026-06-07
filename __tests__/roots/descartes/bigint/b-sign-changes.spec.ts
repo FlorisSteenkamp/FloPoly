@@ -1,7 +1,6 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { bSignChanges } from '../../../../src/index.js';
+import { bSignChanges } from '../../../../src/roots/descartes/bigint/b-sign-changes.js';
 
 
 describe('bSignChanges', function() {
@@ -10,7 +9,7 @@ describe('bSignChanges', function() {
 		let p1 = [1n,2n,-3n,0n,0n,3n,-1n];
 		let p2: bigint[] = [];
 		
-		expect(bSignChanges(p1)).to.equal(3);
-		expect(bSignChanges(p2)).to.equal(0);
+		expect(bSignChanges(p1)).toEqual(3);
+		expect(bSignChanges(p2)).toEqual(0);
 	});
 });

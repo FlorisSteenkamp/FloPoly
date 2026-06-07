@@ -1,7 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { bEqual, bChangeVariablesTranslateX } from '../../../src/index.js';
+import { bEqual } from '../../../src/basic/bigint/b-equal.js';
+import { bChangeVariablesTranslateX } from '../../../src/change-variables/bigint/b-change-variables-translate-x.js';
 
 
 describe('bChangeVariablesTranslateX', function() {
@@ -9,7 +9,7 @@ describe('bChangeVariablesTranslateX', function() {
 	function() {
 		let p1: bigint[] = [];
 		let p2 = [1n,2n,7n];
-		assert(bEqual(bChangeVariablesTranslateX(p1, 3n), []));
-		assert(bEqual(bChangeVariablesTranslateX(p2, 3n), [1n,8n,22n]));
+		expect(bEqual(bChangeVariablesTranslateX(p1, 3n), [])).toBeTruthy();
+		expect(bEqual(bChangeVariablesTranslateX(p2, 3n), [1n,8n,22n])).toBeTruthy();
 	});
 });

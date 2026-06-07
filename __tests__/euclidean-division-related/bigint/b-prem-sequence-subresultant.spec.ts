@@ -1,7 +1,9 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { bPremSequenceSubresultant, bMultiply, scaleFloatsToInts, bPremSequencePrimitive } from '../../../src/index.js';
+import { bPremSequenceSubresultant } from '../../../src/euclidean-division-related/bigint/b-prem-sequence-subresultant.js';
+import { bMultiply } from '../../../src/basic/bigint/b-multiply.js';
+import { scaleFloatsToInts } from '../../../src/scale-to-int/scale-floats-to-ints.js';
+import { bPremSequencePrimitive } from '../../../src/euclidean-division-related/bigint/b-prem-sequence-primitive.js';
 
 
 describe('bPremSequenceSubresultant', function() {
@@ -15,7 +17,7 @@ describe('bPremSequenceSubresultant', function() {
 
             {
                 let r = bPremSequenceSubresultant(ps[0], ps[1]);
-                expect(r).to.deep.equal([
+                expect(r).toEqual([
                     [1n, 0n, 1n, 0n, -3n, -3n, 8n, 2n, -5n],
                     [3n, 0n, 5n, 0n, -4n, -9n, 21n],
                     [15n, 0n, -3n, 0n, 9n],
@@ -34,7 +36,7 @@ describe('bPremSequenceSubresultant', function() {
 
             let r = bPremSequenceSubresultant(p, p2);
 
-            expect(r).to.deep.equal([
+            expect(r).toEqual([
                 [6n, -1n, 2n, 45n, -382n, -530n, 260n],
                 [3n, 4n, -2n]
             ]);
@@ -81,7 +83,7 @@ describe('bPremSequenceSubresultant', function() {
             let ra = bPremSequenceSubresultant(p0, p1);
             let rb = bPremSequencePrimitive(p0, p1);
 
-            expect(ra).to.deep.equal([[
+            expect(ra).toEqual([[
                     -2071879803233509n,
                     -1551073925286799n,
                     -1714877254241296n,

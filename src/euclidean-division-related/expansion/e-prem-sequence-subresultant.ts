@@ -1,19 +1,10 @@
-import { expansionProduct as expansionProduct_ } from "big-float-ts";
-import { eIntPow as eIntPow_ } from "big-float-ts";
-import { eDiv as eDiv_ } from "big-float-ts";
-import { eNegativeOf as eNegativeOf_ } from "big-float-ts";
-import { eIsConstOrZero as eIsConstOrZero_ } from "../../basic/expansion/e-is-const-or-zero.js";
-import { eDegree as eDegree_ } from "../../basic/expansion/e-degree.js";
-import { ePdivTrivial as ePdivTrivial_ } from "./e-pdiv-trivial.js";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const ePdivTrivial = ePdivTrivial_;
-const eIsConstOrZero = eIsConstOrZero_;
-const expansionProduct = expansionProduct_;
-const eIntPow = eIntPow_;
-const eDiv = eDiv_;
-const eNegativeOf = eNegativeOf_;
-const eDegree = eDegree_;
+import { expansionProduct } from "big-float-ts";
+import { eIntPow } from "big-float-ts";
+import { eDiv } from "big-float-ts";
+import { eNegativeOf } from "big-float-ts";
+import { eIsConstOrZero } from "../../basic/expansion/e-is-const-or-zero.js";
+import { eDegree } from "../../basic/expansion/e-degree.js";
+import { ePdivTrivial } from "./e-pdiv-trivial.js";
 
 
 /**
@@ -21,9 +12,9 @@ const eDegree = eDegree_;
  * 
  * * **precondition:** g !== [], i.e. unequal to the zero polynomial.
  * 
- * * **precondition:** the coefficients must be integer Shewchuk floating point 
+ * * **precondition:** the coefficients must be integer Schewchuk floating point 
  * expansions; if they are not they can easily be scaled from 
- * floating point numbers to Shewchuk expansions by calling [[scaleFloatsToInts]] 
+ * floating point numbers to Schewchuk expansions by calling [[scaleFloatsToInts]] 
  * or similar before calling this function (recall that all floating point 
  * numbers are rational).
  * 
@@ -36,7 +27,7 @@ const eDegree = eDegree_;
  * * see [*The subresultant polynomial remainder sequence algorithm* by Ruiyuan (Ronnie) Chen, p.10](https://pdfs.semanticscholar.org/2e6b/95ba84e2160748ba8fc310cdc408fc9bbade.pdf)
  * 
  * @param f the polynomial a in the formula a = bq + r; the polynomial is given
- * with coefficients as a dense array of integer Shewchuk expansions from 
+ * with coefficients as a dense array of integer Schewchuk expansions from 
  * highest to lowest power, e.g. `[[5],[-3],[0]]` represents the 
  * polynomial `5x^2 - 3x`
  * @param g the polynomial b in the formula a = bq + r

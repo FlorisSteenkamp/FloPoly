@@ -1,7 +1,6 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { eP1Norm } from '../../../src/index.js';
+import { eP1Norm } from '../../../src/norm/expansion/e-p-1-norm.js';
 
 
 describe('eP1Norm', function() {
@@ -11,9 +10,9 @@ describe('eP1Norm', function() {
 		let p1 = [[1e-10],[-1e-12],[1]];
 		let p2 = [[-1e-3],[1e-12],[1e-10]];
 		let p3 = [[-1e-3],[1e-1],[1e-10]];
-		expect(eP1Norm(p0)).to.equal(0);
-		expect(eP1Norm(p1)).to.equal(1e-10 + 1e-12 + 1);
-		expect(eP1Norm(p2)).to.equal(1e-3 + 1e-12 + 1e-10);
-		expect(eP1Norm(p3)).to.equal(1e-3 + 1e-1 + 1e-10);
+		expect(eP1Norm(p0)).toEqual(0);
+		expect(eP1Norm(p1)).toEqual(1e-10 + 1e-12 + 1);
+		expect(eP1Norm(p2)).toEqual(1e-3 + 1e-12 + 1e-10);
+		expect(eP1Norm(p3)).toEqual(1e-3 + 1e-1 + 1e-10);
 	});
 });

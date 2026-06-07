@@ -1,8 +1,9 @@
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { 
-    bGcdPrs, bIsRationalMultipleOf, bMultiply, bDifferentiate, bFromRoots
-} from '../../../src/index.js';
+import { describe, expect, it } from '@jest/globals';
+import { bGcdPrs } from '../../../src/gcd/bigint/b-gcd-prs.js';
+import { bIsRationalMultipleOf } from '../../../src/basic/bigint/b-is-rational-multiple-of.js';
+import { bMultiply } from '../../../src/basic/bigint/b-multiply.js';
+import { bDifferentiate } from '../../../src/calculus/bigint/b-differentiate.js';
+import { bFromRoots } from '../../../src/roots/from-roots/bigint/b-from-roots.js';
 import { bPrimitivePart } from '../../../src/factor/bigint/b-primitive-part.js';
 
 
@@ -14,20 +15,20 @@ describe('bGcdPrs', function() {
             let b = [4n, -2n];
             let gcd = bGcdPrs(a,b);
             //console.log(gcd);
-            assert(bIsRationalMultipleOf(
+            expect(bIsRationalMultipleOf(
                 gcd, 
                 [1n]
-            ));
+            )).toBeTruthy();
         }
         {
             let a = [10000000000n, 100000n];
             let b = [10000000000n, 100000n];
             let gcd = bGcdPrs(a,b);
             //console.log(gcd);
-            assert(bIsRationalMultipleOf(
+            expect(bIsRationalMultipleOf(
                 gcd, 
                 [10000000000n, 100000n]
-            ));
+            )).toBeTruthy();
         }
 
         {
@@ -35,10 +36,10 @@ describe('bGcdPrs', function() {
             let b = [1n, -3n];
             let gcd = bGcdPrs(a,b);
             //console.log(gcd);
-            assert(bIsRationalMultipleOf(
+            expect(bIsRationalMultipleOf(
                 gcd,
                 [1n]
-            ));
+            )).toBeTruthy();
         }
         
         {
@@ -46,10 +47,10 @@ describe('bGcdPrs', function() {
             let b = [1n, 8n, 12n, 17n, 6n];
             let gcd = bGcdPrs(a,b);
             //console.log(gcd);
-            assert(bIsRationalMultipleOf(
+            expect(bIsRationalMultipleOf(
                 gcd,
                 [1n, 1n, 2n]
-            ));
+            )).toBeTruthy();
         }
 
 
@@ -60,7 +61,7 @@ describe('bGcdPrs', function() {
 
             let gcd = bGcdPrs(p1,dp1);
 
-            assert(bIsRationalMultipleOf(gcd, [1n, -1n]));
+            expect(bIsRationalMultipleOf(gcd, [1n, -1n])).toBeTruthy();
         }
 
 
@@ -75,7 +76,7 @@ describe('bGcdPrs', function() {
             let dp5 = bDifferentiate(p5);
             let gcd = bGcdPrs(p5,dp5);
 
-            expect(bPrimitivePart(gcd)).to.eql([
+            expect(bPrimitivePart(gcd)).toEqual([
                 1n, -3n, 3n, -1n
             ])
         }
@@ -87,7 +88,7 @@ describe('bGcdPrs', function() {
             let dp1 = bDifferentiate(p1)
             let gcd = bGcdPrs(p1,dp1);
 
-            assert(gcd.length === 1)
+            expect(gcd.length === 1).toBeTruthy()
         }
 
         {
@@ -96,7 +97,7 @@ describe('bGcdPrs', function() {
             let dp1 = bDifferentiate(p1)
             let gcd = bGcdPrs(p1,dp1);
 
-            assert(bIsRationalMultipleOf(gcd, [432n, -6048n, 21168n]));
+            expect(bIsRationalMultipleOf(gcd, [432n, -6048n, 21168n])).toBeTruthy();
         }
 
         {
@@ -105,7 +106,7 @@ describe('bGcdPrs', function() {
             let dp1 = bDifferentiate(p1)
             let gcd = bGcdPrs(p1,dp1);
 
-            assert(bIsRationalMultipleOf(gcd, [1n, 0n, 1n]));
+            expect(bIsRationalMultipleOf(gcd, [1n, 0n, 1n])).toBeTruthy();
         }
 
 
@@ -116,8 +117,8 @@ describe('bGcdPrs', function() {
             let gcd1 = bGcdPrs(p1,p2);
             let gcd2 = bGcdPrs(p2,p1);
 
-            assert(bIsRationalMultipleOf(gcd1, []));
-            assert(bIsRationalMultipleOf(gcd2, []));
+            expect(bIsRationalMultipleOf(gcd1, [])).toBeTruthy();
+            expect(bIsRationalMultipleOf(gcd2, [])).toBeTruthy();
         }
 	});
 });

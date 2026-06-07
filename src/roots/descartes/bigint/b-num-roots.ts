@@ -1,12 +1,6 @@
-import { bSturmChain as bSturmChain_ } from "../../../euclidean-division-related/bigint/b-sturm-chain.js";
-import { bDegree as bDegree_ } from "../../../basic/bigint/b-degree.js";
-import { bSignChanges as bSignChanges_ } from "./b-sign-changes.js";
-
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const bSturmChain = bSturmChain_;
-const bDegree = bDegree_;
-const bSignChanges = bSignChanges_;
+import { bSturmChain } from "../../../euclidean-division-related/bigint/b-sturm-chain.js";
+import { bDegree } from "../../../basic/bigint/b-degree.js";
+import { bSignChanges } from "./b-sign-changes.js";
 
 
 /**
@@ -30,11 +24,11 @@ const bSignChanges = bSignChanges_;
  * @doc
  */
 function bNumRoots(p: bigint[]): number {
-	const ps = bSturmChain(p);
-	const as = ps.map(p => bDegree(p) % 2 === 0 ? p[0] : -p[0]);
-	const bs = ps.map(p => p[0]);
-	
-	return bSignChanges(as) - bSignChanges(bs);
+    const ps = bSturmChain(p);
+    const as = ps.map(p => bDegree(p) % 2 === 0 ? p[0] : -p[0]);
+    const bs = ps.map(p => p[0]);
+    
+    return bSignChanges(as) - bSignChanges(bs);
 }
 
 

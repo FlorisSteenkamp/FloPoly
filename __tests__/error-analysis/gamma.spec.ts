@@ -1,8 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { γ, γγ } from '../../src/index.js';
+import { γ, γγ } from '../../src/error-analysis/gamma.js';
 
 
 const eps = Number.EPSILON;
@@ -37,18 +36,18 @@ describe('γ error function', function() {
         //console.log(γγ500, 500*uu*(1 + eps*500));
 
 
-        assert(γ1 > u*(1 - eps*2));
-        assert(γ1 < u*(1 + eps*2));
-        assert(γ5 > 5*u*(1 - eps*5));
-        assert(γ5 < 5*u*(1 + eps*5));
-        assert(γ500 > 500*u*(1 - eps*500));
-        assert(γ500 < 500*u*(1 + eps*500));
+        expect(γ1 > u*(1 - eps*2)).toBeTruthy();
+        expect(γ1 < u*(1 + eps*2)).toBeTruthy();
+        expect(γ5 > 5*u*(1 - eps*5)).toBeTruthy();
+        expect(γ5 < 5*u*(1 + eps*5)).toBeTruthy();
+        expect(γ500 > 500*u*(1 - eps*500)).toBeTruthy();
+        expect(γ500 < 500*u*(1 + eps*500)).toBeTruthy();
 
-        assert(γγ1 > uu*(1 - eps*2));
-        assert(γγ1 < uu*(1 + eps*2));
-        assert(γγ5 > 5*uu*(1 - eps*5));
-        assert(γγ5 < 5*uu*(1 + eps*5));
-        assert(γγ500 > 500*uu*(1 - eps*500));
-        assert(γγ500 < 500*uu*(1 + eps*500));
+        expect(γγ1 > uu*(1 - eps*2)).toBeTruthy();
+        expect(γγ1 < uu*(1 + eps*2)).toBeTruthy();
+        expect(γγ5 > 5*uu*(1 - eps*5)).toBeTruthy();
+        expect(γγ5 < 5*uu*(1 + eps*5)).toBeTruthy();
+        expect(γγ500 > 500*uu*(1 - eps*500)).toBeTruthy();
+        expect(γγ500 < 500*uu*(1 + eps*500)).toBeTruthy();
 	});
 });

@@ -1,7 +1,6 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { numRoots } from '../../../../src/index.js';
+import { numRoots } from '../../../../src/roots/descartes/double/num-roots.js';
 
 
 describe('numRoots', function() {
@@ -9,7 +8,7 @@ describe('numRoots', function() {
 	function() {
 		{
 			let p = [1, 1, -64, 236, -240];
-			expect(numRoots(p)).to.equal(4);
+			expect(numRoots(p)).toEqual(4);
 		}
 	});
 });

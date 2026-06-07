@@ -18,24 +18,24 @@
  * @doc
  */
 function bMultiply(a: bigint[], b: bigint[]): bigint[] {
-	const da = a.length-1;
-	const db = b.length-1;
+    const da = a.length-1;
+    const db = b.length-1;
 
-	// if either or both is the zero polynomial
-	if (da < 0 || db < 0) { 
-		return [];
-	}
+    // if either or both is the zero polynomial
+    if (da < 0 || db < 0) { 
+        return [];
+    }
 
-	const d = da + db;
-	
-	const r: bigint[] = new Array(d+1).fill(0n);
-	for (let i=0; i<da+1; i++) {
-		for (let j=0; j<db+1; j++) {
-			r[d-(i+j)] += (a[da-i] * b[db-j]); 				
-		}
-	}
+    const d = da + db;
+    
+    const r: bigint[] = new Array(d+1).fill(0n);
+    for (let i=0; i<da+1; i++) {
+        for (let j=0; j<db+1; j++) {
+            r[d-(i+j)] += (a[da-i] * b[db-j]);                 
+        }
+    }
 
-	return r;
+    return r;
 }
 
 

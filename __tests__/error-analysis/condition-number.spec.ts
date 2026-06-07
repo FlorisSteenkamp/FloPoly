@@ -1,7 +1,6 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { conditionNumber } from '../../src/index.js';
+import { conditionNumber } from '../../src/error-analysis/condition-number.js';
 
 
 describe('conditionNumber', function() {
@@ -35,11 +34,11 @@ describe('conditionNumber', function() {
 		
 		//console.log(c6)
 
- 		expect(c1).to.be.lessThan(250);             // => 144.87661476947537
-		expect(c2).to.be.lessThan(2);               // => 1.0000000061581567
-		expect(c3).to.be.lessThan(2);               // => 0.9999999938418433
-		expect(c4).to.be.above(1000);               // => 3568.2756890558076
-		expect(c5).to.be.above(1000_000);           // => 20246637.631723296
-		expect(c6).to.be.above(1000_000_000_000);   // => 314905786802669100
+ 		expect(c1).toBeLessThan(250);             // => 144.87661476947537
+		expect(c2).toBeLessThan(2);               // => 1.0000000061581567
+		expect(c3).toBeLessThan(2);               // => 0.9999999938418433
+		expect(c4).toBeGreaterThan(1000);               // => 3568.2756890558076
+		expect(c5).toBeGreaterThan(1000_000);           // => 20246637.631723296
+		expect(c6).toBeGreaterThan(1000_000_000_000);   // => 314905786802669100
 	});
 });

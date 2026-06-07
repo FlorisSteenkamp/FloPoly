@@ -1,9 +1,5 @@
-import { eContent as eContent_ } from "./e-content.js";
-import { eDiv as eDiv_ } from "big-float-ts";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eContent = eContent_;
-const eDiv = eDiv_;
+import { eContent } from "./e-content.js";
+import { eDiv } from "big-float-ts";
 
 
 /**
@@ -17,7 +13,7 @@ const eDiv = eDiv_;
  * content of `p` and `2x² - x - 1` is its primitive part.
  * 
  * @param a polynomial with coefficients given densely as an array of
- * Shewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
+ * Schewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
  * represents the polynomial `5x^2 - 3x`
  * 
  * @doc

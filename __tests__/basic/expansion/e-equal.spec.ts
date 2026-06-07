@@ -1,7 +1,6 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { eEqual } from '../../../src/index.js';
+import { eEqual } from '../../../src/basic/expansion/e-equal.js';
 
 
 describe('eEqual', function() {
@@ -14,10 +13,10 @@ describe('eEqual', function() {
 		let p5: number[][] = [];
 		let p6: number[][] = [];
 		
-		assert( eEqual(p1,p2)); 
-		assert(!eEqual(p1,p3));
-		assert(!eEqual(p3,p4));
-		assert( eEqual(p5,p6));
-		assert(!eEqual(p1,p6));
+		expect(eEqual(p1,p2)).toBeTruthy(); 
+		expect(!eEqual(p1,p3)).toBeTruthy();
+		expect(!eEqual(p3,p4)).toBeTruthy();
+		expect(eEqual(p5,p6)).toBeTruthy();
+		expect(!eEqual(p1,p6)).toBeTruthy();
 	});
 });

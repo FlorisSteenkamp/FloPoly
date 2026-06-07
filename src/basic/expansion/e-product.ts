@@ -10,7 +10,7 @@ import { eMultiply } from "./e-multiply.js";
  * * see [polynomial multiplication](http://web.cs.iastate.edu/~cs577/handouts/polymultiply.pdf)
  * 
  * @param ps an array of polynomials each with coefficients given densely as an 
- * array of Shewchuk floating point expansions from highest to lowest power, 
+ * array of Schewchuk floating point expansions from highest to lowest power, 
  * e.g. `[[5],[-3],[0]]` represents the polynomial `5x^2 - 3x`
  * 
  * @example
@@ -21,14 +21,14 @@ import { eMultiply } from "./e-multiply.js";
  * @doc
  */
 function eProduct(ps: number[][][]): number[][] {
-	if (ps.length === 0) { return [[1]]; }
+    if (ps.length === 0) { return [[1]]; }
 
-	let p = ps[0];
-	for (let i=1; i<ps.length; i++) {
-		p = eMultiply(p, ps[i]);
-	}
+    let p = ps[0];
+    for (let i=1; i<ps.length; i++) {
+        p = eMultiply(p, ps[i]);
+    }
 
-	return p;
+    return p;
 }
 
 

@@ -1,13 +1,4 @@
-import { bGcdInts as bGcdInts_ } from "../../gcd/bigint/b-integer-gcd.js";
-
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const bGcdInts = bGcdInts_;
-
-
-// for some reason the tests fails if not done like below likely because Node
-// and TypeScript and BigInt doesn't work perfectly together yet
-const b1 = 1n;  
+import { bGcdInts } from "../../gcd/bigint/b-integer-gcd.js";
 
 
 /**
@@ -31,7 +22,7 @@ const b1 = 1n;
 function bContent(p: bigint[]): bigint {
     if (p.length === 0) { 
         // the zero polynomial
-        return b1;
+        return 1n;
     }
     return p[0] < 0n ? -bGcdInts(p) : bGcdInts(p);
 }

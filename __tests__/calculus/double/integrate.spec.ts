@@ -1,6 +1,6 @@
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { equal, integrate } from '../../../src/index.js';
+import { describe, expect, it } from '@jest/globals';
+import { equal } from '../../../src/basic/double/equal.js';
+import { integrate } from '../../../src/calculus/double/integrate.js';
 
 
 describe('integrate', function() {
@@ -8,7 +8,7 @@ describe('integrate', function() {
 	function() {
 		let p1: number[] = [];
 		let p3 = [3, 2, 1];
-		assert(equal(integrate(p1, 99), [99]));
-		assert(equal(integrate(p3, 99), [1, 1, 1, 99]));
+		expect(equal(integrate(p1, 99), [99])).toBeTruthy();
+		expect(equal(integrate(p3, 99), [1, 1, 1, 99])).toBeTruthy();
 	});
 });

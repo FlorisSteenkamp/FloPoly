@@ -1,10 +1,8 @@
 import { γγ } from '../../error-analysis/gamma.js';
-import { ddMultDouble2 as ddMultDouble2_ } from "double-double";
-import { eEstimate as eEstimate_ } from "big-float-ts";
+import { ddMultDouble2 } from "double-double";
+import { eEstimate } from "big-float-ts";
 
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const ddMultDouble2 = ddMultDouble2_;
-const eEstimate = eEstimate_;
+
 const γγ3 = γγ(3);
 
 
@@ -22,29 +20,29 @@ const γγ3 = γγ(3);
  * @doc
  */
 function ddDifferentiateWithError(
-		pWithErr: { p: number[][], pE: number[] }): { p: number[][], pE: number[] } {
+        pWithErr: { p: number[][], pE: number[] }): { p: number[][], pE: number[] } {
 
-	const { p, pE } = pWithErr;
+    const { p, pE } = pWithErr;
 
-	const dp: number[][] = [];
+    const dp: number[][] = [];
     const dpE: number[] = [];
 
     const d = p.length - 1;
     for (let i=0; i<d; i++) {
-		const deg = d-i;
-		const c = ddMultDouble2(deg, p[i]);
-		dp.push(c);
+        const deg = d-i;
+        const c = ddMultDouble2(deg, p[i]);
+        dp.push(c);
 
         // if 1,2,4 or 8, etc. then no additional error occurs on multiply
         // if 3,5,7 or 9, etc. then additional error occurs
         // deg is a power of 2 <=> (deg & deg-1) === 0
-		const extraErr = (deg & deg-1) === 0 ? 0 : γγ3;
-		
-		const $c = eEstimate(c);
+        const extraErr = (deg & deg-1) === 0 ? 0 : γγ3;
+        
+        const $c = eEstimate(c);
         dpE.push(
-			//deg * (pE[i] + Math.abs($c)*extraErr)
-			deg*pE[i] + Math.abs($c)*extraErr
-		);
+            //deg * (pE[i] + Math.abs($c)*extraErr)
+            deg*pE[i] + Math.abs($c)*extraErr
+        );
     }
 
     return { p: dp, pE: dpE };

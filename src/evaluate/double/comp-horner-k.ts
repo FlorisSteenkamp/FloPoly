@@ -1,11 +1,6 @@
-import { SumK as SumK_ } from "./sum-k.js";
-import { EFTHornerK as EFTHornerK_ } from "./eft-horner-k.js";
-import { Horner as Horner_ } from "./horner.js";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const SumK = SumK_;
-const EFTHornerK = EFTHornerK_;
-const Horner = Horner_;
+import { SumK } from "./sum-k.js";
+import { EFTHornerK } from "./eft-horner-k.js";
+import { Horner } from "./horner.js";
 
 
 /**
@@ -32,17 +27,17 @@ const Horner = Horner_;
  * @doc
  */
 function CompHornerK(p: number[], x: number, K: number): number {
-	K = Math.min(p.length-1, K);
+    K = Math.min(p.length-1, K);
 
-	const { hs, ps } = EFTHornerK(p, x, K);
-	const leafStart = 2**(K-1); // cardinality and start of the leaves
-	for (let i=0; i<leafStart; i++) {
-		hs.push(Horner(ps[leafStart+i], x));
-	}
+    const { hs, ps } = EFTHornerK(p, x, K);
+    const leafStart = 2**(K-1); // cardinality and start of the leaves
+    for (let i=0; i<leafStart; i++) {
+        hs.push(Horner(ps[leafStart+i], x));
+    }
 
-	const r̄ = SumK(hs, K);
+    const r̄ = SumK(hs, K);
 
-	return r̄;
+    return r̄;
 }
 
 

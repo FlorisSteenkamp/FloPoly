@@ -1,6 +1,5 @@
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { bDivideByConst } from '../../../src/index.js';
+import { describe, expect, it } from '@jest/globals';
+import { bDivideByConst } from '../../../src/basic/bigint/b-divide-by-const.js';
 
 
 describe('bDivideByConst', function() {
@@ -8,7 +7,7 @@ describe('bDivideByConst', function() {
 	function() {
 		let p1: bigint[] = [];
         let p2 = [1n,2n,3n,4n];
-		expect(bDivideByConst(p1,2n)).to.eql([]);
-        expect(bDivideByConst(p2,2n)).to.eql([0n,1n,1n,2n]);
+		expect(bDivideByConst(p1,2n)).toEqual([]);
+        expect(bDivideByConst(p2,2n)).toEqual([0n,1n,1n,2n]);
     });
 });

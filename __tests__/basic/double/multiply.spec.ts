@@ -1,7 +1,7 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { equal, multiply } from '../../../src/index.js';
+import { equal } from '../../../src/basic/double/equal.js';
+import { multiply } from '../../../src/basic/double/multiply.js';
 
 
 describe('multiply', function() {
@@ -11,8 +11,8 @@ describe('multiply', function() {
 		let p2: number[] = [];
 		let p3 = [1,2,3];
 		let p4 = [4,4,5,6,7];
-		assert(equal(multiply(p1,p3), [2,4,6]));
-		assert(equal(multiply(p2,p3), []));
-		assert(equal(multiply(p3,p4), [4, 12, 25, 28, 34, 32, 21]));
+		expect(equal(multiply(p1,p3), [2,4,6])).toBeTruthy();
+		expect(equal(multiply(p2,p3), [])).toBeTruthy();
+		expect(equal(multiply(p3,p4), [4, 12, 25, 28, 34, 32, 21])).toBeTruthy();
 	});
 });

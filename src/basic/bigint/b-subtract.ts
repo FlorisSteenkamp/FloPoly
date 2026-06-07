@@ -1,7 +1,4 @@
-import { bRemoveLeadingZeros as bRemoveLeadingZeros_ } from "./b-remove-leading-zeros.js";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const bRemoveLeadingZeros = bRemoveLeadingZeros_;
+import { bRemoveLeadingZeros } from "./b-remove-leading-zeros.js";
 
 
 /** 
@@ -22,26 +19,26 @@ const bRemoveLeadingZeros = bRemoveLeadingZeros_;
  * @doc
  */
 function bSubtract(a: bigint[], b: bigint[]): bigint[] {
-	// Initialize result array  
-	const da = a.length - 1;
-	const db = b.length - 1;
-	const Δd = da - db;
-	
-	const Δd2 = Δd > 0 ? -Δd : 0;
-	const Δd1 = Δd < 0 ? +Δd : 0;
+    // Initialize result array  
+    const da = a.length - 1;
+    const db = b.length - 1;
+    const Δd = da - db;
+    
+    const Δd2 = Δd > 0 ? -Δd : 0;
+    const Δd1 = Δd < 0 ? +Δd : 0;
 
-	const d = Math.max(da, db);
-	
-	// Add coefficients
-	const result: bigint[] = [];
-	for (let i=0; i<d+1; i++) {
-		const c1 = a[i+Δd1] || 0n;
-		const c2 = b[i+Δd2] || 0n;
-		result.push(c1 - c2);  
-	}
-	
-	// Ensure the result is a valid polynomial representation
-	return bRemoveLeadingZeros(result);
+    const d = Math.max(da, db);
+    
+    // Add coefficients
+    const result: bigint[] = [];
+    for (let i=0; i<d+1; i++) {
+        const c1 = a[i+Δd1] || 0n;
+        const c2 = b[i+Δd2] || 0n;
+        result.push(c1 - c2);  
+    }
+    
+    // Ensure the result is a valid polynomial representation
+    return bRemoveLeadingZeros(result);
 }
 
 

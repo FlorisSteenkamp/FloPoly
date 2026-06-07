@@ -13,7 +13,7 @@
  * @doc
  */
 function evaluateAt0(p: number[]): number {
-	return p.length === 0 ? 0 : p[p.length-1];
+    return p.length === 0 ? 0 : p[p.length-1];
 }
 
 

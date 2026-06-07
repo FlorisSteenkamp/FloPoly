@@ -1,7 +1,4 @@
-import { removeLeadingZeros as removeLeadingZeros_ } from "./remove-leading-zeros.js";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const removeLeadingZeros = removeLeadingZeros_;
+import { removeLeadingZeros } from "./remove-leading-zeros.js";
 
 
 /** 
@@ -21,16 +18,16 @@ const removeLeadingZeros = removeLeadingZeros_;
  * @doc
  */
 function multiplyByConst(c: number, p: number[]): number[] {
-	if (c === 0) { return []; }
-	
-	const d = p.length;
-	const p_: number[] = [];
-	for (let i=0; i<d; i++) {
-		p_.push(c*p[i]);
-	}
-	
-	// We *have* to clip due to possible floating point underflow
-	return removeLeadingZeros(p_);
+    if (c === 0) { return []; }
+    
+    const d = p.length;
+    const p_: number[] = [];
+    for (let i=0; i<d; i++) {
+        p_.push(c*p[i]);
+    }
+    
+    // We *have* to clip due to possible floating point underflow
+    return removeLeadingZeros(p_);
 }
 
 

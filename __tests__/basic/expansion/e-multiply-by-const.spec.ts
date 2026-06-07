@@ -1,7 +1,6 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { eMultiplyByConst } from '../../../src/index.js';
+import { eMultiplyByConst } from '../../../src/basic/expansion/e-multiply-by-const.js';
 
 
 describe('eMultiplyByConst', function() {
@@ -11,14 +10,9 @@ describe('eMultiplyByConst', function() {
 		let p2 = [[1.1],[2.2],[3.3],[4.4]];
 		let c = [2];
 		expect(
-			eMultiplyByConst(c,p1)).to.eql([],
-			`n: ${c}, d: ${p1}`
-		);
+			eMultiplyByConst(c,p1)).toEqual([]);
 		expect(
-			eMultiplyByConst(c,p2)).to.eql(
-				[[2.2],[4.4],[6.6],[8.8]],
-				`n: ${c}, d: ${p2}`
-			);
+			eMultiplyByConst(c,p2)).toEqual([[2.2],[4.4],[6.6],[8.8]]);
 	});
 	
 	
@@ -27,8 +21,6 @@ describe('eMultiplyByConst', function() {
 		let p1 = [[1.1],[2.2],[3.3],[4.4]];
 		let c = [0];
 		expect(
-			eMultiplyByConst(c,p1)).to.eql([],
-			`n: ${c}, d: ${p1}`
-		);
+			eMultiplyByConst(c,p1)).toEqual([]);
 	});
 });

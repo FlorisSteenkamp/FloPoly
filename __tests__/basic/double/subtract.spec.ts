@@ -1,7 +1,6 @@
+import { describe, expect, it } from '@jest/globals';
 
-import { assert, expect } from 'chai';
-import { describe } from 'mocha';
-import { subtract } from '../../../src/index.js';
+import { subtract } from '../../../src/basic/double/subtract.js';
 
 
 describe('subtract', function() {
@@ -12,10 +11,10 @@ describe('subtract', function() {
 		let p3 = [2,1,2];
 		let p4: number[] = [];
 			
-		expect(subtract(p1,p2)).to.eql([-4,-2,-1]);
-		expect(subtract(p2,p1)).to.eql([4,2,1]);
-		expect(subtract(p2,p3)).to.eql([2,3,2]);
-		expect(subtract(p2,p4)).to.eql([4,4,4]);
-		expect(subtract(p4,p2)).to.eql([-4,-4,-4]);
+		expect(subtract(p1,p2)).toEqual([-4,-2,-1]);
+		expect(subtract(p2,p1)).toEqual([4,2,1]);
+		expect(subtract(p2,p3)).toEqual([2,3,2]);
+		expect(subtract(p2,p4)).toEqual([4,4,4]);
+		expect(subtract(p4,p2)).toEqual([-4,-4,-4]);
 	});
 });

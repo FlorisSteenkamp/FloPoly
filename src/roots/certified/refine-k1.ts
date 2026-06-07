@@ -1,16 +1,9 @@
-import { eToDd as eToDd_ } from "big-float-ts";
-import { twoSum as twoSum_ } from "big-float-ts";
-import { eChangeVariablesLinear as eChangeVariablesLinear_ } from "../../change-variables/expansion/e-change-variables-linear.js";
-import { allRootsCertified as allRootsCertified_ } from "./all-roots-certified.js";
+import { eToDd } from "big-float-ts";
+import { twoSum } from "big-float-ts";
+import { eChangeVariablesLinear } from "../../change-variables/expansion/e-change-variables-linear.js";
+import { allRootsCertified } from "./all-roots-certified.js";
 import { RootInterval } from "./root-interval.js";
 import { RootIntervalExp } from "./root-interval-exp.js";
-
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eChangeVariablesLinear = eChangeVariablesLinear_;
-const allRootsCertified = allRootsCertified_;
-const eToDd = eToDd_;
-const twoSum = twoSum_;
 
 
 const eps = Number.EPSILON;
@@ -27,7 +20,7 @@ const eps = Number.EPSILON;
  * 
  * @param ri a root interval previously calculated
  * @param p the exact polynomial with coefficients given densely as an array of 
- * Shewchuk floating point expansions from highest to lowest power, 
+ * Schewchuk floating point expansions from highest to lowest power, 
  * e.g. `[[5],[-3],[0]]` represents the polynomial `5x^2 - 3x`
  * 
  * @doc

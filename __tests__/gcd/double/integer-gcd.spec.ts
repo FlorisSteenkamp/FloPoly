@@ -1,7 +1,7 @@
-import { expect } from 'chai';
-import { describe } from 'mocha';
+import { describe, expect, it } from '@jest/globals';
 import { gcdIntBinary, gcdIntsTree } from '../../../src/gcd/double/integer-gcd.js';
-import { scaleFloatToInt, gcdInt, gcdInts } from '../../../src/index.js';
+import { scaleFloatToInt } from '../../../src/scale-to-int/scale-float-to-int.js';
+import { gcdInt, gcdInts } from '../../../src/gcd/double/integer-gcd.js';
 import { performance } from 'perf_hooks';
 
 
@@ -19,19 +19,19 @@ describe('integer gcd', function() {
         for (let val of vals1) {
             {
                 let r = gcdInt(...val);
-                expect(r).to.equal(21);
+                expect(r).toEqual(21);
             }
             {
                 let r = gcdIntBinary(...val);
-                expect(r).to.equal(21);
+                expect(r).toEqual(21);
             }
             {
                 let r = gcdInts(val);
-                expect(r).to.equal(21);
+                expect(r).toEqual(21);
             }
             {
                 let r = gcdIntsTree(val);
-                expect(r).to.equal(21);
+                expect(r).toEqual(21);
             }
         }
 
@@ -45,11 +45,11 @@ describe('integer gcd', function() {
         for (let val of vals2) {
             {
                 let r = gcdInts(val);
-                expect(r).to.equal(7);
+                expect(r).toEqual(7);
             }
             {
                 let r = gcdIntsTree(val);
-                expect(r).to.equal(7);
+                expect(r).toEqual(7);
             }
         }
 
@@ -71,7 +71,7 @@ describe('integer gcd', function() {
             for (let i=0; i<vals3.length; i++) {
                 let v1 = gcdInts(vals3[i]);
                 let v2 = gcdIntsTree(vals3[i]);
-                expect(v1).to.equal(v2);
+                expect(v1).toEqual(v2);
             }
         }
 
@@ -102,7 +102,7 @@ describe('integer gcd', function() {
             let a = 1072;
             let b = 464; 
             let r = gcdIntBinary(a,b);
-            expect(r).to.equal(16);
+            expect(r).toEqual(16);
         }
 
         {
@@ -112,10 +112,10 @@ describe('integer gcd', function() {
             let r2 = gcdInt(b,a);
             let r3 = gcdIntBinary(a,b);
             let r4 = gcdIntBinary(b,a);
-            expect(r1).to.equal(b);
-            expect(r2).to.equal(b);
-            expect(r3).to.equal(b);
-            expect(r4).to.equal(b);
+            expect(r1).toEqual(b);
+            expect(r2).toEqual(b);
+            expect(r3).toEqual(b);
+            expect(r4).toEqual(b);
         }
 	});
 });

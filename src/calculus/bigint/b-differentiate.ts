@@ -13,14 +13,14 @@
  * @doc
  */
 function bDifferentiate(p: bigint[]): bigint[] {
-	const r: bigint[] = [];
-	
-	const d = p.length - 1;
-	for (let i=0; i<d; i++) {
-		r.push(BigInt((d-i)) * p[i]);
-	}
-	
-	return r;
+    const r: bigint[] = [];
+    
+    const d = p.length - 1;
+    for (let i=0; i<d; i++) {
+        r.push(BigInt((d-i)) * p[i]);
+    }
+    
+    return r;
 }
 
 

@@ -1,7 +1,4 @@
-import { multiply as multiply_ } from "../../../basic/double/multiply.js";
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const multiply = multiply_;
+import { multiply } from "../../../basic/double/multiply.js";
 
 
 /**
@@ -32,12 +29,12 @@ const multiply = multiply_;
  * @doc
  */
 function fromRoots(roots: number[]): number[] {
-	let p = [1]; 
-	for (let i=0; i<roots.length; i++) {
-		p = multiply(p, [1,-roots[i]]);
-	}
-	
-	return p;
+    let p = [1]; 
+    for (let i=0; i<roots.length; i++) {
+        p = multiply(p, [1,-roots[i]]);
+    }
+    
+    return p;
 }
 
 
