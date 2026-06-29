@@ -1,7 +1,6 @@
 /**
  * Returns the *exact* number of *distinct* real roots in the interval (-∞,+∞)
- * of the given polynomial - subject to floating point underflow / overflow of
- * intermediate calculations.
+ * of the given polynomial.
  *
  * * From Wikipedia: "In the case of a non-square-free polynomial,
  * if neither a nor b is a multiple root of p, then V(a) − V(b) is the number

@@ -1,14 +1,9 @@
-import { EFTHorner as EFTHorner_ } from "./eft-horner.js";
-import { hornerWithRunningError as hornerWithRunningError_ } from "./horner-with-running-error.js";
-import { Horner as Horner_ } from "./horner.js";
-import { AbsHorner as AbsHorner_ } from "./abs-horner.js";
-import { γ as γ_ } from "../../error-analysis/gamma.js";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const γ = γ_;
-const EFTHorner = EFTHorner_;
-const hornerWithRunningError = hornerWithRunningError_;
-const Horner = Horner_;
-const AbsHorner = AbsHorner_;
+import { EFTHorner } from "./eft-horner.js";
+import { hornerWithRunningError } from "./horner-with-running-error.js";
+import { Horner } from "./horner.js";
+import { AbsHorner } from "./abs-horner.js";
+import { γ } from "../../error-analysis/gamma.js";
+const { abs } = Math;
 const γ1 = γ(1);
 const γ2 = γ(2);
 /**
@@ -52,20 +47,18 @@ const γ2 = γ(2);
  * @doc
  */
 function evalCertified(p, x, pE = undefined, multiplier = 1) {
-    const absX = Math.abs(x);
     const p0 = p[0];
     // first do a fast evaluation
     const [r, e1] = hornerWithRunningError(p0, x);
     // inlined above line:
     //const r = p0[0]; const e1 = Math.abs(r) / 2; for (const i=1; i<p0.length; i++) { r = r*x + p0[i]; e1 = Math.abs(x)*e1 + Math.abs(r); } e1 = Number.EPSILON * (2*e1 - Math.abs(r));
     /** the error due to not considering p[1] */
-    // the line below was changed due to negative values of x now also allowed
-    const e2 = γ2 * AbsHorner(p0, absX);
+    const e2 = γ2 * AbsHorner(p0, x);
     // inlined above line:
     //const e2 = abs(p0[0]); for (const i=1; i<p0.length; i++) { e2 = e2*x + abs(p0[i]); }
     /** error due to imprecision in coefficients */
     // the line below was changed due to negative values of x now also allowed
-    const E = pE !== undefined ? Horner(pE, absX) : 0;
+    const E = pE !== undefined ? Horner(pE, abs(x)) : 0;
     //const E = p0[0]; for (const i=1; i<p0.length; i++) {E = E*x + p0[i]; }
     const ee = e1 + e2 + E; // in difficult cases E can be larger than e1+e2
     if (ee * multiplier < Math.abs(r)) {

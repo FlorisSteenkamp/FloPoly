@@ -2,12 +2,11 @@ import { describe, expect, it } from '@jest/globals';
 import { gcdIntBinary, gcdIntsTree } from '../../../src/gcd/double/integer-gcd.js';
 import { scaleFloatToInt } from '../../../src/scale-to-int/scale-float-to-int.js';
 import { gcdInt, gcdInts } from '../../../src/gcd/double/integer-gcd.js';
-import { performance } from 'perf_hooks';
 
 
 describe('integer gcd', function() {
-	it('should calculate the correct integer gcds', 
-	function() {
+    it('should calculate the correct integer gcds', 
+    function() {
         let a = 1071;
         let b = 462; 
 
@@ -117,5 +116,5 @@ describe('integer gcd', function() {
             expect(r3).toEqual(b);
             expect(r4).toEqual(b);
         }
-	});
+    });
 });

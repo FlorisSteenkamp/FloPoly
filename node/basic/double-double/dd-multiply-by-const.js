@@ -1,7 +1,5 @@
 import { ddMultDd } from "double-double";
-import { ddRemoveLeadingZeros as ddRemoveLeadingZeros_ } from "./dd-remove-leading-zeros.js";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const ddRemoveLeadingZeros = ddRemoveLeadingZeros_;
+import { ddRemoveLeadingZeros } from "./dd-remove-leading-zeros.js";
 /**
  * Returns the result of multiplies a polynomial by a constant in double-double
  * precision.
@@ -17,9 +15,9 @@ function ddMultiplyByConst(c, p) {
         return [[0, 0]];
     }
     const d = p.length;
-    const p_ = [];
+    const p_ = new Array(d);
     for (let i = 0; i < d; i++) {
-        p_.push(ddMultDd(c, p[i]));
+        p_[i] = ddMultDd(c, p[i]);
     }
     // We *have* to clip due to possible floating point underflow
     return ddRemoveLeadingZeros(p_);

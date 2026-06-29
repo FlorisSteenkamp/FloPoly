@@ -8,8 +8,8 @@ import { bPrimitivePart } from '../../../src/factor/bigint/b-primitive-part.js';
 
 
 describe('bGcdPrs', function() {
-	it('should find the GCD of two polynomials with bigint coefficients correctly', 
-	function() {
+    it('should find the GCD of two polynomials with bigint coefficients correctly', 
+    function() {
         {
             let a = [2n, -2n, 1n];
             let b = [4n, -2n];
@@ -18,7 +18,7 @@ describe('bGcdPrs', function() {
             expect(bIsRationalMultipleOf(
                 gcd, 
                 [1n]
-            )).toBeTruthy();
+            )).toEqual(true);
         }
         {
             let a = [10000000000n, 100000n];
@@ -28,7 +28,7 @@ describe('bGcdPrs', function() {
             expect(bIsRationalMultipleOf(
                 gcd, 
                 [10000000000n, 100000n]
-            )).toBeTruthy();
+            )).toEqual(true);
         }
 
         {
@@ -39,7 +39,7 @@ describe('bGcdPrs', function() {
             expect(bIsRationalMultipleOf(
                 gcd,
                 [1n]
-            )).toBeTruthy();
+            )).toEqual(true);
         }
         
         {
@@ -50,7 +50,7 @@ describe('bGcdPrs', function() {
             expect(bIsRationalMultipleOf(
                 gcd,
                 [1n, 1n, 2n]
-            )).toBeTruthy();
+            )).toEqual(true);
         }
 
 
@@ -61,7 +61,7 @@ describe('bGcdPrs', function() {
 
             let gcd = bGcdPrs(p1,dp1);
 
-            expect(bIsRationalMultipleOf(gcd, [1n, -1n])).toBeTruthy();
+            expect(bIsRationalMultipleOf(gcd, [1n, -1n])).toEqual(true);
         }
 
 
@@ -71,7 +71,7 @@ describe('bGcdPrs', function() {
             // double root at 1
             let p4 = bMultiply([100n,-100n], [11n,-11n]);
             // quad root at 1
-			let p5 = bMultiply(p1, p4);
+            let p5 = bMultiply(p1, p4);
 
             let dp5 = bDifferentiate(p5);
             let gcd = bGcdPrs(p5,dp5);
@@ -88,7 +88,7 @@ describe('bGcdPrs', function() {
             let dp1 = bDifferentiate(p1)
             let gcd = bGcdPrs(p1,dp1);
 
-            expect(gcd.length === 1).toBeTruthy()
+            expect(gcd.length === 1).toEqual(true)
         }
 
         {
@@ -97,7 +97,7 @@ describe('bGcdPrs', function() {
             let dp1 = bDifferentiate(p1)
             let gcd = bGcdPrs(p1,dp1);
 
-            expect(bIsRationalMultipleOf(gcd, [432n, -6048n, 21168n])).toBeTruthy();
+            expect(bIsRationalMultipleOf(gcd, [432n, -6048n, 21168n])).toEqual(true);
         }
 
         {
@@ -106,7 +106,7 @@ describe('bGcdPrs', function() {
             let dp1 = bDifferentiate(p1)
             let gcd = bGcdPrs(p1,dp1);
 
-            expect(bIsRationalMultipleOf(gcd, [1n, 0n, 1n])).toBeTruthy();
+            expect(bIsRationalMultipleOf(gcd, [1n, 0n, 1n])).toEqual(true);
         }
 
 
@@ -117,8 +117,8 @@ describe('bGcdPrs', function() {
             let gcd1 = bGcdPrs(p1,p2);
             let gcd2 = bGcdPrs(p2,p1);
 
-            expect(bIsRationalMultipleOf(gcd1, [])).toBeTruthy();
-            expect(bIsRationalMultipleOf(gcd2, [])).toBeTruthy();
+            expect(bIsRationalMultipleOf(gcd1, [])).toEqual(true);
+            expect(bIsRationalMultipleOf(gcd2, [])).toEqual(true);
         }
-	});
+    });
 });

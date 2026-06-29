@@ -5,9 +5,9 @@ import { eNegate } from '../../../src/basic/expansion/e-negate.js';
 
 
 describe('eNegate', function() {
-	it('should correctly negate some polynomials with Shewchuk expansion coefficients', 
-	function() {
-		let p1 = [[0.1], [-0.2]];
-		expect(eEqual(eNegate(p1), [[-0.1], [0.2]])).toBeTruthy();
-	});
+    it('should correctly negate some polynomials with Shewchuk expansion coefficients', 
+    function() {
+        let p1 = [[0.1], [-0.2]];
+        expect(eEqual(eNegate(p1), [[-0.1], [0.2]])).toEqual(true);
+    });
 });

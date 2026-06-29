@@ -40,7 +40,7 @@ function positiveRootUpperBound_LMQ(p: number[]): number {
     for (let m=0; m<=deg; m++) {
         if (p[m] >= 0) { continue; }
         
-        let tempub = Number.POSITIVE_INFINITY;
+        let tempub = Infinity;
         let any = false;
         
         for (let k=0; k<m; k++) {

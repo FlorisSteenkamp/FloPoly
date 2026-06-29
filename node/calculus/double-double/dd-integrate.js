@@ -17,13 +17,13 @@ import { ddDivDouble } from 'double-double';
  * @doc
  */
 function ddIntegrate(p, c) {
-    const result = [];
     const d = p.length - 1;
+    const r = new Array(d + 2);
     for (let i = 0; i < d + 1; i++) {
-        result.push(ddDivDouble(p[i], (d + 1 - i)));
+        r[i] = ddDivDouble(p[i], (d + 1 - i));
     }
-    result.push(c);
-    return result;
+    r[d + 1] = c;
+    return r;
 }
 export { ddIntegrate };
 //# sourceMappingURL=dd-integrate.js.map

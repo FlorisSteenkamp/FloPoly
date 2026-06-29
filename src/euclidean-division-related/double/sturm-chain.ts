@@ -4,12 +4,12 @@ import { ePremSequenceSubresultant } from "../expansion/e-prem-sequence-subresul
 
 /** 
  * Returns the Sturm chain for the given polynomial using pseudo remainders
- * with the resulting polynomials given with coefficients as Schewchuk 
+ * with the resulting polynomials given with coefficients as Shewchuk 
  * expansions.
  * 
- * * intermediate calculations use Schewchuk expansions and the final result is 
+ * * intermediate calculations use Shewchuk expansions and the final result is 
  * given as an array of polynomials with coefficients given densely as an array of
- * Schewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
+ * Shewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
  * represents the polynomial `5x^2 - 3x`
  * 
  * * see [Sturm's Theorem](https://en.wikipedia.org/wiki/Sturm%27s_theorem)
@@ -27,7 +27,7 @@ import { ePremSequenceSubresultant } from "../expansion/e-prem-sequence-subresul
  * @doc
  */
 function sturmChain(p: number[]): number[][][] {
-    // convert from double precision to Schewchuk expansion
+    // convert from double precision to Shewchuk expansion
     const p_ = p.map(c => [c]);
     const dp = eDifferentiate(p_);
 

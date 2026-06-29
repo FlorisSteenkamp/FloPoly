@@ -10,8 +10,8 @@ import {
 
 
 describe('gcdPrs', function() {
-	it('should find the GCD of two polynomials correctly', 
-	function() {
+    it('should find the GCD of two polynomials correctly', 
+    function() {
         {
             let a = [2, -2, 1];
             let b = [4, -2];
@@ -20,7 +20,7 @@ describe('gcdPrs', function() {
             expect(eIsRationalMultipleOf(
                 gcd, 
                 [[1]]
-            )).toBeTruthy();
+            )).toEqual(true);
         }
         
         {
@@ -31,12 +31,12 @@ describe('gcdPrs', function() {
             expect(eIsRationalMultipleOf(
                 gcd, 
                 [[10_000_000_000], [100_000]]
-            )).toBeTruthy();
+            )).toEqual(true);
 
             expect(eIsRationalMultipleOf(
                 gcd, 
                 [[100_000], [1]]
-            )).toBeTruthy();
+            )).toEqual(true);
         }
 
         {
@@ -47,7 +47,7 @@ describe('gcdPrs', function() {
             expect(eIsRationalMultipleOf(
                 gcd,
                 [[1]]
-            )).toBeTruthy();
+            )).toEqual(true);
         }
 
         {
@@ -58,7 +58,7 @@ describe('gcdPrs', function() {
             expect(eIsRationalMultipleOf(
                 gcd,
                 [[1], [1], [2]]
-            )).toBeTruthy();
+            )).toEqual(true);
         }
 
         /*
@@ -67,11 +67,11 @@ describe('gcdPrs', function() {
             // EVEN THE PSEUDO REMAINDER SEQUENCE (PRS) COEFFICIENTS TO OVERFLOW
             
             let p1 = multiply([1,-0.5], [1,-0.3]);
-			let p2 = multiply([1,-0.1], [1,-0.9]);
-			let p3 = multiply([1,-0.2], [1,-0.99]);
-			let p4 = multiply([1,-0.01], [1,-0.09]);
-			let p5 = multiply(p1, p2);
-			let p6 = multiply(p3, p4);
+            let p2 = multiply([1,-0.1], [1,-0.9]);
+            let p3 = multiply([1,-0.2], [1,-0.99]);
+            let p4 = multiply([1,-0.01], [1,-0.09]);
+            let p5 = multiply(p1, p2);
+            let p6 = multiply(p3, p4);
             let p7 = multiply(p5, p6);
             let gcd = gcdPrs(p7,differentiate(p7));
 
@@ -115,7 +115,7 @@ describe('gcdPrs', function() {
             // roots at 0.2, 0.99
             let p3 = multiply(lf5, lf6);
             // roots at 0.01, 0.09
-			let p4 = multiply(lf7, lf8);
+            let p4 = multiply(lf7, lf8);
                
             // double root at 0.5, roots at 0.1, 0.9
             let p5 = multiply(p1, p2);
@@ -132,6 +132,6 @@ describe('gcdPrs', function() {
             //assert()
         }
         *//*
-	});
+    });
 });
 */

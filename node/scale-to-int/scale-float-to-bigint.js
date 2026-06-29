@@ -1,9 +1,5 @@
-import { exponent as exponent_ } from "big-float-ts";
-import { bitLength as bitLength_ } from "big-float-ts";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const exponent = exponent_;
-const bitLength = bitLength_;
-const b0 = 0n; // temp until support is better otherwise test fails
+import { exponent } from "big-float-ts";
+import { bitLength } from "big-float-ts";
 /**
  * Returns the result of scaling the given float by a power of two such that
  * it becomes a bigint - the smallest such integer is returned.
@@ -14,7 +10,7 @@ const b0 = 0n; // temp until support is better otherwise test fails
  */
 function scaleFloatToBigint(a) {
     if (a === 0) {
-        return b0;
+        return 0n;
     }
     return BigInt(a * 2 ** (-exponent(a) + bitLength(a) - 1));
 }

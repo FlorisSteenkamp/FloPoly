@@ -1,0 +1,18 @@
+{
+    "name": "demo",
+    "sideEffects": false,
+    "version": "0.0.1",
+    "description": "isolate roots demo",
+    "main": "index.js",
+    "author": "",
+    "license": "MIT",
+    "dependencies": {},
+    "devDependencies": {
+        "concurrently": "^10.0.3",
+        "webpack": "^5.107.2",
+        "webpack-cli": "^7.0.3"
+    },
+    "scripts": {
+        "dev": "concurrently \"webpack -w\" \"live-server --open=index.html --watch=.noreload\""
+    }
+}

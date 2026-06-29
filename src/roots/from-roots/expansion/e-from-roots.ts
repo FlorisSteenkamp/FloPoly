@@ -1,42 +1,51 @@
+import { eNegativeOf, eEstimate, eToDd, eCompress } from "big-float-ts";
+import { eps } from "../../../error-analysis/gamma.js";
 import { eMultiply } from "../../../basic/expansion/e-multiply.js";
-import { eNegativeOf } from "big-float-ts";
-import { eToDd } from "big-float-ts";
+
+const { abs } = Math;
 
 
 /**
  * Constructs a double-double precision polynomial from the given roots by 
- * multiplying out the factors (x - root1)(x - root2) in infinite precision 
- * (bar overflow) and rounding back to double-double precision; also returns
- * a coefficient-wise error polynomial and a function that returns the exact
- * polynomial.
+ * multiplying out the factors `(x - root1)(x - root2)` in Shewchuck expansions
+ * and rounding back to double-double precision.
  * 
+ * Returns an object with the following properties:
+ *   - `pE`: a the Shewchuck expansion polynomial
+ *   - `pDd`: a double-double precision polynomial (that is the expansion polynomial with *truncated* coefficients)
+ *   - `pDd_`: the coefficient-wise error polynomial on `pDd` (**not** scaled by `γγ(3)` yet)
+ *   - `p`: a double precision polynomial (that is the expansion polynomial with *rounded* coefficients)
+ *   - `p_`: the coefficient-wise error polynomial on `p` (**not** scaled by `γ(1)` yet)
+  * 
  * * mostly for testing purposes. 
  * 
- * @param roots an array of roots
+ * @param roots an array of roots as Shewchuk expansions,
+ * e.g. `[[0.5],[0.3]]` represents the roots `0.5` and `0.3`
  * 
  * @doc
  */
 function eFromRoots(
         roots: number[][]): {
-            pDd: number[][],
-            pE: number[],
-            getPExact: () => number[][]
+            pE: number[][],
+            pDd: number[][], pDd_: number[],
+            p: number[], p_: number[]
         } {
 
-    let p = [[1]];
+    let pE = [[1]];
     for (let i=0; i<roots.length; i++) {
-        p = eMultiply(p, [[1], eNegativeOf(roots[i])]);
+        pE = eMultiply(pE, [[1], eNegativeOf(roots[i])]);
     }
-    
-    const pE = p.map(c => Math.abs(c[c.length-1]*Number.EPSILON));
+    pE = pE.map(eCompress);
 
-    const getPExact = () => p;
+    const pDd = pE.map(eToDd);
+    const pDd_ = pE.map(c =>
+        abs(c[c.length-2] || 0) / 3  // `/ 3` since the error is ~ `γγ1` and not `γγ3`
+    );
 
-    return {
-        pDd: p.map(eToDd),
-        pE,
-        getPExact
-    }
+    const p = pE.map(c => eEstimate(c));
+    const p_ = pE.map((_,idx) => abs(p[idx]));
+
+    return { pE, pDd, pDd_, p, p_ };
 }
 
 

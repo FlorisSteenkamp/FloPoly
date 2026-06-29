@@ -1,6 +1,4 @@
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-import { eNegativeOf as eNegativeOf_ } from "big-float-ts";
-const eNegativeOf = eNegativeOf_;
+import { eNegativeOf } from "big-float-ts";
 /**
  * Returns the negative of the given polynomial (with coefficients given as
  * Shewchuk floating point expansions), i.e. (p -> -p).
@@ -17,9 +15,9 @@ const eNegativeOf = eNegativeOf_;
  * @doc
  */
 function eNegate(p) {
-    const result = [];
+    const result = new Array(p.length);
     for (let i = 0; i < p.length; i++) {
-        result.push(eNegativeOf(p[i]));
+        result[i] = eNegativeOf(p[i]);
     }
     return result;
 }

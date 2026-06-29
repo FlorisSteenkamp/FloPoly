@@ -3,8 +3,8 @@ import { ePdivTrivial } from '../../../src/euclidean-division-related/expansion/
 
 
 describe('ePdivTrivial', function() {
-	it('should correctly perform pseudo division on some polynomials with coefficents given as Shewchuk expansions', 
-	function() {
+    it('should correctly perform pseudo division on some polynomials with coefficents given as Shewchuk expansions', 
+    function() {
         {
             const ps = [
                 [[1],[7],[6]],      // 0

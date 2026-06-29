@@ -2,7 +2,7 @@ import { eToDd } from "big-float-ts";
 import { twoSum } from "big-float-ts";
 import { eChangeVariablesLinear } from "../../change-variables/expansion/e-change-variables-linear.js";
 import { allRootsCertified } from "./all-roots-certified.js";
-import { RootInterval } from "./root-interval.js";
+import { RootInterval } from "../root-interval.js";
 import { RootIntervalExp } from "./root-interval-exp.js";
 
 
@@ -20,7 +20,7 @@ const eps = Number.EPSILON;
  * 
  * @param ri a root interval previously calculated
  * @param p the exact polynomial with coefficients given densely as an array of 
- * Schewchuk floating point expansions from highest to lowest power, 
+ * Shewchuk floating point expansions from highest to lowest power, 
  * e.g. `[[5],[-3],[0]]` represents the polynomial `5x^2 - 3x`
  * 
  * @doc

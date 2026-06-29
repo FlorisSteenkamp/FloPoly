@@ -17,14 +17,14 @@ import { ddMultDouble2 } from "double-double";
  * @doc
  */
 function ddDifferentiate(p: number[][]): number[][] {
-    const result: number[][] = [];
-    
     const d = p.length - 1;
+    if (d <= 0) { return []; }
+    const r = new Array<number[]>(d);
     for (let i=0; i<d; i++) {
-        result.push(ddMultDouble2((d-i), p[i]));
+        r[i] = ddMultDouble2((d-i), p[i]);
     }
     
-    return result;
+    return r;
 }
 
 

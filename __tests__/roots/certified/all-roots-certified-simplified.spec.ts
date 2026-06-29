@@ -5,10 +5,10 @@ import { allRootsCertifiedSimplified } from '../../../src/roots/certified/all-ro
 describe('allRootsCertifiedSimplified - find all roots within an interval of a polynomial such that all roots are guaranteed to be captured in some interval', 
 function() {
    it('should not return the correct roots by removing leading trailing zeros (i.e. zero roots)', 
-	function() {
-		let p: number[] = [0,-9,5,0];
-		let roots = allRootsCertifiedSimplified(p);
-		expect(roots.length === 2).toBeTruthy();
+    function() {
+        let p: number[] = [0,-9,5,0];
+        let roots = allRootsCertifiedSimplified(p);
+        expect(roots.length === 2).toEqual(true);
       
       expect(roots).toEqual([ 
          { 
@@ -22,12 +22,12 @@ function() {
             multiplicity: 1 
          } 
       ]);
-	});
+    });
 
    
-	it('should find roots correctly',
-	function() {
-		const p = [
+    it('should find roots correctly',
+    function() {
+        const p = [
             3.033321234234234,
             31.78342995971597,
             -115.09145437671532,
@@ -58,5 +58,5 @@ function() {
            { tS: 1.3221000000000016, tE: 1.322100000000002, multiplicity: 1 },
            { tS: 2.534533999999997, tE: 2.534533999999998, multiplicity: 1 }
         ]);
-	});
+    });
 });

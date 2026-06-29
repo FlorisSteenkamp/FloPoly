@@ -4,6 +4,7 @@ import { Horner } from "./horner.js";
 import { AbsHorner } from "./abs-horner.js";
 import { γ } from "../../error-analysis/gamma.js";
 
+const { abs } = Math;
 
 const γ1 = γ(1);
 const γ2 = γ(2);
@@ -55,7 +56,6 @@ function evalCertified(
         pE: number[] | undefined = undefined,
         multiplier = 1): number {
 
-    const absX = Math.abs(x);
     const p0 = p[0];
     
     // first do a fast evaluation
@@ -64,14 +64,13 @@ function evalCertified(
     //const r = p0[0]; const e1 = Math.abs(r) / 2; for (const i=1; i<p0.length; i++) { r = r*x + p0[i]; e1 = Math.abs(x)*e1 + Math.abs(r); } e1 = Number.EPSILON * (2*e1 - Math.abs(r));
 
     /** the error due to not considering p[1] */
-    // the line below was changed due to negative values of x now also allowed
-    const e2 = γ2*AbsHorner(p0,absX); 
+    const e2 = γ2*AbsHorner(p0,x);
     // inlined above line:
     //const e2 = abs(p0[0]); for (const i=1; i<p0.length; i++) { e2 = e2*x + abs(p0[i]); }
 
     /** error due to imprecision in coefficients */
     // the line below was changed due to negative values of x now also allowed
-    const E = pE !== undefined ? Horner(pE,absX) : 0; 
+    const E = pE !== undefined ? Horner(pE,abs(x)) : 0; 
     //const E = p0[0]; for (const i=1; i<p0.length; i++) {E = E*x + p0[i]; }
 
     const ee = e1+e2+E; // in difficult cases E can be larger than e1+e2

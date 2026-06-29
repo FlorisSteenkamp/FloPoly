@@ -1,14 +1,8 @@
-import { twoSum as twoSum_ } from "big-float-ts";
-import { EFTHorner as EFTHorner_ } from "./eft-horner.js";
-import { HornerSum as HornerSum_ } from "./horner-sum.js";
-import { HornerAbsSum as HornerAbsSum_ } from "./horner-abs-sum.js";
-import { γs as γs_ } from "./gammas.js";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const twoSum = twoSum_;
-const HornerSum = HornerSum_;
-const EFTHorner = EFTHorner_;
-const HornerAbsSum = HornerAbsSum_;
-const γs = γs_;
+import { twoSum } from "big-float-ts";
+import { EFTHorner } from "./eft-horner.js";
+import { HornerSum } from "./horner-sum.js";
+import { HornerAbsSum } from "./horner-abs-sum.js";
+import { γs } from "../../error-analysis/gamma.js";
 const u = Number.EPSILON;
 /**
  * Returns the result of evaluating a univariate polynomial using once compensated

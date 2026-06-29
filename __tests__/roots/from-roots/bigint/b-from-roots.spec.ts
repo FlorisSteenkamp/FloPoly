@@ -5,9 +5,9 @@ import { bFromRoots } from '../../../../src/roots/from-roots/bigint/b-from-roots
 
 
 describe('bFromRoots', function() {
-	it('should calculate some polynomials correctly from given roots', 
-	function() {
-		let p1 = [1n,2n,3n,3n];
-		expect(bEqual(bFromRoots(p1), [1n, -9n, 29n, -39n, 18n])).toBeTruthy();
-	});
+    it('should calculate some polynomials correctly from given roots', 
+    function() {
+        let p1 = [1n,2n,3n,3n];
+        expect(bEqual(bFromRoots(p1), [1n, -9n, 29n, -39n, 18n])).toEqual(true);
+    });
 });

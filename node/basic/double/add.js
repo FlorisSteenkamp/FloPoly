@@ -1,6 +1,4 @@
-import { removeLeadingZeros as removeLeadingZeros_ } from "./remove-leading-zeros.js";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const removeLeadingZeros = removeLeadingZeros_;
+import { removeLeadingZeros } from "./remove-leading-zeros.js";
 /**
  * Returns the result of adding two polynomials in double precision.
  *
@@ -17,22 +15,26 @@ const removeLeadingZeros = removeLeadingZeros_;
  * @doc
  */
 function add(p1, p2) {
-    // Initialize result array  
+    // Initialize result array
     const d1 = p1.length - 1;
     const d2 = p2.length - 1;
-    const Δd = d1 - d2;
-    const Δd1 = Δd < 0 ? +Δd : 0;
-    const Δd2 = Δd > 0 ? -Δd : 0;
     const d = Math.max(d1, d2);
     // Add coefficients
-    const result = [];
-    for (let i = 0; i < d + 1; i++) {
-        const c1 = p1[i + Δd1] || 0;
-        const c2 = p2[i + Δd2] || 0;
-        result.push(c1 + c2);
+    const r = new Array(d + 1);
+    const minD = Math.min(d1, d2);
+    // Add where both polynomials overlap
+    for (let i = 0; i <= minD; i++) {
+        r[d - i] = p1[d1 - i] + p2[d2 - i];
+    }
+    // Copy remaining coefficients from longer polynomial
+    for (let i = minD + 1; i <= d1; i++) {
+        r[d - i] = p1[d1 - i];
+    }
+    for (let i = minD + 1; i <= d2; i++) {
+        r[d - i] = p2[d2 - i];
     }
     // Ensure the result is a valid polynomial representation
-    return removeLeadingZeros(result);
+    return removeLeadingZeros(r);
 }
 export { add };
 //# sourceMappingURL=add.js.map

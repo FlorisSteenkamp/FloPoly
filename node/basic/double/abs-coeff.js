@@ -1,3 +1,4 @@
+const { abs } = Math;
 /**
  * Returns the polynomial with all coeffients the absolute value of the given
  * polynomial.
@@ -9,9 +10,9 @@
  * @doc
  */
 function absCoeff(p) {
-    const p_ = [];
+    const p_ = new Array(p.length);
     for (let i = 0; i < p.length; i++) {
-        p_.push(Math.abs(p[i]));
+        p_[i] = abs(p[i]);
     }
     return p_;
 }

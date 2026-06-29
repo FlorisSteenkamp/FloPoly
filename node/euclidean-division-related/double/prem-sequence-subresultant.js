@@ -1,6 +1,4 @@
-import { ePremSequenceSubresultant as ePremSequenceSubresultant_ } from "../expansion/e-prem-sequence-subresultant.js";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const ePremSequenceSubresultant = ePremSequenceSubresultant_;
+import { ePremSequenceSubresultant } from "../expansion/e-prem-sequence-subresultant.js";
 /**
  * Returns the subresultant pseudo remainder sequence of a/b with the resulting
  * polynomials given with coefficients as Shewchuk expansions.

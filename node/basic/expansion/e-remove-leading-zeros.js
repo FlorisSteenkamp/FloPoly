@@ -1,6 +1,4 @@
-import { eSign as eSign_ } from "big-float-ts";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eSign = eSign_;
+import { eSign } from "big-float-ts";
 /**
  * If the highest power coefficient of the given polynomial is 0 then
  * removeLeadingZeros can be called to remove all such highest terms so that

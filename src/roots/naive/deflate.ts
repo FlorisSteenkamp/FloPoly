@@ -1,3 +1,4 @@
+
 /**
  * Deflates the given polynomial *approximately* by removing a factor (x - r), 
  * where r is a root of the polynomial.

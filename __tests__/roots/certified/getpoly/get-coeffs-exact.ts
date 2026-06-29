@@ -1,7 +1,8 @@
 
 import { 
     twoProduct, scaleExpansion2, expansionProduct, fastExpansionSum, 
-    eMultBy2 } from "big-float-ts";
+    eMultBy2, 
+    eCompress} from "big-float-ts";
 import { ddMultBy2, ddAddDd } from 'double-double';
 import { getImplicitExact } from "./get-implicit-exact.js";
 import { getXY } from "./get-xy.js";
@@ -443,7 +444,7 @@ function getCoeffsExact(ps1: number[][], ps2: number[][]): number[][] {
     let v0 = fes(pb,v);
 
 
-    return [v9, v8, v7, v6, v5, v4, v3, v2, v1, v0];
+    return [v9, v8, v7, v6, v5, v4, v3, v2, v1, v0].map(eCompress);
 }
 
 

@@ -11,9 +11,9 @@ import { ddAbs } from "double-double";
  * @doc
  */
 function ddAbsCoeff(p: number[][]): number[][] {
-    const p_: number[][] = [];
+    const p_ = new Array<number[]>(p.length);
     for (let i=0; i<p.length; i++) {
-        p_.push(ddAbs(p[i]));
+        p_[i] = ddAbs(p[i]);
     }
 
     return p_;

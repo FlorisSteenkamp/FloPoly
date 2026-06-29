@@ -1,14 +1,10 @@
-import { eSturmChain as eSturmChain_ } from "../../../euclidean-division-related/expansion/e-sturm-chain.js";
-import { eeHorner as eeHorner_ } from "../../../evaluate/expansion/e-e-horner.js";
-import { eSignChanges as eSignChanges_ } from './e-sign-changes.js';
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eeHorner = eeHorner_;
-const eSturmChain = eSturmChain_;
-const eSignChanges = eSignChanges_;
+import { bSum } from "../../../util/bigint/b-sum.js";
+import { bNumRootsInRange } from "../bigint/b-num-roots-in-range.js";
+import { scaleFloatssToBigintss } from '../../../scale-to-int/scale-floatss-to-bigintss.js';
+import { scaleFloatsToBigints } from "../../../scale-to-int/scale-floats-to-bigints.js";
 /**
  * Returns the *exact* number of *distinct* real roots in the open
- * interval (a,b) of the given polynomial - subject to floating point
- * underflow / overflow of intermediate calculations.
+ * interval `(a,b)` of the given polynomial.
  *
  * * From Wikipedia: "In the case of a non-square-free polynomial, if
  * neither a nor b is a multiple root of p, then V(a) − V(b) is the number of
@@ -18,7 +14,7 @@ const eSignChanges = eSignChanges_;
  * Shewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]`
  * represents the polynomial `5x^2 - 3x`
  * @param a a lower bound given as a Shewchuk expansion
- * @param b an upper bound
+ * @param b an upper bound given as a Shewchuk expansion
  *
  * @example
  * ```typescript
@@ -32,10 +28,7 @@ const eSignChanges = eSignChanges_;
  * @doc
  */
 function eNumRootsInRange(p, a, b) {
-    const ps = eSturmChain(p);
-    const as = ps.map(p => eeHorner(p, a));
-    const bs = ps.map(p => eeHorner(p, b));
-    return eSignChanges(as) - eSignChanges(bs);
+    return bNumRootsInRange(scaleFloatssToBigintss(p).map(bSum), bSum(scaleFloatsToBigints(a)), bSum(scaleFloatsToBigints(b)));
 }
 export { eNumRootsInRange };
 //# sourceMappingURL=e-num-roots-in-range.js.map

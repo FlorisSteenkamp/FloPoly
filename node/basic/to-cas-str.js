@@ -44,6 +44,9 @@ function toCasStr(p) {
             ? (v < 0n ? -v : v)
             : Math.abs(v);
         let cStr = nonNegativeNumberToString(absV);
+        if (v === 0 || cStr === '0') {
+            continue;
+        }
         cStr = (v >= 0 ? ' + ' : ' - ') + cStr;
         if (i === d) {
             str += cStr;

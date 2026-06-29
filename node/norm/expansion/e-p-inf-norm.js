@@ -1,6 +1,4 @@
-import { eEstimate as eEstimate_ } from "big-float-ts";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eEstimate = eEstimate_;
+import { eEstimate } from "big-float-ts";
 /**
  * Returns the `p-infinity norm`, i.e. the maximum magnitude absolute value
  * within the given array of numbers / coefficients (with intermediate

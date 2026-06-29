@@ -1,4 +1,7 @@
+
 /**
+ * @deprecated Use `Array.toReversed()` in modern JavaScript instead.
+ * 
  * Inverts the given polynomial by reversing the order of the coefficients, 
  * i.e. p(x) -> x^deg(p) * p(1/x)
  * 
@@ -14,7 +17,7 @@
  * @doc
  */
 function bInvert(p: bigint[]): bigint[] {
-    return p.slice().reverse();
+    return p.toReversed();
 }
 
 

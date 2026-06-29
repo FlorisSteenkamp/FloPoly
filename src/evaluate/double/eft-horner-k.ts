@@ -9,11 +9,13 @@ import { EFTHorner } from "./eft-horner.js";
  * @internal
  */
 function EFTHornerK(
-        p: number[], x: number, K: number): { hs: number[]; ps: number[][]; } {
+        p: number[],
+        x: number,
+        K: number): { hs: number[]; ps: number[][]; } {
 
     const ps = [p];
     const hs: number[] = [];
-    const card = (2**K)-1; // size of the tree, i.e. cardinality of the nodes
+    const card = (2**K)-1;  // size of the tree, i.e. cardinality of the nodes
     for (let i=0; i<card; i++) {
         const { r̂, pπ, pσ } = EFTHorner(ps[i], x);
         hs.push(r̂);

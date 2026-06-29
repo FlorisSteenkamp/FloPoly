@@ -10,9 +10,9 @@
  */
 function bDivideByConst(p, c) {
     const d = p.length;
-    const r = [];
+    const r = new Array(d);
     for (let i = 0; i < d; i++) {
-        r.push(p[i] / c);
+        r[i] = p[i] / c;
     }
     return r;
 }

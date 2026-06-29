@@ -1,6 +1,4 @@
-import { content as content_ } from "./content.js";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const getContent = content_;
+import { content } from "./content.js";
 /**
  * Returns the primitive part of the given polynomial.
  *
@@ -20,7 +18,7 @@ const getContent = content_;
  * @doc
  */
 function primitivePart(p) {
-    const c = getContent(p);
+    const c = content(p);
     const p_ = [];
     for (let i = 0; i < p.length; i++) {
         p_.push(p[i] / c);

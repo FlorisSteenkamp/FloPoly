@@ -7,7 +7,7 @@ import { eRem } from  'big-float-ts';
  * Computes the greatest common divisor of two integers a and b, using the 
  * Euclidean Algorithm.
  * 
- * **precondition** a, b must be integers given as Schewchuk expansions
+ * **precondition** a, b must be integers given as Shewchuk expansions
  * 
  * @doc
  */
@@ -38,7 +38,7 @@ function eGcdInt(a: number[], b: number[]): number[] {
  * integer and the previously calculated GCD (where the first GCD is simply
  * taken as the first number).
  * 
- * @param vals the integers (given as Schewchuk expansions) for which the GCD is 
+ * @param vals the integers (given as Shewchuk expansions) for which the GCD is 
  * to be calculated
  */
 function eGcdInts(vals: number[][]): number[] {

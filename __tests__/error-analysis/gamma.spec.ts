@@ -10,8 +10,8 @@ const uu = u*u;
 
 
 describe('γ error function', function() {
-	it('should correctly calculate the γ and γ squared errors for some positive integers', 
-	function() {
+    it('should correctly calculate the γ and γ squared errors for some positive integers', 
+    function() {
         const γ1 = γ(1);
         const γ5 = γ(5);
         const γ500 = γ(500);
@@ -36,18 +36,18 @@ describe('γ error function', function() {
         //console.log(γγ500, 500*uu*(1 + eps*500));
 
 
-        expect(γ1 > u*(1 - eps*2)).toBeTruthy();
-        expect(γ1 < u*(1 + eps*2)).toBeTruthy();
-        expect(γ5 > 5*u*(1 - eps*5)).toBeTruthy();
-        expect(γ5 < 5*u*(1 + eps*5)).toBeTruthy();
-        expect(γ500 > 500*u*(1 - eps*500)).toBeTruthy();
-        expect(γ500 < 500*u*(1 + eps*500)).toBeTruthy();
+        expect(γ1 > u*(1 - eps*2)).toEqual(true);
+        expect(γ1 < u*(1 + eps*2)).toEqual(true);
+        expect(γ5 > 5*u*(1 - eps*5)).toEqual(true);
+        expect(γ5 < 5*u*(1 + eps*5)).toEqual(true);
+        expect(γ500 > 500*u*(1 - eps*500)).toEqual(true);
+        expect(γ500 < 500*u*(1 + eps*500)).toEqual(true);
 
-        expect(γγ1 > uu*(1 - eps*2)).toBeTruthy();
-        expect(γγ1 < uu*(1 + eps*2)).toBeTruthy();
-        expect(γγ5 > 5*uu*(1 - eps*5)).toBeTruthy();
-        expect(γγ5 < 5*uu*(1 + eps*5)).toBeTruthy();
-        expect(γγ500 > 500*uu*(1 - eps*500)).toBeTruthy();
-        expect(γγ500 < 500*uu*(1 + eps*500)).toBeTruthy();
-	});
+        expect(γγ1 > uu*(1 - eps*2)).toEqual(true);
+        expect(γγ1 < uu*(1 + eps*2)).toEqual(true);
+        expect(γγ5 > 5*uu*(1 - eps*5)).toEqual(true);
+        expect(γγ5 < 5*uu*(1 + eps*5)).toEqual(true);
+        expect(γγ500 > 500*uu*(1 - eps*500)).toEqual(true);
+        expect(γγ500 < 500*uu*(1 + eps*500)).toEqual(true);
+    });
 });

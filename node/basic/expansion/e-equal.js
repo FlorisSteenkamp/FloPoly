@@ -1,6 +1,4 @@
-import { eCompare as eCompare_ } from "big-float-ts";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eCompare = eCompare_;
+import { eCompare } from "big-float-ts";
 /**
  * Returns true if two polynomials (with coefficients given as Shewchuk floating
  * point expansions) are exactly equal by comparing coefficients, false otherwise.

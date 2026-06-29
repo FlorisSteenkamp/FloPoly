@@ -1,15 +1,15 @@
-import type { RootInterval } from "./root-interval.js";
+import type { RootInterval } from "../root-interval.js";
 import { eEstimate, eSign } from "big-float-ts";
 import { ddDifferentiateWithError } from "../../calculus/double-double/dd-differentiate-with-err.js";
 import { eDifferentiate } from '../../calculus/expansion/e-differentiate.js';
 import { evalCertified } from "../../evaluate/double/eval-certified.js";
 import { eHorner } from "../../evaluate/expansion/e-horner.js";
-import { transposePoly } from "./transpose-poly.js";
-import { evalAdaptive } from "./eval-adaptive.js";
-import { refineCertified } from "./refine-certified.js";
-import { negativeRootLowerBound_LMQ } from "../root-bounds/root-bounds-lmq.js";
-import { positiveRootUpperBound_LMQ } from "../root-bounds/root-bounds-lmq.js";
+import { transposePoly } from "../transpose-poly.js";
+import { evalAdaptive } from "../../evaluate/eval-adaptive.js";
+import { refineCertified } from "../refine-certified.js";
 import { hornerWithRunningError } from "../../evaluate/double/horner-with-running-error.js";
+import { reduceInterval } from "../reduce-interval.js";
+import { removeLeadingZeroCoeffs } from '../remove-leading-zero-coeffs.js';
 
 
 const { min, max, abs } = Math;
@@ -73,14 +73,14 @@ const onePlusEps = 1 + eps;
  * of passing `p` pass `p.map(c => [0,c])` - this will transform the 
  * coefficients to double-double precision
  * @param lb defaults to 0; lower bound of roots to be returned; 
- * `Number.NEGATIVE_INFINITY` may be given if there is no lower bound
+ * `-Infinity` may be given if there is no lower bound
  * @param ub defaults to 1; upper bound of roots to be returned;
- * `Number.POSITIVE_INFINITY` may be given if there is no upper bound
+ * `Infinity` may be given if there is no upper bound
  * @param pE defaults to `undefined`; an error polynomial that provides a 
  * coefficientwise error bound on the input polynomial; all coefficients must 
  * be positive; if `undefined `then the input polynomial will be assumed exact
  * @param getPExact defaults to `undefined`; a function returning the exact 
- * polynomial (with coefficients given as Schewchuk expansions (see the example 
+ * polynomial (with coefficients given as Shewchuk expansions (see the example 
  * below)) - `getPExact` will *only* be called if required (and can thus be 
  * lazy loaded) when the error bounds are too high during calculation
  * preventing certification of the root intervals; if `undefined `then the 
@@ -120,8 +120,8 @@ const onePlusEps = 1 + eps;
  * const toDoubleDouble = c => [0,c];
  * const roots = allRootsCertified(
  *     p.map(toDoubleDouble), 
- *     Number.NEGATIVE_INFINITY, 
- *     Number.POSITIVE_INFINITY
+ *     -Infinity, 
+ *     Infinity
  * );
  * //console.log(roots);
  * // => [
@@ -151,7 +151,7 @@ const onePlusEps = 1 + eps;
  * const { pDd: p, pE, getPExact } = eFromRoots(_roots);  
  * // => polynomial of degree 50 with double-double precision coefficients 
  * //    including coefficient-wise error bound polynomial and a function to
- * //    return the exact polynomial with Schewchuk expansion coefficients
+ * //    return the exact polynomial with Shewchuk expansion coefficients
  * //console.log(toCasStr(getPExact()));
  * // => x^50 - 1275*x^49 + 791350*x^48 - 318622500*x^47 + 93570498490*x^46 - 
  * //    21366198225750*x^45 + 3949131291964600*x^44 - ...
@@ -202,33 +202,10 @@ function allRootsCertified(
 
     //----------------------------------------------------------------------
     // Remove leading zero coefficients 
-    // (the case of leading zero coefficients can now be handled)
     // `p` and `getPExact()` *must* be of same length
     //----------------------------------------------------------------------
-
-    let polyExact: number[][] | undefined = undefined;  // lazy loaded
-    // while the leading coefficient is smaller then the error bound 
-    // i.e. possibly zero    
-    while (p.length > 0 && abs(p[0][1]) <= pE[0]) {
-        polyExact = polyExact || getPExact();
-
-        // if leading coefficient really is zero
-        if (eSign(polyExact[0]) === 0) {
-            // shift the leading coefficient and error out without altering the 
-            // given polynomial and error bound (shift is destructive, slice is not)
-            p = p.slice();
-            p.shift();
-            pE = pE.slice();
-            pE.shift();
-
-            // also shift out the exact polynomial's leading coefficient
-            polyExact.shift();
-
-            continue;
-        } 
-
-        break;
-    }
+    let pExact: number[][] | undefined = undefined;  // lazy loaded
+    ({ p, pE, pExact } = removeLeadingZeroCoeffs(p, pE, getPExact));
 
     if (p.length === 0) {
         // return `undefined` for the zero polynomial?
@@ -238,21 +215,10 @@ function allRootsCertified(
         return [];
     }
 
-    if (lb === Number.NEGATIVE_INFINITY || ub === Number.POSITIVE_INFINITY) {
-        const pDoubleCoeffs = p.map(c => c[1]);
-
-        if (lb === Number.NEGATIVE_INFINITY) {
-            lb = negativeRootLowerBound_LMQ(pDoubleCoeffs);
-        }
-        
-        if (ub === Number.POSITIVE_INFINITY) {
-            ub = positiveRootUpperBound_LMQ(pDoubleCoeffs);
-        }
-    }
-
     const p_ = transposePoly(p);
-    
-    
+
+    [lb,ub] = reduceInterval(lb, ub, p_[0]);
+
     let bCount: number;
     let exact: boolean;
 
@@ -326,8 +292,7 @@ function allRootsCertified(
             return psExact[diffCount];
         }
 
-        // keep TypeScript happy; `getPExact` cannot be `undefined` here
-        let poly = polyExact || getPExact!();
+        let poly = pExact || getPExact!();  // `getPExact` cannot be `undefined` here
         psExact = [poly];
         while (poly.length > 1) {
             poly = eDifferentiate(poly);

@@ -1,9 +1,6 @@
-import { ddMultDouble2 } from "double-double";
-import { ddAddDd } from "double-double";
+import { ddMultDouble2 as qmd } from "double-double";
+import { ddAddDd as qaq } from "double-double";
 import { γγ } from '../../error-analysis/gamma.js';
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const qmd = ddMultDouble2;
-const qaq = ddAddDd;
 const { abs } = Math;
 const γγ3 = γγ(3);
 /**

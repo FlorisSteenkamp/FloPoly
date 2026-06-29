@@ -4,29 +4,29 @@ import { equal } from '../../../src/basic/double/equal.js';
 
 
 describe('reflectAboutYAxis', function() {
-	it('should correctly reflect some polynomials with double precision coefficients about the y axis', 
-	function() {
-		{
-			const p: number[] = [];
-			expect(equal(reflectAboutYAxis(p), [])).toBeTruthy();
-		}
-		{
-			const p: number[] = [1];
-			expect(equal(reflectAboutYAxis(p), [1])).toBeTruthy();
-		}
-		{
-			const p: number[] = [2,1];
-			expect(equal(reflectAboutYAxis(p), [-2,1])).toBeTruthy();
-		}
-		{
-			const p = [5,4,3,2,1];
-			expect(equal(reflectAboutYAxis(p), [5,-4,3,-2,1])).toBeTruthy();
-		}
-		{
-			const p = [4,3,2,1];
-			expect(equal(reflectAboutYAxis(p), [-4,3,-2,1])).toBeTruthy();
-		}
-	});
+    it('should correctly reflect some polynomials with double precision coefficients about the y axis', 
+    function() {
+        {
+            const p: number[] = [];
+            expect(equal(reflectAboutYAxis(p), [])).toEqual(true);
+        }
+        {
+            const p: number[] = [1];
+            expect(equal(reflectAboutYAxis(p), [1])).toEqual(true);
+        }
+        {
+            const p: number[] = [2,1];
+            expect(equal(reflectAboutYAxis(p), [-2,1])).toEqual(true);
+        }
+        {
+            const p = [5,4,3,2,1];
+            expect(equal(reflectAboutYAxis(p), [5,-4,3,-2,1])).toEqual(true);
+        }
+        {
+            const p = [4,3,2,1];
+            expect(equal(reflectAboutYAxis(p), [-4,3,-2,1])).toEqual(true);
+        }
+    });
 });
 
 

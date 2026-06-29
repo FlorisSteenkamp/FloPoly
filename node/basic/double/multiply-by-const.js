@@ -1,6 +1,4 @@
-import { removeLeadingZeros as removeLeadingZeros_ } from "./remove-leading-zeros.js";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const removeLeadingZeros = removeLeadingZeros_;
+import { removeLeadingZeros } from "./remove-leading-zeros.js";
 /**
  * Returns the result of multiplies a polynomial by a constant in double
  * precision.
@@ -22,9 +20,9 @@ function multiplyByConst(c, p) {
         return [];
     }
     const d = p.length;
-    const p_ = [];
+    const p_ = new Array(d);
     for (let i = 0; i < d; i++) {
-        p_.push(c * p[i]);
+        p_[i] = c * p[i];
     }
     // We *have* to clip due to possible floating point underflow
     return removeLeadingZeros(p_);

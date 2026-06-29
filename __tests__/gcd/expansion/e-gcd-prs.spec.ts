@@ -10,8 +10,8 @@ import {
 
 
 describe('eGcdPrs', function() {
-	it('should find the GCD of two polynomials correctly', 
-	function() {
+    it('should find the GCD of two polynomials correctly', 
+    function() {
         {
             let a = [[2], [-2], [1]];
             let b = [[4], [-2]];
@@ -20,7 +20,7 @@ describe('eGcdPrs', function() {
             expect(eIsRationalMultipleOf(
                 gcd, 
                 [[1]]
-            )).toBeTruthy();
+            )).toEqual(true);
         }
         {
             let a = [[1e10], [1e5]];
@@ -30,12 +30,12 @@ describe('eGcdPrs', function() {
             expect(eIsRationalMultipleOf(
                 gcd, 
                 [[10_000_000_000], [100_000]]
-            )).toBeTruthy();
+            )).toEqual(true);
 
             expect(eIsRationalMultipleOf(
                 gcd, 
                 [[100_000], [1]]
-            )).toBeTruthy();
+            )).toEqual(true);
         }
 
         {
@@ -46,7 +46,7 @@ describe('eGcdPrs', function() {
             expect(eIsRationalMultipleOf(
                 gcd,
                 [[-5]]
-            )).toBeTruthy();
+            )).toEqual(true);
         }
         
         {
@@ -57,7 +57,7 @@ describe('eGcdPrs', function() {
             expect(eIsRationalMultipleOf(
                 gcd,
                 [[1], [1], [2]]
-            )).toBeTruthy();
+            )).toEqual(true);
         }
 
         /*
@@ -66,14 +66,14 @@ describe('eGcdPrs', function() {
             // EVEN THE PSEUDO REMAINDER SEQUENCE (PRS) COEFFICIENTS TO OVERFLOW
 
             let p1 = eMultiply([[1],[-0.5]], [[1],[-0.3]]);
-			let p2 = eMultiply([[1],[-0.1]], [[1],[-0.9]]);
-			let p3 = eMultiply([[1],[-0.2]], [[1],[-0.99]]);
-			let p4 = eMultiply([[1],[-0.01]], [[1],[-0.09]]);
-			let p5 = eMultiply(p1, p2);
-			let p6 = eMultiply(p3, p4);
+            let p2 = eMultiply([[1],[-0.1]], [[1],[-0.9]]);
+            let p3 = eMultiply([[1],[-0.2]], [[1],[-0.99]]);
+            let p4 = eMultiply([[1],[-0.01]], [[1],[-0.09]]);
+            let p5 = eMultiply(p1, p2);
+            let p6 = eMultiply(p3, p4);
             let p7 = eMultiply(p5, p6);
             let gcd = eGcdPrs(p7,eDifferentiate(p7));
-            expect(gcd.length === 1).toBeTruthy()
+            expect(gcd.length === 1).toEqual(true)
         }
 
         {
@@ -110,7 +110,7 @@ describe('eGcdPrs', function() {
             // roots at 0.2, 0.99
             let p3 = eMultiply(lf5, lf6);
             // roots at 0.01, 0.09
-			let p4 = eMultiply(lf7, lf8);
+            let p4 = eMultiply(lf7, lf8);
                
             // double root at 0.5, roots at 0.1, 0.9
             let p5 = eMultiply(p1, p2);
@@ -127,9 +127,9 @@ describe('eGcdPrs', function() {
             //console.log(gcd);
             console.log(gcd.map(eEstimate));
 
-            //expect(gcd.length === 1).toBeTruthy()
+            //expect(gcd.length === 1).toEqual(true)
         }
         *//*
-	});
+    });
 });
 */

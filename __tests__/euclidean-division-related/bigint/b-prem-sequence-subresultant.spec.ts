@@ -7,8 +7,8 @@ import { bPremSequencePrimitive } from '../../../src/euclidean-division-related/
 
 
 describe('bPremSequenceSubresultant', function() {
-	it('should correctly calculate the subresultant pseudo remainder sequence of two polynomials (with bigint coefficients)', 
-	function() {
+    it('should correctly calculate the subresultant pseudo remainder sequence of two polynomials (with bigint coefficients)', 
+    function() {
         {
             const ps = [
                 [1n,0n,1n,0n,-3n,-3n,8n,2n,-5n],
@@ -130,5 +130,5 @@ describe('bPremSequenceSubresultant', function() {
                 ]
             ]);
         }
-	});
+    });
 });

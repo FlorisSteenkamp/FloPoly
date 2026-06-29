@@ -1,7 +1,6 @@
 /**
  * Returns the *exact* number of *distinct* real roots in the open
- * interval (a,b) of the given polynomial - subject to floating point
- * underflow / overflow of intermediate calculations.
+ * interval (a,b) of the given polynomial.
  *
  * @param p a polynomial with coefficients given densely as an array of double
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`

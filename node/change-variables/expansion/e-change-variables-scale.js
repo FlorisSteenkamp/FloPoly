@@ -1,10 +1,6 @@
-import { expansionProduct as expansionProduct_ } from "big-float-ts";
-import { fastExpansionSum as fastExpansionSum_ } from "big-float-ts";
-import { scaleExpansion2 as scaleExpansion2_ } from "big-float-ts";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const expansionProduct = expansionProduct_;
-const fastExpansionSum = fastExpansionSum_;
-const scaleExpansion2 = scaleExpansion2_;
+import { expansionProduct } from "big-float-ts";
+import { fastExpansionSum } from "big-float-ts";
+import { scaleExpansion2 } from "big-float-ts";
 /**
  * Returns the exact result (bar underflow / overflow) of performing a change
  * of variables of the form: p(x) <- p(ax).
@@ -32,9 +28,9 @@ function eChangeVariablesScale(p, a) {
         return [];
     }
     // Initialize a zero matrix
-    const t = [];
+    const t = new Array(d + 1);
     for (let i = 0; i < d + 1; i++) {
-        t.push(new Array(d + 1).fill([0]));
+        t[i] = new Array(d + 1).fill([0]);
     }
     // Calculate the triangular matrix T
     t[0][0] = [1];

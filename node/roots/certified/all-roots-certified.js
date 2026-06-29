@@ -1,30 +1,15 @@
-import { eEstimate as eEstimate_, eSign as eSign_ } from "big-float-ts";
-import { ddDifferentiateWithError as ddDifferentiateWithError_ } from "../../calculus/double-double/dd-differentiate-with-err.js";
-import { eDifferentiate as eDifferentiate_ } from '../../calculus/expansion/e-differentiate.js';
-import { evalCertified as evalCertified_ } from "../../evaluate/double/eval-certified.js";
-import { eHorner as eHorner_ } from "../../evaluate/expansion/e-horner.js";
-import { transposePoly as transposePoly_ } from "./transpose-poly.js";
-import { evalAdaptive as evalAdaptive_ } from "./eval-adaptive.js";
-import { refineCertified as refineCertified_ } from "./refine-certified.js";
-import { negativeRootLowerBound_LMQ as negativeRootUpperBound_LMQ_ } from "../root-bounds/root-bounds-lmq.js";
-import { positiveRootUpperBound_LMQ as positiveRootUpperBound_LMQ_ } from "../root-bounds/root-bounds-lmq.js";
-import { hornerWithRunningError as hornerWithRunningError_ } from "../../evaluate/double/horner-with-running-error.js";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const ddDifferentiateWithError = ddDifferentiateWithError_;
-const evalCertified = evalCertified_;
-const eHorner = eHorner_;
-const transposePoly = transposePoly_;
-const evalAdaptive = evalAdaptive_;
-const refineCertified = refineCertified_;
-const negativeRootUpperBound_LMQ = negativeRootUpperBound_LMQ_;
-const positiveRootUpperBound_LMQ = positiveRootUpperBound_LMQ_;
-const eDifferentiate = eDifferentiate_;
-const eEstimate = eEstimate_;
-const hornerWithRunningError = hornerWithRunningError_;
-const eSign = eSign_;
-const max = Math.max;
-const min = Math.min;
-const abs = Math.abs;
+import { eEstimate } from "big-float-ts";
+import { ddDifferentiateWithError } from "../../calculus/double-double/dd-differentiate-with-err.js";
+import { eDifferentiate } from '../../calculus/expansion/e-differentiate.js';
+import { evalCertified } from "../../evaluate/double/eval-certified.js";
+import { eHorner } from "../../evaluate/expansion/e-horner.js";
+import { transposePoly } from "../transpose-poly.js";
+import { evalAdaptive } from "../../evaluate/eval-adaptive.js";
+import { refineCertified } from "../refine-certified.js";
+import { hornerWithRunningError } from "../../evaluate/double/horner-with-running-error.js";
+import { reduceInterval } from "../reduce-interval.js";
+import { removeLeadingZeroCoeffs } from '../remove-leading-zero-coeffs.js';
+const { min, max, abs } = Math;
 const eps = Number.EPSILON;
 const onePlusEps = 1 + eps;
 function allRootsCertified(p, lb = 0, ub = 1, pE, getPExact, returnUndefinedForZeroPoly) {
@@ -42,28 +27,10 @@ function allRootsCertified(p, lb = 0, ub = 1, pE, getPExact, returnUndefinedForZ
     let psExact = undefined;
     //----------------------------------------------------------------------
     // Remove leading zero coefficients 
-    // (the case of leading zero coefficients can now be handled)
     // `p` and `getPExact()` *must* be of same length
     //----------------------------------------------------------------------
-    let polyExact = undefined; // lazy loaded
-    // while the leading coefficient is smaller then the error bound 
-    // i.e. possibly zero	
-    while (p.length > 0 && abs(p[0][1]) <= pE[0]) {
-        polyExact = polyExact || getPExact();
-        // if leading coefficient really is zero
-        if (eSign(polyExact[0]) === 0) {
-            // shift the leading coefficient and error out without altering the 
-            // given polynomial and error bound (shift is destructive, slice is not)
-            p = p.slice();
-            p.shift();
-            pE = pE.slice();
-            pE.shift();
-            // also shift out the exact polynomial's leading coefficient
-            polyExact.shift();
-            continue;
-        }
-        break;
-    }
+    let pExact = undefined; // lazy loaded
+    ({ p, pE, pExact } = removeLeadingZeroCoeffs(p, pE, getPExact));
     if (p.length === 0) {
         // return `undefined` for the zero polynomial?
         return returnUndefinedForZeroPoly ? undefined : [];
@@ -72,16 +39,8 @@ function allRootsCertified(p, lb = 0, ub = 1, pE, getPExact, returnUndefinedForZ
         // return `[]` for a degree 1 polynomial (a non-zero constant)
         return [];
     }
-    if (lb === Number.NEGATIVE_INFINITY || ub === Number.POSITIVE_INFINITY) {
-        const pDoubleCoeffs = p.map(c => c[1]);
-        if (lb === Number.NEGATIVE_INFINITY) {
-            lb = negativeRootUpperBound_LMQ(pDoubleCoeffs);
-        }
-        if (ub === Number.POSITIVE_INFINITY) {
-            ub = positiveRootUpperBound_LMQ(pDoubleCoeffs);
-        }
-    }
     const p_ = transposePoly(p);
+    [lb, ub] = reduceInterval(lb, ub, p_[0]);
     let bCount;
     let exact;
     const deg = p.length - 1;
@@ -145,8 +104,7 @@ function allRootsCertified(p, lb = 0, ub = 1, pE, getPExact, returnUndefinedForZ
         if (psExact !== undefined) {
             return psExact[diffCount];
         }
-        // keep TypeScript happy; `getPExact` cannot be `undefined` here
-        let poly = polyExact || getPExact();
+        let poly = pExact || getPExact(); // `getPExact` cannot be `undefined` here
         psExact = [poly];
         while (poly.length > 1) {
             poly = eDifferentiate(poly);
@@ -385,8 +343,8 @@ function allRootsCertified(p, lb = 0, ub = 1, pE, getPExact, returnUndefinedForZ
             //const ddP0 = diffCount+2 > deg ? undefined : ps_[diffCount+2][0];
             //const maxDdP2 = 0;
             //for (const j=0; j<ddP0.length; j++) {
-            //	// evaluate at 1
-            //	maxDdP2 += abs(ddP0[j]);  // this is valid only if |lb| and |ub| <= 1
+            //    // evaluate at 1
+            //    maxDdP2 += abs(ddP0[j]);  // this is valid only if |lb| and |ub| <= 1
             //}
             const d = (a_ - _a) * onePlusEps;
             let mult = 1;

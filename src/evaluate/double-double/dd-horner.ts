@@ -2,18 +2,21 @@ import { ddMultDouble2 as qmd, ddAddDd as qaq } from "double-double";
 
 
 /** 
- * Returns the exact result (bar underflow / overflow) of evaluating a 
- * univariate polynomial using Horner's method - the result is returned as a
- * Schewchuk expansion.
+ * Returns the result of evaluating a univariate polynomial using Horner's
+ * method with intermediate calculations done in double-double precision and
+ * the result returned in double-double precision.
  * 
- * @param p a polynomial with coefficients given densely as an array of 
- * Schewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
+ * @param p a polynomial with coefficients given densely as an array of
+ * double-double numbers from highest to lowest power, e.g. `[[0,5],[0,-3],[0,0]]
  * represents the polynomial `5x^2 - 3x`
  * @param x the value at which to evaluate the polynomial
  * 
  * @doc
  */
-function ddHorner(p: number[][], x: number): number[] {
+function ddHorner(
+        p: number[][],
+        x: number): number[] {
+
     let q = [0,0];
 
     for (let i=0; i<p.length; i++) {
@@ -26,8 +29,3 @@ function ddHorner(p: number[][], x: number): number[] {
 
 
 export { ddHorner }
-
-
-// Quokka tests
-
-// ddHorner([[0,1],[0,1],[0,-2],[0,3]], 0.25); //?

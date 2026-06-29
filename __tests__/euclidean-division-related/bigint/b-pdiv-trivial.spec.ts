@@ -4,8 +4,8 @@ import { bPdivTrivial } from '../../../src/euclidean-division-related/bigint/b-p
 
 
 describe('bPdivTrivial', function() {
-	it('should correctly do trivial pseudo division of two polynomials (with bigint coefficients) by keeping coefficients in ℤ',
-	function() {
+    it('should correctly do trivial pseudo division of two polynomials (with bigint coefficients) by keeping coefficients in ℤ',
+    function() {
         {
             const ps = [
                 [1n,7n,6n],     // 0
@@ -128,5 +128,5 @@ describe('bPdivTrivial', function() {
             let expected: { q: bigint[]; r: bigint[] } = { q: [5n,-15n], r: [] };
             expect(r).toEqual(expected);
         }
-	});
+    });
 });

@@ -21,7 +21,7 @@ import { scaleFloatssToIntss } from "../../scale-to-int/scale-floatss-to-intss.j
  * intermediate coefficient calculations
  * 
  * @param a a polynomial with coefficients given densely as an array of
- * Schewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
+ * Shewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
  * represents the polynomial `5x^2 - 3x`
  * @param b another polynomial
  * 

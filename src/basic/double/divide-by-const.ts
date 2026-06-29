@@ -10,11 +10,11 @@
  */
 function divideByConst(p: number[], c: number): number[] {
     const d = p.length;
-    const r: number[] = [];
+    const r = new Array<number>(d);
     for (let i=0; i<d; i++) {
-        r.push(p[i] / c);
+        r[i] = p[i] / c;
     }
-    
+
     return r;
 }
 

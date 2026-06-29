@@ -8,7 +8,7 @@ function isNumber(x: number | bigint | number[]): x is number {
 
 
 /** @internal */
-function isSchewchuk(x: number | bigint | number[]): x is number[] {
+function isShewchuk(x: number | bigint | number[]): x is number[] {
     return Array.isArray(x);
 }
 
@@ -23,10 +23,10 @@ function isBigint(x: number | bigint | number[]): x is bigint {
  * Returns a string representing the given polynomial that is readable by a 
  * human or a CAS (Computer Algebra System).
  * 
- * * **note:** if the polynomial coefficients are given as Schewchuk expansions
+ * * **note:** if the polynomial coefficients are given as Shewchuk expansions
  * then the coefficients are first down-converted to double precision
  * 
- * @param p a polynomial (with coefficients given densely as an array of Schewchuk
+ * @param p a polynomial (with coefficients given densely as an array of Shewchuk
  * floating point expansions **or** double precision floating point numbers **or**
  * bigints) from highest to lowest power, e.g. `[5,-3,0]` represents the 
  * polynomial `5x^2 - 3x`
@@ -46,7 +46,7 @@ function toCasStr(p: number[] | number[][] | bigint[]): string {
     let str = '';
     for (let i=0; i<d+1; i++) {
         const _v = p[i];
-        const v = isSchewchuk(_v) 
+        const v = isShewchuk(_v) 
             ? eEstimate(_v) 
             : _v;  // bigint or number
 

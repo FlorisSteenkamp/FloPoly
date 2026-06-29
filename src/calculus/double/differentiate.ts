@@ -14,11 +14,11 @@
  * @doc
  */
 function differentiate(p: number[]): number[] {
-    const result: number[] = [];
-    
     const d = p.length - 1;
+    if (d <= 0) { return []; }
+    const result = new Array<number>(d);
     for (let i=0; i<d; i++) {
-        result.push((d-i) * p[i]);
+        result[i] = (d-i) * p[i];
     }
     
     return result;

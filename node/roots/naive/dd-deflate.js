@@ -1,8 +1,5 @@
-import { ddMultDouble2 } from "double-double";
-import { ddAddDd } from "double-double";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const qmd = ddMultDouble2;
-const qaq = ddAddDd;
+import { ddMultDouble2 as qmd } from "double-double";
+import { ddAddDd as qaq } from "double-double";
 /**
  * Deflates the given polynomial *approximately* by removing a factor (x - r),
  * where r is a root of the polynomial.

@@ -1,14 +1,11 @@
-import { ddMultDouble2, ddAddDd } from "double-double";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const qaq = ddAddDd;
-const qmd = ddMultDouble2;
+import { ddMultDouble2 as qmd, ddAddDd as qaq } from "double-double";
 /**
- * Returns the exact result (bar underflow / overflow) of evaluating a
- * univariate polynomial using Horner's method - the result is returned as a
- * Shewchuk expansion.
+ * Returns the result of evaluating a univariate polynomial using Horner's
+ * method with intermediate calculations done in double-double precision and
+ * the result returned in double-double precision.
  *
  * @param p a polynomial with coefficients given densely as an array of
- * Shewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]`
+ * double-double numbers from highest to lowest power, e.g. `[[0,5],[0,-3],[0,0]]
  * represents the polynomial `5x^2 - 3x`
  * @param x the value at which to evaluate the polynomial
  *
@@ -23,6 +20,4 @@ function ddHorner(p, x) {
     return q;
 }
 export { ddHorner };
-// Quokka tests
-// ddHorner([[0,1],[0,1],[0,-2],[0,3]], 0.25); //?
 //# sourceMappingURL=dd-horner.js.map

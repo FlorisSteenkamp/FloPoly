@@ -17,7 +17,7 @@ import { scaleFloatsToInts } from "../../scale-to-int/scale-floats-to-ints.js";
  * Returns the GCD (Greatest Common Divisor) of the two given polynomials using 
  * Pseudo Remainder Sequences (PRSs) (bar overflow). The returned GCD is a
  * polynomial with coefficients given densely as an array of
- * Schewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
+ * Shewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
  * represents the polynomial `5x^2 - 3x`.
  * 
  * * if the polynomial coefficients are too large overflow can occur at

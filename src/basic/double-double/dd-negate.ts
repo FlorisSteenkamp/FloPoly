@@ -7,9 +7,9 @@
  * @doc
  */
 function ddNegate(p: number[][]): number[][] {
-    const p_: number[][] = [];
+    const p_ = new Array<number[]>(p.length);
     for (let i=0; i<p.length; i++) {
-        p_.push([-p[i][0], -p[i][1]]);
+        p_[i] = [-p[i][0], -p[i][1]];
     }
 
     return p_;

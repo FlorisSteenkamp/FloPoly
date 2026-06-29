@@ -1,6 +1,4 @@
-import { vecSum as vecSum_ } from "./vec-sum.js";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const vecSum = vecSum_;
+import { vecSum } from "./vec-sum.js";
 /**
  * * helper function - K compensated vector sum
  *

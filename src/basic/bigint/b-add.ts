@@ -28,11 +28,11 @@ function bAdd(p1: bigint[], p2: bigint[]): bigint[] {
     const d = Math.max(d1, d2);
     
     // Add coefficients
-    const result = [];
+    const result = new Array<bigint>(d+1);
     for (let i=0; i<d+1; i++) {
         const c1 = p1[i+Δd1] || 0n;
         const c2 = p2[i+Δd2] || 0n;
-        result.push(c1 + c2);  
+        result[i] = c1 + c2;
     }
     
     // Ensure the result is a valid polynomial representation

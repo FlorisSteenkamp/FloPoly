@@ -5,11 +5,11 @@ import { bReflectAboutYAxis } from '../../../src/change-variables/bigint/b-refle
 
 
 describe('bReflectAboutYAxis', function() {
-	it('should correctly reflect some polynomials with bigint coefficients about the y axis', 
-	function() {
-		let p1: bigint[] = [];
-		let p2 = [5n,4n,3n,2n,1n];
-		expect(bEqual(bReflectAboutYAxis(p1), [])).toBeTruthy();
-		expect(bEqual(bReflectAboutYAxis(p2), [5n,-4n,3n,-2n,1n])).toBeTruthy();
-	});
+    it('should correctly reflect some polynomials with bigint coefficients about the y axis', 
+    function() {
+        let p1: bigint[] = [];
+        let p2 = [5n,4n,3n,2n,1n];
+        expect(bEqual(bReflectAboutYAxis(p1), [])).toEqual(true);
+        expect(bEqual(bReflectAboutYAxis(p2), [5n,-4n,3n,-2n,1n])).toEqual(true);
+    });
 });

@@ -13,9 +13,9 @@
  * @doc
  */
 function bNegate(p) {
-    const p_ = [];
+    const p_ = new Array(p.length);
     for (let i = 0; i < p.length; i++) {
-        p_.push(-p[i]);
+        p_[i] = -p[i];
     }
     return p_;
 }

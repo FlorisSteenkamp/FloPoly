@@ -14,9 +14,9 @@ function bMultiplyByConst(c, p) {
         return [];
     }
     const d = p.length;
-    const r = [];
+    const r = new Array(d);
     for (let i = 0; i < d; i++) {
-        r.push(c * p[i]);
+        r[i] = c * p[i];
     }
     return r;
 }

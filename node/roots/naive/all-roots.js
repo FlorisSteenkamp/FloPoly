@@ -1,16 +1,11 @@
-import { differentiate as differentiate_ } from "../../calculus/double/differentiate.js";
-import { Horner as Horner_ } from "../../evaluate/double/horner.js";
-import { brentPoly as brentPoly_ } from "./brent-poly.js";
+import { differentiate } from "../../calculus/double/differentiate.js";
+import { Horner } from "../../evaluate/double/horner.js";
+import { brentPoly } from "./brent-poly.js";
+// TODO - investigate why this is swapped - probably a naming issue
 import { negativeRootLowerBound_LMQ as negativeRootUpperBound_LMQ_ } from "../root-bounds/root-bounds-lmq.js";
-import { positiveRootUpperBound_LMQ as positiveRootUpperBound_LMQ_ } from "../root-bounds/root-bounds-lmq.js";
-import { removeLeadingZeros as removeLeadingZeros_ } from "../../basic/double/remove-leading-zeros.js";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const differentiate = differentiate_;
-const Horner = Horner_;
-const brentPoly = brentPoly_;
+import { positiveRootUpperBound_LMQ } from "../root-bounds/root-bounds-lmq.js";
+import { removeLeadingZeros } from "../../basic/double/remove-leading-zeros.js";
 const negativeRootUpperBound_LMQ = negativeRootUpperBound_LMQ_;
-const positiveRootUpperBound_LMQ = positiveRootUpperBound_LMQ_;
-const removeLeadingZeros = removeLeadingZeros_;
 /**
  * Find and return all roots of the given polynomial in the given interval.
  *
@@ -38,14 +33,14 @@ const removeLeadingZeros = removeLeadingZeros_;
  * @param p a polynomial with coefficients given densely as an array of double
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`
  * represents the polynomial `5x^2 - 3x`
- * @param lb defaults to `Number.NEGATIVE_INFINITY`; lower bound of roots to be
+ * @param lb defaults to `-Infinity`; lower bound of roots to be
  * returned
- * @param ub defaults to `Number.POSITIVE_INFINITY`; upper bound of roots to be
+ * @param ub defaults to `Infinity`; upper bound of roots to be
  * returned
  *
  * @doc
  */
-function allRoots(p, lb = Number.NEGATIVE_INFINITY, ub = Number.POSITIVE_INFINITY) {
+function allRoots(p, lb = -Infinity, ub = Infinity) {
     p = removeLeadingZeros(p);
     //---- count and remove roots at zero
     let numZerosAtZero = 0;
@@ -62,10 +57,10 @@ function allRoots(p, lb = Number.NEGATIVE_INFINITY, ub = Number.POSITIVE_INFINIT
         }
         return roots;
     }
-    if (lb === Number.NEGATIVE_INFINITY) {
+    if (lb === -Infinity) {
         lb = negativeRootUpperBound_LMQ(p);
     }
-    if (ub === Number.POSITIVE_INFINITY) {
+    if (ub === Infinity) {
         ub = positiveRootUpperBound_LMQ(p);
     }
     // Get all derivatives, i.e. 

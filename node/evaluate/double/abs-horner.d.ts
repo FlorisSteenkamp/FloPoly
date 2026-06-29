@@ -1,6 +1,10 @@
 /**
  * Returns the result of evaluating a univariate polynomial using
- * Horner's method and where the absolute value of each coefficient is taken.
+ * Horner's method and where:
+ *  1. the absolute value of each coefficient is taken
+ *  2. the absolute value of `x` is taken
+ *
+ * * i.e. P(x) = ∑ᵢ₌₀ⁿ |aᵢ| |x|ⁱ
  *
  * * intermediate calculations are done in double precision
  *

@@ -13,7 +13,7 @@ import { evalCertified } from '../../../src/evaluate/double/eval-certified.js';
 import { evalCertifiedInclError } from '../../../src/evaluate/double/eval-certified-incl-error.js';
 import { evalK } from '../../../src/evaluate/double/eval-k.js';
 import { multiply } from '../../../src/basic/double/multiply.js';
-import { transposePoly } from '../../../src/roots/certified/transpose-poly.js';
+import { transposePoly } from '../../../src/roots/transpose-poly.js';
 
 
 /*
@@ -38,19 +38,19 @@ describe('eeHorner', function() {
     // evalCertifiedInclError
     // evalK
 
-	function() {
+    function() {
         // some polynomial
-		let p_ = [
-			1,
-			-6.343897291459143,
-			16.17529860902309,
-			-20.775430184046723,
-			13.267259045095072,
-			-2.680435184002393,
-			-1.193961620590383,
-			0.5676824443276621,
-			0.004650511478518739,
-			-0.021130026752576234
+        let p_ = [
+            1,
+            -6.343897291459143,
+            16.17529860902309,
+            -20.775430184046723,
+            13.267259045095072,
+            -2.680435184002393,
+            -1.193961620590383,
+            0.5676824443276621,
+            0.004650511478518739,
+            -0.021130026752576234
         ];
         
         // map to Shewchuk expansion
@@ -67,28 +67,28 @@ describe('eeHorner', function() {
         // 1.2845610985552014,
         // 1.6018132576717898
 
-		// one particular root (stupid accurate): 
-		let root1 = [
-			-5.019612107472268e-68, // this double 'may' contain wrong bits
-			1.1115071913595584e-51,
-			2.3113966677819994e-35,
-			1.7061597212759286e-18,
-			0.4183749565854647
-		];
+        // one particular root (stupid accurate): 
+        let root1 = [
+            -5.019612107472268e-68, // this double 'may' contain wrong bits
+            1.1115071913595584e-51,
+            2.3113966677819994e-35,
+            1.7061597212759286e-18,
+            0.4183749565854647
+        ];
 
 
         // we evaluate very close to a root so that p(x) has a very high 
         // condition number
         let c = 0.4183749565854647;
-		let cn = conditionNumber(p_, c);
+        let cn = conditionNumber(p_, c);
         let unfaithfulHorner = compHornerIsFaithful(p_, c);
         
         /*
         console.log('Condition number ', cn);  //=> 92143441590866480000
-		console.log('Horner ', Horner(p_, c)); //=> 1.0408340855860843e-17
-		console.log('compHorner ', compHorner(p_, c)); //=> -6.6865131963207694e-21
-		console.log('faithful ', faith); //=> { isFaithful: false, errBound: 2.785314415593918e-32, 'r̄': -6.6865131963207694e-21 }
-		console.log('compHornerK ', CompHornerK(p_, c, 2));  //=> -6.6865131963200306e-21
+        console.log('Horner ', Horner(p_, c)); //=> 1.0408340855860843e-17
+        console.log('compHorner ', compHorner(p_, c)); //=> -6.6865131963207694e-21
+        console.log('faithful ', faith); //=> { isFaithful: false, errBound: 2.785314415593918e-32, 'r̄': -6.6865131963207694e-21 }
+        console.log('compHornerK ', CompHornerK(p_, c, 2));  //=> -6.6865131963200306e-21
         console.log('exact to last ulp', eEstimate(eeHorner(p, [c])));  //=> -6.686513196320162e-21
         console.log('exact as Shewchuk', eeHorner(p, [c]));  
         //=> [
@@ -112,12 +112,12 @@ describe('eeHorner', function() {
         let Horner_ = Horner(p_, c);
         let HornerRelativeError = Math.abs((exactValue - Horner_) / exactValue);  //=> 1557.61711123055
         // expect Horner to not be accurate - all bits including sign bit is wrong
-        expect(HornerRelativeError > 10).toBeTruthy();
+        expect(HornerRelativeError > 10).toEqual(true);
 
         let compHorner_ = compHorner(p_, c);
         let compHornerRelativeError = Math.abs((exactValue - compHorner_) / exactValue); //=> 9.079759577036585e-14
         // expect compHorner to be several trillion times more acccurate
-        expect(HornerRelativeError / compHornerRelativeError > 1e12).toBeTruthy();
+        expect(HornerRelativeError / compHornerRelativeError > 1e12).toEqual(true);
 
         // don't expect this evaluation to be faithful
         expect(unfaithfulHorner).toEqual({ 
@@ -129,7 +129,7 @@ describe('eeHorner', function() {
 
         let faithfulHorner = compHornerIsFaithful(p_, c * 1.00001);
         // expect an evaluation slightly away from the root to be very likely faithful
-        expect(faithfulHorner.isFaithful).toBeTruthy();
+        expect(faithfulHorner.isFaithful).toEqual(true);
 
         expect(compHornerWithRunningError(p_, c)).toEqual( [
             -6.6865131963207694e-21,  // result
@@ -140,7 +140,7 @@ describe('eeHorner', function() {
         let compHornerK_ = CompHornerK(p_, c, 2);
         let compHornerKRelativeError = Math.abs((exactValue - compHornerK_) / exactValue); //=> 1.9689689293449847e-14
         // expect compHornerK to be several trillion times more acccurate (similiar to compHorner)
-        expect(HornerRelativeError / compHornerKRelativeError > 1e12).toBeTruthy();
+        expect(HornerRelativeError / compHornerKRelativeError > 1e12).toEqual(true);
 
         // exact to last ulp
         expect(eEstimate(eeHorner(p, [c]))).toEqual(exactValue);
@@ -174,11 +174,11 @@ describe('eeHorner', function() {
 
         // we are too close to the root to decide the sign
         let certA = evalCertified(ddP_, c, pE);
-        expect(certA === 0).toBeTruthy();
+        expect(certA === 0).toEqual(true);
 
         // we are not too close to the root to decide the sign
         let certB = evalCertified(ddP_, c+0.00001, pE);
-        expect(certB !== 0).toBeTruthy();
+        expect(certB !== 0).toEqual(true);
 
 
         // we are too close to the root to decide the sign
@@ -236,7 +236,7 @@ describe('eeHorner', function() {
         //);
         // this polynomial has a really high condition number close to 1835
         let p_2 = [
-			1,
+            1,
             -8339,
             27536845,
             -44903174825,
@@ -252,7 +252,7 @@ describe('eeHorner', function() {
         let evalK_C = evalK(p_2, c2);
         // this is the K4 path, i.e. double-double-double-double precision
         expect(evalK_C).toEqual(-4.208343244307185e-31);
-	});
+    });
 });
 
 

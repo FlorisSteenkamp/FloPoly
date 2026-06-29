@@ -3,8 +3,8 @@ import { eGcdInt, eGcdInts } from '../../../src/gcd/expansion/e-integer-gcd.js';
 
 
 describe('integer gcd', function() {
-	it('should calculate the correct integer gcds of some Shewchuk expansions', 
-	function() {
+    it('should calculate the correct integer gcds of some Shewchuk expansions', 
+    function() {
         const a = [1071];
         const b = [462]; 
         const na = [-1071];
@@ -49,5 +49,5 @@ describe('integer gcd', function() {
             expect(r1).toEqual(b);
             expect(r2).toEqual(b);
         }
-	});
+    });
 });

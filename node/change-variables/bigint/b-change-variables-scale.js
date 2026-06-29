@@ -25,9 +25,9 @@ function bChangeVariablesScale(p, a) {
         return [];
     }
     // Initialize a zero matrix
-    const t = [];
+    const t = new Array(d + 1);
     for (let i = 0; i < d + 1; i++) {
-        t.push(new Array(d + 1).fill(0n));
+        t[i] = new Array(d + 1).fill(0n);
     }
     // Calculate the triangular matrix T
     t[0][0] = 1n;

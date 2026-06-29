@@ -1,6 +1,5 @@
-import { eSign as eSign_ } from "big-float-ts";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eSign = eSign_;
+import { eSign } from "big-float-ts";
+const { sign } = Math;
 /**
  * Returns the number of sign changes in the polynomial coefficents when
  * ordered in descending order; zeros are ignored.
@@ -40,16 +39,16 @@ function eSignChanges(p) {
     if (d < 1) {
         return 0;
     }
-    let result = 0;
-    let prevSign = Math.sign(eSign(p[0]));
+    let r = 0;
+    let _s = sign(eSign(p[0]));
     for (let i = 1; i < d + 1; i++) {
-        const sign_ = Math.sign(eSign(p[i]));
-        if (sign_ !== prevSign && sign_ !== 0) {
-            result++;
-            prevSign = sign_;
+        const s = sign(eSign(p[i]));
+        if (s !== _s && s !== 0) {
+            r++;
+            _s = s;
         }
     }
-    return result;
+    return r;
 }
 export { eSignChanges };
 //# sourceMappingURL=e-sign-changes.js.map

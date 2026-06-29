@@ -8,7 +8,7 @@ import { eSign } from "big-float-ts";
  * 
  * @internal
  * 
- * @param p a polynomial with coefficients given densely as an array of Schewchuk
+ * @param p a polynomial with coefficients given densely as an array of Shewchuk
  * floating point expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
  * represents the polynomial `5x^2 - 3x`
  * 

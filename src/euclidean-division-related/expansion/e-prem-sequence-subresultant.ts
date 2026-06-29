@@ -12,9 +12,9 @@ import { ePdivTrivial } from "./e-pdiv-trivial.js";
  * 
  * * **precondition:** g !== [], i.e. unequal to the zero polynomial.
  * 
- * * **precondition:** the coefficients must be integer Schewchuk floating point 
+ * * **precondition:** the coefficients must be integer Shewchuk floating point 
  * expansions; if they are not they can easily be scaled from 
- * floating point numbers to Schewchuk expansions by calling [[scaleFloatsToInts]] 
+ * floating point numbers to Shewchuk expansions by calling [[scaleFloatsToInts]] 
  * or similar before calling this function (recall that all floating point 
  * numbers are rational).
  * 
@@ -27,7 +27,7 @@ import { ePdivTrivial } from "./e-pdiv-trivial.js";
  * * see [*The subresultant polynomial remainder sequence algorithm* by Ruiyuan (Ronnie) Chen, p.10](https://pdfs.semanticscholar.org/2e6b/95ba84e2160748ba8fc310cdc408fc9bbade.pdf)
  * 
  * @param f the polynomial a in the formula a = bq + r; the polynomial is given
- * with coefficients as a dense array of integer Schewchuk expansions from 
+ * with coefficients as a dense array of integer Shewchuk expansions from 
  * highest to lowest power, e.g. `[[5],[-3],[0]]` represents the 
  * polynomial `5x^2 - 3x`
  * @param g the polynomial b in the formula a = bq + r

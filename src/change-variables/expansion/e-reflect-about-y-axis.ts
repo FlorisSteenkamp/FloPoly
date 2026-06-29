@@ -4,7 +4,7 @@ import { eNegativeOf } from "big-float-ts";
 /**
  * Returns the result of reflecting the given polynomial about the Y-axis, i.e. 
  * perform the change of variables: p(x) <- p(-x).
- * @param p a polynomial with coefficients given densely as an array of Schewchuk
+ * @param p a polynomial with coefficients given densely as an array of Shewchuk
  * floating point expansions from highest to lowest power, e.g. `[[5],[-3],[0]]`
  * represents the polynomial `5x^2 - 3x`
  * 
@@ -22,7 +22,7 @@ function eReflectAboutYAxis(p: number[][]): number[][] {
 
     const result = p.slice();
     for (let i=0; i<d+1; i++) {
-        if (i % 2) {
+        if (i % 2 === (d - 1) % 2) {
             result[i] = eNegativeOf(result[i]); 
         }
     }

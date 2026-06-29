@@ -1,16 +1,9 @@
-import { eSign as eSign_ } from "big-float-ts";
-import { eSturmChain as eSturmChain_ } from "../../../euclidean-division-related/expansion/e-sturm-chain.js";
-import { signChanges as signChanges_ } from "../double/sign-changes.js";
-import { eDegree as eDegree_ } from "../../../basic/expansion/e-degree.js";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const signChanges = signChanges_;
-const eSign = eSign_;
-const eDegree = eDegree_;
-const eSturmChain = eSturmChain_;
+import { bNumRoots } from "../bigint/b-num-roots.js";
+import { scaleFloatssToBigintss } from '../../../scale-to-int/scale-floatss-to-bigintss.js';
+import { bSum } from "../../../util/bigint/b-sum.js";
 /**
  * Returns the *exact* number of *distinct* real roots in the interval (-∞,+∞)
- * of the given polynomial - subject to floating point underflow / overflow of
- * intermediate calculations.
+ * of the given polynomial.
  *
  * * From Wikipedia: "In the case of a non-square-free polynomial,
  * if neither a nor b is a multiple root of p, then V(a) − V(b) is the number
@@ -29,10 +22,7 @@ const eSturmChain = eSturmChain_;
  * @doc
  */
 function eNumRoots(p) {
-    const ps = eSturmChain(p);
-    const as = ps.map(p => eDegree(p) % 2 === 0 ? eSign(p[0]) : -eSign(p[0]));
-    const bs = ps.map(p => eSign(p[0]));
-    return signChanges(as) - signChanges(bs);
+    return bNumRoots(scaleFloatssToBigintss(p).map(bSum));
 }
 export { eNumRoots };
 //# sourceMappingURL=e-num-roots.js.map

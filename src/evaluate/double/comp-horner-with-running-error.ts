@@ -2,16 +2,15 @@ import { twoSum } from "big-float-ts";
 import { EFTHorner } from "./eft-horner.js";
 import { HornerSum } from "./horner-sum.js";
 import { HornerAbsSum } from "./horner-abs-sum.js";
-import { γs } from "./gammas.js";
+import { γs, u } from "../../error-analysis/gamma.js";
 
-
-const u = Number.EPSILON / 2;
+const { abs } = Math;
 
 
 /**
  * Returns the result of evaluating a univariate polynomial using once compensated
  * Horner's method, including a certified running error bound as an array in the 
- * form: [result, absolute error].
+ * form: [result, max absolute error].
  * 
  * * Exactly the same as compHornerIsFaithful, except that it does not include
  * a faithfully rounded check.
@@ -20,9 +19,9 @@ const u = Number.EPSILON / 2;
  * `1 / Number.EPSILON` which is again roughly `2^53` - it is the same as using
  * double-double precision in a normal Horner evaluation
  * 
- * * see [Algorithms for Accurate, Validated and Fast Polynomial Evaluation, *Stef Graillat, Philippe Langlois and Nicolas Louvet*](https://projecteuclid.org/download/pdf_1/euclid.jjiam/1265033778)
- * * see also [*Philippe Langlois, Nicolas Louvet.* Faithful Polynomial Evaluation with Compensated Horner Algorithm. ARITH18: 18th IEEE International Symposium on Computer Arithmetic, Jun 2007, Montpellier, France. pp.141–149. ffhal-00107222f](https://hal.archives-ouvertes.fr/hal-00107222/document)
- * * see also [Horner's Method](https://en.wikipedia.org/wiki/Horner%27s_method)
+ * * see [[1] Algorithms for Accurate, Validated and Fast Polynomial Evaluation, *Stef Graillat, Philippe Langlois and Nicolas Louvet*](https://projecteuclid.org/download/pdf_1/euclid.jjiam/1265033778)
+ * * see also [[2] *Philippe Langlois, Nicolas Louvet.* Faithful Polynomial Evaluation with Compensated Horner Algorithm. ARITH18: 18th IEEE International Symposium on Computer Arithmetic, Jun 2007, Montpellier, France. pp.141–149. ffhal-00107222f](https://hal.archives-ouvertes.fr/hal-00107222/document)
+ * * see also [[3] Horner's Method](https://en.wikipedia.org/wiki/Horner%27s_method)
  * 
  * @param p a polynomial with coefficients given densely as an array of double
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]` 
@@ -40,11 +39,11 @@ function compHornerWithRunningError(p: number[], x: number): number[] {
     const ĉ = HornerSum(pπ, pσ, x);
     const [e, r̄] = twoSum(r̂, ĉ);
 
-    const b̂ = HornerAbsSum(pπ, pσ, Math.abs(x));
-    const α̂  = (γs(2*n - 1) * b̂) / ((1 - 2*(n+1) * u));
-    const β̂  = (α̂ + Math.abs(e)) / (1 - 2*u);
+    const b̂ = HornerAbsSum(pπ, pσ, abs(x));
+    const α̂  = b̂ * γs(2*n - 1) / (1 - 2*(n+1) * u);  // [2] Eq. (20)
+    const β̂  = (α̂ + abs(e)) / (1 - 2*u);
 
-    return [r̄, β̂ ];
+    return [r̄, β̂];
 }
 
 

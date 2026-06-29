@@ -13,9 +13,9 @@ import { ePdivInternal } from "./e-pdiv-internal.js";
  * and returns a scaled `r` and `q` in the formula `a = bq + r`, where 
  * `degree(r) < degree(b)`. `q` is called the quotient and `r` the remainder.
  * 
- * * **precondition:** the coefficients must integers (and also Schewchuk 
+ * * **precondition:** the coefficients must integers (and also Shewchuk 
  * floating point expansions); if they are not they can easily be scaled from 
- * floating point numbers to Schewchuk expansions by calling [[scaleFloatsToInts]]
+ * floating point numbers to Shewchuk expansions by calling [[scaleFloatsToInts]]
  * or similar before calling this function (recall that all floating point 
  * numbers are rational).
  * 
@@ -33,7 +33,7 @@ import { ePdivInternal } from "./e-pdiv-internal.js";
  * * see also [subresultant pseudo-remainder sequence](https://en.wikipedia.org/wiki/Polynomial_greatest_common_divisor#Subresultant_pseudo-remainder_sequence) 
  * 
  * @param a the polynomial a in the formula a = bq + r; the polynomial is given
- * with coefficients as a dense array of integer Schewchuk expansions from 
+ * with coefficients as a dense array of integer Shewchuk expansions from 
  * highest to lowest power, e.g. `[[5],[-3],[0]]` represents the 
  * polynomial `5x^2 - 3x`
  * @param b the polynomial b in the formula a = bq + r

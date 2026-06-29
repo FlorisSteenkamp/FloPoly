@@ -18,4 +18,22 @@
  * @doc
  */
 declare function multiply(p1: number[], p2: number[]): number[];
-export { multiply };
+/**
+ * Returns the result of multiplying 2 polynomials in double precision using
+ * the [Karatsuba](https://en.wikipedia.org/wiki/Karatsuba_algorithm)
+ * divide-and-conquer algorithm (`O(n^log2(3)) ≈ O(n^1.585)`).
+ *
+ * @param p1 a polynomial with coefficients given densely as an array of double
+ * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`
+ * represents the polynomial `5x^2 - 3x`
+ * @param p2 another polynomial.
+ *
+ * @example
+ * ```typescript
+ * multiplyKaratsuba([1,2,3], [2,5,3,5]); //=> [2, 9, 19, 26, 19, 15]
+ * ```
+ *
+ * @doc
+ */
+declare function multiplyKaratsuba(p1: number[], p2: number[]): number[];
+export { multiply, multiplyKaratsuba };

@@ -4,6 +4,10 @@
  * 
  * * see [Horner's Method](https://en.wikipedia.org/wiki/Horner%27s_method)
  * 
+ * * the worst-case forward error bound for Horner's method is explicitly given
+ * by: |P(x) - P̂(x)| ≤ (2d·u / (1-2d·u)) ∑ᵢ₌₀ⁿ |aᵢ| |x|ⁱ, i.e.
+ * by: |P(x) - P̂(x)| ≤ γ(2d) ∑ᵢ₌₀ⁿ |aᵢ| |x|ⁱ where d is the degree of the polynomial
+ * 
  * @param p a polynomial with coefficients given densely as an array of double
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]` 
  * represents the polynomial `5x^2 - 3x`
@@ -16,7 +20,7 @@ function Horner(p: number[], x: number): number {
     for (let i=0; i<p.length; i++) {
         q = q*x + p[i];
     }
-        
+
     return q;
 }
 // inlined (with q => E, p => p0)

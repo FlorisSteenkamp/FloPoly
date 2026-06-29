@@ -32,9 +32,9 @@ function bChangeVariablesLinear(
     if (d < 0) { return []; }
     
     // Initialize a zero matrix
-    const t: bigint[][] = [];
+    const t = new Array<Array<bigint>>(d+1);
     for (let i=0; i<d+1; i++) {
-        t.push(new Array(d+1).fill(0n));
+        t[i] = new Array(d+1).fill(0n);
     }
 
     // Calculate the triangular matrix T

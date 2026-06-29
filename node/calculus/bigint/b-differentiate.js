@@ -13,10 +13,13 @@
  * @doc
  */
 function bDifferentiate(p) {
-    const r = [];
     const d = p.length - 1;
+    if (d <= 0) {
+        return [];
+    }
+    const r = new Array(d);
     for (let i = 0; i < d; i++) {
-        r.push(BigInt((d - i)) * p[i]);
+        r[i] = BigInt((d - i)) * p[i];
     }
     return r;
 }

@@ -1,7 +1,6 @@
 /**
  * Returns the *exact* number of *distinct* real roots in the open
- * interval (a,b) of the given polynomial - subject to floating point
- * underflow / overflow of intermediate calculations.
+ * interval `(a,b)` of the given polynomial.
  *
  * * From Wikipedia: "In the case of a non-square-free polynomial, if
  * neither a nor b is a multiple root of p, then V(a) − V(b) is the number of
@@ -11,7 +10,7 @@
  * Shewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]`
  * represents the polynomial `5x^2 - 3x`
  * @param a a lower bound given as a Shewchuk expansion
- * @param b an upper bound
+ * @param b an upper bound given as a Shewchuk expansion
  *
  * @example
  * ```typescript

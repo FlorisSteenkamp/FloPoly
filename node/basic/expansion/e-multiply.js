@@ -1,10 +1,6 @@
-import { eRemoveLeadingZeros as eRemoveLeadingZeros_ } from "./e-remove-leading-zeros.js";
-import { expansionProduct as expansionProduct_ } from "big-float-ts";
-import { fastExpansionSum as fastExpansionSum_ } from "big-float-ts";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eRemoveLeadingZeros = eRemoveLeadingZeros_;
-const expansionProduct = expansionProduct_;
-const fastExpansionSum = fastExpansionSum_;
+import { eRemoveLeadingZeros } from "./e-remove-leading-zeros.js";
+import { expansionProduct } from "big-float-ts";
+import { fastExpansionSum } from "big-float-ts";
 /**
  * Returns the exact result (bar underflow / overflow) of multiplying two
  * polynomials (with coefficients given as Shewchuk floating point expansions).

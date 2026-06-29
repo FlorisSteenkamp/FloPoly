@@ -4,8 +4,8 @@ import { premSequenceSubresultant } from '../../../src/euclidean-division-relate
 
 
 describe('premSequenceSubresultant', function() {
-	it('should correctly calculate the subsresultant pseudo remainder sequence of two polynomials with double precision coefficients', 
-	function() {
+    it('should correctly calculate the subsresultant pseudo remainder sequence of two polynomials with double precision coefficients', 
+    function() {
         {
             // This is the Wikipedia (and paper) example
             let a = [1, 0, 1, 0, -3, -3, 8, 2, -5];

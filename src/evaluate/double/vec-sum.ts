@@ -16,7 +16,7 @@ function vecSum(p_: number[]): number[] {
     for (let i=1; i<p.length; i++) {
         [p[i-1], p[i]] = twoSum(p[i], p[i-1]);
     }
-    
+
     return p;
 }
 

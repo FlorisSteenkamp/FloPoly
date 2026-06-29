@@ -1,4 +1,4 @@
-import { RootInterval } from "./root-interval.js";
+import { RootInterval } from "../root-interval.js";
 /**
  * :::tip Heads up!
  * Simplified version of `allRootsCertified` - following are the changes:
@@ -8,7 +8,7 @@ import { RootInterval } from "./root-interval.js";
  * polynomial nor a function to return a polynomial with exact coefficients can
  * be specified
  * * the search range lower and upper bounds defaults to
- * `Number.NEGATIVE_INFINITY` and `Number.POSITIVE_INFINITY` respectively
+ * `-Infinity` and `Infinity` respectively
  * :::
  *
  * Finds and returns all *certified* root intervals (bar underflow / overflow)
@@ -54,9 +54,9 @@ import { RootInterval } from "./root-interval.js";
  * @param p a polynomial with coefficients given densely as an array of
  * double precision floating point numbers from highest to lowest power,
  * e.g. `[5,-3,0]` represents the polynomial `5x^2 - 3x`
- * @param lb defaults to Number.NEGATIVE_INFINITY; lower bound of roots to be
+ * @param lb defaults to -Infinity; lower bound of roots to be
  * returned
- * @param ub defaults to Number.POSITIVE_INFINITY; upper bound of roots to be
+ * @param ub defaults to Infinity; upper bound of roots to be
  * returned
  * @param returnUndefinedForZeroPoly if the given polynomial is the zero
  * polynomial and `returnUndefinedForZeroPoly` is `true` then `undefined` will

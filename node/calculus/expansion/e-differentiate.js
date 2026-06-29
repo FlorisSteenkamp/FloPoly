@@ -1,6 +1,4 @@
-import { scaleExpansion as scaleExpansion_ } from "big-float-ts";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const scaleExpansion = scaleExpansion_;
+import { scaleExpansion } from "big-float-ts";
 /**
  * Returns the exact result (bar underflow / overflow) of differentiating the
  * given polynomial (with Shewchuk expansion coefficients).
@@ -17,10 +15,13 @@ const scaleExpansion = scaleExpansion_;
  * @doc
  */
 function eDifferentiate(p) {
-    const result = [];
     const d = p.length - 1;
+    if (d <= 0) {
+        return [];
+    }
+    const result = new Array(d);
     for (let i = 0; i < d; i++) {
-        result.push(scaleExpansion(p[i], d - i));
+        result[i] = scaleExpansion(p[i], d - i);
     }
     return result;
 }

@@ -1,14 +1,8 @@
-import { sturmChain as sturmChain_ } from "../../../euclidean-division-related/double/sturm-chain.js";
-import { eHorner as eHorner_ } from "../../../evaluate/expansion/e-horner.js";
-import { eSignChanges as eSignChanges_ } from '../expansion/e-sign-changes.js';
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const sturmChain = sturmChain_;
-const eHorner = eHorner_;
-const eSignChanges = eSignChanges_;
+import { bNumRootsInRange } from '../bigint/b-num-roots-in-range.js';
+import { scaleFloatsToBigints } from "../../../scale-to-int/scale-floats-to-bigints.js";
 /**
  * Returns the *exact* number of *distinct* real roots in the open
- * interval (a,b) of the given polynomial - subject to floating point
- * underflow / overflow of intermediate calculations.
+ * interval (a,b) of the given polynomial.
  *
  * @param p a polynomial with coefficients given densely as an array of double
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`
@@ -28,10 +22,7 @@ const eSignChanges = eSignChanges_;
  * @doc
  */
 function numRootsInRange(p, a, b) {
-    const ps = sturmChain(p);
-    const as = ps.map(p => eHorner(p, a));
-    const bs = ps.map(p => eHorner(p, b));
-    return eSignChanges(as) - eSignChanges(bs);
+    return bNumRootsInRange(scaleFloatsToBigints(p), BigInt(a), BigInt(b));
 }
 export { numRootsInRange };
 //# sourceMappingURL=num-roots-in-range.js.map

@@ -30,11 +30,11 @@ function bSubtract(a: bigint[], b: bigint[]): bigint[] {
     const d = Math.max(da, db);
     
     // Add coefficients
-    const result: bigint[] = [];
+    const result = new Array<bigint>(d+1);
     for (let i=0; i<d+1; i++) {
         const c1 = a[i+Δd1] || 0n;
         const c2 = b[i+Δd2] || 0n;
-        result.push(c1 - c2);  
+        result[i] = c1 - c2;  
     }
     
     // Ensure the result is a valid polynomial representation

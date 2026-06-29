@@ -10,7 +10,7 @@ import { scaleFloatssToIntss } from '../../scale-to-int/scale-floatss-to-intss.j
  * * see [Pseudo-remainder sequences](https://en.wikipedia.org/wiki/Polynomial_greatest_common_divisor#Pseudo-remainder_sequences)
  * 
  * @param p a polynomial with coefficients given densely as an array of
- * Schewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
+ * Shewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
  * represents the polynomial `5x^2 - 3x`
  * 
  * @example

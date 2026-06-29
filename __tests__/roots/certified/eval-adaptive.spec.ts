@@ -1,18 +1,17 @@
 import { describe, expect, it } from '@jest/globals';
-
-import { evalAdaptive } from '../../../src/roots/certified/eval-adaptive.js';
+import { evalAdaptive } from '../../../src/evaluate/eval-adaptive.js';
 import { eMultiply } from '../../../src/basic/expansion/e-multiply.js';
 import { eDifferentiate } from '../../../src/calculus/expansion/e-differentiate.js';
 import { Horner } from '../../../src/evaluate/double/horner.js';
 import { eToDd, eEstimate } from 'big-float-ts';
-import { transposePoly } from '../../../src/roots/certified/transpose-poly.js';
+import { transposePoly } from '../../../src/roots/transpose-poly.js';
 
 
 describe('evalAdaptive',
 function() {
-	it('should correctly adaptive evaluate a polynomial (used with `allRootsCertifiec`)',
-	function() {
-		{
+    it('should correctly adaptive evaluate a polynomial (used with `allRootsCertifiec`)',
+    function() {
+        {
             let _p = eMultiply(
                 eMultiply([[1],[-1]],[[1],[-1]]),
                 eMultiply([[1],[-2]],[[1],[-2]])
@@ -39,7 +38,7 @@ function() {
             const V1 = evalAdaptive(p_, pE, 1, getPolyExact);
             //const V2 = Horner(p.map(c => eEstimate(c)), 1);
 
-            expect(V1 === 0).toBeTruthy();
-		}
-	});
+            expect(V1 === 0).toEqual(true);
+        }
+    });
 });

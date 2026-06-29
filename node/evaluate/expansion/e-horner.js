@@ -1,7 +1,4 @@
-import { fastExpansionSum, scaleExpansion } from "big-float-ts";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const fes = fastExpansionSum;
-const sce = scaleExpansion;
+import { fastExpansionSum as fes, scaleExpansion as sce } from "big-float-ts";
 /**
  * Returns the exact result (bar underflow / overflow) of evaluating a
  * univariate polynomial using Horner's method - the result is returned as a

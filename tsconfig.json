@@ -8,10 +8,12 @@
         "sourceMap": true,
         "rootDir": "./src",
         "outDir": "./node",
-        "moduleResolution": "bundler"
+        "moduleResolution": "bundler",
+        "types": ["node"]
     },
     "include": [
-        "src/index.ts"
+        "src/index.ts",
+        "src/**/*.d.ts"
     ],
     "exclude": [
         "node_modules"

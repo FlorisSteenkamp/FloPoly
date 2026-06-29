@@ -1,7 +1,5 @@
 import { ddDiffDd } from 'double-double';
-import { ddRemoveLeadingZeros as ddRemoveLeadingZeros_ } from "./dd-remove-leading-zeros.js";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const ddRemoveLeadingZeros = ddRemoveLeadingZeros_;
+import { ddRemoveLeadingZeros } from "./dd-remove-leading-zeros.js";
 /**
  * Returns the result of subtracting the second polynomial from the first in
  * double-double precision; (p1 - p2).
@@ -22,11 +20,11 @@ function ddSubtract(p1, p2) {
     const Δd2 = Δd > 0 ? -Δd : 0;
     const d = Math.max(d1, d2);
     // Add coefficients
-    const result = [];
+    const result = new Array(d + 1);
     for (let i = 0; i < d + 1; i++) {
         const c1 = p1[i + Δd1] || [0, 0];
         const c2 = p2[i + Δd2] || [0, 0];
-        result.push(ddDiffDd(c1, c2));
+        result[i] = ddDiffDd(c1, c2);
     }
     // Ensure the result is a valid polynomial representation
     return ddRemoveLeadingZeros(result);

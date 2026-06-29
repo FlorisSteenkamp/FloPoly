@@ -1,6 +1,4 @@
-import { eAbs as eAbs_ } from "big-float-ts";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eAbs = eAbs_;
+import { eAbs } from "big-float-ts";
 /**
  * Returns the polynomial with all coeffients the absolute value of the given
  * polynomial.
@@ -12,9 +10,9 @@ const eAbs = eAbs_;
  * @doc
  */
 function eAbsCoeff(p) {
-    const p_ = [];
+    const p_ = new Array(p.length);
     for (let i = 0; i < p.length; i++) {
-        p_.push(eAbs(p[i]));
+        p_[i] = eAbs(p[i]);
     }
     return p_;
 }

@@ -1,8 +1,5 @@
-import { eRemoveLeadingZeros as eRemoveLeadingZeros_ } from "./e-remove-leading-zeros.js";
-import { fastExpansionSum as fastExpansionSum_ } from "big-float-ts";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const fastExpansionSum = fastExpansionSum_;
-const eRemoveLeadingZeros = eRemoveLeadingZeros_;
+import { eRemoveLeadingZeros } from "./e-remove-leading-zeros.js";
+import { fastExpansionSum } from "big-float-ts";
 /**
  * Returns the exact result (bar underflow / overflow) of adding two
  * polynomials with coefficients given as Shewchuk floating point expansions.
@@ -28,11 +25,11 @@ function eAdd(p1, p2) {
     const Δd2 = Δd > 0 ? -Δd : 0;
     const d = Math.max(d1, d2);
     // Add coefficients
-    const result = [];
+    const result = new Array(d + 1);
     for (let i = 0; i < d + 1; i++) {
         const c1 = p1[i + Δd1] || [0];
         const c2 = p2[i + Δd2] || [0];
-        result.push(fastExpansionSum(c1, c2));
+        result[i] = fastExpansionSum(c1, c2);
     }
     // Ensure the result is a valid polynomial representation
     return eRemoveLeadingZeros(result);

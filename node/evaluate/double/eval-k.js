@@ -1,10 +1,6 @@
-import { hornerWithRunningError as hornerWithRunningError_ } from "./horner-with-running-error.js";
-import { CompHornerK as CompHornerK_ } from "./comp-horner-k.js";
-import { compHornerWithRunningError as compHornerWithRunningError_ } from "./comp-horner-with-running-error.js";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const hornerWithRunningError = hornerWithRunningError_;
-const CompHornerK = CompHornerK_;
-const compHornerWithRunningError = compHornerWithRunningError_;
+import { hornerWithRunningError } from "./horner-with-running-error.js";
+import { CompHornerK } from "./comp-horner-k.js";
+import { compHornerWithRunningError } from "./comp-horner-with-running-error.js";
 /**
  * Returns the result of evaluating the given polynomial at `x` such that at least
  * the sign bit is correct *up to 3-times compensated evaluation (K = 4)*, i.e.

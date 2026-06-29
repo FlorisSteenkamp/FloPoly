@@ -3,9 +3,9 @@ import { scaleExpansion } from "big-float-ts";
 
 /**
  * Returns the exact result (bar underflow / overflow) of differentiating the 
- * given polynomial (with Schewchuk expansion coefficients).
+ * given polynomial (with Shewchuk expansion coefficients).
  * 
- * @param p a polynomial with coefficients given densely as an array of Schewchuk
+ * @param p a polynomial with coefficients given densely as an array of Shewchuk
  * floating point expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
  * represents the polynomial `5x^2 - 3x`
  * 
@@ -17,13 +17,13 @@ import { scaleExpansion } from "big-float-ts";
  * @doc
  */
 function eDifferentiate(p: number[][]): number[][] {
-    const result: number[][] = [];
-    
     const d = p.length - 1;
+    if (d <= 0) { return []; }
+    const result = new Array<number[]>(d);
     for (let i=0; i<d; i++) {
-        result.push(scaleExpansion(p[i], d-i));
+        result[i] = scaleExpansion(p[i], d-i);
     }
-    
+
     return result;
 }
 

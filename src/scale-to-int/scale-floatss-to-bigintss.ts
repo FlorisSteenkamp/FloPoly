@@ -6,14 +6,16 @@ import { bitLength } from "big-float-ts";
  * Returns the result of scaling the given array of array of floats by the 
  * *same* power of two such that all floats become bigints.
  * 
- * * can be used to scale polynomials (with coefficients given as Schewchuk 
+ * * can be used to scale polynomials (with coefficients given as Shewchuk 
  * expansions)
  * 
  * @param ass an array of an array of double precision floating point numbers
  * 
  * @doc
  */
-function scaleFloatssToBigintss(ass: number[][]): bigint[][] {
+function scaleFloatssToBigintss(
+        ass: number[][]): bigint[][] {
+
     let e = -1024;
     for (let i=0; i<ass.length; i++) {
         const c = ass[i];
@@ -34,14 +36,12 @@ function scaleFloatssToBigintss(ass: number[][]): bigint[][] {
 
     if (e > 0) {
         return ass.map(as => as.map(a => {
-            if (a === 0) {
-                return 0n;
-            }
+            if (a === 0) { return 0n; }
             
             const scalePower = -exponent(a) + bitLength(a) - 1;
             // we first scale `a` to an integer without overflow and then
             // convert it to a bigint before multiplying
-            return BigInt(a*2**scalePower)*2n**BigInt(e-scalePower);
+            return BigInt(a*2**scalePower) * 2n**BigInt(e-scalePower);
         }));
     }
 

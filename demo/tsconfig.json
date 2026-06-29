@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "strict": true, 
+        "module": "NodeNext",
+        "target": "esnext",
+        // "declaration": true,
+        "noEmitOnError": true,
+        "noEmit": false,
+        "sourceMap": true,
+        // "moduleResolution": "bundler",
+        "moduleResolution": "nodenext",
+        "types": ["node"],
+        "paths": {}
+    },
+    "include": [
+        "src/app.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

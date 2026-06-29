@@ -3,9 +3,9 @@ import { eNegativeOf } from "big-float-ts";
 
 /**
  * Returns the negative of the given polynomial (with coefficients given as 
- * Schewchuk floating point expansions), i.e. (p -> -p).
+ * Shewchuk floating point expansions), i.e. (p -> -p).
  * 
- * @param p a polynomial with coefficients given densely as an array of Schewchuk
+ * @param p a polynomial with coefficients given densely as an array of Shewchuk
  * floating point expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
  * represents the polynomial `5x^2 - 3x`
  * 
@@ -17,9 +17,9 @@ import { eNegativeOf } from "big-float-ts";
  * @doc
  */
 function eNegate(p: number[][]): number[][] {
-    const result: number[][] = [];
+    const result = new Array<number[]>(p.length);
     for (let i=0; i<p.length; i++) {
-        result.push(eNegativeOf(p[i]))
+        result[i] = eNegativeOf(p[i]);
     }
     return result;
 }

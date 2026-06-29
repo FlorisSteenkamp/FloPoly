@@ -22,16 +22,15 @@ import { ddDivDouble } from 'double-double';
         p: number[][], 
         c: number[]): number[][] {
 
-    const result: number[][] = [];
-    
     const d = p.length - 1;
+    const r = new Array<number[]>(d+2);
     for (let i=0; i<d+1; i++) {
-        result.push(ddDivDouble(p[i],(d+1-i)));
+        r[i] = ddDivDouble(p[i],(d+1-i));
     }
 
-    result.push(c);
+    r[d+1] = c;
     
-    return result;
+    return r;
 }
 
 

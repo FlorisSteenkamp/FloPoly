@@ -1,13 +1,11 @@
 import { describe, expect, it } from '@jest/globals';
-
 import { bGcdInt, bGcdInts } from '../../../src/gcd/bigint/b-integer-gcd.js';
 import { scaleFloatToInt } from '../../../src/scale-to-int/scale-float-to-int.js';
-import { performance } from 'perf_hooks';
 
 
 describe('integer gcd', function() {
-	it('should calculate the correct integer gcds of some bigints', 
-	function() {
+    it('should calculate the correct integer gcds of some bigints', 
+    function() {
         let a = 1071n;
         let b = 462n; 
 
@@ -72,5 +70,5 @@ describe('integer gcd', function() {
             expect(r1).toEqual(b);
             expect(r2).toEqual(b);
         }
-	});
+    });
 });

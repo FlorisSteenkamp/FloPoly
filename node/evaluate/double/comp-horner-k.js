@@ -1,10 +1,6 @@
-import { SumK as SumK_ } from "./sum-k.js";
-import { EFTHornerK as EFTHornerK_ } from "./eft-horner-k.js";
-import { Horner as Horner_ } from "./horner.js";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const SumK = SumK_;
-const EFTHornerK = EFTHornerK_;
-const Horner = Horner_;
+import { SumK } from "./sum-k.js";
+import { EFTHornerK } from "./eft-horner-k.js";
+import { Horner } from "./horner.js";
 /**
  * Returns a result of evaluating a univariate polynomial using K times compensated
  * Horner's method.

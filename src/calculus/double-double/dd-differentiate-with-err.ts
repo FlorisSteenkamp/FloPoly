@@ -24,14 +24,16 @@ function ddDifferentiateWithError(
 
     const { p, pE } = pWithErr;
 
-    const dp: number[][] = [];
-    const dpE: number[] = [];
-
     const d = p.length - 1;
+    if (d <= 0) { return { p: [], pE: [] }; }
+
+    const dp = new Array<number[]>(d);
+    const dpE = new Array<number>(d);
+
     for (let i=0; i<d; i++) {
         const deg = d-i;
         const c = ddMultDouble2(deg, p[i]);
-        dp.push(c);
+        dp[i] = c;
 
         // if 1,2,4 or 8, etc. then no additional error occurs on multiply
         // if 3,5,7 or 9, etc. then additional error occurs
@@ -39,10 +41,7 @@ function ddDifferentiateWithError(
         const extraErr = (deg & deg-1) === 0 ? 0 : γγ3;
         
         const $c = eEstimate(c);
-        dpE.push(
-            //deg * (pE[i] + Math.abs($c)*extraErr)
-            deg*pE[i] + Math.abs($c)*extraErr
-        );
+        dpE[i] = deg*pE[i] + Math.abs($c)*extraErr;
     }
 
     return { p: dp, pE: dpE };

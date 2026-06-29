@@ -5,8 +5,8 @@ import { ePremSequencePrimitive } from '../../../src/euclidean-division-related/
 
 
 describe('ePremSequencePrimitive', function() {
-	it('should correctly calculate the primitive pseudo remainder sequence of two polynomials (with Shewchuk expansion coefficients)', 
-	function() {
+    it('should correctly calculate the primitive pseudo remainder sequence of two polynomials (with Shewchuk expansion coefficients)', 
+    function() {
         {
             const ps = [
                 [[1], [0], [1], [0], [-3], [-3], [8], [2], [-5]],
@@ -39,5 +39,5 @@ describe('ePremSequencePrimitive', function() {
                 [[3], [4], [-2]]
             ]);
         }
-	});
+    });
 });

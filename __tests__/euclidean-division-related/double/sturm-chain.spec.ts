@@ -4,8 +4,8 @@ import { sturmChain } from '../../../src/euclidean-division-related/double/sturm
 
 
 describe('sturmChain', function() {
-	it('should correctly calculated the Sturm chain of some polynomials with coefficients given as double precision numbers', 
-	function() {
+    it('should correctly calculated the Sturm chain of some polynomials with coefficients given as double precision numbers', 
+    function() {
         {
             // This is the Wikipediaexample
             // a = x^8 + x^6 - 3x^4 - 3x^3 + 8x^2 + 2x - 5

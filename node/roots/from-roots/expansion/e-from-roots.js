@@ -1,10 +1,6 @@
-import { eMultiply as eMultiply_ } from "../../../basic/expansion/e-multiply.js";
-import { eNegativeOf as eNegativeOf_ } from "big-float-ts";
-import { eToDd as eToDd_ } from "big-float-ts";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eMultiply = eMultiply_;
-const eNegativeOf = eNegativeOf_;
-const eToDd = eToDd_;
+import { eMultiply } from "../../../basic/expansion/e-multiply.js";
+import { eNegativeOf } from "big-float-ts";
+import { eToDd } from "big-float-ts";
 /**
  * Constructs a double-double precision polynomial from the given roots by
  * multiplying out the factors (x - root1)(x - root2) in infinite precision

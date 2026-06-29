@@ -25,12 +25,12 @@ function ddSubtract(p1: number[][], p2: number[][]): number[][] {
     const d = Math.max(d1, d2);
     
     // Add coefficients
-    const result: number[][] = [];
+    const result = new Array<number[]>(d+1);
     for (let i=0; i<d+1; i++) {
         const c1 = p1[i+Δd1] || [0,0];
         const c2 = p2[i+Δd2] || [0,0];
 
-        result.push(ddDiffDd(c1,c2));
+        result[i] = ddDiffDd(c1,c2);
     }
     
     // Ensure the result is a valid polynomial representation

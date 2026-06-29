@@ -4,9 +4,9 @@ import { fastExpansionSum } from "big-float-ts";
 
 /**
  * Returns the exact result (bar underflow / overflow) of adding two 
- * polynomials with coefficients given as Schewchuk floating point expansions.
+ * polynomials with coefficients given as Shewchuk floating point expansions.
  * 
- * @param p1 a polynomial with coefficients given densely as an array of Schewchuk
+ * @param p1 a polynomial with coefficients given densely as an array of Shewchuk
  * floating point expansions from highest to lowest power, e.g. `[[5],[-3],[0]]`
  * represents the polynomial `5x^2 - 3x`
  * @param p2 another polynomial
@@ -30,11 +30,11 @@ function eAdd(p1: number[][], p2: number[][]): number[][] {
     const d = Math.max(d1, d2);
     
     // Add coefficients
-    const result = [];
+    const result = new Array<number[]>(d+1);
     for (let i=0; i<d+1; i++) {
         const c1 = p1[i+Δd1] || [0];
         const c2 = p2[i+Δd2] || [0];
-        result.push(fastExpansionSum(c1, c2));  
+        result[i] = fastExpansionSum(c1, c2);
     }
     
     // Ensure the result is a valid polynomial representation

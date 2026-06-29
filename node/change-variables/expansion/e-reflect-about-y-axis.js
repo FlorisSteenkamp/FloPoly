@@ -1,6 +1,4 @@
-import { eNegativeOf as eNegativeOf_ } from "big-float-ts";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eNegativeOf = eNegativeOf_;
+import { eNegativeOf } from "big-float-ts";
 /**
  * Returns the result of reflecting the given polynomial about the Y-axis, i.e.
  * perform the change of variables: p(x) <- p(-x).

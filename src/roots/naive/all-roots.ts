@@ -37,17 +37,17 @@ const negativeRootUpperBound_LMQ = negativeRootUpperBound_LMQ_;
  * @param p a polynomial with coefficients given densely as an array of double
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]` 
  * represents the polynomial `5x^2 - 3x`
- * @param lb defaults to `Number.NEGATIVE_INFINITY`; lower bound of roots to be 
+ * @param lb defaults to `-Infinity`; lower bound of roots to be 
  * returned
- * @param ub defaults to `Number.POSITIVE_INFINITY`; upper bound of roots to be 
+ * @param ub defaults to `Infinity`; upper bound of roots to be 
  * returned
  * 
  * @doc
  */
 function allRoots(
         p: number[],
-        lb = Number.NEGATIVE_INFINITY,
-        ub = Number.POSITIVE_INFINITY): number[] {
+        lb = -Infinity,
+        ub = Infinity): number[] {
 
     p = removeLeadingZeros(p);
 
@@ -68,11 +68,11 @@ function allRoots(
         return roots;
     }
     
-    if (lb === Number.NEGATIVE_INFINITY) {
+    if (lb === -Infinity) {
         lb = negativeRootUpperBound_LMQ(p);
     }
     
-    if (ub === Number.POSITIVE_INFINITY) {
+    if (ub === Infinity) {
         ub = positiveRootUpperBound_LMQ(p);
     }
 

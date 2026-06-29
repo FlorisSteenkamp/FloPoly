@@ -2,6 +2,7 @@
 export default function(wallaby) {
     return {
         autoDetect: ['jest'],
+        smartStart: [{ startMode: 'never' }],
 
         env: {
             type: 'node',

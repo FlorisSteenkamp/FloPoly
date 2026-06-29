@@ -1,10 +1,6 @@
-import { bDegree as bDegree_ } from "../../basic/bigint/b-degree.js";
-import { bMultiplyByConst as bMultiplyByConst_ } from "../../basic/bigint/b-multiply-by-const.js";
-import { bPdivInternal as bPdivInternal_ } from './b-pdiv-internal.js';
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const bDegree = bDegree_;
-const bMultiplyByConst = bMultiplyByConst_;
-const bPdivInternal = bPdivInternal_;
+import { bDegree } from "../../basic/bigint/b-degree.js";
+import { bMultiplyByConst } from "../../basic/bigint/b-multiply-by-const.js";
+import { bPdivInternal } from './b-pdiv-internal.js';
 const abs = (n) => n >= 0 ? n : -n;
 /**
  * Performs a **trivial pseudo-division** and returns the `quotient` and `remainder`

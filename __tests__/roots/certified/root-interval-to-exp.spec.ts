@@ -5,11 +5,11 @@ import { rootIntervalToExp } from '../../../src/roots/certified/root-interval-to
 
 describe('rootIntervalToExp',
 function() {
-	it('should correctly convert a double precision root interval to a double-double precision one',
-	function() {
-		{
-			// some root interval
-			// let ri: RootInterval = {
+    it('should correctly convert a double precision root interval to a double-double precision one',
+    function() {
+        {
+            // some root interval
+            // let ri: RootInterval = {
             let ri: any = {
                 tS: 0.9,
                 tE: 0.9 + Number.EPSILON,
@@ -24,6 +24,6 @@ function() {
                 tE: [0, 0.9 + Number.EPSILON],
                 multiplicity: 3
             });
-		}
-	});
+        }
+    });
 });

@@ -6,15 +6,15 @@ import { eAbs } from "big-float-ts";
  * polynomial.
  * 
  * @param p a polynomial with coefficients given densely as an array of
- * Schewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
+ * Shewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
  * represents the polynomial `5x^2 - 3x`
  * 
  * @doc
  */
 function eAbsCoeff(p: number[][]): number[][] {
-    const p_: number[][] = [];
+    const p_ = new Array<number[]>(p.length);
     for (let i=0; i<p.length; i++) {
-        p_.push(eAbs(p[i]));
+        p_[i] = eAbs(p[i]);
     }
 
     return p_;

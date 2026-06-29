@@ -1,9 +1,5 @@
-import { ddRemoveLeadingZeros as ddRemoveLeadingZeros_ } from "./dd-remove-leading-zeros.js";
-import { ddMultDd, ddAddDd } from "double-double";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const ddRemoveLeadingZeros = ddRemoveLeadingZeros_;
-const qmq = ddMultDd;
-const qaq = ddAddDd;
+import { ddRemoveLeadingZeros } from "./dd-remove-leading-zeros.js";
+import { ddMultDd as qmq, ddAddDd as qaq } from "double-double";
 /**
  * Returns the result of multiplying 2 double-double precision coefficient
  * polynomials.

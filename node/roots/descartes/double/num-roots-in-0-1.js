@@ -1,16 +1,8 @@
-import { eSturmChain as eSturmChain_ } from "../../../euclidean-division-related/expansion/e-sturm-chain.js";
-import { signChanges as signChanges_ } from "./sign-changes.js";
-import { eEvaluateAt1 as eEvaluateAt1_ } from "../../../evaluate/expansion/e-evaluate-at-1.js";
-import { eSign as eSign_ } from "big-float-ts";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eEvaluateAt1 = eEvaluateAt1_;
-const eSturmChain = eSturmChain_;
-const signChanges = signChanges_;
-const eSign = eSign_;
+import { scaleFloatsToBigints } from "../../../scale-to-int/scale-floats-to-bigints.js";
+import { bNumRootsIn01 } from "../bigint/b-num-roots-0-1.js";
 /**
  * Returns the *exact* number of *distinct* real roots in the open
- * interval (0,1) of the given polynomial - subject to floating point
- * underflow / overflow of intermediate calculations.
+ * interval (0,1) of the given polynomial.
  *
  * @param p a polynomial with coefficients given densely as an array of double
  * precision floating point numbers from highest to lowest power,
@@ -19,11 +11,7 @@ const eSign = eSign_;
  * @doc
  */
 function numRootsIn01(p) {
-    const p_ = p.map(c => [c]);
-    const ps = eSturmChain(p_);
-    const as = ps.map(p_ => eSign(p_[p_.length - 1])); // evaluate at 0
-    const bs = ps.map(p_ => eSign(eEvaluateAt1(p_))); // evaluate at 1
-    return signChanges(as) - signChanges(bs);
+    return bNumRootsIn01(scaleFloatsToBigints(p));
 }
 export { numRootsIn01 };
 //# sourceMappingURL=num-roots-in-0-1.js.map

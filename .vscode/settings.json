@@ -1,0 +1,6 @@
+{
+	"mathover.matchRegex": "(?<=\\$\\$\\s*).+?(?=\\s*\\|\\|)",
+	"mathover.matchRegexFlags": "gm",
+	"mathover.forwardSkip": 0,
+	"mathover.backwardSkip": 0
+}

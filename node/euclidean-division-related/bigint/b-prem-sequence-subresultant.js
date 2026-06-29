@@ -1,8 +1,5 @@
-import { bDegree as bDegree_ } from "../../basic/bigint/b-degree.js";
-import { bPdivTrivial as bPdivTrivial_ } from "./b-pdiv-trivial.js";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const bDegree = bDegree_;
-const bPdivTrivial = bPdivTrivial_;
+import { bDegree } from "../../basic/bigint/b-degree.js";
+import { bPdivTrivial } from "./b-pdiv-trivial.js";
 /**
  * Returns the subresultant pseudo remainder sequence of a/b.
  *

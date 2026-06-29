@@ -72,22 +72,26 @@ export { ddIntegrate } from './calculus/double-double/dd-integrate.js';
 // calculus expansion
 export { eDifferentiate } from './calculus/expansion/e-differentiate.js';
 
+// change basis double
+export { bernsteinToPowerBasis } from './change-basis/double/bernstein-to-power-basis.js';
+export { powerToBernsteinBasis } from './change-basis/double/power-to-bernstein-basis.js';
+
 // change variables bigint
 export { bChangeVariablesLinear } from './change-variables/bigint/b-change-variables-linear.js';
-export { bChangeVariablesScale } from './change-variables/bigint/b-change-variables-scale.js';
-export { bChangeVariablesTranslateX } from './change-variables/bigint/b-change-variables-translate-x.js';
+export { bScale, bChangeVariablesScale } from './change-variables/bigint/b-scale.js';
+export { bTaylorShift, bChangeVariablesTranslateX } from './change-variables/bigint/b-taylor-shift.js';
 export { bReflectAboutYAxis } from './change-variables/bigint/b-reflect-about-y-axis.js';
 
 // change variables double
 export { changeVariablesLinear } from './change-variables/double/change-variables-linear.js';
-export { changeVariablesScale } from './change-variables/double/change-variables-scale.js';
-export { changeVariablesTranslateX } from './change-variables/double/change-variables-translate-x.js';
+export { scale, changeVariablesScale } from './change-variables/double/scale.js';
+export { taylorShift, inplaceTaylorShift, changeVariablesTranslateX } from './change-variables/double/taylor-shift.js';
 export { reflectAboutYAxis } from './change-variables/double/reflect-about-y-axis.js';
 
 // change variables expansion
 export { eChangeVariablesLinear } from './change-variables/expansion/e-change-variables-linear.js';
-export { eChangeVariablesScale } from './change-variables/expansion/e-change-variables-scale.js';
-export { eChangeVariablesTranslateX } from './change-variables/expansion/e-change-variables-translate-x.js';
+export { eScale, eChangeVariablesScale } from './change-variables/expansion/e-scale.js';
+export { eTaylorShift, eChangeVariablesTranslateX } from './change-variables/expansion/e-taylor-shift.js';
 export { eReflectAboutYAxis } from './change-variables/expansion/e-reflect-about-y-axis.js';
 
 // error analysis
@@ -198,29 +202,29 @@ export { bFlatCoefficientsArr } from './predictive-random/bigint/b-random.js';
 export { allRootsCertified } from './roots/certified/all-roots-certified.js';
 export { allRootsCertifiedSimplified } from './roots/certified/all-roots-certified-simplified.js';
 export { refineK1 } from './roots/certified/refine-k1.js';
-export type { RootInterval } from './roots/certified/root-interval.js';
-export { mid } from './roots/certified/root-interval.js';
-export { createRootExact } from './roots/certified/root-interval.js';
+export type { RootInterval } from './roots/root-interval.js';
+export { mid } from './roots/root-interval.js';
+export { createRootExact } from './roots/root-interval.js';
 export type { RootIntervalExp } from './roots/certified/root-interval-exp.js';
 export { rootIntervalToExp } from './roots/certified/root-interval-to-exp.js';
 
 // roots descartes bigint
-export { bNumRoots } from './roots/descartes/bigint/b-num-roots.js';
-export { bNumRootsIn01 } from './roots/descartes/bigint/b-num-roots-0-1.js';
-export { bNumRootsInRange } from './roots/descartes/bigint/b-num-roots-in-range.js';
-export { bSignChanges } from './roots/descartes/bigint/b-sign-changes.js';
+export { bNumRoots } from './roots/sturm/bigint/b-num-roots.js';
+export { bNumRootsIn01 } from './roots/sturm/bigint/b-num-roots-0-1.js';
+export { bNumRootsInRange } from './roots/sturm/bigint/b-num-roots-in-range.js';
+export { bSignChanges } from './roots/sturm/bigint/b-sign-changes.js';
 
 // roots descartes double
-export { numRoots } from './roots/descartes/double/num-roots.js';
-export { numRootsIn01 } from './roots/descartes/double/num-roots-in-0-1.js';
-export { numRootsInRange } from './roots/descartes/double/num-roots-in-range.js';
-export { signChanges } from './roots/descartes/double/sign-changes.js';
+export { numRoots } from './roots/sturm/double/num-roots.js';
+export { numRootsIn01 } from './roots/sturm/double/num-roots-in-0-1.js';
+export { numRootsInRange } from './roots/sturm/double/num-roots-in-range.js';
+export { signChanges } from './roots/sturm/double/sign-changes.js';
 
 // roots descartes expansion
-export { eNumRoots } from './roots/descartes/expansion/e-num-roots.js';
-export { eNumRootsIn01 } from './roots/descartes/expansion/e-num-roots-0-1.js';
-export { eNumRootsInRange } from './roots/descartes/expansion/e-num-roots-in-range.js';
-export { eSignChanges } from './roots/descartes/expansion/e-sign-changes.js';
+export { eNumRoots } from './roots/sturm/expansion/e-num-roots.js';
+export { eNumRootsIn01 } from './roots/sturm/expansion/e-num-roots-0-1.js';
+export { eNumRootsInRange } from './roots/sturm/expansion/e-num-roots-in-range.js';
+export { eSignChanges } from './roots/sturm/expansion/e-sign-changes.js';
 
 // roots from roots
 export { bFromRoots } from './roots/from-roots/bigint/b-from-roots.js';

@@ -1,13 +1,9 @@
-import { bSturmChain as bSturmChain_ } from "../../../euclidean-division-related/bigint/b-sturm-chain.js";
-import { bHorner as bHorner_ } from "../../../evaluate/bigint/b-horner.js";
-import { bSignChanges as bSignChanges_ } from "./b-sign-changes.js";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const bSturmChain = bSturmChain_;
-const bHorner = bHorner_;
-const bSignChanges = bSignChanges_;
+import { bSturmChain } from "../../../euclidean-division-related/bigint/b-sturm-chain.js";
+import { bHorner } from "../../../evaluate/bigint/b-horner.js";
+import { bSignChanges } from "./b-sign-changes.js";
 /**
  * Returns the *exact* number of *distinct* real roots in the open
- * interval (a,b) of the given polynomial.
+ * interval `(a,b)` of the given polynomial.
  *
  * @param p a polynomial with coefficients given densely as an array of
  * bigints from highest to lowest power, e.g. `[5n,-3n,0n]`

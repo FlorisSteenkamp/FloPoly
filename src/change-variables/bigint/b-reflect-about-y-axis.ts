@@ -15,14 +15,14 @@
  */
 function bReflectAboutYAxis(
         p: bigint[]): bigint[] {
-            
+
     const d = p.length-1;
 
     if (d < 0) { return []; }
 
     const result = p.slice();
     for (let i=0; i<d+1; i++) {
-        if (i % 2) {
+        if (i % 2 === (d - 1) % 2) {
             result[i] = -result[i]; 
         }
     }

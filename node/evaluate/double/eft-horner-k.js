@@ -1,6 +1,4 @@
-import { EFTHorner as EFTHorner_ } from "./eft-horner.js";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const EFTHorner = EFTHorner_;
+import { EFTHorner } from "./eft-horner.js";
 /**
  * @param p
  * @param x

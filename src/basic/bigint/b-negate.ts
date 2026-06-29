@@ -13,9 +13,9 @@
  * @doc
  */
 function bNegate(p: bigint[]): bigint[] {
-    const p_: bigint[] = [];
+    const p_ = new Array<bigint>(p.length);
     for (let i=0; i<p.length; i++) {
-        p_.push(-p[i]);
+        p_[i] = -p[i];
     }
 
     return p_;

@@ -5,13 +5,13 @@ import { eDifferentiate } from '../../../src/calculus/expansion/e-differentiate.
 
 
 describe('eDifferentiate', function() {
-	it('should differentiate some polynomials with Shewchuk expansion coefficients correctly', 
-	function() {
-		let p1: number[][] = [];
-		let p2 = [[1]];
-		let p3 = [[5], [4], [3], [2], [1]];
-		expect(eEqual(eDifferentiate(p1), [])).toBeTruthy();
-		expect(eEqual(eDifferentiate(p2), [])).toBeTruthy();
-		expect(eEqual(eDifferentiate(p3), [[20], [12], [6], [2]])).toBeTruthy();
-	});
+    it('should differentiate some polynomials with Shewchuk expansion coefficients correctly', 
+    function() {
+        let p1: number[][] = [];
+        let p2 = [[1]];
+        let p3 = [[5], [4], [3], [2], [1]];
+        expect(eEqual(eDifferentiate(p1), [])).toEqual(true);
+        expect(eEqual(eDifferentiate(p2), [])).toEqual(true);
+        expect(eEqual(eDifferentiate(p3), [[20], [12], [6], [2]])).toEqual(true);
+    });
 });

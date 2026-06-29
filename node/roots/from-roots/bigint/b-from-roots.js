@@ -1,6 +1,4 @@
-import { bMultiply as bMultiply_ } from "../../../basic/bigint/b-multiply.js";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const bMultiply = bMultiply_;
+import { bMultiply } from "../../../basic/bigint/b-multiply.js";
 /**
  * Constructs a polynomial from the given roots by multiplying out the
  * factors (x - root1)(x - root2)

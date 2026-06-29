@@ -1,8 +1,5 @@
-import { exponent as exponent_ } from "big-float-ts";
-import { bitLength as bitLength_ } from "big-float-ts";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const exponent = exponent_;
-const bitLength = bitLength_;
+import { exponent } from "big-float-ts";
+import { bitLength } from "big-float-ts";
 /**
  * Returns the result of scaling the given float by a power of two such that
  * it becomes an integer (overflow not possible) - the smallest such integer is

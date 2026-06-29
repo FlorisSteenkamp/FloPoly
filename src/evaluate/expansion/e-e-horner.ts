@@ -4,11 +4,11 @@ import { expansionProduct } from "big-float-ts";
 
 /**
  * Returns the exact result (bar underflow / overflow) of evaluating a 
- * univariate polynomial at a point given as a Schewchuk expansion using 
- * Horner's method - the result is returned as a Schewchuk expansion.
+ * univariate polynomial at a point given as a Shewchuk expansion using 
+ * Horner's method - the result is returned as a Shewchuk expansion.
  * 
  * @param p a polynomial with coefficients given densely as an array of 
- * Schewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
+ * Shewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
  * represents the polynomial `5x^2 - 3x`
  * @param x the value at which to evaluate the polynomial
  * 

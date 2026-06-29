@@ -1,18 +1,10 @@
-import { expansionProduct as expansionProduct_ } from "big-float-ts";
-import { eIntPow as eIntPow_ } from "big-float-ts";
-import { eDiv as eDiv_ } from "big-float-ts";
-import { eNegativeOf as eNegativeOf_ } from "big-float-ts";
-import { eIsConstOrZero as eIsConstOrZero_ } from "../../basic/expansion/e-is-const-or-zero.js";
-import { eDegree as eDegree_ } from "../../basic/expansion/e-degree.js";
-import { ePdivTrivial as ePdivTrivial_ } from "./e-pdiv-trivial.js";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const ePdivTrivial = ePdivTrivial_;
-const eIsConstOrZero = eIsConstOrZero_;
-const expansionProduct = expansionProduct_;
-const eIntPow = eIntPow_;
-const eDiv = eDiv_;
-const eNegativeOf = eNegativeOf_;
-const eDegree = eDegree_;
+import { expansionProduct } from "big-float-ts";
+import { eIntPow } from "big-float-ts";
+import { eDiv } from "big-float-ts";
+import { eNegativeOf } from "big-float-ts";
+import { eIsConstOrZero } from "../../basic/expansion/e-is-const-or-zero.js";
+import { eDegree } from "../../basic/expansion/e-degree.js";
+import { ePdivTrivial } from "./e-pdiv-trivial.js";
 /**
  * Returns the subresultant pseudo remainder sequence of a/b.
  *

@@ -167,8 +167,8 @@ export { bFlatCoefficientsArr } from './predictive-random/bigint/b-random.js';
 export { allRootsCertified } from './roots/certified/all-roots-certified.js';
 export { allRootsCertifiedSimplified } from './roots/certified/all-roots-certified-simplified.js';
 export { refineK1 } from './roots/certified/refine-k1.js';
-export { mid } from './roots/certified/root-interval.js';
-export { createRootExact } from './roots/certified/root-interval.js';
+export { mid } from './roots/root-interval.js';
+export { createRootExact } from './roots/root-interval.js';
 export { rootIntervalToExp } from './roots/certified/root-interval-to-exp.js';
 // roots descartes bigint
 export { bNumRoots } from './roots/descartes/bigint/b-num-roots.js';

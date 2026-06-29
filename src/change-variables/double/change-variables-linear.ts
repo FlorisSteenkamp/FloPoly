@@ -1,3 +1,6 @@
+
+// TODO - check entire change-variables folder - replace with `taylorShift` (**much** faster)
+
 /**
  * Returns the result of performing a change of variables of the 
  * form: p(x) <- p(ax + b) in double precision.
@@ -32,9 +35,9 @@ function changeVariablesLinear(
     if (d < 0) { return []; }
     
     // Initialize a zero matrix
-    const t: number[][] = [];
+    const t = new Array<number[]>(d+1);
     for (let i=0; i<d+1; i++) {
-        t.push(new Array(d+1).fill(0));
+        t[i] = new Array(d+1).fill(0);
     }
 
     // Calculate the triangular matrix T
@@ -54,7 +57,7 @@ function changeVariablesLinear(
             res[d-i] += t[i][j] * p[d-j];
         }
     }
-    
+
     return res;
 }
 

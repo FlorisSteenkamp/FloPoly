@@ -1,12 +1,8 @@
-import { eAbs as eAbs_ } from "big-float-ts";
-import { eIntPow as eIntPow_ } from "big-float-ts";
-import { eDegree as eDegree_ } from "../../basic/expansion/e-degree.js";
+import { eAbs } from "big-float-ts";
+import { eIntPow } from "big-float-ts";
+import { eDegree } from "../../basic/expansion/e-degree.js";
 import { eMultiplyByConst } from "../../basic/expansion/e-multiply-by-const.js";
 import { ePdivInternal } from "./e-pdiv-internal.js";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eDegree = eDegree_;
-const eAbs = eAbs_;
-const eIntPow = eIntPow_;
 /**
  * Performs a **trivial pseudo-division** and returns the `quotient` and `remainder`
  * of the pseudo division of `a/b` (a, b both being polynomials) in such a way

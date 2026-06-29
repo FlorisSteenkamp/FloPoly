@@ -16,7 +16,7 @@ import { eNegativeOf } from "big-float-ts";
  * content of `p` and `2x² - x - 1` is its primitive part.
  * 
  * @param p a polynomial with coefficients given densely as an array of
- * Schewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
+ * Shewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
  * represents the polynomial `5x^2 - 3x`
  * 
  * @doc

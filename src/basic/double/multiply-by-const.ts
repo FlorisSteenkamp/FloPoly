@@ -17,13 +17,16 @@ import { removeLeadingZeros } from "./remove-leading-zeros.js";
  * 
  * @doc
  */
-function multiplyByConst(c: number, p: number[]): number[] {
+function multiplyByConst(
+        c: number,
+        p: number[]): number[] {
+
     if (c === 0) { return []; }
     
     const d = p.length;
-    const p_: number[] = [];
+    const p_ = new Array<number>(d);
     for (let i=0; i<d; i++) {
-        p_.push(c*p[i]);
+        p_[i] = c*p[i];
     }
     
     // We *have* to clip due to possible floating point underflow

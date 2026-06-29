@@ -1,10 +1,6 @@
-import { eAbs as eAbs_ } from 'big-float-ts';
-import { eSign as eSign_ } from 'big-float-ts';
-import { eRem as eRem_ } from 'big-float-ts';
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eAbs = eAbs_;
-const eSign = eSign_;
-const eRem = eRem_;
+import { eAbs } from 'big-float-ts';
+import { eSign } from 'big-float-ts';
+import { eRem } from 'big-float-ts';
 /**
  * Computes the greatest common divisor of two integers a and b, using the
  * Euclidean Algorithm.

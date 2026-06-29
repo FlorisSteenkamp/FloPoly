@@ -1,8 +1,5 @@
-import { eMultDouble2 } from "big-float-ts";
-import { eAdd } from "big-float-ts";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const emd = eMultDouble2;
-const eae = eAdd;
+import { eMultDouble2 as emd } from "big-float-ts";
+import { eAdd as eae } from "big-float-ts";
 /**
  * Deflates the given polynomial exactly by removing a factor (x - r).
  *

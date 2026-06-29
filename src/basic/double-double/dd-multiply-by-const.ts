@@ -16,9 +16,9 @@ function ddMultiplyByConst(c: number[], p: number[][]): number[][] {
     if (c[1] === 0) { return [[0,0]]; }
     
     const d = p.length;
-    const p_: number[][] = [];
+    const p_ = new Array<number[]>(d);
     for (let i=0; i<d; i++) {
-        p_.push(ddMultDd(c,p[i]));
+        p_[i] = ddMultDd(c,p[i]);
     }
     
     // We *have* to clip due to possible floating point underflow

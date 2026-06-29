@@ -2,7 +2,7 @@ import { twoSum } from "big-float-ts";
 import { EFTHorner } from "./eft-horner.js";
 import { HornerSum } from "./horner-sum.js";
 import { HornerAbsSum } from "./horner-abs-sum.js";
-import { γs } from "./gammas.js";
+import { γs } from "../../error-analysis/gamma.js";
 
 
 const u = Number.EPSILON;
@@ -42,7 +42,7 @@ function compHornerIsFaithful(
     const β̂  = (α̂ + Math.abs(e)) / (1 - 2*u);
 
     return { 
-        isFaithful: α̂  < (u/2) * Math.abs(r̄),
+        isFaithful: α̂ < (u/2) * Math.abs(r̄),
         errBound: β̂,
         r̄
     };

@@ -12,9 +12,9 @@
  * @doc
  */
 function negate(p: number[]): number[] {
-    const p_: number[] = [];
+    const p_ = new Array<number>(p.length);
     for (let i=0; i<p.length; i++) {
-        p_.push(-p[i]);
+        p_[i] = -p[i];
     }
 
     return p_;

@@ -4,8 +4,8 @@ import { bSturmChain } from '../../../src/euclidean-division-related/bigint/b-st
 
 
 describe('bSturmChain', function() {
-	it('should calculate the sturm chain of some polynomials with bigint coefficients correctly', 
-	function() {
+    it('should calculate the sturm chain of some polynomials with bigint coefficients correctly', 
+    function() {
         {
             // This is the Wikipedia example https://en.wikipedia.org/wiki/Polynomial_greatest_common_divisor
             // a = x^8 + x^6 - 3x^4 - 3x^3 + 8x^2 + 2x - 5

@@ -5,11 +5,11 @@ import { eReflectAboutYAxis } from '../../../src/change-variables/expansion/e-re
 
 
 describe('eReflectAboutYAxis', function() {
-	it('should correctly reflect some polynomials with Shewchuk expansion coefficients about the y axis', 
-	function() {
-		let p1: number[][] = [];
-		let p2 = [[5],[4],[3],[2],[1]];
-		expect(eEqual(eReflectAboutYAxis(p1), [])).toBeTruthy();
-		expect(eEqual(eReflectAboutYAxis(p2), [[5],[-4],[3],[-2],[1]])).toBeTruthy();
-	});
+    it('should correctly reflect some polynomials with Shewchuk expansion coefficients about the y axis', 
+    function() {
+        let p1: number[][] = [];
+        let p2 = [[5],[4],[3],[2],[1]];
+        expect(eEqual(eReflectAboutYAxis(p1), [])).toEqual(true);
+        expect(eEqual(eReflectAboutYAxis(p2), [[5],[-4],[3],[-2],[1]])).toEqual(true);
+    });
 });

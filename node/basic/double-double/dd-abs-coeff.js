@@ -9,9 +9,9 @@ import { ddAbs } from "double-double";
  * @doc
  */
 function ddAbsCoeff(p) {
-    const p_ = [];
+    const p_ = new Array(p.length);
     for (let i = 0; i < p.length; i++) {
-        p_.push(ddAbs(p[i]));
+        p_[i] = ddAbs(p[i]);
     }
     return p_;
 }

@@ -9,10 +9,10 @@
  * @doc
  */
 function bAbsCoeff(p: bigint[]): bigint[] {
-    const p_: bigint[] = [];
+    const p_ = new Array<bigint>(p.length);
     for (let i=0; i<p.length; i++) {
         const v = p[i];
-        p_.push(v < 0n ? -v : v);
+        p_[i] = v < 0n ? -v : v;
     }
 
     return p_;

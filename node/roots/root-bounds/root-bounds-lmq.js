@@ -1,10 +1,6 @@
-import { negate as negate_ } from "../../basic/double/negate.js";
-import { upperToLowerBound as upperToLowerBound_ } from "./upper-to-lower-bound.js";
-import { positiveToNegativeBound as positiveToNegativeBound_ } from "./positive-to-negative-bound.js";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const negate = negate_;
-const upperToLowerBound = upperToLowerBound_;
-const positiveToNegativeBound = positiveToNegativeBound_;
+import { negate } from "../../basic/double/negate.js";
+import { upperToLowerBound } from "./upper-to-lower-bound.js";
+import { positiveToNegativeBound } from "./positive-to-negative-bound.js";
 /**
  * Returns an upper bound for the positive real roots of the given polynomial.
  *
@@ -41,7 +37,7 @@ function positiveRootUpperBound_LMQ(p) {
         if (p[m] >= 0) {
             continue;
         }
-        let tempub = Number.POSITIVE_INFINITY;
+        let tempub = Infinity;
         let any = false;
         for (let k = 0; k < m; k++) {
             if (p[k] <= 0) {

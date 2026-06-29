@@ -1,4 +1,4 @@
-import { RootInterval } from "./root-interval.js";
+import type { RootInterval } from "../root-interval.js";
 /**
  * Finds and returns all ordered *certified* root intervals (bar underflow /
  * overflow) of the given polynomial (with coefficients given in double-double
@@ -55,9 +55,9 @@ import { RootInterval } from "./root-interval.js";
  * of passing `p` pass `p.map(c => [0,c])` - this will transform the
  * coefficients to double-double precision
  * @param lb defaults to 0; lower bound of roots to be returned;
- * `Number.NEGATIVE_INFINITY` may be given if there is no lower bound
+ * `-Infinity` may be given if there is no lower bound
  * @param ub defaults to 1; upper bound of roots to be returned;
- * `Number.POSITIVE_INFINITY` may be given if there is no upper bound
+ * `Infinity` may be given if there is no upper bound
  * @param pE defaults to `undefined`; an error polynomial that provides a
  * coefficientwise error bound on the input polynomial; all coefficients must
  * be positive; if `undefined `then the input polynomial will be assumed exact
@@ -102,8 +102,8 @@ import { RootInterval } from "./root-interval.js";
  * const toDoubleDouble = c => [0,c];
  * const roots = allRootsCertified(
  *     p.map(toDoubleDouble),
- *     Number.NEGATIVE_INFINITY,
- *     Number.POSITIVE_INFINITY
+ *     -Infinity,
+ *     Infinity
  * );
  * //console.log(roots);
  * // => [
@@ -139,12 +139,12 @@ import { RootInterval } from "./root-interval.js";
  * //    21366198225750*x^45 + 3949131291964600*x^44 - ...
  * const roots = allRootsCertified(p,0,51,pE,getPExact);
  * console.log(roots);  // => [
- * //	{ tS: 1, tE: 1, multiplicity: 1 },
- * //	{ tS: 2, tE: 2, multiplicity: 1 },
- * //	.
- * //	.
- * //	.
- * //	{ tS: 50, tE: 50, multiplicity: 1 }
+ * //    { tS: 1, tE: 1, multiplicity: 1 },
+ * //    { tS: 2, tE: 2, multiplicity: 1 },
+ * //    .
+ * //    .
+ * //    .
+ * //    { tS: 50, tE: 50, multiplicity: 1 }
  * // ]
  * //
  * // ...thus roots are returned accurately.

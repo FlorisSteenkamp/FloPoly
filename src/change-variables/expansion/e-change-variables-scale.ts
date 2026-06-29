@@ -1,67 +1,71 @@
-import { expansionProduct } from "big-float-ts";
-import { fastExpansionSum } from "big-float-ts";
-import { scaleExpansion2 } from "big-float-ts";
+//--------------------------
+// SUPERSEDED BY `eScale` !!
+//--------------------------
+
+// import { expansionProduct } from "big-float-ts";
+// import { fastExpansionSum } from "big-float-ts";
+// import { scaleExpansion2 } from "big-float-ts";
 
 
-/**
- * Returns the exact result (bar underflow / overflow) of performing a change 
- * of variables of the form: p(x) <- p(ax).
- * 
- * * see [this stackoverflow question](http://stackoverflow.com/questions/141422/how-can-a-transform-a-polynomial-to-another-coordinate-system)
- * 
- * @param p a polynomial with coefficients given densely as an array of Schewchuk
- * floating point expansions from highest to lowest power, e.g. `[[5],[-3],[0]]`
- * represents the polynomial `5x^2 - 3x`
- * @param a a scaling factor, i.e. the `a` in `p(x) <- p(ax)`
- * 
- * @example
- * ```typescript
- * eChangeVariablesScale([[1],[2],[7]], 3); //=> [[9], [6], [7]]
- * ```
- * 
- * @doc
- */
-function eChangeVariablesScale(
-        p: number[][], 
-        a: number): number[][] {
+// /**
+//  * Returns the exact result (bar underflow / overflow) of performing a change 
+//  * of variables of the form: p(x) <- p(ax).
+//  * 
+//  * * see [this stackoverflow question](http://stackoverflow.com/questions/141422/how-can-a-transform-a-polynomial-to-another-coordinate-system)
+//  * 
+//  * @param p a polynomial with coefficients given densely as an array of Shewchuk
+//  * floating point expansions from highest to lowest power, e.g. `[[5],[-3],[0]]`
+//  * represents the polynomial `5x^2 - 3x`
+//  * @param a a scaling factor, i.e. the `a` in `p(x) <- p(ax)`
+//  * 
+//  * @example
+//  * ```typescript
+//  * eChangeVariablesScale([[1],[2],[7]], 3); //=> [[9], [6], [7]]
+//  * ```
+//  * 
+//  * @doc
+//  */
+// function eChangeVariablesScale(
+//         p: number[][], 
+//         a: number): number[][] {
 
-    // We let the coefficients of `p(ax)` be denoted by `d_i` in the code below. 
-    // `d_i` is calculated as `d = T*c`, where `c` is the original coefficient
-    // vector.
+//     // We let the coefficients of `p(ax)` be denoted by `d_i` in the code below. 
+//     // `d_i` is calculated as `d = T*c`, where `c` is the original coefficient
+//     // vector.
     
-    const d = p.length-1;
+//     const d = p.length-1;
 
-    if (d < 0) { return []; }
+//     if (d < 0) { return []; }
 
-    // Initialize a zero matrix
-    const t: number[][][] = [];
-    for (let i=0; i<d+1; i++) {
-        t.push(new Array(d+1).fill([0]));
-    }
+//     // Initialize a zero matrix
+//     const t = new Array<number[][]>(d+1);
+//     for (let i=0; i<d+1; i++) {
+//         t[i] = new Array(d+1).fill([0]);
+//     }
 
-    // Calculate the triangular matrix T
-    t[0][0] = [1];
-    for (let j=1; j<=d; j++) {
-        t[0][j] = [0];
-        for (let i=1; i<=j; i++) {
-            t[i][j] = scaleExpansion2(a, t[i-1][j-1]);
-        }
-    }
+//     // Calculate the triangular matrix T
+//     t[0][0] = [1];
+//     for (let j=1; j<=d; j++) {
+//         t[0][j] = [0];
+//         for (let i=1; i<=j; i++) {
+//             t[i][j] = scaleExpansion2(a, t[i-1][j-1]);
+//         }
+//     }
 
-    // Multiply
-    const res: number[][] = new Array(d+1).fill([0]);
-    for (let i=0; i<=d; i++) {
-        res[d-i] = [0];
-        for (let j=i; j<=d; j++) {
-            res[d-i] = fastExpansionSum(
-                res[d-i], 
-                expansionProduct(t[i][j], p[d-j])
-            );
-        }
-    }
+//     // Multiply
+//     const res: number[][] = new Array(d+1).fill([0]);
+//     for (let i=0; i<=d; i++) {
+//         res[d-i] = [0];
+//         for (let j=i; j<=d; j++) {
+//             res[d-i] = fastExpansionSum(
+//                 res[d-i], 
+//                 expansionProduct(t[i][j], p[d-j])
+//             );
+//         }
+//     }
 
-    return res;
-}
+//     return res;
+// }
 
 
-export { eChangeVariablesScale }
+// export { eChangeVariablesScale }

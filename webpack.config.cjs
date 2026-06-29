@@ -50,7 +50,9 @@ const config_Basic = {
         path: path.resolve(__dirname, 'browser'),
         library: { type: 'module' }
     },
-    experiments: { outputModule: true }
+    experiments: {
+        outputModule: true
+    }
 }
 
 

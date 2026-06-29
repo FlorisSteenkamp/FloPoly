@@ -1,10 +1,6 @@
-import { bSturmChain as bSturmChain_ } from "../../../euclidean-division-related/bigint/b-sturm-chain.js";
-import { bDegree as bDegree_ } from "../../../basic/bigint/b-degree.js";
-import { bSignChanges as bSignChanges_ } from "./b-sign-changes.js";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const bSturmChain = bSturmChain_;
-const bDegree = bDegree_;
-const bSignChanges = bSignChanges_;
+import { bSturmChain } from "../../../euclidean-division-related/bigint/b-sturm-chain.js";
+import { bDegree } from "../../../basic/bigint/b-degree.js";
+import { bSignChanges } from "./b-sign-changes.js";
 /**
  * Returns the *exact* number of *distinct* real roots in the interval (-∞,+∞)
  * of the given polynomial.

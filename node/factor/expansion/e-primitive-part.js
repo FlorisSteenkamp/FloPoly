@@ -1,8 +1,5 @@
-import { eContent as eContent_ } from "./e-content.js";
-import { eDiv as eDiv_ } from "big-float-ts";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const eContent = eContent_;
-const eDiv = eDiv_;
+import { eContent } from "./e-content.js";
+import { eDiv } from "big-float-ts";
 /**
  * Returns the primitive part of the given polynomial.
  *

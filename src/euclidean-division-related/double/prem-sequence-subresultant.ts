@@ -3,7 +3,7 @@ import { ePremSequenceSubresultant } from "../expansion/e-prem-sequence-subresul
 
 /**
  * Returns the subresultant pseudo remainder sequence of a/b with the resulting
- * polynomials given with coefficients as Schewchuk expansions.
+ * polynomials given with coefficients as Shewchuk expansions.
  * 
  * * **precondition:** g !== [], i.e. unequal to the zero polynomial.
  * 

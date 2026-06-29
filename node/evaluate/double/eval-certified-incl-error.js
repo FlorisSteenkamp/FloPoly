@@ -1,14 +1,9 @@
-import { EFTHorner as EFTHorner_ } from "./eft-horner.js";
-import { hornerWithRunningError as hornerWithRunningError_ } from "./horner-with-running-error.js";
-import { Horner as Horner_ } from "./horner.js";
-import { AbsHorner as AbsHorner_ } from "./abs-horner.js";
-import { γ as γ_ } from "../../error-analysis/gamma.js";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const γ = γ_;
-const EFTHorner = EFTHorner_;
-const hornerWithRunningError = hornerWithRunningError_;
-const Horner = Horner_;
-const AbsHorner = AbsHorner_;
+import { EFTHorner } from "./eft-horner.js";
+import { hornerWithRunningError } from "./horner-with-running-error.js";
+import { Horner } from "./horner.js";
+import { AbsHorner } from "./abs-horner.js";
+import { γ } from "../../error-analysis/gamma.js";
+const { abs } = Math;
 const γ1 = γ(1);
 const γ2 = γ(2);
 /**
@@ -52,19 +47,18 @@ const γ2 = γ(2);
  * @doc
  */
 function evalCertifiedInclError(p, x, pE = undefined, multiplier = 1) {
-    const absX = Math.abs(x);
     // first do a fast evaluation
     const [r, e1] = hornerWithRunningError(p[0], x);
     // the line below was changed due to negative values of x now also allowed
-    const e2 = γ2 * AbsHorner(p[0], absX); // the error due to not considering p[1]
+    const e2 = γ2 * AbsHorner(p[0], x); // the error due to not considering p[1]
     // error due to imprecision in coefficients
     // the line below was changed due to negative values of x now also allowed
     //const E = pE ? Horner(pE, x) : 0; 
     const E = pE !== undefined
-        ? Horner(pE, absX)
+        ? Horner(pE, abs(x))
         : 0;
     const ee = e1 + e2 + E; // in difficult cases E can be larger than e1+e2
-    if (ee * multiplier < Math.abs(r)) {
+    if (ee * multiplier < abs(r)) {
         // we are within bounds
         return { r̂: r, e: ee };
     }
@@ -78,7 +72,7 @@ function evalCertifiedInclError(p, x, pE = undefined, multiplier = 1) {
     let e = (c1 + c2 + c3) + E; // typically: c1,c2 < c3 < E
     r̂ = (C1 + C2 + C3) + r̂; // typically: C1,C2 < C3 < r̂ and (C1 + C2 + C3 < r̂)
     e += γ1 * r̂;
-    if (e * multiplier < Math.abs(r̂)) {
+    if (e * multiplier < abs(r̂)) {
         return { r̂, e };
     }
     // error is still too large to return the correct sign (if multiplier === 1)

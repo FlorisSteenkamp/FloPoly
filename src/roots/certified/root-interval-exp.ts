@@ -1,6 +1,6 @@
 /**
  * Represents a root bracketing interval with the bracket limits given as
- * Schewchuk expansions.
+ * Shewchuk expansions.
  * 
  * * **precondition:** `tE - tS` when calculated in double precision must be 
  * exact - this is actually almost guaranteed due to a theorem stating that if

@@ -1,6 +1,4 @@
-import { pInfNorm as pInfNorm_ } from "../../norm/double/p-inf-norm.js";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗ Otherwise code is too slow❗
-const pInfNorm = pInfNorm_;
+import { pInfNorm } from "../../norm/double/p-inf-norm.js";
 /**
  * Finds an upper bound on the magnitude (absolute value) of the roots
  * (including complex roots) of the given polynomial using Rouche's Theorem
