@@ -7,6 +7,8 @@ import { testIt_Mignotte } from '../../__tests__/roots/mobius/test-it-mignotte.j
     // testIt(false);  // warmup
 
     testIt_General(true);
+    console.log('--------------------------------');
+    testIt_General(true);
 
     // testIt_Mignotte(true);
 

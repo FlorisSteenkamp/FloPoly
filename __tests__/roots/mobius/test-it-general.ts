@@ -12,9 +12,13 @@ import { getPolyFromRoots } from '../../get-polys-from-roots.js';
 import { bernsteinToPowerBasis } from '../../../src/change-basis/double/bernstein-to-power-basis.js';
 import { powerToBernsteinBasis } from '../../../src/change-basis/double/power-to-bernstein-basis.js';
 import { powerToBernsteinBasis01 } from '../../../src/change-basis/double/power-to-bernstein-basis-01.js';
+import { scaleFloatssToBigintss } from '../../../src/scale-to-int/scale-floatss-to-bigintss.js';
+import { bSum } from '../../../src/util/bigint/b-sum.js';
+import { bNumRootsInRange } from '../../../src/roots/sturm/bigint/b-num-roots-in-range.js';
+import { bNumRoots } from '../../../src/roots/sturm/bigint/b-num-roots.js';
 
 
-const { round, ceil, abs } = Math;
+const { round, ceil, abs, log2, max } = Math;
 
 
 /** This test is also used by the demo! */
@@ -26,6 +30,7 @@ function testIt_General(log: boolean) {
 
     // find roots within a typical range
     const lb = 0;
+    // const ub = 1;
     const ub = 1;
 
     // find roots on the entire projective number line
@@ -38,7 +43,7 @@ function testIt_General(log: boolean) {
 
     /** number of polynomials to find roots of */
     // const N = 100_000;
-    const N = 1;
+    const N = 100_000;
     // const shift = 77;
     const shift = 77;
 
@@ -57,12 +62,17 @@ function testIt_General(log: boolean) {
     // const _roots_ = [0.001,0.002,0.003,0.04,0.05,30,50,100,200].map(r => 0.5 + r/4);
     //---------------------------------------------------------------
     // const _roots_ = [0.001,0.002,0.003,0.04,0.05,30,50,100,200].map(r => 0.5 + r/2);
-    const _roots_ = [0.001,0.002,0.003,0.04,0.05,30,50,100,200].map(r => 1 + r/16);
+    // const _roots_ = [0.001,0.002,0.003,0.004,0.005,3,5,10,190].map(r => 1 + r/100);
+    // const _roots_ = [0.001,0.002,0.003,0.004,0.005,3,5,10,100].map(r => 1 + r/200);
+    // const _roots_ = [0.001,0.002,0.003,0.004,0.005,3,5,10,100].map(r => 1 + r/1000_000_000_000);
+    const _roots_ = [0.001,0.002,0.003,0.004,0.005,3,5,10,100].map(r => 0.0625/(2*4) + r/16);
     // https://www.desmos.com/calculator/529c3fuw5c
-    const testPoly = getPolyFromRoots(_roots_);
-    polys[0] = testPoly;
     
-    toCasStr(testPoly.pDd.map(coef => coef.map(v => v*2**28)));//?
+    const testPoly = getPolyFromRoots(_roots_);
+    // polys[0] = testPoly;
+    // for (let i=0; i<polys.length; i++) { polys[i] = testPoly; }
+    
+    toCasStr(testPoly.pDd.map(coef => coef.map(v => v*2**34)));//?
     // @ts-ignore
 
     //-----
@@ -96,8 +106,12 @@ function testIt_General(log: boolean) {
     for (let i=0; i<N; i++) {
         // const { pDd, errBoundUnscaledDd, getPExact } = polys[i];
         const { pDd, pDd_, getPExact } = polys[i];
-        const ts = roots(pDd, lb, ub, pDd_, getPExact);
-        ts?.map(t => round(t.tS*1000_000)/1000_000);//?
+        const ts = roots(pDd, lb, ub, pDd_, getPExact);//?
+        // const rr = ts?.map(t => round((t.tS + t.tE)/2*1000_000_000)/1000_000_000).toReversed();
+        // const rr = ts?.map(t => (t.tS + t.tE)/2).toReversed();
+        // ts;//?
+        // rr;//?
+        // expect(ts?.length).toEqual(_roots_.length);
         // eEstimate(eHorner(polys[0].getPExact(), ts![0].tS));//?
         // eEstimate(eHorner(polys[0].getPExact(), ts![1].tS));//?
         // eEstimate(eHorner(polys[0].getPExact(), ts![2].tS));//?
@@ -108,35 +122,42 @@ function testIt_General(log: boolean) {
     globalThis.__debug__;//?
     //------------------------------------------------------------------
 
-
-    //------------------------------------------------------------------
-    // find all roots of all generated polynomials using `isolateRoots`
-    //------------------------------------------------------------------
-    let numNaive = 0;
-    const timeStartNaive = performance.now();
-    for (let i=0; i<N; i++) {
-        const { p } = polys[i];
-        const ts = allRoots(p, lb, ub);
-        numNaive += ts.length;
-    }
-    let timingNaive = performance.now() - timeStartNaive;
-    //------------------------------------------------------------------
-
-
     //---------------------------------------------------------------------
     // find all roots of all generated polynomials using allRootsCertified
     //---------------------------------------------------------------------
     let numCert = 0;
+    // 1.7763568394002505e-15/Number.EPSILON;//?
     const timeStartCert = performance.now();
     for (let i=0; i<N; i++) {
         const { pDd, pDd_, getPExact } = polys[i];
         const errBound = pDd_.map((e, idx) => e*γγ3);
-        const ts = allRootsCertified(pDd, lb, ub, errBound, getPExact);
-        // ts.map(t => t.tS);//?
+        const ts = allRootsCertified(pDd, lb, ub, errBound, getPExact);//?
+        // ts.map(t => {
+        //     const W = t.tE - t.tS;
+        //     const maxW = 2*Number.EPSILON * Math.max(1, 2**Math.ceil(Math.log2(t.tS)));
+        //     if (W > maxW) { throw 'a'; }
+        //     return [t.tS, W, maxW, maxW/W];
+        // });//?
+        // const rr = ts.map(t => round((t.tS + t.tE)/2*1000_000)/1000_000);
+        // rr//?
         if (ts) { numCert += ts.length; }
     }
     let timingCert = performance.now() - timeStartCert;
     //---------------------------------------------------------------------
+
+
+    //------------------------------------------------------------------
+    // find all roots of all generated polynomials using `allRoots`
+    //------------------------------------------------------------------
+    // let numNaive = 0;
+    // const timeStartNaive = performance.now();
+    // for (let i=0; i<N; i++) {
+    //     const { p } = polys[i];
+    //     const ts = allRoots(p, lb, ub);
+    //     numNaive += ts.length;
+    // }
+    // let timingNaive = performance.now() - timeStartNaive;
+    //------------------------------------------------------------------
 
     //---------------------------------------------
     // Get the **exact** number of roots
@@ -144,10 +165,9 @@ function testIt_General(log: boolean) {
     //---------------------------------------------
     // let exactNumRoots = 0;
     // for (let i=0; i<N; i++) {
-    //     const { pDd, pD, errBound, getPExact } = polys[i];
+    //     const { getPExact } = polys[i];
     //     const coeffsExact = getPExact();
     //     const bCoeffs = scaleFloatssToBigintss(coeffsExact);
-    //     // bCoeffs;
     //     const bCoeffs_ = bCoeffs.map(bSum);
 
     //     //-----------------------------------------------------------
@@ -167,13 +187,13 @@ function testIt_General(log: boolean) {
     if (!log) { return; }
 
     console.log(`millis (get coeffs): ${round(timingCoeffs)}`);
-    console.log(`millis (naive roots): ${round(timingNaive)}`);
+    // console.log(`millis (naive roots): ${round(timingNaive)}`);
     console.log(`millis (isolate roots): ${round(timingIsolate)}`);
     console.log(`millis (cert): ${round(timingCert)}`);
 
-    console.log(`cert/naive ${(timingCert/timingNaive).toFixed(2)}`);
+    // console.log(`cert/naive ${(timingCert/timingNaive).toFixed(2)}`);
     console.log(`cert/isolate ${(timingCert/timingIsolate).toFixed(2)}`);
-    console.log(`num roots (naive) ${numNaive}`);
+    // console.log(`num roots (naive) ${numNaive}`);
     console.log(`num roots (cert) ${numCert}`);
     console.log(`num roots (isolate) ${numIso}`);
     // console.log(`num roots (exact) ${exactNumRoots}`);

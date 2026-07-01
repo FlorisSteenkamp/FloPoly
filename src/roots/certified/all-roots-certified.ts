@@ -27,11 +27,11 @@ const onePlusEps = 1 + eps;
  * * returns an empty array for a constant or the zero polynomial (or 
  * `undefined` for the zero polynomial - see the parameters for details)
  * 
- * * Let `W = m * Number.EPSILON * max(1, 2^⌈log₂r⌉)`, where
+ * * Let `W = 2 * m * Number.EPSILON * max(1, 2^⌈log₂r⌉)`, where
  *   * `r` is a root
  *   * `m` is the number of roots (the 'multiplicity') within the 
  *      interval, where multiplicity here includes roots seperated by less than 
- *     `2*Number.EPSILON` and not necessarily only exact multiple roots; 
+ *     `W` and not necessarily only exact multiple roots; 
  *
  * * the returned intervals are of max width `W` - use [[refineK1]] to 
  * reduce the root interval widths further and thus 'resolving' the roots if 

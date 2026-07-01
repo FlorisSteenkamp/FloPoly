@@ -39,7 +39,7 @@ function eFromRoots(
 
     const pDd = pE.map(eToDd);
     const pDd_ = pE.map(c =>
-        abs(c[c.length-2] || 0) / 3  // `/ 3` since the error is ~ `γγ1` and not `γγ3`
+        abs(c[c.length-1]) / 3  // `/ 3` since the error is ~ `γγ1` and not `γγ3`
     );
 
     const p = pE.map(c => eEstimate(c));

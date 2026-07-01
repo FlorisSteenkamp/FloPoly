@@ -1,4 +1,4 @@
-import { eAdd, eMultDouble1 } from "big-float-ts";
+import { eAdd, eCompress, eMultDouble1 } from "big-float-ts";
 
 
 const eChangeVariablesTranslateX = eTaylorShift;
@@ -26,7 +26,7 @@ function eTaylorShift(
     const q = p.slice();
     for (let k=0; k<=n; k++) {
         for (let i=1; i<=n - k; i++) {
-            q[i] = eAdd(q[i], eMultDouble1(q[i - 1], h));
+            q[i] = eCompress(eAdd(q[i], eMultDouble1(q[i - 1], h)));
         }
     }
 
