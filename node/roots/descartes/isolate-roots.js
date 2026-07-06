@@ -90,8 +90,8 @@ function isolateRoots(p, pDd, pDd_, lb, ub, getPExact) {
         if (varP === 1) { // exactly one root in this interval
             errBound = errBound || pDd_.map(E => E * γγ3);
             pDdTransposed = pDdTransposed || transposePoly(pDd);
-            const r = refineCertified(pDdTransposed, errBound, a, b, A, B, getPExact, false);
-            Is_.push({ tS: r[0], tE: r[1], multiplicity: 1 });
+            const [tS, tE, t] = refineCertified(pDdTransposed, errBound, a, b, A, B, getPExact, false);
+            Is_.push({ t, tS, tE, multiplicity: 1 });
             continue;
         }
         let realFailCount = varP < 0 ? failCount + 1 : 0;
@@ -104,7 +104,7 @@ function isolateRoots(p, pDd, pDd_, lb, ub, getPExact) {
             if (realFailCount === 0) {
                 // `varP` is guaranteed to be correct (except it can be larger by a multiple of 2)
                 // since the sign of `A` and `B` are both certified,
-                Is_.push({ tS: a, tE: b, multiplicity: abs(varP) });
+                Is_.push({ t: (a + b) / 2, tS: a, tE: b, multiplicity: abs(varP) });
                 continue; // stop recursion when intervals are too small
             }
             realFailCount = Infinity; // split one last time
@@ -185,7 +185,9 @@ function ddAdmissablePoint(pDd, pDd_, a, b, getPExact) {
 }
 function eAdmissablePoint(pE, a, b) {
     // E.g. of points for degree(p) === 4: [0.5, 0.25, 0.75, 0.125, 0.375]
+    const n = pE.length - 1;
     let d = 1; // number of subintervals to split the interval into
+    let c = 0; // count of points tested so far
     while (true) {
         d *= 2;
         for (let j = 1; j < d; j += 2) {
@@ -197,11 +199,14 @@ function eAdmissablePoint(pE, a, b) {
             if ($T !== 0) { // no error
                 return [t, $T];
             }
-            // if (c > n) {
-            //   // It should not be possible to get to this point since we
-            //   // tested more points than the degree of the polynomial so
-            //   // at least one of the roots should have been resolved from zero.
-            // }
+            if (c > n) {
+                // It should not be possible to get to this point since we
+                // tested more points than the degree of the polynomial so
+                // at least one of the roots should have been resolved from zero.
+                // However, if underflow occurs in an expansion product we might
+                // reach this point.
+                throw new Error('Cannot resolve root even in Shewchuk expansion precision');
+            }
         }
     }
 }

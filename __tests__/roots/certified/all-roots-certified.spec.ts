@@ -382,7 +382,7 @@ function() {
             { t: 3.9439999999999995, multiplicity: 1 }
         ])).toBe(true);
 
-        expect(ts2).toEqual([
+        expect(ts2.map(r => ({ tS: r.tS, tE: r.tE, multiplicity: r.multiplicity }))).toEqual([
             { tS: 3.3999999999999955, tE: 3.3999999999999964, multiplicity: 1 },
             { tS: 3.4, tE: 3.4000000000000017, multiplicity: 2 }
         ]);

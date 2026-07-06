@@ -8548,7 +8548,7 @@ function bFlatCoefficientsArr(n, d, a = 0, b = 1, seed = b_random_SEED, odds = 0
  * @doc
  */
 function createRootExact(t) {
-    return { tS: t, tE: t, multiplicity: 1 };
+    return { t, tS: t, tE: t, multiplicity: 1 };
 }
 /**
  * Simple function that returns the middle of the root bracketing interval - can
@@ -8653,6 +8653,9 @@ const { abs: refine_certified_abs, min: refine_certified_min, max: refine_certif
  * given polynomial using Brent's Method - modified slightly to allow for
  * error certified bounds.
  *
+ * * also returns (as the 3rd element of the returned array) the current Brent
+ * iterate `b` as the best point estimate within the interval
+ *
  * * near exact implementation of the original Brent Dekker Method (also known
  * as Brent's Method), except that it is specialized to polynomial evaluation.
  *
@@ -8674,7 +8677,7 @@ const { abs: refine_certified_abs, min: refine_certified_min, max: refine_certif
  * floating point numbers from highest to lowest power, e.g. `[[0,5],[0,-3],[0,0]]`
  * represents the polynomial `5x^2 - 3x`. If `exact` is `true` then this is allowed
  * to be `undefined`.
- * @param pE an error polynomial that provides a coefficientwise error bound on
+ * @param p_ an error polynomial that provides a coefficientwise error bound on
  * the input polynomial; all coefficients must be positive. If `exact` is `true`
  * then this is allowed to be `undefined`.
  * @param lb the lower limit of the search interval.
@@ -8682,11 +8685,11 @@ const { abs: refine_certified_abs, min: refine_certified_min, max: refine_certif
  * @param fa the result of evaluating the input polynomial at `a`
  * @param fb the result of evaluating the input polynomial at `b`
  * @param getPolyExact a function that returns the exact polynomial coefficients
- * @param exact defaults to false; set to true if you need to do exact evaluations from the start
+ * @param exact defaults to `false`; set to true if you need to do exact evaluations from the start
  *
  * @internal
  */
-function refineCertified(p, pE, lb, ub, fa, fb, getPolyExact, exact) {
+function refineCertified(p, p_, lb, ub, fa, fb, getPolyExact, exact) {
     //---- Make local copies of a and b.
     let a = lb;
     let b = ub;
@@ -8709,7 +8712,6 @@ function refineCertified(p, pE, lb, ub, fa, fb, getPolyExact, exact) {
         // or can also be taken as 4*u === 2*Number.EPSILON (2*eps)
         // adaptive tolerance
         //let δ = 2 * eps * max(1,abs(b));
-        //let δ = 2 * u * max(1,abs(b));
         let δ;
         const mm = refine_certified_max(refine_certified_abs(a), refine_certified_abs(b));
         if (mm <= 1) {
@@ -8717,17 +8719,15 @@ function refineCertified(p, pE, lb, ub, fa, fb, getPolyExact, exact) {
         }
         else {
             // keep δ = eps * a power of 2
-            //δ = eps * 2**ceil(log2(ceil(mm)));  // may be faster to get log2 of an integer
             δ = eps * 2 ** refine_certified_ceil(log2(mm));
         }
-        //tol = 2.0 * macheps * abs ( b ) + t;
         const m = 0.5 * (c - b);
         //if (abs(m) <= δ || fb === 0) {
         // modified from the original since we dont need the fb === 0 check here
         if (refine_certified_abs(m) <= δ) {
             return b < c
-                ? [b, c]
-                : [c, b];
+                ? [b, c, b]
+                : [c, b, b];
         }
         if (refine_certified_abs(e) < δ || refine_certified_abs(fa) <= refine_certified_abs(fb)) {
             e = m;
@@ -8772,36 +8772,35 @@ function refineCertified(p, pE, lb, ub, fa, fb, getPolyExact, exact) {
             b = b + δ;
         }
         else {
-            //b = b - eps;
             b = b - δ;
         }
         fb = exact
             ? eEstimate(eHorner(getPolyExact(), b))
             // keep TypeScript happy; neither `p` nor `pE` can be `undefined` 
             // here by a precondition
-            : evalCertified(p, b, pE);
+            : evalCertified(p, b, p_);
         if (fb === 0) {
             // Since `evalCertified` returns zero if undecided the zero result
             // cannot be fully trusted at this point.
             // if we are already doing exact evaluations this is an exact root
             if (exact) {
-                return [b, b];
+                return [b, b, b];
             }
             // We need to calculate δ/2 to the left and right of b to get 
             // results that should usually be !== 0. 
             // It is a pre-filter. If the result === 0 we need to sharpen the
             // ability of the evaluation by somehow reducing the error bound
-            const sL = refine_certified_max(lb, b - δ); // dont overstep bounds
-            const sR = refine_certified_min(ub, b + δ); // dont overstep bounds
+            const sL = refine_certified_max(lb, b - δ); // don't overstep bounds
+            const sR = refine_certified_min(ub, b + δ); // ...
             // Note: sR - sL <= 2*δ provided lb, ub are in [-1..1] - usually 
             // (when sL === s - δ and sR === s + δ) sR - sL === 2*δ. Also δ > 0
             // keep TypeScript happy; neither `p` nor `pE` can be `undefined` 
             // here by a precondition
-            const fsL = evalCertified(p, sL, pE);
-            const fsR = evalCertified(p, sR, pE);
+            const fsL = evalCertified(p, sL, p_);
+            const fsR = evalCertified(p, sR, p_);
             // if the evaluation method is strong enough return the result
             if (fsL * fsR !== 0) {
-                return [sL, sR];
+                return [sL, sR, b];
             }
             // At this point either fsL or fsR === 0 so we need to sharpen the
             // evaluation method
@@ -8813,7 +8812,7 @@ function refineCertified(p, pE, lb, ub, fa, fb, getPolyExact, exact) {
             fb = eEstimate(eHorner(getPolyExact(), b));
             // if the exact evaluation returns 0 we have an exact root
             if (fb === 0) {
-                return [b, b];
+                return [b, b, b];
             }
             // else we've got a new value for fb and from here on we use exact
             // evaluations
@@ -9203,8 +9202,8 @@ function allRootsCertified(p, lb = 0, ub = 1, pE, getPExact, returnUndefinedForZ
             if (LB * UB >= 0) {
                 return [];
             }
-            const [tS, tE] = refineCertified(curP_, curPE, lb, ub, LB, UB, getPolyExact /*, δ*/);
-            return [{ tS, tE, multiplicity: 1 }];
+            const [tS, tE, t] = refineCertified(curP_, curPE, lb, ub, LB, UB, getPolyExact /*, δ*/);
+            return [{ t, tS, tE, multiplicity: 1 }];
         }
         //---- First check from lb to the left side of the first micro-interval.
         let _a = is[0].tS;
@@ -9214,8 +9213,8 @@ function allRootsCertified(p, lb = 0, ub = 1, pE, getPExact, returnUndefinedForZ
         }
         else if (LB * _A < 0) {
             // recall LB must !== 0 as a precondition
-            const [tS, tE] = refineCertified(curP_, curPE, lb, _a, LB, _A, getPolyExact /*, δ*/);
-            roots.push({ tS, tE, multiplicity: 1 });
+            const [tS, tE, t] = refineCertified(curP_, curPE, lb, _a, LB, _A, getPolyExact /*, δ*/);
+            roots.push({ t, tS, tE, multiplicity: 1 });
         } //else {
         // _A === 0
         // no roots possible in [lb,_a]
@@ -9256,8 +9255,8 @@ function allRootsCertified(p, lb = 0, ub = 1, pE, getPExact, returnUndefinedForZ
                         checkEvenAA();
                     }
                     // [a_,_b] → single root (curve is monotone increasing or decreasing)
-                    const [tS, tE] = refineCertified(curP_, curPE, a_, _b, A_, _B, getPolyExact /*, δ*/);
-                    roots.push({ tS, tE, multiplicity: 1 });
+                    const [tS, tE, t] = refineCertified(curP_, curPE, a_, _b, A_, _B, getPolyExact /*, δ*/);
+                    roots.push({ t, tS, tE, multiplicity: 1 });
                 }
                 else { // _B === 0
                     //---- CASE 1C: _A⇑ | A_⇑ | _B0   OR   _A⇓ | A_⇓ | _B0
@@ -9276,13 +9275,13 @@ function allRootsCertified(p, lb = 0, ub = 1, pE, getPExact, returnUndefinedForZ
                 //---- CASE 2 _A⇑ | A_⇓   OR   _A⇓ | A_⇑
                 //console.log('CASE 2');
                 // - [_a,a_] → odd root(s)
-                roots.push({ tS: a.tS, tE: a.tE, multiplicity: 3 });
+                roots.push({ t: a.t, tS: a.tS, tE: a.tE, multiplicity: 3 });
                 if (A_ * _B < 0) {
                     //---- CASE 2A: _A⇑ | A_⇓ | _B⇑   OR   _A⇓ | A_⇑ | _B⇓
                     //console.log('CASE 2A');
                     // [a_,_b] → single root
-                    const [tS, tE] = refineCertified(curP_, curPE, a_, _b, A_, _B, getPolyExact /*, δ*/);
-                    roots.push({ tS, tE, multiplicity: 1 });
+                    const [tS, tE, t] = refineCertified(curP_, curPE, a_, _b, A_, _B, getPolyExact /*, δ*/);
+                    roots.push({ t, tS, tE, multiplicity: 1 });
                 }
                 else if (A_ * _B > 0) {
                     //---- CASE 2B: _A⇑ | A_⇓ | _B⇓   OR   _A⇓ | A_⇑ | _B⇑
@@ -9302,15 +9301,15 @@ function allRootsCertified(p, lb = 0, ub = 1, pE, getPExact, returnUndefinedForZ
                 if ( /*_a === a_ ||*/_A === 0) {
                     // multiple rational root at a_ OR both _A and A_ is 0
                     // so update multiplicity parity
-                    roots.push({ tS: a.tS, tE: a.tE, multiplicity: a.multiplicity + 1 });
+                    roots.push({ t: a.t, tS: a.tS, tE: a.tE, multiplicity: a.multiplicity + 1 });
                 }
                 else {
                     // now _A and _B are both !== 0
                     if (_A * _B > 0) {
-                        roots.push({ tS: a.tS, tE: a.tE, multiplicity: 2 });
+                        roots.push({ t: a.t, tS: a.tS, tE: a.tE, multiplicity: 2 });
                     }
                     else {
-                        roots.push({ tS: a.tS, tE: a.tE, multiplicity: 3 });
+                        roots.push({ t: a.t, tS: a.tS, tE: a.tE, multiplicity: 3 });
                     }
                 }
             }
@@ -9321,8 +9320,8 @@ function allRootsCertified(p, lb = 0, ub = 1, pE, getPExact, returnUndefinedForZ
                 // [_a,a_] → rational root at _a
                 if (A_ * _B < 0) {
                     // [a_,_b] → single root
-                    const [tS, tE] = refineCertified(curP_, curPE, a_, _b, A_, _B, getPolyExact /*, δ*/);
-                    roots.push({ tS, tE, multiplicity: 1 });
+                    const [tS, tE, t] = refineCertified(curP_, curPE, a_, _b, A_, _B, getPolyExact /*, δ*/);
+                    roots.push({ t, tS, tE, multiplicity: 1 });
                 }
                 else if (A_ * _B > 0) {
                     // [a_,_b] → no roots
@@ -9330,10 +9329,10 @@ function allRootsCertified(p, lb = 0, ub = 1, pE, getPExact, returnUndefinedForZ
                 // - [_a,a_] → 
                 // B_ and A_ are both !== 0
                 if (B_ * A_ > 0) {
-                    roots.push({ tS: a.tS, tE: a.tE, multiplicity: 2 });
+                    roots.push({ t: a.t, tS: a.tS, tE: a.tE, multiplicity: 2 });
                 }
                 else {
-                    roots.push({ tS: a.tS, tE: a.tE, multiplicity: 3 });
+                    roots.push({ t: a.t, tS: a.tS, tE: a.tE, multiplicity: 3 });
                 }
             }
         }
@@ -9391,7 +9390,7 @@ function allRootsCertified(p, lb = 0, ub = 1, pE, getPExact, returnUndefinedForZ
                 //console.log('possible even multiplicty root: ', _a, a_);
                 // The below multiplicity can really be any non-negative 
                 // multiple of 2
-                roots.push({ tS: a.tS, tE: a.tE, multiplicity: 2 });
+                roots.push({ t: a.t, tS: a.tS, tE: a.tE, multiplicity: 2 });
             }
         }
     }
@@ -9400,7 +9399,7 @@ function joinRoots(rs) {
     const newRs = [];
     const r = rs[0];
     // make a clone of the first interval
-    let curR = { tS: r.tS, tE: r.tE, multiplicity: r.multiplicity };
+    let curR = { t: r.t, tS: r.tS, tE: r.tE, multiplicity: r.multiplicity };
     for (let i = 0; i < rs.length - 1; i++) {
         const r = rs[i];
         const r_ = rs[i + 1];
@@ -9408,7 +9407,7 @@ function joinRoots(rs) {
             // they don't stick together
             newRs.push(curR);
             // make a clone of the next interval
-            curR = { tS: r_.tS, tE: r_.tE, multiplicity: r_.multiplicity };
+            curR = { t: r_.t, tS: r_.tS, tE: r_.tE, multiplicity: r_.multiplicity };
         }
         else {
             // they stick together - expand
@@ -9815,8 +9814,8 @@ function isolateRoots(p, pDd, pDd_, lb, ub, getPExact) {
         if (varP === 1) { // exactly one root in this interval
             errBound = errBound || pDd_.map(E => E * γγ3);
             pDdTransposed = pDdTransposed || transposePoly(pDd);
-            const r = refineCertified(pDdTransposed, errBound, a, b, A, B, getPExact, false);
-            Is_.push({ tS: r[0], tE: r[1], multiplicity: 1 });
+            const [tS, tE, t] = refineCertified(pDdTransposed, errBound, a, b, A, B, getPExact, false);
+            Is_.push({ t, tS, tE, multiplicity: 1 });
             continue;
         }
         let realFailCount = varP < 0 ? failCount + 1 : 0;
@@ -9829,7 +9828,7 @@ function isolateRoots(p, pDd, pDd_, lb, ub, getPExact) {
             if (realFailCount === 0) {
                 // `varP` is guaranteed to be correct (except it can be larger by a multiple of 2)
                 // since the sign of `A` and `B` are both certified,
-                Is_.push({ tS: a, tE: b, multiplicity: isolate_roots_abs(varP) });
+                Is_.push({ t: (a + b) / 2, tS: a, tE: b, multiplicity: isolate_roots_abs(varP) });
                 continue; // stop recursion when intervals are too small
             }
             realFailCount = Infinity; // split one last time
@@ -9910,7 +9909,9 @@ function ddAdmissablePoint(pDd, pDd_, a, b, getPExact) {
 }
 function eAdmissablePoint(pE, a, b) {
     // E.g. of points for degree(p) === 4: [0.5, 0.25, 0.75, 0.125, 0.375]
+    const n = pE.length - 1;
     let d = 1; // number of subintervals to split the interval into
+    let c = 0; // count of points tested so far
     while (true) {
         d *= 2;
         for (let j = 1; j < d; j += 2) {
@@ -9922,11 +9923,14 @@ function eAdmissablePoint(pE, a, b) {
             if ($T !== 0) { // no error
                 return [t, $T];
             }
-            // if (c > n) {
-            //   // It should not be possible to get to this point since we
-            //   // tested more points than the degree of the polynomial so
-            //   // at least one of the roots should have been resolved from zero.
-            // }
+            if (c > n) {
+                // It should not be possible to get to this point since we
+                // tested more points than the degree of the polynomial so
+                // at least one of the roots should have been resolved from zero.
+                // However, if underflow occurs in an expansion product we might
+                // reach this point.
+                throw new Error('Cannot resolve root even in Shewchuk expansion precision');
+            }
         }
     }
 }
@@ -10121,8 +10125,8 @@ function roots(pDd, lb = -Infinity, ub = +Infinity, pDd_, getPExact, tryReduceIn
     const p = pDd.map(c => c[0] + c[1]);
     if (tryReduceInterval || lb === -Infinity || ub === Infinity) {
         [lb, ub] = reduceInterval(lb, ub, p);
-        if (lb === ub) {
-            return [{ tS: lb, tE: ub, multiplicity: p.length - 1 }];
+        if (lb === ub) { // edge case
+            return [{ t: lb, tS: lb, tE: ub, multiplicity: p.length - 1 }];
         }
     }
     return isolateRoots(p, pDd, pDd_, lb, ub, getPExact_);

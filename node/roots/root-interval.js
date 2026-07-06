@@ -7,7 +7,7 @@
  * @doc
  */
 function createRootExact(t) {
-    return { tS: t, tE: t, multiplicity: 1 };
+    return { t, tS: t, tE: t, multiplicity: 1 };
 }
 /**
  * Simple function that returns the middle of the root bracketing interval - can

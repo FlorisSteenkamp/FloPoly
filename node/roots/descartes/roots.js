@@ -186,8 +186,8 @@ function roots(pDd, lb = -Infinity, ub = +Infinity, pDd_, getPExact, tryReduceIn
     const p = pDd.map(c => c[0] + c[1]);
     if (tryReduceInterval || lb === -Infinity || ub === Infinity) {
         [lb, ub] = reduceInterval(lb, ub, p);
-        if (lb === ub) {
-            return [{ tS: lb, tE: ub, multiplicity: p.length - 1 }];
+        if (lb === ub) { // edge case
+            return [{ t: lb, tS: lb, tE: ub, multiplicity: p.length - 1 }];
         }
     }
     return isolateRoots(p, pDd, pDd_, lb, ub, getPExact_);

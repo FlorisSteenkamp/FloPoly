@@ -3,6 +3,9 @@
  * given polynomial using Brent's Method - modified slightly to allow for
  * error certified bounds.
  *
+ * * also returns (as the 3rd element of the returned array) the current Brent
+ * iterate `b` as the best point estimate within the interval
+ *
  * * near exact implementation of the original Brent Dekker Method (also known
  * as Brent's Method), except that it is specialized to polynomial evaluation.
  *
@@ -24,7 +27,7 @@
  * floating point numbers from highest to lowest power, e.g. `[[0,5],[0,-3],[0,0]]`
  * represents the polynomial `5x^2 - 3x`. If `exact` is `true` then this is allowed
  * to be `undefined`.
- * @param pE an error polynomial that provides a coefficientwise error bound on
+ * @param p_ an error polynomial that provides a coefficientwise error bound on
  * the input polynomial; all coefficients must be positive. If `exact` is `true`
  * then this is allowed to be `undefined`.
  * @param lb the lower limit of the search interval.
@@ -32,9 +35,9 @@
  * @param fa the result of evaluating the input polynomial at `a`
  * @param fb the result of evaluating the input polynomial at `b`
  * @param getPolyExact a function that returns the exact polynomial coefficients
- * @param exact defaults to false; set to true if you need to do exact evaluations from the start
+ * @param exact defaults to `false`; set to true if you need to do exact evaluations from the start
  *
  * @internal
  */
-declare function refineCertified(p: number[][] | undefined, pE: number[] | undefined, lb: number, ub: number, fa: number, fb: number, getPolyExact: () => number[][], exact?: boolean): number[];
+declare function refineCertified(p: number[][] | undefined, p_: number[] | undefined, lb: number, ub: number, fa: number, fb: number, getPolyExact: () => number[][], exact?: boolean): [number, number, number];
 export { refineCertified };

@@ -8,13 +8,15 @@
  * @doc
  */
 type RootInterval = {
-    /** the minimum possible root value */
+    /** the most accurate guess of the root within the isolating interval */
+    t: number;
+    /** the minimum possible root value (isolating interval lower bound) */
     tS: number;
-    /** the maximum possible root value */
+    /** the maximum possible root value (isolating interval upper bound) */
     tE: number;
     /** 
-     * the parity (even or odd) of the multiplicity or the exact multiplicity 
-     * depending on context 
+     * the multiplicity of the root(s) within the isolating interval
+     * * can be more by a multiple of 2,4,... in extreme cases
      */
     multiplicity: number;
 }
@@ -29,7 +31,7 @@ type RootInterval = {
  * @doc
  */
 function createRootExact(t: number): RootInterval {
-    return { tS: t, tE: t, multiplicity: 1 }
+    return { t, tS: t, tE: t, multiplicity: 1 }
 }
 
 

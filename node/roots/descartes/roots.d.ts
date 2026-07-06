@@ -1,3 +1,4 @@
+import type { RootInterval } from "../root-interval.js";
 /**
  * Finds and returns all ordered *certified* root intervals (bar underflow /
  * overflow) of the given polynomial (with coefficients given in double or
@@ -148,5 +149,5 @@
  *
  * @doc
  */
-declare function roots(pDd: number[][] | number[], lb?: number, ub?: number, pDd_?: number[] | undefined, getPExact?: (() => number[][]) | undefined, tryReduceInterval?: boolean): import("../root-interval.js").RootInterval[] | undefined;
+declare function roots(pDd: number[][] | number[], lb?: number, ub?: number, pDd_?: number[] | undefined, getPExact?: (() => number[][]) | undefined, tryReduceInterval?: boolean): RootInterval[] | undefined;
 export { roots };

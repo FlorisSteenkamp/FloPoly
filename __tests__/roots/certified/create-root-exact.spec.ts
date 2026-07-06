@@ -12,6 +12,7 @@ function() {
 
             // this test is really just for completeness' sake
             expect(r).toEqual({
+                t: 2,
                 tS: 2,
                 tE: 2,
                 multiplicity: 1

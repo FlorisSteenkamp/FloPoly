@@ -388,10 +388,10 @@ function allRootsCertified(
             const UB = evalAdaptive(curP_, curPE, ub, getPolyExact);
             if (LB*UB >= 0) { return []; }
 
-            const [tS, tE] = refineCertified(
+            const [tS, tE, t] = refineCertified(
                 curP_, curPE, lb, ub, LB, UB, getPolyExact/*, δ*/
             );
-            return [{ tS, tE, multiplicity: 1 }];
+            return [{ t, tS, tE, multiplicity: 1 }];
         }
 
         //---- First check from lb to the left side of the first micro-interval.
@@ -401,10 +401,10 @@ function allRootsCertified(
             // no roots possible (curve is monotone increasing or decreasing)
         } else if (LB*_A < 0) {
             // recall LB must !== 0 as a precondition
-            const [tS,tE] = refineCertified(
+            const [tS,tE,t] = refineCertified(
                 curP_, curPE, lb, _a, LB, _A, getPolyExact/*, δ*/
             );
-            roots.push({ tS, tE, multiplicity: 1 });
+            roots.push({ t, tS, tE, multiplicity: 1 });
         } //else {
             // _A === 0
             // no roots possible in [lb,_a]
@@ -449,8 +449,8 @@ function allRootsCertified(
                         checkEvenAA();
                     }
                     // [a_,_b] → single root (curve is monotone increasing or decreasing)
-                    const [tS,tE] = refineCertified(curP_, curPE, a_, _b, A_, _B, getPolyExact/*, δ*/);
-                    roots.push({ tS, tE, multiplicity: 1 });
+                    const [tS,tE,t] = refineCertified(curP_, curPE, a_, _b, A_, _B, getPolyExact/*, δ*/);
+                    roots.push({ t, tS, tE, multiplicity: 1 });
                 } else { // _B === 0
                     //---- CASE 1C: _A⇑ | A_⇑ | _B0   OR   _A⇓ | A_⇓ | _B0
                     //console.log('CASE 1C');
@@ -467,13 +467,13 @@ function allRootsCertified(
                 //---- CASE 2 _A⇑ | A_⇓   OR   _A⇓ | A_⇑
                 //console.log('CASE 2');
                 // - [_a,a_] → odd root(s)
-                roots.push({ tS: a.tS, tE: a.tE, multiplicity: 3 });
+                roots.push({ t: a.t, tS: a.tS, tE: a.tE, multiplicity: 3 });
                 if (A_*_B < 0) {
                     //---- CASE 2A: _A⇑ | A_⇓ | _B⇑   OR   _A⇓ | A_⇑ | _B⇓
                     //console.log('CASE 2A');
                     // [a_,_b] → single root
-                    const [tS,tE] = refineCertified(curP_, curPE, a_, _b, A_, _B, getPolyExact/*, δ*/);
-                    roots.push({ tS, tE, multiplicity: 1 });
+                    const [tS,tE,t] = refineCertified(curP_, curPE, a_, _b, A_, _B, getPolyExact/*, δ*/);
+                    roots.push({ t, tS, tE, multiplicity: 1 });
                 } else if (A_ * _B > 0) {
                     //---- CASE 2B: _A⇑ | A_⇓ | _B⇓   OR   _A⇓ | A_⇑ | _B⇑
                     //console.log('CASE 2B');
@@ -490,13 +490,13 @@ function allRootsCertified(
                 if (/*_a === a_ ||*/ _A === 0) {
                     // multiple rational root at a_ OR both _A and A_ is 0
                     // so update multiplicity parity
-                    roots.push({ tS: a.tS, tE: a.tE, multiplicity: a.multiplicity+1 });
+                    roots.push({ t: a.t, tS: a.tS, tE: a.tE, multiplicity: a.multiplicity+1 });
                 } else {
                     // now _A and _B are both !== 0
                     if (_A*_B > 0) {
-                        roots.push({ tS: a.tS, tE: a.tE, multiplicity: 2 });
+                        roots.push({ t: a.t, tS: a.tS, tE: a.tE, multiplicity: 2 });
                     } else {
-                        roots.push({ tS: a.tS, tE: a.tE, multiplicity: 3 });
+                        roots.push({ t: a.t, tS: a.tS, tE: a.tE, multiplicity: 3 });
                     }
                 }            
             } else { // _A === 0
@@ -507,8 +507,8 @@ function allRootsCertified(
                 // [_a,a_] → rational root at _a
                 if (A_*_B < 0) {
                     // [a_,_b] → single root
-                    const [tS,tE] = refineCertified(curP_, curPE, a_, _b, A_, _B, getPolyExact/*, δ*/);
-                    roots.push({ tS, tE, multiplicity: 1 });
+                    const [tS,tE,t] = refineCertified(curP_, curPE, a_, _b, A_, _B, getPolyExact/*, δ*/);
+                    roots.push({ t, tS, tE, multiplicity: 1 });
                 } else if (A_*_B > 0) {
                     // [a_,_b] → no roots
                 }
@@ -516,9 +516,9 @@ function allRootsCertified(
                 // - [_a,a_] → 
                 // B_ and A_ are both !== 0
                 if (B_*A_ > 0) {
-                    roots.push({ tS: a.tS, tE: a.tE, multiplicity: 2 });
+                    roots.push({ t: a.t, tS: a.tS, tE: a.tE, multiplicity: 2 });
                 } else {
-                    roots.push({ tS: a.tS, tE: a.tE, multiplicity: 3 });
+                    roots.push({ t: a.t, tS: a.tS, tE: a.tE, multiplicity: 3 });
                 }
             }
         }
@@ -587,7 +587,7 @@ function allRootsCertified(
 
                 // The below multiplicity can really be any non-negative 
                 // multiple of 2
-                roots.push({ tS: a.tS, tE: a.tE, multiplicity: 2 });
+                roots.push({ t: a.t, tS: a.tS, tE: a.tE, multiplicity: 2 });
             }
         }
     }
@@ -598,7 +598,7 @@ function joinRoots(rs: RootInterval[]): RootInterval[] {
     const newRs: RootInterval[] = [];
     const r = rs[0];
     // make a clone of the first interval
-    let curR: RootInterval = { tS: r.tS, tE: r.tE, multiplicity: r.multiplicity };
+    let curR: RootInterval = { t: r.t, tS: r.tS, tE: r.tE, multiplicity: r.multiplicity };
     for (let i=0; i<rs.length-1; i++) {
         const r = rs[i];
         const r_ = rs[i+1];
@@ -606,7 +606,7 @@ function joinRoots(rs: RootInterval[]): RootInterval[] {
             // they don't stick together
             newRs.push(curR);
             // make a clone of the next interval
-            curR = { tS: r_.tS, tE: r_.tE, multiplicity: r_.multiplicity };
+            curR = { t: r_.t, tS: r_.tS, tE: r_.tE, multiplicity: r_.multiplicity };
         } else {
             // they stick together - expand
             curR.tE = r_.tE;

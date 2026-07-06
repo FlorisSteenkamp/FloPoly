@@ -9,7 +9,10 @@ const { abs, min, max, log2, ceil } = Math;
 /**
  * Returns a refined root given a root bracketed in the interval `(a,b)` of the 
  * given polynomial using Brent's Method - modified slightly to allow for 
- * error certified bounds. 
+ * error certified bounds.
+ * 
+ * * also returns (as the 3rd element of the returned array) the current Brent
+ * iterate `b` as the best point estimate within the interval
  * 
  * * near exact implementation of the original Brent Dekker Method (also known 
  * as Brent's Method), except that it is specialized to polynomial evaluation.
@@ -32,7 +35,7 @@ const { abs, min, max, log2, ceil } = Math;
  * floating point numbers from highest to lowest power, e.g. `[[0,5],[0,-3],[0,0]]` 
  * represents the polynomial `5x^2 - 3x`. If `exact` is `true` then this is allowed
  * to be `undefined`.
- * @param pE an error polynomial that provides a coefficientwise error bound on 
+ * @param p_ an error polynomial that provides a coefficientwise error bound on 
  * the input polynomial; all coefficients must be positive. If `exact` is `true` 
  * then this is allowed to be `undefined`.
  * @param lb the lower limit of the search interval.
@@ -40,19 +43,19 @@ const { abs, min, max, log2, ceil } = Math;
  * @param fa the result of evaluating the input polynomial at `a`
  * @param fb the result of evaluating the input polynomial at `b`
  * @param getPolyExact a function that returns the exact polynomial coefficients
- * @param exact defaults to false; set to true if you need to do exact evaluations from the start
+ * @param exact defaults to `false`; set to true if you need to do exact evaluations from the start
  * 
  * @internal
  */
 function refineCertified(
         p: number[][] | undefined, 
-        pE: number[] | undefined,
+        p_: number[] | undefined,
         lb: number, 
         ub: number,
         fa: number,
         fb: number,
         getPolyExact: () => number[][],
-        exact?: boolean): number[] {
+        exact?: boolean): [number,number,number] {
 
     //---- Make local copies of a and b.
     let a = lb;
@@ -65,7 +68,6 @@ function refineCertified(
 
     while (true) {
         // update delta
-
         if (abs(fc) < abs(fb)) {
             a = b;
             b = c;
@@ -81,25 +83,23 @@ function refineCertified(
 
         // adaptive tolerance
         //let δ = 2 * eps * max(1,abs(b));
-        //let δ = 2 * u * max(1,abs(b));
         let δ: number;
         const mm = max(abs(a),abs(b));
         if (mm <= 1) {
             δ = eps;
         } else {
             // keep δ = eps * a power of 2
-            //δ = eps * 2**ceil(log2(ceil(mm)));  // may be faster to get log2 of an integer
             δ = eps * 2**ceil(log2(mm)); 
         }
-        //tol = 2.0 * macheps * abs ( b ) + t;
+
         const m = 0.5*(c - b);
 
         //if (abs(m) <= δ || fb === 0) {
         // modified from the original since we dont need the fb === 0 check here
         if (abs(m) <= δ) {
             return b < c
-                ? [b,c]
-                : [c,b];
+                ? [b,c,b]
+                : [c,b,b];
         }
 
         if (abs(e) < δ || abs(fa) <= abs(fb)) {
@@ -139,7 +139,6 @@ function refineCertified(
         } else if (0 < m) {
             b = b + δ;
         } else {
-            //b = b - eps;
             b = b - δ;
         }
 
@@ -147,7 +146,7 @@ function refineCertified(
             ? eEstimate(eHorner(getPolyExact(),b))
             // keep TypeScript happy; neither `p` nor `pE` can be `undefined` 
             // here by a precondition
-            : evalCertified(p!, b, pE!);
+            : evalCertified(p!, b, p_!);
 
         if (fb === 0) {
             // Since `evalCertified` returns zero if undecided the zero result
@@ -155,24 +154,24 @@ function refineCertified(
 
             // if we are already doing exact evaluations this is an exact root
             if (exact) {
-                return [b,b];
+                return [b,b,b];
             }
 
             // We need to calculate δ/2 to the left and right of b to get 
             // results that should usually be !== 0. 
             // It is a pre-filter. If the result === 0 we need to sharpen the
             // ability of the evaluation by somehow reducing the error bound
-            const sL = max(lb, b - δ);  // dont overstep bounds
-            const sR = min(ub, b + δ);  // dont overstep bounds
+            const sL = max(lb, b - δ);  // don't overstep bounds
+            const sR = min(ub, b + δ);  // ...
             // Note: sR - sL <= 2*δ provided lb, ub are in [-1..1] - usually 
             // (when sL === s - δ and sR === s + δ) sR - sL === 2*δ. Also δ > 0
             // keep TypeScript happy; neither `p` nor `pE` can be `undefined` 
             // here by a precondition
-            const fsL = evalCertified(p!, sL, pE!);
-            const fsR = evalCertified(p!, sR, pE!);
+            const fsL = evalCertified(p!, sL, p_!);
+            const fsR = evalCertified(p!, sR, p_!);
             // if the evaluation method is strong enough return the result
             if (fsL*fsR !== 0) { 
-                return [sL,sR]; 
+                return [sL,sR,b]; 
             }
 
             // At this point either fsL or fsR === 0 so we need to sharpen the
@@ -185,7 +184,7 @@ function refineCertified(
             fb = eEstimate(eHorner(getPolyExact(),b));
             // if the exact evaluation returns 0 we have an exact root
             if (fb === 0) { 
-                return [b,b]; 
+                return [b,b,b]; 
             }
             // else we've got a new value for fb and from here on we use exact
             // evaluations

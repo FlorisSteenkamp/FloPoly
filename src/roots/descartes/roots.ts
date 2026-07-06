@@ -1,3 +1,4 @@
+import type { RootInterval } from "../root-interval.js";
 import { reduceInterval } from "../reduce-interval.js";
 import { removeLeadingZeroCoeffs } from "../remove-leading-zero-coeffs.js";
 import { isolateRoots } from "./isolate-roots.js";
@@ -160,7 +161,7 @@ function roots(
         ub = +Infinity,
         pDd_?: number[] | undefined,
         getPExact?: (() => number[][]) | undefined,
-        tryReduceInterval = true) {
+        tryReduceInterval = true): RootInterval[] | undefined {
 
     // if (pDd === undefined) { pDd = p.map(c => [0,c]); }
     if (typeof pDd[0] === 'number') {
@@ -195,8 +196,8 @@ function roots(
     const p = pDd.map(c => c[0] + c[1]);
     if (tryReduceInterval || lb === -Infinity || ub === Infinity) {
         [lb,ub] = reduceInterval(lb, ub, p);
-        if (lb === ub) {
-            return [{ tS: lb, tE: ub, multiplicity: p.length - 1 }];
+        if (lb === ub) {  // edge case
+            return [{ t: lb, tS: lb, tE: ub, multiplicity: p.length - 1 }];
         }
     }
 
