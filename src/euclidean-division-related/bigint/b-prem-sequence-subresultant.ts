@@ -1,11 +1,12 @@
 import { bDegree } from "../../basic/bigint/b-degree.js";
+import { bRemoveLeadingZeros } from "../../basic/bigint/b-remove-leading-zeros.js";
 import { bPdivTrivial } from "./b-pdiv-trivial.js";
 
 
 /**
- * Returns the subresultant pseudo remainder sequence of a/b.
+ * Returns the subresultant pseudo remainder sequence of `a/b`.
  * 
- * * **precondition:** g !== [], i.e. unequal to the zero polynomial.
+ * * **precondition:** `g !== []`, i.e. unequal to the zero polynomial.
  * 
  * * see [*The subresultant polynomial remainder sequence algorithm* by Ruiyuan (Ronnie) Chen, p.10](https://pdfs.semanticscholar.org/2e6b/95ba84e2160748ba8fc310cdc408fc9bbade.pdf)
  * 

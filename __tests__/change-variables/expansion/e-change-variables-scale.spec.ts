@@ -1,7 +1,6 @@
 import { describe, expect, it } from '@jest/globals';
-
 import { eEqual } from '../../../src/basic/expansion/e-equal.js';
-import { eChangeVariablesScale } from '../../../src/change-variables/expansion/e-change-variables-scale.js';
+import { eChangeVariablesScale } from '../../../src/change-variables/expansion/e-scale.js';
 
 
 describe('eChangeVariablesScale', function() {

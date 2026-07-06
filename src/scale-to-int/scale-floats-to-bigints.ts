@@ -37,12 +37,12 @@ function scaleFloatsToBigints(as: number[]): bigint[] {
             const scalePower = -exponent(a) + bitLength(a) - 1;
             // we first scale `a` to an integer without overflow and then
             // convert it to a bigint before multiplying
-            return BigInt(a*2**scalePower) * 2n**BigInt(e-scalePower);
+            return BigInt(a*2**scalePower) * 2n**BigInt(e - scalePower);
         });
     }
 
     // overflow / underflow cannot occur
-    return as.map(a => BigInt(a*2**e));  
+    return as.map(a => BigInt(a*2**e));
 }
 
 

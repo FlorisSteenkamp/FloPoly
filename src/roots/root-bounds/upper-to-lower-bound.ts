@@ -1,5 +1,3 @@
-import { invert } from "../../basic/double/invert.js";
-
 
 /**
  * Returns a function that returns a positive lower root bound given a function 
@@ -9,9 +7,11 @@ import { invert } from "../../basic/double/invert.js";
  * 
  * @internal
  */
-function upperToLowerBound(positiveUpperBoundFunction: (p: number[]) => number) {
+function upperToLowerBound(
+        positiveUpperBoundFunction: (p: number[]) => number) {
+
     return (p: number[]): number => {
-        return 1 / positiveUpperBoundFunction(invert(p));
+        return 1 / positiveUpperBoundFunction(p.toReversed());
     }
 }
 

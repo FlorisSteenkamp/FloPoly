@@ -10,6 +10,8 @@ const { min, max } = Math;
  * @param lb
  * @param ub
  * @param p
+ *
+ * @internal
  */
 function reduceInterval(lb, ub, p) {
     lb = max(lb, negativeRootLowerBound_LMQ(p));

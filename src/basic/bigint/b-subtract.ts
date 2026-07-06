@@ -1,5 +1,7 @@
 import { bRemoveLeadingZeros } from "./b-remove-leading-zeros.js";
 
+const { max } = Math;
+
 
 /** 
  * Returns the result of subtracting the second polynomial from the first with
@@ -27,16 +29,16 @@ function bSubtract(a: bigint[], b: bigint[]): bigint[] {
     const Δd2 = Δd > 0 ? -Δd : 0;
     const Δd1 = Δd < 0 ? +Δd : 0;
 
-    const d = Math.max(da, db);
+    const d = max(da, db);
     
     // Add coefficients
     const result = new Array<bigint>(d+1);
     for (let i=0; i<d+1; i++) {
         const c1 = a[i+Δd1] || 0n;
         const c2 = b[i+Δd2] || 0n;
-        result[i] = c1 - c2;  
+        result[i] = c1 - c2;
     }
-    
+
     // Ensure the result is a valid polynomial representation
     return bRemoveLeadingZeros(result);
 }

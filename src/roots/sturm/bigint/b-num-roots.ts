@@ -4,12 +4,8 @@ import { bSignChanges } from "./b-sign-changes.js";
 
 
 /**
- * Returns the *exact* number of *distinct* real roots in the interval (-∞,+∞) 
+ * Returns the *exact* number of *distinct* real roots in the interval `(-∞,+∞)` 
  * of the given polynomial.
- * 
- * * From Wikipedia: "In the case of a non-square-free polynomial, 
- * if neither a nor b is a multiple root of p, then V(a) − V(b) is the number 
- * of distinct real roots of P".
  * 
  * @param p a polynomial with coefficients given densely as an array of
  * bigints from highest to lowest power, e.g. `[5n,-3n,0n]`
@@ -29,7 +25,7 @@ function bNumRoots(
     const ps = bSturmChain(p);
     const as = ps.map(p => bDegree(p) % 2 === 0 ? p[0] : -p[0]);
     const bs = ps.map(p => p[0]);
-    
+
     return bSignChanges(as) - bSignChanges(bs);
 }
 

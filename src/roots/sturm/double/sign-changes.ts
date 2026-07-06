@@ -7,6 +7,8 @@ const { sign } = Math;
  * 
  * Returns the number of sign changes in the polynomial coefficents when 
  * ordered in descending order; zeros are ignored.
+ * 
+ * **precondition:** the polynomial leading coefficient must be non-zero.
  *
  * * Descartes' rule of signs states (quoted from Wikipedia):
  * "if the terms of a polynomial are ordered by descending variable 
@@ -32,8 +34,6 @@ const descartes = signChanges;
 
 
 /** 
- * * `signChanges` is identical to `descartes`
- * 
  * Returns the number of sign changes in the polynomial coefficents when 
  * ordered in descending order; zeros are ignored.
  *
@@ -58,20 +58,25 @@ const descartes = signChanges;
  * @doc
  */
 function signChanges(p: number[]): number {
-    const d = p.length-1;
+    const d = p.length - 1;
 
-    let result = 0;
-    let _s = sign(p[0]);
-    for (let i=1; i<d+1; i++) {
+    if (d < 1) { return 0; }
+
+    let r = 0;
+    let j = 0;
+    while (p[j] === 0) { j++; }
+
+    let _s = sign(p[j]);
+    for (let i=j+1; i<d+1; i++) {
         const s = sign(p[i]);
         
         if (s !== _s && s !== 0) {
-            result++;
+            r++;
             _s = s;
         }
     }
     
-    return result;
+    return r;
 }
 
 

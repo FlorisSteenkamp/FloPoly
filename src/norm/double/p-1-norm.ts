@@ -1,3 +1,7 @@
+
+const { abs } = Math;
+
+
 /**
  * Returns the `p-1 norm`, a.k.a. `Taxicab norm`, i.e. the sum of the absolute 
  * values of the given array of numbers (with intermediate calculations done
@@ -13,9 +17,9 @@
 function p1Norm(p: number[]): number {
     let s = 0;
     for (let i=0; i<p.length; i++) {
-        s += Math.abs(p[i]);
+        s += abs(p[i]);
     }
-    
+
     return s;
 }
 

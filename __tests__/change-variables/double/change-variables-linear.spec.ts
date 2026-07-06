@@ -17,14 +17,14 @@ describe('changeVariablesLinear', function() {
         
         }
         {
-            let p2 = [1,2,7];
-            const r = changeVariablesLinear(p2, 3, 4);
+            let p = [1,2,7];
+            const r = changeVariablesLinear(p, 3, 4);
             expect(equal(r, [9,30,31])).toEqual(true);
         }
         {
-            let p2 = [1,2,7];
-            const r = changeVariablesLinear(p2, 1, 4);
-            const r_ = taylorShift(p2, 4);//?
+            let p = [1,2,7];
+            const r = changeVariablesLinear(p, 1, 4);
+            const r_ = taylorShift(p, 4);//?
             expect(equal(r, [1,10,31])).toEqual(true);
         }
         {

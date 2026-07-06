@@ -1,5 +1,4 @@
 import { describe, expect, it } from '@jest/globals';
-
 import { eEqual } from '../../../src/basic/expansion/e-equal.js';
 import { eChangeVariablesLinear } from '../../../src/change-variables/expansion/e-change-variables-linear.js';
 

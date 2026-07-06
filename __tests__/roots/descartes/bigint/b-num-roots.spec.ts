@@ -1,6 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-
-import { bNumRoots } from '../../../../src/roots/descartes/bigint/b-num-roots.js';
+import { bNumRoots } from '../../../../src/roots/sturm/bigint/b-num-roots.js';
 
 
 describe('bNumRoots', function() {

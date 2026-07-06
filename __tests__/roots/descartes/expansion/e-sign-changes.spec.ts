@@ -1,6 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-
-import { eSignChanges } from '../../../../src/roots/descartes/expansion/e-sign-changes.js';
+import { eSignChanges } from '../../../../src/roots/sturm/expansion/e-sign-changes.js';
 import { toCasStr } from '../../../../src/basic/to-cas-str.js';
 
 

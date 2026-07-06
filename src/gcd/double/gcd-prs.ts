@@ -1,51 +1,43 @@
-import { premSequenceSubresultant } from "../../euclidean-division-related/double/prem-sequence-subresultant.js";
-import { scaleFloatsToInts } from "../../scale-to-int/scale-floats-to-ints.js";
-
-
-// ❗❗❗❗❗❗
-// THIS FUNCTION IS NOT EXPORTED AS IT IS IMPRACTICAL:
-// INTERMEDIATE COEFFICIENT GROWTH CAUSES EVEN THE PRS COEFFICIENTS TO OVERFLOW
-// USE `gcdModular` or `bGcdPrs` INSTEAD
-// ❗❗❗❗❗❗
+import { bPremSequenceSubresultant } from "../../euclidean-division-related/bigint/b-prem-sequence-subresultant.js";
+import { scaleFloatsToBigints } from "../../scale-to-int/scale-floats-to-bigints.js";
+import { scaleFloatssToBigintss } from "../../scale-to-int/scale-floatss-to-bigintss.js";
 
 
 /**
- * ❗ Use the modular gcd algorithm, `gcdModular`, instead - it is faster and
- * is not subject to overflow (`bGcdPrs` is also not subject to overflow but
- * is slower). ❗
- * 
  * Returns the GCD (Greatest Common Divisor) of the two given polynomials using 
- * Pseudo Remainder Sequences (PRSs) (bar overflow). The returned GCD is a
- * polynomial with coefficients given densely as an array of
- * Shewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
- * represents the polynomial `5x^2 - 3x`.
+ * Pseudo Remainder Sequences (PRSs) as `bigint`s.
  * 
- * * if the polynomial coefficients are too large overflow can occur at
- * intermediate coefficient calculations
+ * * the modular GCD algorithm, [[gcdModular]], can also be used; it should
+ *   be faster for high degree polynomials or when `gcdPrs` encounters pathological
+ *   cases. However, `gcdPrs` is faster in general.
+ * 
+ * * since the final polynomial coefficients can be too large and overflow can
+ *   occur in the **final** result is returned as a `bigint` coefficient polynomial
+ *   (see `bLandauMignotteBound`).
  * 
  * @param a a polynomial with coefficients given densely as an array of
  * double precision floating point numbers from highest to lowest power, 
- * e.g. `[[5],[-3],[0]]` represents the polynomial `5x^2 - 3x`
+ * e.g. `[5,-3,0]` represents the polynomial `5x^2 - 3x`
  * @param b another polynomial
  * 
  * @internal
  */
-function gcdPrs(a: number[], b: number[]): number[][] {
-    const a_ = scaleFloatsToInts(a);
-    const b_ = scaleFloatsToInts(b);
+function gcdPrs(
+        a: number[],
+        b: number[]): bigint[] {
 
-    if (a_.length === 0) {
-        return b_.map(c => [c]);
-    } else if (b_.length === 0) {
-        return a_.map(c => [c]);
+    if (a.length === 0) {
+        return scaleFloatsToBigints(b);
+    } else if (b.length === 0) {
+        return scaleFloatsToBigints(a);
     }
 
-    const seq = premSequenceSubresultant(a_,b_,false);
+    const [A,B] = scaleFloatssToBigintss([a,b]);
 
-    //console.log(seq)
+    const seq = bPremSequenceSubresultant(A,B,false);
 
     return seq[seq.length-1];
 }
 
 
-//export { gcdPrs }
+export { gcdPrs }

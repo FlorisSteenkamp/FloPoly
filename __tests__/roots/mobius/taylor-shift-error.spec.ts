@@ -1,7 +1,7 @@
 import { test, describe, expect, it } from '@jest/globals';
 import { squares } from 'squares-rng';
 import { ddDiffDd, ddAbs, ddAddDd, ddMultDouble2 as ddMultD } from 'double-double';
-import { taylorShift } from '../../../src/basic/double/taylor-shift.js';
+import { taylorShift } from '../../../src/change-variables/double/taylor-shift.js';
 import { calcTaylorShift_ErrorCounters } from '../../../src/roots/mobius/calc-taylor-shift-error-counters.js';
 import { γ1 } from '../../../src/error-analysis/gamma.js';
 import { perturb } from '../../../src/error-analysis/perturb.js';

@@ -1,3 +1,7 @@
+import { bScale } from './b-scale.js';
+import { bTaylorShift } from './b-taylor-shift.js';
+
+
 /**
  * Returns the result of performing a change of variables of the 
  * form: p(x) <- p(ax + b).
@@ -22,40 +26,7 @@ function bChangeVariablesLinear(
         a: bigint, 
         b: bigint): bigint[] {
 
-    // We let the coefficients of p(ax + b) be denoted by d_i in the 
-    // code below. 
-    // d_i is calculated as d = T*c, where c are the original 
-    // coefficients.
-     
-    const d = p.length-1;
-
-    if (d < 0) { return []; }
-    
-    // Initialize a zero matrix
-    const t = new Array<Array<bigint>>(d+1);
-    for (let i=0; i<d+1; i++) {
-        t[i] = new Array(d+1).fill(0n);
-    }
-
-    // Calculate the triangular matrix T
-    t[0][0] = 1n;
-    for (let j=1; j<=d; j++) {
-        t[0][j] = b*t[0][j-1];
-        for (let i=1; i<=j; i++) {
-            t[i][j] = b*t[i][j-1] + a*t[i-1][j-1];
-        }
-    }
-    
-    // Multiply
-    const res: bigint[] = new Array(d+1).fill(0n);
-    for (let i=0; i<=d; i++) {
-        res[d-i] = 0n;
-        for (let j=i; j<=d; j++) {
-            res[d-i] += t[i][j] * p[d-j];
-        }
-    }
-    
-    return res;
+    return bScale(bTaylorShift(p, b), a);
 }
 
 

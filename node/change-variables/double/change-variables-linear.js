@@ -1,4 +1,5 @@
-// TODO - check entire change-variables folder - replace with `taylorShift` (**much** faster)
+import { scale } from './scale.js';
+import { taylorShift } from './taylor-shift.js';
 /**
  * Returns the result of performing a change of variables of the
  * form: p(x) <- p(ax + b) in double precision.
@@ -19,36 +20,7 @@
  * @doc
  */
 function changeVariablesLinear(p, a, b) {
-    // We let the coefficients of p(ax + b) be denoted by d_i in the 
-    // code below. 
-    // d_i is calculated as d = T*c, where c are the original 
-    // coefficients.
-    const d = p.length - 1;
-    if (d < 0) {
-        return [];
-    }
-    // Initialize a zero matrix
-    const t = new Array(d + 1);
-    for (let i = 0; i < d + 1; i++) {
-        t[i] = new Array(d + 1).fill(0);
-    }
-    // Calculate the triangular matrix T
-    t[0][0] = 1;
-    for (let j = 1; j <= d; j++) {
-        t[0][j] = b * t[0][j - 1];
-        for (let i = 1; i <= j; i++) {
-            t[i][j] = b * t[i][j - 1] + a * t[i - 1][j - 1];
-        }
-    }
-    // Multiply
-    const res = new Array(d + 1).fill(0);
-    for (let i = 0; i <= d; i++) {
-        res[d - i] = 0;
-        for (let j = i; j <= d; j++) {
-            res[d - i] += t[i][j] * p[d - j];
-        }
-    }
-    return res;
+    return scale(taylorShift(p, b), a);
 }
 export { changeVariablesLinear };
 //# sourceMappingURL=change-variables-linear.js.map

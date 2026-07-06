@@ -1,5 +1,4 @@
-const abs = Math.abs;
-const max = Math.max;
+const { abs, max } = Math;
 /**
  * Returns a refined root given a root bracketed in the interval (a,b) of the
  * given function using the

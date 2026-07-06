@@ -1,17 +1,18 @@
-import { eAbs } from 'big-float-ts';
-import { eSign } from 'big-float-ts';
-import { eRem } from  'big-float-ts';
+import { eAbs, eSign, eRem } from 'big-float-ts';
 
 
 /**
  * Computes the greatest common divisor of two integers a and b, using the 
  * Euclidean Algorithm.
  * 
- * **precondition** a, b must be integers given as Shewchuk expansions
+ * **precondition** `a`, `b` must be integers given as Shewchuk expansions
  * 
  * @doc
  */
-function eGcdInt(a: number[], b: number[]): number[] {
+function eGcdInt(
+        a: number[],
+        b: number[]): number[] {
+
     a = eAbs(a);
     b = eAbs(b);
 

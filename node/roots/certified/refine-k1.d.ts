@@ -1,12 +1,14 @@
 import { RootInterval } from "../root-interval.js";
-import { RootIntervalExp } from "./root-interval-exp.js";
+import { RootIntervalExp } from "../root-interval-exp.js";
 /**
  * Returns once compensated root(s) (bar underflow / overflow) given a root
  * interval previously calculated using [[allRootsCertified]].
  *
+ * * root interval endpoints are returned in double-double precision
+ *
  * * 'once-compensated' here means that the typical root interval, `W`,
- * (`= Number.EPSILON` at `1`) is reduced to `W**2`; if multiple roots were
- * present in the original interval they may be resolved to individual
+ * (`~ 2*Number.EPSILON` at `1`) is reduced to `W**2`; if multiple distinct
+ * roots were present in the original interval they may be resolved to individual
  * intervals
  *
  * @param ri a root interval previously calculated

@@ -42,7 +42,7 @@ function() {
         const getPExact = makeFakeGetPExact(p, true);
         let pExact: number[][] | undefined = getPExact();
 
-        ({ p, pE, pExact } = removeLeadingZeroCoeffs(p, pE, getPExact));
+        ({ pDd: p, pDd_: pE, pExact } = removeLeadingZeroCoeffs(p, pE, getPExact, 1));
 
         expect(p.length).toEqual(11);
         expect(pExact!.length).toEqual(11);
@@ -86,7 +86,7 @@ function() {
         const getPExact = makeFakeGetPExact(p, false);
         let pExact: number[][] | undefined = getPExact();
 
-        ({ p, pE, pExact } = removeLeadingZeroCoeffs(p, pE, getPExact));
+        ({ pDd: p, pDd_: pE, pExact } = removeLeadingZeroCoeffs(p, pE, getPExact, 1));
 
         expect(p.length).toEqual(10);
         expect(pExact!.length).toEqual(10);
@@ -130,7 +130,7 @@ function() {
         const getPExact = makeFakeGetPExact(p, true);
         let pExact: number[][] | undefined = getPExact();
 
-        ({ p, pE, pExact } = removeLeadingZeroCoeffs(p, pE, getPExact));
+        ({ pDd: p, pDd_: pE, pExact } = removeLeadingZeroCoeffs(p, pE, getPExact, 1));
 
         expect(p.length).toEqual(11);
         expect(pExact).toBeUndefined();

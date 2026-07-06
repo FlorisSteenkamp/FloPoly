@@ -6,11 +6,12 @@ export { bAbsCoeff } from './basic/bigint/b-abs-coeff.js';
 export { bAdd } from './basic/bigint/b-add.js';
 export { bDegree } from './basic/bigint/b-degree.js';
 export { bDivideByConst } from './basic/bigint/b-divide-by-const.js';
+export { bDivides } from './basic/bigint/b-divides.js';
 export { bEqual } from './basic/bigint/b-equal.js';
 export { bInvert } from './basic/bigint/b-invert.js';
 export { bIsRationalMultipleOf } from './basic/bigint/b-is-rational-multiple-of.js';
-export { bMultiply } from './basic/bigint/b-multiply.js';
 export { bMultiplyByConst } from './basic/bigint/b-multiply-by-const.js';
+export { bMultiply } from './basic/bigint/b-multiply.js';
 export { bNegate } from './basic/bigint/b-negate.js';
 export { bRemoveLeadingZeros } from './basic/bigint/b-remove-leading-zeros.js';
 export { bSubtract } from './basic/bigint/b-subtract.js';
@@ -23,8 +24,8 @@ export { divideByConst } from './basic/double/divide-by-const.js';
 export { equal } from './basic/double/equal.js';
 export { invert } from './basic/double/invert.js';
 export { isRationalMultipleOf } from './basic/double/is-rational-multiple-of.js';
-export { multiply } from './basic/double/multiply.js';
 export { multiplyByConst } from './basic/double/multiply-by-const.js';
+export { multiply } from './basic/double/multiply.js';
 export { negate } from './basic/double/negate.js';
 export { removeLeadingZeros } from './basic/double/remove-leading-zeros.js';
 export { subtract } from './basic/double/subtract.js';
@@ -34,8 +35,8 @@ export { ddAbsCoeff } from './basic/double-double/dd-abs-coeff.js';
 export { ddAdd } from './basic/double-double/dd-add.js';
 export { ddDegree } from './basic/double-double/dd-degree.js';
 export { ddDivideByConst } from './basic/double-double/dd-divide-by-const.js';
-export { ddMultiply } from './basic/double-double/dd-multiply.js';
 export { ddMultiplyByConst } from './basic/double-double/dd-multiply-by-const.js';
+export { ddMultiply } from './basic/double-double/dd-multiply.js';
 export { ddNegate } from './basic/double-double/dd-negate.js';
 export { ddRemoveLeadingZeros } from './basic/double-double/dd-remove-leading-zeros.js';
 export { ddSubtract } from './basic/double-double/dd-subtract.js';
@@ -50,8 +51,8 @@ export { eInvert } from './basic/expansion/e-invert.js';
 export { eIsConstOrZero } from './basic/expansion/e-is-const-or-zero.js';
 export { eIsRationalMultipleOf } from './basic/expansion/e-is-rational-multiple-of.js';
 export { eIsUnit } from './basic/expansion/e-is-unit.js';
-export { eMultiply } from './basic/expansion/e-multiply.js';
 export { eMultiplyByConst } from './basic/expansion/e-multiply-by-const.js';
+export { eMultiply } from './basic/expansion/e-multiply.js';
 export { eNegate } from './basic/expansion/e-negate.js';
 export { eProduct } from './basic/expansion/e-product.js';
 export { eRemoveLeadingZeros } from './basic/expansion/e-remove-leading-zeros.js';
@@ -73,7 +74,9 @@ export { ddIntegrate } from './calculus/double-double/dd-integrate.js';
 export { eDifferentiate } from './calculus/expansion/e-differentiate.js';
 
 // change basis double
+export { bernsteinToPowerBasis01 } from './change-basis/double/bernstein-to-power-basis-01.js';
 export { bernsteinToPowerBasis } from './change-basis/double/bernstein-to-power-basis.js';
+export { powerToBernsteinBasis01 } from './change-basis/double/power-to-bernstein-basis-01.js';
 export { powerToBernsteinBasis } from './change-basis/double/power-to-bernstein-basis.js';
 
 // change variables bigint
@@ -85,21 +88,51 @@ export { bReflectAboutYAxis } from './change-variables/bigint/b-reflect-about-y-
 // change variables double
 export { changeVariablesLinear } from './change-variables/double/change-variables-linear.js';
 export { scale, changeVariablesScale } from './change-variables/double/scale.js';
-export { taylorShift, inplaceTaylorShift, changeVariablesTranslateX } from './change-variables/double/taylor-shift.js';
+export { taylorShift, changeVariablesTranslateX } from './change-variables/double/taylor-shift.js';
+export { taylorShiftWithInpErr, inplaceTaylorShiftBy1WithInpErr } from './change-variables/double/taylor-shift-with-inp-err.js';
+export { mobius } from './change-variables/double/mobius.js';
+export { scaleWithInpErr } from './change-variables/double/scale-with-inp-err.js';
 export { reflectAboutYAxis } from './change-variables/double/reflect-about-y-axis.js';
+
+// change variables double
+export { ddScaleWithInpErr, ddInplaceScaleWithInpErr } from './change-variables/double-double/dd-scale-with-inp-err.js';
+export { ddTaylorShift } from './change-variables/double-double/dd-taylor-shift.js';
 
 // change variables expansion
 export { eChangeVariablesLinear } from './change-variables/expansion/e-change-variables-linear.js';
 export { eScale, eChangeVariablesScale } from './change-variables/expansion/e-scale.js';
 export { eTaylorShift, eChangeVariablesTranslateX } from './change-variables/expansion/e-taylor-shift.js';
+export { eMobius } from './change-variables/expansion/e-mobius.js';
 export { eReflectAboutYAxis } from './change-variables/expansion/e-reflect-about-y-axis.js';
+export { eeTaylorShift } from './change-variables/expansion/ee-taylor-shift.js';
+
+// composition / decomposition
+export { compose } from './composition/double/compose.js';
+export { bCompose } from './composition/bigint/b-compose.js';
+export { bDecomposePowerSubstitution } from './composition/bigint/b-decompose-power-substitution.js';
+export { bRittDecompose, bRittRecompose } from './composition/bigint/b-ritt-decompose.js';
+export { eCompose } from './composition/expansion/e-compose.js';
+
+// division
+export { divmod } from './division/double/divmod.js';
+export { bDivmod } from './division/bigint/b-divmod.js';
+export { eDivmod } from './division/expansion/e-divmod.js';
 
 // error analysis
 export { conditionNumber } from './error-analysis/condition-number.js';
-export { γ } from './error-analysis/gamma.js';
-export { γγ } from './error-analysis/gamma.js';
+export { γ, γγ, eps, u, uu, γ1, γγ3 } from './error-analysis/gamma.js';
+export { getUlp } from './error-analysis/get-ulp.js';
+export { isExactPowerOf2 } from './error-analysis/is-exact-power-of-2.js';
+export { isSubnormal } from './error-analysis/is-subnormal.js';
+export { nextdown } from './error-analysis/nextdown.js';
+export { nextup } from './error-analysis/nextup.js';
+export { randomIntInRange } from './error-analysis/random-int-in-range.js';
+export { random } from './error-analysis/random.js';
 
 // euclidean division related bigint
+export { bElevateDegree } from './euclidean-division-related/bigint/b-elevate-degree.js';
+export { bInverseModP } from './euclidean-division-related/bigint/b-inverse-mod-p.js';
+export { bPdivModP } from './euclidean-division-related/bigint/b-pdiv-mod-p.js';
 export { bPdivTrivial } from './euclidean-division-related/bigint/b-pdiv-trivial.js';
 export { bPremSequencePrimitive } from './euclidean-division-related/bigint/b-prem-sequence-primitive.js';
 export { bPremSequenceSubresultant } from './euclidean-division-related/bigint/b-prem-sequence-subresultant.js';
@@ -123,25 +156,29 @@ export { bEvaluateAt1 } from './evaluate/bigint/b-evaluate-at-1.js';
 
 // evaluate double
 export { AbsHorner } from './evaluate/double/abs-horner.js';
-export { compHorner } from './evaluate/double/comp-horner.js';
 export { compHornerIsFaithful } from './evaluate/double/comp-horner-is-faithful.js';
 export { CompHornerK } from './evaluate/double/comp-horner-k.js';
 export { compHornerWithRunningError } from './evaluate/double/comp-horner-with-running-error.js';
+export { compHorner } from './evaluate/double/comp-horner.js';
 export { EFTHorner } from './evaluate/double/eft-horner.js';
 export { evalCertified } from './evaluate/double/eval-certified.js';
 export { evalCertifiedInclError } from './evaluate/double/eval-certified-incl-error.js';
 export { evalK } from './evaluate/double/eval-k.js';
 export { evaluateAt0 } from './evaluate/double/evaluate-at-0.js';
 export { evaluateAt1 } from './evaluate/double/evaluate-at-1.js';
-export { Horner } from './evaluate/double/horner.js';
 export { hornerWithRunningError } from './evaluate/double/horner-with-running-error.js';
+export { Horner } from './evaluate/double/horner.js';
+
+// evaluate double-double
+export { ddHornerWithInpError } from './evaluate/double-double/dd-horner-with-inp-error.js';
+export { ddHorner } from './evaluate/double-double/dd-horner.js';
 
 // evaluate expansion
 export { eeHorner } from './evaluate/expansion/e-e-horner.js';
 export { eEvaluateAt0 } from './evaluate/expansion/e-evaluate-at-0.js';
 export { eEvaluateAt1 } from './evaluate/expansion/e-evaluate-at-1.js';
 export { eHorner } from './evaluate/expansion/e-horner.js';
-export { ddHorner } from './evaluate/double-double/dd-horner.js';
+
 
 // factor bigint
 export { bContent } from './factor/bigint/b-content.js';
@@ -156,19 +193,21 @@ export { eContent } from './factor/expansion/e-content.js';
 export { ePrimitivePart } from './factor/expansion/e-primitive-part.js';
 
 // gcd bigint
+export { bGcdModP } from './gcd/bigint/b-gcd-mod-p.js';
+export { bGcdModular } from './gcd/bigint/b-gcd-modular.js';
 export { bGcdPrs } from './gcd/bigint/b-gcd-prs.js';
-export { bGcdInt } from './gcd/bigint/b-integer-gcd.js';
-export { bGcdInts } from './gcd/bigint/b-integer-gcd.js';
+export { bGcdInt, bGcdInts } from './gcd/bigint/b-integer-gcd.js';
+export { bXgcd } from './gcd/bigint/b-xgcd.js';
+export { chineseRemainderAlgorithm } from './gcd/bigint/chinese-remainder-algorithm.js';
+export { bLandauMignotteBound } from './gcd/bigint/landau-mignotte-bound.js';
 
 // gcd double
-//export { gcdPrs } from './gcd/double/gcd-prs.js';
-export { gcdInt } from './gcd/double/integer-gcd.js';
-export { gcdInts } from './gcd/double/integer-gcd.js';
+export { gcdPrs } from './gcd/double/gcd-prs.js';
+export { gcdInt, gcdInts } from './gcd/double/integer-gcd.js';
 
 // gcd expansion
 //export { eGcdPrs } from './gcd/expansion/e-gcd-prs.js';
-export { eGcdInt } from './gcd/expansion/e-integer-gcd.js';
-export { eGcdInts } from './gcd/expansion/e-integer-gcd.js';
+export { eGcdInt, eGcdInts } from './gcd/expansion/e-integer-gcd.js';
 
 // norm bigint
 export { bP1Norm } from './norm/bigint/b-p-1-norm.js';
@@ -198,33 +237,27 @@ export { bFlatRootsArr } from './predictive-random/bigint/b-random.js';
 export { bFlatCoefficients } from './predictive-random/bigint/b-random.js';
 export { bFlatCoefficientsArr } from './predictive-random/bigint/b-random.js';
 
-// roots certified
-export { allRootsCertified } from './roots/certified/all-roots-certified.js';
-export { allRootsCertifiedSimplified } from './roots/certified/all-roots-certified-simplified.js';
-export { refineK1 } from './roots/certified/refine-k1.js';
+// roots
 export type { RootInterval } from './roots/root-interval.js';
-export { mid } from './roots/root-interval.js';
+export type { RootIntervalExp } from './roots/root-interval-exp.js';
 export { createRootExact } from './roots/root-interval.js';
-export type { RootIntervalExp } from './roots/certified/root-interval-exp.js';
 export { rootIntervalToExp } from './roots/certified/root-interval-to-exp.js';
+export { mid } from './roots/root-interval.js';
 
-// roots descartes bigint
-export { bNumRoots } from './roots/sturm/bigint/b-num-roots.js';
-export { bNumRootsIn01 } from './roots/sturm/bigint/b-num-roots-0-1.js';
-export { bNumRootsInRange } from './roots/sturm/bigint/b-num-roots-in-range.js';
-export { bSignChanges } from './roots/sturm/bigint/b-sign-changes.js';
+// roots certified
+export { allRootsCertifiedSimplified } from './roots/certified/all-roots-certified-simplified.js';
+export { allRootsCertified } from './roots/certified/all-roots-certified.js';
+export { refineK1 } from './roots/certified/refine-k1.js';
 
-// roots descartes double
-export { numRoots } from './roots/sturm/double/num-roots.js';
-export { numRootsIn01 } from './roots/sturm/double/num-roots-in-0-1.js';
-export { numRootsInRange } from './roots/sturm/double/num-roots-in-range.js';
-export { signChanges } from './roots/sturm/double/sign-changes.js';
+// roots deflate
+export { bDeflate } from './roots/deflate/b-deflate.js';
+export { ddDeflate } from './roots/deflate/dd-deflate.js';
+export { ddDeflateWithRunningError } from './roots/deflate/dd-deflate-with-running-error.js';
+export { deflate } from './roots/deflate/deflate.js';
+export { eDeflate } from './roots/deflate/e-deflate.js';
 
-// roots descartes expansion
-export { eNumRoots } from './roots/sturm/expansion/e-num-roots.js';
-export { eNumRootsIn01 } from './roots/sturm/expansion/e-num-roots-0-1.js';
-export { eNumRootsInRange } from './roots/sturm/expansion/e-num-roots-in-range.js';
-export { eSignChanges } from './roots/sturm/expansion/e-sign-changes.js';
+// roots descartes
+export { roots } from './roots/descartes/roots.js';
 
 // roots from roots
 export { bFromRoots } from './roots/from-roots/bigint/b-from-roots.js';
@@ -236,10 +269,6 @@ export { allRoots } from './roots/naive/all-roots.js';
 export { bisection } from './roots/naive/bisection.js';
 export { brent } from './roots/naive/brent.js';
 export { brentPoly } from './roots/naive/brent-poly.js';
-export { ddDeflate } from './roots/naive/dd-deflate.js';
-export { ddDeflateWithRunningError } from './roots/certified/dd-deflate-with-running-error.js';
-export { deflate } from './roots/naive/deflate.js';
-export { eDeflate } from './roots/naive/e-deflate.js';
 export { quadraticRoots } from './roots/naive/quadratic-roots.js';
 
 // roots root bounds
@@ -249,6 +278,27 @@ export { negativeRootLowerBound_LMQ } from './roots/root-bounds/root-bounds-lmq.
 export { negativeRootUpperBound_LMQ } from './roots/root-bounds/root-bounds-lmq.js';
 export { rootMagnitudeUpperBound_fujiwara } from './roots/root-bounds/root-magnitude-upper-bound-fujiwara.js';
 export { rootMagnitudeUpperBound_rouche } from './roots/root-bounds/root-magnitude-upper-bound-rouche.js';
+
+// roots sturm bigint
+export { bNumRoots } from './roots/sturm/bigint/b-num-roots.js';
+export { bNumRootsIn01 } from './roots/sturm/bigint/b-num-roots-0-1.js';
+export { bNumRootsInRange } from './roots/sturm/bigint/b-num-roots-in-range.js';
+export { bSignChanges } from './roots/sturm/bigint/b-sign-changes.js';
+
+// roots sturm double
+export { numRoots } from './roots/sturm/double/num-roots.js';
+export { numRootsIn01 } from './roots/sturm/double/num-roots-in-0-1.js';
+export { numRootsInRange } from './roots/sturm/double/num-roots-in-range.js';
+export { signChanges } from './roots/sturm/double/sign-changes.js';
+
+// roots sturm expansion
+export { eNumRoots } from './roots/sturm/expansion/e-num-roots.js';
+export { eNumRootsIn01 } from './roots/sturm/expansion/e-num-roots-0-1.js';
+export { eNumRootsInRange } from './roots/sturm/expansion/e-num-roots-in-range.js';
+export { eSignChanges } from './roots/sturm/expansion/e-sign-changes.js';
+
+// roots yun algorithm
+export { bYunsAlgorithm } from './roots/yun/bigint/b-yun-algorithm.js';
 
 // scale to int
 export { scaleFloatToInt } from './scale-to-int/scale-float-to-int.js';

@@ -1,5 +1,5 @@
-const abs = Math.abs;
-const max = Math.max;
+
+const { abs, max } = Math;
 
 
 /**

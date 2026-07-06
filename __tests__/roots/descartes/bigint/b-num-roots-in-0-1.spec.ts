@@ -1,6 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-
-import { bNumRootsIn01 } from '../../../../src/roots/descartes/bigint/b-num-roots-0-1.js';
+import { bNumRootsIn01 } from '../../../../src/roots/sturm/bigint/b-num-roots-0-1.js';
 import { toCasStr } from '../../../../src/basic/to-cas-str.js';
 import { multiply } from '../../../../src/basic/double/multiply.js';
 import { scaleFloatsToBigints } from '../../../../src/scale-to-int/scale-floats-to-bigints.js';

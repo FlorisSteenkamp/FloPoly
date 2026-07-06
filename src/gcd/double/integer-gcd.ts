@@ -1,14 +1,18 @@
+
+const { abs } = Math;
+
+
 /**
- * Computes the greatest common divisor of two integers a and b, using the 
+ * Computes the greatest common divisor of two integers `a` and `b`, using the 
  * Euclidean Algorithm.
  * 
- * **precondition** a, b must be integers
+ * **precondition** `a`, `b` must be integers
  * 
  * @doc
  */
 function gcdInt(a: number, b: number): number {
-    a = Math.abs(a);
-    b = Math.abs(b);
+    a = abs(a);
+    b = abs(b);
 
     // The below 2 commented lines represent Euclid's original algorithm.
     //if (a === b) { return a; }
@@ -32,9 +36,12 @@ function gcdInt(a: number, b: number): number {
  * binary GCD algorithm - probably slower than just using gcdInt that uses
  * the Euclidean Algorithm.
  */
-function gcdIntBinary(a: number, b: number): number {
-    a = Math.abs(a);
-    b = Math.abs(b);
+function gcdIntBinary(
+        a: number,
+        b: number): number {
+
+    a = abs(a);
+    b = abs(b);
     
     if (a === 0) { return b; }
     if (b === 0) { return a; }
@@ -88,7 +95,7 @@ function gcdInts(vals: number[]): number {
 
     // make array of numbers all positive
     for (let i=0; i<len; i++) { 
-        vals_[i] = Math.abs(vals_[i]); 
+        vals_[i] = abs(vals_[i]); 
     }
     
     let a = vals_[0];
@@ -118,7 +125,7 @@ function gcdIntsTree(vals: number[]): number {
     let vals_ = vals.slice();
 
     // make array of numbers all positive
-    for (let i=0; i<vals_.length; i++) { vals_[i] = Math.abs(vals_[i]); }
+    for (let i=0; i<vals_.length; i++) { vals_[i] = abs(vals_[i]); }
     
     // Divide and conquer
     while (vals_.length > 1) {
@@ -139,4 +146,3 @@ function gcdIntsTree(vals: number[]): number {
 
 
 export { gcdInt, gcdInts, gcdIntsTree, gcdIntBinary }
-//export { gcdInt, gcdInts }

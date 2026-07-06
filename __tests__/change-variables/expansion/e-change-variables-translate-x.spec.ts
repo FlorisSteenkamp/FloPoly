@@ -1,7 +1,6 @@
 import { describe, expect, it } from '@jest/globals';
-
 import { eEqual } from '../../../src/basic/expansion/e-equal.js';
-import { eChangeVariablesTranslateX } from '../../../src/change-variables/expansion/e-change-variables-translate-x.js';
+import { eChangeVariablesTranslateX } from '../../../src/change-variables/expansion/e-taylor-shift.js';
 
 
 describe('eChangeVariablesTranslateX', function() {

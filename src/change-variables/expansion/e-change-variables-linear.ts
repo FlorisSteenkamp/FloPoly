@@ -1,6 +1,5 @@
-import { expansionProduct } from "big-float-ts";
-import { fastExpansionSum } from "big-float-ts";
-import { scaleExpansion2 } from "big-float-ts";
+import { eScale } from './e-scale.js';
+import { eTaylorShift } from './e-taylor-shift.js';
 
 
 /**
@@ -28,42 +27,7 @@ function eChangeVariablesLinear(
         a: number, 
         b: number): number[][] {
 
-    // We let the coefficients of p(ax + b) be denoted by d_i in the code below. 
-    // d_i is calculated as d = T*c, where c are the original coefficients.
-
-    const d = p.length-1;
-
-    if (d < 0) { return []; }
-
-    // Initialize a zero matrix
-    const t = new Array<number[][]>(d+1);
-    for (let i=0; i<d+1; i++) {
-        t[i] = new Array(d+1).fill([0]);
-    }
-
-    // Calculate the triangular matrix T
-    t[0][0] = [1];
-    for (let j=1; j<=d; j++) {
-        t[0][j] = scaleExpansion2(b, t[0][j-1]);
-        for (let i=1; i<=j; i++) {
-            t[i][j] = fastExpansionSum(
-                scaleExpansion2(b, t[i][j-1]), 
-                scaleExpansion2(a, t[i-1][j-1])
-            );
-        }
-    }
-
-    // Multiply
-    const res: number[][] = new Array(d+1).fill([0]);
-    for (let i=0; i<=d; i++) {
-        res[d-i] = [0];
-        for (let j=i; j<=d; j++) {
-            const acc = expansionProduct(t[i][j], p[d-j]);
-            res[d-i] = fastExpansionSum(res[d-i], acc);
-        }
-    }
-
-    return res;
+    return eScale(eTaylorShift(p, b), a);
 }
 
 

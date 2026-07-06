@@ -47,45 +47,6 @@ function taylorShiftWithInpErr(
 
 /**
  * ❗**MODIFIES**❗ the given polynomial and its input-error bound to compute
- * `p(x + h)` together with a running error bound.
- *
- * @param p a polynomial with coefficients given densely as an array of double
- * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`
- * represents the polynomial `5x^2 - 3x`
- * @param h the shift amount
- * @param p_ an error polynomial that represents a coefficient-wise error bound
- * that has **not** been scaled by `γ1` yet
- *
- * @doc
- */
-function inplaceTaylorShiftWithInpErr(
-        p: number[],
-        h: number,
-        p_: number[]): void {
-
-    const n = p.length - 1;
-
-    // The successive remainders are the Taylor coefficients of `p` about `h`,
-    // i.e. the coefficients of `p(x + h)`.
-    const _h = abs(h);
-
-    for (let k=0; k<=n; k++) {
-        for (let i=1; i<=n - k; i++) {
-            const qi1 = p[i - 1];
-            const qi1_ = p_[i - 1];
-
-            const hq = h*qi1;
-            const hq_ = _h*qi1_ + abs(hq);
-
-            p[i] = p[i] + hq;
-            p_[i] = p_[i] + hq_ + abs(p[i]);
-        }
-    }
-}
-
-
-/**
- * ❗**MODIFIES**❗ the given polynomial and its input-error bound to compute
  * `p(x + 1)` together with a running error bound.
  *
  * @param p a polynomial with coefficients given densely as an array of double
@@ -122,6 +83,5 @@ function inplaceTaylorShiftBy1WithInpErr(
 
 export {
     taylorShiftWithInpErr,
-    inplaceTaylorShiftWithInpErr,
     inplaceTaylorShiftBy1WithInpErr
 }

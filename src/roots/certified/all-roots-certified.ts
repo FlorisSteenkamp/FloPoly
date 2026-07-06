@@ -1,5 +1,5 @@
 import type { RootInterval } from "../root-interval.js";
-import { eEstimate, eSign } from "big-float-ts";
+import { eEstimate } from "big-float-ts";
 import { ddDifferentiateWithError } from "../../calculus/double-double/dd-differentiate-with-err.js";
 import { eDifferentiate } from '../../calculus/expansion/e-differentiate.js';
 import { evalCertified } from "../../evaluate/double/eval-certified.js";
@@ -18,6 +18,10 @@ const onePlusEps = 1 + eps;
 
 
 /**
+ * ❗**DEPRECATED**❗
+ * 
+ * * Use **`roots`** instead, it is faster.
+ * 
  * Finds and returns all ordered *certified* root intervals (bar underflow / 
  * overflow) of the given polynomial (with coefficients given in double-double 
  * precision (use [[allRootsCertifiedSimplified]] if you only require coefficients 
@@ -172,6 +176,8 @@ const onePlusEps = 1 + eps;
  * // getting inaccurate at this degree (i.e. >= 58).
  * ```
  * 
+ * @deprecated
+ * 
  * @doc
  */
 function allRootsCertified(p: number[][], lb?: number, ub?: number, pE?: number[], getPExact?: () => number[][], returnUndefinedForZeroPoly?: false): RootInterval[];
@@ -205,7 +211,7 @@ function allRootsCertified(
     // `p` and `getPExact()` *must* be of same length
     //----------------------------------------------------------------------
     let pExact: number[][] | undefined = undefined;  // lazy loaded
-    ({ p, pE, pExact } = removeLeadingZeroCoeffs(p, pE, getPExact));
+    ({ pDd: p, pDd_: pE, pExact } = removeLeadingZeroCoeffs(p, pE, getPExact, 1));
 
     if (p.length === 0) {
         // return `undefined` for the zero polynomial?

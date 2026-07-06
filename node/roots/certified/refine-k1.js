@@ -1,15 +1,18 @@
 import { eToDd } from "big-float-ts";
 import { twoSum } from "big-float-ts";
 import { eChangeVariablesLinear } from "../../change-variables/expansion/e-change-variables-linear.js";
-import { allRootsCertified } from "./all-roots-certified.js";
-const eps = Number.EPSILON;
+import { roots } from '../descartes/roots.js';
+import { eps } from '../../error-analysis/gamma.js';
+const { abs, min, max, log2, ceil } = Math;
 /**
  * Returns once compensated root(s) (bar underflow / overflow) given a root
  * interval previously calculated using [[allRootsCertified]].
  *
+ * * root interval endpoints are returned in double-double precision
+ *
  * * 'once-compensated' here means that the typical root interval, `W`,
- * (`= Number.EPSILON` at `1`) is reduced to `W**2`; if multiple roots were
- * present in the original interval they may be resolved to individual
+ * (`~ 2*Number.EPSILON` at `1`) is reduced to `W**2`; if multiple distinct
+ * roots were present in the original interval they may be resolved to individual
  * intervals
  *
  * @param ri a root interval previously calculated
@@ -20,16 +23,16 @@ const eps = Number.EPSILON;
  * @doc
  */
 function refineK1(ri, p) {
-    const tS = ri.tS;
-    // scale is exact by the precondition put on `RootInterval`
-    const δ = ri.tE - tS;
-    if (δ === 0) {
+    const { tS, tE } = ri;
+    const W = tE - tS;
+    if (W === 0) {
         return [{
                 tS: [0, tS],
                 tE: [0, tS],
                 multiplicity: ri.multiplicity
             }];
     }
+    const δ = 2 ** ceil(log2(W)); // Ensure scale is a power of 2
     // Translate the polynomial such that the root is within δ from 0, then
     // scale it such that the roots stay <= 1, i.e. is in [0,1]
     const pExactK1 = eChangeVariablesLinear(p, δ, tS);
@@ -37,11 +40,10 @@ function refineK1(ri, p) {
     const pDdK1 = pExactK1.map(eToDd);
     // update the double-double precision error bound - it is simply the error 
     // in rounding the exact coefficients to double-double precision
-    const errBoundK1 = pDdK1.map(c => eps * eps * c[1]);
+    const errBoundK1 = pDdK1.map(c => c[1] * (eps ** 2));
     const getPExactK1 = () => pExactK1;
-    // keep TypeScript happy; `allRootsCertified` can safely be assumed not to
-    // return `undefined`
-    const risLo = allRootsCertified(pDdK1, 0, 1, errBoundK1, getPExactK1);
+    // const risLo = allRootsCertified(pDdK1, 0, 1, errBoundK1, getPExactK1)!;
+    const risLo = roots(pDdK1, 0, 1, errBoundK1, getPExactK1);
     const ris = [];
     for (const riLo of risLo) {
         ris.push({

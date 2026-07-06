@@ -1,8 +1,5 @@
 import { eEstimate } from "big-float-ts";
-/** @internal */
-function isNumber(x) {
-    return typeof x === 'number';
-}
+const { abs } = Math;
 /** @internal */
 function isShewchuk(x) {
     return Array.isArray(x);
@@ -42,7 +39,7 @@ function toCasStr(p) {
             : _v; // bigint or number
         const absV = isBigint(v)
             ? (v < 0n ? -v : v)
-            : Math.abs(v);
+            : abs(v);
         let cStr = nonNegativeNumberToString(absV);
         if (v === 0 || cStr === '0') {
             continue;
@@ -70,7 +67,7 @@ function nonNegativeNumberToString(num) {
     if (isBigint(num)) {
         return numStr;
     }
-    if (Math.abs(num) < 1) {
+    if (abs(num) < 1) {
         const e = parseInt(numStr.split('e-')[1]);
         if (e) {
             num *= 10 ** (e - 1);

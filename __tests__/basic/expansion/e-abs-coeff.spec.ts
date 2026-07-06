@@ -4,7 +4,7 @@ import { eAbsCoeff } from '../../../src/basic/expansion/e-abs-coeff.js';
 
 
 describe('eAbsCoeff', function() {
-    it('change all coeffients to their absolute values for some polynomials with Shewchuk expansion coefficients', 
+    it('change all coefficients to their absolute values for some polynomials with Shewchuk expansion coefficients', 
     function() {
         let p1: number[][] = [];
         let p2 = [[-2],[3]];

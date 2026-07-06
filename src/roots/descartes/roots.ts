@@ -1,11 +1,13 @@
 import { reduceInterval } from "../reduce-interval.js";
+import { removeLeadingZeroCoeffs } from "../remove-leading-zero-coeffs.js";
 import { isolateRoots } from "./isolate-roots.js";
+import { γγ3 } from '../../error-analysis/gamma.js';
 
 
 /**
  * Finds and returns all ordered *certified* root intervals (bar underflow / 
- * overflow) of the given polynomial (with coefficients given in double-double
- * precision, including their multiplicities (see points below).
+ * overflow) of the given polynomial (with coefficients given in double or
+ * double-double precision, including their multiplicities (see points below).
  * 
  * * The input polynomial can be given in double precision by wrapping each
  *   coefficient in an array, i.e. `polynomial.map(c => [0,c])` with the 'low double'
@@ -13,14 +15,14 @@ import { isolateRoots } from "./isolate-roots.js";
  * 
  * * returns `undefined` for the zero polynomial
  * 
- * * Let `W = 2 * Number.EPSILON * max(1, 2^⌈log₂r⌉)`, where `r` is a root.
+ * * Let `W = 2 * m * Number.EPSILON * max(1, 2^⌈log₂r⌉)`, where `r` is a root
+ *   and `m` is the number of roots (the 'multiplicity') within the 
+ *   interval, where multiplicity here includes roots seperated by less than 
+ *   `W` and not necessarily only exact multiple roots
  * 
  * * The returned intervals are of max width `W`; use [[refineK1]] to 
  *   reduce the root interval widths further and thus 'resolving' the roots if 
  *   required (although the roots are already *guaranteed* extremely accurate!).
- * 
- * * The 'multiplicity' within the interval includes all roots seperated by less
- *   than `W` and not necessarily only exact multiple roots.
  * 
  * * The retuned root intervals will contain *all* roots.
  * 
@@ -51,9 +53,8 @@ import { isolateRoots } from "./isolate-roots.js";
  * the coefficients are given from highest to lowest power,
  * e.g. `[[0,5],[0,-3],[0,0]]` represents the polynomial `5x^2 - 3x`;
  * 
- * @param lb defaults to `0`; lower bound of roots to be returned; 
- * `-Infinity` may be given if there is no lower bound
- * @param ub defaults to `1`; upper bound of roots to be returned;
+ * @param lb defaults to `-Infinity`; limiting the bound increases performance
+ * @param ub defaults to `+Infinity`; limiting the bound increases performance
  * `Infinity` may be given if there is no upper bound
  * 
  * @param pDd_ defaults to `undefined`; if `undefined` then the input polynomial
@@ -70,8 +71,12 @@ import { isolateRoots } from "./isolate-roots.js";
  * preventing certification of the root intervals; if `undefined` then the 
  * input polynomial will be assumed exact
  * 
- * @param tryReduceInterval defaults to `false`; if `true` then the interval [lb,ub]
- * will be reduced to a smaller interval containing all roots (if possible)
+ * @param tryReduceInterval defaults to `true`; if `true` (or if `lb` or `ub`
+ * is `Infinity` or `undefined`) then the interval `[lb,ub]` will be reduced to
+ * a smaller interval containing all roots (if possible) before starting the algorithm.
+ * Since `reduceInterval` is a relatively long running algorithm it is generally
+ * faster to set this to `false` and directly specify the interval of interest.
+ * 
  * 
  * @example
  * ```typescript
@@ -150,21 +155,24 @@ import { isolateRoots } from "./isolate-roots.js";
  * @doc
  */
 function roots(
-        pDd: number[][],
-        lb = 0,
-        ub = 1,
-        pDd_?: number[],
-        getPExact?: () => number[][],
-        tryReduceInterval = false) {
+        pDd: number[][] | number[],
+        lb = -Infinity,
+        ub = +Infinity,
+        pDd_?: number[] | undefined,
+        getPExact?: (() => number[][]) | undefined,
+        tryReduceInterval = true) {
 
     // if (pDd === undefined) { pDd = p.map(c => [0,c]); }
+    if (typeof pDd[0] === 'number') {
+        pDd = pDd.map(c => [0, c as number]);
+    }
 
     // We cache `pExact`
     let pExact: number[][] | undefined = undefined;
     const getPExact_ = () => {
         // If `getPExact` is not specified then assume the given double-double 
         // precision coefficient polynomial is exact.
-        if (getPExact === undefined) { return pDd; }
+        if (getPExact === undefined) { return pDd as number[][]; }
         // If `getPExact` is specified then use it and cache the result.
         if (pExact === undefined) { pExact = getPExact(); }
         return pExact;
@@ -172,6 +180,11 @@ function roots(
 
     // if `pDd_` is not specified then assume there is no error
     pDd_ = pDd_ || new Array(pDd.length).fill(0);  // no error
+
+    //----------------------------------------------------------------------
+    // Remove leading zero coefficients 
+    //----------------------------------------------------------------------
+    ({ pDd, pDd_, pExact } = removeLeadingZeroCoeffs(pDd as number[][], pDd_, getPExact_, γγ3));
 
     if (pDd.length === 0) {
         return undefined;  // return `undefined` for the zero polynomial (of degree -1)
@@ -182,6 +195,9 @@ function roots(
     const p = pDd.map(c => c[0] + c[1]);
     if (tryReduceInterval || lb === -Infinity || ub === Infinity) {
         [lb,ub] = reduceInterval(lb, ub, p);
+        if (lb === ub) {
+            return [{ tS: lb, tE: ub, multiplicity: p.length - 1 }];
+        }
     }
 
     return isolateRoots(p, pDd, pDd_, lb, ub, getPExact_);

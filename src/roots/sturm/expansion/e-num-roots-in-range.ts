@@ -1,16 +1,16 @@
-import { bSum } from "../../../util/bigint/b-sum.js";
 import { bNumRootsInRange } from "../bigint/b-num-roots-in-range.js";
 import { scaleFloatssToBigintss } from '../../../scale-to-int/scale-floatss-to-bigintss.js';
 import { scaleFloatsToBigints } from "../../../scale-to-int/scale-floats-to-bigints.js";
+import { bInvScale, bScale } from "../../../change-variables/bigint/b-scale.js";
+import { eCompress } from "big-float-ts";
+import { bSum } from "../../../util/bigint/b-sum.js";
+
+const { abs, round, log2 } = Math;
 
 
 /**
- * Returns the *exact* number of *distinct* real roots in the open 
+ * Returns the ***exact*** number of ***distinct*** real roots in the **closed**
  * interval `(a,b)` of the given polynomial.
- * 
- * * From Wikipedia: "In the case of a non-square-free polynomial, if 
- * neither a nor b is a multiple root of p, then V(a) − V(b) is the number of 
- * distinct real roots of P".
  * 
  * @param p a polynomial with coefficients given densely as an array of
  * Shewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 
@@ -21,10 +21,10 @@ import { scaleFloatsToBigints } from "../../../scale-to-int/scale-floats-to-bigi
  * @example
  * ```typescript 
  * const p = [[1], [1], [-64], [236], [-240]];
- * eNumRootsInRange(p,-20,-11); //=> 0
- * eNumRootsInRange(p,-11,-9);  //=> 1  
- * eNumRootsInRange(p,-11,3.5); //=> 3
- * eNumRootsInRange(p,-11,5);   //=> 4
+ * eNumRootsInRange(p,[-20],[-11]); //=> 0
+ * eNumRootsInRange(p,[-11],[-9]);  //=> 1
+ * eNumRootsInRange(p,[-11],[3.5]); //=> 3
+ * eNumRootsInRange(p,[-11],[5]);   //=> 4
  * ```
  * 
  * @doc
@@ -34,11 +34,30 @@ function eNumRootsInRange(
         a: number[], 
         b: number[]): number {
 
-    return bNumRootsInRange(
-        scaleFloatssToBigintss(p).map(bSum),
-        bSum(scaleFloatsToBigints(a)),
-        bSum(scaleFloatsToBigints(b))
-    );
+    a = eCompress(a);
+    b = eCompress(b);
+    const [A, B] = scaleFloatssToBigintss([a, b]).map(bSum);
+    const minIdx = abs(a[a.length - 1]) <= abs(b[b.length - 1]) ? 0 : 1;
+
+    const v = [a,b][minIdx];
+    const V = [A,B][minIdx];
+
+    const d = p.length;
+
+    let s: number;  // a power of 2
+    const _s = v[v.length - 1] === 0 ? 1 : v[v.length - 1]/Number(V);
+    s = 2**round(log2(_s));  // exact
+
+    let pB = scaleFloatssToBigintss(p).map(bSum);
+    if (s < 1) {
+        const S = BigInt(1/s);  // exact division
+        pB = pB.map(c => c*(S**BigInt(d)));
+        pB = bInvScale(pB, S)
+    } else {
+        pB = bScale(pB, BigInt(s));
+    }
+
+    return bNumRootsInRange(pB, A, B);
 }
 
 

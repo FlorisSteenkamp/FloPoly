@@ -8,6 +8,8 @@
  * @param lb
  * @param ub
  * @param p
+ *
+ * @internal
  */
 declare function reduceInterval(lb: number, ub: number, p: number[]): number[];
 export { reduceInterval };

@@ -1,7 +1,7 @@
 import { γ1, γγ3 } from "../../error-analysis/gamma.js";
 import { inplaceTaylorShiftBy1WithInpErr, taylorShiftWithInpErr } from "../../change-variables/double/taylor-shift-with-inp-err.js";
 import { inplaceScaleWithInpErr } from "../../change-variables/double/scale-with-inp-err.js";
-import { ddTaylorShiftWithInpErr } from "./dd-taylor-shift-with-inp-err.js";
+import { ddTaylorShiftWithInpErr } from "../../change-variables/double-double/dd-taylor-shift-with-inp-err.js";
 import { ddInplaceScaleWithInpErr } from "../../change-variables/double-double/dd-scale-with-inp-err.js";
 import { eTaylorShift } from '../../change-variables/expansion/e-taylor-shift.js';
 import { eScale } from '../../change-variables/expansion/e-scale.js';
@@ -53,7 +53,7 @@ const { abs, sign } = Math;
  * 
  * @internal
  */
-function mobiusPrecise(
+function mobiusAndNumSignChanges(
         p: number[],
         p_: number[],
         pDd: number[][],
@@ -93,7 +93,6 @@ function mobiusPrecise(
         // The sign of `A` and `B` are both !== 0 and is certified since it is an
         // endpoint of the interval.
         let _s = sign(A);  // Sign is certified
-        let certifyable = true;
         for (let i=1; i<q.length - 1; i++) {
             let s = sign(q[i]);
             const v = q[i];
@@ -103,14 +102,10 @@ function mobiusPrecise(
                 // Important: Lemma 19 of Sagraloff & Mehlhorn 2015 (arXiv:1308.4088) is incorrect,
                 // we are actually allowed one uncertifyable coefficient (but **only** if numSignChanges
                 // equals 1)!
-                if (certifyable === false) {  // **if certifyable was already false**
-                    // Important: If we find consecutive "zeros" then either we need to increase
-                    // the precision to resolve them OR it is just by coincidence that they cannot
-                    // be resolved from zero, in which case it is very likely that the next split
-                    // will resolve correctly.
-                    return ddMobius(pDd, pDd_, a, b, A, B, failCount, getPExact);
-                }
-                certifyable = false;
+
+                // Important: If we find max 1 "zero" and "numSignChangesMax" is 1 then
+                // we can guarantee that there is exactly 1 root in the interval.
+
                 numUncertifyable++;
                 // If we encounter a "zero" we make its sign different than the
                 // previous one so it can count as a sign change; this differs
@@ -126,12 +121,20 @@ function mobiusPrecise(
         const s = sign(B);  // Sign is certified
         if (s !== _s) { numSignChangesMax++; }
 
+        if (numUncertifyable === 1 && numSignChangesMax === 1) {
+            return 1;
+        }
+
+        if (numUncertifyable > 0) {
+            return ddMobiusAndNumSignChanges(pDd, pDd_, a, b, A, B, failCount, getPExact);
+        }
+
         return numSignChangesMax;  // guaranteed OR need to split interval
     }
 }
 
 
-function ddMobius(
+function ddMobiusAndNumSignChanges(
         pDd: number[][],
         pDd_: number[],
         a: number,
@@ -168,7 +171,6 @@ function ddMobius(
     // The sign of `A` and `B` are both !== 0 and is certified since it is an
     // endpoint of the interval.
     let _s = sign(A);
-    let certifyable = true;
     let failed = false;
     for (let i=0; i<q.length - 1; i++) {
         // No error in the sign of the last coefficient (important for parity of sign changes)
@@ -181,16 +183,10 @@ function ddMobius(
             // Important: Lemma 19 of Sagraloff & Mehlhorn 2015 (arXiv:1308.4088) is incorrect,
             // we are actually allowed one uncertifyable coefficient (but **only** if `numSignChanges`
             // equals 1)!
-            if (certifyable === false) {  // if certifyable was already false
-                // Indicates that this interval should me marked as "failed once".
-                // If it fails twice in a row it is very likely the issue is due to double-double
-                // precision not being accurate enough. In rare cases it just so happened
-                // that 2 consecutive coefficients were unresolvable from 0.
-                // In future we can somehow calculate the max times this type of fail is possible
-                // consecutively (conjecture: it is less than `deg(P)`).
-                failed = true;
-            }
-            certifyable = false;
+
+            // Important: If we find max 1 "zero" and "numSignChangesMax" is 1 then
+            // we can guarantee that there is exactly 1 root in the interval.
+
             numUncertifyable++;
             // If we encounter a "zero" we make its sign different than the
             // previous one so it can count as a sign change; this differs
@@ -208,16 +204,16 @@ function ddMobius(
         numSignChanges++;
     }
 
-    // if (numUncertifyable === 1 && numSignChanges === 1) {
-    //     return 1;  // **guaranteed** to have exactly one root in the interval
-    // }
+    if (numUncertifyable === 1 && numSignChanges === 1) {
+        return 1;  // **guaranteed** to have exactly one root in the interval
+    }
 
-    if (!failed) {
+    if (numUncertifyable === 0) {
         return numSignChanges;
     }
 
     return failCount > 1
-        ? eMobius(getPExact,a,b,A,B)
+        ? eMobiusAndNumSignChanges(getPExact,a,b,A,B)
         : -numSignChanges;  // `failCount` is still 1, so we can try again after another split of the interval;
 
     // We need to split the interval into two subintervals since we
@@ -227,7 +223,7 @@ function ddMobius(
 }
 
 
-function eMobius(
+function eMobiusAndNumSignChanges(
         getPExact: () => number[][],
         a: number,
         b: number,
@@ -236,26 +232,10 @@ function eMobius(
 
     const pE = getPExact();
 
-    //-------------------------------------------
-    // Taylor shift by `a`, i.e. p(x + a)
-    //-------------------------------------------
     let q = eTaylorShift(pE, a);
-
-    //---------------------------------------------------
-    // Scale the coefficient of xⁱ by (b - a)ⁱ
-    //---------------------------------------------------
     q = eScale(q, b - a);
-
-    //-------------------------------------------------------------
-    // Reverse, i.e. xⁿ q(1/x) (homogenized inversion x -> 1/x)
-    //-------------------------------------------------------------
     q.reverse();
-
-    //-------------------------------------------
-    // Taylor shift by 1, i.e. q(x + 1)
-    //-------------------------------------------
     q = eTaylorShift(q, 1);
-
 
     //--------------------------------------------------------
     // Calc number of sign changes in the Mobius coefficients
@@ -263,7 +243,7 @@ function eMobius(
     let numSignChanges = 0;  // number of sign changes
 
     let _s = sign(A);
-    for (let i=1; i<q.length; i++) {
+    for (let i=1; i<q.length - 1; i++) {
         const c = q[i];
         let s = sign(c[c.length - 1]);  // Sign is certified (in exact precision)
 
@@ -273,8 +253,17 @@ function eMobius(
         }
     }
 
+    // Keep this to ensure parity of sign changes even when underflow occurs
+    const s = sign(B);  // Sign is certified (up to over/underflow)
+    if (s !== _s) {
+        numSignChanges++;
+    }
+
     return numSignChanges;
 }
 
 
-export { mobiusPrecise }
+export { mobiusAndNumSignChanges }
+
+// exported for testing only
+export { eMobiusAndNumSignChanges }

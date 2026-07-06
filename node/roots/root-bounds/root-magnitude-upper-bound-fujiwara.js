@@ -1,3 +1,4 @@
+const { abs, max } = Math;
 /**
  * Returns an upper bound on the magnitude (absolute value) of the complex
  * roots of the given polynomial using the near-optimal Fujiwara bound.
@@ -27,10 +28,10 @@ function rootMagnitudeUpperBound_fujiwara(p) {
     const an = p[0];
     const bs = [];
     for (let i = 1; i < d; i++) {
-        bs.push((Math.abs(p[i] / an)) ** (1 / i));
+        bs.push((abs(p[i] / an)) ** (1 / i));
     }
-    bs.push((Math.abs(p[d] / 2 * an)) ** (1 / d));
-    return 2 * Math.max(...bs);
+    bs.push((abs(p[d] / 2 * an)) ** (1 / d));
+    return 2 * max(...bs);
 }
 export { rootMagnitudeUpperBound_fujiwara };
 //# sourceMappingURL=root-magnitude-upper-bound-fujiwara.js.map

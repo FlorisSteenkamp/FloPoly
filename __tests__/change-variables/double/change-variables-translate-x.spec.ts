@@ -1,5 +1,4 @@
 import { describe, expect, it } from '@jest/globals';
-
 import { equal } from '../../../src/basic/double/equal.js';
 import { changeVariablesTranslateX } from '../../../src/change-variables/double/taylor-shift.js';
 

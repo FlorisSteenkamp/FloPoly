@@ -1,19 +1,17 @@
 import { describe, expect, it } from '@jest/globals';
 import { eCompress, eToDd } from 'big-float-ts';
 import { eEqual } from '../../../src/basic/expansion/e-equal.js';
-import { ddDeflate } from '../../../src/roots/naive/dd-deflate.js';
+import { ddDeflate } from '../../../src/roots/deflate/dd-deflate.js';
 import { toCasStr } from '../../../src/basic/to-cas-str.js';
-import { allRoots } from '../../../src/roots/naive/all-roots.js';
 
 
 describe('ddDeflate', function() {
     it('should correctly deflate (in double-double precision) some polynomials', 
     function() {
-        /*
         {
             const p = [[0,1], [0,-5], [0,8], [0,-4]];
             const r = 2;
-            expect(eEqual(ddDeflate(p, r), [[0,1], [0,-3], [0,2]])).toEqual(true);   
+            expect(eEqual(ddDeflate(p, r), [[0,1], [0,-3], [0,2]])).toEqual(true);
         }
         {
             const p = [[0,1], [0,-3], [0,2]];
@@ -25,7 +23,6 @@ describe('ddDeflate', function() {
             const r = 1;
             expect(eEqual(ddDeflate(p, r), [[0,1]])).toEqual(true);
         }
-        */
         {
             const p = [
                 [289929216],

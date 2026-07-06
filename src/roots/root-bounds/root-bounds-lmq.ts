@@ -55,7 +55,7 @@ function positiveRootUpperBound_LMQ(p: number[]): number {
             any = true;
         }
         
-        if (any && ub < tempub)  
+        if (any && ub < tempub)
             ub = tempub;
     }
     

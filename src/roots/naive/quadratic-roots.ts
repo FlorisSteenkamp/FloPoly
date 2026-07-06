@@ -1,3 +1,7 @@
+
+const { sqrt } = Math;
+
+
 /**
  * Floating-point-stably calculates and returns the ordered quadratic roots of 
  * the given quadratic polynomial.
@@ -33,7 +37,7 @@ function quadraticRoots(p: number[]): number[] {
         return [-b / (2*a)];
     }
     
-    const D = Math.sqrt(_D);
+    const D = sqrt(_D);
     
     if (b >= 0) {
         const root1 = (-b - D) / (2*a);

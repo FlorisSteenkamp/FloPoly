@@ -2,7 +2,7 @@ import { eCompress, eEstimate } from 'big-float-ts';
 import { allRootsCertified } from '../../../src/roots/certified/all-roots-certified.js';
 import { allRoots } from '../../../src/roots/naive/all-roots.js';
 import { toCasStr } from '../../../src/basic/to-cas-str.js';
-import { getPolies } from '../../get-poly.js';
+import { getPolys_BezierIntersections, getPolys_BezierIntersections_PreFiltered, getPolys_BezierIntersections_MaxCoeffs } from '../../get-poly.js';
 import { roots } from '../../../src/roots/descartes/roots.js';
 import { γγ3 } from '../../../src/error-analysis/gamma.js';
 import { getPolysUsing9PerturbedRoots } from '../../get-polys-using-9-perturbed-roots.js';
@@ -16,6 +16,7 @@ import { scaleFloatssToBigintss } from '../../../src/scale-to-int/scale-floatss-
 import { bSum } from '../../../src/util/bigint/b-sum.js';
 import { bNumRootsInRange } from '../../../src/roots/sturm/bigint/b-num-roots-in-range.js';
 import { bNumRoots } from '../../../src/roots/sturm/bigint/b-num-roots.js';
+import { eFromRoots } from '../../../src/roots/from-roots/expansion/e-from-roots.js';
 
 
 const { round, ceil, abs, log2, max } = Math;
@@ -23,6 +24,15 @@ const { round, ceil, abs, log2, max } = Math;
 
 /** This test is also used by the demo! */
 function testIt_General(log: boolean) {
+    // underflow occurs...
+    // const { p, pDd, p_, pDd_, pE } = eFromRoots([
+    //     [0.3], [0.3], [0.3],
+    //     [0.3], [0.3], [0.3],
+    //     [0.3], [0.3], [0.3], [0.3]
+    // ]);
+    // const rs = roots(pDd, -Infinity, Infinity, pDd_, () => pE)!;//?
+    
+
     // return;
     // find roots within a huge range
     //const lb = -(10**10);
@@ -30,8 +40,7 @@ function testIt_General(log: boolean) {
 
     // find roots within a typical range
     const lb = 0;
-    // const ub = 1;
-    const ub = 1;
+    const ub = 2**0;
 
     // find roots on the entire projective number line
     // const lb = -Infinity;
@@ -43,15 +52,19 @@ function testIt_General(log: boolean) {
 
     /** number of polynomials to find roots of */
     // const N = 100_000;
-    const N = 100_000;
+    const N = 100;
+    // const pDd = [1,-2];
+    // roots(pDd, -100, 100);//?
     // const shift = 77;
-    const shift = 77;
+    const shift = 0;
 
     //------------------------------------------------------------------
     // create intersection polynomials from the generated cubic beziers
     //------------------------------------------------------------------
     const timeStartCoeffs = performance.now();
-    const polys = getPolies(N, shift);
+    const polys = getPolys_BezierIntersections(N, shift);
+    // const polys = getPolys_BezierIntersections_MaxCoeffs(N, shift, 6);
+    // const polys = getPolys_BezierIntersections_PreFiltered(N, shift);
  // const polys = getPolysUsing9PerturbedRoots(N, 2000_000_000_000_000_000_000_000, 10, 0.47, shift);
     // const polys = getPolysUsing9PerturbedRoots(N, 2000_000_000_000_000_000_000_000_000, 10, 0.47, shift);
     // const polys = getPolysUsing9PerturbedRoots(N, 2000_000_000_000_000_000_000_000_000_000, 10, 0.47, shift);
@@ -72,8 +85,10 @@ function testIt_General(log: boolean) {
     // polys[0] = testPoly;
     // for (let i=0; i<polys.length; i++) { polys[i] = testPoly; }
     
-    toCasStr(testPoly.pDd.map(coef => coef.map(v => v*2**34)));//?
+    // toCasStr(polys[0].pDd.map(coef => coef.map(v => v*2**-90)));//?
+    // polys.map(p => p.pDd);//?
     // @ts-ignore
+    // polys[0].pDd_ = polys[0].pDd_.map(c => c*2**100);
 
     //-----
     // testPoly = polys[0];
@@ -100,13 +115,13 @@ function testIt_General(log: boolean) {
     // find all roots of all generated polynomials using `isolateRoots`
     //------------------------------------------------------------------
     // @ts-ignore
-    globalThis.__debug__ = {};
+    // globalThis.__debug__ = {};
     let numIso = 0;
     const timeStartIso = performance.now();
     for (let i=0; i<N; i++) {
         // const { pDd, errBoundUnscaledDd, getPExact } = polys[i];
         const { pDd, pDd_, getPExact } = polys[i];
-        const ts = roots(pDd, lb, ub, pDd_, getPExact);//?
+        const ts = roots(pDd, lb, ub, pDd_, getPExact, false);//?
         // const rr = ts?.map(t => round((t.tS + t.tE)/2*1000_000_000)/1000_000_000).toReversed();
         // const rr = ts?.map(t => (t.tS + t.tE)/2).toReversed();
         // ts;//?
@@ -115,11 +130,11 @@ function testIt_General(log: boolean) {
         // eEstimate(eHorner(polys[0].getPExact(), ts![0].tS));//?
         // eEstimate(eHorner(polys[0].getPExact(), ts![1].tS));//?
         // eEstimate(eHorner(polys[0].getPExact(), ts![2].tS));//?
-        numIso += ts!.length;
+        numIso += ts ? ts!.length : 0;
     }
     let timingIsolate = performance.now() - timeStartIso;
     // @ts-ignore
-    globalThis.__debug__;//?
+    // globalThis.__debug__;//?
     //------------------------------------------------------------------
 
     //---------------------------------------------------------------------
@@ -140,7 +155,7 @@ function testIt_General(log: boolean) {
         // });//?
         // const rr = ts.map(t => round((t.tS + t.tE)/2*1000_000)/1000_000);
         // rr//?
-        if (ts) { numCert += ts.length; }
+        if (ts) { numCert += ts ? ts.length : 0; }
     }
     let timingCert = performance.now() - timeStartCert;
     //---------------------------------------------------------------------

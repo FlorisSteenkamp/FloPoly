@@ -1,3 +1,4 @@
+const { sqrt } = Math;
 /**
  * Returns the `p-2 norm`, i.e. `Euclidean norm` of the given array of numbers
  * (with intermediate calculations done in double precision).
@@ -12,7 +13,7 @@ function p2Norm(p) {
     for (let i = 0; i < p.length; i++) {
         s += p[i] ** 2;
     }
-    return Math.sqrt(s);
+    return sqrt(s);
 }
 export { p2Norm };
 //# sourceMappingURL=p-2-norm.js.map

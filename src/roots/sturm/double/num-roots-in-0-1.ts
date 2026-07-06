@@ -3,8 +3,8 @@ import { bNumRootsIn01 } from "../bigint/b-num-roots-0-1.js";
 
 
 /**
- * Returns the *exact* number of *distinct* real roots in the open 
- * interval (0,1) of the given polynomial.
+ * Returns the *exact* number of *distinct* real roots in the **closed**
+ * interval `[0,1]` of the given polynomial.
  * 
  * @param p a polynomial with coefficients given densely as an array of double
  * precision floating point numbers from highest to lowest power, 

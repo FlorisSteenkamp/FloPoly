@@ -1,8 +1,8 @@
 /**
- * Computes the greatest common divisor of two integers a and b, using the
+ * Computes the greatest common divisor of two integers `a` and `b`, using the
  * Euclidean Algorithm.
  *
- * **precondition** a, b must be integers
+ * **precondition** `a`, `b` must be integers
  *
  * @doc
  */

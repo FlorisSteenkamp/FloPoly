@@ -1,13 +1,13 @@
 import type { RootInterval } from '../root-interval.js';
+import { eCompress } from 'big-float-ts';
 import { eps } from '../../error-analysis/gamma.js';
-import { mobiusPrecise } from '../mobius/mobius-precise.js';
+import { mobiusAndNumSignChanges } from '../mobius/mobius-precise.js';
 import { refineCertified } from '../refine-certified.js';
 import { HornerWithInpError } from '../../evaluate/double/horner-with-inp-error.js';
 import { γ1, γγ3 } from '../../error-analysis/gamma.js';
 import { transposePoly } from '../transpose-poly.js';
 import { ddHornerWithInpError } from '../../evaluate/double-double/dd-horner-with-inp-error.js';
 import { eHorner } from '../../evaluate/expansion/e-horner.js';
-import { eCompress } from 'big-float-ts';
 
 const { abs, min, max, log2, ceil } = Math;
 
@@ -60,7 +60,7 @@ function isolateRoots(
     const _lb_ = lb;
     const _ub_ = ub;
 
-    const W = ub - lb;
+    let W = ub - lb;
     let A: number;
     let ea: number;
     while (true) {
@@ -68,7 +68,8 @@ function isolateRoots(
         if (abs(A) > ea*γ1) {  // if we can certify the sign of `p(t)`
             break;
         }
-        lb -= W/4;
+        lb -= W/2;
+        W *= 2;
     }
     let B: number;
     let eb: number;
@@ -77,7 +78,8 @@ function isolateRoots(
         if (abs(B) > eb*γ1) {  // if we can certify the sign of `p(t)`
             break;
         }
-        ub += W/4;
+        ub += W/2;
+        W *= 2;
     }
     //------------------------------------------------
 
@@ -85,19 +87,18 @@ function isolateRoots(
     const Is = [[lb,ub,A,B,0]];
     const Is_: RootInterval[] = [];  // Isolated root intervals will be stored here
 
-    let treeSize = 0;  // TODO - remove eventually
+    // let treeSize = 0;  // remove eventually
 
-    const mobiusPrecise_ = mobiusPrecise(p, p_, pDd, pDd_, getPExact);
+    const mobiusPrecise_ = mobiusAndNumSignChanges(p, p_, pDd, pDd_, getPExact);
 
     let errBound: number[];
     let pDdTransposed: number[][];
 
     while (Is.length > 0) {
-        treeSize++;
+        // treeSize++;
 
         const I = Is.pop()!;
         const [a,b,A,B,failCount] = I;
-        // [I[0],I[1]];//?
 
         //----------------------------------------------------------------------
         // Descarte's rule of signs to count the number of roots in this interval
@@ -120,18 +121,22 @@ function isolateRoots(
             continue;
         }
          
-        const realFailCount = varP < 0 ? failCount + 1 : 0;
+        let realFailCount = varP < 0 ? failCount + 1 : 0;
 
         //-----------------------------------------------------------------
         // **possibly** more than one root in this interval
         //-----------------------------------------------------------------
         const W = b - a;
-        const minW = 2*eps * max(1, 2**ceil(log2(min(abs(a), abs(b)))));
+        const minW = 2*abs(varP)*eps * max(1, 2**ceil(log2(max(abs(a), abs(b)))));
         if (W <= minW) {
-            // `varP` is guaranteed to be correct (except it can be larger by a multiple of 2)
-            // since the sign of `A` and `B` are both certified,
-            Is_.push({ tS: a, tE: b, multiplicity: abs(varP) });
-            continue;  // stop recursion when intervals are too small
+            if (realFailCount === 0) {
+                // `varP` is guaranteed to be correct (except it can be larger by a multiple of 2)
+                // since the sign of `A` and `B` are both certified,
+                Is_.push({ tS: a, tE: b, multiplicity: abs(varP) });
+                continue;  // stop recursion when intervals are too small
+            }
+
+            realFailCount = Infinity;  // split one last time
         }
 
         const [t, T] = admissablePoint(p, p_, pDd, pDd_, a, b, getPExact);
@@ -141,9 +146,7 @@ function isolateRoots(
         Is.push([t!, b, T, B, realFailCount]);
     }
 
-    if (treeSize !== 1) {
-        treeSize; //?
-    }
+    // treeSize; //?
 
     Is_.reverse();
 
@@ -268,55 +271,6 @@ function eAdmissablePoint(
         }
     }
 }
-
-
-// import { Horner } from '../../evaluate/double/horner.js';
-// import { differentiate } from '../../calculus/double/differentiate.js';
-// /**
-//  * Returns a guess for the position of a cluster of roots
-//  * 
-//  * * The `0-test` and `1-test` must have failed for the iterval `[a,b]`
-//  * 
-//  * @param p a polynomial with coefficients given densely as an array of double
-//  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]` 
-//  * represents the polynomial `5x^2 - 3x`
-//  * @param a the start of the interval to search for roots
-//  * @param b the end of the interval to search for roots
-//  * @param NI the interval reduction multiplier, i.e. `2**(2**nI)` with `nI` being
-//  * a parameter `>= 1` for the interval (as per "Algorithm: Newton-Test" in
-//  * [Computing Real Roots of Real Polynomials](https://arxiv.org/pdf/1308.4088)
-//  * 
-//  */
-// function guessCluster(
-//         p: number[],
-//         a: number,
-//         b: number,
-//         NI: number): number {
-
-//     // (1) Let ξ₁ := a + ¼·w(I), ξ₂ := a + ½·w(I), ξ₃ := a + ¾·w(I)
-//     // ...
-//     const W = b - a;
-//     const E1 = a + 0.25*W;
-//     const E2 = a + 0.50*W;
-//     const E3 = a + 0.75*W;
-//     const Es = [E1,E2,E3];
-
-//     // (2) For each of the three distinct pairs (j1, j2) of indices j1, j2 ∈ {1, 2, 3}
-//     // ...
-//     const pDiff = differentiate(p);
-//     for (let idxs of [[1,2],[1,3],[2,3]]) {
-//         const [i,j] = idxs;
-//         const Ea = Es[i];
-//         const Eb = Es[j];
-
-//         const Aa = Horner(p,Ea);
-//         const Ab = Horner(p,Eb);
-//         const A$a = Horner(pDiff,Ea);
-//         const A$b = Horner(pDiff,Eb);
-
-
-//     }
-// }
 
 
 export { isolateRoots }

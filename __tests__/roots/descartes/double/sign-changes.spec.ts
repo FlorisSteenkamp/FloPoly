@@ -1,6 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-
-import { signChanges } from '../../../../src/roots/descartes/double/sign-changes.js';
+import { signChanges } from '../../../../src/roots/sturm/double/sign-changes.js';
 
 
 describe('signChanges', function() {

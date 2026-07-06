@@ -5,7 +5,7 @@ import { HornerWithInpError } from '../../../src/evaluate/double/horner-with-inp
 import { toCasStr } from '../../../src/basic/to-cas-str.js';
 import { eeHorner } from '../../../src/evaluate/expansion/e-e-horner.js';
 import { getPolysUsing9PerturbedRoots } from '../../get-polys-using-9-perturbed-roots.js';
-import { eNumRootsInRange } from '../../../src/roots/descartes/expansion/e-num-roots-in-range.js';
+import { eNumRootsInRange } from '../../../src/roots/sturm/expansion/e-num-roots-in-range.js';
 import { allRootsCertified } from '../../../src/roots/certified/all-roots-certified.js';
 import { γ1, γγ3 } from '../../../src/error-analysis/gamma.js';
 import { randomIntInRange } from '../../../src/error-analysis/random-int-in-range.js';

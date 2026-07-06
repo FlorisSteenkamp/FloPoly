@@ -1,5 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-import { taylorShift } from '../../../src/basic/double/taylor-shift.js';
+import { taylorShift } from '../../../src/change-variables/double/taylor-shift.js';
 import { Horner } from '../../../src/evaluate/double/horner.js';
 
 

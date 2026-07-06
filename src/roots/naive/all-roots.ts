@@ -1,16 +1,18 @@
 import { differentiate } from "../../calculus/double/differentiate.js";
 import { Horner } from "../../evaluate/double/horner.js";
 import { brentPoly } from "./brent-poly.js";
-// TODO - investigate why this is swapped - probably a naming issue
-import { negativeRootLowerBound_LMQ as negativeRootUpperBound_LMQ_ } from "../root-bounds/root-bounds-lmq.js";
+import { negativeRootLowerBound_LMQ } from "../root-bounds/root-bounds-lmq.js";
 import { positiveRootUpperBound_LMQ } from "../root-bounds/root-bounds-lmq.js";
 import { removeLeadingZeros } from "../../basic/double/remove-leading-zeros.js";
 
 
-const negativeRootUpperBound_LMQ = negativeRootUpperBound_LMQ_;
-
-
 /**
+ *  * ❗**DEPRECATED**❗
+ * 
+ * * Use **`roots`** instead, it is faster (and certified):
+ * * `allRoots(p)` becomes `roots(p)!.map(r => (r.tE + r.tS) / 2)`
+ * * `allRoots(p,a,b)` becomes `roots(p,a,b)!.map(r => (r.tE + r.tS) / 2)`
+ * 
  * Find and return all roots of the given polynomial in the given interval.
  * 
  * * an empty array is returned for a constant or the zero polynomial
@@ -69,7 +71,7 @@ function allRoots(
     }
     
     if (lb === -Infinity) {
-        lb = negativeRootUpperBound_LMQ(p);
+        lb = negativeRootLowerBound_LMQ(p);
     }
     
     if (ub === Infinity) {

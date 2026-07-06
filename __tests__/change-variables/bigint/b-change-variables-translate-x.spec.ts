@@ -1,7 +1,6 @@
 import { describe, expect, it } from '@jest/globals';
-
 import { bEqual } from '../../../src/basic/bigint/b-equal.js';
-import { bChangeVariablesTranslateX } from '../../../src/change-variables/bigint/b-change-variables-translate-x.js';
+import { bChangeVariablesTranslateX } from '../../../src/change-variables/bigint/b-taylor-shift.js';
 
 
 describe('bChangeVariablesTranslateX', function() {

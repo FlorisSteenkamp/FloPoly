@@ -1,4 +1,5 @@
 import { gcdInts } from "../../gcd/double/integer-gcd.js";
+const { sign } = Math;
 /**
  * Returns cont(p), i.e. the content of the given polynomial defined as the
  * greatest common divisor of its coefficients.
@@ -24,7 +25,7 @@ function content(p) {
         // the zero polynomial
         return 1;
     }
-    return Math.sign(p[0]) * gcdInts(p);
+    return sign(p[0]) * gcdInts(p);
 }
 export { content };
 //# sourceMappingURL=content.js.map

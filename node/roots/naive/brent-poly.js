@@ -2,8 +2,7 @@ import { Horner as Horner_ } from '../../evaluate/double/horner.js';
 const Horner = Horner_;
 const eps = Number.EPSILON;
 const u = eps / 2;
-const abs = Math.abs;
-const max = Math.max;
+const { abs, max } = Math;
 /**
  * Returns a refined root given a root bracketed in the interval (a,b) of the
  * given polynomial using Brent's Method.

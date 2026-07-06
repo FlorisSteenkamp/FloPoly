@@ -1,5 +1,5 @@
 /**
- * Returns the Sturm Chain for the given polynomial using pseudo remainders.
+ * Returns the **Sturm Chain** for the given polynomial using pseudo remainders.
  *
  * * see [Sturm's Theorem](https://en.wikipedia.org/wiki/Sturm%27s_theorem)
  * * see [Pseudo-remainder sequences](https://en.wikipedia.org/wiki/Polynomial_greatest_common_divisor#Pseudo-remainder_sequences)

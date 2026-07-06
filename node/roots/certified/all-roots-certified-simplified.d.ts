@@ -1,5 +1,9 @@
 import { RootInterval } from "../root-interval.js";
 /**
+ * ❗**DEPRECATED**❗
+ *
+ * * Use **`roots`** instead, it is faster.
+ *
  * :::tip Heads up!
  * Simplified version of `allRootsCertified` - following are the changes:
  * * input polynomial coefficients are double precision numbers (as opposed
@@ -103,6 +107,7 @@ import { RootInterval } from "../root-interval.js";
  * //   { tS: 2.534533999999997, tE: 2.534533999999998, multiplicity: 1 }
  * // ]
  * ```
+ * @deprecated
  *
  * @doc
  */

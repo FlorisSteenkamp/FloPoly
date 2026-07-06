@@ -1,5 +1,9 @@
 import type { RootInterval } from "../root-interval.js";
 /**
+ * ❗**DEPRECATED**❗
+ *
+ * * Use **`roots`** instead, it is faster.
+ *
  * Finds and returns all ordered *certified* root intervals (bar underflow /
  * overflow) of the given polynomial (with coefficients given in double-double
  * precision (use [[allRootsCertifiedSimplified]] if you only require coefficients
@@ -9,11 +13,11 @@ import type { RootInterval } from "../root-interval.js";
  * * returns an empty array for a constant or the zero polynomial (or
  * `undefined` for the zero polynomial - see the parameters for details)
  *
- * * Let `W = m * Number.EPSILON * max(1, 2^⌈log₂r⌉)`, where
+ * * Let `W = 2 * m * Number.EPSILON * max(1, 2^⌈log₂r⌉)`, where
  *   * `r` is a root
  *   * `m` is the number of roots (the 'multiplicity') within the
  *      interval, where multiplicity here includes roots seperated by less than
- *     `2*Number.EPSILON` and not necessarily only exact multiple roots;
+ *     `W` and not necessarily only exact multiple roots;
  *
  * * the returned intervals are of max width `W` - use [[refineK1]] to
  * reduce the root interval widths further and thus 'resolving' the roots if
@@ -153,6 +157,8 @@ import type { RootInterval } from "../root-interval.js";
  * // polynomial of degree >= 58 evaluated at 59 the returned roots starts
  * // getting inaccurate at this degree (i.e. >= 58).
  * ```
+ *
+ * @deprecated
  *
  * @doc
  */

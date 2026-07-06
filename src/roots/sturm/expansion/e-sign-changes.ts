@@ -43,8 +43,12 @@ function eSignChanges(p: number[][]): number {
     if (d < 1) { return 0; }
 
     let r = 0;
-    let _s = sign(eSign(p[0]));
-    for (let i=1; i<d+1; i++) {
+    let j = 0;
+    
+    while (p[j][0] === 0) { j++; }
+
+    let _s = sign(eSign(p[j]));
+    for (let i=j+1; i<d+1; i++) {
         const s = sign(eSign(p[i]));
         
         if (s !== _s && s !== 0) {

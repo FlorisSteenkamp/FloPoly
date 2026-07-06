@@ -30,7 +30,7 @@ function allRootsCertified(p, lb = 0, ub = 1, pE, getPExact, returnUndefinedForZ
     // `p` and `getPExact()` *must* be of same length
     //----------------------------------------------------------------------
     let pExact = undefined; // lazy loaded
-    ({ p, pE, pExact } = removeLeadingZeroCoeffs(p, pE, getPExact));
+    ({ pDd: p, pDd_: pE, pExact } = removeLeadingZeroCoeffs(p, pE, getPExact, 1));
     if (p.length === 0) {
         // return `undefined` for the zero polynomial?
         return returnUndefinedForZeroPoly ? undefined : [];

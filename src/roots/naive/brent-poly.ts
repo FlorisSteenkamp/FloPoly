@@ -5,8 +5,7 @@ const Horner = Horner_;
 
 const eps = Number.EPSILON;
 const u = eps/2;
-const abs = Math.abs;
-const max = Math.max;
+const { abs, max } = Math;
 
 
 /**

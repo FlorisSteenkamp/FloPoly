@@ -1,4 +1,5 @@
 import { bRemoveLeadingZeros } from "./b-remove-leading-zeros.js";
+const { max } = Math;
 /**
  * Returns the result of adding two polynomials with bigint coefficients.
  *
@@ -21,7 +22,7 @@ function bAdd(p1, p2) {
     const Δd = d1 - d2;
     const Δd1 = Δd < 0 ? +Δd : 0;
     const Δd2 = Δd > 0 ? -Δd : 0;
-    const d = Math.max(d1, d2);
+    const d = max(d1, d2);
     // Add coefficients
     const result = new Array(d + 1);
     for (let i = 0; i < d + 1; i++) {

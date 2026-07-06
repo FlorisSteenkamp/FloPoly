@@ -1,5 +1,5 @@
 /**
- * Computes and returns the greatest common divisor of two integers a and b, 
+ * Computes and returns the greatest common divisor of two integers `a` and `b`,
  * using the [Euclidean Algorithm](https://en.wikipedia.org/wiki/Euclidean_algorithm).
  * 
  * @doc

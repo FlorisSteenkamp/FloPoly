@@ -3,14 +3,9 @@ import { scaleFloatssToBigintss } from '../../../scale-to-int/scale-floatss-to-b
 import { bSum } from "../../../util/bigint/b-sum.js";
 
 
-
 /**
- * Returns the *exact* number of *distinct* real roots in the interval (-∞,+∞) 
+ * Returns the *exact* number of *distinct* real roots in the open interval (-∞,+∞) 
  * of the given polynomial.
- * 
- * * From Wikipedia: "In the case of a non-square-free polynomial, 
- * if neither a nor b is a multiple root of p, then V(a) − V(b) is the number 
- * of distinct real roots of P".
  * 
  * @param p a polynomial with coefficients given densely as an array of
  * Shewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]` 

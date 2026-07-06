@@ -5,12 +5,11 @@ import { toCasStr } from '../../../src/basic/to-cas-str.js';
 import { allRootsCertifiedSimplified } from '../../../src/roots/certified/all-roots-certified-simplified.js';
 import { eeHorner } from '../../../src/evaluate/expansion/e-e-horner.js';
 import { getPolysUsing9PerturbedRoots } from '../../get-polys-using-9-perturbed-roots.js';
-import { eNumRootsInRange } from '../../../src/roots/descartes/expansion/e-num-roots-in-range.js';
-import { roots } from '../../../src/lab/roots.js';
+import { eNumRootsInRange } from '../../../src/roots/sturm/expansion/e-num-roots-in-range.js';
 import { allRootsCertified } from '../../../src/roots/certified/all-roots-certified.js';
-import { getPolies } from '../../get-poly.js';
+import { getPolys_BezierIntersections } from '../../get-poly.js';
 import { AbsHorner } from '../../../src/evaluate/double/abs-horner.js';
-import { γ } from '../../../src/error-analysis/gamma.js';
+import { γ, γγ3 } from '../../../src/error-analysis/gamma.js';
 
 
 const { abs } = Math;
@@ -65,29 +64,29 @@ describe('`hornerWithRunningError`', function() {
         expect(errMax2).toBeGreaterThanOrEqual(err2);
     }
 
-    {
-        //---------------------------------
-        // Hard cases
-        //---------------------------------
-        const N = 0;
-        const polys = getPolysUsing9PerturbedRoots(N, 10, 0, 0.44);
-        for (let i=0; i<N; i++) {
-            const { pDd, pD, EsDd, errBound, getPExact } = polys[i];
-            const pEe = getPExact();
-            // toCasStr(pEe);//?
-            // const realNumRoots = eNumRootsInRange(pEe, [0], [1]);
+    // {
+    //     //---------------------------------
+    //     // Hard cases
+    //     //---------------------------------
+    //     const N = 0;
+    //     const polys = getPolysUsing9PerturbedRoots(N, 10, 0, 0.44);
+    //     for (let i=0; i<N; i++) {
+    //         const { pDd, pD, EsDd, errBound, getPExact } = polys[i];
+    //         const pEe = getPExact();
+    //         // toCasStr(pEe);//?
+    //         // const realNumRoots = eNumRootsInRange(pEe, [0], [1]);
 
-            const rs = allRootsCertified(pDd, 0, 1, errBound, getPExact);
-            // const rsB = roots(pDd, 0, 1, EsDd, getPExact);
-            const r0 = (rs[0].tS + rs[0].tE)/2;
+    //         const rs = allRootsCertified(pDd, 0, 1, errBound, getPExact);
+    //         // const rsB = roots(pDd, 0, 1, EsDd, getPExact);
+    //         const r0 = (rs[0].tS + rs[0].tE)/2;
 
-            const [v,errMax] = hornerWithRunningError(pD,r0);
-            const vEe = eCompress(eeHorner(pEe,[r0]));
-            const err = abs(eEstimate(eDiff(vEe, [v])));
+    //         const [v,errMax] = hornerWithRunningError(pD,r0);
+    //         const vEe = eCompress(eeHorner(pEe,[r0]));
+    //         const err = abs(eEstimate(eDiff(vEe, [v])));
 
-            expect(errMax).toBeGreaterThanOrEqual(err);
-        }
-    }
+    //         expect(errMax).toBeGreaterThanOrEqual(err);
+    //     }
+    // }
 
     {
         //---------------------------------
@@ -95,11 +94,12 @@ describe('`hornerWithRunningError`', function() {
         //---------------------------------
         const N = 100;
         const shift = 0;
-        const polys = getPolies(N, shift);
+        const polys = getPolys_BezierIntersections(N, shift);
         let maxErrPerMaxForward = -Infinity;
         let maxErrPerMax = -Infinity;
         for (let i=0; i<N; i++) {
-            const { pDd, pD, errBound, getPExact } = polys[i];
+            const { pDd, p, pDd_, getPExact } = polys[i];
+            const errBound = pDd_.map(c => c*γγ3);
             const pEe = getPExact();
             // toCasStr(pEe);//?
             const realNumRoots = eNumRootsInRange(pEe, [0], [1]);
@@ -108,13 +108,13 @@ describe('`hornerWithRunningError`', function() {
             const rs = allRootsCertified(pDd, 0, 1, errBound, getPExact);
             const r0 = (rs[0].tS + rs[0].tE)/2;
 
-            const [vCalc,errMax] = hornerWithRunningError(pD,r0);//?
+            const [vCalc,errMax] = hornerWithRunningError(p,r0);//?
             const vEe = eCompress(eeHorner(pEe,[r0]));
             const err = abs(eEstimate(eDiff(vEe, [vCalc])));
             const vActualD = eEstimate(vEe);
 
-            const d = pD.length - 1;
-            const errMaxForward = γ(2*d)*AbsHorner(pD,abs(r0));//?
+            const d = p.length - 1;
+            const errMaxForward = γ(2*d)*AbsHorner(p,abs(r0));//?
 
             const errPerMaxForward = err/errMaxForward;//?
             const errPerMax = err/errMax;//?

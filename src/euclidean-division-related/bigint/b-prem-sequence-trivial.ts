@@ -5,9 +5,9 @@ import { bPdivTrivial } from "./b-pdiv-trivial.js";
  * ❗ DON'T USE - coefficients grow way too big, making it slow - use 
  * [[bPremSequenceSubresultant]] instead. ❗
  * 
- * Returns the trivial pseudo remainder sequence of a/b.
+ * Returns the trivial pseudo remainder sequence of `a/b`.
  * 
- * * **precondition:** g !== [], i.e. unequal to the zero polynomial.
+ * * **precondition:** `g !== []`, i.e. unequal to the zero polynomial.
  * 
 * * see [Trivial Pseudo-remainder sequences](https://en.wikipedia.org/wiki/Polynomial_greatest_common_divisor#Trivial_pseudo-remainder_sequence)
  * 

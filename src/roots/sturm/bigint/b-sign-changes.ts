@@ -1,4 +1,3 @@
-
 /** 
  * Returns the number of sign changes in the polynomial coefficents when 
  * ordered in descending order; zeros are ignored.
@@ -26,20 +25,26 @@
 function bSignChanges(
         p: bigint[]): number {
 
-    const d = p.length-1;
+    const d = p.length - 1;
 
-    let result = 0;
-    let prevSign = p[0] === 0n ? 0 : p[0] < 0n ? -1 : +1;
-    for (let i=1; i<d+1; i++) {
-        const sign = p[i] === 0n ? 0 : p[i] < 0n ? -1 : +1;
+    if (d < 1) { return 0; }
+
+    let r = 0;
+    let j = 0;
+    while (p[j] === 0n) { j++; }
+
+    let _s = p[j] < 0n ? -1 : +1;
+
+    for (let i=j+1; i<d+1; i++) {
+        const s = p[i] === 0n ? 0 : p[i] < 0n ? -1 : +1;
         
-        if (sign !== prevSign && sign !== 0) {
-            result++;
-            prevSign = sign;
+        if (s !== _s && s !== 0) {
+            r++;
+            _s = s;
         }
     }
     
-    return result;
+    return r;
 }
 
 

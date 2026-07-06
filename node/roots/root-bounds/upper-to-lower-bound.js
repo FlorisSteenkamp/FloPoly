@@ -1,4 +1,3 @@
-import { invert } from "../../basic/double/invert.js";
 /**
  * Returns a function that returns a positive lower root bound given a function
  * that returns a positive upper root bound.
@@ -9,7 +8,7 @@ import { invert } from "../../basic/double/invert.js";
  */
 function upperToLowerBound(positiveUpperBoundFunction) {
     return (p) => {
-        return 1 / positiveUpperBoundFunction(invert(p));
+        return 1 / positiveUpperBoundFunction(p.toReversed());
     };
 }
 export { upperToLowerBound };

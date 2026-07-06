@@ -1,6 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-
-import { eNumRoots } from '../../../../src/roots/descartes/expansion/e-num-roots.js';
+import { eNumRoots } from '../../../../src/roots/sturm/expansion/e-num-roots.js';
 
 
 describe('eNumRoots', function() {

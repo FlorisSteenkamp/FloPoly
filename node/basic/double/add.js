@@ -1,4 +1,5 @@
 import { removeLeadingZeros } from "./remove-leading-zeros.js";
+const { min, max } = Math;
 /**
  * Returns the result of adding two polynomials in double precision.
  *
@@ -18,10 +19,10 @@ function add(p1, p2) {
     // Initialize result array
     const d1 = p1.length - 1;
     const d2 = p2.length - 1;
-    const d = Math.max(d1, d2);
+    const d = max(d1, d2);
     // Add coefficients
     const r = new Array(d + 1);
-    const minD = Math.min(d1, d2);
+    const minD = min(d1, d2);
     // Add where both polynomials overlap
     for (let i = 0; i <= minD; i++) {
         r[d - i] = p1[d1 - i] + p2[d2 - i];

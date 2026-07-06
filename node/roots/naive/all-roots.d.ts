@@ -1,4 +1,10 @@
 /**
+ *  * ❗**DEPRECATED**❗
+ *
+ * * Use **`roots`** instead, it is faster (and certified):
+ * * `allRoots(p)` becomes `roots(p)!.map(r => (r.tE + r.tS) / 2)`
+ * * `allRoots(p,a,b)` becomes `roots(p,a,b)!.map(r => (r.tE + r.tS) / 2)`
+ *
  * Find and return all roots of the given polynomial in the given interval.
  *
  * * an empty array is returned for a constant or the zero polynomial

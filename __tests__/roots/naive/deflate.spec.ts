@@ -1,7 +1,6 @@
 import { describe, expect, it } from '@jest/globals';
-
 import { equal } from '../../../src/basic/double/equal.js';
-import { deflate } from '../../../src/roots/naive/deflate.js';
+import { deflate } from '../../../src/roots/deflate/deflate.js';
 
 
 describe('deflate', function() {

@@ -1,5 +1,4 @@
 import { describe, expect, it } from '@jest/globals';
-
 import { bPremSequenceSubresultant } from '../../../src/euclidean-division-related/bigint/b-prem-sequence-subresultant.js';
 import { bMultiply } from '../../../src/basic/bigint/b-multiply.js';
 import { scaleFloatsToInts } from '../../../src/scale-to-int/scale-floats-to-ints.js';

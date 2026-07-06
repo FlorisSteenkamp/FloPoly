@@ -1,45 +1,43 @@
+import { eEstimate } from 'big-float-ts';
 import { evalCertified } from "../evaluate/double/eval-certified.js";
 import { eHorner } from "../evaluate/expansion/e-horner.js";
-import { eEstimate } from 'big-float-ts';
-const { abs, max } = Math;
-const eps = Number.EPSILON;
+import { eps } from '../error-analysis/gamma.js';
+const { abs, min, max, log2, ceil } = Math;
 /**
- * Returns a refined root given a root bracketed in the interval (a,b) of the
+ * Returns a refined root given a root bracketed in the interval `(a,b)` of the
  * given polynomial using Brent's Method - modified slightly to allow for
  * error certified bounds.
  *
  * * near exact implementation of the original Brent Dekker Method (also known
- * as Brent's Method), except that it is specialzed to polynomial evaluation
+ * as Brent's Method), except that it is specialized to polynomial evaluation.
  *
  * * Brent's Method is an excellent root-refinement choice since:
  *  * guaranteed converge (unlike the Newton and other so-called single-point
- * methods),
+ *    methods),
  *  * converges in a reasonable number of iterations even for highly contrived
- * functions (unlike Dekker's Method) and
+ *    functions (unlike Dekker's Method) and
  *  * nearly always converges fast, i.e. super-linearly (unlike the Secant and
- * Regula-Falsi methods).
+ *    Regula-Falsi methods).
  * * unfortunately the algorithm given on [Wikipedia](https://en.wikipedia.org/wiki/Brent%27s_method)
- * works but is not precisely Brent's method and runs about 2x or more slower
- * due to it not implementing the critically important 'micro-step' (Aug 2020).
+ *   works but is not precisely Brent's method and runs about 2x or more slower
+ *   due to it not implementing the critically important 'micro-step' (Aug 2020).
  *
  * * see [Brent (page 47)](https://maths-people.anu.edu.au/~brent/pd/rpb011i.pdf)
  * * [c++ implementation of Brent's Method](https://people.sc.fsu.edu/~jburkardt/cpp_src/brent/brent.cpp)
  *
- * @param p A polynomial with coefficients given densely as an array of double-double
+ * @param p a polynomial with coefficients given densely as an array of double-double
  * floating point numbers from highest to lowest power, e.g. `[[0,5],[0,-3],[0,0]]`
  * represents the polynomial `5x^2 - 3x`. If `exact` is `true` then this is allowed
  * to be `undefined`.
- * @param pE An error polynomial that provides a coefficientwise error bound on
+ * @param pE an error polynomial that provides a coefficientwise error bound on
  * the input polynomial; all coefficients must be positive. If `exact` is `true`
  * then this is allowed to be `undefined`.
  * @param lb the lower limit of the search interval.
  * @param ub the upper limit of the search interval.
  * @param fa the result of evaluating the input polynomial at `a`
  * @param fb the result of evaluating the input polynomial at `b`
- * @param psExact
- * @param getPsExact
- * @param diffCount
- * @param exact set to true if you need to do exact evaluations from the start
+ * @param getPolyExact a function that returns the exact polynomial coefficients
+ * @param exact defaults to false; set to true if you need to do exact evaluations from the start
  *
  * @internal
  */
@@ -74,15 +72,14 @@ function refineCertified(p, pE, lb, ub, fa, fb, getPolyExact, exact) {
         }
         else {
             // keep δ = eps * a power of 2
-            //δ = eps * 2**Math.ceil(Math.log2(Math.ceil(mm)));  // may be faster to get log2 of an integer
-            δ = eps * 2 ** Math.ceil(Math.log2(mm));
+            //δ = eps * 2**ceil(log2(ceil(mm)));  // may be faster to get log2 of an integer
+            δ = eps * 2 ** ceil(log2(mm));
         }
         //tol = 2.0 * macheps * abs ( b ) + t;
         const m = 0.5 * (c - b);
         //if (abs(m) <= δ || fb === 0) {
         // modified from the original since we dont need the fb === 0 check here
         if (abs(m) <= δ) {
-            // TODO - could potentially make b - c a power of 2 here δ
             return b < c
                 ? [b, c]
                 : [c, b];
@@ -149,8 +146,8 @@ function refineCertified(p, pE, lb, ub, fa, fb, getPolyExact, exact) {
             // results that should usually be !== 0. 
             // It is a pre-filter. If the result === 0 we need to sharpen the
             // ability of the evaluation by somehow reducing the error bound
-            const sL = Math.max(lb, b - δ); // dont overstep bounds
-            const sR = Math.min(ub, b + δ); // dont overstep bounds
+            const sL = max(lb, b - δ); // dont overstep bounds
+            const sR = min(ub, b + δ); // dont overstep bounds
             // Note: sR - sL <= 2*δ provided lb, ub are in [-1..1] - usually 
             // (when sL === s - δ and sR === s + δ) sR - sL === 2*δ. Also δ > 0
             // keep TypeScript happy; neither `p` nor `pE` can be `undefined` 
@@ -185,33 +182,4 @@ function refineCertified(p, pE, lb, ub, fa, fb, getPolyExact, exact) {
     }
 }
 export { refineCertified };
-// Quokka tests
-// import { Horner } from "../../evaluate/double/horner.js";
-// import { allRootsCertifiedSimplified } from "./all-roots-certified-simplified.js";
-// import { transposePoly } from "./transpose-poly.js";
-// {
-//     const p = [
-//         -3.035771827999894e+28, 5.039801152516328e+28, -6.041731184215024e+27,
-//         -2.2786674230202645e+28, 6.305447521935138e+27, 2.9994789468083784e+27,
-//         -1.0290565155315061e+27, 5.247732518934503e+25, 7.425966387047948e+25,
-//         6.1293291913422125e+22
-//     ];
-//     const _rs = allRootsCertifiedSimplified(p, 0, 1);
-//     const rs = _rs!.map(r => (r.tS + r.tE) / 2);  //=> [0.8717731902471457]
-//     let ddP = transposePoly(p.map(c => [0, c]));//?
-//     // ddHorner(ddP,0);//?
-//     const a = 0;
-//     const b = 1;
-//     const polyExact = p.map(c => [c]);
-//     const getPolyExact = () => polyExact;
-//     const pE = p.map(c => 0);
-//     evalCertified(ddP, 0.8717731902471457, pE);//?
-//     const fa = Horner(p, a);//?
-//     const fb = Horner(p, b);//?
-//     const q = Horner(p, 0.8717731902471457);//?
-//     const r = refineCertified(ddP, pE, a, b, fa, fb, getPolyExact, false);
-//     const [r0,r1] = r;
-//     r0;//?
-//     r1;//?
-// }
 //# sourceMappingURL=refine-certified.js.map

@@ -22,8 +22,8 @@ const { abs, min, max, log2, ceil } = Math;
  *  * nearly always converges fast, i.e. super-linearly (unlike the Secant and 
  *    Regula-Falsi methods).
  * * unfortunately the algorithm given on [Wikipedia](https://en.wikipedia.org/wiki/Brent%27s_method)
- * works but is not precisely Brent's method and runs about 2x or more slower 
- * due to it not implementing the critically important 'micro-step' (Aug 2020).
+ *   works but is not precisely Brent's method and runs about 2x or more slower 
+ *   due to it not implementing the critically important 'micro-step' (Aug 2020).
  * 
  * * see [Brent (page 47)](https://maths-people.anu.edu.au/~brent/pd/rpb011i.pdf)
  * * [c++ implementation of Brent's Method](https://people.sc.fsu.edu/~jburkardt/cpp_src/brent/brent.cpp)
@@ -97,7 +97,6 @@ function refineCertified(
         //if (abs(m) <= δ || fb === 0) {
         // modified from the original since we dont need the fb === 0 check here
         if (abs(m) <= δ) {
-            // TODO - could potentially make b - c a power of 2 here δ
             return b < c
                 ? [b,c]
                 : [c,b];

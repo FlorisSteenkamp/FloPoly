@@ -1,4 +1,4 @@
-import { eMultDouble1 } from "big-float-ts";
+import { expansionProduct, eMultDouble1 } from "big-float-ts";
 
 
 const eChangeVariablesScale = eScale;
@@ -21,10 +21,12 @@ function eScale(
 
     const r = new Array<number[]>(n + 1);
     r[n] = p[n];
-    let sPow = s;
+    // Keep powers of `s` as expansions to avoid rounding drift from repeated
+    // double multiplication (`sPow *= s`).
+    let sPow = [1];
     for (let i=1; i<=n; i++) {
-        r[n - i] = eMultDouble1(p[n - i], sPow);
-        sPow *= s;
+        sPow = eMultDouble1(sPow, s);
+        r[n - i] = expansionProduct(p[n - i], sPow);
     }
 
     return r;

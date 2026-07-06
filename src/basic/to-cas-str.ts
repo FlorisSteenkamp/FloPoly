@@ -1,10 +1,6 @@
 import { eEstimate } from "big-float-ts";
 
-
-/** @internal */
-function isNumber(x: number | bigint | number[]): x is number {
-    return typeof x === 'number';
-}
+const { abs } = Math;
 
 
 /** @internal */
@@ -52,7 +48,7 @@ function toCasStr(p: number[] | number[][] | bigint[]): string {
 
         const absV = isBigint(v)
             ? (v < 0n ? -v : v)
-            : Math.abs(v);
+            : abs(v);
 
         let cStr = nonNegativeNumberToString(absV);
 
@@ -86,7 +82,7 @@ function nonNegativeNumberToString(num: number | bigint): string {
         return numStr;
     }
 
-    if (Math.abs(num) < 1) {
+    if (abs(num) < 1) {
         const e = parseInt(numStr.split('e-')[1]);
         if (e) {
             num *= 10**(e - 1);
