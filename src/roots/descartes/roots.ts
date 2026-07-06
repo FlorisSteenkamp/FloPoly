@@ -72,7 +72,7 @@ import { γγ3 } from '../../error-analysis/gamma.js';
  * preventing certification of the root intervals; if `undefined` then the 
  * input polynomial will be assumed exact
  * 
- * @param tryReduceInterval defaults to `true`; if `true` (or if `lb` or `ub`
+ * @param tryReduceInterval defaults to `false`; if `true` (or if `lb` or `ub`
  * is `Infinity` or `undefined`) then the interval `[lb,ub]` will be reduced to
  * a smaller interval containing all roots (if possible) before starting the algorithm.
  * Since `reduceInterval` is a relatively long running algorithm it is generally
@@ -161,7 +161,7 @@ function roots(
         ub = +Infinity,
         pDd_?: number[] | undefined,
         getPExact?: (() => number[][]) | undefined,
-        tryReduceInterval = true): RootInterval[] | undefined {
+        tryReduceInterval = false): RootInterval[] | undefined {
 
     // if (pDd === undefined) { pDd = p.map(c => [0,c]); }
     if (typeof pDd[0] === 'number') {

@@ -10008,7 +10008,7 @@ function eAdmissablePoint(pE, a, b) {
  * preventing certification of the root intervals; if `undefined` then the
  * input polynomial will be assumed exact
  *
- * @param tryReduceInterval defaults to `true`; if `true` (or if `lb` or `ub`
+ * @param tryReduceInterval defaults to `false`; if `true` (or if `lb` or `ub`
  * is `Infinity` or `undefined`) then the interval `[lb,ub]` will be reduced to
  * a smaller interval containing all roots (if possible) before starting the algorithm.
  * Since `reduceInterval` is a relatively long running algorithm it is generally
@@ -10091,7 +10091,7 @@ function eAdmissablePoint(pE, a, b) {
  *
  * @doc
  */
-function roots(pDd, lb = -Infinity, ub = +Infinity, pDd_, getPExact, tryReduceInterval = true) {
+function roots(pDd, lb = -Infinity, ub = +Infinity, pDd_, getPExact, tryReduceInterval = false) {
     // if (pDd === undefined) { pDd = p.map(c => [0,c]); }
     if (typeof pDd[0] === 'number') {
         pDd = pDd.map(c => [0, c]);
