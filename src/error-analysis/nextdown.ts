@@ -1,4 +1,4 @@
-import { nextup } from "./nextup";
+import { nextup } from "./nextup.js";
 
 
 /** 

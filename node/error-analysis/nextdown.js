@@ -1,4 +1,4 @@
-import { nextup } from "./nextup";
+import { nextup } from "./nextup.js";
 /**
  * Returns the next representable floating-point number less than
  * `n` toward `-Infinity`.

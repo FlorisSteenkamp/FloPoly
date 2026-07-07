@@ -1,5 +1,5 @@
-import { getUlp } from "./get-ulp";
-import { isExactPowerOf2 } from "./is-exact-power-of-2";
+import { getUlp } from "./get-ulp.js";
+import { isExactPowerOf2 } from "./is-exact-power-of-2.js";
 /**
  * Returns the next representable floating-point number greater than
  * `n` toward `+Infinity`.
