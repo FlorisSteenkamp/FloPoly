@@ -1,4 +1,4 @@
-import { γγ3 } from "../error-analysis/gamma";
+import { γγ3 } from "../error-analysis/gamma.js";
 const { abs } = Math;
 /**
  * **In-place** remove leading zero coefficients.

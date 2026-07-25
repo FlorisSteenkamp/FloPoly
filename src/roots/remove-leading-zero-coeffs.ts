@@ -1,5 +1,5 @@
 import { eSign } from "big-float-ts";
-import { γγ3 } from "../error-analysis/gamma";
+import { γγ3 } from "../error-analysis/gamma.js";
 
 const { abs } = Math;
 
