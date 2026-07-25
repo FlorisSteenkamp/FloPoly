@@ -3,7 +3,7 @@
 const eps = Number.EPSILON;
 
 /** `2^-53` -> the standard round-of unit `=== eps/2` */
-const u = Number.EPSILON / 2; 
+const u = eps / 2; 
 
 /** `2^-106` -> the standard round-of unit for double-double precision `=== (eps/2)**2` */
 const uu = u*u;

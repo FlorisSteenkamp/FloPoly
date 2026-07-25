@@ -1,6 +1,6 @@
 import { describe, expect, it } from '@jest/globals';
-import { testIt_General } from './test-it-general.js';
-import { testIt_Mignotte } from './test-it-mignotte.js';
+import { testIt_General } from './mobius/test-it-general.js';
+import { testIt_Mignotte } from './mobius/test-it-mignotte.js';
 
 
 describe('find all roots benchmark; allRootsCertified vs Descartes', 

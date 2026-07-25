@@ -11,5 +11,5 @@
  *
  * @internal
  */
-declare function reduceInterval(lb: number, ub: number, p: number[]): number[];
+declare function reduceInterval(lb: number, ub: number, p: number[], pDd_: number[], errorMultiplier: number): number[];
 export { reduceInterval };

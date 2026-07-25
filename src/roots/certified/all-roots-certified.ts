@@ -223,7 +223,7 @@ function allRootsCertified(
 
     const p_ = transposePoly(p);
 
-    [lb,ub] = reduceInterval(lb, ub, p_[0]);
+    [lb,ub] = reduceInterval(lb, ub, p_[0], pE, 1);
 
     let bCount: number;
     let exact: boolean;

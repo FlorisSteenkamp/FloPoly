@@ -8,6 +8,10 @@
 declare function removeLeadingZeroCoeffs(pDd: number[][], pDd_: number[], getPExact: () => number[][], errorMultiplier: number): {
     pDd: number[][];
     pDd_: number[];
-    pExact: number[][] | undefined;
+    pExact: undefined;
+} | {
+    pDd: number[][];
+    pDd_: number[];
+    pExact: number[][];
 };
 export { removeLeadingZeroCoeffs };

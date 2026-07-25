@@ -40,7 +40,7 @@ function allRootsCertified(p, lb = 0, ub = 1, pE, getPExact, returnUndefinedForZ
         return [];
     }
     const p_ = transposePoly(p);
-    [lb, ub] = reduceInterval(lb, ub, p_[0]);
+    [lb, ub] = reduceInterval(lb, ub, p_[0], pE, 1);
     let bCount;
     let exact;
     const deg = p.length - 1;

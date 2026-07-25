@@ -1,6 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-
-import { positiveRootLowerBound_LMQ } from '../../../src/roots/root-bounds/root-bounds-lmq.js';
+import { positiveRootLowerBound_LMQ } from '../../../src/roots/root-bounds/lmq/positive-root-lower-bound-lmq.js';
 
 
 describe('positiveRootLowerBound_LMQ', function() {

@@ -2,7 +2,9 @@ import type { RootInterval } from "../root-interval.js";
 import { reduceInterval } from "../reduce-interval.js";
 import { removeLeadingZeroCoeffs } from "../remove-leading-zero-coeffs.js";
 import { isolateRoots } from "./isolate-roots.js";
-import { γγ3 } from '../../error-analysis/gamma.js';
+import { eps, γγ3 } from '../../error-analysis/gamma.js';
+
+const { abs, max, log2, ceil } = Math;
 
 
 /**
@@ -163,7 +165,6 @@ function roots(
         getPExact?: (() => number[][]) | undefined,
         tryReduceInterval = false): RootInterval[] | undefined {
 
-    // if (pDd === undefined) { pDd = p.map(c => [0,c]); }
     if (typeof pDd[0] === 'number') {
         pDd = pDd.map(c => [0, c as number]);
     }
@@ -187,18 +188,26 @@ function roots(
     //----------------------------------------------------------------------
     ({ pDd, pDd_, pExact } = removeLeadingZeroCoeffs(pDd as number[][], pDd_, getPExact_, γγ3));
 
+    // Approximate `p` from `pDd`
+    const p = (pDd as number[][]).map(c => c[0] + c[1]);
+
+    if (tryReduceInterval ||
+        // !Number.isFinite(lb) || !Number.isFinite(ub) ||
+        abs(lb) > 2**20 || abs(ub) > 2**20) {
+
+        [lb,ub] = reduceInterval(lb, ub, p, pDd_, γγ3);
+    }
+
     if (pDd.length === 0) {
         return undefined;  // return `undefined` for the zero polynomial (of degree -1)
     } else if (pDd.length === 1) {
         return [];  // return `[]` for a (a non-zero) degree 0 polynomial
     }
 
-    const p = pDd.map(c => c[0] + c[1]);
-    if (tryReduceInterval || lb === -Infinity || ub === Infinity) {
-        [lb,ub] = reduceInterval(lb, ub, p);
-        if (lb === ub) {  // edge case
-            return [{ t: lb, tS: lb, tE: ub, multiplicity: p.length - 1 }];
-        }
+    if (lb === ub) {  // edge case
+        const halfWidth = 2*eps * max(1, 2**ceil( log2(max(abs(lb), abs(ub))) ));
+        lb -= halfWidth;
+        ub += halfWidth;
     }
 
     return isolateRoots(p, pDd, pDd_, lb, ub, getPExact_);

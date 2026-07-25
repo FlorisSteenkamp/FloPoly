@@ -1,6 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-
-import { rootMagnitudeUpperBound_rouche } from '../../../src/roots/root-bounds/root-magnitude-upper-bound-rouche.js';
+import { rootMagnitudeUpperBound_rouche } from '../../../src/roots/root-bounds/rouche/root-magnitude-upper-bound-rouche.js';
 
 
 describe('rootMagnitudeUpperBound_rouche', function() {
@@ -15,7 +14,5 @@ describe('rootMagnitudeUpperBound_rouche', function() {
         expect(rootMagnitudeUpperBound_rouche(p2)).toEqual(0);
         // real roots nowhere
         expect(rootMagnitudeUpperBound_rouche(p3)).toEqual(0);
-
-        
     });
 });

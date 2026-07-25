@@ -1051,23 +1051,23 @@ function getHighestSetBit(a) {
 //# sourceMappingURL=get-max-set-bit.js.map
 ;// ./node_modules/big-float-ts/node/double-expansion/e-compress.js
 /**
- * Returns the result of compressing the given floating point expansion.
- *
- * * primarily for internal library use
+ * Returns the result of compressing the given Shewchuk floating point expansion.
  *
  * * see [Shewchuk](https://people.eecs.berkeley.edu/~jrs/papers/robustr.pdf)
  *
- * Theorem 23 (Shewchuck): Let e = sum_(i=1)^m(e_i) be a nonoverlapping
- * expansion of m p-bit components, where m >= 3. Suppose that the components of
- * e are sorted in order of increasing magnitude, except that any of the e_i may
- * be zero. Then the following algorithm will produce a nonoverlapping expansion
+ * Theorem 23 (Shewchuk): Let `e = sum_(i=1)^m(e_i)` be a nonoverlapping
+ * expansion of m p-bit components, where m >= 3.
+ *
+ * Suppose that the components of `e` are sorted in order of increasing magnitude,
+ * except that any of the e_i may be zero.
+ *
+ * Then the following algorithm will produce a nonoverlapping expansion
  * (nonadjacent if round-to even tiebreaking is used) such that
- * h = sum_(i=1)^n(h_i) = e, where the components h_i are in order of increasing
- * magnitude. If h != 0, none of the h_i will be zero. Furthermore, the largest
- * component h_n approximates h with an error smaller than ulp(h_n).
+ * `h = sum_(i=1)^n(h_i) = e`, where the components `h_i` are in order of increasing
+ * magnitude. If `h != 0`, none of the `h_i` will be zero. Furthermore, the largest
+ * component `h_n` approximates `h` with an error smaller than `ulp(h_n)`.
  */
 function eCompress(e) {
-    //return e;
     const e_ = e.slice();
     const m = e_.length;
     if (m === 1) {
@@ -1369,8 +1369,6 @@ function eNegativeOf(e) {
 //# sourceMappingURL=e-negative-of.js.map
 ;// ./node_modules/big-float-ts/node/double-expansion/fast-expansion-sum.js
 // import { eCompress } from "./e-compress.js";
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
-// const compress = eCompress;
 /**
  * Returns the result of adding two expansions.
  *
@@ -1513,10 +1511,6 @@ function merge(e, f) {
 
 //# sourceMappingURL=fast-expansion-sum.js.map
 ;// ./node_modules/big-float-ts/node/double-expansion/grow-expansion.js
-/* unused harmony import specifier */ var grow_expansion_eCompress;
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
-const compress = (/* unused pure expression or super */ null && (grow_expansion_eCompress));
 /**
  * Returns the result of adding a double to an expansion.
  *
@@ -1586,10 +1580,6 @@ function twoSum(a, b) {
 
 
 
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
-const ts = twoSum;
-const addDouble = growExpansion;
-const e_sum_add = fastExpansionSum;
 /**
  * Returns the result of summing an array of floating point expansions.
  *
@@ -1610,18 +1600,18 @@ function eSum(terms) {
         // add
         if (term.length === 1) {
             if (total.length === 1) {
-                total = ts(total[0], term[0]);
+                total = twoSum(total[0], term[0]);
             }
             else {
-                total = addDouble(total, term[0]);
+                total = growExpansion(total, term[0]);
             }
         }
         else {
             if (total.length === 1) {
-                total = addDouble(term, total[0]);
+                total = growExpansion(term, total[0]);
             }
             else {
-                total = e_sum_add(total, term);
+                total = fastExpansionSum(total, term);
             }
         }
     }
@@ -1630,20 +1620,7 @@ function eSum(terms) {
 
 //# sourceMappingURL=e-sum.js.map
 ;// ./node_modules/big-float-ts/node/double-expansion/scale-expansion.js
-/* unused harmony import specifier */ var scale_expansion_twoProduct;
-/* unused harmony import specifier */ var scale_expansion_twoSum;
-/* unused harmony import specifier */ var fastTwoSum;
-/* unused harmony import specifier */ var scale_expansion_eCompress;
-
-
-
-
 const scale_expansion_f = 134217729; // 2**27 + 1;
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
-const tp = (/* unused pure expression or super */ null && (scale_expansion_twoProduct));
-const scale_expansion_ts = (/* unused pure expression or super */ null && (scale_expansion_twoSum));
-const fts = (/* unused pure expression or super */ null && (fastTwoSum));
-const scale_expansion_compress = (/* unused pure expression or super */ null && (scale_expansion_eCompress));
 /**
  * Returns the result of multiplying an expansion by a double.
  *
@@ -1807,9 +1784,6 @@ function scaleExpansion2(b, e) {
 ;// ./node_modules/big-float-ts/node/double-expansion/e-diff.js
 
 
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
-const negativeOf = eNegativeOf;
-const e_diff_add = fastExpansionSum;
 /**
  * Returns the difference between two floating point expansions, i.e. e - f.
  *
@@ -1819,8 +1793,8 @@ const e_diff_add = fastExpansionSum;
  * @param f another floating point expansion
  */
 function eDiff(e, f) {
-    const g = negativeOf(f);
-    return e_diff_add(e, g);
+    const g = eNegativeOf(f);
+    return fastExpansionSum(e, g);
 }
 
 //# sourceMappingURL=e-diff.js.map
@@ -1832,18 +1806,10 @@ function eDiff(e, f) {
 
 
 
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
-const e_long_divide_eNegativeOf = eNegativeOf;
-const e_long_divide_fastExpansionSum = fastExpansionSum;
-const e_long_divide_eCompress = eCompress;
-const e_long_divide_growExpansion = growExpansion;
-const e_long_divide_eSum = eSum;
-const e_long_divide_scaleExpansion = scaleExpansion;
-const e_long_divide_eDiff = eDiff;
 const sign = Math.sign;
 function eLongDivide(N, D) {
-    N = e_long_divide_eCompress(N);
-    D = e_long_divide_eCompress(D);
+    N = eCompress(N);
+    D = eCompress(D);
     // get the most significant double
     // out by at most 1 ulp, exact if d < MAX_SAFE_INT
     const d = D[D.length - 1];
@@ -1856,7 +1822,7 @@ function eLongDivide(N, D) {
             return { div: N, rem: [0] };
         }
         if (d === -1) {
-            return { div: e_long_divide_eNegativeOf(N), rem: [0] };
+            return { div: eNegativeOf(N), rem: [0] };
         }
     }
     const signN = sign(N[N.length - 1]);
@@ -1878,13 +1844,13 @@ function eLongDivide(N, D) {
             // not necessarily represent the exact quotient.
             const div = Math.round((n - (n % d)) / d);
             // get the remainder by calculating `rem = n - d*div`
-            rems.push(e_long_divide_scaleExpansion(D, div)); // exact
+            rems.push(scaleExpansion(D, div)); // exact
             if (div === 0) {
                 break;
             }
             divs.push(div);
         }
-        N = e_long_divide_eCompress(e_long_divide_eDiff(N, e_long_divide_eSum(rems)));
+        N = eCompress(eDiff(N, eSum(rems)));
         if (oldLen === divs.length) {
             break;
         }
@@ -1893,9 +1859,9 @@ function eLongDivide(N, D) {
     let rem = N;
     let div = [0];
     for (let i = 0; i < divs.length; i++) {
-        div = e_long_divide_growExpansion(div, divs[i]);
+        div = growExpansion(div, divs[i]);
     }
-    div = e_long_divide_eCompress(div);
+    div = eCompress(div);
     //----------------------
     // fix signs (possibly)
     //----------------------
@@ -1911,28 +1877,28 @@ function eLongDivide(N, D) {
             if (signD > 0) {
                 // div = div - 1  (div is positive)
                 // rem = rem + D
-                div = e_long_divide_growExpansion(div, -1);
-                rem = e_long_divide_fastExpansionSum(rem, D);
+                div = growExpansion(div, -1);
+                rem = fastExpansionSum(rem, D);
             }
             else {
                 // div = div + 1  (div is positive)
                 // rem = rem - D
-                div = e_long_divide_growExpansion(div, +1);
-                rem = e_long_divide_fastExpansionSum(rem, e_long_divide_eNegativeOf(D));
+                div = growExpansion(div, +1);
+                rem = fastExpansionSum(rem, eNegativeOf(D));
             }
         }
         else if (signN < 0) {
             if (signD > 0) {
                 // div = div + 1 (div is negative)
                 // rem = rem - D
-                div = e_long_divide_growExpansion(div, +1);
-                rem = e_long_divide_fastExpansionSum(rem, e_long_divide_eNegativeOf(D));
+                div = growExpansion(div, +1);
+                rem = fastExpansionSum(rem, eNegativeOf(D));
             }
             else {
                 // div = div - 1  (div is positive)
                 // rem = rem + D
-                div = e_long_divide_growExpansion(div, -1);
-                rem = e_long_divide_fastExpansionSum(rem, D);
+                div = growExpansion(div, -1);
+                rem = fastExpansionSum(rem, D);
             }
         }
     }
@@ -2659,8 +2625,6 @@ function ddSubtract(p1, p2) {
 
 ;// ./node_modules/big-float-ts/node/double-expansion/e-abs.js
 
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
-const e_abs_negativeOf = eNegativeOf;
 /**
  * Returns the absolute value of the given floating point expansion.
  *
@@ -2670,7 +2634,7 @@ const e_abs_negativeOf = eNegativeOf;
  */
 function eAbs(e) {
     if (e[e.length - 1] < 0) {
-        return e_abs_negativeOf(e);
+        return eNegativeOf(e);
     }
     return e;
 }
@@ -2865,31 +2829,24 @@ function eIsConstOrZero(p) {
 
 ;// ./node_modules/big-float-ts/node/double-expansion/e-int-div.js
 
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
-const e_int_div_eLongDivide = eLongDivide;
 /**
  * Returns the result of the integer division a/b.
  *
  * * **precondition:** a and b must be integers, b !== 0
  */
 function eIntDiv(a, b) {
-    return e_int_div_eLongDivide(a, b).div;
+    return eLongDivide(a, b).div;
 }
 
 //# sourceMappingURL=e-int-div.js.map
 ;// ./node_modules/big-float-ts/node/double-expansion/expansion-product.js
-/* unused harmony import specifier */ var expansion_product_eCompress;
 
 
-
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
-const multByDouble = scaleExpansion;
-const expansion_product_add = fastExpansionSum;
-const expansion_product_compress = (/* unused pure expression or super */ null && (expansion_product_eCompress));
 /**
  * Returns the product of two double floating point expansions.
  *
  * * see [Shewchuk](https://people.eecs.berkeley.edu/~jrs/papers/robustr.pdf)
+ * * the result is not compressed, call `eCompress` on the result if required.
  *
  * As per Shewchuk in the above paper: "To find the product of two expansions
  * e and f, use SCALE-EXPANSION (with zero elimination) to form the expansions
@@ -2906,9 +2863,8 @@ const expansion_product_compress = (/* unused pure expression or super */ null &
 function expansionProduct(e, f) {
     let sum = [0];
     for (let i = 0; i < e.length; i++) {
-        sum = expansion_product_add(sum, multByDouble(f, e[i]));
+        sum = fastExpansionSum(sum, scaleExpansion(f, e[i]));
     }
-    //return compress(sum);
     return sum;
 }
 
@@ -2949,15 +2905,13 @@ function scaleFloatssToIntss(ass) {
 
 ;// ./node_modules/big-float-ts/node/double-expansion/e-rem.js
 
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
-const e_rem_eLongDivide = eLongDivide;
 /**
  * Returns a % b
  *
  * * **precondition:** a and b must be integers, b !== 0
  */
 function eRem(a, b) {
-    return e_rem_eLongDivide(a, b).rem;
+    return eLongDivide(a, b).rem;
 }
 
 //# sourceMappingURL=e-rem.js.map
@@ -3444,7 +3398,7 @@ function ddDifferentiate(p) {
 /** `2 * 2^-53` -> 2x the standard round-of unit `=== Number.EPSILON` */
 const eps = Number.EPSILON;
 /** `2^-53` -> the standard round-of unit `=== eps/2` */
-const u = Number.EPSILON / 2;
+const u = eps / 2;
 /** `2^-106` -> the standard round-of unit for double-double precision `=== (eps/2)**2` */
 const uu = u * u;
 /**
@@ -5211,11 +5165,6 @@ function bDivmod(a, b, positiveMultiplier = false) {
 
 
 
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
-const mult = expansionProduct;
-const e_product_tp = twoProduct;
-const e_product_multByDouble = scaleExpansion;
-const e_product_compress = eCompress;
 /**
  * Return the result of multiplying together an array of floating point
  * expansions.
@@ -5233,20 +5182,20 @@ function e_product_eProduct(term) {
         const multiplicant = term[j];
         if (multiplicant.length == 1) {
             if (product.length === 1) {
-                product = e_product_tp(product[0], multiplicant[0]);
+                product = twoProduct(product[0], multiplicant[0]);
             }
             else {
-                product = e_product_multByDouble(product, multiplicant[0]);
+                product = scaleExpansion(product, multiplicant[0]);
             }
         }
         else if (product.length === 1) {
-            product = e_product_multByDouble(multiplicant, product[0]);
+            product = scaleExpansion(multiplicant, product[0]);
         }
         else {
-            product = mult(multiplicant, product);
+            product = expansionProduct(multiplicant, product);
         }
     }
-    return e_product_compress(product);
+    return eCompress(product);
     //return product;
 }
 
@@ -5254,9 +5203,6 @@ function e_product_eProduct(term) {
 ;// ./node_modules/big-float-ts/node/double-expansion/e-int-pow.js
 
 
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
-const e_int_pow_mult = expansionProduct;
-const prod = e_product_eProduct;
 /**
  * Returns a**i, where i is a non-negative integer.
  * @param a a floating point expansion
@@ -5272,13 +5218,13 @@ function eIntPow(a, p) {
         return a;
     }
     if (p === 2) {
-        return e_int_pow_mult(a, a);
+        return expansionProduct(a, a);
     }
     const as = [];
     for (let i = 0; i < p; i++) {
         as.push(a);
     }
-    return prod(as);
+    return e_product_eProduct(as);
 }
 
 //# sourceMappingURL=e-int-pow.js.map
@@ -5330,9 +5276,6 @@ function reduceSignificand(a, bits) {
 
 
 
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
-const e_to_bitlength_sign = eSign;
-const e_to_bitlength_compress = eCompress;
 /**
  * Returns a floating point expansion accurate to the given number of bits.
  * Extraneous bits are discarded.
@@ -5341,8 +5284,8 @@ const e_to_bitlength_compress = eCompress;
  */
 // TODO - make faster
 function eToBitlength(a, l) {
-    a = e_to_bitlength_compress(a);
-    if (e_to_bitlength_sign(a) === 0) {
+    a = eCompress(a);
+    if (eSign(a) === 0) {
         return [0];
     }
     const maxMsb = msbExponent(a[a.length - 1]);
@@ -5371,12 +5314,6 @@ function eToBitlength(a, l) {
 
 
 
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
-const e_div_mult = expansionProduct;
-const toBitlength = eToBitlength;
-const e_div_bitLength = expBitLength;
-const diff = eDiff;
-const estimate = eEstimate;
 /**
  * Returns the result of a/b using Goldschmidt division.
  *
@@ -5399,18 +5336,18 @@ function eDiv(N, D, expansionLength) {
     let exact = false;
     let resultBitlengthUpperBound = 0;
     if (!expansionLength) {
-        const bitlengthN = e_div_bitLength(N_);
-        const bitlengthD = e_div_bitLength(D_);
+        const bitlengthN = expBitLength(N_);
+        const bitlengthD = expBitLength(D_);
         // resultBitlengthUpperBound is only valid if the division is known
         // to be exact
         resultBitlengthUpperBound = bitlengthN - bitlengthD + 1;
         expansionLength = (resultBitlengthUpperBound / 53) + 1;
         exact = true;
     }
-    let F = [1 / estimate(D_)]; // Initial guess - out by 1/2 upls
+    let F = [1 / eEstimate(D_)]; // Initial guess - out by 1/2 upls
     let i = 1;
     while (true) {
-        N_ = e_div_mult(N_, F);
+        N_ = expansionProduct(N_, F);
         // The precision bitlength doubles on each iteration
         if (i > expansionLength) {
             // we now have roughly double the needed precision - we actually 
@@ -5420,7 +5357,7 @@ function eDiv(N, D, expansionLength) {
                 // We must throw away bits known to be zero. 
                 // Any bits > expansionLength * 53 must be thrown away as they
                 // are wrong - all other bits are exact.
-                N_ = toBitlength(N_, resultBitlengthUpperBound);
+                N_ = eToBitlength(N_, resultBitlengthUpperBound);
                 // TODO - below is just for testing - remove later
                 //if (compare(mult(D, N_), N) !== 0) {
                 //    console.log(mult(D, N_))
@@ -5431,8 +5368,8 @@ function eDiv(N, D, expansionLength) {
             // Returning only significant bits helps with sign determination later on.
             return N_.slice(N_.length - expansionLength, N_.length);
         }
-        D_ = e_div_mult(D_, F);
-        F = diff([2], D_);
+        D_ = expansionProduct(D_, F);
+        F = eDiff([2], D_);
         i *= 2;
     }
 }
@@ -5781,6 +5718,7 @@ function CompHornerK(p, x, K) {
 ;// ./src/error-analysis/condition-number.ts
 
 
+const { abs: condition_number_abs } = Math;
 /**
  * Returns an accurate estimate (K === 4 => double-double-double-double
  * precision) of the condition number of the given polynomial when evaluated at
@@ -5798,8 +5736,8 @@ function conditionNumber(p, x) {
     const pN = absCoeff(p);
     const pD = p;
     const N = CompHornerK(pN, x, 4);
-    const D = Math.abs(CompHornerK(pD, x, 4));
-    return Math.abs(N / D);
+    const D = condition_number_abs(CompHornerK(pD, x, 4));
+    return condition_number_abs(N / D);
 }
 
 
@@ -8827,23 +8765,7 @@ function refineCertified(p, p_, lb, ub, fa, fb, getPolyExact, exact) {
 }
 
 
-;// ./src/roots/root-bounds/upper-to-lower-bound.ts
-/**
- * Returns a function that returns a positive lower root bound given a function
- * that returns a positive upper root bound.
- *
- * @param positiveUpperBoundFunction
- *
- * @internal
- */
-function upperToLowerBound(positiveUpperBoundFunction) {
-    return (p) => {
-        return 1 / positiveUpperBoundFunction(p.toReversed());
-    };
-}
-
-
-;// ./src/roots/root-bounds/positive-to-negative-bound.ts
+;// ./src/roots/root-bounds/positive-to-negative-bound-with-err.ts
 
 /**
  * Returns a function that returns a negative root bound given a function that
@@ -8853,16 +8775,14 @@ function upperToLowerBound(positiveUpperBoundFunction) {
  *
  * @internal
  */
-function positiveToNegativeBound(positiveBoundFunction) {
-    return (p) => {
-        return -positiveBoundFunction(reflectAboutYAxis(p));
+function positiveToNegativeBound_WithError(positiveBoundFunction) {
+    return (p, p_) => {
+        return -positiveBoundFunction(reflectAboutYAxis(p), p_);
     };
 }
 
 
-;// ./src/roots/root-bounds/root-bounds-lmq.ts
-
-
+;// ./src/roots/root-bounds/lmq/positive-root-upper-bound-lmq.ts
 
 /**
  * Returns an upper bound for the positive real roots of the given polynomial.
@@ -8918,19 +8838,105 @@ function positiveRootUpperBound_LMQ(p) {
     }
     return ub;
 }
+
+
+;// ./src/roots/root-bounds/lmq/to-poly-for-positive-root-upper-bound-lmq.ts
+const { abs: to_poly_for_positive_root_upper_bound_lmq_abs } = Math;
 /**
- * Returns a positive lower bound of the real roots of the given polynomial
+ * Returns a new polynomial adjusted by coefficient-wise absolute error bounds
+ * for use with `positiveRootUpperBound_LMQ`.
  *
- * See algoritm 6 of the paper by Vigklas, Akritas and Strzeboński,
- * specifically the LocalMaxQuadratic algorithm hence LMQ.
+ * For each coefficient `c` with absolute error bound `e`, the returned
+ * coefficient is chosen from `[c - e, c + e]` as follows:
+ * * if the coefficient is guaranteed positive (`c - e > 0`), return `c - e`
+ *   (smallest guaranteed positive value)
+ * * if the coefficient is guaranteed negative (`c + e < 0`), return `c - e`
+ *   (most negative value)
+ * * if the sign is uncertain (`c - e <= 0 <= c + e`), return `0`
  *
- * @param p a polynomial with coefficients given densely as an array of double
- * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`
- * represents the polynomial `5x^2 - 3x`
+ * This yields a conservative representative polynomial for many practical
+ * cases, while making sign-uncertain coefficients explicit.
+ *
+ * @param p polynomial coefficients from highest to lowest power
+ * @param p_ coefficient-wise absolute error bounds; must have same length as `p`
  *
  * @doc
  */
-const positiveRootLowerBound_LMQ = upperToLowerBound(positiveRootUpperBound_LMQ);
+function toPolyForPositiveRootUpperBound_LMQ(p, p_) {
+    if (p.length !== p_.length) {
+        throw new Error('`p` and `p_` must be of equal length.');
+    }
+    const q = new Array(p.length);
+    for (let i = 0; i < p.length; i++) {
+        const e = to_poly_for_positive_root_upper_bound_lmq_abs(p_[i]);
+        const min = p[i] - e;
+        const max = p[i] + e;
+        q[i] = min > 0
+            ? min
+            : max < 0
+                ? min
+                : 0;
+    }
+    return q;
+}
+
+
+;// ./src/roots/root-bounds/lmq/positive-root-upper-bound-lmq-with-err.ts
+
+
+const { abs: positive_root_upper_bound_lmq_with_err_abs } = Math;
+/**
+ * Returns an LMQ upper bound for positive real roots using a conservative
+ * polynomial representative formed from coefficient-wise absolute errors.
+ *
+ * Strict mode:
+ * if coefficient sign uncertainty implies that, for some potentially negative
+ * coefficient, there is no guaranteed positive coefficient of higher power,
+ * then no finite LMQ-style bound can be guaranteed and `Infinity` is returned.
+ *
+ * @param p polynomial coefficients from highest to lowest power
+ * @param p_ coefficient-wise absolute error bounds
+ *
+ * @doc
+ */
+function positiveRootUpperBound_LMQ_WithError(p, p_) {
+    if (p.length !== p_.length) {
+        throw new Error('`p` and `p_` must be of equal length.');
+    }
+    // Strict guard: if a potentially negative coefficient has no guaranteed
+    // positive predecessor, only sign-uncertain positive predecessors, then
+    // a finite LMQ bound cannot be guaranteed.
+    for (let m = 0; m < p.length; m++) {
+        const em = positive_root_upper_bound_lmq_with_err_abs(p_[m]);
+        const minM = p[m] - em;
+        if (minM >= 0) {
+            continue;
+        }
+        let hasGuaranteedPositive = false;
+        let hasUncertainPositive = false;
+        for (let k = 0; k < m; k++) {
+            const ek = positive_root_upper_bound_lmq_with_err_abs(p_[k]);
+            const minK = p[k] - ek;
+            const maxK = p[k] + ek;
+            if (minK > 0) {
+                hasGuaranteedPositive = true;
+                break;
+            }
+            if (maxK > 0) {
+                hasUncertainPositive = true;
+            }
+        }
+        if (!hasGuaranteedPositive && hasUncertainPositive) {
+            return Infinity;
+        }
+    }
+    return positiveRootUpperBound_LMQ(toPolyForPositiveRootUpperBound_LMQ(p, p_));
+}
+
+
+;// ./src/roots/root-bounds/lmq/negative-root-lower-bound-lmq-with-err.ts
+
+
 /**
  * Returns a negative lower (further from zero) bound of the real roots of the
  * given polynomial.
@@ -8944,26 +8950,15 @@ const positiveRootLowerBound_LMQ = upperToLowerBound(positiveRootUpperBound_LMQ)
  *
  * @doc
  */
-const negativeRootLowerBound_LMQ = positiveToNegativeBound(positiveRootUpperBound_LMQ);
-/**
- * Returns a negative upper (closer to zero) bound of the real roots of the
- * given polynomial.
- *
- * See algoritm 6 of the paper by Vigklas, Akritas and Strzeboński,
- * specifically the LocalMaxQuadratic algorithm hence LMQ.
- *
- * @param p a polynomial with coefficients given densely as an array of double
- * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`
- * represents the polynomial `5x^2 - 3x`
- *
- * @doc
- */
-const negativeRootUpperBound_LMQ = upperToLowerBound(negativeRootLowerBound_LMQ);
+const negativeRootLowerBound_LMQ_WithError = positiveToNegativeBound_WithError(positiveRootUpperBound_LMQ_WithError);
 
 
 ;// ./src/roots/reduce-interval.ts
 
-const { min: reduce_interval_min, max: reduce_interval_max } = Math;
+
+
+const { min: reduce_interval_min, max: reduce_interval_max, abs: reduce_interval_abs } = Math;
+const MAX_DOUBLE = 1.7976931348623157e+308;
 /**
  * Returns the result of reducing the given interval [lb,ub] to a potentially
  * smaller interval that still contains all the roots of the given polynomial.
@@ -8977,9 +8972,30 @@ const { min: reduce_interval_min, max: reduce_interval_max } = Math;
  *
  * @internal
  */
-function reduceInterval(lb, ub, p) {
-    lb = reduce_interval_max(lb, negativeRootLowerBound_LMQ(p));
-    ub = reduce_interval_min(ub, positiveRootUpperBound_LMQ(p));
+function reduceInterval(lb, ub, p, pDd_, errorMultiplier) {
+    lb = reduce_interval_max(lb, negativeRootLowerBound_LMQ_WithError(p, pDd_.map(c => c * errorMultiplier)));
+    ub = reduce_interval_min(ub, positiveRootUpperBound_LMQ_WithError(p, pDd_.map(c => c * errorMultiplier)));
+    const d = p.length - 1;
+    const F = 2 ** (-2 * d);
+    if (!Number.isFinite(lb)) {
+        lb = -F * MAX_DOUBLE;
+    }
+    if (!Number.isFinite(ub)) {
+        ub = F * MAX_DOUBLE;
+    }
+    while (true) {
+        const lb_ = reduce_interval_abs(Horner(p, lb));
+        const ub_ = reduce_interval_abs(Horner(p, ub));
+        if (lb_ > F * MAX_DOUBLE) {
+            lb /= 2;
+            continue;
+        }
+        if (ub_ > F * MAX_DOUBLE) {
+            ub /= 2;
+            continue;
+        }
+        break;
+    }
     return [lb, ub];
 }
 
@@ -8998,23 +9014,27 @@ function removeLeadingZeroCoeffs(pDd, pDd_, getPExact, errorMultiplier) {
     let pExact = undefined; // lazy loaded
     // while the leading coefficient is smaller then the error bound 
     // i.e. possibly zero
-    while (pDd.length > 0 && remove_leading_zero_coeffs_abs(pDd[0][1]) <= errorMultiplier * pDd_[0]) {
-        pExact = pExact || getPExact();
-        // if leading coefficient really is zero
-        if (eSign(pExact[0]) === 0) {
-            // shift the leading coefficient and error out without altering the 
-            // given polynomial and error bound (shift is destructive, slice is not)
-            pDd = pDd.slice();
-            pDd.shift();
-            pDd_ = pDd_.slice();
-            pDd_.shift();
-            // also shift out the exact polynomial's leading coefficient
-            pExact.shift();
-            continue;
-        }
-        break;
+    // if leading coefficient is guaranteed > zero
+    if (pDd.length === 0 || remove_leading_zero_coeffs_abs(pDd[0][1]) > errorMultiplier * pDd_[0]) {
+        return { pDd, pDd_, pExact };
     }
-    return { pDd: pDd, pDd_: pDd_, pExact };
+    pExact = pExact || getPExact();
+    // Update `pDd` and `pDd_` with the exact polynomial's leading coefficients and error bounds
+    for (let i = 0; i < pExact.length; i++) {
+        const cExact = pExact[i];
+        const cDd = pDd[i];
+        cDd[1] = cExact[cExact.length - 1];
+        cDd[0] = cExact[cExact.length - 2] ?? 0;
+        pDd_[i] = remove_leading_zero_coeffs_abs(cDd[1]) * (γγ3 / errorMultiplier);
+    }
+    let i = 0;
+    while (i < pDd.length && pDd[i][1] === 0) {
+        i++;
+    }
+    pDd = pDd.slice(i);
+    pDd_ = pDd_.slice(i);
+    pExact = pExact.slice(i);
+    return { pDd, pDd_, pExact };
 }
 
 
@@ -9061,7 +9081,7 @@ function allRootsCertified(p, lb = 0, ub = 1, pE, getPExact, returnUndefinedForZ
         return [];
     }
     const p_ = transposePoly(p);
-    [lb, ub] = reduceInterval(lb, ub, p_[0]);
+    [lb, ub] = reduceInterval(lb, ub, p_[0], pE, 1);
     let bCount;
     let exact;
     const deg = p.length - 1;
@@ -9429,19 +9449,20 @@ function allRootsCertifiedSimplified(p, lb = -Infinity, ub = Infinity, returnUnd
 
 ;// ./node_modules/big-float-ts/node/double-expansion/e-to-double-double.js
 
-// We *have* to do the below❗ The assignee is a getter❗ The assigned is a pure function❗
-const e_to_double_double_compress = eCompress;
 /**
  * Returns the result of converting a floating point expansion to a
  * double-double precision floating point number.
+ *
+ * * uses truncation to convert thus accurate to within 1 ulp on low double;
+ * (a slower summing method could reduce the max error to 1/2 ulp)
  */
 function eToDd(e) {
-    e = e_to_double_double_compress(e);
+    e = eCompress(e);
     const len = e.length;
     if (len === 2) {
         return e; // already a double-double
     }
-    else if (len === 1) {
+    else if (len <= 1) {
         return [0, e[0]]; // double-doubles have a fixed length of 2
     }
     return [e[len - 2], e[len - 1]]; // return only most significant parts
@@ -9544,7 +9565,7 @@ const { abs: mobius_precise_abs, sign: mobius_precise_sign } = Math;
  * @internal
  */
 function mobiusAndNumSignChanges(p, p_, pDd, pDd_, getPExact) {
-    return function mobiusPrecise_(a, b, A, B, failCount) {
+    return function mobiusAndNumSignChanges_(a, b, A, B, failCount) {
         //-------------------------------------------
         // Taylor shift by `a`, i.e. p(x + a)
         //-------------------------------------------
@@ -9624,7 +9645,6 @@ function ddMobiusAndNumSignChanges(pDd, pDd_, a, b, A, B, failCount, getPExact) 
     // The sign of `A` and `B` are both !== 0 and is certified since it is an
     // endpoint of the interval.
     let _s = mobius_precise_sign(A);
-    let failed = false;
     for (let i = 0; i < q.length - 1; i++) {
         // No error in the sign of the last coefficient (important for parity of sign changes)
         let s = mobius_precise_sign(q[i][1]);
@@ -9795,7 +9815,7 @@ function isolateRoots(p, pDd, pDd_, lb, ub, getPExact) {
     const Is = [[lb, ub, A, B, 0]];
     const Is_ = []; // Isolated root intervals will be stored here
     // let treeSize = 0;  // remove eventually
-    const mobiusPrecise_ = mobiusAndNumSignChanges(p, p_, pDd, pDd_, getPExact);
+    const mobiusAndNumSignChanges_ = mobiusAndNumSignChanges(p, p_, pDd, pDd_, getPExact);
     let errBound;
     let pDdTransposed;
     while (Is.length > 0) {
@@ -9805,7 +9825,7 @@ function isolateRoots(p, pDd, pDd_, lb, ub, getPExact) {
         //----------------------------------------------------------------------
         // Descarte's rule of signs to count the number of roots in this interval
         //----------------------------------------------------------------------
-        const varP = mobiusPrecise_(a, b, A, B, failCount);
+        const varP = mobiusAndNumSignChanges_(a, b, A, B, failCount);
         // If `varP < 0` we couldn't distinguish Mobius coefficients from `0`
         // without going to infinite precision.
         if (varP === 0) { // no roots in the open interval `(a,b)`
@@ -9941,6 +9961,7 @@ function eAdmissablePoint(pE, a, b) {
 
 
 
+const { abs: roots_abs, max: roots_max, log2: roots_log2, ceil: roots_ceil } = Math;
 /**
  * Finds and returns all ordered *certified* root intervals (bar underflow /
  * overflow) of the given polynomial (with coefficients given in double or
@@ -10092,7 +10113,6 @@ function eAdmissablePoint(pE, a, b) {
  * @doc
  */
 function roots(pDd, lb = -Infinity, ub = +Infinity, pDd_, getPExact, tryReduceInterval = false) {
-    // if (pDd === undefined) { pDd = p.map(c => [0,c]); }
     if (typeof pDd[0] === 'number') {
         pDd = pDd.map(c => [0, c]);
     }
@@ -10116,18 +10136,23 @@ function roots(pDd, lb = -Infinity, ub = +Infinity, pDd_, getPExact, tryReduceIn
     // Remove leading zero coefficients 
     //----------------------------------------------------------------------
     ({ pDd, pDd_, pExact } = removeLeadingZeroCoeffs(pDd, pDd_, getPExact_, γγ3));
+    // Approximate `p` from `pDd`
+    const p = pDd.map(c => c[0] + c[1]);
+    if (tryReduceInterval ||
+        // !Number.isFinite(lb) || !Number.isFinite(ub) ||
+        roots_abs(lb) > 2 ** 20 || roots_abs(ub) > 2 ** 20) {
+        [lb, ub] = reduceInterval(lb, ub, p, pDd_, γγ3);
+    }
     if (pDd.length === 0) {
         return undefined; // return `undefined` for the zero polynomial (of degree -1)
     }
     else if (pDd.length === 1) {
         return []; // return `[]` for a (a non-zero) degree 0 polynomial
     }
-    const p = pDd.map(c => c[0] + c[1]);
-    if (tryReduceInterval || lb === -Infinity || ub === Infinity) {
-        [lb, ub] = reduceInterval(lb, ub, p);
-        if (lb === ub) { // edge case
-            return [{ t: lb, tS: lb, tE: ub, multiplicity: p.length - 1 }];
-        }
+    if (lb === ub) { // edge case
+        const halfWidth = 2 * eps * roots_max(1, 2 ** roots_ceil(roots_log2(roots_max(roots_abs(lb), roots_abs(ub)))));
+        lb -= halfWidth;
+        ub += halfWidth;
     }
     return isolateRoots(p, pDd, pDd_, lb, ub, getPExact_);
 }
@@ -10320,24 +10345,24 @@ function ddDeflate(p, root) {
 ;// ./src/roots/deflate/dd-deflate-with-running-error.ts
 
 
-
+const dd_deflate_with_running_error_qmd = ddMultDouble2;
+const dd_deflate_with_running_error_qaq = ddAddDd;
 const { abs: dd_deflate_with_running_error_abs } = Math;
-const dd_deflate_with_running_error_3 = γγ(3);
 /**
  * Returns a deflated version of the given polynomial *approximately* by
  * removing a factor (x - t). Also returns an coefficient-wise absolute error
  * bound.
  *
- * @param p a polynomial with coefficients given densely as an array of
+ * @param pDd a polynomial with coefficients given densely as an array of
  * double-double precision floating point numbers from highest to lowest power,
  * e.g. `[[0,5],[0,-3],[0,0]]` represents the polynomial `5x^2 - 3x`
- * @param pE the coefficient-wise absolute error of the input polynomial that
- * still need to be multiplied by γγ3, i.e. it is `γγ3` times too big.
+ * @param pDd_ the coefficient-wise absolute error of the input polynomial that
+ * still need to be multiplied by `γγ3`, i.e. it is `γγ3` times too big.
  * @param t an evaluation point of the polynomial.
  *
  * @doc
  */
-function ddDeflateWithRunningError(p, pE, t) {
+function ddDeflateWithRunningError(pDd, pDd_, t) {
     //--------------------------------------------------------------------------
     // `var` -> a variable
     // `$var` -> the double precision approximation to `var`
@@ -10352,9 +10377,9 @@ function ddDeflateWithRunningError(p, pE, t) {
     // * can use either `$var` or `var[var.length-1]` (the approx value) in error calculations
     //   due to multiplication by 3*γ² and not 3*u²
     //--------------------------------------------------------------------------
-    const d = p.length - 1;
-    const bs = [p[0]]; // coefficients
-    let b_ = pE[0]; // running error
+    const d = pDd.length - 1;
+    const bs = [pDd[0]]; // coefficients
+    let b_ = pDd_[0]; // running error
     const bEs = [b_]; // coefficient-wise error bound
     for (let i = 1; i < d; i++) {
         // p[i] + t*bs[i-1];
@@ -10362,16 +10387,17 @@ function ddDeflateWithRunningError(p, pE, t) {
         const $m = t * a[1];
         const _t = dd_deflate_with_running_error_abs(t);
         const m_ = _t * b_ + dd_deflate_with_running_error_abs($m);
-        const pi = p[i];
-        const p_ = pE[i];
+        const pi = pDd[i];
+        const p_ = pDd_[i];
         b_ = p_ + m_ + dd_deflate_with_running_error_abs(pi[1] + $m);
-        const b = ddAddDd(pi, ddMultDouble2(t, a));
+        const b = dd_deflate_with_running_error_qaq(pi, dd_deflate_with_running_error_qmd(t, a));
         bs.push(b);
         bEs.push(b_);
     }
     return {
         coeffs: bs,
-        errBound: bEs.map(e => dd_deflate_with_running_error_3 * e)
+        // errBound: bEs.map(e => γγ3*e)
+        errBound: bEs
     };
 }
 
@@ -10642,6 +10668,42 @@ function brentPoly(p, lb, ub, fa = brent_poly_Horner(p, lb), fb = brent_poly_Hor
         }
     }
 }
+
+
+;// ./src/roots/root-bounds/positive-to-negative-bound.ts
+
+/**
+ * Returns a function that returns a negative root bound given a function that
+ * returns a positive root bound.
+ *
+ * @param positiveBoundFunction
+ *
+ * @internal
+ */
+function positiveToNegativeBound(positiveBoundFunction) {
+    return (p) => {
+        return -positiveBoundFunction(reflectAboutYAxis(p));
+    };
+}
+
+
+;// ./src/roots/root-bounds/lmq/negative-root-lower-bound-lmq.ts
+
+
+/**
+ * Returns a negative lower (further from zero) bound of the real roots of the
+ * given polynomial.
+ *
+ * See algoritm 6 of the paper by Vigklas, Akritas and Strzeboński,
+ * specifically the LocalMaxQuadratic algorithm hence LMQ.
+ *
+ * @param p a polynomial with coefficients given densely as an array of double
+ * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`
+ * represents the polynomial `5x^2 - 3x`
+ *
+ * @doc
+ */
+const negativeRootLowerBound_LMQ = positiveToNegativeBound(positiveRootUpperBound_LMQ);
 
 
 ;// ./src/roots/naive/all-roots.ts
@@ -11054,7 +11116,113 @@ function quadraticRoots(p) {
 }
 
 
-;// ./src/roots/root-bounds/root-magnitude-upper-bound-fujiwara.ts
+;// ./src/roots/root-bounds/upper-to-lower-bound.ts
+/**
+ * Returns a function that returns a positive lower root bound given a function
+ * that returns a positive upper root bound.
+ *
+ * @param positiveUpperBoundFunction
+ *
+ * @internal
+ */
+function upperToLowerBound(positiveUpperBoundFunction) {
+    return (p) => {
+        return 1 / positiveUpperBoundFunction(p.toReversed());
+    };
+}
+
+
+;// ./src/roots/root-bounds/lmq/positive-root-lower-bound-lmq.ts
+
+
+/**
+ * Returns a positive lower bound of the real roots of the given polynomial
+ *
+ * See algoritm 6 of the paper by Vigklas, Akritas and Strzeboński,
+ * specifically the LocalMaxQuadratic algorithm hence LMQ.
+ *
+ * @param p a polynomial with coefficients given densely as an array of double
+ * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`
+ * represents the polynomial `5x^2 - 3x`
+ *
+ * @doc
+ */
+const positiveRootLowerBound_LMQ = upperToLowerBound(positiveRootUpperBound_LMQ);
+
+
+;// ./src/roots/root-bounds/lmq/negative-root-upper-bound-lmq.ts
+
+
+/**
+ * Returns a negative upper (closer to zero) bound of the real roots of the
+ * given polynomial.
+ *
+ * See algoritm 6 of the paper by Vigklas, Akritas and Strzeboński,
+ * specifically the LocalMaxQuadratic algorithm hence LMQ.
+ *
+ * @param p a polynomial with coefficients given densely as an array of double
+ * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`
+ * represents the polynomial `5x^2 - 3x`
+ *
+ * @doc
+ */
+const negativeRootUpperBound_LMQ = upperToLowerBound(negativeRootLowerBound_LMQ);
+
+
+;// ./src/roots/root-bounds/upper-to-lower-bound-with-err.ts
+/**
+ * Returns a function that returns a positive lower root bound given a function
+ * that returns a positive upper root bound.
+ *
+ * @param positiveUpperBoundFunction
+ *
+ * @internal
+ */
+function upperToLowerBound_WithError(positiveUpperBoundFunction) {
+    return (p, p_) => {
+        return 1 / positiveUpperBoundFunction(p.toReversed(), p_);
+    };
+}
+
+
+;// ./src/roots/root-bounds/lmq/positive-root-lower-bound-lmq-with-err.ts
+
+
+/**
+ * Returns a positive lower bound of the real roots of the given polynomial
+ *
+ * See algoritm 6 of the paper by Vigklas, Akritas and Strzeboński,
+ * specifically the LocalMaxQuadratic algorithm hence LMQ.
+ *
+ * @param p a polynomial with coefficients given densely as an array of double
+ * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`
+ * represents the polynomial `5x^2 - 3x`
+ *
+ * @doc
+ */
+const positiveRootLowerBound_LMQ_WithError = upperToLowerBound_WithError(positiveRootUpperBound_LMQ_WithError);
+
+
+;// ./src/roots/root-bounds/lmq/negative-root-upper-bound-lmq-with-err.ts
+
+
+/**
+ * Returns a negative upper (closer to zero) bound of the real roots of the
+ * given polynomial.
+ *
+ * See algoritm 6 of the paper by Vigklas, Akritas and Strzeboński,
+ * specifically the LocalMaxQuadratic algorithm hence LMQ.
+ *
+ * @param p a polynomial with coefficients given densely as an array of double
+ * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`
+ * represents the polynomial `5x^2 - 3x`
+ *
+ * @doc
+ */
+const negativeRootUpperBound_LMQ_WithError = upperToLowerBound_WithError(negativeRootLowerBound_LMQ_WithError);
+
+
+;// ./src/roots/root-bounds/fujiwara/root-magnitude-upper-bound-fujiwara.ts
 const { abs: root_magnitude_upper_bound_fujiwara_abs, max: root_magnitude_upper_bound_fujiwara_max } = Math;
 /**
  * Returns an upper bound on the magnitude (absolute value) of the complex
@@ -11092,7 +11260,7 @@ function rootMagnitudeUpperBound_fujiwara(p) {
 }
 
 
-;// ./src/roots/root-bounds/root-magnitude-upper-bound-rouche.ts
+;// ./src/roots/root-bounds/rouche/root-magnitude-upper-bound-rouche.ts
 
 /**
  * Finds an upper bound on the magnitude (absolute value) of the roots
@@ -11940,6 +12108,11 @@ function scaleFloatToBigint(a) {
 
 
 
+
+
+
+
+
 // roots sturm bigint
 
 
@@ -11965,4 +12138,4 @@ function scaleFloatToBigint(a) {
 
 
 
-export { AbsHorner, CompHornerK, EFTHorner, Horner, absCoeff, add, allRoots, allRootsCertified, allRootsCertifiedSimplified, bAbsCoeff, bAdd, bChangeVariablesLinear, bChangeVariablesScale, bChangeVariablesTranslateX, bCompose, bContent, bDecomposePowerSubstitution, bDeflate, bDegree, bDifferentiate, bDivideByConst, bDivides, bDivmod, bElevateDegree, bEqual, bEvaluateAt0, bEvaluateAt1, bFlatCoefficients, bFlatCoefficientsArr, bFlatRoots, bFlatRootsArr, bFromRoots, bGcdInt, bGcdInts, bGcdModP, bGcdModular, bGcdPrs, bHorner, bInverseModP, bInvert, bIsRationalMultipleOf, bLandauMignotteBound, bMultiply, bMultiplyByConst, bNegate, bNumRoots, bNumRootsIn01, bNumRootsInRange, bP1Norm, bP2NormSquared, bPInfNorm, bPdivModP, bPdivTrivial, bPremSequencePrimitive, bPremSequenceSubresultant, bPremSequenceTrivial, bPrimitivePart, bReflectAboutYAxis, bRemoveLeadingZeros, bRittDecompose, bRittRecompose, bScale, bSignChanges, bSturmChain, bSubtract, bTaylorShift, bXgcd, bYunsAlgorithm, bernsteinToPowerBasis, bernsteinToPowerBasis01, bisection, brent, brentPoly, changeVariablesLinear, changeVariablesScale, changeVariablesTranslateX, chineseRemainderAlgorithm, compHorner, compHornerIsFaithful, compHornerWithRunningError, compose, conditionNumber, content, createRootExact, ddAbsCoeff, ddAdd, ddDeflate, ddDeflateWithRunningError, ddDegree, ddDifferentiate, ddDifferentiateWithError, ddDivideByConst, ddHorner, ddHornerWithInpError, ddInplaceScaleWithInpErr, ddIntegrate, ddMultiply, ddMultiplyByConst, ddNegate, ddRemoveLeadingZeros, ddScaleWithInpErr, ddSubtract, ddTaylorShift, deflate, degree, differentiate, divideByConst, divmod, eAbsCoeff, eAdd, eChangeVariablesLinear, eChangeVariablesScale, eChangeVariablesTranslateX, eCompose, eContent, eDeflate, eDegree, eDifferentiate, eDivmod, eEqual, eEvaluateAt0, eEvaluateAt1, eFromRoots, eGcdInt, eGcdInts, eHorner, eInvert, eIsConstOrZero, eIsRationalMultipleOf, eIsUnit, eMobius, eMultiply, eMultiplyByConst, eNegate, eNumRoots, eNumRootsIn01, eNumRootsInRange, eP1Norm, eP2Norm, ePInfNorm, ePdivTrivial, ePremSequencePrimitive, ePremSequenceSubresultant, ePrimitivePart, eProduct, eReflectAboutYAxis, eRemoveLeadingZeros, eScale, eSignChanges, eSturmChain, eSubtract, eTaylorShift, eeHorner, eeTaylorShift, eps, equal, evalCertified, evalCertifiedInclError, evalK, evaluateAt0, evaluateAt1, flatCoefficients, flatCoefficientsArr, flatRoots, flatRootsArr, fromRoots, gcdInt, gcdInts, gcdPrs, getUlp, hornerWithRunningError, inplaceTaylorShiftBy1WithInpErr, integrate, invert, isExactPowerOf2, isRationalMultipleOf, isSubnormal, mid, mobius, multiply, multiplyByConst, negate, negativeRootLowerBound_LMQ, negativeRootUpperBound_LMQ, nextdown, nextup, numRoots, numRootsIn01, numRootsInRange, p1Norm, p2Norm, pInfNorm, positiveRootLowerBound_LMQ, positiveRootUpperBound_LMQ, powerToBernsteinBasis, powerToBernsteinBasis01, predictiveRandom, premSequenceSubresultant, primitivePart, quadraticRoots, random, randomIntInRange, refineK1, reflectAboutYAxis, removeLeadingZeros, rootIntervalToExp, rootMagnitudeUpperBound_fujiwara, rootMagnitudeUpperBound_rouche, roots, scale, scaleFloatToBigint, scaleFloatToInt, scaleFloatsToBigints, scaleFloatsToInts, scaleFloatssToBigintss, scaleFloatssToIntss, scaleWithInpErr, signChanges, sturmChain, subtract, taylorShift, taylorShiftWithInpErr, toCasStr, u, uu, γ, γ1, γγ, γγ3 };
+export { AbsHorner, CompHornerK, EFTHorner, Horner, absCoeff, add, allRoots, allRootsCertified, allRootsCertifiedSimplified, bAbsCoeff, bAdd, bChangeVariablesLinear, bChangeVariablesScale, bChangeVariablesTranslateX, bCompose, bContent, bDecomposePowerSubstitution, bDeflate, bDegree, bDifferentiate, bDivideByConst, bDivides, bDivmod, bElevateDegree, bEqual, bEvaluateAt0, bEvaluateAt1, bFlatCoefficients, bFlatCoefficientsArr, bFlatRoots, bFlatRootsArr, bFromRoots, bGcdInt, bGcdInts, bGcdModP, bGcdModular, bGcdPrs, bHorner, bInverseModP, bInvert, bIsRationalMultipleOf, bLandauMignotteBound, bMultiply, bMultiplyByConst, bNegate, bNumRoots, bNumRootsIn01, bNumRootsInRange, bP1Norm, bP2NormSquared, bPInfNorm, bPdivModP, bPdivTrivial, bPremSequencePrimitive, bPremSequenceSubresultant, bPremSequenceTrivial, bPrimitivePart, bReflectAboutYAxis, bRemoveLeadingZeros, bRittDecompose, bRittRecompose, bScale, bSignChanges, bSturmChain, bSubtract, bTaylorShift, bXgcd, bYunsAlgorithm, bernsteinToPowerBasis, bernsteinToPowerBasis01, bisection, brent, brentPoly, changeVariablesLinear, changeVariablesScale, changeVariablesTranslateX, chineseRemainderAlgorithm, compHorner, compHornerIsFaithful, compHornerWithRunningError, compose, conditionNumber, content, createRootExact, ddAbsCoeff, ddAdd, ddDeflate, ddDeflateWithRunningError, ddDegree, ddDifferentiate, ddDifferentiateWithError, ddDivideByConst, ddHorner, ddHornerWithInpError, ddInplaceScaleWithInpErr, ddIntegrate, ddMultiply, ddMultiplyByConst, ddNegate, ddRemoveLeadingZeros, ddScaleWithInpErr, ddSubtract, ddTaylorShift, deflate, degree, differentiate, divideByConst, divmod, eAbsCoeff, eAdd, eChangeVariablesLinear, eChangeVariablesScale, eChangeVariablesTranslateX, eCompose, eContent, eDeflate, eDegree, eDifferentiate, eDivmod, eEqual, eEvaluateAt0, eEvaluateAt1, eFromRoots, eGcdInt, eGcdInts, eHorner, eInvert, eIsConstOrZero, eIsRationalMultipleOf, eIsUnit, eMobius, eMultiply, eMultiplyByConst, eNegate, eNumRoots, eNumRootsIn01, eNumRootsInRange, eP1Norm, eP2Norm, ePInfNorm, ePdivTrivial, ePremSequencePrimitive, ePremSequenceSubresultant, ePrimitivePart, eProduct, eReflectAboutYAxis, eRemoveLeadingZeros, eScale, eSignChanges, eSturmChain, eSubtract, eTaylorShift, eeHorner, eeTaylorShift, eps, equal, evalCertified, evalCertifiedInclError, evalK, evaluateAt0, evaluateAt1, flatCoefficients, flatCoefficientsArr, flatRoots, flatRootsArr, fromRoots, gcdInt, gcdInts, gcdPrs, getUlp, hornerWithRunningError, inplaceTaylorShiftBy1WithInpErr, integrate, invert, isExactPowerOf2, isRationalMultipleOf, isSubnormal, mid, mobius, multiply, multiplyByConst, negate, negativeRootLowerBound_LMQ, negativeRootLowerBound_LMQ_WithError, negativeRootUpperBound_LMQ, negativeRootUpperBound_LMQ_WithError, nextdown, nextup, numRoots, numRootsIn01, numRootsInRange, p1Norm, p2Norm, pInfNorm, positiveRootLowerBound_LMQ, positiveRootLowerBound_LMQ_WithError, positiveRootUpperBound_LMQ, positiveRootUpperBound_LMQ_WithError, powerToBernsteinBasis, powerToBernsteinBasis01, predictiveRandom, premSequenceSubresultant, primitivePart, quadraticRoots, random, randomIntInRange, refineK1, reflectAboutYAxis, removeLeadingZeros, rootIntervalToExp, rootMagnitudeUpperBound_fujiwara, rootMagnitudeUpperBound_rouche, roots, scale, scaleFloatToBigint, scaleFloatToInt, scaleFloatsToBigints, scaleFloatsToInts, scaleFloatssToBigintss, scaleFloatssToIntss, scaleWithInpErr, signChanges, sturmChain, subtract, taylorShift, taylorShiftWithInpErr, toCasStr, toPolyForPositiveRootUpperBound_LMQ, u, uu, γ, γ1, γγ, γγ3 };

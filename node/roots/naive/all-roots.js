@@ -1,8 +1,8 @@
 import { differentiate } from "../../calculus/double/differentiate.js";
 import { Horner } from "../../evaluate/double/horner.js";
 import { brentPoly } from "./brent-poly.js";
-import { negativeRootLowerBound_LMQ } from "../root-bounds/root-bounds-lmq.js";
-import { positiveRootUpperBound_LMQ } from "../root-bounds/root-bounds-lmq.js";
+import { negativeRootLowerBound_LMQ } from "../root-bounds/lmq/negative-root-lower-bound-lmq.js";
+import { positiveRootUpperBound_LMQ } from "../root-bounds/lmq/positive-root-upper-bound-lmq.js";
 import { removeLeadingZeros } from "../../basic/double/remove-leading-zeros.js";
 /**
  *  * ❗**DEPRECATED**❗

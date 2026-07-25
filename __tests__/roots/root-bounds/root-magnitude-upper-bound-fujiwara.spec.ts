@@ -1,6 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-
-import { rootMagnitudeUpperBound_fujiwara } from '../../../src/roots/root-bounds/root-magnitude-upper-bound-fujiwara.js';
+import { rootMagnitudeUpperBound_fujiwara } from '../../../src/roots/root-bounds/fujiwara/root-magnitude-upper-bound-fujiwara.js';
 
 
 describe('rootMagnitudeUpperBound_fujiwara', function() {

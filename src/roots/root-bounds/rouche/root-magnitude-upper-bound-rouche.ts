@@ -1,4 +1,4 @@
-import { pInfNorm } from "../../norm/double/p-inf-norm.js";
+import { pInfNorm } from "../../../norm/double/p-inf-norm.js";
 
 
 /**

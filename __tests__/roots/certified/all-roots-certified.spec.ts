@@ -1,16 +1,18 @@
 import { describe, expect, it } from '@jest/globals';
-// import type { RootInterval } from '../../../src/index.js';
+import { twoSum, eToDd, eEstimate } from 'big-float-ts';
+// import { twoSum, eToDd, ddToE } from 'big-float-ts';
 import { allRootsCertified } from '../../../src/roots/certified/all-roots-certified.js';
 import { allRoots } from '../../../src/roots/naive/all-roots.js';
 import { eMultiply } from '../../../src/basic/expansion/e-multiply.js';
 import { eProduct } from '../../../src/basic/expansion/e-product.js';
 import { eHorner } from '../../../src/evaluate/expansion/e-horner.js';
-import { twoSum, eToDd } from 'big-float-ts';
 import { γγ } from '../../../src/error-analysis/gamma.js'
 import { removeLeadingZeroCoeffs } from '../../../src/roots/remove-leading-zero-coeffs.js';
 import { toCasStr } from '../../../src/basic/to-cas-str.js';
 import { mid } from '../../../src/roots/root-interval.js';
 import { RootInterval } from '../../../src/roots/root-interval.js';
+import { roots as getRoots } from '../../../src/roots/descartes/roots.js';
+import { makeFakeGetPExact } from '../make-fake-get-p-exact.js';
 
 const γγ3 = γγ(3);
 const eps = Number.EPSILON;
@@ -22,7 +24,7 @@ function() {
     it('should find roots correctly for a polynomial with leading "zero" coefficients',
     function() {
         // coefficients in double-double precision
-        let p = [
+        let pDd = [
             [0, 0],  // zero leading coefficient
             [0.1580350755837278, 3770986809251668.5],
             [-0.437621888289444, -11611163849314706],
@@ -37,7 +39,7 @@ function() {
         ];
 
         // coefficient-wise error bound of double-double precision coefficients
-        let pE = [
+        let pDd_ = [
             1e-19,
             5.973763369817942e-16,
             3.154260190691488e-15,
@@ -52,32 +54,37 @@ function() {
         ];
 
         // create fake `getPExact`
-        const getPExact = makeFakeGetPExact(p, true);
+        const getPExact = makeFakeGetPExact(pDd, true);
         let pExact: number[][] | undefined = getPExact();
 
-        ({ pDd: p, pDd_: pE, pExact } = removeLeadingZeroCoeffs(p, pE, getPExact, 1));
+        ({ pDd, pDd_, pExact } = removeLeadingZeroCoeffs(pDd, pDd_, getPExact, 1));
 
-        expect(p.length).toEqual(11);
+        expect(pDd.length).toEqual(11);
         expect(pExact!.length).toEqual(11);
-        expect(pE.length).toEqual(11);
+        expect(pDd_.length).toEqual(11);
         
         const t1 = allRootsCertified(
-            p,
+            pDd,
             -Infinity,
-            Infinity,[],
+            Infinity,
+            pDd_,
             getPExact,
             true
         );
+
         // toCasStr(p.map(eToDd).map(v => v[1]*2**-50));//?
         const rs = t1!.map(mid);
 
-        expect(rs).toEqual([0.33617428290360174, 0.6260997031130032, 1.3255582424034449]);
+        toCasStr(pDd.map(c => c.map(v => v*2**68)));
+        getRoots(pDd, -Infinity, Infinity, pDd_, getPExact);
+        eEstimate(eHorner(pExact!, 1.3255582424034453));
+        expect(rs).toEqual([0.3361742829036021, 0.6260997031130032, 1.3255582424034449]);
     });
 
     it('should find roots correctly for a polynomial with leading actual zero coefficients',
     function() {
         // coefficients in double-double precision
-        let p = [
+        let pDd = [
             [0, 0],  // zero leading coefficient
             [0.1580350755837278, 3770986809251668.5],
             [-0.437621888289444, -11611163849314706],
@@ -92,7 +99,7 @@ function() {
         ];
 
         // coefficient-wise error bound of double-double precision coefficients
-        let pE = [
+        let pDd_ = [
             1e-19,
             5.973763369817942e-16,
             3.154260190691488e-15,
@@ -107,19 +114,20 @@ function() {
         ];
 
         // create fake `getPExact`
-        const getPExact = makeFakeGetPExact(p, false);
+        const getPExact = makeFakeGetPExact(pDd, false);
         let pExact: number[][] | undefined = getPExact();
 
-        ({ pDd: p, pDd_: pE, pExact } = removeLeadingZeroCoeffs(p, pE, getPExact, 1));
+        ({ pDd, pDd_, pExact } = removeLeadingZeroCoeffs(pDd, pDd_, getPExact, 1));
 
-        expect(p.length).toEqual(10);
+        expect(pDd.length).toEqual(10);
         expect(pExact!.length).toEqual(10);
-        expect(pE.length).toEqual(10);
+        expect(pDd_.length).toEqual(10);
 
         const t1 = allRootsCertified(
-            p,
+            pDd,
             -Infinity,
-            Infinity,[],
+            Infinity,
+            undefined,
             getPExact,
             true
         );
@@ -170,10 +178,10 @@ function() {
     });
     it('should not return roots for the zero or a constant polynomial and `undefined` when appropriate - part 2',
     function() {
-        let p: number[][] = [[0,0],[0,0],[0,0]];
-        let pE: number[] = [1,1,1];
+        let pDd: number[][] = [[0,0],[0,0],[0,0]];
+        let pDd_: number[] = [1,1,1];
         let getPExact = () => [[0],[0],[0]];
-        let roots = allRootsCertified(p, 0, 1, pE, getPExact, true);
+        let roots = allRootsCertified(pDd, 0, 1, pDd_, getPExact, true);
         expect(roots === undefined).toEqual(true);
     });
     it('should not return roots for the zero or a constant polynomial and `undefined` when appropriate - part 3',
@@ -366,7 +374,6 @@ function() {
         const ts1 = allRootsCertified(p, lb1, ub1, pE);
         const ts2 = allRootsCertified(p, lb2, ub2, pE);
         
-        ts0;//?
         expect(areRootsWithinBounds(ts0, [
             { t: 3.3999999999999955, multiplicity: 1 },
             { t: 3.4, multiplicity: 2 },
@@ -471,7 +478,7 @@ function() {
 
 function isThereRootAt(
         // t: number, multiplicity: number, roots: RootInterval[]) {
-        t: number, multiplicity: number, roots: any[]) {
+        t: number, multiplicity: number, roots: RootInterval[]) {
 
     for (let r of roots) {
         if (
@@ -510,26 +517,7 @@ function makePoly(pp: number[]) {
 }
 
 
-function makeFakeGetPExact(
-        p: number[][],
-        makeLeadingNonZero: boolean) {
 
-    const getPExact = () => {
-        const pExact = p.map(dd => {
-            const e = ddToE(dd).slice();
-            e.unshift(eps/4 * e[0]);
-            return e;
-        });
-
-        if (makeLeadingNonZero) {
-            pExact[0] = [eps*2**-16];
-        }
-        
-        return pExact;
-    }
-
-    return getPExact;
-}
 
 
 // FUTURE - now availble from big-float-ts

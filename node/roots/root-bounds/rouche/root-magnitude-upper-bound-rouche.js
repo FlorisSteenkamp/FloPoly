@@ -1,4 +1,4 @@
-import { pInfNorm } from "../../norm/double/p-inf-norm.js";
+import { pInfNorm } from "../../../norm/double/p-inf-norm.js";
 /**
  * Finds an upper bound on the magnitude (absolute value) of the roots
  * (including complex roots) of the given polynomial using Rouche's Theorem

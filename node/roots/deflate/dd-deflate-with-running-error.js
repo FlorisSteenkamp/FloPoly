@@ -1,23 +1,23 @@
-import { ddMultDouble2 as qmd } from "double-double";
-import { ddAddDd as qaq } from "double-double";
-import { γγ } from '../../error-analysis/gamma.js';
+import { ddMultDouble2 } from "double-double";
+import { ddAddDd } from "double-double";
+const qmd = ddMultDouble2;
+const qaq = ddAddDd;
 const { abs } = Math;
-const γγ3 = γγ(3);
 /**
  * Returns a deflated version of the given polynomial *approximately* by
  * removing a factor (x - t). Also returns an coefficient-wise absolute error
  * bound.
  *
- * @param p a polynomial with coefficients given densely as an array of
+ * @param pDd a polynomial with coefficients given densely as an array of
  * double-double precision floating point numbers from highest to lowest power,
  * e.g. `[[0,5],[0,-3],[0,0]]` represents the polynomial `5x^2 - 3x`
- * @param pE the coefficient-wise absolute error of the input polynomial that
- * still need to be multiplied by γγ3, i.e. it is `γγ3` times too big.
+ * @param pDd_ the coefficient-wise absolute error of the input polynomial that
+ * still need to be multiplied by `γγ3`, i.e. it is `γγ3` times too big.
  * @param t an evaluation point of the polynomial.
  *
  * @doc
  */
-function ddDeflateWithRunningError(p, pE, t) {
+function ddDeflateWithRunningError(pDd, pDd_, t) {
     //--------------------------------------------------------------------------
     // `var` -> a variable
     // `$var` -> the double precision approximation to `var`
@@ -32,9 +32,9 @@ function ddDeflateWithRunningError(p, pE, t) {
     // * can use either `$var` or `var[var.length-1]` (the approx value) in error calculations
     //   due to multiplication by 3*γ² and not 3*u²
     //--------------------------------------------------------------------------
-    const d = p.length - 1;
-    const bs = [p[0]]; // coefficients
-    let b_ = pE[0]; // running error
+    const d = pDd.length - 1;
+    const bs = [pDd[0]]; // coefficients
+    let b_ = pDd_[0]; // running error
     const bEs = [b_]; // coefficient-wise error bound
     for (let i = 1; i < d; i++) {
         // p[i] + t*bs[i-1];
@@ -42,8 +42,8 @@ function ddDeflateWithRunningError(p, pE, t) {
         const $m = t * a[1];
         const _t = abs(t);
         const m_ = _t * b_ + abs($m);
-        const pi = p[i];
-        const p_ = pE[i];
+        const pi = pDd[i];
+        const p_ = pDd_[i];
         b_ = p_ + m_ + abs(pi[1] + $m);
         const b = qaq(pi, qmd(t, a));
         bs.push(b);
@@ -51,7 +51,8 @@ function ddDeflateWithRunningError(p, pE, t) {
     }
     return {
         coeffs: bs,
-        errBound: bEs.map(e => γγ3 * e)
+        // errBound: bEs.map(e => γγ3*e)
+        errBound: bEs
     };
 }
 export { ddDeflateWithRunningError };

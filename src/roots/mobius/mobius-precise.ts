@@ -60,7 +60,7 @@ function mobiusAndNumSignChanges(
         pDd_: number[],
         getPExact: () => number[][]) {
 
-    return function mobiusPrecise_(
+    return function mobiusAndNumSignChanges_(
             a: number,
             b: number,
             A: number,
@@ -171,7 +171,7 @@ function ddMobiusAndNumSignChanges(
     // The sign of `A` and `B` are both !== 0 and is certified since it is an
     // endpoint of the interval.
     let _s = sign(A);
-    let failed = false;
+
     for (let i=0; i<q.length - 1; i++) {
         // No error in the sign of the last coefficient (important for parity of sign changes)
         let s = sign(q[i][1]);
@@ -213,7 +213,7 @@ function ddMobiusAndNumSignChanges(
     }
 
     return failCount > 1
-        ? eMobiusAndNumSignChanges(getPExact,a,b,A,B)
+        ? eMobiusAndNumSignChanges(getPExact, a, b, A, B)
         : -numSignChanges;  // `failCount` is still 1, so we can try again after another split of the interval;
 
     // We need to split the interval into two subintervals since we

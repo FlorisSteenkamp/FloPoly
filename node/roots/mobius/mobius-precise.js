@@ -51,7 +51,7 @@ const { abs, sign } = Math;
  * @internal
  */
 function mobiusAndNumSignChanges(p, p_, pDd, pDd_, getPExact) {
-    return function mobiusPrecise_(a, b, A, B, failCount) {
+    return function mobiusAndNumSignChanges_(a, b, A, B, failCount) {
         //-------------------------------------------
         // Taylor shift by `a`, i.e. p(x + a)
         //-------------------------------------------
@@ -131,7 +131,6 @@ function ddMobiusAndNumSignChanges(pDd, pDd_, a, b, A, B, failCount, getPExact) 
     // The sign of `A` and `B` are both !== 0 and is certified since it is an
     // endpoint of the interval.
     let _s = sign(A);
-    let failed = false;
     for (let i = 0; i < q.length - 1; i++) {
         // No error in the sign of the last coefficient (important for parity of sign changes)
         let s = sign(q[i][1]);

@@ -89,7 +89,7 @@ function isolateRoots(
 
     // let treeSize = 0;  // remove eventually
 
-    const mobiusPrecise_ = mobiusAndNumSignChanges(p, p_, pDd, pDd_, getPExact);
+    const mobiusAndNumSignChanges_ = mobiusAndNumSignChanges(p, p_, pDd, pDd_, getPExact);
 
     let errBound: number[];
     let pDdTransposed: number[][];
@@ -103,7 +103,7 @@ function isolateRoots(
         //----------------------------------------------------------------------
         // Descarte's rule of signs to count the number of roots in this interval
         //----------------------------------------------------------------------
-        const varP = mobiusPrecise_(a, b, A, B, failCount);
+        const varP = mobiusAndNumSignChanges_(a, b, A, B, failCount);
 
         // If `varP < 0` we couldn't distinguish Mobius coefficients from `0`
         // without going to infinite precision.

@@ -1,6 +1,8 @@
 import { absCoeff } from "../basic/double/abs-coeff.js";
 import { CompHornerK } from "../evaluate/double/comp-horner-k.js";
 
+const { abs } = Math;
+
 
 /**
  * Returns an accurate estimate (K === 4 => double-double-double-double 
@@ -20,9 +22,9 @@ function conditionNumber(p: number[], x: number): number {
     const pD = p;
 
     const N = CompHornerK(pN, x, 4);
-    const D = Math.abs(CompHornerK(pD, x, 4));
+    const D = abs(CompHornerK(pD, x, 4));
 
-    return Math.abs(N / D);
+    return abs(N / D);
 }
 
 

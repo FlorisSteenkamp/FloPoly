@@ -272,12 +272,17 @@ export { brentPoly } from './roots/naive/brent-poly.js';
 export { quadraticRoots } from './roots/naive/quadratic-roots.js';
 
 // roots root bounds
-export { positiveRootUpperBound_LMQ } from './roots/root-bounds/root-bounds-lmq.js';
-export { positiveRootLowerBound_LMQ } from './roots/root-bounds/root-bounds-lmq.js';
-export { negativeRootLowerBound_LMQ } from './roots/root-bounds/root-bounds-lmq.js';
-export { negativeRootUpperBound_LMQ } from './roots/root-bounds/root-bounds-lmq.js';
-export { rootMagnitudeUpperBound_fujiwara } from './roots/root-bounds/root-magnitude-upper-bound-fujiwara.js';
-export { rootMagnitudeUpperBound_rouche } from './roots/root-bounds/root-magnitude-upper-bound-rouche.js';
+export { toPolyForPositiveRootUpperBound_LMQ } from './roots/root-bounds/lmq/to-poly-for-positive-root-upper-bound-lmq.js';
+export { positiveRootUpperBound_LMQ } from './roots/root-bounds/lmq/positive-root-upper-bound-lmq.js';
+export { positiveRootLowerBound_LMQ } from './roots/root-bounds/lmq/positive-root-lower-bound-lmq.js';
+export { negativeRootLowerBound_LMQ } from './roots/root-bounds/lmq/negative-root-lower-bound-lmq.js';
+export { negativeRootUpperBound_LMQ } from './roots/root-bounds/lmq/negative-root-upper-bound-lmq.js';
+export { positiveRootUpperBound_LMQ_WithError } from './roots/root-bounds/lmq/positive-root-upper-bound-lmq-with-err.js';
+export { positiveRootLowerBound_LMQ_WithError } from './roots/root-bounds/lmq/positive-root-lower-bound-lmq-with-err.js';
+export { negativeRootLowerBound_LMQ_WithError } from './roots/root-bounds/lmq/negative-root-lower-bound-lmq-with-err.js';
+export { negativeRootUpperBound_LMQ_WithError } from './roots/root-bounds/lmq/negative-root-upper-bound-lmq-with-err.js';
+export { rootMagnitudeUpperBound_fujiwara } from './roots/root-bounds/fujiwara/root-magnitude-upper-bound-fujiwara.js';
+export { rootMagnitudeUpperBound_rouche } from './roots/root-bounds/rouche/root-magnitude-upper-bound-rouche.js';
 
 // roots sturm bigint
 export { bNumRoots } from './roots/sturm/bigint/b-num-roots.js';

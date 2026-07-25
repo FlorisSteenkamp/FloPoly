@@ -1,5 +1,6 @@
 import { absCoeff } from "../basic/double/abs-coeff.js";
 import { CompHornerK } from "../evaluate/double/comp-horner-k.js";
+const { abs } = Math;
 /**
  * Returns an accurate estimate (K === 4 => double-double-double-double
  * precision) of the condition number of the given polynomial when evaluated at
@@ -17,8 +18,8 @@ function conditionNumber(p, x) {
     const pN = absCoeff(p);
     const pD = p;
     const N = CompHornerK(pN, x, 4);
-    const D = Math.abs(CompHornerK(pD, x, 4));
-    return Math.abs(N / D);
+    const D = abs(CompHornerK(pD, x, 4));
+    return abs(N / D);
 }
 export { conditionNumber };
 //# sourceMappingURL=condition-number.js.map
