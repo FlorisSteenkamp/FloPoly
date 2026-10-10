@@ -2,8 +2,7 @@ import { twoSum } from "big-float-ts";
 import { EFTHorner } from "./eft-horner.js";
 import { HornerSum } from "./horner-sum.js";
 import { HornerAbsSum } from "./horner-abs-sum.js";
-import { γs } from "../../error-analysis/gamma.js";
-const u = Number.EPSILON;
+import { γs, u } from "../../error-analysis/gamma.js";
 /**
  * Returns the result of evaluating a univariate polynomial using once compensated
  * Horner's method, including a dynamic check for faithfull rounding and a

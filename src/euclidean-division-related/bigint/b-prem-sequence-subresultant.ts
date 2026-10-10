@@ -7,6 +7,8 @@ import { bPdivTrivial } from "./b-pdiv-trivial.js";
  * Returns the subresultant pseudo remainder sequence of `a/b`.
  * 
  * * **precondition:** `g !== []`, i.e. unequal to the zero polynomial.
+ *
+ * * **precondition:** `deg(f) >= deg(g)`
  * 
  * * see [*The subresultant polynomial remainder sequence algorithm* by Ruiyuan (Ronnie) Chen, p.10](https://pdfs.semanticscholar.org/2e6b/95ba84e2160748ba8fc310cdc408fc9bbade.pdf)
  * 
@@ -30,13 +32,19 @@ function bPremSequenceSubresultant(
     let i = 1;
 
     while (true) {
-        a.push(r[i][0]); // leading coefficient of r[i-1]
+        a.push(r[i][0]); // leading coefficient of r[i]
         const d_ = d[i-1] - d[i];
         const bD_ = BigInt(d_);
         const sgn = sturm
             ? -1
             : (d_+1) % 2 === 0 ? +1 : -1;
-        const D = a[i-1]*c[i-1]**bD_;
+        let D = a[i-1]*c[i-1]**bD_;
+        if (sturm && D < 0n) {
+            // In Sturm mode the remainder's sign must be preserved (bar the
+            // final negation) but `D` can be negative when a degree drop of
+            // 2 or more occurred earlier in the sequence - divide by `|D|`.
+            D = -D;
+        }
         const exp = -bD_ + 1n;
         const cTerm1 = a[i]**bD_;
         const cTerm2 = c[i-1]**(exp < 0n ? -exp : exp);

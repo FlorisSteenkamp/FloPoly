@@ -4,6 +4,8 @@
  *
  * **precondition** `a`, `b` must be integers
  *
+ * * returns `NaN` if either argument is not finite (rather than looping forever)
+ *
  * @doc
  */
 declare function gcdInt(a: number, b: number): number;

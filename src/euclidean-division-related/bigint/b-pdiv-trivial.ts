@@ -14,7 +14,9 @@ const abs = (n: bigint) => n >= 0 ? n : -n;
  * and returns a scaled `r` and `q` in the formula `a = bq + r`, where 
  * `degree(r) < degree(b)`. `q` is called the quotient and `r` the remainder.
  * 
- * * **precondition:** `b !== [0]`, i.e. unequal to the zero polynomial.
+ * * **precondition:** `b !== []`, i.e. unequal to the zero polynomial.
+ *
+ * * the multiplier `m` is also returned
  * 
  * * see [trivial pseudo-remainder sequence](https://en.wikipedia.org/wiki/Polynomial_greatest_common_divisor#Trivial_pseudo-remainder_sequence) 
  * * see also [Polynomial long division](https://en.wikipedia.org/wiki/Polynomial_long_division)
@@ -33,19 +35,19 @@ const abs = (n: bigint) => n >= 0 ? n : -n;
 function bPdivTrivial(
         a: bigint[],
         b: bigint[],
-        positiveMultiplier = false): { q: bigint[]; r: bigint[]; } {
+        positiveMultiplier = false): { q: bigint[]; r: bigint[]; m: bigint; } {
 
     const d = bDegree(a) - bDegree(b) + 1;
     if (d < 1) {
-        return { q: [], r: a };
+        return { q: [], r: a, m: 1n };
     }
     let m = b[0]**BigInt(d);
 
     m = positiveMultiplier ? abs(m) : m;
 
-    const a_ = bMultiplyByConst(m, a); 
+    const a_ = bMultiplyByConst(m, a);
 
-    return bPdivInternal(a_, b);
+    return { ...bPdivInternal(a_, b), m };
 }
 
 

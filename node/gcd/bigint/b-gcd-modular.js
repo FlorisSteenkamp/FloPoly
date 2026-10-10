@@ -1,6 +1,6 @@
 import { squares } from 'squares-rng';
 import { bGcdInt } from "./b-integer-gcd.js";
-import { bLandauMignotteBound } from "./landau-mignotte-bound.js";
+import { bLandauMignotteBoundBigint } from "./landau-mignotte-bound-bigint.js";
 import { bPrimitivePart } from '../../factor/bigint/b-primitive-part.js';
 import { bDivides } from "../../basic/bigint/b-divides.js";
 import { chineseRemainderAlgorithm } from "./chinese-remainder-algorithm.js";
@@ -8,7 +8,6 @@ import { bGcdModP } from "./b-gcd-mod-p.js";
 import { bInverseModP } from "../../euclidean-division-related/bigint/b-inverse-mod-p.js";
 import { bMod } from "./b-mod.js";
 import { primes } from './build-large-prime-pool.js';
-const { ceil } = Math;
 let primesShuffled;
 function buildShuffledPrimePool() {
     const pool = primes;
@@ -43,7 +42,7 @@ function bGcdModular(a, b) {
     // d := gcd(lc(a), lc(b));
     // M := 2·d·(Landau Mignotte Bound for a, b);
     const d = bGcdInt(a[0], b[0]);
-    const M = 2n * d * BigInt(ceil(bLandauMignotteBound(a, b)));
+    const M = 2n * d * bLandauMignotteBoundBigint(a, b);
     let primeIdx = 0;
     let p;
     let dModP;

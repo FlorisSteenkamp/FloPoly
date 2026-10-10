@@ -100,14 +100,17 @@ function allRoots(p, lb = -Infinity, ub = Infinity) {
             if (_B_ === 0) {
                 roots.push(_b_);
             }
-            else if (_A_ * _B_ < 0) {
+            else if (_A_ !== 0 && (_A_ < 0) !== (_B_ < 0)) {
+                // (sign test without a product, which could underflow to zero;
+                // `_B_ !== 0` here and a zero `_A_` was already pushed as a root)
                 roots.push(brentPoly(p, _a_, _b_, _A_, _B_));
             }
             _a_ = _b_;
             _A_ = _B_;
         }
         const _B_ = Horner(p, ub);
-        if (_A_ * _B_ < 0) {
+        // (sign test without a product, which could underflow to zero)
+        if (_A_ !== 0 && _B_ !== 0 && (_A_ < 0) !== (_B_ < 0)) {
             roots.push(brentPoly(p, _a_, ub, _A_, _B_));
         }
         // if upper bound value is zero and this is the last iteration with 

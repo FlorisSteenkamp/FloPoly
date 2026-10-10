@@ -68,14 +68,15 @@ describe('positiveRootUpperBound_LMQ', function() {
             const pub_ = positiveRootUpperBound_LMQ_WithError(p,p_);
 
             expect(nlb_).toEqual(-4.068140295251116);
-            expect(nub_).toEqual(-1.7104422955129255);
-            expect(plb_).toEqual(1.7104422955129255);
+            expect(nub_).toEqual(-1.6675350353921343);
+            expect(plb_).toEqual(1.6675350353921343);
             expect(pub_).toEqual(4.068140295251116);
 
-            expect(nlb_ < nlb);
-            expect(nub_ > nub);
-            expect(plb_ < plb);
-            expect(pub_ > pub);
+            // the bounds with error must be looser
+            expect(nlb_ < nlb).toBe(true);
+            expect(nub_ > nub).toBe(true);
+            expect(plb_ < plb).toBe(true);
+            expect(pub_ > pub).toBe(true);
         }
         {
             // const p = [2,-3,6,5,-130];
@@ -87,16 +88,18 @@ describe('positiveRootUpperBound_LMQ', function() {
             const plb_ = positiveRootLowerBound_LMQ_WithError(p,p_);
             const pub_ = positiveRootUpperBound_LMQ_WithError(p,p_);
 
-            expect(nlb_).toEqual(-8.082480041244379);
-            expect(nub_).toEqual(-3.207534329995826);
-            expect(plb_).toEqual(2.8722813232690143);
+            // the leading coefficient's sign is uncertain (2 ± 2) so the
+            // polynomial could be of lower degree with arbitrarily large roots
+            expect(nlb_).toEqual(-Infinity);
+            expect(nub_).toEqual(-1.414213562373095);
+            expect(plb_).toEqual(1.414213562373095);
             expect(pub_).toEqual(Infinity);
 
-
-            expect(nlb_ < nlb);
-            expect(nub_ > nub);
-            expect(plb_ < plb);
-            expect(pub_ > pub);
+            // the bounds with error must be looser
+            expect(nlb_ < nlb).toBe(true);
+            expect(nub_ > nub).toBe(true);
+            expect(plb_ < plb).toBe(true);
+            expect(pub_ > pub).toBe(true);
         }
         {
             // const p = [2,-3,6,5,-130];
@@ -109,14 +112,15 @@ describe('positiveRootUpperBound_LMQ', function() {
             const pub_ = positiveRootUpperBound_LMQ_WithError(p,p_);
 
             expect(nlb_).toEqual(-Infinity);
-            expect(nub_).toEqual(-0);
-            expect(plb_).toEqual(0);
+            expect(nub_).toEqual(-0.8891397050194614);
+            expect(plb_).toEqual(0.8891397050194614);
             expect(pub_).toEqual(Infinity);
 
-            expect(nlb_ < nlb);
-            expect(nub_ > nub);
-            expect(plb_ < plb);
-            expect(pub_ > pub);
+            // the bounds with error must be looser
+            expect(nlb_ < nlb).toBe(true);
+            expect(nub_ > nub).toBe(true);
+            expect(plb_ < plb).toBe(true);
+            expect(pub_ > pub).toBe(true);
         }
     }
     it('should correctly find bounds of some polynomial roots', 
@@ -152,7 +156,9 @@ describe('positiveRootUpperBound_LMQ', function() {
 
         const q = toPolyForPositiveRootUpperBound_LMQ(p, p_);
 
-        expect(q).toEqual([1.9, -3.2, 5.7, 4.6, -130.5, 0, 0, 0]);
+        // every coefficient is reduced by its error bound (the smallest
+        // possible value) - uncertain-sign coefficients included
+        expect(q).toEqual([2-0.1, -3-0.2, 6-0.3, 5-0.4, -130-0.5, 0.2-0.3, -0.2-0.3, 0-0.1]);
         expect(p).toEqual([2, -3, 6, 5, -130, 0.2, -0.2, 0]);
         expect(p_).toEqual([0.1, 0.2, 0.3, 0.4, 0.5, 0.3, 0.3, 0.1]);
     });
@@ -173,13 +179,60 @@ describe('positiveRootUpperBound_LMQ', function() {
             .toEqual(positiveRootUpperBound_LMQ(q));
     });
 
-    it('should return Infinity in strict mode when signs are too uncertain',
+    it('should return Infinity when the sign of the leading coefficient is uncertain',
     function() {
-        // `p[0]` can be > 0 but is not guaranteed > 0, and `p[1]` can be < 0.
-        // In strict mode this means no finite guaranteed LMQ bound.
-        const p = [0.1, -1];
-        const p_ = [0.2, 0.1];
+        // `p[0]` can be > 0 but is not guaranteed > 0 - no finite bound exists
+        expect(positiveRootUpperBound_LMQ_WithError([0.1, -1], [0.2, 0.1])).toEqual(Infinity);
+        // Regression: -x^2 + 5x - 3 (within error) has a root at 4.30... but
+        // 1.2 was previously returned
+        expect(positiveRootUpperBound_LMQ_WithError([1, 5, -3], [2, 0, 0])).toEqual(Infinity);
+    });
 
-        expect(positiveRootUpperBound_LMQ_WithError(p, p_)).toEqual(Infinity);
+    it('should be conservative for sign-uncertain and negative coefficients',
+    function() {
+        // Regression: x^2 - 3 (within error) has a root at 1.732... but 0 was
+        // previously returned (the uncertain constant term was replaced by 0)
+        const ub1 = positiveRootUpperBound_LMQ_WithError([1, 0, -1], [0, 0, 2]);
+        expect(ub1).toEqual(2.449489742783178);
+        expect(ub1 >= Math.sqrt(3)).toBe(true);
+        // the same for the negative lower bound
+        const lb1 = negativeRootLowerBound_LMQ_WithError([1, 0, -1], [0, 0, 2]);
+        expect(lb1).toEqual(-2.449489742783178);
+        expect(lb1 <= -Math.sqrt(3)).toBe(true);
+
+        // Regression: -0.5x^2 + 4 (within error) has a root at 2.83... but
+        // 2.31 was previously returned (a certainly negative leading
+        // coefficient was handled incorrectly)
+        const ub2 = positiveRootUpperBound_LMQ_WithError([-1, 0, 4], [0.5, 0, 0]);
+        expect(ub2).toEqual(4);
+        expect(ub2 >= Math.sqrt(8)).toBe(true);
+        // ...and without error the negative leading coefficient still works
+        expect(positiveRootUpperBound_LMQ_WithError([-1, 0, 4], [0, 0, 0]))
+            .toEqual(positiveRootUpperBound_LMQ([-1, 0, 4]));
+    });
+
+    it('should pair the reversed error bounds with the reversed coefficients for lower bounds',
+    function() {
+        // Regression: `upperToLowerBound_WithError` reversed `p` but not `p_`.
+        // x - 3 ± 2 has its root in [1,5] so the lower bound must be <= 1
+        // (2.5 was previously returned)
+        const lb = positiveRootLowerBound_LMQ_WithError([1, -3], [2, 0]);
+        expect(lb).toEqual(0.5);
+        expect(lb <= 1).toBe(true);
+        // an uncertain constant term means a root could be arbitrarily close to 0
+        expect(positiveRootLowerBound_LMQ_WithError([1, -3, 0], [0, 0, 1])).toEqual(0);
+    });
+
+    it('should handle leading zero coefficients',
+    function() {
+        // Regression: the sign test looked at the leading zero
+        expect(positiveRootUpperBound_LMQ([0, -3, 5, -1])).toEqual(positiveRootUpperBound_LMQ([-3, 5, -1]));
+        expect(positiveRootUpperBound_LMQ([0, 0, -3, 5, -1])).toEqual(3.3333333333333335);
+        expect(positiveRootUpperBound_LMQ([0, 0])).toEqual(0);
+        // exact leading zeros (with zero error) are ignored in the error variant...
+        expect(positiveRootUpperBound_LMQ_WithError([0, -3, 5, -1], [0, 0, 0, 0]))
+            .toEqual(positiveRootUpperBound_LMQ([-3, 5, -1]));
+        // ...but a leading zero with non-zero error has an uncertain sign
+        expect(positiveRootUpperBound_LMQ_WithError([0, -3, 5, -1], [1, 0, 0, 0])).toEqual(Infinity);
     });
 });

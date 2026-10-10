@@ -1,5 +1,7 @@
 import { removeLeadingZeros } from "./remove-leading-zeros.js";
 
+const { min, max } = Math;
+
 
 /** 
  * Returns the result of subtracting the second polynomial from the first in 
@@ -18,25 +20,32 @@ import { removeLeadingZeros } from "./remove-leading-zeros.js";
  * 
  * @doc
  */
-function subtract(p1: number[], p2: number[]): number[] {
-    // Initialize result array  
-    const d1 = p1.length-1;
-    const d2 = p2.length-1;
-    const Δd = d1-d2;
-    
-    const Δd1 = Δd < 0 ? +Δd : 0;
-    const Δd2 = Δd > 0 ? -Δd : 0;
-    
-    const d = Math.max(d1, d2);
-    
-    // Add coefficients
-    const r = new Array<number>(d+1);
-    for (let i=0; i<d+1; i++) {
-        const c1 = p1[i+Δd1] || 0;
-        const c2 = p2[i+Δd2] || 0;
-        r[i] = c1 - c2;
+function subtract(
+        p1: number[],
+        p2: number[]): number[] {
+
+    // Initialize result array
+    const d1 = p1.length - 1;
+    const d2 = p2.length - 1;
+    const d = max(d1, d2);
+
+    // Subtract coefficients
+    const r = new Array<number>(d + 1);
+    const minD = min(d1, d2);
+
+    // Subtract where both polynomials overlap
+    for (let i=0; i <= minD; i++) {
+        r[d - i] = p1[d1 - i] - p2[d2 - i];
     }
-    
+
+    // Copy remaining coefficients from longer polynomial
+    for (let i = minD + 1; i <= d1; i++) {
+        r[d - i] = p1[d1 - i];
+    }
+    for (let i = minD + 1; i <= d2; i++) {
+        r[d - i] = -p2[d2 - i];
+    }
+
     // Ensure the result is a valid polynomial representation
     return removeLeadingZeros(r);
 }

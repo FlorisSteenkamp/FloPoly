@@ -38,25 +38,15 @@ const { sign } = Math;
  * @doc
  */
 function eSignChanges(p: number[][]): number {
-    const d = p.length-1;
-
-    if (d < 1) { return 0; }
-
     let r = 0;
-    let j = 0;
-    
-    while (p[j][0] === 0) { j++; }
-
-    let _s = sign(eSign(p[j]));
-    for (let i=j+1; i<d+1; i++) {
+    let _s = 0;  // sign of the previous non-zero coefficient (`0` if none yet)
+    for (let i=0; i<p.length; i++) {
         const s = sign(eSign(p[i]));
-        
-        if (s !== _s && s !== 0) {
-            r++;
-            _s = s;
-        }
+        if (s === 0) { continue; }  // zeros are ignored
+        if (_s !== 0 && s !== _s) { r++; }
+        _s = s;
     }
-    
+
     return r;
 }
 

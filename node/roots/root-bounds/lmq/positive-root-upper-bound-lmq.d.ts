@@ -4,6 +4,11 @@
  * See algoritm 6 of the paper by Vigklas, Akritas and Strzeboński,
  * specifically the LocalMaxQuadratic algorithm hence LMQ.
  *
+ * * leading zero coefficients are ignored
+ *
+ * * returns `0` if the polynomial has no positive roots (roots at `0` are not
+ *   considered positive), e.g. for a constant polynomial
+ *
  * @param p a polynomial with coefficients given densely as an array of double
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`
  * represents the polynomial `5x^2 - 3x`

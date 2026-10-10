@@ -1,54 +1,60 @@
-import { eSign } from "big-float-ts";
 import { γγ3 } from "../error-analysis/gamma.js";
 
 const { abs } = Math;
 
 
 /**
- * **In-place** remove leading zero coefficients.
- * 
+ * Removes leading zero coefficients (that are not certifiably non-zero).
+ *
+ * * the given arrays are **not** modified - new arrays are returned if
+ *   anything changed (if the leading coefficient is certifiably non-zero the
+ *   given arrays are returned as is)
+ *
+ * * if the leading coefficient is not certifiably non-zero the exact
+ *   polynomial is consulted; the returned `pDd` is then the exact polynomial
+ *   rounded to double-double precision and `pDd_` the corresponding error bound
+ *
  * * `p` and `getPExact()` *must* be of same length
- * 
+ *
  * @internal
 */
 function removeLeadingZeroCoeffs(
         pDd: number[][],
         pDd_: number[],
         getPExact: () => number[][],
-        errorMultiplier: number) {
-
-    let pExact: number[][] | undefined = undefined;  // lazy loaded
-    // while the leading coefficient is smaller then the error bound 
-    // i.e. possibly zero
+        errorMultiplier: number): { pDd: number[][]; pDd_: number[]; pExact: number[][] | undefined; } {
 
     // if leading coefficient is guaranteed > zero
     if (pDd.length === 0 || abs(pDd[0][1]) > errorMultiplier*pDd_[0]) {
-        return { pDd, pDd_, pExact };
+        return { pDd, pDd_, pExact: undefined };
     }
 
-    pExact = pExact || getPExact();
+    let pExact: number[][] = getPExact();  // lazy loaded
 
-    // Update `pDd` and `pDd_` with the exact polynomial's leading coefficients and error bounds
-    for (let i=0; i<pExact.length; i++) {
+    // Create new `pDd` and `pDd_` from the exact polynomial's coefficients
+    // (without modifying the given arrays)
+    const n = pExact.length;
+    let pDdNew = new Array<number[]>(n);
+    let pDd_New = new Array<number>(n);
+    for (let i=0; i<n; i++) {
         const cExact = pExact[i];
-        const cDd = pDd[i];
+        const hi = cExact[cExact.length - 1] ?? 0;
+        const lo = cExact[cExact.length - 2] ?? 0;
 
-        cDd[1] = cExact[cExact.length - 1];
-        cDd[0] = cExact[cExact.length - 2] ?? 0;
-
-        pDd_[i] = abs(cDd[1]) * (γγ3 / errorMultiplier);
+        pDdNew[i] = [lo, hi];
+        pDd_New[i] = abs(hi) * (γγ3 / errorMultiplier);
     }
 
     let i = 0;
-    while (i < pDd.length && pDd[i][1] === 0) {
+    while (i < n && pDdNew[i][1] === 0) {
         i++;
     }
 
-    pDd = pDd.slice(i);
-    pDd_ = pDd_.slice(i);
+    pDdNew = pDdNew.slice(i);
+    pDd_New = pDd_New.slice(i);
     pExact = pExact.slice(i);
 
-    return { pDd, pDd_, pExact };
+    return { pDd: pDdNew, pDd_: pDd_New, pExact };
 }
 
 

@@ -20,7 +20,6 @@ declare function taylorShiftWithInpErr(p: number[], h: number, p_: number[]): [n
  * @param p a polynomial with coefficients given densely as an array of double
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`
  * represents the polynomial `5x^2 - 3x`
- * @param h the shift amount
  * @param p_ an error polynomial that represents a coefficient-wise error bound
  * that has **not** been scaled by `γ1` yet
  *

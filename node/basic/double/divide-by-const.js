@@ -1,5 +1,9 @@
+import { removeLeadingZeros } from "./remove-leading-zeros.js";
 /**
  * Divides a polynomial by a constant in double precision.
+ *
+ * * leading zero coefficients (possible due to underflow) are removed from
+ *   the result
  *
  * @param p a polynomial with coefficients given densely as an array of double
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`
@@ -14,7 +18,7 @@ function divideByConst(p, c) {
     for (let i = 0; i < d; i++) {
         r[i] = p[i] / c;
     }
-    return r;
+    return removeLeadingZeros(r);
 }
 export { divideByConst };
 //# sourceMappingURL=divide-by-const.js.map

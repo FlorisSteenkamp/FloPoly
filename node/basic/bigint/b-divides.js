@@ -1,12 +1,23 @@
 import { bPdivTrivial } from "../../euclidean-division-related/bigint/b-pdiv-trivial.js";
 /**
- * Returns `true` if the polynomial `b` divides the polynomial `a`, i.e. if
- * there exists a polynomial `r` such that `a = b*r`.
+ * Returns `true` if the polynomial `b` divides the polynomial `a` (over the
+ * integers), i.e. if there exists a polynomial `r` (with integer
+ * coefficients) such that `a = b*r`.
  *
- * @param a a polynomial with coefficients given densely as an array of
- * bigints from highest to lowest power, e.g. `[5n,-3n,0n]` represents the
- * polynomial `5x^2 - 3x`
- * @param b another polynomial
+ * * **note** the parameter order: the divisor `b` comes first
+ *
+ * @param b the divisor; a polynomial with coefficients given densely as an
+ * array of bigints from highest to lowest power, e.g. `[5n,-3n,0n]`
+ * represents the polynomial `5x^2 - 3x`
+ * @param a the dividend; another polynomial
+ *
+ * @example
+ * ```typescript
+ * bDivides([2n,2n], [4n,0n,-4n]);  //=> true   (2x + 2 divides 4x^2 - 4)
+ * bDivides([4n,0n,-4n], [2n,2n]);  //=> false
+ * ```
+ *
+ * @doc
  */
 function bDivides(b, a) {
     if (b.length === 0) {
@@ -29,9 +40,4 @@ function bDivides(b, a) {
     return true;
 }
 export { bDivides };
-// Quokka tests
-// import { bMultiply } from "./b-multiply.js";
-// const a = bMultiply([1n,1n],[1n,-1n]);//?
-// const { r } = bPdivTrivial([1n, 0n, -1n], [6n, -6n]);//?
-// bDivides([4n, 0n, -4n], [2n,2n]);//?
 //# sourceMappingURL=b-divides.js.map

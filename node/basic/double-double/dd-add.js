@@ -32,6 +32,4 @@ function ddAdd(p1, p2) {
     return ddRemoveLeadingZeros(result);
 }
 export { ddAdd };
-// Quokka tests
-// ddAdd([[0,1],[0,2],[0,3]],[[0,3],[0,4]]);  /*?*/  //=> [1,5,7]
 //# sourceMappingURL=dd-add.js.map

@@ -16,7 +16,7 @@ import { powerToBernsteinBasis01 } from "./power-to-bernstein-basis-01.js";
  */
 function powerToBernsteinBasis(p, a = 0, b = 1) {
     if (p.length <= 1) {
-        return p.slice();
+        return p; // (a constant is the same in both bases)
     }
     // Substitute x = a + (b - a)*t so that t in [0,1] corresponds to x in [a,b].
     const q = changeVariablesLinear(p, b - a, a);

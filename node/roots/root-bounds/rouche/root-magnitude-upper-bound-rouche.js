@@ -16,7 +16,7 @@ function rootMagnitudeUpperBound_rouche(p) {
     if (p.length <= 1) {
         return 0;
     }
-    return 1 + (pInfNorm(p.slice(1)) / p[0]);
+    return 1 + (pInfNorm(p.slice(1)) / Math.abs(p[0]));
 }
 export { rootMagnitudeUpperBound_rouche };
 //# sourceMappingURL=root-magnitude-upper-bound-rouche.js.map

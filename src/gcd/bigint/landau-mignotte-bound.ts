@@ -11,6 +11,10 @@ const { abs, min } = Math;
  * * see "Computer Algebra, F.Winkler, WS 2010/11, page 48"
  * 
  * * leading coefficients are not allowed to be zero!
+ *
+ * * the bound is returned as a double and can thus overflow to `Infinity` for
+ *   very large coefficients - see [[bLandauMignotteBoundBigint]] for an exact
+ *   integer bound
  * 
  * @param p a polynomial with coefficients given densely as an array of
  * bigints from highest to lowest power, e.g. `[5n,-3n,0n]` represents the 

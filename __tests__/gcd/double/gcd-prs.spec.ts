@@ -145,4 +145,21 @@ describe('gcdPrs', function() {
             expect(gcd2).toEqual(p2.map(c => BigInt(c)));
         }
     });
+
+    it('should work when the first polynomial has lower degree than the second',
+    function() {
+        // Regression: previously threw since the PRS requires deg(a) >= deg(b)
+        {
+            const gcd = gcdPrs([1, 1], [1, 0, -1]);  // (x+1) and (x+1)(x-1)
+            expect(bIsRationalMultipleOf(gcd, [1n, 1n])).toEqual(true);
+        }
+        {
+            const gcd = gcdPrs([1, -3], [1, -2, 0, -4]);  // coprime
+            expect(bIsRationalMultipleOf(gcd, [1n])).toEqual(true);
+        }
+        {
+            const gcd = gcdPrs([3], [1, -2, 0, -4]);  // constant first
+            expect(bIsRationalMultipleOf(gcd, [1n])).toEqual(true);
+        }
+    });
 });

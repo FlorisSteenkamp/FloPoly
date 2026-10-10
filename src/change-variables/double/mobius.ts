@@ -1,4 +1,3 @@
-import { removeLeadingZeros } from "../../basic/double/remove-leading-zeros.js";
 import { inplaceScale } from "./scale.js";
 import { taylorShift } from "./taylor-shift.js";
 
@@ -9,6 +8,11 @@ import { taylorShift } from "./taylor-shift.js";
  * * see e.g. https://arxiv.org/pdf/1605.00410.pdf equation (2)
  * 
  * * uses double precision internally
+ * 
+ * * the returned coefficient array has the same length as the given one, i.e.
+ *   leading zero coefficients are **not** removed (the leading coefficient of
+ *   the result equals `p(a)` and the constant term equals `p(b)`, so a leading
+ *   zero indicates that `a` is a root) - consistent with [[eMobius]]
  *
  * * Runs in `O(n^2)` arithmetic operations (where `n` is the degree) by
  *   decomposing the Mobius map into elementary steps, rather than the `O(n^3)`
@@ -59,7 +63,7 @@ function mobius(
     //-------------------------------------------
     q = taylorShift(q, 1);
 
-    return removeLeadingZeros(q);
+    return q;  // (length preserving - see the note above)
 }
 
 

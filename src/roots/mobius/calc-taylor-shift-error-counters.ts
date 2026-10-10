@@ -21,7 +21,6 @@ const { max } = Math;
  * `Es[0]` term is `1` less than the generic term because column `0` has no
  * self-update). See `stewart-error-counters.spec.ts` for the counter rules.
  *
- * @param n
  * @param Es
  */
 function calcTaylorShift_ErrorCounters(

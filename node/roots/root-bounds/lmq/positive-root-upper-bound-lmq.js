@@ -1,9 +1,15 @@
 import { negate } from "../../../basic/double/negate.js";
+import { removeLeadingZeros } from "../../../basic/double/remove-leading-zeros.js";
 /**
  * Returns an upper bound for the positive real roots of the given polynomial.
  *
  * See algoritm 6 of the paper by Vigklas, Akritas and Strzeboński,
  * specifically the LocalMaxQuadratic algorithm hence LMQ.
+ *
+ * * leading zero coefficients are ignored
+ *
+ * * returns `0` if the polynomial has no positive roots (roots at `0` are not
+ *   considered positive), e.g. for a constant polynomial
  *
  * @param p a polynomial with coefficients given densely as an array of double
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`
@@ -19,6 +25,7 @@ import { negate } from "../../../basic/double/negate.js";
  * @doc
  */
 function positiveRootUpperBound_LMQ(p) {
+    p = removeLeadingZeros(p);
     const deg = p.length - 1;
     if (deg < 1) {
         return 0;

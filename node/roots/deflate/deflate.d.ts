@@ -6,6 +6,8 @@
  * possible to deflate a root exactly in most cases and round-off will thus
  * occur - use only if approximate deflation is acceptable
  *
+ * * returns `[]` (the zero polynomial) for a constant or the zero polynomial
+ *
  * @param p a polynomial with coefficients given densely as an array of double
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`
  * represents the polynomial `5x^2 - 3x`

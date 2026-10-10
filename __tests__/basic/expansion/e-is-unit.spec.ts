@@ -14,4 +14,14 @@ describe('eIsUnit', function() {
         expect(eIsUnit(p2)).toEqual(true);
         expect(!eIsUnit(p3)).toEqual(true);
     });
+
+    it('should compare by value (non-compressed expansions)', function() {
+        expect(eIsUnit([[0, 1]])).toEqual(true);
+        expect(eIsUnit([[1, 0]])).toEqual(true);
+        expect(eIsUnit([[0.5, 0.5]])).toEqual(true);
+        expect(eIsUnit([[2]])).toEqual(false);
+        expect(eIsUnit([[-1]])).toEqual(false);
+        expect(eIsUnit([[1], [0]])).toEqual(false);
+        expect(eIsUnit([[0]])).toEqual(false);
+    });
 });

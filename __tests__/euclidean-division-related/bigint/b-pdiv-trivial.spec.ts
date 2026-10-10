@@ -3,6 +3,10 @@ import { bPdivTrivial } from '../../../src/euclidean-division-related/bigint/b-p
 import { bMultiply } from '../../../src/basic/bigint/b-multiply.js';
 import { bGcdInt } from '../../../src/gcd/bigint/b-integer-gcd.js';
 
+// Note: the pseudo-division functions also return the multiplier `m` (checked in
+// __tests__/division/pdiv-trivial-multiplier.spec.ts); `toMatchObject` is used below
+// so that only `q` and `r` are compared.
+
 
 describe('bPdivTrivial', function() {
     it('should correctly do trivial pseudo division of two polynomials (with bigint coefficients) by keeping coefficients in ℤ',
@@ -18,7 +22,7 @@ describe('bPdivTrivial', function() {
             const qq = res.q.map(x => x/g);
             const r: { q: bigint[]; r: bigint[] } = { q: [-6740636n, 8425795n, -10110954n], r: [] };
 
-            expect(res).toEqual(r);
+            expect(res).toMatchObject(r);
             expect(qq).toEqual(b);
         }
         {
@@ -36,55 +40,55 @@ describe('bPdivTrivial', function() {
             {
                 const r = bPdivTrivial(ps[0], ps[2]);  
                 const expected: { q: bigint[]; r: bigint[] } = { q: [1n,1n], r: [] };
-                expect(r).toEqual(expected);
+                expect(r).toMatchObject(expected);
             }
             {
                 const r = bPdivTrivial(ps[2], ps[0]);  
                 const expected: { q: bigint[]; r: bigint[] } = { q: [], r: ps[2] };
-                expect(r).toEqual(expected);
+                expect(r).toMatchObject(expected);
             }
 
 
             {
                 const r = bPdivTrivial(ps[0], ps[4]);
                 const expected: { q: bigint[]; r: bigint[] } = { q: [1n,6n], r: [] };
-                expect(r).toEqual(expected);
+                expect(r).toMatchObject(expected);
             }
             {
                 const r = bPdivTrivial(ps[4], ps[0]);
                 const expected: { q: bigint[]; r: bigint[] } = { q: [], r: ps[4] };
-                expect(r).toEqual(expected);
+                expect(r).toMatchObject(expected);
             }
 
 
             {
                 const r = bPdivTrivial(ps[1], ps[3]);
                 const expected: { q: bigint[]; r: bigint[] } = { q: [1n,1n], r: [] };
-                expect(r).toEqual(expected);
+                expect(r).toMatchObject(expected);
             }
             {
                 const r = bPdivTrivial(ps[3], ps[1]);
                 const expected: { q: bigint[]; r: bigint[] } = { q: [], r: ps[3] };
-                expect(r).toEqual(expected);
+                expect(r).toMatchObject(expected);
             }
 
 
             {
                 const r = bPdivTrivial(ps[1], ps[4]);
                 const expected: { q: bigint[]; r: bigint[] } = { q: [1n,-6n], r: [] };
-                expect(r).toEqual(expected);
+                expect(r).toMatchObject(expected);
             }
             {
                 const r = bPdivTrivial(ps[4], ps[1]);
                 const expected: { q: bigint[]; r: bigint[] } = { q: [], r: ps[4] };
-                expect(r).toEqual(expected);
+                expect(r).toMatchObject(expected);
             }
 
 
             {
                 const r = bPdivTrivial(ps[2], ps[5]);
                 const expected: { q: bigint[]; r: bigint[] } = { q: [], r: ps[2] };
-                expect(r).toEqual(expected);
+                expect(r).toMatchObject(expected);
             }
 
 
@@ -92,22 +96,22 @@ describe('bPdivTrivial', function() {
             {
                 const r = bPdivTrivial(ps[6], ps[7], false);
                 const expected: { q: bigint[]; r: bigint[] } = { q: [-1n], r: [-12n] };
-                expect(r).toEqual(expected);
+                expect(r).toMatchObject(expected);
             }
             {
                 const r = bPdivTrivial(ps[7], ps[6], false);
                 const expected: { q: bigint[]; r: bigint[] } = { q: [-1n], r: [12n] };
-                expect(r).toEqual(expected);
+                expect(r).toMatchObject(expected);
             }
             {
                 const r = bPdivTrivial(ps[6], ps[7], true);
                 const expected: { q: bigint[]; r: bigint[] } = { q: [1n], r: [12n] };
-                expect(r).toEqual(expected);
+                expect(r).toMatchObject(expected);
             }
             {
                 const r = bPdivTrivial(ps[7], ps[6], true);
                 const expected: { q: bigint[]; r: bigint[] } = { q: [1n], r: [-12n] };
-                expect(r).toEqual(expected);
+                expect(r).toMatchObject(expected);
             }
         }
         {
@@ -119,7 +123,7 @@ describe('bPdivTrivial', function() {
             {
                 const r = bPdivTrivial(ps[0], ps[1]);
                 const expected: { q: bigint[]; r: bigint[] } = { q: [9n,0n,-6n], r: [-15n,0n,3n,0n,-9n] };
-                expect(r).toEqual(expected);
+                expect(r).toMatchObject(expected);
             }
         }
         {
@@ -127,21 +131,21 @@ describe('bPdivTrivial', function() {
             const b = [1n, -3n];
             const r = bPdivTrivial(a,b);
             const expected: { q: bigint[]; r: bigint[] } = { q: [1n,1n,3n], r: [5n] };
-            expect(r).toEqual(expected);
+            expect(r).toMatchObject(expected);
         }
         {
             const a = [10000000000n, 100000n];
             const b = [10000000000n, 100000n];
             const r = bPdivTrivial(a,b);
             const expected: { q: bigint[]; r: bigint[] } = { q: [10000000000n], r: [] };
-            expect(r).toEqual(expected);
+            expect(r).toMatchObject(expected);
         }
         {
             const a = [1n, -3n];
             const b = [5n];
             const r = bPdivTrivial(a,b);
             const expected: { q: bigint[]; r: bigint[] } = { q: [5n,-15n], r: [] };
-            expect(r).toEqual(expected);
+            expect(r).toMatchObject(expected);
         }
     });
 });

@@ -135,4 +135,33 @@ describe('eNumRootsInRange', function() {
             expect(eNumRootsInRange(pE,[-10.00000000001],[-9.99999999999])).toEqual(1);
         }
     });
+
+    it('should scale correctly when one endpoint is 0',
+    function() {
+        // Regression: the scale factor was taken from the smaller-magnitude
+        // endpoint, which was forced to 1 when that endpoint was 0, leaving the
+        // other endpoint scaled by 2^e but not the polynomial
+        expect(eNumRootsInRange([[1], [-0.75]], [0], [0.5])).toEqual(0);  // root 0.75
+        expect(eNumRootsInRange([[1], [-0.25]], [0], [0.5])).toEqual(1);  // root 0.25
+        expect(eNumRootsInRange([[1], [0.75]], [-0.5], [0])).toEqual(0);  // root -0.75
+        expect(eNumRootsInRange([[1], [0.25]], [-0.5], [0])).toEqual(1);  // root -0.25
+        expect(eNumRootsInRange([[1], [-0.5]], [0], [0.5])).toEqual(1);   // root 0.5 (at endpoint)
+        expect(eNumRootsInRange([[1], [-3]], [0], [2])).toEqual(0);       // root 3
+        expect(eNumRootsInRange([[1], [-3]], [0], [4])).toEqual(1);       // root 3
+    });
+
+    it('should count multiple roots at the endpoints once and handle degenerate polynomials',
+    function() {
+        const p = [[1], [-4], [5], [-2]];  // (x-1)^2 (x-2)
+        expect(eNumRootsInRange(p, [0], [1])).toEqual(1);
+        expect(eNumRootsInRange(p, [1], [3])).toEqual(2);
+        expect(eNumRootsInRange(p, [1], [1])).toEqual(1);
+        expect(eNumRootsInRange(p, [0], [0])).toEqual(0);
+        expect(eNumRootsInRange([[1], [0]], [0], [0])).toEqual(1);
+        expect(eNumRootsInRange(p, [3], [0])).toEqual(0);  // a > b
+        expect(eNumRootsInRange([], [0], [1])).toEqual(Infinity);
+        expect(eNumRootsInRange([[0]], [0], [1])).toEqual(Infinity);
+        expect(eNumRootsInRange([[5]], [0], [1])).toEqual(0);
+        expect(eNumRootsInRange([[0], [2], [-1]], [0], [1])).toEqual(1);  // 2x - 1
+    });
 });

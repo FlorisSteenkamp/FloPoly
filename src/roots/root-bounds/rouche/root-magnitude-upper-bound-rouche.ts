@@ -19,7 +19,7 @@ function rootMagnitudeUpperBound_rouche(p: number[]): number {
         return 0;
     }
     
-    return 1 + (pInfNorm(p.slice(1)) / p[0]);
+    return 1 + (pInfNorm(p.slice(1)) / Math.abs(p[0]));
 }
 
 

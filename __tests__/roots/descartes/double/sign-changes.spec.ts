@@ -11,4 +11,15 @@ describe('signChanges', function() {
         expect(signChanges(p1)).toEqual(3);
         expect(signChanges(p2)).toEqual(0);
     });
+
+    it('should handle zero coefficients anywhere (including all-zero input)',
+    function() {
+        expect(signChanges([0])).toEqual(0);
+        expect(signChanges([0, 0, 0])).toEqual(0);
+        expect(signChanges([0, 0, 1, -1])).toEqual(1);
+        expect(signChanges([1, -1, 0, 0])).toEqual(1);
+        expect(signChanges([0, -1, 0, 1, 0])).toEqual(1);
+        expect(signChanges([-1, 1, -1, 1])).toEqual(3);
+        expect(signChanges([5])).toEqual(0);
+    });
 });

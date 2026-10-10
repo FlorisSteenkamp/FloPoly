@@ -5,6 +5,11 @@
  *
  * * uses double precision internally
  *
+ * * the returned coefficient array has the same length as the given one, i.e.
+ *   leading zero coefficients are **not** removed (the leading coefficient of
+ *   the result equals `p(a)` and the constant term equals `p(b)`, so a leading
+ *   zero indicates that `a` is a root) - consistent with [[eMobius]]
+ *
  * * Runs in `O(n^2)` arithmetic operations (where `n` is the degree) by
  *   decomposing the Mobius map into elementary steps, rather than the `O(n^3)`
  *   of expanding and summing `Σ cᵢ (ax + b)^i (x + 1)^(n-i)` directly.

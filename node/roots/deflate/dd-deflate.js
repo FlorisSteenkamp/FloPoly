@@ -8,22 +8,27 @@ import { ddAddDd as qaq } from "double-double";
  * possible to deflate a root exactly in most cases and round-off will thus
  * occur - use only if approximate deflation is acceptable
  *
+ * * returns `[]` (the zero polynomial) for a constant or the zero polynomial
+ *
  * @param p a polynomial with coefficients given densely as an array of
  * double-double precision floating point numbers from highest to lowest power,
  * e.g. `[[0,5],[0,-3],[0,0]]` represents the polynomial `5x^2 - 3x`
- * @param root a root of the polynomial.
+ * @param root a root of the polynomial (given as a double).
  *
  * @example
  * ```typescript
  * // The polynomial x^3 - 5x^2 + 8x - 4 has a root at 1 and a double root at 2
- * ddDeflate([[0,1], [0,-5], [0,8], [0,-4]], [0,2]); //=> [[0,1], [0,-3], [0,2]]
- * ddDeflate([[0,1], [0,-3], [0,2], [0,2]);          //=> [[0,1], [0,-1]]
- * ddDeflate([[0,1], [0,-1]], [0,1]);                //=> [[0,1]]
+ * ddDeflate([[0,1], [0,-5], [0,8], [0,-4]], 2); //=> [[0,1], [0,-3], [0,2]]
+ * ddDeflate([[0,1], [0,-3], [0,2]], 2);         //=> [[0,1], [0,-1]]
+ * ddDeflate([[0,1], [0,-1]], 1);                //=> [[0,1]]
  * ```
  *
  * @doc
  */
 function ddDeflate(p, root) {
+    if (p.length <= 1) {
+        return [];
+    }
     const d = p.length - 1;
     const bs = [p[0]];
     for (let i = 1; i < d; i++) {

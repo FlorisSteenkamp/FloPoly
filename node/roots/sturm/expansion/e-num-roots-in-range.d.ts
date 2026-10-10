@@ -1,6 +1,14 @@
 /**
  * Returns the ***exact*** number of ***distinct*** real roots in the **closed**
- * interval `(a,b)` of the given polynomial.
+ * interval `[a,b]` of the given polynomial.
+ *
+ * * roots with multiplicity are counted only once and roots at the endpoints
+ *   `a` and `b` are included in the count
+ *
+ * * returns `0` if `a > b` (the interval is empty)
+ *
+ * * returns `0` for a non-zero constant polynomial and `Infinity` for the
+ *   zero polynomial (which has infinitely many roots)
  *
  * @param p a polynomial with coefficients given densely as an array of
  * Shewchuk expansions from highest to lowest power, e.g. `[[5],[-3],[0]]`

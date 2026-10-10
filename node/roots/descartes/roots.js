@@ -70,9 +70,10 @@ const { abs, max, log2, ceil } = Math;
  * preventing certification of the root intervals; if `undefined` then the
  * input polynomial will be assumed exact
  *
- * @param tryReduceInterval defaults to `false`; if `true` (or if `lb` or `ub`
- * is `Infinity` or `undefined`) then the interval `[lb,ub]` will be reduced to
- * a smaller interval containing all roots (if possible) before starting the algorithm.
+ * @param tryReduceInterval defaults to `false`; if `true` (or if `|lb|` or
+ * `|ub|` is larger than `2^20`, e.g. when they are infinite) then the interval
+ * `[lb,ub]` will be reduced to a smaller interval containing all roots (if
+ * possible) before starting the algorithm.
  * Since `reduceInterval` is a relatively long running algorithm it is generally
  * faster to set this to `false` and directly specify the interval of interest.
  *
@@ -177,18 +178,17 @@ function roots(pDd, lb = -Infinity, ub = +Infinity, pDd_, getPExact, tryReduceIn
     // Remove leading zero coefficients 
     //----------------------------------------------------------------------
     ({ pDd, pDd_, pExact } = removeLeadingZeroCoeffs(pDd, pDd_, getPExact_, γγ3));
-    // Approximate `p` from `pDd`
-    const p = pDd.map(c => c[0] + c[1]);
-    if (tryReduceInterval ||
-        // !Number.isFinite(lb) || !Number.isFinite(ub) ||
-        abs(lb) > 2 ** 20 || abs(ub) > 2 ** 20) {
-        [lb, ub] = reduceInterval(lb, ub, p, pDd_, γγ3);
-    }
     if (pDd.length === 0) {
         return undefined; // return `undefined` for the zero polynomial (of degree -1)
     }
     else if (pDd.length === 1) {
         return []; // return `[]` for a (a non-zero) degree 0 polynomial
+    }
+    // Approximate `p` from `pDd`
+    const p = pDd.map(c => c[0] + c[1]);
+    if (tryReduceInterval ||
+        abs(lb) > 2 ** 20 || abs(ub) > 2 ** 20) {
+        [lb, ub] = reduceInterval(lb, ub, p, pDd_, γγ3);
     }
     if (lb === ub) { // edge case
         const halfWidth = 2 * eps * max(1, 2 ** ceil(log2(max(abs(lb), abs(ub)))));

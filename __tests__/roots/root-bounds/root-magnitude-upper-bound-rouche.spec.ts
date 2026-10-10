@@ -15,4 +15,11 @@ describe('rootMagnitudeUpperBound_rouche', function() {
         // real roots nowhere
         expect(rootMagnitudeUpperBound_rouche(p3)).toEqual(0);
     });
+
+    it('should return a positive bound for a negative leading coefficient',
+    function() {
+        // Regression: previously divided by `p[0]` instead of `abs(p[0])`
+        expect(rootMagnitudeUpperBound_rouche([-1, 0, 100])).toEqual(101);  // roots ±10
+        expect(rootMagnitudeUpperBound_rouche([-2, -3, 6, 5, -130])).toEqual(66);
+    });
 });

@@ -22,8 +22,16 @@ const config_Basic = {
         rules: [
             {
                 test: /\.tsx?$/,
-                loader: 'ts-loader',
-                options: { silent: true },
+                // Transpile-only via SWC; type checking is done by `tsc` in
+                // `npm run build-node` (TypeScript 7 has no JS API for ts-loader).
+                loader: 'swc-loader',
+                options: {
+                    jsc: {
+                        parser: { syntax: 'typescript' },
+                        target: 'esnext'
+                    },
+                    module: { type: 'es6' }
+                },
                 exclude: /node_modules/,
                 sideEffects: false
             }

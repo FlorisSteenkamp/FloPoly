@@ -6,7 +6,9 @@
  * and returns a scaled `r` and `q` in the formula `a = bq + r`, where
  * `degree(r) < degree(b)`. `q` is called the quotient and `r` the remainder.
  *
- * * **precondition:** `b !== [0]`, i.e. unequal to the zero polynomial.
+ * * **precondition:** `b !== []`, i.e. unequal to the zero polynomial.
+ *
+ * * the multiplier `m` is also returned
  *
  * * see [trivial pseudo-remainder sequence](https://en.wikipedia.org/wiki/Polynomial_greatest_common_divisor#Trivial_pseudo-remainder_sequence)
  * * see also [Polynomial long division](https://en.wikipedia.org/wiki/Polynomial_long_division)
@@ -25,5 +27,6 @@
 declare function bPdivTrivial(a: bigint[], b: bigint[], positiveMultiplier?: boolean): {
     q: bigint[];
     r: bigint[];
+    m: bigint;
 };
 export { bPdivTrivial };

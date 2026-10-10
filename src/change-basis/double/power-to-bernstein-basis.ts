@@ -22,7 +22,7 @@ function powerToBernsteinBasis(
         b = 1): number[] {
 
     if (p.length <= 1) {
-        return p.slice();
+        return p;  // (a constant is the same in both bases)
     }
 
     // Substitute x = a + (b - a)*t so that t in [0,1] corresponds to x in [a,b].

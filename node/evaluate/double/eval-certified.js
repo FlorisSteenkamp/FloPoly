@@ -77,7 +77,7 @@ function evalCertified(p, x, pE = undefined, multiplier = 1) {
     let e = (c1 + c2 + c3) + E;
     // typically: C1,C2 < C3 < r̂ and (C1 + C2 + C3 < r̂)
     r̂ = (C1 + C2 + C3) + r̂;
-    e += γ1 * r̂;
+    e += γ1 * Math.abs(r̂);
     if (e * multiplier < Math.abs(r̂)) {
         return r̂;
     }

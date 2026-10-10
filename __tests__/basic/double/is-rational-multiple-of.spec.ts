@@ -82,4 +82,15 @@ describe('isRationalMultipleOf', function() {
         let p9 = [8,6,4,4];
         expect(!isRationalMultipleOf(p3, p9)).toEqual(true);
     });
+
+    it('should not hang or overflow for coefficients of vastly different magnitudes',
+    function() {
+        // Regression: previously looped forever (scaling to doubles overflowed)
+        expect(isRationalMultipleOf([1, 1e-300], [1, 1e-300])).toEqual(true);
+        expect(isRationalMultipleOf([1, 1e-300], [4, 4*1e-300])).toEqual(true);  // (scaling by 4 is exact)
+        expect(isRationalMultipleOf([1, 1e-300], [1, 2*1e-300])).toEqual(false);
+        expect(isRationalMultipleOf([1, 5e-324], [2, 1e-323])).toEqual(true);
+        expect(isRationalMultipleOf([1e300, 5e-324], [1e300, 5e-324])).toEqual(true);
+        expect(isRationalMultipleOf([1e300, 5e-324], [1e300, 1e-323])).toEqual(false);
+    });
 });

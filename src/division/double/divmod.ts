@@ -1,13 +1,14 @@
-import { add } from '../../basic/double/add.js';
-import { degree } from '../../basic/double/degree.js';
-import { multiply } from '../../basic/double/multiply.js';
 import { removeLeadingZeros } from '../../basic/double/remove-leading-zeros.js';
-import { subtract } from '../../basic/double/subtract.js';
 
 
 /**
  * Returns the quotient and remainder of Euclidean long division of `a` by `b`
  * over double coefficients, i.e. `a = b*q + r` with `degree(r) < degree(b)`.
+ *
+ * * the leading term of the running remainder is eliminated explicitly at
+ *   each step (it is not relied upon to cancel exactly in floating point)
+ *
+ * * leading zero coefficients of `a` and `b` are ignored
  *
  * @param a dividend polynomial (highest to lowest power)
  * @param b divisor polynomial (highest to lowest power)
@@ -16,35 +17,39 @@ function divmod(
         a: number[],
         b: number[]): { q: number[]; r: number[]; } {
 
+    b = removeLeadingZeros(b);
     if (b.length === 0) {
         throw new Error('division by zero polynomial');
     }
 
-    let q: number[] = [];
     let r = removeLeadingZeros(a);
 
-    const d = degree(b);
-    const c = b[0];
+    const d = b.length - 1;  // degree of `b`
+    const c = b[0];          // leading coefficient of `b`
 
+    const qLen = r.length - d;  // degree(a) - degree(b) + 1
+    if (qLen <= 0) {
+        return { q: [], r };
+    }
+
+    const q = new Array<number>(qLen).fill(0);
     while (true) {
-        const deg = degree(r) - d;
-        if (deg < 0) {
-            return { q: removeLeadingZeros(q), r: removeLeadingZeros(r) };
+        const deg = r.length - 1 - d;  // degree of the current quotient term
+        if (deg < 0) { break; }
+
+        const coeff = r[0] / c;
+        q[qLen - 1 - deg] = coeff;
+
+        // r <- r - coeff*x^deg*b, dropping the (cancelling) leading term
+        // explicitly
+        const r_ = new Array<number>(r.length - 1);
+        for (let i=1; i<r.length; i++) {
+            r_[i-1] = i <= d ? r[i] - coeff*b[i] : r[i];
         }
-
-        const s = elevateDegree([r[0] / c], deg);
-        q = add(q, s);
-        r = subtract(r, multiply(s, b));
-    }
-}
-
-
-function elevateDegree(p: number[], deg: number): number[] {
-    if (deg <= 0 || p.length === 0) {
-        return p;
+        r = removeLeadingZeros(r_);
     }
 
-    return p.concat(new Array(deg).fill(0));
+    return { q: removeLeadingZeros(q), r };
 }
 
 

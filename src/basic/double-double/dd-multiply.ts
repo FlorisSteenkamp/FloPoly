@@ -40,7 +40,3 @@ function ddMultiply(p1: number[][], p2: number[][]): number[][] {
 
 export { ddMultiply }
 
-
-// Quokka tests
-
-// ddMultiply([[0,1],[0,2],[0,3]], [[0,2],[0,5],[0,3],[0,5]]); /*?*/  //=> [2, 9, 19, 26, 19, 15]

@@ -1,8 +1,10 @@
-import { exponent } from "big-float-ts";
-import { bitLength } from "big-float-ts";
+import { lsbExponent } from "big-float-ts";
+import { multByPow2 } from "./mult-by-pow-2.js";
 /**
  * Returns the result of scaling the given float by a power of two such that
  * it becomes a bigint - the smallest such integer is returned.
+ *
+ * * subnormal numbers are handled correctly
  *
  * @param a a double precision floating point number
  *
@@ -12,7 +14,7 @@ function scaleFloatToBigint(a) {
     if (a === 0) {
         return 0n;
     }
-    return BigInt(a * 2 ** (-exponent(a) + bitLength(a) - 1));
+    return BigInt(multByPow2(a, -lsbExponent(a)));
 }
 export { scaleFloatToBigint };
 //# sourceMappingURL=scale-float-to-bigint.js.map

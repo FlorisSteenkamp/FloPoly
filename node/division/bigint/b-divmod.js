@@ -1,4 +1,3 @@
-import { bDegree } from '../../basic/bigint/b-degree.js';
 import { bPdivTrivial } from '../../euclidean-division-related/bigint/b-pdiv-trivial.js';
 /**
  * Returns quotient and remainder of trivial pseudo-division of `a` by `b`.
@@ -15,16 +14,9 @@ function bDivmod(a, b, positiveMultiplier = false) {
     if (b.length === 0) {
         throw new Error('division by zero polynomial');
     }
-    const d = bDegree(a) - bDegree(b) + 1;
-    if (d < 1) {
-        return { q: [], r: a, m: 1n };
-    }
-    let m = b[0] ** BigInt(d);
-    if (positiveMultiplier && m < 0n) {
-        m = -m;
-    }
-    const { q, r } = bPdivTrivial(a, b, positiveMultiplier);
-    return { q, r, m };
+    // (`bPdivTrivial` returns `m === 1n`, `q === []` and `r === a` if
+    // `degree(a) < degree(b)`)
+    return bPdivTrivial(a, b, positiveMultiplier);
 }
 export { bDivmod };
 //# sourceMappingURL=b-divmod.js.map

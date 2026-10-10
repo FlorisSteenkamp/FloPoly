@@ -17,4 +17,15 @@ describe('bSignChanges', function() {
             expect(bSignChanges(p)).toEqual(0);
         }
     });
+
+    it('should handle zero coefficients anywhere (including all-zero input)',
+    function() {
+        expect(bSignChanges([0n])).toEqual(0);
+        expect(bSignChanges([0n, 0n, 0n])).toEqual(0);
+        expect(bSignChanges([0n, 0n, 1n, -1n])).toEqual(1);
+        expect(bSignChanges([1n, -1n, 0n, 0n])).toEqual(1);
+        expect(bSignChanges([0n, -1n, 0n, 1n, 0n])).toEqual(1);
+        expect(bSignChanges([-1n, 1n, -1n, 1n])).toEqual(3);
+        expect(bSignChanges([5n])).toEqual(0);
+    });
 });

@@ -87,7 +87,7 @@ describe('eeHorner', function() {
         console.log('Condition number ', cn);  //=> 92143441590866480000
         console.log('Horner ', Horner(p_, c)); //=> 1.0408340855860843e-17
         console.log('compHorner ', compHorner(p_, c)); //=> -6.6865131963207694e-21
-        console.log('faithful ', faith); //=> { isFaithful: false, errBound: 2.785314415593918e-32, 'r̄': -6.6865131963207694e-21 }
+        console.log('faithful ', faith); //=> { isFaithful: false, errBound: 2.785314415593911e-32, 'r̄': -6.6865131963207694e-21 }
         console.log('compHornerK ', CompHornerK(p_, c, 2));  //=> -6.6865131963200306e-21
         console.log('exact to last ulp', eEstimate(eeHorner(p, [c])));  //=> -6.686513196320162e-21
         console.log('exact as Shewchuk', eeHorner(p, [c]));  
@@ -122,7 +122,9 @@ describe('eeHorner', function() {
         // don't expect this evaluation to be faithful
         expect(unfaithfulHorner).toEqual({ 
             isFaithful: false, 
-            errBound: 2.785314415593918e-32, 
+            // (`errBound` changed in the last digits when `compHornerIsFaithful`
+            // switched to the library's `u = 2^-53`)
+            errBound: 2.785314415593911e-32, 
             'r̄': -6.6865131963207694e-21 
         });
 
@@ -208,7 +210,8 @@ describe('eeHorner', function() {
         // no error polynomial => assumed zero polynomial
         let certED = evalCertifiedInclError(ddP_, c);
         let certED_ = evalCertified(ddP_, c);
-        expect(certED).toEqual({ r̂: -6.6865131963207694e-21, e: 3.212160411083628e-32 });
+        // (the error bound `e` grew slightly when `γ1*|r̂|` replaced `γ1*r̂` in `evalCertifiedInclError`)
+        expect(certED).toEqual({ r̂: -6.6865131963207694e-21, e: 3.2123088815017285e-32 });
         expect(certED_).toEqual(certED.r̂);
 
 

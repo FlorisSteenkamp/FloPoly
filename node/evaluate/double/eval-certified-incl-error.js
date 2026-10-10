@@ -71,7 +71,7 @@ function evalCertifiedInclError(p, x, pE = undefined, multiplier = 1) {
     const [C3, c3] = hornerWithRunningError(p[1], x);
     let e = (c1 + c2 + c3) + E; // typically: c1,c2 < c3 < E
     r̂ = (C1 + C2 + C3) + r̂; // typically: C1,C2 < C3 < r̂ and (C1 + C2 + C3 < r̂)
-    e += γ1 * r̂;
+    e += γ1 * abs(r̂);
     if (e * multiplier < abs(r̂)) {
         return { r̂, e };
     }

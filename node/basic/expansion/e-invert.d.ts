@@ -1,4 +1,6 @@
 /**
+ * @deprecated Use `Array.toReversed()` in modern JavaScript instead.
+ *
  * Inverts the given polynomial (with coefficients given as Shewchuk floating
  * point expansions) by reversing the order of the coefficients,
  * i.e. p(x) -> x^deg(p) * p(1/x)

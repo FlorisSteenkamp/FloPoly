@@ -41,4 +41,13 @@ describe('conditionNumber', function() {
         expect(c5).toBeGreaterThan(1000_000);           // => 20246637.631723296
         expect(c6).toBeGreaterThan(1000_000_000_000);   // => 314905786802669100
     });
+
+    it('should use |x| in the numerator (so that negative x is handled correctly)',
+    function() {
+        // Regression: Σ|aᵢ|xⁱ was computed instead of Σ|aᵢ||x|ⁱ
+        expect(conditionNumber([1, -1], -1)).toEqual(1);
+        expect(conditionNumber([1, 2, 3], -2)).toEqual(11/3);
+        expect(conditionNumber([1, 2, 3], 2)).toEqual(1);
+        expect(conditionNumber([5], -7)).toEqual(1);
+    });
 });

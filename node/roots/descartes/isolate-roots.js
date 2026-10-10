@@ -7,7 +7,7 @@ import { γ1, γγ3 } from '../../error-analysis/gamma.js';
 import { transposePoly } from '../transpose-poly.js';
 import { ddHornerWithInpError } from '../../evaluate/double-double/dd-horner-with-inp-error.js';
 import { eHorner } from '../../evaluate/expansion/e-horner.js';
-const { abs, min, max, log2, ceil } = Math;
+const { abs, max, log2, ceil } = Math;
 const γγ3_γ1 = γγ3 / γ1; // ~ 3*u
 /**
  * Returns a list of intervals isolating the roots of the given polynomial
@@ -55,6 +55,12 @@ function isolateRoots(p, pDd, pDd_, lb, ub, getPExact) {
         }
         lb -= W / 2;
         W *= 2;
+        if (!Number.isFinite(lb)) {
+            // can only happen if the sign of the leading coefficient cannot
+            // be certified in double precision (fail explicitly rather than
+            // looping forever)
+            throw new Error('Unable to certify the sign of the polynomial at any finite lower bound.');
+        }
     }
     let B;
     let eb;
@@ -65,6 +71,9 @@ function isolateRoots(p, pDd, pDd_, lb, ub, getPExact) {
         }
         ub += W / 2;
         W *= 2;
+        if (!Number.isFinite(ub)) {
+            throw new Error('Unable to certify the sign of the polynomial at any finite upper bound.');
+        }
     }
     //------------------------------------------------
     // Initial root interval with sign-certified endpoint values and a fail count.
@@ -191,6 +200,7 @@ function eAdmissablePoint(pE, a, b) {
     while (true) {
         d *= 2;
         for (let j = 1; j < d; j += 2) {
+            c++;
             const t = a + (b - a) * (d + 2 * j) / (4 * d);
             const T = eCompress(eHorner(pE, t)); // no error
             const $T = T[T.length - 1];

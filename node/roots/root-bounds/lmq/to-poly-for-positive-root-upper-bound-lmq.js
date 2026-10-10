@@ -1,18 +1,12 @@
 const { abs } = Math;
 /**
- * Returns a new polynomial adjusted by coefficient-wise absolute error bounds
- * for use with `positiveRootUpperBound_LMQ`.
+ * Returns a new polynomial, `q`, with coefficients `p[i] - |p_[i]|`, i.e. the
+ * smallest possible value of each coefficient given the coefficient-wise
+ * absolute error bounds, for use with `positiveRootUpperBound_LMQ`.
  *
- * For each coefficient `c` with absolute error bound `e`, the returned
- * coefficient is chosen from `[c - e, c + e]` as follows:
- * * if the coefficient is guaranteed positive (`c - e > 0`), return `c - e`
- *   (smallest guaranteed positive value)
- * * if the coefficient is guaranteed negative (`c + e < 0`), return `c - e`
- *   (most negative value)
- * * if the sign is uncertain (`c - e <= 0 <= c + e`), return `0`
- *
- * This yields a conservative representative polynomial for many practical
- * cases, while making sign-uncertain coefficients explicit.
+ * * for `x > 0` every polynomial `p̃` in the family `|p̃[i] - p[i]| <= |p_[i]|`
+ *   satisfies `p̃(x) >= q(x)`; thus if `q(x) > 0` for all `x > U` then so is
+ *   `p̃(x)`, i.e. `U` is an upper bound on the positive roots of every `p̃`
  *
  * @param p polynomial coefficients from highest to lowest power
  * @param p_ coefficient-wise absolute error bounds; must have same length as `p`
@@ -25,14 +19,7 @@ function toPolyForPositiveRootUpperBound_LMQ(p, p_) {
     }
     const q = new Array(p.length);
     for (let i = 0; i < p.length; i++) {
-        const e = abs(p_[i]);
-        const min = p[i] - e;
-        const max = p[i] + e;
-        q[i] = min > 0
-            ? min
-            : max < 0
-                ? min
-                : 0;
+        q[i] = p[i] - abs(p_[i]);
     }
     return q;
 }

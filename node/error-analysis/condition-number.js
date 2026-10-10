@@ -17,7 +17,7 @@ const { abs } = Math;
 function conditionNumber(p, x) {
     const pN = absCoeff(p);
     const pD = p;
-    const N = CompHornerK(pN, x, 4);
+    const N = CompHornerK(pN, abs(x), 4); // Σ|aᵢ||x|ⁱ
     const D = abs(CompHornerK(pD, x, 4));
     return abs(N / D);
 }

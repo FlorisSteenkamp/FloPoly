@@ -33,6 +33,36 @@ describe('bSturmChain', function() {
                 [-1692n]
             ]);
         }
+        {
+            // Regression: a degree drop of 3 between the 2nd and 3rd entries
+            // makes the subresultant divisor `D` negative - the sign of the
+            // last entry must still be correct (it was negated before).
+            // p = x(9x^4 + 2x + 5)
+            const polys = bSturmChain([9n, 0n, 0n, 2n, 5n, 0n]);
+            expect(polys).toEqual([
+                [9n, 0n, 0n, 2n, 5n, 0n],
+                [45n, 0n, 0n, 4n, 5n],
+                [-2430n, -8100n, 0n],
+                [261810144n, -787320n],
+                [5240926800n]
+            ]);
+        }
+    });
+
+    it('should handle constant, zero and leading-zero polynomials',
+    function() {
+        // Regression: constant and zero polynomials previously threw
+        expect(bSturmChain([])).toEqual([]);
+        expect(bSturmChain([0n])).toEqual([]);
+        expect(bSturmChain([0n, 0n])).toEqual([]);
+        expect(bSturmChain([5n])).toEqual([[5n]]);
+        expect(bSturmChain([0n, 0n, 5n])).toEqual([[5n]]);
+        expect(bSturmChain([0n, -3n, 4n, 2n, -2n])).toEqual([
+            [-3n, 4n, 2n, -2n],
+            [-9n, 8n, 2n],
+            [-204n, 138n],
+            [-1692n]
+        ]);
     });
 });
 

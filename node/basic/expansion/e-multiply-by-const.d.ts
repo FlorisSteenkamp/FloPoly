@@ -3,6 +3,9 @@
  * polynomial (with coefficients given as Shewchuk floating point expansions)
  * by a constant (given as a Shewchuk floating point expansion)
  *
+ * * leading zero coefficients (possible due to underflow) are removed from
+ *   the result
+ *
  * @param c a constant (given as a Shewchuk floating point expansion)
  * @param p a polynomial with coefficients given densely as an array of Shewchuk
  * floating point expansions from highest to lowest power, e.g. `[[5],[-3],[0]]`

@@ -17,7 +17,7 @@ const { abs, max } = Math;
  * 
  * @example
  * ```typescript
- * rootMagnitudeUpperBound_fujiwara([2,-3,6,5,-130]); //=> 6.753296750770361
+ * rootMagnitudeUpperBound_fujiwara([2,-3,6,5,-130]); //=> 4.7753019278348
  * allRoots([2,-3,6,5,-130]); //=> [-2.397918624065303, 2.8793785310848383]
  * ```
  * 
@@ -36,7 +36,7 @@ function rootMagnitudeUpperBound_fujiwara(p: number[]): number {
     for (let i=1; i<d; i++) {
         bs.push( (abs(p[i] / an))**(1/i) );
     }
-    bs.push( (abs(p[d] / 2*an))**(1/d) );
+    bs.push( (abs(p[d] / (2*an)))**(1/d) );
     
     return 2*max(...bs);
 }

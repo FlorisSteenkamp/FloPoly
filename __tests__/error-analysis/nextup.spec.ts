@@ -56,4 +56,20 @@ describe('nextup', function() {
     it('should overflow to Infinity from Number.MAX_VALUE', function() {
         expect(nextup(Number.MAX_VALUE)).toBe(Infinity);
     });
+
+    it('should step a full ulp from negative powers of two at or below the smallest normal', function() {
+        // Regression: previously stepped half an ulp (which underflows to 0
+        // for subnormals) and returned the input unchanged
+        const minNormal = 2**-1022;
+        expect(nextup(-2*Number.MIN_VALUE)).toBe(-Number.MIN_VALUE);
+        expect(nextup(-4*Number.MIN_VALUE)).toBe(-3*Number.MIN_VALUE);
+        expect(nextup(-minNormal)).toBe(-minNormal + Number.MIN_VALUE);
+        expect(nextup(-minNormal/2)).toBe(-minNormal/2 + Number.MIN_VALUE);
+        // ...but still half an ulp just above the smallest normal
+        expect(nextup(-2*minNormal)).toBe(-2*minNormal + Number.MIN_VALUE);
+        expect(nextup(-2*minNormal)).toBe(nextUp2(-2*minNormal));
+        for (const v of [-2*Number.MIN_VALUE, -4*Number.MIN_VALUE, -minNormal, -minNormal/2, -2*minNormal, -(2**-1000), -(2**-100)]) {
+            expect(nextup(v)).toBe(nextUp2(v));
+        }
+    });
 });

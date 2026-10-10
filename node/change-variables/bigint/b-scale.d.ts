@@ -23,7 +23,7 @@ declare function bScale(p: bigint[], s: bigint): bigint[];
  * @param p a polynomial with coefficients given densely as an array of bigint
  * numbers from highest to lowest power, e.g. `[5n,-3n,0n]`
  * represents the polynomial `5x^2 - 3x`
- * @param a a scaling factor, i.e. the `s` in `p(x) <- p((1/s)x)`
+ * @param s a scaling factor, i.e. the `s` in `p(x) <- p((1/s)x)`
  *
  * @example
  * ```typescript

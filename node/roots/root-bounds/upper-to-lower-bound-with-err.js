@@ -8,7 +8,7 @@
  */
 function upperToLowerBound_WithError(positiveUpperBoundFunction) {
     return (p, p_) => {
-        return 1 / positiveUpperBoundFunction(p.toReversed(), p_);
+        return 1 / positiveUpperBoundFunction(p.toReversed(), p_.toReversed());
     };
 }
 export { upperToLowerBound_WithError };

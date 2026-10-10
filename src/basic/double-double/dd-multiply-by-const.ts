@@ -13,7 +13,7 @@ import { ddRemoveLeadingZeros } from "./dd-remove-leading-zeros.js";
  * @doc
  */
 function ddMultiplyByConst(c: number[], p: number[][]): number[][] {
-    if (c[1] === 0) { return [[0,0]]; }
+    if (c[1] === 0) { return []; }  // the zero polynomial
     
     const d = p.length;
     const p_ = new Array<number[]>(d);
@@ -28,6 +28,3 @@ function ddMultiplyByConst(c: number[], p: number[][]): number[][] {
 
 export  { ddMultiplyByConst }
 
-
-// Quokka tests
-// ddMultiplyByConst([0,0.25], [[0,3],[0,2],[0,1]]);  /*?*/ //=> [0.75, 0.5, 0.25]

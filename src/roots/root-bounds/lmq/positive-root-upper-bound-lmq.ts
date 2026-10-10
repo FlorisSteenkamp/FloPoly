@@ -1,4 +1,5 @@
 import { negate } from "../../../basic/double/negate.js";
+import { removeLeadingZeros } from "../../../basic/double/remove-leading-zeros.js";
 
 
 /**
@@ -6,11 +7,16 @@ import { negate } from "../../../basic/double/negate.js";
  * 
  * See algoritm 6 of the paper by Vigklas, Akritas and Strzeboński, 
  * specifically the LocalMaxQuadratic algorithm hence LMQ.
- * 
+ *
+ * * leading zero coefficients are ignored
+ *
+ * * returns `0` if the polynomial has no positive roots (roots at `0` are not
+ *   considered positive), e.g. for a constant polynomial
+ *
  * @param p a polynomial with coefficients given densely as an array of double
- * floating point numbers from highest to lowest power, e.g. `[5,-3,0]` 
+ * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`
  * represents the polynomial `5x^2 - 3x`
- * 
+ *
  * @example
  * ```typescript
  * positiveRootUpperBound_LMQ([2,-3,6,5,-130]); //=> 4.015534272870436 
@@ -22,6 +28,8 @@ import { negate } from "../../../basic/double/negate.js";
  */
 function positiveRootUpperBound_LMQ(
         p: number[]): number {
+
+    p = removeLeadingZeros(p);
 
     const deg = p.length-1;
     if (deg < 1) { 

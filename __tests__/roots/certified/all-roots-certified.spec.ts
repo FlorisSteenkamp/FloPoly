@@ -78,7 +78,10 @@ function() {
         toCasStr(pDd.map(c => c.map(v => v*2**68)));
         getRoots(pDd, -Infinity, Infinity, pDd_, getPExact);
         eEstimate(eHorner(pExact!, 1.3255582424034453));
-        expect(rs).toEqual([0.3361742829036021, 0.6260997031130032, 1.3255582424034449]);
+        // (the first midpoint moved by half an ulp when `refineCertified`'s
+        // tolerance was changed to be relative to the current iterate only; 
+        // the true root is 0.33617428290360196)
+        expect(rs).toEqual([0.3361742829036018, 0.6260997031130032, 1.3255582424034449]);
     });
 
     it('should find roots correctly for a polynomial with leading actual zero coefficients',

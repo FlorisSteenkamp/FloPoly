@@ -1,5 +1,4 @@
-import { Horner as Horner_ } from '../../evaluate/double/horner.js';
-const Horner = Horner_;
+import { Horner } from '../../evaluate/double/horner.js';
 const eps = Number.EPSILON;
 const u = eps / 2;
 const { abs, max } = Math;
@@ -42,9 +41,9 @@ const { abs, max } = Math;
  * const p = fromRoots([-10,2,3,4]);  //=> [1, 1, -64, 236, -240]
  * const a = 2.2;
  * const b = 3.8;
- * brent(p,a,b); //=> 3.000000000000003
+ * brentPoly(p,a,b); //=> 3.000000000000003
  * b = 3.1;
- * brent(p,a,b); //=> 3.000000000000001
+ * brentPoly(p,a,b); //=> 3.000000000000001
  * ```
  *
  * @doc
@@ -132,7 +131,7 @@ function brentPoly(p, lb, ub, fa = Horner(p, lb), fb = Horner(p, ub)) {
         if (fb === 0) {
             return b;
         }
-        if (fb * fc > 0) {
+        if ((fb < 0) === (fc < 0)) { // (same sign - the product could underflow to zero)
             c = a;
             fc = fa;
             e = b - a;

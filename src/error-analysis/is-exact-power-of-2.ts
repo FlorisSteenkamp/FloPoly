@@ -1,5 +1,4 @@
 import { parseDouble } from "double-double";
-import { sum } from '../util/sum.js';
 
 
 /**
@@ -17,10 +16,8 @@ function isExactPowerOf2(
         return false;
     }
 
-    if (sig[0] === 16 && sum(sig) === 16) {
-        return true;  // not a subnormal number and a power of 2
-    }
-
+    // `n` is a power of 2 iff exactly one significand limb is non-zero and
+    // that limb is a power of 2 (this also covers subnormal numbers)
     let idx = -1;
     for (let i=0; i <sig.length; i++) {
         if (sig[i] !== 0) {

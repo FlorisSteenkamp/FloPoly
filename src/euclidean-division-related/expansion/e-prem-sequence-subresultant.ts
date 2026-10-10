@@ -2,6 +2,7 @@ import { expansionProduct } from "big-float-ts";
 import { eIntPow } from "big-float-ts";
 import { eDiv } from "big-float-ts";
 import { eNegativeOf } from "big-float-ts";
+import { eSign } from "big-float-ts";
 import { eIsConstOrZero } from "../../basic/expansion/e-is-const-or-zero.js";
 import { eDegree } from "../../basic/expansion/e-degree.js";
 import { ePdivTrivial } from "./e-pdiv-trivial.js";
@@ -11,6 +12,8 @@ import { ePdivTrivial } from "./e-pdiv-trivial.js";
  * Returns the subresultant pseudo remainder sequence of a/b.
  * 
  * * **precondition:** g !== [], i.e. unequal to the zero polynomial.
+ *
+ * * **precondition:** `deg(f) >= deg(g)`
  * 
  * * **precondition:** the coefficients must be integer Shewchuk floating point 
  * expansions; if they are not they can easily be scaled from 
@@ -52,7 +55,13 @@ function ePremSequenceSubresultant(
         const sgn = sturm
             ? -1
             : (d_+1) % 2 === 0 ? +1 : -1;
-        const D = expansionProduct(a[i-2], eIntPow(c[i-2], d_));
+        let D = expansionProduct(a[i-2], eIntPow(c[i-2], d_));
+        if (sturm && eSign(D) < 0) {
+            // In Sturm mode the remainder's sign must be preserved (bar the
+            // final negation) but `D` can be negative when a degree drop of
+            // 2 or more occurred earlier in the sequence - divide by `|D|`.
+            D = eNegativeOf(D);
+        }
         const exp = -d_+1;
         const cTerm1 = eIntPow(a[i-1], d_);
         const cTerm2 = eIntPow(c[i-2], Math.abs(exp));

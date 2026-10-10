@@ -35,5 +35,21 @@ describe('sturmChain', function() {
             ]);
         }
     });
+
+    it('should handle constant, zero and leading-zero polynomials',
+    function() {
+        // Regression: constant and zero polynomials previously threw
+        expect(sturmChain([])).toEqual([]);
+        expect(sturmChain([0])).toEqual([]);
+        expect(sturmChain([0, 0])).toEqual([]);
+        expect(sturmChain([5])).toEqual([[[5]]]);
+        expect(sturmChain([0, 0, 5])).toEqual([[[5]]]);
+        expect(sturmChain([0, -3, 4, 2, -2])).toEqual([
+            [[-3], [4], [2], [-2]],
+            [[-9], [8], [2]],
+            [[-204], [138]],
+            [[-1692]]
+        ]);
+    });
 });
 

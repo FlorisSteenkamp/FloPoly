@@ -22,7 +22,9 @@ type RootInterval = {
 };
 /**
  * Simple function that creates and returns an exact root (with a bracketing
- * interval width of 0 and multiplicity 1)
+ * interval width of 0 and multiplicity 1).
+ *
+ * * returns `{ t, tS: t, tE: t, multiplicity: 1 }`
  *
  * @param t
  *

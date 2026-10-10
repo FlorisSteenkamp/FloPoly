@@ -5,9 +5,14 @@ const { abs } = Math;
  *
  * **precondition** `a`, `b` must be integers
  *
+ * * returns `NaN` if either argument is not finite (rather than looping forever)
+ *
  * @doc
  */
 function gcdInt(a, b) {
+    if (!Number.isFinite(a) || !Number.isFinite(b)) {
+        return Number.NaN;
+    }
     a = abs(a);
     b = abs(b);
     // The below 2 commented lines represent Euclid's original algorithm.

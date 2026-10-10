@@ -65,10 +65,13 @@ function refineCertified(p, p_, lb, ub, fa, fb, getPolyExact, exact) {
         // Original c++ code had the line below but with us t === 0 and b is 
         // taken as 1 and 2.0 * macheps is taken as 2*u === Number.EPSILON (eps)
         // or can also be taken as 4*u === 2*Number.EPSILON (2*eps)
-        // adaptive tolerance
-        //let δ = 2 * eps * max(1,abs(b));
+        // adaptive tolerance - relative to the current best iterate `b` (as in
+        // Brent's original); using `max(|a|,|b|)` would make the tolerance too
+        // loose when the previous iterate `a` is still far from the root (e.g. 
+        // after a first secant step from a wide bracket) and the returned
+        // interval could then be wider than the documented maximum width
         let δ;
-        const mm = max(abs(a), abs(b));
+        const mm = abs(b);
         if (mm <= 1) {
             δ = eps;
         }
@@ -153,12 +156,15 @@ function refineCertified(p, p_, lb, ub, fa, fb, getPolyExact, exact) {
             // here by a precondition
             const fsL = evalCertified(p, sL, p_);
             const fsR = evalCertified(p, sR, p_);
-            // if the evaluation method is strong enough return the result
-            if (fsL * fsR !== 0) {
+            // if the evaluation method is strong enough *and* the signs
+            // differ (so that `[sL,sR]` is certified to bracket a root)
+            // return the result
+            if (fsL * fsR < 0) {
                 return [sL, sR, b];
             }
-            // At this point either fsL or fsR === 0 so we need to sharpen the
-            // evaluation method
+            // At this point either fsL or fsR === 0 (or they have the same
+            // sign and the root is not bracketed by `[sL,sR]`) so we need to
+            // sharpen the evaluation method
             exact = true;
             // get and cache the exact polynomial (we cache this since getting
             // an exact polynomial takes about 15 times more time than getting

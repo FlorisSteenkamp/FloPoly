@@ -11,7 +11,7 @@ const SEED = 123456789;
 
 /**
  * The range for the simple random number generator, i.e. the generated
- * numbers will be in [0,RANGE].
+ * numbers will be in [0,RANGE), i.e. `2**32`.
  * 
  * @internal
  */
@@ -74,8 +74,8 @@ function createArrFunction(
  * 
  * @example
  * ```typescript
- * flatRootsArr(2,3,0,10); //=> [[1, -17.27247918024659, 97.33487287168995, -179.34094494147305], [1, -14.934967160224915, 57.624514485645406, -14.513933300587215]]
- * flatRootsArr(2,3,0,10); //=> [[1, -17.27247918024659, 97.33487287168995, -179.34094494147305], [1, -14.934967160224915, 57.624514485645406, -14.513933300587215]]
+ * flatRootsArr(2,3,0,10); //=> [[1, -17.445259802043438, 96.94898590669898, -172.1346546982741], [1, -21.424386776052415, 143.23055474890413, -283.0801374912826]]
+ * flatRootsArr(2,3,0,10); //=> [[1, -17.445259802043438, 96.94898590669898, -172.1346546982741], [1, -21.424386776052415, 143.23055474890413, -283.0801374912826]]
  * ```
  * 
  * @doc
@@ -96,13 +96,13 @@ const flatRootsArr = createArrFunction(flatRoots);
  * @param a defaults to 0; the lower bound of the coefficients
  * @param b defaults to 1; the upper bound of the coefficients
  * @param seed defaults to 123456789; a seed value in [0,4294967296]
- * @param odds defaults to 0; the odds that a root will be doubled (applied
- * recursively so that some roots could be tripled, etc.
- * 
+ * @param odds ignored (there are no roots to duplicate) - only present for
+ * signature compatibility with [[flatRootsArr]]
+ *
  * @example
  * ```typescript
- * flatCoefficientsArr(2,3,-2,2); //=> [[0.1749166026711464, -0.20349335670471191, 0.9375684261322021], [1.0617692470550537, -1.8918039798736572, 0.8040215969085693]]
- * flatCoefficientsArr(2,3,-2,2); //=> [[0.1749166026711464, -0.20349335670471191, 0.9375684261322021], [1.0617692470550537, -1.8918039798736572, 0.8040215969085693]]
+ * flatCoefficientsArr(2,3,-2,2);//=> [[0.17491660453379154, -0.43646731972694397, 1.2396546360105276], [1.6841425858438015, -0.5817447584122419, 1.4673568829894066]]
+ * flatCoefficientsArr(2,3,-2,2); //=> [[0.17491660453379154, -0.43646731972694397, 1.2396546360105276], [1.6841425858438015, -0.5817447584122419, 1.4673568829894066]]
  * ```
  * 
  * @doc
@@ -121,8 +121,12 @@ const flatCoefficientsArr = createArrFunction(flatCoefficients);
  */
 function predictiveRandom(seed: number): number {
     const a = 134775813;
-    
-    return (a * seed + 1) % RANGE;
+
+    // `Math.imul` gives the exact product modulo 2**32 (`a * seed` would
+    // exceed 2**53 and lose precision) and `>>> 0` converts to an unsigned
+    // 32-bit integer; the LCG then has the full period of 2**32 (since
+    // `a ≡ 1 (mod 4)` and the increment, 1, is odd)
+    return (Math.imul(a, seed) + 1) >>> 0;
 }
 
 
@@ -148,7 +152,9 @@ function randomArray(
         odds = 0): { vs: number[], seed: number } {
 
     let vs: number[] = [];
-    for (let i=0; i<n; i++) {
+    // (stop as soon as enough values have been generated - with `odds > 0`
+    // duplicates may be pushed so fewer than `n` iterations may be required)
+    while (vs.length < n) {
         seed = predictiveRandom(seed);
         const v = ((seed/RANGE) * (b-a)) + a;
         seed = push(seed, vs, v, odds);
@@ -183,11 +189,11 @@ function push(seed: number, values: number[], x: number, odds: number): number {
 
 
 /**
- * Generates and returns an array of polynomials with random **roots** (with coefficients 
- * given densely as an array of double floating point numbers from highest to 
+ * Generates and returns a polynomial with random **roots** (with coefficients
+ * given densely as an array of double floating point numbers from highest to
  * lowest power, e.g. `[5,-3,0]` represents the polynomial `5x^2 - 3x`).
- * 
- * * also returns a new seed value that can be used as the input to the next 
+ *
+ * * also returns a new seed valuethat can be used as the input to the next 
  * call to a predictive random function
  * 
  * * all roots will approximate real values so is not at all representative of 
@@ -205,7 +211,7 @@ function push(seed: number, values: number[], x: number, odds: number): number {
  * 
  * @example
  * ```typescript
- * flatRoots(3,0,10); //=> { p: [1, -17.27247918024659, 97.33487287168995, -179.34094494147305], seed: 939629312 }
+ * flatRoots(3,0,10); //=> { p: [1, -17.445259802043438, 96.94898590669898, -172.1346546982741], seed: 3658815999 }
  * ```
  * 
  * @doc
@@ -227,11 +233,11 @@ function flatRoots(
 
 
 /**
- * Generates and returns an array of polynomials with random **coefficients** (with coefficients 
- * given densely as an array of double floating point numbers from highest to 
+ * Generates and returns a polynomial with random **coefficients** (with coefficients
+ * given densely as an array of double floating point numbers from highest to
  * lowest power, e.g. `[5,-3,0]` represents the polynomial `5x^2 - 3x`).
- * 
- * * also returns a new seed value that can be used as the input to the next 
+ *
+ * * also returns a new seed valuethat can be used as the input to the next 
  * call to a predictive random function
  * 
  * * the exact same polynomial will be created on each call to this function 
@@ -241,20 +247,18 @@ function flatRoots(
  * @param a defaults to 0; the lower bound of the coefficients
  * @param b defaults to 1; the upper bound of the coefficients
  * @param seed defaults to 123456789; a seed value in [0,4294967296]
- * @param odds defaults to 0; the odds that a root will be doubled (applied
- * recursively so that some roots could be tripled, etc.
- * 
+ *
  * @example
  * ```typescript
- * flatCoefficients(3,-5,5); //=> { p: [0.437291506677866, -0.5087333917617798, 2.3439210653305054], seed: 939629312 }
+ * flatCoefficients(3,-5,5);//=> { p: [0.43729151133447886, -1.09116829931736, 3.099136590026319], seed: 3658815999 }
  * ```
  * 
  * @doc
  */
 function flatCoefficients(
-        d: number, 
-        a = -1, 
-        b = +1, 
+        d: number,
+        a = 0,
+        b = 1,
         seed = SEED): { p: number[], seed: number } {
 
     const randArr = randomArray(d, a, b, seed);

@@ -13,7 +13,7 @@ import { isExactPowerOf2 } from "./is-exact-power-of-2.js";
  *   - `-0` => `Number.MIN_VALUE`,
  *   - `+0` => `Number.MIN_VALUE`,
  *   - `-Infinity` => `-Number.MAX_VALUE`
- *   - -Number.MIN_VALUE => -0 (since `getUlp(5e-324)/2 === 0`)
+ *   - -Number.MIN_VALUE => -0
  *
  *  * `nextdown(x) === -nextup(-x)`
  *
@@ -33,8 +33,11 @@ function nextup(n) {
     }
     if (n === -Number.MIN_VALUE) {
         return -0;
-    } // since `getUlp(5e-324)/2 === 0`
-    const r = n < 0 && isExactPowerOf2(-n)
+    }
+    // For a negative exact power of two the next number up (towards zero) is
+    // only half an ulp away - except at or below the smallest normal number
+    // (`2**-1022`) where the ulp (`2**-1074`) is constant.
+    const r = n < 0 && -n > 2 ** -1022 && isExactPowerOf2(-n)
         ? n + getUlp(n) / 2
         : n + getUlp(n);
     return r;

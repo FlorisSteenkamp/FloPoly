@@ -25,11 +25,16 @@ import { Horner } from "./horner.js";
  * @doc
  */
 function CompHornerK(p, x, K) {
-    K = Math.min(p.length - 1, K);
+    if (p.length <= 1) {
+        return p.length === 0 ? 0 : p[0]; // the zero polynomial or a constant
+    }
+    // each error-free transformation reduces the degree by one so the depth
+    // of the tree is limited by the degree
+    K = Math.max(1, Math.min(p.length, K));
     const { hs, ps } = EFTHornerK(p, x, K);
-    const leafStart = 2 ** (K - 1); // cardinality and start of the leaves
-    for (let i = 0; i < leafStart; i++) {
-        hs.push(Horner(ps[leafStart + i], x));
+    // evaluate all the leaves
+    for (let i = 0; i < ps.length; i++) {
+        hs.push(Horner(ps[i], x));
     }
     const r̄ = SumK(hs, K);
     return r̄;

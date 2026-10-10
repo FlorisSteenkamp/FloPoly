@@ -28,4 +28,14 @@ describe('scaleFloatsToInts', function() {
             0, 1
         ]);
     });
+
+    it('should handle subnormal numbers and large scale powers',
+    function() {
+        // Regression: previously wrong for subnormals and `Infinity`/`NaN`
+        // for scale powers > 1023
+        expect(scaleFloatsToInts([5e-324, 1e-320])).toEqual([1, 2024]);
+        expect(scaleFloatsToInts([5e-324, 0])).toEqual([1, 0]);
+        expect(scaleFloatsToInts([0, 5e-324, 2**-1022])).toEqual([0, 1, 2**52]);
+        expect(scaleFloatsToInts([2**-1070, 2**-1060])).toEqual([1, 2**10]);
+    });
 });

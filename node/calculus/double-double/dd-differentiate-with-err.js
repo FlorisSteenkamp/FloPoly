@@ -1,7 +1,6 @@
-import { γγ } from '../../error-analysis/gamma.js';
+import { γγ3 } from '../../error-analysis/gamma.js';
 import { ddMultDouble2 } from "double-double";
 import { eEstimate } from "big-float-ts";
-const γγ3 = γγ(3);
 /**
  * Returns the result (and resulting coefficient-wise error bound) of
  * differentiating the given polynomial (with coefficients given in

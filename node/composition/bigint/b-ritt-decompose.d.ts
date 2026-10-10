@@ -1,9 +1,8 @@
 type BRittDecomposeOptions = {
     /**
-     * If true (default), enumerate all admissible inner leading coefficients by
-     * exact divisor generation of the outer leading coefficient.
-     *
-     * If false, use a fast heuristic candidate set.
+     * @deprecated has no effect anymore - the search is now always complete
+     * *and* fast since the inner polynomial candidate is determined directly
+     * (over the rationals) without factorizing the leading coefficient.
      */
     completeInnerLeadingCoeffSearch?: boolean;
 };
@@ -13,12 +12,25 @@ type BRittDecomposeOptions = {
  * Returns composition factors `[f1, f2, ..., fk]` such that
  * `p = f1(f2(...fk(x)...))` and each factor is indecomposable by this method.
  *
- * This implementation searches proper degree divisors and verifies each
- * candidate by exact recomposition. It is substantially more general than the
- * power-substitution detector.
+ * * for each proper divisor `s` of the degree the (unique up to linear
+ *   equivalence - see Kozen & Landau) monic inner candidate of degree `s` with
+ *   zero constant term is determined over the rationals from the leading
+ *   coefficients of `p`; the only integral inner candidate that needs to be
+ *   checked is then this candidate scaled by the lcm of its coefficient
+ *   denominators (any other integral scaling that admits an integral outer
+ *   polynomial implies that this minimal one does too); the outer polynomial
+ *   is found by repeated exact division and the decomposition is verified by
+ *   recomposition
  *
  * @param p polynomial coefficients from highest to lowest power
- * @param options decomposition options
+ * @param options decomposition options (currently unused)
+ *
+ * @example
+ * ```typescript
+ * bRittDecompose([1n, 0n, 2n, 0n, 1n]);  //=> [[1n, 2n, 1n], [1n, 0n, 0n]]  (i.e. (u^2 + 2u + 1)∘(x^2))
+ * ```
+ *
+ * @doc
  */
 declare function bRittDecompose(p: bigint[], options?: BRittDecomposeOptions): bigint[][];
 /** Recompose factors returned by `bRittDecompose`. */

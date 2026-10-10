@@ -10,6 +10,7 @@ describe('ddMultiplyByConst', function() {
     });
 
     it('should return zero polynomial when multiplied by zero', function() {
-        expect(ddMultiplyByConst([0,0], [[0,3], [0,2]])).toEqual([[0,0]]);
+        // the zero polynomial is represented by `[]` (as for the other variants)
+        expect(ddMultiplyByConst([0,0], [[0,3], [0,2]])).toEqual([]);
     });
 });

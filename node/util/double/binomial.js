@@ -1,4 +1,10 @@
-/** The highest value double precision can handle */
+/**
+ * The highest `n` supported.
+ *
+ * * **note:** the binomial coefficients are only *exact* (i.e. representable
+ *   as a double, `<= 2^53`) for `n <= 56`; for `56 < n <= 60` the largest
+ *   coefficients are rounded
+ */
 const ABS_MAX_LIMIT = 60;
 let maxLimit = 10;
 const binomialTable = precomputeBinomialCoefficients(maxLimit);
@@ -44,6 +50,15 @@ function extendBinomialCoefficients(binomialTable, maxN) {
     maxLimit = maxN;
     return binomialTable;
 }
+/**
+ * Returns `n` choose `k` (nCk).
+ *
+ * * exact for `n <= 56`; rounded (to double precision) for `56 < n <= 60`
+ *   and throws for `n > 60`
+ *
+ * @param n
+ * @param k
+ */
 function binomial(n, k) {
     if (n > ABS_MAX_LIMIT) {
         throw new Error(`n = ${n} exceeds the maximum limit of ${ABS_MAX_LIMIT}.`);
@@ -53,10 +68,6 @@ function binomial(n, k) {
     }
     return binomialTable[n][k];
 }
-/** An earier simpler implementation */
-// function binomial(
-//         n: number,
-//         k: number): number {
 //     k = min(k, n - k);
 //     if (k === 0 || k === n) { return 1; }
 //     let c = 1;

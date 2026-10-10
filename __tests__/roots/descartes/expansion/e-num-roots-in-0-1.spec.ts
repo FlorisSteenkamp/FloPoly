@@ -4,7 +4,7 @@ import { eNumRootsIn01 } from '../../../../src/roots/sturm/expansion/e-num-roots
 
 
 describe('eNumRootsIn01', function() {
-    it('should correctly calculate the number of roots within the open interval (0,1) for some polynomials', 
+    it('should correctly calculate the number of roots within the closed interval [0,1] for some polynomials',
     function() {
         {
             let p = [1, 1, -64, 236, -240].map(x => [x]);
@@ -49,5 +49,15 @@ describe('eNumRootsIn01', function() {
             expect(eNumRootsIn01(p7)).toEqual(8);
         }
         */
+    });
+
+    it('should count multiple roots at the endpoints once and handle degenerate polynomials',
+    function() {
+        expect(eNumRootsIn01([[1], [-4], [5], [-2]])).toEqual(1);  // (x-1)^2 (x-2)
+        expect(eNumRootsIn01([[1], [0], [0]])).toEqual(1);         // x^2
+        expect(eNumRootsIn01([])).toEqual(Infinity);
+        expect(eNumRootsIn01([[0]])).toEqual(Infinity);
+        expect(eNumRootsIn01([[5]])).toEqual(0);
+        expect(eNumRootsIn01([[0], [2], [-1]])).toEqual(1);       // 2x - 1
     });
 });

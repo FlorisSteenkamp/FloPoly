@@ -1,4 +1,5 @@
 import { eDifferentiate } from '../../calculus/expansion/e-differentiate.js';
+import { removeLeadingZeros } from '../../basic/double/remove-leading-zeros.js';
 import { ePremSequenceSubresultant } from "../expansion/e-prem-sequence-subresultant.js";
 
 
@@ -15,8 +16,12 @@ import { ePremSequenceSubresultant } from "../expansion/e-prem-sequence-subresul
  * * see [Sturm's Theorem](https://en.wikipedia.org/wiki/Sturm%27s_theorem)
  * * see [Pseudo-remainder sequences](https://en.wikipedia.org/wiki/Polynomial_greatest_common_divisor#Pseudo-remainder_sequences)
  * 
+ * * leading zero coefficients are removed before the chain is calculated
+ *
+ * * returns `[]` for the zero polynomial and `[p]` for a non-zero constant
+ *
  * @param p a polynomial with coefficients given densely as an array of
- * double precision floating point numbers from highest to lowest power, 
+ * double precision floating point numbers from highest to lowest power,
  * e.g. `[5,-3,0]` represents the polynomial `5x^2 - 3x`
  * 
  * @example
@@ -28,7 +33,11 @@ import { ePremSequenceSubresultant } from "../expansion/e-prem-sequence-subresul
  */
 function sturmChain(p: number[]): number[][][] {
     // convert from double precision to Shewchuk expansion
-    const p_ = p.map(c => [c]);
+    const p_ = removeLeadingZeros(p).map(c => [c]);
+
+    if (p_.length === 0) { return []; }    // the zero polynomial
+    if (p_.length === 1) { return [p_]; }  // a non-zero constant
+
     const dp = eDifferentiate(p_);
 
     return ePremSequenceSubresultant(p_, dp, true);

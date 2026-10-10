@@ -4,8 +4,6 @@
  * Returns the number of sign changes in the polynomial coefficents when
  * ordered in descending order; zeros are ignored.
  *
- * **precondition:** the polynomial leading coefficient must be non-zero.
- *
  * * Descartes' rule of signs states (quoted from Wikipedia):
  * "if the terms of a polynomial are ordered by descending variable
  * exponent, then the number of positive roots of the polynomial is

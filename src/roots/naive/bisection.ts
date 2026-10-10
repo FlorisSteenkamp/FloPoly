@@ -57,9 +57,9 @@ function bisection(f: (n: number) => number, a: number, b: number): number {
         return b; 
     }
     
-    if (fa*fb > 0) {
+    if ((fa < 0) === (fb < 0)) {  // (same sign - `fa`, `fb` are both non-zero here)
         // Root is not bracketed - this is a precondition.
-        throw new Error('Root not bracketed'); 
+        throw new Error('Root not bracketed');
     }
     
     while (true) {
@@ -70,7 +70,7 @@ function bisection(f: (n: number) => number, a: number, b: number): number {
             return c; 
         }
         
-        if (fa*fc < 0) {
+        if ((fa < 0) !== (fc < 0)) {  // (opposite signs - `fc !== 0` here)
             b = c;
         } else {
             a = c;

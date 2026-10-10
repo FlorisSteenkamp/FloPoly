@@ -25,6 +25,8 @@ import { ePdivInternal } from "./e-pdiv-internal.js";
  *
  * * **precondition:** b !== [], i.e. unequal to the zero polynomial.
  *
+ * * the multiplier `m` is also returned
+ *
  * * see [trivial pseudo-remainder sequence](https://en.wikipedia.org/wiki/Polynomial_greatest_common_divisor#Trivial_pseudo-remainder_sequence)
  * * see also [Polynomial long division](https://en.wikipedia.org/wiki/Polynomial_long_division)
  * * see [*The subresultant polynomial remainder sequence algorithm* by Ruiyuan (Ronnie) Chen, p.10](https://pdfs.semanticscholar.org/2e6b/95ba84e2160748ba8fc310cdc408fc9bbade.pdf)
@@ -47,14 +49,14 @@ function ePdivTrivial(a, b, positiveMultiplier = false) {
     // remainders to stay in 'Z', i.e. let m = leadingCoeff(b)^(deg(a)-deg(b)+1)
     const d = eDegree(a) - eDegree(b) + 1;
     if (d < 1) {
-        return { q: [], r: a };
+        return { q: [], r: a, m: [1] };
     }
     let m = eIntPow(b[0], d);
     m = positiveMultiplier
         ? eAbs(m)
         : m;
     const a_ = eMultiplyByConst(m, a);
-    return ePdivInternal(a_, b);
+    return { ...ePdivInternal(a_, b), m };
 }
 export { ePdivTrivial };
 //# sourceMappingURL=e-pdiv-trivial.js.map

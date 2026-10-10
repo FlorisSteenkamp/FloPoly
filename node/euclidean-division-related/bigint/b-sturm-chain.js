@@ -1,10 +1,15 @@
 import { bDifferentiate } from '../../calculus/bigint/b-differentiate.js';
+import { bRemoveLeadingZeros } from '../../basic/bigint/b-remove-leading-zeros.js';
 import { bPremSequenceSubresultant } from "./b-prem-sequence-subresultant.js";
 /**
  * Returns the **Sturm Chain** for the given polynomial using pseudo remainders.
  *
  * * see [Sturm's Theorem](https://en.wikipedia.org/wiki/Sturm%27s_theorem)
  * * see [Pseudo-remainder sequences](https://en.wikipedia.org/wiki/Polynomial_greatest_common_divisor#Pseudo-remainder_sequences)
+ *
+ * * leading zero coefficients are removed before the chain is calculated
+ *
+ * * returns `[]` for the zero polynomial and `[p]` for a non-zero constant
  *
  * @param p a polynomial with coefficients given densely as an array of
  * bigints from highest to lowest power, e.g. `[5n,-3n,0n]` represents the
@@ -18,6 +23,13 @@ import { bPremSequenceSubresultant } from "./b-prem-sequence-subresultant.js";
  * @doc
  */
 function bSturmChain(p) {
+    p = bRemoveLeadingZeros(p);
+    if (p.length === 0) {
+        return [];
+    } // the zero polynomial
+    if (p.length === 1) {
+        return [p];
+    } // a non-zero constant
     const dp = bDifferentiate(p);
     return bPremSequenceSubresultant(p, dp, true);
 }

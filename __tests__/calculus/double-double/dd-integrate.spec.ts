@@ -11,5 +11,7 @@ describe('ddIntegrate', function() {
         ddIntegrate(p1, [0,99])//?
         expect(eEqual(ddIntegrate(p1, [0,99]), [[0,99]])).toEqual(true);
         expect(eEqual(ddIntegrate(p3, [0,99]), [[0,1], [0,1], [0,1], [0,99]])).toEqual(true);
+        // the zero polynomial with a zero constant of integration
+        expect(ddIntegrate([], [0,0])).toEqual([]);
     });
 });

@@ -4,6 +4,7 @@
  * returned.
  *
  * * the result is exact (no round-off can occur)
+ * * subnormal numbers are handled correctly
  *
  * @param a a double precision floating point number
  *

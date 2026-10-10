@@ -4,8 +4,8 @@ const eChangeVariablesTranslateX = eTaylorShift;
  * Returns the Taylor shift `f(x + h)` of the given polynomial computed in
  * `O(n^2)` via repeated synthetic division by `(x - h)` (Horner's scheme).
  *
- * * intermediate calculations are performed in double-double precision floating
- *   point arithmetic and the result is returned in double-double precision
+ * * the calculations are exact (bar overflow / underflow) since the
+ *   coefficients are Shewchuk floating point expansions
  *
  * @param p a polynomial with coefficients given densely as an array of Shewchuk expansion
  * floating point numbers from highest to lowest power, e.g. `[[5],[-3],[0]]`

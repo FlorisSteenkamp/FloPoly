@@ -13,7 +13,7 @@
  *
  * @example
  * ```typescript
- * rootMagnitudeUpperBound_fujiwara([2,-3,6,5,-130]); //=> 6.753296750770361
+ * rootMagnitudeUpperBound_fujiwara([2,-3,6,5,-130]); //=> 4.7753019278348
  * allRoots([2,-3,6,5,-130]); //=> [-2.397918624065303, 2.8793785310848383]
  * ```
  *

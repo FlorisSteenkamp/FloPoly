@@ -3,13 +3,13 @@ const changeVariablesScale = scale;
 
 
  /**
- * Returns the polynomial `p(a·x)`, i.e. the coefficient of `xⁱ` scaled by `aⁱ`
+ * Returns the polynomial `p(s·x)`, i.e. the coefficient of `xⁱ` scaled by `sⁱ`
  * in double precision.
  * 
  * @param p a polynomial with coefficients given densely as an array of double
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]` 
  * represents the polynomial `5x^2 - 3x`
- * @param a a scaling factor, i.e. the `a` in `p(x) <- p(ax)`
+ * @param s a scaling factor, i.e. the `s` in `p(x) <- p(sx)`
  * 
  * @example
  * ```typescript
@@ -22,17 +22,8 @@ function scale(
         p: number[],
         s: number): number[] {
 
-    const n = p.length - 1;
-    if (n < 0) { return []; }
-
-    const r = new Array<number>(n + 1);
-    r[n] = p[n];
-
-    let sPow = s;
-    for (let i=1; i<=n; i++) {
-        r[n - i] = p[n - i] * sPow;
-        sPow *= s;
-    }
+    const r = p.slice();
+    inplaceScale(r, s);
 
     return r;
 }

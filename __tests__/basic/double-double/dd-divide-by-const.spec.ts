@@ -13,3 +13,13 @@ describe('ddDivideByConst', function() {
         expect(ddDivideByConst([], [0,2])).toEqual([]);
     });
 });
+
+
+describe('ddDivideByConst - leading zeros', function() {
+    it('should remove leading zeros caused by underflow', function() {
+        // the leading coefficient (1e-600) underflows to zero and is removed
+        const r = ddDivideByConst([[0,1e-300], [0,1]], [0,1e300]);
+        expect(r.length).toEqual(1);
+        expect(r[0][1]).toEqual(1e-300);
+    });
+});

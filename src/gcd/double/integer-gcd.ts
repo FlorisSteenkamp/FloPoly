@@ -7,10 +7,16 @@ const { abs } = Math;
  * Euclidean Algorithm.
  * 
  * **precondition** `a`, `b` must be integers
- * 
+ *
+ * * returns `NaN` if either argument is not finite (rather than looping forever)
+ *
  * @doc
  */
 function gcdInt(a: number, b: number): number {
+    if (!Number.isFinite(a) || !Number.isFinite(b)) {
+        return Number.NaN;
+    }
+
     a = abs(a);
     b = abs(b);
 

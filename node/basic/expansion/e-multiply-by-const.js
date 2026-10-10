@@ -1,9 +1,12 @@
-import { eSign } from "big-float-ts";
-import { expansionProduct } from "big-float-ts";
+import { eSign, expansionProduct } from "big-float-ts";
+import { eRemoveLeadingZeros } from "./e-remove-leading-zeros.js";
 /**
  * Returns the exact result (bar underflow / overflow) of multiplying a
  * polynomial (with coefficients given as Shewchuk floating point expansions)
  * by a constant (given as a Shewchuk floating point expansion)
+ *
+ * * leading zero coefficients (possible due to underflow) are removed from
+ *   the result
  *
  * @param c a constant (given as a Shewchuk floating point expansion)
  * @param p a polynomial with coefficients given densely as an array of Shewchuk
@@ -26,7 +29,7 @@ function eMultiplyByConst(c, p) {
     for (let i = 0; i < d + 1; i++) {
         result[i] = expansionProduct(c, p[i]);
     }
-    return result;
+    return eRemoveLeadingZeros(result);
 }
 export { eMultiplyByConst };
 //# sourceMappingURL=e-multiply-by-const.js.map

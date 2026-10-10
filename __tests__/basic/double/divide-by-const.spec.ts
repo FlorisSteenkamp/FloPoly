@@ -13,4 +13,9 @@ describe('divideByConst', function() {
         expect(divideByConst(p2,2)).toEqual([0.55,1.1,1.65,2.2]);
         expect(divideByConst(p2,0)).toEqual([inf,inf,inf,inf]);
     });
+
+    it('should remove leading zeros caused by underflow', function() {
+        expect(divideByConst([1e-300, 1], 1e300)).toEqual([1e-300]);
+        expect(divideByConst([1e-300, 1e-300], 1e300)).toEqual([]);
+    });
 });

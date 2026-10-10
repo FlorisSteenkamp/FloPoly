@@ -11,7 +11,7 @@
  *   - `-0` => `Number.MIN_VALUE`,
  *   - `+0` => `Number.MIN_VALUE`,
  *   - `-Infinity` => `-Number.MAX_VALUE`
- *   - -Number.MIN_VALUE => -0 (since `getUlp(5e-324)/2 === 0`)
+ *   - -Number.MIN_VALUE => -0
  *
  *  * `nextdown(x) === -nextup(-x)`
  *

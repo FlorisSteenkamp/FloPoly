@@ -55,4 +55,13 @@ describe('scaleFloatsToBigints', function() {
             3n, 7n
         ]);
     });
+
+    it('should handle subnormal numbers and vastly different magnitudes',
+    function() {
+        // Regression: previously threw for subnormals
+        expect(scaleFloatsToBigints([5e-324, 1e-320])).toEqual([1n, 2024n]);
+        expect(scaleFloatsToBigints([5e-324, 0, 1])).toEqual([1n, 0n, 2n**1074n]);
+        expect(scaleFloatsToBigints([2**-1022 + 5e-324, 2])).toEqual([2n**52n + 1n, 2n**1075n]);
+        expect(scaleFloatsToBigints([1e300, 5e-324])).toEqual([BigInt(1e300) * 2n**1074n, 1n]);
+    });
 });

@@ -1,25 +1,30 @@
 import { ddDivDouble } from 'double-double';
+import { ddRemoveLeadingZeros } from '../../basic/double-double/dd-remove-leading-zeros.js';
 
 
-/**  
- * Returns the result of integrating the given polynomial in double-double 
+/**
+ * Returns the result of integrating the given polynomial in double-double
  * precision.
- * 
- * @param p a polynomial with coefficients given densely as an array of 
- * double-double precision floating point numbers from highest to lowest 
- * power, e.g. `[[0,5],[0,-3],[0,0]]` 
+ *
+ * * leading zero coefficients (e.g. if the zero polynomial is integrated
+ *   with a zero constant of integration) are removed from the result
+ *
+ * @param p a polynomial with coefficients given densely as an array of
+ * double-double precision floating point numbers from highest to lowest
+ * power, e.g. `[[0,5],[0,-3],[0,0]]`
  * represents the polynomial `5x^2 - 3x`
  * @param c the constant of intergration
- * 
+ *
  * @example
  * ```typescript
- * integrate([[0,3], [0,2], [0,1]]); //=> [[0,1], [0,1], [0,1], [0,c]]
+ * ddIntegrate([[0,3], [0,2], [0,1]], [0,5]); //=> [[0,1], [0,1], [0,1], [0,5]]
+ * ddIntegrate([], [0,0]);                    //=> []
  * ```
- * 
+ *
  * @doc
  */
  function ddIntegrate(
-        p: number[][], 
+        p: number[][],
         c: number[]): number[][] {
 
     const d = p.length - 1;
@@ -29,8 +34,8 @@ import { ddDivDouble } from 'double-double';
     }
 
     r[d+1] = c;
-    
-    return r;
+
+    return ddRemoveLeadingZeros(r);
 }
 
 

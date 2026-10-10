@@ -32,6 +32,4 @@ function ddMultiply(p1, p2) {
     return ddRemoveLeadingZeros(r);
 }
 export { ddMultiply };
-// Quokka tests
-// ddMultiply([[0,1],[0,2],[0,3]], [[0,2],[0,5],[0,3],[0,5]]); /*?*/  //=> [2, 9, 19, 26, 19, 15]
 //# sourceMappingURL=dd-multiply.js.map

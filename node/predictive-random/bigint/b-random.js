@@ -66,8 +66,6 @@ function bFlatRootsArr(n, d, a = 0, b = 1, seed = SEED, odds = 0) {
  * @param a defaults to 0; the lower bound of the coefficients
  * @param b defaults to 1; the upper bound of the coefficients
  * @param seed defaults to 123456789; a seed value in [0,4294967296]
- * @param odds defaults to 0; the odds that a root will be doubled (applied
- * recursively so that some roots could be tripled, etc.
  *
  * @doc
  */
@@ -88,8 +86,8 @@ function bFlatCoefficients(d, a = 0, b = 1, seed = SEED) {
  * @param a defaults to 0; the lower bound of the coefficients
  * @param b defaults to 1; the upper bound of the coefficients
  * @param seed defaults to 123456789; a seed value in [0,4294967296]
- * @param odds defaults to 0; the odds that a root will be doubled (applied
- * recursively so that some roots could be tripled, etc.
+ * @param odds ignored (there are no roots to duplicate) - only present for
+ * signature compatibility with [[bFlatRootsArr]]
  *
  * @doc
  */

@@ -12,6 +12,13 @@ import { multiply } from '../basic/double/multiply.js';
  * @param d the degree of the Mignotte polynomial (must be >= 2)
  * @param v the parameter
  * @param k defaults to `2`; the exponent (must be >= 2, if 2 then we get the classic Mignotte polynomial)
+ *
+ * @example
+ * ```typescript
+ * generateMignottePolynomial(3, 2);  //=> [1, -8, 8, -2]
+ * ```
+ *
+ * @doc
  */
 function generateMignottePolynomial(
         d: number,

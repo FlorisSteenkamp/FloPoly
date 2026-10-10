@@ -1,45 +1,44 @@
-import { createDefaultEsmPreset } from 'ts-jest';
 import type { Config } from 'jest';
 
 
+/**
+ * ESM-only packages in `node_modules` that must be transformed to CommonJS
+ * for Jest (everything else in `node_modules` is left untouched).
+ */
 const esModules = [
     'squares-rng',
     'flo-gauss-quadrature',
     'flo-vector2d', 'big-float-ts', 'double-double'
 ].join('|');
 
-/** @type {import('ts-jest').JestConfigWithTsJest} */
 
 const config: Config = {
-    ...createDefaultEsmPreset({}),
     transformIgnorePatterns: [
         `/node_modules/(?!${esModules})`
     ],
-    preset: 'ts-jest',
-    extensionsToTreatAsEsm: ['.ts', '.tsx'],
     testEnvironment: 'node',
+    // Resolves `./foo.js` imports to `./foo.ts` (TypeScript ESM convention).
     resolver: "jest-ts-webcompat-resolver",
     testMatch: [ "**/__tests__/**/*.spec.ts"],
     // collectCoverage: true,
     collectCoverage: false,
     // coverageProvider: 'v8',
     testTimeout: 15000,
-    // transform: { "^.+\\.(t|j)sx?$": "@swc/jest" },
+    // Transpile-only via SWC (no type checking). TypeScript 7 (the native
+    // compiler) no longer exposes the JS compiler API that ts-jest needs.
+    // Type checking of the tests is done separately by `npm run typecheck`.
     transform: {
-        '^.+\\.(ts|tsx|js|jsx)$': [
-            'ts-jest', 
+        '^.+\.(t|j)sx?$': [
+            '@swc/jest',
             {
-                useESM: true,
-                tsconfig: 'tsconfig.spec.json',
-                // Allow ts-jest to transpile plain .js deps (e.g. ESM-only
-                // packages like squares-rng) that are allow-listed above.
-                allowJs: true,
+                jsc: {
+                    parser: { syntax: 'typescript' },
+                    target: 'es2022',
+                },
+                module: { type: 'commonjs' },
             },
         ],
     },
-    // moduleNameMapper: {
-    //     '^(\\.{1,2}/.+)\\.js$': '$1', // Remove .js extension from imports
-    // },
 };
 
 

@@ -8,6 +8,9 @@ describe('bDivideByConst', function() {
         let p1: bigint[] = [];
         let p2 = [1n,2n,3n,4n];
         expect(bDivideByConst(p1,2n)).toEqual([]);
-        expect(bDivideByConst(p2,2n)).toEqual([0n,1n,1n,2n]);
+        // the leading coefficient truncates to zero and is removed
+        expect(bDivideByConst(p2,2n)).toEqual([1n,1n,2n]);
+        expect(bDivideByConst([1n,1n],2n)).toEqual([]);
+        expect(bDivideByConst([4n,2n],2n)).toEqual([2n,1n]);
     });
 });

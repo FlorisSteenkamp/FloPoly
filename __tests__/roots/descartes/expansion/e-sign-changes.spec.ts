@@ -15,4 +15,26 @@ describe('eSignChanges', function() {
         let r2 = eSignChanges(p2);
         expect(eSignChanges(p2)).toEqual(0);
     });
+
+    it('should handle zero coefficients anywhere (including all-zero input)',
+    function() {
+        // Regression: all-zero input previously ran off the end of the array
+        expect(eSignChanges([[0]])).toEqual(0);
+        expect(eSignChanges([[0], [0], [0]])).toEqual(0);
+        expect(eSignChanges([[0], [0], [1], [-1]])).toEqual(1);
+        expect(eSignChanges([[1], [-1], [0], [0]])).toEqual(1);
+        expect(eSignChanges([[0], [-1], [0], [1], [0]])).toEqual(1);
+        expect(eSignChanges([[-1], [1], [-1], [1]])).toEqual(3);
+        expect(eSignChanges([[5]])).toEqual(0);
+    });
+
+    it('should use the sign of the whole expansion, not of its lowest component',
+    function() {
+        // non-compressed expansions with a zero low component
+        expect(eSignChanges([[0, 1], [0, -1]])).toEqual(1);
+        expect(eSignChanges([[0, 1], [0, 0], [0, -1]])).toEqual(1);
+        expect(eSignChanges([[0, 0], [0, 1], [0, 1]])).toEqual(0);
+        // the sign is determined by the most significant (last) component
+        expect(eSignChanges([[1, -(2**60)], [1]])).toEqual(1);
+    });
 });

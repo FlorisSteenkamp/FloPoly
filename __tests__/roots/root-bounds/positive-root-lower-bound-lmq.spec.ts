@@ -15,4 +15,14 @@ describe('positiveRootLowerBound_LMQ', function() {
         // real roots nowhere
         expect(positiveRootLowerBound_LMQ(p3)).toEqual(Infinity);
     });
+
+    it('should handle polynomials with a root at 0',
+    function() {
+        // Regression: reversing the polynomial turned trailing zeros into
+        // leading zeros which were not handled
+        expect(positiveRootLowerBound_LMQ([-1, 5, -3, 0])).toEqual(0.3);  // roots 0, 0.697..., 4.30...
+        expect(positiveRootLowerBound_LMQ([1, -3, 0])).toEqual(1.5);      // roots 0, 3
+        expect(positiveRootLowerBound_LMQ([1, -3, 0, 0])).toEqual(1.5);   // roots 0, 0, 3
+        expect(positiveRootLowerBound_LMQ([1, 0])).toEqual(Infinity);     // no positive roots
+    });
 });

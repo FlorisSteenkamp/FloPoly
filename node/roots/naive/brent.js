@@ -124,7 +124,7 @@ function brent(f, lb, ub) {
         if (fb === 0) {
             return b;
         }
-        if (fb * fc > 0) {
+        if ((fb < 0) === (fc < 0)) { // (same sign - the product could underflow to zero)
             c = a;
             fc = fa;
             e = b - a;

@@ -8,7 +8,10 @@ import { bNumRoots } from "../bigint/b-num-roots.js";
  * 
  * * roots with multiplicity are counted only once, e.g. the polynomial `(x - 1)^3`
  *   has exactly one distinct real root, namely `1`.
- * 
+ *
+ * * returns `0` for a non-zero constant polynomial and `Infinity` for the
+ *   zero polynomial (which has infinitely many roots)
+ *
  * @param p a polynomial with coefficients given densely as an array of double
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]` 
  * represents the polynomial `5x^2 - 3x`

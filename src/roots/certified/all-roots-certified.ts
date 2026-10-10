@@ -270,7 +270,7 @@ function allRootsCertified(
     // ps === [p, dp, ddp, ..., constant]
     //        [0,  1,   2, ..., deg     ]
     const ps = [{ p, pE }];
-    const ps_ = [transposePoly(p)]; // the transposed versions
+    const ps_ = [p_]; // the transposed versions
     for (let i=1; i<=deg; i++) {
         const dP = ddDifferentiateWithError(ps[i-1]);
         ps.push(dP);
@@ -596,21 +596,22 @@ function allRootsCertified(
 
 function joinRoots(rs: RootInterval[]): RootInterval[] {
     const newRs: RootInterval[] = [];
-    const r = rs[0];
+    if (rs.length === 0) { return newRs; }
+
     // make a clone of the first interval
-    let curR: RootInterval = { t: r.t, tS: r.tS, tE: r.tE, multiplicity: r.multiplicity };
-    for (let i=0; i<rs.length-1; i++) {
+    let curR: RootInterval = { ...rs[0] };
+    for (let i=1; i<rs.length; i++) {
         const r = rs[i];
-        const r_ = rs[i+1];
-        if (r.tE < r_.tS) {
+        if (curR.tE < r.tS) {
             // they don't stick together
             newRs.push(curR);
             // make a clone of the next interval
-            curR = { t: r_.t, tS: r_.tS, tE: r_.tE, multiplicity: r_.multiplicity };
+            curR = { ...r };
         } else {
-            // they stick together - expand
-            curR.tE = r_.tE;
-            curR.multiplicity = r.multiplicity + r_.multiplicity;
+            // they stick together - expand (accumulating the multiplicities)
+            curR.tE = max(curR.tE, r.tE);
+            curR.multiplicity += r.multiplicity;
+            curR.t = (curR.tS + curR.tE) / 2;
         }
     }
     newRs.push(curR);

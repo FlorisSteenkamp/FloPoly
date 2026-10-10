@@ -5,6 +5,10 @@ import { scaleFloatssToBigintss } from "../../scale-to-int/scale-floatss-to-bigi
  * Returns the GCD (Greatest Common Divisor) of the two given polynomials using
  * Pseudo Remainder Sequences (PRSs) as `bigint`s.
  *
+ * * the returned polynomial is the gcd up to a (non-zero) constant multiple,
+ *   e.g. `[4n]` or `[3n,3n]` may be returned for a gcd of `1` or `x + 1`
+ *   respectively - use [[bPrimitivePart]] to normalize it
+ *
  * * the modular GCD algorithm, [[gcdModular]], can also be used; it should
  *   be faster for high degree polynomials or when `gcdPrs` encounters pathological
  *   cases. However, `gcdPrs` is faster in general.
@@ -26,6 +30,10 @@ function gcdPrs(a, b) {
     }
     else if (b.length === 0) {
         return scaleFloatsToBigints(a);
+    }
+    // the pseudo remainder sequence requires `deg(a) >= deg(b)`
+    if (a.length < b.length) {
+        [a, b] = [b, a];
     }
     const [A, B] = scaleFloatssToBigintss([a, b]);
     const seq = bPremSequenceSubresultant(A, B, false);

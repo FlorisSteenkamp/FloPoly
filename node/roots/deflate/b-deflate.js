@@ -2,6 +2,8 @@
  * Deflates the given polynomial exactly by removing a factor `(x - r)`,
  * where `r` is a root of the polynomial.
  *
+ * * returns `[]` (the zero polynomial) for a constant or the zero polynomial
+ *
  * @param p a polynomial with coefficients given densely as an array of bigints
  * from highest to lowest power, e.g. `[5n,-3n,0n]`
  * represents the polynomial `5x^2 - 3x`
@@ -18,6 +20,9 @@
  * @doc
  */
 function bDeflate(p, root) {
+    if (p.length <= 1) {
+        return [];
+    }
     const d = p.length - 1;
     const bs = [p[0]];
     for (let i = 1; i < d; i++) {

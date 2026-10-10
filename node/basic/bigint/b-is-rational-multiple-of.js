@@ -29,10 +29,8 @@ function bIsRationalMultipleOf(a, b) {
     const B = lcB / gcd; // this division is exact
     for (let i = 0; i < a_.length; i++) {
         const Ab = A * b_[i];
-        if (Ab % B !== 0n) {
-            return false;
-        }
-        if (Ab / B !== a_[i]) {
+        const q = Ab / B;
+        if (q * B !== Ab || q !== a_[i]) {
             return false;
         }
     }

@@ -2,8 +2,12 @@ import { bPremSequenceSubresultant } from "../../euclidean-division-related/bigi
 
 
 /**
- * Returns the GCD (Greatest Common Divisor) of the two given polynomials using 
+ * Returns the GCD (Greatest Common Divisor) of the two given polynomials using
  * Pseudo Remainder Sequences (PRSs).
+ *
+ * * the returned polynomial is the gcd up to a (non-zero) constant multiple,
+ *   e.g. `[4n]` or `[3n,3n]` may be returned for a gcd of `1` or `x + 1`
+ *   respectively - use [[bPrimitivePart]] to normalize it
  * 
  * * the modular GCD algorithm, [[bGcdModular]], can also be used; it should
  *   be faster for high degree polynomials or when `bGcdPrs` encounters pathological
@@ -22,7 +26,12 @@ function bGcdPrs(a: bigint[], b: bigint[]): bigint[] {
     } else if (b.length === 0) {
         return a;
     }
-    
+
+    // the pseudo remainder sequence requires `deg(a) >= deg(b)`
+    if (a.length < b.length) {
+        [a,b] = [b,a];
+    }
+
     const seq = bPremSequenceSubresultant(a,b,false);
 
     return seq[seq.length-1];

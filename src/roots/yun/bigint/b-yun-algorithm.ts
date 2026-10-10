@@ -36,7 +36,13 @@ function bGcdPrsSafe(a: bigint[], b: bigint[]): bigint[] {
 
 
 /**
+ * Returns the square-free factorization of the given polynomial.
+ *
  * * see e.g. [Yun's algorithm](https://en.wikipedia.org/wiki/Square-free_polynomial)
+ *
+ * * **note:** the implementation uses the (simpler) repeated-gcd method
+ *   (Musser's algorithm) which gives the same result as Yun's algorithm in
+ *   characteristic 0
  * 
  * @param a polynomial with coefficients given densely as an array of bigints
  * from highest to lowest power, e.g. `[5n,-3n,0n]` represents the polynomial `5x^2 - 3x`
@@ -53,10 +59,7 @@ function bYunsAlgorithm(
     // Yun's algorithm is defined on primitive polynomials over characteristic 0.
     p = bPrimitivePart(p);
 
-    const pDiff = bDifferentiate(p);
-    if (pDiff.length === 0) {
-        return [];
-    }
+    const pDiff = bDifferentiate(p);  // (non-empty since `p.length >= 2`)
 
     const factors: { factor: bigint[]; multiplicity: number; }[] = [];
 

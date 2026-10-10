@@ -10,15 +10,15 @@ describe('random.bFlatCoefficients', function() {
         let res: { p: bigint[]; seed: number; };
         
         res = bFlatCoefficients(3,-5,5); 
-        expect(bEqual(res.p, [117384545n, -136562080n, 629191520n])).toEqual(true);
-        expect(res.seed === 939629312).toEqual(true);
+        expect(bEqual(res.p, [469538185n, -1171633040n, 3327672575n])).toEqual(true);
+        expect(res.seed === 3658815999).toEqual(true);
         
         res = bFlatCoefficients(3,-5,5); 
-        expect(bEqual(res.p, [117384545n, -136562080n, 629191520n])).toEqual(true);
-        expect(res.seed === 939629312).toEqual(true);
+        expect(bEqual(res.p, [469538185n, -1171633040n, 3327672575n])).toEqual(true);
+        expect(res.seed === 3658815999).toEqual(true);
         
         res = bFlatCoefficients(3); // Uses default range 
-        expect(bEqual(res.p, [291912365n, 241123040n, 394273760n])).toEqual(true);
-        expect(res.seed === 939629312).toEqual(true);
+        expect(bEqual(res.p, [1167649461n, 839415216n, 1739276339n])).toEqual(true);
+        expect(res.seed === 3658815999).toEqual(true);
     });
 });

@@ -99,7 +99,9 @@ function mobiusAndNumSignChanges(p, p_, pDd, pDd_, getPExact) {
         if (s !== _s) {
             numSignChangesMax++;
         }
-        if (numUncertifyable === 1 && numSignChangesMax === 1) {
+        // (every uncertifiable coefficient is counted as a sign change so
+        // `numSignChangesMax === 1` implies `numUncertifyable <= 1`)
+        if (numSignChangesMax === 1) {
             return 1;
         }
         if (numUncertifyable > 0) {
@@ -131,7 +133,9 @@ function ddMobiusAndNumSignChanges(pDd, pDd_, a, b, A, B, failCount, getPExact) 
     // The sign of `A` and `B` are both !== 0 and is certified since it is an
     // endpoint of the interval.
     let _s = sign(A);
-    for (let i = 0; i < q.length - 1; i++) {
+    // (the first coefficient, `q[0]`, equals `p(a)`, i.e. `A`, whose sign is
+    // already certified - as for the double precision variant)
+    for (let i = 1; i < q.length - 1; i++) {
         // No error in the sign of the last coefficient (important for parity of sign changes)
         let s = sign(q[i][1]);
         const err = q_[i] * γγ3;
@@ -157,7 +161,9 @@ function ddMobiusAndNumSignChanges(pDd, pDd_, a, b, A, B, failCount, getPExact) 
     if (s !== _s) {
         numSignChanges++;
     }
-    if (numUncertifyable === 1 && numSignChanges === 1) {
+    // (every uncertifiable coefficient is counted as a sign change so
+    // `numSignChanges === 1` implies `numUncertifyable <= 1`)
+    if (numSignChanges === 1) {
         return 1; // **guaranteed** to have exactly one root in the interval
     }
     if (numUncertifyable === 0) {

@@ -41,16 +41,17 @@ function bPdivModP(
     const d = bDegree(b);
     const c = b[0];
 
+    // multiplicative inverse of leading coefficient of b
+    const lcBInv = bInverseModP(c, p);
+
     let r = modPoly(a, p);
     while (true) {
         const deg = bDegree(r) - d;
-        if (deg < 0) { 
-            return { q, r }; 
+        if (deg < 0) {
+            return { q, r };
         }
 
-        // multiplicative inverse of leading coefficient of b
-        const lcBInv = bInverseModP(c, p); 
-        const s = [bMod(r[0] * lcBInv, p), ...Array(deg).fill(0n)];
+        const s= [bMod(r[0] * lcBInv, p), ...Array(deg).fill(0n)];
         q = modPoly(bAdd(q, s), p);
         r = modPoly(bSubtract(r, bMultiply(s, b)), p);
     }

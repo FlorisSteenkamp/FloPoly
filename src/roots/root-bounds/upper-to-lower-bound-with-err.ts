@@ -11,7 +11,7 @@ function upperToLowerBound_WithError(
         positiveUpperBoundFunction: (p: number[], p_: number[]) => number) {
 
     return (p: number[], p_: number[]): number => {
-        return 1 / positiveUpperBoundFunction(p.toReversed(), p_);
+        return 1 / positiveUpperBoundFunction(p.toReversed(), p_.toReversed());
     }
 }
 

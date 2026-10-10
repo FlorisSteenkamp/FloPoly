@@ -1,6 +1,5 @@
 import { eRemoveLeadingZeros } from "./e-remove-leading-zeros.js";
-import { expansionProduct } from "big-float-ts";
-import { fastExpansionSum } from "big-float-ts";
+import { expansionProduct, eSum } from "big-float-ts";
 /**
  * Returns the exact result (bar underflow / overflow) of multiplying two
  * polynomials (with coefficients given as Shewchuk floating point expansions).
@@ -29,11 +28,20 @@ function eMultiply(a, b) {
         return [];
     }
     const d = da + db;
-    const result = new Array(d + 1).fill([0]);
+    // collect the products contributing to each coefficient and sum them 
+    // once (rather than accumulating with ever growing expansions)
+    const terms = new Array(d + 1);
+    for (let k = 0; k <= d; k++) {
+        terms[k] = [];
+    }
     for (let i = 0; i < da + 1; i++) {
         for (let j = 0; j < db + 1; j++) {
-            result[d - (i + j)] = fastExpansionSum(result[d - (i + j)], expansionProduct(a[da - i], b[db - j]));
+            terms[d - (i + j)].push(expansionProduct(a[da - i], b[db - j]));
         }
+    }
+    const result = new Array(d + 1);
+    for (let k = 0; k <= d; k++) {
+        result[k] = eSum(terms[k]);
     }
     return eRemoveLeadingZeros(result);
 }

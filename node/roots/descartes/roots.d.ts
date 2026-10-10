@@ -66,9 +66,10 @@ import type { RootInterval } from "../root-interval.js";
  * preventing certification of the root intervals; if `undefined` then the
  * input polynomial will be assumed exact
  *
- * @param tryReduceInterval defaults to `false`; if `true` (or if `lb` or `ub`
- * is `Infinity` or `undefined`) then the interval `[lb,ub]` will be reduced to
- * a smaller interval containing all roots (if possible) before starting the algorithm.
+ * @param tryReduceInterval defaults to `false`; if `true` (or if `|lb|` or
+ * `|ub|` is larger than `2^20`, e.g. when they are infinite) then the interval
+ * `[lb,ub]` will be reduced to a smaller interval containing all roots (if
+ * possible) before starting the algorithm.
  * Since `reduceInterval` is a relatively long running algorithm it is generally
  * faster to set this to `false` and directly specify the interval of interest.
  *

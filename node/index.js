@@ -23,7 +23,7 @@ export { equal } from './basic/double/equal.js';
 export { invert } from './basic/double/invert.js';
 export { isRationalMultipleOf } from './basic/double/is-rational-multiple-of.js';
 export { multiplyByConst } from './basic/double/multiply-by-const.js';
-export { multiply } from './basic/double/multiply.js';
+export { multiply, multiplyKaratsuba } from './basic/double/multiply.js';
 export { negate } from './basic/double/negate.js';
 export { removeLeadingZeros } from './basic/double/remove-leading-zeros.js';
 export { subtract } from './basic/double/subtract.js';
@@ -171,11 +171,11 @@ export { bGcdInt, bGcdInts } from './gcd/bigint/b-integer-gcd.js';
 export { bXgcd } from './gcd/bigint/b-xgcd.js';
 export { chineseRemainderAlgorithm } from './gcd/bigint/chinese-remainder-algorithm.js';
 export { bLandauMignotteBound } from './gcd/bigint/landau-mignotte-bound.js';
+export { bLandauMignotteBoundBigint } from './gcd/bigint/landau-mignotte-bound-bigint.js';
 // gcd double
 export { gcdPrs } from './gcd/double/gcd-prs.js';
 export { gcdInt, gcdInts } from './gcd/double/integer-gcd.js';
 // gcd expansion
-//export { eGcdPrs } from './gcd/expansion/e-gcd-prs.js';
 export { eGcdInt, eGcdInts } from './gcd/expansion/e-integer-gcd.js';
 // norm bigint
 export { bP1Norm } from './norm/bigint/b-p-1-norm.js';
@@ -254,6 +254,18 @@ export { eNumRootsInRange } from './roots/sturm/expansion/e-num-roots-in-range.j
 export { eSignChanges } from './roots/sturm/expansion/e-sign-changes.js';
 // roots yun algorithm
 export { bYunsAlgorithm } from './roots/yun/bigint/b-yun-algorithm.js';
+// generate
+export { generateMignottePolynomial } from './generate/generate-mignotte-poly.js';
+export { ddGenerateMignottePolynomial } from './generate/dd-generate-mignotte-poly.js';
+export { eGenerateMignottePolynomial } from './generate/e-generate-mignotte-poly.js';
+// util double
+export { binomial } from './util/double/binomial.js';
+export { factorial } from './util/double/factorial.js';
+// util bigint
+export { bBinomial } from './util/bigint/b-binomial.js';
+export { bFactorial } from './util/bigint/b-factorial.js';
+export { bSum } from './util/bigint/b-sum.js';
+export { bSqrtCeil } from './util/bigint/b-sqrt-ceil.js';
 // scale to int
 export { scaleFloatToInt } from './scale-to-int/scale-float-to-int.js';
 export { scaleFloatsToInts } from './scale-to-int/scale-floats-to-ints.js';

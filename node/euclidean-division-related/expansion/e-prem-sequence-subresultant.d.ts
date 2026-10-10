@@ -3,6 +3,8 @@
  *
  * * **precondition:** g !== [], i.e. unequal to the zero polynomial.
  *
+ * * **precondition:** `deg(f) >= deg(g)`
+ *
  * * **precondition:** the coefficients must be integer Shewchuk floating point
  * expansions; if they are not they can easily be scaled from
  * floating point numbers to Shewchuk expansions by calling [[scaleFloatsToInts]]

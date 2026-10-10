@@ -10,13 +10,16 @@ const len = factorialCache.length;
 
 /**
  * Returns the factorial of the given number.
- * 
- * @param n 
+ *
+ * * the result is exact for `n <= 18` (`18! < 2^53`); for `18 < n <= 23` the
+ *   result is rounded to double precision and for `n > 23` an error is thrown
+ *
+ * @param n
  */
 function factorial(n: number): number {
     if (n < len) { return factorialCache[n]; }
     if (n > 23) {
-        throw new Error(`factorial(${n}) is too large to represent as a double (the limit is 23!).`);
+        throw new Error(`factorial(${n}) is not supported (the limit is 23!; results are only exact up to 18!).`);
     }
     return n * factorial(n - 1);
 }

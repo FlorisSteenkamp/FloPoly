@@ -3,6 +3,8 @@
  *
  * * **precondition:** `g !== []`, i.e. unequal to the zero polynomial.
  *
+ * * **precondition:** `deg(f) >= deg(g)`
+ *
  * * see [*The subresultant polynomial remainder sequence algorithm* by Ruiyuan (Ronnie) Chen, p.10](https://pdfs.semanticscholar.org/2e6b/95ba84e2160748ba8fc310cdc408fc9bbade.pdf)
  *
  * @param f the polynomial a in the formula a = bq + r; the polynomial is given

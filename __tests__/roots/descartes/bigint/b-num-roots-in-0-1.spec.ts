@@ -6,7 +6,7 @@ import { scaleFloatsToBigints } from '../../../../src/scale-to-int/scale-floats-
 
 
 describe('bNumRootsIn01', function() {
-    it('should correctly calculate the number of roots within the open interval (0,1) for some polynomials', 
+    it('should correctly calculate the number of roots within the closed interval [0,1] for some polynomials',
     function() {
         {
             let p = [1, 1, -64, 236, -240].map(BigInt);
@@ -55,5 +55,29 @@ describe('bNumRootsIn01', function() {
             expect(
                 bNumRootsIn01(p7)).toEqual(8);
         }
+    });
+
+    it('should count multiple roots at the endpoints once',
+    function() {
+        // Regression: Sturm's theorem requires the endpoints not to be
+        // multiple roots; the multiple root at 1 was previously counted twice
+        expect(bNumRootsIn01([1n, -4n, 5n, -2n])).toEqual(1);  // (x-1)^2 (x-2)
+        expect(bNumRootsIn01([1n, -2n, 1n])).toEqual(1);       // (x-1)^2
+        expect(bNumRootsIn01([1n, 0n, 0n])).toEqual(1);        // x^2
+        expect(bNumRootsIn01([1n, -1n, 0n, 0n])).toEqual(2);   // x^2 (x-1)
+        expect(bNumRootsIn01([1n, -2n, 1n, 0n])).toEqual(2);   // x (x-1)^2
+        expect(bNumRootsIn01([2n, -1n, 0n])).toEqual(2);       // x (2x-1)
+        expect(bNumRootsIn01([1n, -1n])).toEqual(1);           // x - 1
+        expect(bNumRootsIn01([1n, -2n])).toEqual(0);           // x - 2
+    });
+
+    it('should handle constant, zero and leading-zero polynomials',
+    function() {
+        expect(bNumRootsIn01([])).toEqual(Infinity);
+        expect(bNumRootsIn01([0n])).toEqual(Infinity);
+        expect(bNumRootsIn01([0n, 0n])).toEqual(Infinity);
+        expect(bNumRootsIn01([5n])).toEqual(0);
+        expect(bNumRootsIn01([0n, 2n, -1n])).toEqual(1);   // 2x - 1
+        expect(bNumRootsIn01([0n, 0n, 1n, -2n])).toEqual(0);  // x - 2
     });
 });

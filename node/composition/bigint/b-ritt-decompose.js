@@ -5,41 +5,52 @@ import { bMultiplyByConst } from '../../basic/bigint/b-multiply-by-const.js';
 import { bNegate } from '../../basic/bigint/b-negate.js';
 import { bRemoveLeadingZeros } from '../../basic/bigint/b-remove-leading-zeros.js';
 import { bSubtract } from '../../basic/bigint/b-subtract.js';
+import { bGcdInt } from '../../gcd/bigint/b-integer-gcd.js';
 import { bCompose } from './b-compose.js';
-const DEFAULT_OPTIONS = {
-    completeInnerLeadingCoeffSearch: true
-};
 /**
  * Returns the exact decomposition of a polynomial over bigint coefficients.
  *
  * Returns composition factors `[f1, f2, ..., fk]` such that
  * `p = f1(f2(...fk(x)...))` and each factor is indecomposable by this method.
  *
- * This implementation searches proper degree divisors and verifies each
- * candidate by exact recomposition. It is substantially more general than the
- * power-substitution detector.
+ * * for each proper divisor `s` of the degree the (unique up to linear
+ *   equivalence - see Kozen & Landau) monic inner candidate of degree `s` with
+ *   zero constant term is determined over the rationals from the leading
+ *   coefficients of `p`; the only integral inner candidate that needs to be
+ *   checked is then this candidate scaled by the lcm of its coefficient
+ *   denominators (any other integral scaling that admits an integral outer
+ *   polynomial implies that this minimal one does too); the outer polynomial
+ *   is found by repeated exact division and the decomposition is verified by
+ *   recomposition
  *
  * @param p polynomial coefficients from highest to lowest power
- * @param options decomposition options
+ * @param options decomposition options (currently unused)
+ *
+ * @example
+ * ```typescript
+ * bRittDecompose([1n, 0n, 2n, 0n, 1n]);  //=> [[1n, 2n, 1n], [1n, 0n, 0n]]  (i.e. (u^2 + 2u + 1)∘(x^2))
+ * ```
+ *
+ * @doc
  */
-function bRittDecompose(p, options = {}) {
-    const opts = getOptions(options);
-    const ctx = newMemoContext();
-    return bRittDecomposeInternal(p, opts, ctx);
+function bRittDecompose(p, 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+options = {}) {
+    return bRittDecomposeInternal(p);
 }
-function bRittDecomposeInternal(p, options, ctx) {
+function bRittDecomposeInternal(p) {
     const q = bRemoveLeadingZeros(p);
     if (q.length <= 2) {
         return [q];
     }
-    const step = findOneStep(q, options, ctx);
+    const step = findOneStep(q);
     if (!step) {
         return [q];
     }
     const canonical = canonicalizeStep(step.g, step.h);
     return [
-        ...bRittDecomposeInternal(canonical.g, options, ctx),
-        ...bRittDecomposeInternal(canonical.h, options, ctx)
+        ...bRittDecomposeInternal(canonical.g),
+        ...bRittDecomposeInternal(canonical.h)
     ];
 }
 /** Recompose factors returned by `bRittDecompose`. */
@@ -53,193 +64,129 @@ function bRittRecompose(factors) {
     }
     return r;
 }
-function findOneStep(p, options, ctx) {
+function findOneStep(p) {
     const n = bDegree(p);
     if (n <= 1) {
         return undefined;
     }
+    // Without loss of generality the inner polynomial has a zero constant
+    // term (`g(h(x)) = g(u + c)(h(x) - c)`), so the constant term of `p` only
+    // affects the constant term of `g`.
     const c0 = p[p.length - 1];
     const p0 = c0 === 0n ? p : subConst(p, c0);
-    const lc = p0[0];
-    const divisors = properDivisors(n);
-    for (const s of divisors) {
+    for (const s of properDivisors(n)) {
         const r = n / s;
-        const innerLeadingCoeffs = candidateInnerLeadingCoeffs(lc, r, options, ctx);
-        for (const lcInner of innerLeadingCoeffs) {
-            const lcInnerPow = powBigInt(lcInner, r, ctx);
-            if (lcInnerPow === 0n || lc % lcInnerPow !== 0n) {
-                continue;
-            }
-            const lcOuter = lc / lcInnerPow;
-            const h = buildInnerCandidate(p0, s, r, lcOuter, lcInner, ctx);
-            if (!h) {
-                continue;
-            }
-            const g0 = solveOuterFromInner(p0, h, r);
-            if (!g0) {
-                continue;
-            }
-            const g = g0.slice();
-            g[g.length - 1] += c0;
-            if (!bEqual(bCompose(g, h), p)) {
-                continue;
-            }
-            if (bDegree(g) >= 1 && bDegree(h) >= 1 && bDegree(g) < n && bDegree(h) < n) {
-                return { g, h };
-            }
+        const h = buildInnerCandidate(p0, s, r);
+        const g0 = solveOuterFromInner(p0, h, r);
+        if (!g0) {
+            continue;
         }
+        const g = g0.slice();
+        g[g.length - 1] += c0;
+        if (!bEqual(bCompose(g, h), p)) {
+            continue;
+        }
+        // (`deg(h) === s` and `deg(g) === r` are both proper divisors of
+        // `n`, i.e. in `[2, n/2]`, so no further degree checks are needed)
+        return { g, h };
     }
     return undefined;
 }
-function buildInnerCandidate(p, s, r, lcOuter, lcInner, ctx) {
-    // h(x) = x^s + ... + 0
-    const h = new Array(s + 1).fill(0n);
-    h[0] = lcInner;
+function frac(num, den = 1n) {
+    if (den < 0n) {
+        num = -num;
+        den = -den;
+    }
+    const g = bGcdInt(num, den);
+    return g > 1n ? { num: num / g, den: den / g } : { num, den };
+}
+const FRAC_ZERO = frac(0n);
+const FRAC_ONE = frac(1n);
+function fracAdd(a, b) { return frac(a.num * b.den + b.num * a.den, a.den * b.den); }
+function fracSub(a, b) { return frac(a.num * b.den - b.num * a.den, a.den * b.den); }
+function fracMul(a, b) { return frac(a.num * b.num, a.den * b.den); }
+function fracDiv(a, b) { return frac(a.num * b.den, a.den * b.num); }
+function lcm(a, b) {
+    return (a / bGcdInt(a, b)) * b;
+}
+/**
+ * Returns the integral inner candidate `h` of degree `s` (with zero constant
+ * term and positive leading coefficient) for a decomposition `p = g(h)` with
+ * `deg(g) === r`: the unique monic rational candidate (determined from the
+ * `s` leading coefficients of `p`) scaled by the lcm of its coefficient
+ * denominators.
+ *
+ * * a decomposition with inner degree `s` exists iff an integral outer
+ *   polynomial exists for this `h` (see `solveOuterFromInner`)
+ */
+function buildInnerCandidate(p, s, r) {
+    const lc = p[0];
+    // `a[k]` is the coefficient of `x^(s-k)` of the monic inner candidate,
+    // i.e. with `H(y) = Σ a[k] y^k` we have `h(x) = x^s H(1/x)` and the
+    // coefficient of `x^(sr-k)` of `h(x)^r` equals the coefficient of `y^k`
+    // of `H(y)^r`, which must equal `p[k] / lc` (for `k < s`).
+    const a = [FRAC_ONE];
     for (let k = 1; k <= s - 1; k++) {
-        const deg = s * r - k;
-        // Coefficient with current unknown fixed to zero; unknown contributes
-        // linearly with factor (lcOuter * r * lcInner^(r-1)).
-        const known = coeffAtHighOffsetPower(h, r, k);
-        const target = coeffAtDegree(p, deg);
-        const num = target - lcOuter * known;
-        const den = lcOuter * BigInt(r) * powBigInt(lcInner, r - 1, ctx);
-        if (den === 0n || num % den !== 0n) {
-            return undefined;
-        }
-        const b = num / den;
-        // degree(s-k) coefficient is at index k
-        h[k] = b;
+        // the coefficient of `y^k` in `H(y)^r` is `r·a[k] + known` where
+        // `known` only depends on `a[0..k-1]`
+        const known = fracPowSeriesCoeff(a, r, k);
+        const target = frac(coeffAtDegree(p, s * r - k), lc);
+        a.push(fracDiv(fracSub(target, known), frac(BigInt(r))));
     }
-    return bRemoveLeadingZeros(h);
+    // scale to integers by the lcm of the denominators
+    let D = 1n;
+    for (const ak of a) {
+        D = lcm(D, ak.den);
+    }
+    const h = new Array(s + 1);
+    for (let k = 0; k < s; k++) {
+        h[k] = a[k].num * (D / a[k].den);
+    }
+    h[s] = 0n;
+    return h;
 }
-function candidateInnerLeadingCoeffs(lc, r, options, ctx) {
-    const absLc = lc < 0n ? -lc : lc;
-    if (absLc === 0n) {
-        return [1n];
-    }
-    if (!options.completeInnerLeadingCoeffSearch) {
-        // Fast heuristic set.
-        return [1n, -1n, 2n, -2n];
-    }
-    const divisors = allPositiveDivisors(absLc, ctx);
-    const candidates = [];
-    for (const d of divisors) {
-        const p = powBigInt(d, r, ctx);
-        if (p !== 0n && lc % p === 0n) {
-            candidates.push(d);
-            candidates.push(-d);
+/**
+ * Returns the coefficient of `y^k` in `A(y)^n` where `A(y) = Σ a[i] y^i`
+ * (only `a[0..k-1]` are used, i.e. the coefficient `a[k]` is taken as zero).
+ */
+function fracPowSeriesCoeff(a, n, k) {
+    let base = a.slice(0, k);
+    let acc = [FRAC_ONE];
+    let e = n;
+    while (e > 0) {
+        if (e & 1) {
+            acc = fracMulSeriesTrunc(acc, base, k);
         }
-    }
-    // Prefer small absolute values first.
-    candidates.sort((a, b) => {
-        const aa = a < 0n ? -a : a;
-        const bb = b < 0n ? -b : b;
-        if (aa < bb) {
-            return -1;
-        }
-        if (aa > bb) {
-            return 1;
-        }
-        if (a < b) {
-            return -1;
-        }
-        if (a > b) {
-            return 1;
-        }
-        return 0;
-    });
-    return uniqueBigints(candidates);
-}
-function allPositiveDivisors(n, ctx) {
-    if (n <= 0n) {
-        return [1n];
-    }
-    const key = n.toString();
-    const cached = ctx.divisorsCache.get(key);
-    if (cached !== undefined) {
-        return cached;
-    }
-    const fs = factorizePositiveBigint(n);
-    const out = [];
-    genDivisors(fs, 0, 1n, out);
-    out.sort((a, b) => {
-        if (a < b) {
-            return -1;
-        }
-        if (a > b) {
-            return 1;
-        }
-        return 0;
-    });
-    ctx.divisorsCache.set(key, out);
-    return out;
-}
-function factorizePositiveBigint(n) {
-    let m = n;
-    const factors = [];
-    let e2 = 0;
-    while (m % 2n === 0n) {
-        e2++;
-        m /= 2n;
-    }
-    if (e2 > 0) {
-        factors.push([2n, e2]);
-    }
-    let p = 3n;
-    while (p * p <= m) {
-        let e = 0;
-        while (m % p === 0n) {
-            e++;
-            m /= p;
-        }
+        e >>= 1;
         if (e > 0) {
-            factors.push([p, e]);
+            base = fracMulSeriesTrunc(base, base, k);
         }
-        p += 2n;
     }
-    if (m > 1n) {
-        factors.push([m, 1]);
-    }
-    return factors;
+    return acc[k] ?? FRAC_ZERO;
 }
-function genDivisors(factors, idx, acc, out) {
-    if (idx >= factors.length) {
-        out.push(acc);
-        return;
-    }
-    const [p, e] = factors[idx];
-    let pow = 1n;
-    for (let i = 0; i <= e; i++) {
-        genDivisors(factors, idx + 1, acc * pow, out);
-        pow *= p;
-    }
-}
-function uniqueBigints(ns) {
-    const seen = new Set();
-    const out = [];
-    for (const n of ns) {
-        const k = n.toString();
-        if (seen.has(k)) {
+/** Multiplies two power series truncated to degree `maxDeg` */
+function fracMulSeriesTrunc(a, b, maxDeg) {
+    const out = new Array(maxDeg + 1).fill(FRAC_ZERO);
+    const la = Math.min(a.length - 1, maxDeg);
+    const lb = Math.min(b.length - 1, maxDeg);
+    for (let i = 0; i <= la; i++) {
+        if (a[i].num === 0n) {
             continue;
         }
-        seen.add(k);
-        out.push(n);
+        const jMax = Math.min(lb, maxDeg - i);
+        for (let j = 0; j <= jMax; j++) {
+            if (b[j].num === 0n) {
+                continue;
+            }
+            out[i + j] = fracAdd(out[i + j], fracMul(a[i], b[j]));
+        }
     }
     return out;
 }
-function powBigInt(a, n, ctx) {
-    if (n < 0) {
-        throw new Error('negative exponent not supported');
-    }
-    const key = `${a.toString()}^${n}`;
-    const cached = ctx.powCache.get(key);
-    if (cached !== undefined) {
-        return cached;
-    }
-    const v = a ** BigInt(n);
-    ctx.powCache.set(key, v);
-    return v;
-}
+/**
+ * Returns the outer polynomial `g` (if it exists with integer coefficients)
+ * such that `p = g(h)` by repeated exact division by `h`, else `undefined`.
+ */
 function solveOuterFromInner(p, h, r) {
     const hPows = new Array(r + 1);
     hPows[0] = [1n];
@@ -268,54 +215,6 @@ function solveOuterFromInner(p, h, r) {
     }
     return bRemoveLeadingZeros(g);
 }
-function coeffAtHighOffsetPower(h, r, offset) {
-    if (offset < 0) {
-        return 0n;
-    }
-    // If h(x) = sum a_i x^(s-i), then h(x)^r = x^(sr) * H(1/x)^r where
-    // H(y)=sum a_i y^i. Coefficient at x^(sr-offset) is coefficient of
-    // y^offset in H(y)^r.
-    const a = new Array(offset + 1).fill(0n);
-    const m = Math.min(offset, h.length - 1);
-    for (let i = 0; i <= m; i++) {
-        a[i] = h[i];
-    }
-    const p = powSeriesTruncLow(a, r, offset);
-    return p[offset] ?? 0n;
-}
-function powSeriesTruncLow(a, n, maxDeg) {
-    let e = n;
-    let base = a.slice(0, maxDeg + 1);
-    let acc = [1n];
-    while (e > 0) {
-        if (e & 1) {
-            acc = mulSeriesTruncLow(acc, base, maxDeg);
-        }
-        e >>= 1;
-        if (e > 0) {
-            base = mulSeriesTruncLow(base, base, maxDeg);
-        }
-    }
-    return acc;
-}
-function mulSeriesTruncLow(a, b, maxDeg) {
-    const out = new Array(maxDeg + 1).fill(0n);
-    const la = Math.min(a.length - 1, maxDeg);
-    const lb = Math.min(b.length - 1, maxDeg);
-    for (let i = 0; i <= la; i++) {
-        if (a[i] === 0n) {
-            continue;
-        }
-        const jMax = Math.min(lb, maxDeg - i);
-        for (let j = 0; j <= jMax; j++) {
-            if (b[j] === 0n) {
-                continue;
-            }
-            out[i + j] += a[i] * b[j];
-        }
-    }
-    return out;
-}
 function coeffAtDegree(p, deg) {
     const d = bDegree(p);
     const idx = d - deg;
@@ -332,6 +231,7 @@ function subConst(p, c) {
     r[r.length - 1] -= c;
     return bRemoveLeadingZeros(r);
 }
+/** Returns the divisors of `n` in `[2, n/2]` in ascending order */
 function properDivisors(n) {
     const ds = [];
     for (let d = 2; d * d <= n; d++) {
@@ -363,18 +263,6 @@ function canonicalizeStep(g, h) {
         g_ = bCompose(g_, [-1n, 0n]);
     }
     return { g: bRemoveLeadingZeros(g_), h: bRemoveLeadingZeros(h_) };
-}
-function getOptions(options) {
-    return {
-        ...DEFAULT_OPTIONS,
-        ...options
-    };
-}
-function newMemoContext() {
-    return {
-        powCache: new Map(),
-        divisorsCache: new Map()
-    };
 }
 export { bRittDecompose, bRittRecompose };
 //# sourceMappingURL=b-ritt-decompose.js.map

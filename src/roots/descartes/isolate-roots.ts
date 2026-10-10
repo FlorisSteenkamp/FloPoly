@@ -9,7 +9,7 @@ import { transposePoly } from '../transpose-poly.js';
 import { ddHornerWithInpError } from '../../evaluate/double-double/dd-horner-with-inp-error.js';
 import { eHorner } from '../../evaluate/expansion/e-horner.js';
 
-const { abs, min, max, log2, ceil } = Math;
+const { abs, max, log2, ceil } = Math;
 
 
 const γγ3_γ1 = γγ3/γ1;  // ~ 3*u
@@ -70,6 +70,12 @@ function isolateRoots(
         }
         lb -= W/2;
         W *= 2;
+        if (!Number.isFinite(lb)) {
+            // can only happen if the sign of the leading coefficient cannot
+            // be certified in double precision (fail explicitly rather than
+            // looping forever)
+            throw new Error('Unable to certify the sign of the polynomial at any finite lower bound.');
+        }
     }
     let B: number;
     let eb: number;
@@ -80,6 +86,9 @@ function isolateRoots(
         }
         ub += W/2;
         W *= 2;
+        if (!Number.isFinite(ub)) {
+            throw new Error('Unable to certify the sign of the polynomial at any finite upper bound.');
+        }
     }
     //------------------------------------------------
 
@@ -256,6 +265,7 @@ function eAdmissablePoint(
     while (true) {
         d *= 2;
         for (let j=1; j<d; j += 2) {
+            c++;
             const t = a + (b - a)*(d + 2*j)/(4*d);
             const T = eCompress(eHorner(pE, t));  // no error
             const $T = T[T.length-1];

@@ -21,4 +21,10 @@ describe('scaleFloatssToIntss', function() {
             [0, 1], [0]
         ]);
     });
+
+    it('should handle subnormal numbers and large scale powers',
+    function() {
+        expect(scaleFloatssToIntss([[5e-324], [1e-320, 0]])).toEqual([[1], [2024, 0]]);
+        expect(scaleFloatssToIntss([[0], [5e-324, 2**-1022]])).toEqual([[0], [1, 2**52]]);
+    });
 });

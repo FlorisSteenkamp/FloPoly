@@ -21,11 +21,3 @@ function bFactorial(n: number): bigint {
 
 export { bFactorial }
 
-
-// Quokka tests
-// bFactorial(0);//?
-// bFactorial(17);//?
-// bFactorial(18);//?
-// bFactorial(19);//?
-// bFactorial(20);//?
-// bFactorial(50);//?

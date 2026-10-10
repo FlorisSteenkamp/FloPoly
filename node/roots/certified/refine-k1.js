@@ -2,8 +2,7 @@ import { eToDd } from "big-float-ts";
 import { twoSum } from "big-float-ts";
 import { eChangeVariablesLinear } from "../../change-variables/expansion/e-change-variables-linear.js";
 import { roots } from '../descartes/roots.js';
-import { eps } from '../../error-analysis/gamma.js';
-const { abs, min, max, log2, ceil } = Math;
+const { abs, log2, ceil } = Math;
 /**
  * Returns once compensated root(s) (bar underflow / overflow) given a root
  * interval previously calculated using [[allRootsCertified]].
@@ -38,9 +37,13 @@ function refineK1(ri, p) {
     const pExactK1 = eChangeVariablesLinear(p, δ, tS);
     // reduce the polynomial to double-double precision for faster root finding
     const pDdK1 = pExactK1.map(eToDd);
-    // update the double-double precision error bound - it is simply the error 
-    // in rounding the exact coefficients to double-double precision
-    const errBoundK1 = pDdK1.map(c => c[1] * (eps ** 2));
+    // Update the double-double precision error bound - it is simply the error
+    // in rounding the exact coefficients to double-double precision. `eToDd`
+    // keeps only the two most significant components of the (compressed,
+    // non-overlapping) expansion so the dropped part is `< 4u²|hi|` where
+    // `hi` is the high double. `roots` scales the given (positive!) error
+    // bound by `γγ3 ≈ 3u²` so the conservative unscaled bound `2|hi|` is used.
+    const errBoundK1 = pDdK1.map(c => 2 * abs(c[1]));
     const getPExactK1 = () => pExactK1;
     // const risLo = allRootsCertified(pDdK1, 0, 1, errBoundK1, getPExactK1)!;
     const risLo = roots(pDdK1, 0, 1, errBoundK1, getPExactK1);

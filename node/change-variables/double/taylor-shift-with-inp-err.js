@@ -39,7 +39,6 @@ function taylorShiftWithInpErr(p, h, p_) {
  * @param p a polynomial with coefficients given densely as an array of double
  * floating point numbers from highest to lowest power, e.g. `[5,-3,0]`
  * represents the polynomial `5x^2 - 3x`
- * @param h the shift amount
  * @param p_ an error polynomial that represents a coefficient-wise error bound
  * that has **not** been scaled by `γ1` yet
  *
@@ -53,7 +52,9 @@ function inplaceTaylorShiftBy1WithInpErr(p, p_) {
         for (let i = 1; i <= n - k; i++) {
             const qi1 = p[i - 1];
             const qi1_ = p_[i - 1];
-            const hq_ = qi1_ + abs(qi1);
+            // (the multiplication by `h === 1` is exact so the error of the
+            // product is just the error of `qi1`)
+            const hq_ = qi1_;
             p[i] = p[i] + qi1;
             p_[i] = p_[i] + hq_ + abs(p[i]);
         }

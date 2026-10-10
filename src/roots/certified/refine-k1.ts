@@ -5,9 +5,8 @@ import { eChangeVariablesLinear } from "../../change-variables/expansion/e-chang
 import { RootInterval } from "../root-interval.js";
 import { RootIntervalExp } from "../root-interval-exp.js";
 import { roots } from '../descartes/roots.js';
-import { eps } from '../../error-analysis/gamma.js';
 
-const { abs, min, max, log2, ceil } = Math;
+const { abs, log2, ceil } = Math;
 
 
 /**
@@ -52,10 +51,14 @@ function refineK1(
     // reduce the polynomial to double-double precision for faster root finding
     const pDdK1 = pExactK1.map(eToDd);
 
-    // update the double-double precision error bound - it is simply the error 
-    // in rounding the exact coefficients to double-double precision
+    // Update the double-double precision error bound - it is simply the error
+    // in rounding the exact coefficients to double-double precision. `eToDd`
+    // keeps only the two most significant components of the (compressed,
+    // non-overlapping) expansion so the dropped part is `< 4u²|hi|` where
+    // `hi` is the high double. `roots` scales the given (positive!) error
+    // bound by `γγ3 ≈ 3u²` so the conservative unscaled bound `2|hi|` is used.
     const errBoundK1 = pDdK1.map(
-        c => c[1]*(eps**2)
+        c => 2*abs(c[1])
     );
     const getPExactK1 = () => pExactK1;
 

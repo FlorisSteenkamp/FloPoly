@@ -34,4 +34,10 @@ describe('scaleFloatssToBigintss', function() {
             [3n, 7n],[7n,3n]
         ]);
     });
+
+    it('should handle subnormal numbers and vastly different magnitudes',
+    function() {
+        expect(scaleFloatssToBigintss([[5e-324], [1e-320, 0]])).toEqual([[1n], [2024n, 0n]]);
+        expect(scaleFloatssToBigintss([[5e-324, 1], [0]])).toEqual([[1n, 2n**1074n], [0n]]);
+    });
 });

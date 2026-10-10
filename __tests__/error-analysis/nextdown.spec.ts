@@ -59,4 +59,13 @@ describe('nextdown', function() {
     it('should overflow to -Infinity from -Number.MAX_VALUE', function() {
         expect(nextdown(-Number.MAX_VALUE)).toBe(-Infinity);
     });
+
+    it('should step a full ulp from positive powers of two at or below the smallest normal', function() {
+        const minNormal = 2**-1022;
+        expect(nextdown(2*Number.MIN_VALUE)).toBe(Number.MIN_VALUE);
+        expect(nextdown(minNormal)).toBe(minNormal - Number.MIN_VALUE);
+        for (const v of [2*Number.MIN_VALUE, 4*Number.MIN_VALUE, minNormal, minNormal/2, 2*minNormal, 2**-1000]) {
+            expect(nextdown(v)).toBe(nextdown2(v));
+        }
+    });
 });

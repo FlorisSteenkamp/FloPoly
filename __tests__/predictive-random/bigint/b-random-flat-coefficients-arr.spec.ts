@@ -8,8 +8,8 @@ describe('random.bFlatCoefficientsArr', function() {
     it('should predictably generate an array of polynomials with coefficients in a flat random distribution', 
     function() {
         let res: bigint[][];
-        let expected1 = [23476909n, -27312416n, 125838304n];
-        let expected2 = [4453383n, -7934801n, 3372311n];
+        let expected1 = [93907637n, -234326608n, 665534515n];
+        let expected2 = [904167166n, -312321839n, 787781228n];
         
         res = bFlatCoefficientsArr(2,3,-2,2);
         
@@ -21,8 +21,8 @@ describe('random.bFlatCoefficientsArr', function() {
         expect(bEqual(res[1], expected2)).toEqual(true);
 
         let expected3 = [
-            [291912365n, 241123040n, 394273760n, 410943712n, 14521824n],
-              [11760919n, 15009599n, 5934375n, 4776143n, 15289399n]
+            [1167649461n, 839415216n, 1739276339n, 1977908990n, 761419985n],
+              [1861523052n, 1510199951n, 1706371578n, 1491495789n, 1498335144n]
         ];
         res = bFlatCoefficientsArr(2,5);
         expect(bEqual(res[0], expected3[0])).toEqual(true);

@@ -104,4 +104,22 @@ describe('numRootsInRange', function() {
             expect(numRootsInRange(p7, 0, 1)).toEqual(8);
         }
     });
+
+    it('should count multiple roots at the endpoints once and handle degenerate polynomials',
+    function() {
+        const p = [1, -4, 5, -2];  // (x-1)^2 (x-2)
+        expect(numRootsInRange(p, 0, 1)).toEqual(1);
+        expect(numRootsInRange(p, 1, 3)).toEqual(2);
+        expect(numRootsInRange(p, 1, 1)).toEqual(1);
+        expect(numRootsInRange(p, 3, 0)).toEqual(0);  // a > b
+        expect(numRootsInRange([1, -2, 1], 1, 2)).toEqual(1);  // (x-1)^2
+        expect(numRootsInRange([], 0, 1)).toEqual(Infinity);
+        expect(numRootsInRange([0], 0, 1)).toEqual(Infinity);
+        // both endpoints `0` (previously threw)
+        expect(numRootsInRange([1, -1], 0, 0)).toEqual(0);
+        expect(numRootsInRange([1, 0], 0, 0)).toEqual(1);
+        expect(numRootsInRange([1, -4, 5, -2], 0, 0)).toEqual(0);
+        expect(numRootsInRange([5], 0, 1)).toEqual(0);
+        expect(numRootsInRange([0, 2, -1], 0, 1)).toEqual(1);  // 2x - 1
+    });
 });

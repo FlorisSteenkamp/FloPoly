@@ -18,7 +18,15 @@ describe('ddScaleWithInpErr', function() {
         const [r, r_] = ddScaleWithInpErr(p, 3, p_);
 
         expect(r).toEqual([[0, 9], [0, 6], [0, 7]]);
-        expect(equal(r_, [18.9, 6.6, 0.7])).toEqual(true);
+        // error bound (in units of γγ3 ≈ 3u²):
+        //   input error * |sPow| + |p| * err(sPow) + (7/3) * |product|
+        // where the (7/3) is due to `ddMultDd` having a relative error bound
+        // of `7u²`
+        expect(equal(r_, [
+            0.1*9 + 1*9 + (7/3)*9,
+            0.2*3 + 2*0 + (7/3)*6,
+            0.7
+        ])).toEqual(true);
     });
 
     it('should agree with ddInplaceScaleWithInpErr on the same input', function() {
