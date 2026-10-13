@@ -1565,6 +1565,9 @@ const f = 134217729; // 2**27 + 1;
  * where ϵ <= 15u^2 + 56u^3, u = 0.5 * Number.EPSILON
  * * the largest error found was 8.465u^2
  *
+ * * assumes no overflow; note that (Veltkamp) splitting overflows (giving
+ * `NaN`) if the magnitude of `x[1]/y[1]` or `y[1]` exceeds ~2^996
+ *
  * * ALGORITHM 17 of https://hal.archives-ouvertes.fr/hal-01351529v3/document
  * @param x a double-double precision floating point number
  * @param y another double-double precision floating point number
@@ -1631,12 +1634,17 @@ const dd_mult_dd_f = 2 ** 27 + 1;
 /**
  * Returns the product of two double-double-precision floating point numbers.
  *
- * * relative error bound: 7u^2, i.e. fl(a+b) = (a+b)(1+ϵ),
- * where ϵ <= 7u^2, u = 0.5 * Number.EPSILON
- * the error bound is not sharp - the worst case that could be found by the
- * authors were 5u^2
+ * * relative error bound: 5u^2, i.e. fl(a*b) = (a*b)(1+ϵ),
+ * where |ϵ| < 5u^2, u = 0.5 * Number.EPSILON (assuming no underflow or overflow)
+ * * this bound (for round-to-nearest ties-to-even, as used by JavaScript) was
+ * formally proven (in Coq) by J.-M. Muller and L. Rideau, see
+ * https://doi.org/10.1145/3484514 - it improves on the 7u^2 bound given in
+ * the original paper (below); the worst case found is 4.985u^2
  *
- * * ALGORITHM 10 of https://hal.archives-ouvertes.fr/hal-01351529v3/document
+ * * assumes no overflow; note that (Veltkamp) splitting overflows (giving
+ * `NaN`) if the magnitude of `x[1]` or `y[1]` exceeds ~2^996
+ *
+ * * ALGORITHM 10 (DWTimesDW1) of https://hal.archives-ouvertes.fr/hal-01351529v3/document
  * @param x a double-double precision floating point number
  * @param y another double-double precision floating point number
  */
@@ -2947,10 +2955,13 @@ const dd_mult_double_f = 134217729; // 2**27 + 1;
  *
  * * slower than ALGORITHM 8 (one call to fastTwoSum more) but about 2x more
  * accurate
- * * relative error bound: 1.5u^2 + 4u^3, i.e. fl(a+b) = (a+b)(1+ϵ),
+ * * relative error bound: 1.5u^2 + 4u^3, i.e. fl(a*b) = (a*b)(1+ϵ),
  * where ϵ <= 1.5u^2 + 4u^3, u = 0.5 * Number.EPSILON
  * * the bound is very sharp
  * * probably prefer `ddMultDouble2` due to extra speed
+ *
+ * * assumes no overflow; note that (Veltkamp) splitting overflows (giving
+ * `NaN`) if the magnitude of `x[1]` or `y` exceeds ~2^996
  *
  * * ALGORITHM 7 of https://hal.archives-ouvertes.fr/hal-01351529v3/document
  * @param y a double
@@ -2987,6 +2998,9 @@ function ddMultDouble1(y, x) {
  * where ϵ <= 3u^2, u = 0.5 * Number.EPSILON
  * * the bound is sharp
  * * probably prefer this algorithm due to extra speed
+ *
+ * * assumes no overflow; note that (Veltkamp) splitting overflows (giving
+ * `NaN`) if the magnitude of `x[1]` or `y` exceeds ~2^996
  *
  * * ALGORITHM 8 of https://hal.archives-ouvertes.fr/hal-01351529v3/document
  * @param y a double
@@ -3149,6 +3163,9 @@ const dd_div_double_f = 134217729; // 2**27 + 1;
  * * relative error bound: 3u^2, i.e. fl(a/b) = (a/b)(1+ϵ), where ϵ <= 3u^2,
  * u = 0.5 * Number.EPSILON
  * * the bound is very sharp
+ *
+ * * assumes no overflow; note that (Veltkamp) splitting overflows (giving
+ * `NaN`) if the magnitude of `x[1]/y` or `y` exceeds ~2^996
  *
  * * ALGORITHM 15 of https://hal.archives-ouvertes.fr/hal-01351529v3/document
  * @param x a double-double precision floating point number
@@ -5594,40 +5611,34 @@ const { abs: condition_number_abs } = Math;
 }
 
 
-;// ./node_modules/double-double/node/double-representation/double-to-octets.js
-// Modified from https://github.com/bartaz/ieee754-visualization/
-// under the MIT license
-// Copyright 2013 Bartek Szopka (original author)
-/**
- * Returns the ieee-574 8 bytes composing the given double, starting from the
- * sign bit and ending in the lsb of the significand.
- * e.g. 123.456 -> [64, 94, 221, 47, 26, 159, 190, 119]
- * @internal
- */
-function double_to_octets_doubleToOctets(number) {
-    const buffer = new ArrayBuffer(8);
-    new DataView(buffer).setFloat64(0, number, false);
-    return Array.from(new Uint8Array(buffer));
-}
-
-//# sourceMappingURL=double-to-octets.js.map
 ;// ./node_modules/double-double/node/double-representation/parse-double.js
 /* unused harmony import specifier */ var parse_double_doubleToBinaryString;
 // Modified from https://github.com/bartaz/ieee754-visualization/
 // under the MIT license
 // Copyright 2013 Bartek Szopka (original author)
 
-
+/**
+ * Shared view used to read the bits of a double without allocating.
+ *
+ * @internal
+ */
+const dv = new DataView(new ArrayBuffer(8));
 /**
  * Returns the relevant parts of the given IEEE-754 double. The returned
- * exponent has been normalized (i.e. 1023 ha been subtracted) and the
+ * exponent has been normalized (i.e. 1023 has been subtracted) and the
  * significand has the hidden bit added if appropriate.
- * See https://github.com/bartaz/ieee754-visualization
+ *
+ * * see https://github.com/bartaz/ieee754-visualization
+ *
+ * * the `significand` is returned as an array of 7 bytes, where the first byte
+ *   is the 4 most significant bits of the significand (with the hidden bit added
+ *   if appropriate) and the remaining 6 bytes are the remaining bits of the
+ *   significand.
  */
 function parse_double_parseDouble(x) {
-    const parts = double_to_octets_doubleToOctets(x);
-    const p0 = parts[0];
-    const p1 = parts[1];
+    dv.setFloat64(0, x);
+    const p0 = dv.getUint8(0);
+    const p1 = dv.getUint8(1);
     const sign = p0 >> 7;
     const exponent_ = ((p0 & 0b0111_1111) << 4) + ((p1 & 0b11110000) >> 4);
     //---- Check for negative / positive zero / denormalized numbers.
@@ -5637,8 +5648,11 @@ function parse_double_parseDouble(x) {
         ? exponent_ - 1022 // Subnormals use a biased exponent of 1 (not 0!)
         : exponent_ - 1023;
     //---- Break up the significand into bytes
-    const significand = parts.slice(1);
-    significand[0] = (p1 & 0b0000_1111) + hiddenMsb;
+    const significand = [
+        (p1 & 0b0000_1111) + hiddenMsb,
+        dv.getUint8(2), dv.getUint8(3), dv.getUint8(4),
+        dv.getUint8(5), dv.getUint8(6), dv.getUint8(7)
+    ];
     return {
         sign,
         exponent,
