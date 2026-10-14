@@ -1,5 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-import { eEstimate, twoSum, eSum } from 'big-float-ts';
+import { eEstimate, twoSum, eSum, eDiff, eSign, isNonOverlappingAll } from 'big-float-ts';
 import { eeHorner } from '../../../src/evaluate/expansion/e-e-horner.js';
 import { compHorner } from '../../../src/evaluate/double/comp-horner.js';
 import { compHornerIsFaithful } from '../../../src/evaluate/double/comp-horner-is-faithful.js';
@@ -147,8 +147,13 @@ describe('eeHorner', function() {
         // exact to last ulp
         expect(eEstimate(eeHorner(p, [c]))).toEqual(exactValue);
 
-        // totally exact as a Shewchuk expansion
-        expect(eeHorner(p, [c])).toEqual([
+        // totally exact as a Shewchuk expansion - the *value* must be exact
+        // (the component layout of the expansion is an implementation detail
+        // of big-float-ts: e.g. v4.0.5 sums the partial products of 
+        // `expansionProduct` with a distillation tree rather than sequentially,
+        // which yields a different, equally valid, non-overlapping expansion)
+        const exact = eeHorner(p, [c]);
+        expect(eSign(eDiff(exact, [
             8.091831733644689e-136,
             2.094485622400387e-119,
             4.1470589674758764e-103,
@@ -158,7 +163,8 @@ describe('eeHorner', function() {
             -1.7723127766360825e-51,
             -1.9112575623823073e-37,
             -6.686513196320162e-21
-        ]);
+        ]))).toEqual(0);
+        expect(isNonOverlappingAll(exact)).toBe(true);
 
         // the error free transformation should be... error free
         let { r̂, pπ, pσ } = EFTHorner(p_, c);
